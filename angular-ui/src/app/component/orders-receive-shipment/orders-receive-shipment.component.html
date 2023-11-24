@@ -33,11 +33,6 @@
             <br>
             <p class="text-secondary">{{shipmentArray.status}}</p>
           </div>
-
-
-
-
-
           <div class="col-md-2">
             <b class="DEalername">Created On</b> <br>
 
@@ -191,7 +186,7 @@
           </div>
 
 
-          <div class="d-flex justify-content-center mt-3">
+          <div class="d-flex justify-content-center mt-3" *ngIf="userType!=='Viewer'">
             <button class="btn ps-5 pe-5 pt-1 pb-1"
               style="background: rgba(1, 139, 117, 1); width: 171px; height: 44px;color: white;"
               [disabled]="!isEnable" (click)="editButton()">
@@ -349,7 +344,7 @@
 
 
 
-          <div class="d-flex justify-content-center mt-3">
+          <div class="d-flex justify-content-center mt-3" *ngIf="userType!=='Viewer'">
             <button class="btn ps-5 pe-5 pt-1 pb-1"
               style="background: rgba(1, 139, 117, 1); width: 171px; height: 44px;color: white;"
               [disabled]="!isEnable" (click)="editButton()">
