@@ -95,6 +95,7 @@ export class EditDealerTargetComponent implements OnInit {
   ) {
 
   }
+  targetData:any;
   ngOnInit(): void {
 
   
@@ -112,6 +113,8 @@ export class EditDealerTargetComponent implements OnInit {
     
  
     this.targetList.getTargetById(data).subscribe((res) => {
+      console.log("Responseeee",res.response);
+      this.targetData = res.response.settarget;
       console.log(res.response);
       
       this.targetId = res.response.targetGroupId;
@@ -874,7 +877,28 @@ console.log('obj1obj1obj1',obj1)
       });
     }
     else {
-      // alert('select any dealer')
+      let obj1:any={
+        "TargetAssociationId":this.TargetAssociationId,
+        "TargetGroupId":this.targetGroupId,
+        "year":Number(this.mainadd[0].geography[0].year),
+        "setTarget":this.mainadd[0].geography[0].settarget,
+        "volume":this.mainadd[0].geography[0].targets[0].targetValue,
+        "units":this.mainadd[0].geography[0].targets[0].targetUnit,
+        "vtotal":this.mainadd[0].geography[0].vtotal,
+        "utotal":this.mainadd[0].geography[0].utotal,
+        "CreatedById":this.userId
+                }
+        console.log('obj1obj1obj1',obj1)
+                this.targetList.updateTargetData(obj1).subscribe((res) => {
+                  console.log("Added TargetData ", this.addedTargetData);
+                  if (res.response.result == 'DealerTargets Update Successfully') {
+                    this.dialogRef.close();
+                    this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'TargetSuccessPop'})
+                    // alert('Dealer Targets Update Successfully')
+                    this.sharedService.filter('Register click')
+        
+                  }
+                })      
     }
   }
 

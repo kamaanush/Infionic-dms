@@ -349,6 +349,8 @@ export class ViewPromotionPopupComponent implements OnInit {
     statusName:any
     aditionalMoqDetails:any=[];
     AdditionalDetails:any=[];
+    MiniumOrderQTY:any=[];
+    FirstpromotionMiniumOrderQTY:any=[];
   ngOnInit(): void {
     let data = localStorage.getItem('promoclickId');
     this.LoginId = localStorage.getItem("logInId");
@@ -496,6 +498,7 @@ export class ViewPromotionPopupComponent implements OnInit {
           this.aditionalMoqDetails.push(data)
         })
         console.log('this.aditionalMoqDetails',this.aditionalMoqDetails);
+        this.FirstpromotionMiniumOrderQTY=res.response.promoDetails.moq;
              }
       if (res.response.promotionTypesId == 2 || res.response.promotionTypesName == "Buy AB Get CD") {
         this.addbuyset = [];
@@ -583,6 +586,7 @@ export class ViewPromotionPopupComponent implements OnInit {
 
         this.AdditionalDetails = res.response.promoDetails.aditionalMoqDetails;
          console.log("aditionalMoqDetails checking RK",this.AdditionalDetails);
+         this.MiniumOrderQTY=res.response.promoDetails.moq;
       }
       if (res.response.promotionTypesId == 3||res.response.promotionTypesName == 'Volume Discount') {
         this.productPromotionsId = res.response?.productPromotionsId;
