@@ -75,17 +75,32 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "ID", 
-field: 'uoMName' ,type: ['nonEditableColumn'], minWidth:400
+field: 'uoMName' ,type: ['nonEditableColumn'],
+cellStyle: {
+  'color': '#686E74' 
+},
+ minWidth:400
 },
 
-{   headerName: "Uploaded By",field: 'uoMShortName',type: ['nonEditableColumn']},
-{   headerName: "Upload On",field: 'uoMShortName',type: ['nonEditableColumn']},
+{   headerName: "Uploaded By",field: 'uoMShortName',type: ['nonEditableColumn'],
+cellStyle: {
+  'color': '#686E74' 
+}
+},
+{   headerName: "Upload On",field: 'uoMShortName',type: ['nonEditableColumn'],
+cellStyle: {
+  'color': '#686E74' 
+}
+},
 
 
 // suppressMovable:true,
 { headerName: "Total items",
  field: 'statusName', 
  type: ['nonEditableColumn'],
+ cellStyle: {
+  'color': '#686E74' 
+},
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],
@@ -444,7 +459,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -455,7 +470,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
-    alert(data.status)
+    // alert(data.status)
    
   }
 
@@ -466,7 +481,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     this.dialog.open( UomPopupComponent);
   }
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
 
 }

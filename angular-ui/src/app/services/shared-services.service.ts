@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ValueCache } from 'ag-grid-community';
 import moment from 'moment';
 import {Observable, Subject} from 'rxjs';
@@ -9,10 +9,13 @@ import {Observable, Subject} from 'rxjs';
 export class SharedService {
   private subject = new Subject<any>();
 
+  ReloadaddOrg: EventEmitter<void> = new EventEmitter<void>();
+  deletepromo():void{
+    this.ReloadaddOrg.emit()
+  }
   sendClickEvent(){
     this.subject.next;
     this.getClickEvent()
-    
   }
 
   getClickEvent():Observable<any>{
@@ -29,7 +32,7 @@ export class SharedService {
     this._listners.next(filterBy)
   }
 
-  dateformat(value,requireddateFormat=' DD   MMM   YY  ')
+  dateformat(value,requireddateFormat=' DD-MMM-YYYY  ')
   
   // MMM D, YYYY'
   // DD-MMM-YY

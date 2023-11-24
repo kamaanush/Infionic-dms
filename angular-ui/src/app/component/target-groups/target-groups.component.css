@@ -6,19 +6,35 @@
 
 }
 
+
+::ng-deep.targetgroupbubles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.targetgroupbubles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -3px !important;
+     height: 5px;
+     display: table-cell;
+
+}
 ::ng-deep .tgd .dropdown-btn span .ng-star-inserted {
   
 
 
   
-
+/* 
   position: absolute !important;
-right: 73px !important;
+right: 73px !important; */
 bottom: 0px;
-top: 50px !important;
+/* top: 50px !important; */
  width: 45px;
 border: 1px solid #337ab7;
-background: #0353A4 !important;
+background: #000000 !important;
 
    font-size: 12px;
    box-shadow: 1px 1px #959595;
@@ -69,7 +85,7 @@ padding-left: 10px;
 
 ::ng-deep.multiselect-dropdown .dropdown-btn {
   display: inline-block;
-  border: 1px solid #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
   width: 100%;
   /* height: 62%; */
   padding: 9px 12px !important;
@@ -96,11 +112,13 @@ padding-left: 10px;
   box-shadow: 0 1px 5px #959595;
 }
 ::ng-deep.stts1 .multiselect-dropdown .dropdown-btn .selected-item {
-  background:  #0353A4 !important;
+  background:  #000000 !important;
   font-size: 12px;
+  height: fit-content;
+  right: 7px;
 }
  ::ng-deep .stts1 .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
-background:  #0353A4 !important;
+background:  #000000 !important;
 }
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
@@ -165,8 +183,8 @@ background: #D23F00 !important;
 .btnhover1{
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   border: none;
-  background: #000000;
-  border-radius: 26%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   position: relative;
   width: 43px;
   cursor: pointer;
@@ -175,28 +193,28 @@ background: #D23F00 !important;
 ::ng-deep.btnhover1:hover{
 background: #000000 !important;
 }
-.searchButton {
+/* .searchButton {
   display:bolck;
   color: #FFFFFF;
   float: left;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.2s;
   border: none;
-}
+} */
 
-.searchBox:hover >.searchButton,
+/* .searchBox:hover >.searchButton,
 .searchBox>.searchInput,
 .search-btn {
   display:none;
-}
+} */
 
-.searchBox {
+/* .searchBox {
   float:right;
   position: absolute;
   right: -11px;
@@ -254,7 +272,7 @@ background: #000000 !important;
   position: absolute;
   right: 0px;
   bottom: -3px;
-}
+} */
 .addU:before {
   width: 201px;
 }
@@ -262,7 +280,7 @@ background: #000000 !important;
   width: 205px;
 }
 
-@media screen and (max-width: 620px) {
+/* @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {
       width: 150px;
       padding: 0 6px;
@@ -271,13 +289,13 @@ background: #000000 !important;
   .searchBox {
 left: 37%
   }
-}
+} */
 .add-user {
   border: none;
-  background: #000000;
-  border-radius: 50%;
-  width: 37px;
-  height: 37px; 
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+  width: 40px;
+  height: 40px; 
   top: 6px;
   margin-top: 5px;
   margin-left: 9%;
@@ -287,8 +305,8 @@ left: 37%
   background: #000000;
   border-radius: 50%;
   position: relative;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   top: 6px;
   left: 21%;
 }
@@ -318,16 +336,16 @@ left: 37%
 }
 
 ::ng-deep.my-class-1{
-    color: #F5B666 !important ;
+    color: #686E74 !important ;
 }
 ::ng-deep.my-class-2{
-    color: #17B15C !important ;
+    color: #686E74 !important ;
 }
 ::ng-deep.my-class-3{
-    color: #F5B666 !important ;
+    color: #686E74 !important ;
 }
 ::ng-deep.my-class-4{
-    color: #017EFA !important ;
+    color: #686E74 !important ;
 }
 
 
@@ -335,7 +353,7 @@ left: 37%
 
 ::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
 
-   background: #000000 !important; 
+  background: rgba(1, 139, 117, 1) !important; 
      border-radius: 10px;    
 
 }
@@ -401,17 +419,17 @@ height: calc(100vh - 65px);
   background-color: #b81111 !important;
 }
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  /* color: #686E74 !important; */
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
 }
 
-::ng-deep.ag-theme-material .ag-root-wrapper, .ag-theme-material .ag-sticky-top {
+:host ::ng-deep.ag-theme-material .ag-root-wrapper, .ag-theme-material .ag-sticky-top {
 
-  border: 0.5px solid #000000 !important;
+  border: 1px solid rgba(152, 156, 160, 0.30) !important;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 25px !important;
+  border-radius: 10px !important;
 
 }
 
@@ -446,8 +464,8 @@ height: calc(100vh - 65px);
   --ag-card-radius: 100px;
   --ag-border-radius: 20px;
 --ag-header-height: 30px;
-/* --ag-header-foreground-color: blue; */
---ag-header-background-color: rgba(0, 0, 0, 0);
+ --ag-header-foreground-color: white; 
+ --ag-header-background-color:  #018B75CC  !important ;
 /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
 --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
 }
@@ -756,13 +774,13 @@ background: red;
 
   }
 
-  .searchBox{
+  /* .searchBox{
     top: 6px;
-  }
+  } */
   
-   .searchButton{
+   /* .searchButton{
     margin-left: -108px;
-   }
+   } */
    .add-user{
     margin-left: -25px;
    }
@@ -820,13 +838,19 @@ mat-sidenav {
 
 .pagination {
   float:right !important;
+  margin-top: 11px;
 }
 
 .pagination-cls {
   font-size: 14px;
+  font-weight: 500;
+  color: #686E74;
+}
+ 
+.pagination-cl {
+  font-size: 14px;
   font-weight: 900;
-  font-weight: bold;
-  font-weight:'Gilroy-Bold' ;
+  color: #686E74;
 }
 
 .dropdown-placeholder {
@@ -837,8 +861,8 @@ mat-sidenav {
   height: 41px;
   line-height: 41px;
   left: 16px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(179, 179, 179, 1);
+  border-bottom: 1px solid rgba(179, 179, 179, 1);
   /* width: 80%; */
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -846,8 +870,137 @@ mat-sidenav {
 
 }
 .stts1-placeholder.dropdown-placeholder .selected-placeholder {
-  color:  #0353A4 !important;
+  color:  #000000 !important;
 }
 .stts1-placeholder.dropdown-placeholder .selected-placeholder {
-  color:  #0353A4 !important;
+  color:  #000000 !important;
+}
+
+
+.searchBox {
+
+  float: right;
+
+  position: absolute;
+
+  right: -12px;
+
+    top: 7px;
+
+}
+
+ 
+
+.searchButton {
+
+  display: block;
+
+  color: #9B9FA3;
+
+  float: left;
+
+  width: 42px;
+
+  height: 42px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  transition: 0.2s;
+
+  background: none;
+
+  position: relative;
+
+  right: 257px;
+
+  top: -4px;
+
+  border: none;
+
+  border-radius: 13%;
+
+  transition: 0.2s;
+
+}
+
+ 
+
+ 
+
+ 
+
+.search-btn {
+
+  display: block;
+
+  height: 26px;
+
+  border: none;
+
+  background: rgba(104, 110, 116, 0.66);
+
+
+  color: white;
+
+  border-radius: 5px;
+
+  position: absolute;
+
+  right: 10px;
+
+  top: 4px;
+
+ 
+
+}
+
+ 
+
+ 
+
+.searchInput {
+
+  display: block;
+
+  width: 300px;
+
+  height: 43px;
+
+  background: #FFFFFF;
+
+  float: left;
+
+  padding: 5px 32px 6px;
+
+  border-radius: 10px;
+
+  font-family: 'Gilroy-medium';
+
+  font-style: normal;
+
+  font-weight: 500;
+
+  font-size: 12px;
+
+  line-height: 17px;
+
+  letter-spacing: 0.08em;
+
+  color: #263643;
+
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+
+  position: absolute;
+
+  right: 0px;
+
+  bottom: -3px;
+
+  top: -5px;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
+
 }

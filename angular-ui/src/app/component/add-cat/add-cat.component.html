@@ -3,13 +3,13 @@
 <div class="container">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text">{{catsetName}}</h1>
+        <h1 class="head-text" [ngClass]="{'edit-header' : catsetName == 'Edit Category'} ">{{catsetName}}</h1>
         <p style="color: red; text-align: center; font-size: 13px;">{{errorMsg}}</p>
     </div>
     <div class="addCatDiv">
         <label class="addcat" >Name<span style="color: red;">*</span></label><br>
         <input type="text" placeholder="Enter category name" id="addCategory" name="addCategory"
-          required [(ngModel)]="addcat" #addCategory="ngModel">       
+          required [(ngModel)]="addcat" #addCategory="ngModel"(input)="restrictToAlphabets($event)">       
           <p style="margin-bottom: -29px;
           padding: 0px;
           font-size: 11px;
@@ -37,7 +37,7 @@
           </span>
       </p>
      <br>
-     <div class="buttonDiv">
+     <div class="buttonDiv d-flex ">
         <button  *ngIf="catsetName=='Add Category'"   class="update-btn" (click)="AddCat()" [disabled]="!addcat || !addcatcode">Save</button>
         <button *ngIf="catsetName=='Edit Category'" class="update-btn" (click)="editCat()" [disabled]="!addcat || !addcatcode">Save</button>
 

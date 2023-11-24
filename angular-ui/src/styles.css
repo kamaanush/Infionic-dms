@@ -11,6 +11,10 @@
 @import '../node_modules/@syncfusion/ej2-angular-popups/styles/material.css';
 
 
+.mat-elevation-z8
+{
+  box-shadow: none !important;
+}
 html,
 body {
   height: 100%;
@@ -25,12 +29,58 @@ body {
   font-family: Montserrat, sans-serif;
 }
 
+/*  background color apply the in every module  */
+ mat-sidenav-content
+{
+  
+}
+.mat-dialog-container
+{
+   
+  
+}
+.popup
+{
+  
+  
+}
+.main
+{
+  
+  
+   
+}
+.content
+{
+  
+}
+.sales-container
+{
+  
+}
+
+/* End */
+/* custom css mat tab */
+
+.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+
+ background: rgba(1, 139, 117, 1);
+}
+.mat-drawer-container {
+  background-color: white;
+}
+
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
-  scrollbar-width: auto;
-  scrollbar-color: #000000 #dee2e6;
+  /* scrollbar-width: auto; */
+  scrollbar-color:rgba(1, 139, 117, 1);
+
+}
+html
+{
+  scrollbar-color:rgba(1, 139, 117, 1) white;
 }
 
 /* Chrome, Edge, and Safari */
@@ -44,7 +94,7 @@ body {
 
 *::-webkit-scrollbar-thumb,
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #000000;
+  background-color: rgba(1, 139, 117, 1);
   border-radius: 10px;
   border: 0px none #000000;
 }
@@ -105,14 +155,14 @@ body {
 }
 
 .mat-dialog-container {
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+  /* background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%); */
   border: 0.5px solid #000000;
   border-radius: 15px !important;
 }
 
  .activeSuccessPop .mat-dialog-container {
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
-  border: 0.5px solid #000000;
+  background: white!important;
+  border: 0.5px solid gray;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
@@ -138,7 +188,8 @@ body {
   max-width: 100%;
   max-height: 100%;
   bottom: 2%;
-  left: 74%;
+  /* left: 74.5%; */
+  margin-left: 72%;
 }
 
 .activeSuccessPop {
@@ -150,7 +201,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   bottom: 2%;
-  left: 73%;
+  left: 72.5%;
 }
 
 .geo-label .mat-tab-labels:nth-child(1) {
@@ -327,7 +378,8 @@ mat-list-item-content::before {
 
 ngx-daterangepicker-material .md-drppicker {
   border: 1px solid #ccc;
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+  /* background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%); */
+  margin-top: 28px;
 }
 
 .md-drppicker .calendar-table {
@@ -336,7 +388,7 @@ ngx-daterangepicker-material .md-drppicker {
 }
 
 .md-drppicker td.in-range {
-  background-color: #F2F7FE !important;
+  background-color:white !important;
   opacity: 1;
 }
 
@@ -345,7 +397,7 @@ ngx-daterangepicker-material .md-drppicker {
 .md-drppicker td.off.start-date,
 .md-drppicker td.off.end-date {
   background-color: transparent !important;
-  color: #bbb !important;
+  color:white !important;
 }
 
 .md-drppicker td.active,
@@ -358,7 +410,7 @@ ngx-daterangepicker-material .md-drppicker {
 .md-drppicker th.month>div {
   border: 1px solid;
   padding: 2px;
-  background: #fff;
+  background: white;
   color: #000;
   width: 70px;
   margin-left: 5px;
@@ -386,21 +438,31 @@ ngx-daterangepicker-material .md-drppicker .btn{
     padding: 0px 25px;
     text-transform: capitalize;
     font-weight: 500;
-    background: #000;
+    background: rgba(1, 139, 117, 1);
 }
 ngx-daterangepicker-material  .md-drppicker .btn:hover,ngx-daterangepicker-material  .md-drppicker .btn:focus{
-  background: #000;
+  background: rgba(1, 139, 117, 1);
 }
 ngx-daterangepicker-material .md-drppicker .btn.btn-default{
   border: 2px solid #000;
-   background: #fff;
+   background:white;
 }
 ngx-daterangepicker-material .md-drppicker .clear svg{
   display: none;
 }
 
+
+.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn{
+  position: relative;
+  top: -30px;
+}
+
+.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn.btn-default{
+  display: block;
+  top: 10px;
+}
 .material-add-edit .mat-horizontal-content-container{
-  max-height: 70vh;
+  height: 60vh;
   overflow-y: auto;
 }
 .material-add-edit .mat-dialog-container{
@@ -412,3 +474,715 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
 .promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,.promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
   display: none;
 }
+.MLCSP{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 71%;
+  /* width: 377px; */
+}
+.MLCSP .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.deaeSuPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+   border-left: 10px solid #FF0000 !important; 
+   
+  padding: 10px 20px;
+  
+} 
+
+
+.deaeSuPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 79%;
+   /* width: 350px;  */
+}
+
+
+
+
+
+.Addtypessupop{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 72%;
+}
+.Addtypessupop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.geoaddedPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 71%;
+}
+
+
+.geoaddedPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.edituon {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 5%;
+  left: 77%;
+}
+
+
+
+.edituon .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+
+.dearreactpop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 74%;
+}
+
+
+
+.dearreactpop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.addsalessussesspop
+{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 75%;
+  /* width: 377px; */
+}
+
+
+
+.addsalessussesspop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.addorderpromosuccess
+{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 76%;
+  
+}
+
+
+
+.addorderpromosuccess .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.activeSuccess_Pop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+  width: 377px;
+}
+
+
+.activeSuccess_Pop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+
+.ActiveSuccessPopComponent {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+  width: 377px;
+}
+
+
+.ActiveSuccessPopComponent .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.ActiveSuccess_PopComponent
+{
+  
+    position: absolute !important;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+    bottom: 4%;
+    left: 77%;
+    
+  
+}
+
+.ActiveSuccess_PopComponent .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.ASPCMaterial
+{
+  
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 74%;
+  width: 26%;
+  /* width: 377px; */
+}
+
+
+.ASPCMaterial .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.activeSuccessPopassocitions {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+}
+.activeSuccessPopassocitions .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.promotionsSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 74%;
+}
+.promotionsSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.TargetSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 74%;
+}
+.TargetSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.UsersSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 6%;
+  left: 77%;
+}
+.UsersSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.AddUsersSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 6%;
+  left: 77%;
+}
+.AddUsersSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.deactive_SuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+   border-left: 10px solid #FF0000 !important; 
+   
+  padding: 10px 20px;
+} 
+
+
+.deactive_SuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 4%;
+   left: 76%;
+   width: 23%;
+  
+}
+
+.materialsSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 76.5%;
+}
+
+.materialsSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.UOMSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.UOMSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 5%;
+   left: 73%; 
+  
+}
+
+
+.TaxactiveSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 75%;
+}
+
+.TaxactiveSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+
+.taxdeactivatesussess .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+   border-left: 10px solid #FF0000 !important; 
+   
+  padding: 10px 20px;
+} 
+
+
+.taxdeactivatesussess {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+   left: 75%;
+}
+
+.editSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 75%;
+}
+.editSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.currencyactiveSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 5%;
+  left: 74%;
+}
+.currencyactiveSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.currencydeactiveSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+   border-left: 10px solid #FF0000 !important; 
+   
+  padding: 10px 20px;
+} 
+
+
+.currencydeactiveSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 5%;
+   left: 75%;
+  
+}
+
+
+.currencyReaactiveSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 5%;
+  left: 75%;
+}
+.currencyReaactiveSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.AddgeoSuccessPopcompoment {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 6%;
+  left: 77%;
+}
+.AddgeoSuccessPopcompoment .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+@font-face {
+  font-family: 'Gilroy-Black';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Black.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-BlackItalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-BlackItalic.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Bold.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Bolditalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-BoldItalic.ttf')  format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Gilroy-ExtraBold';
+  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBold.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-ExtraBolditalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBoldItalic.ttf')  format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Gilroy-Heavy';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Heavy.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Heavyitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-HeavyItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Light';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Light.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Lightitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-LightItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Medium.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Mediumitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-MediumItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Regular';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Regularitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-RegularItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBold';
+  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBold.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBolditalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBoldItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Thin';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Thin.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Thinitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-ThinItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-UltraLight';
+  src: url('../src/assets/fonts/gilroy/Gilroy-UltraLight.ttf')  format('truetype');
+}
+
+ @font-face {
+  font-family: 'Gilroy-UltraLightitalic';
+  src:url('../src/assets/fonts/gilroy/Gilroy-UltraLightItalic.ttf')  format('truetype');
+} 

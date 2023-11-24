@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 
 import { GeoAddedPopupComponent } from '../geo-added-popup/geo-added-popup.component';
+import { GeographySettingSharedService } from 'src/app/services/geography-setting-shared.service';
 
 @Component({
   selector: 'app-addeditgeo',
@@ -15,6 +16,7 @@ export class AddeditgeoComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddeditgeoComponent>,
     private dialog: MatDialog,
+    private sharedService: GeographySettingSharedService,
     @Inject(MAT_DIALOG_DATA) public data: any, private spinner: NgxSpinnerService,private classification: ClassificationserviseService,) {}
     
     geoType:string = "";
@@ -63,6 +65,7 @@ export class AddeditgeoComponent implements OnInit {
       sessionStorage.setItem("uomCode",'');
       sessionStorage.setItem("GeoName",this.name);
       sessionStorage.setItem("GeoCode",this.code);
+      this.sharedService.filter('Register click');
 
     }else{
       this.showWarning = true;
@@ -85,7 +88,9 @@ export class AddeditgeoComponent implements OnInit {
 
     console.log(obj);
     this.dialogRef.close();
-     this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
+     this.dialog.open(GeoAddedPopupComponent, {panelClass: 'geoaddedPop'});
+
+    //  {panelClass: 'activeSuccessPop'});
     this.spinner.show();
     this.classification.SaveGeography(obj).subscribe({
       next: (res) => {
@@ -96,7 +101,7 @@ export class AddeditgeoComponent implements OnInit {
         }else{   
           // Show warning message
           // this.dialogRef.close({res, result});
-          alert(res.response.resultDetails);
+          // alert(res.response.resultDetails);
         }
         this.spinner.hide();
       },

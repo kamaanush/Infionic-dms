@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
 import moment from 'moment';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
+import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 import { SalesInvoiceDownloadComponent } from '../../sales-invoice-download/sales-invoice-download.component';
@@ -20,15 +21,19 @@ export class SalesUploadsComponent implements OnInit {
   paginationScrollCount: any;
   selectedDateRange:any;
   StartDate:any = '';
+  searchText:any = '';
   salesUploadList:any = [];
   public popupParent: HTMLElement = document.body;
   private gridApi!: GridApi;
+  usertype:any
   constructor(public dialog: MatDialog,
     private sharedService :SharedService, 
-    private salesService:SalesServicesService) { }
+    private salesService:SalesServicesService,
+    private sharedServiceCalendar:SharedServiceCalendarService,) { }
 
   ngOnInit(): void {
     this.SalesUpload();
+    this.usertype = localStorage.getItem('userType')
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -150,14 +155,14 @@ sessionStorage.setItem("BatchId",batchId );
     }
   }
   columnDefs: ColDef[] = [
-    {   headerName: "BatchId",field: 'batchId' ,      tooltipField:"batchId",type: ['nonEditableColumn']
+    {   headerName: "BatchId",field: 'batchId' , cellStyle: { color: '#686E74' },     tooltipField:"batchId",type: ['nonEditableColumn']
   },
   
-    {  headerName: "Uploaded By",field: 'createBy',      tooltipField:"createBy   ",type: ['nonEditableColumn']
+    {  headerName: "Uploaded By",field: 'createBy',   cellStyle: { color: '#686E74' },    tooltipField:"createBy   ",type: ['nonEditableColumn']
   },     
   
     {  headerName: "Upload On",
-       field: 'uploadedOn',      tooltipField:"uploadedOn",
+       field: 'uploadedOn',  cellStyle: { color: '#686E74' },     tooltipField:"uploadedOn",
 
      
 
@@ -170,14 +175,14 @@ sessionStorage.setItem("BatchId",batchId );
       },
   
     {   headerName: "Total Items",
-      field: 'totalItems',      tooltipField:"totalItems",
-      type: ['nonEditableColumn']},
+      field: 'totalItems',  cellStyle: { color: '#686E74' },     tooltipField:"totalItems",
+      type: ['nonEditableColumn','rightAligned']},
       {
         headerName: '',
         colId: 'action',
         cellRenderer: UploadSalesActionComponent,
         editable: false,
-        maxWidth: 50
+        maxWidth: 50,
       },
   ];
   public defaultColDef: ColDef = {
@@ -194,6 +199,7 @@ sessionStorage.setItem("BatchId",batchId );
       minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
   public columnTypes: {
     [key: string]: ColDef;
@@ -241,8 +247,25 @@ sessionStorage.setItem("BatchId",batchId );
   }
   refresh() {
     this.StartDate = '';
+    this.searchText = '';
     const data = {
-      InvoiceDate:this.StartDate
+      InvoiceDate:this.StartDate,
+
+    }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
+    this.salesService.getSalesUploadList(data).subscribe((res)=>{
+      console.log(res.response)
+      this.salesUploadList=res.response;
+      console.log("SalesUploadList",this.salesUploadList);
+
+    })
+    this.sharedServiceCalendar.filter('Register click')
+  }
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      InvoiceDate:this.StartDate,
 
     }
     this.salesService.getSalesUploadList(data).subscribe((res)=>{
@@ -251,20 +274,6 @@ sessionStorage.setItem("BatchId",batchId );
       console.log("SalesUploadList",this.salesUploadList);
 
     })
-  }
-  onSearchChange($event: any, anything?: any) {
-    // const { target } = $event;
-    // this.searchText = target.value;
-    // const data = {
-    //   InvoiceDate:this.StartDate
-
-    // }
-    // this.salesService.getSalesUploadList(data).subscribe((res)=>{
-    //   console.log(res.response)
-    //   this.salesUploadList=res.response;
-    //   console.log("SalesUploadList",this.salesUploadList);
-
-    // })
 
   }
 }

@@ -1,15 +1,15 @@
 <!-- <p>orderlist-ship-popup works!</p> -->
 <div class="mainout">
-    <div *ngIf="!viewList" class="font">
+    <div *ngIf="!viewList" class="">
         <div class="main" style="max-width: 95vw;" >
             <div class="promotionpopup-scroll">
                 <div class="addUser">
-                    <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
+                    <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
                     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     
                 </div>
                 <div class="head-t">
-                    <h3 class="addU font">Ship Order</h3>
+                    <h3 class="addU ">Ship Order</h3>
                     <div class="row top-bottom">
                         <div class="row text-center"></div>
                     </div>
@@ -42,7 +42,7 @@
                             <div class="col-md-6">
                                 <div class="billingAdrs">
                                     <label class="DealerInfo-label">Billing Address <span class="astr"></span></label>
-                                    <label class="DescInfo-label">{{shipmentArray?.billngAddress}}</label>
+                                    <label class="DescInfo-labeltt">{{shipmentArray?.billngAddress}}</label>
                                 </div>
                             </div>
                         </div>
@@ -65,11 +65,12 @@
                             <div class="col-md-6">
                                 <div class="shippingAdrs">
                                     <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
-                                    <label class="DescInfo-label">{{shipmentArray?.shippingAddress}}</label>
+                                    <label class="DescInfo-labelss">{{shipmentArray?.shippingAddress}}</label>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    &nbsp;
                     <div class="top-bottom  {
                         height: 500px !important;
                       }">
@@ -85,10 +86,11 @@
                         </div>
                         <div class="content " *ngIf="!orderitem">
                             <div class="section mt-1">
-                                <table>
+                                <table class="shipmentOnes">
                                     <tr>
-                                        <th class="items1">Item</th>
-                                        <th>UoM</th>
+                                         <th class="items3" style="text-align: center;">Item </th>
+                                     
+                                        <th>UoM </th>
                                         <th>Order Qty</th>
                                         <th>Stock</th>
                                         <th>Unit Price</th>
@@ -144,23 +146,23 @@
                                     <div class="innerTotal d-flex">
                                         <div class="subitem">
                                             <p class="alltotals">Sub Total</p>
-                                            <span>{{shipmentArray?.subTotal}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.subTotal}}</span>
                                         </div>
                                         <div class="subitem">
                                             <p class="alltotals">Tax Element</p>
-                                            <span>{{shipmentArray?.taxElement}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.taxElement}}</span>
                                         </div>
                                         <div class="subitem">
                                             <p class="alltotals">Packing Charge</p>
-                                            <span>{{shipmentArray?.pakingCharge}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.pakingCharge}}</span>
                                         </div>
                                         <div class="subitem">
                                             <p class="alltotals">Shipping Charge</p>
-                                            <span>{{shipmentArray?.shipingcharge}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.shipingcharge}}</span>
                                         </div>
                                         <div class="subitem total_total">
                                             <p class="alltotals">Total</p>
-                                            <span>{{shipmentArray?.total}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.total}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -184,9 +186,10 @@
     
                         <div class="content " *ngIf="!shipmentone">
                             <div class="section mt-1">
-                                <table>
+                                <table >
                                     <tr>
-                                        <th class="items1">Item</th>
+                                        <th class="items1"  style="text-align: center;">Item</th>
+                                        
                                         <th>UoM</th>
                                         <th>Order Qty</th>
                                         <th>Stock</th>
@@ -195,8 +198,8 @@
                                         <th>Final Value</th>
                                         <th>Tax</th>
                                         <th>Amount</th>
-                                        <th>Shipped Till</th>
-                                        <th>Shipped Now</th>
+                                        <th class="shipTill">Shipped Till</th>
+                                        <th class="shipNow">Shipped Now</th>
     
                                     </tr>
                                     <tr  *ngFor="let data1 of data?.firstShipmentarray;let j=index">
@@ -293,7 +296,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <label>Invoice No.<span class="astr">*</span></label>
+                                    <label class="invNo">Invoice No.<span class="astr">*</span></label>
                                     <div class="input-datepicker mr-3">
                                         <input id="invoiceNo" name="invoiceNo" type="text" [(ngModel)]="invoice" #invoiceNo="ngModel" class="invoice" />
                                         <span style="color:red;position: relative; top: 12px;"*ngIf="invoiceNo.invalid && (invoiceNo.dirty || invoiceNo.touched)">
@@ -305,10 +308,10 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="myDatepicker promotion-datepicker">
-                                        <label>Invoice Date <span class="astr">*</span></label><br>
+                                        <label class="invNo">Invoice Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
                                             <mat-label> Invoice date</mat-label>
-                                            <input matInput id="invoiceDate" name="invoiceDate"  placeholder="Invoice Date" [matDatepicker]="picker1" [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
+                                            <input matInput id="invoiceDate" name="invoiceDate"  placeholder="Invoice Date" [matDatepicker]="picker1"   datePickerFormat='DD   MMM   YY' [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
                                                 (dateChange)="invoicedateChange($event)">
                                                 <!-- <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)"
                                                 class="alert"> -->
@@ -326,7 +329,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="myDatepicker promotion-datepicker">
-                                        <label>Shipping Date<span class="astr">*</span></label><br>
+                                        <label class="invNo">Shipping Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
                                             <!-- <mat-label> Shipping date</mat-label> -->
                                             <input id="shippingDates" name="shippingDates" placeholder="Shipping date"  matInput [matDatepicker]="picker2" [max]="maxDate"
@@ -363,9 +366,10 @@
                             </div>
                             <br>
                             <div class="section mt-1">
-                                <table>
+                                <table class="shipmentTwo">
                                     <tr>
-                                        <th class="items1">Item</th>
+                                        <th class="items2" style="text-align: center;">Item</th>
+                                        
                                         <th>UoM</th>
                                         <th>Order Qty</th>
                                         <th>Stock</th>
@@ -374,8 +378,8 @@
                                         <th>Final Value</th>
                                         <th>Tax</th>
                                         <th>Amount</th>
-                                        <th>Shipped Till</th>
-                                        <th>Shipped Now</th>
+                                        <th class="shipTill">Shipped Till</th>
+                                        <th class="shipNow">Shipped Now</th>
                                     </tr>
                                     <tr *ngFor="let data of currentShipment;let i=index">
                                         <td>
@@ -419,11 +423,11 @@
                                         </td>
                                         <td>
                                             <input type="number" [(ngModel)]="currentShipment[i].shipedTill"
-                                                class="ShipmentinputBoxes" disabled>
+                                                class="ShipmentinputBoxes shiptillText" disabled>
                                         </td>
                                         <td>
                                             <input type="number" [(ngModel)]="currentShipment[i].shipingNow"
-                                                placeholder="Enter Quantity" class="ShipmentinputBoxes1"
+                                                placeholder="Enter Quantity" class="ShipmentinputBoxes1 SHIPBOX shipText"
                                                 (keyup)="shipingNow()">
                                         </td>
                                         <!-- <mat-icon class="removeCircle" (click)=removeItem()>

@@ -72,21 +72,21 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'productName', type: ['nonEditableColumn'], pinned: 'left', checkboxSelection: true
+      field: 'productName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], checkboxSelection: true
     },
 
-    { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
+    { headerName: "Classification", field: 'classification',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'] },
 
-    { headerName: "SKU", field: 'classification', type: ['nonEditableColumn'], maxWidth: 100 },
+    { headerName: "SKU", field: 'classification',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], maxWidth: 100 },
 
     {
       headerName: "Product Identifier",
-      field: 'productIdentifier', type: ['nonEditableColumn']
+      field: 'productIdentifier',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 
     {
       headerName: "Product Group",
-      field: 'productGroup', type: ['nonEditableColumn'], maxWidth: 170
+      field: 'productGroup',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], maxWidth: 170
     },
     // {
     //   headerName: "Product Code",
@@ -538,9 +538,9 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   addTypeSelect(item: any) {
     // alert(this.typeI)
     this.typeTosend.push(item.typeId);
-    const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+    const data = { 
+      category: this.catergory,
+      subCategory: this.sub_categorys, 
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -561,8 +561,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     });
 
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -577,8 +577,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     this.typeTosend = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -606,8 +606,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     })
     this.typeTosend = this.typessArray;
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -621,8 +621,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productID.push(item.productGroupId);
     console.log(item);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -642,8 +642,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -665,8 +665,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -682,8 +682,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productID = this.prodArray;
     console.log("ProdData", this.ProdData);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -718,8 +718,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productIDentifire = [];
     this.searchText = '';
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -733,15 +733,16 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productIDentifire.push(item.productCustomIdentifierId);
     console.log(item);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
-      product: this.productID,
+      productgroup: this.productID,
       productidentifier: this.productIDentifire,
       Search: this.searchText
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
   }
   onproductIdentifierDeSelect(item: any) {
@@ -753,8 +754,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -762,14 +763,15 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
 
   }
   onproductIdentifierDeSelectOrAll(item: any) {
     this.productIDentifire = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -777,6 +779,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
 
   }
@@ -784,8 +787,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productIDentifire = this.productCustomIdentifierArray;
     // console.log("ProdData", this.ProdData);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -793,6 +796,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
   }
   onSearchChange($event: any, anything?: any) {
@@ -840,6 +844,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     console.log("SelectedRowsss",this.targetselectedRows)
     // localStorage.getItem("targetselectedRows")
     localStorage.setItem('targetselectedRows', JSON.stringify(this.targetselectedRows))
+    sessionStorage.setItem('AddtargetselectedRows', JSON.stringify(this.targetselectedRows))
     let targetData = this.targetselectedRows;
     targetData.forEach(element => {
       return this.targetItemsArray.push(element.stockItemId);
@@ -1008,23 +1013,23 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
-
-      if(this.selectedData != '') {
       this.rowData5 = res.response;
+      // if(this.selectedData != '') {
+      // this.rowData5 = res.response;
 
-      }
-      else {
-        let rowData = res.response;
-        rowData = rowData.map(x => {
+      // }
+      // else {
+        // let rowData = res.response;
+        this.rowData5 = this.rowData5.map(x => {
           let index = this.data.indexOf(x.stockItemId)
           x.isProductSelected = index == -1 ?  false : true;
           // console.log("XXXX",x)
           return x;
         });
-        this.rowData5 = rowData.sort((a, b) => b.isProductSelected - a.isProductSelected);
+        this.rowData5 = this.rowData5.sort((a, b) => b.isProductSelected - a.isProductSelected);
         console.log('  this.rowData5this.rowData5', this.rowData5)
         console.log("RowwwData5", this.rowData5)
-      }
+      // }
 
     });
   }

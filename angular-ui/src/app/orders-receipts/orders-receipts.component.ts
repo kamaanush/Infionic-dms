@@ -11,6 +11,7 @@ import { ShipOrderBulkDownloadComponent } from '../component/orders/ship-order-b
 import { SalesBulkUploadComponent } from '../component/sales-bulk-upload/sales-bulk-upload.component';
 import { OrdersApisService } from '../services/orders-apis.service';
 import { OtherMasterService } from '../services/other-master.service';
+import { SharedServiceCalendarService } from '../services/shared-service-calendar.service';
 import { SharedServicesShipmentService } from '../services/shared-services-shipment.service';
 import { SharedService } from '../services/shared-services.service';
 import { UserService } from '../services/user.service';
@@ -24,6 +25,7 @@ import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/o
 export class OrdersReceiptsComponent implements OnInit {
   myForm: any = FormGroup; 
   myForm1: any = FormGroup; 
+  userType:any;
   disabled = false;
   dealerSettings: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -55,14 +57,24 @@ export class OrdersReceiptsComponent implements OnInit {
   geogragphies:any = [];
   dropdownSettings1: IDropdownSettings = {};
   loggedUserId:any;
+  isitemtarget:any;
   columnDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
+    cellStyle: {
+      'color': '#686E74' 
+    },
+    
    },
    {  headerName: "Shipment Date",
    field: 'shipmentDate',      tooltipField:"shipmentDate",
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
 
   },
@@ -76,40 +88,84 @@ export class OrdersReceiptsComponent implements OnInit {
     {   headerName: "Order Date",
    
     
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
   
       type: ['nonEditableColumn'],
     },
   
       {   headerName: "Dealer",
-      field: 'dealer',type: ['nonEditableColumn'],      tooltipField:"dealer",
+      field: 'dealer',type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },      
+      tooltipField:"dealer",
     },
       {  headerName: "Invoice No.",
       field: 'invoiceNumber',      tooltipField:"invoiceNumber",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
       {  headerName: "Invoice Date",
       field: 'invoiceDate',      tooltipField:"invoiceDate",
 
 
       
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
 
     }, 
    
-  {  headerName: "Total Items ", 
-  field:"totalitems",tooltipField:"totalitems", resizable:true,
+  { 
+     headerName: "Total Items In Order ", 
+    // field:"totalitems",
+    //   tooltipField:"totalitems", 
+    resizable:true,
+      field: 'poQty', 
+      tooltipField:"poQty",
+      cellStyle: {
+        'color': '#686E74' 
+      },
+    minWidth:50,
+     type: 'rightAligned'
+  },
   
-          children:[
-        {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true,type: 'rightAligned'},
-        {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true,type: 'rightAligned',},
-        {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true,type: 'rightAligned',},
-      ]
+          
+      
+        {headerName: "In Shipment",
+         field: 'shipQty',     
+          tooltipField:"shipQty",
+          minWidth:50, resizable:true,
+          cellStyle: {
+            'color': '#686E74' 
+          },
+          type: 'rightAligned',},
+
+        {headerName: "Received",
+         field: 'received',    
+           tooltipField:"received",
+           minWidth:50, resizable:true,
+           cellStyle: {
+            'color': '#686E74' 
+          },
+           type: 'rightAligned',
+          },
+      
   
-    },
+    
   //   {  headerName: "In Shipment",
   //     field: 'inshipment',      tooltipField:"inshipment",
   //   },
@@ -168,7 +224,7 @@ export class OrdersReceiptsComponent implements OnInit {
   };
 
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
   constructor(public dialog: MatDialog,
     private sharedService :SharedService,
@@ -177,6 +233,7 @@ export class OrdersReceiptsComponent implements OnInit {
     private user: UserService,
     private fb: FormBuilder,
     private sharedserviceForshipment:SharedServicesShipmentService,
+    private sharedServiceCalendar:SharedServiceCalendarService,
     ) { 
 
 
@@ -187,7 +244,9 @@ export class OrdersReceiptsComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem("userType");
     this.loggedUserId = localStorage.getItem('logInId');
+  
 
     this.myForm = this.fb.group({
       city: [this.selectedItems]
@@ -216,7 +275,7 @@ export class OrdersReceiptsComponent implements OnInit {
     })
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -268,6 +327,7 @@ export class OrdersReceiptsComponent implements OnInit {
  bulkDownload(){
   sessionStorage.setItem("bulkShipDownload","");
   sessionStorage.setItem("OrderReceiptDownload","ReceiptDownload");
+
   this.dialog.open(ShipOrderBulkDownloadComponent, {width:'80%'})
   }
   selectdays(){
@@ -331,8 +391,11 @@ export class OrdersReceiptsComponent implements OnInit {
         console.log("Response",this.receiptDatalist)
       });
     }
-    orderReceiptsBulkUpload(){
-        this.dialog.open(OrderReceiptsBulkUploadComponent);
+    orderReceiptsBulkUpload()
+    {
+      
+      localStorage.setItem('UploadTarget','');
+      this.dialog.open(OrderReceiptsBulkUploadComponent);
     }
     // orderReceiptsBulkUpload(){
     //   sessionStorage.setItem("sales",'');
@@ -358,7 +421,7 @@ export class OrdersReceiptsComponent implements OnInit {
           textField: 'geographyName',
           selectAllText: 'Select All',
           unSelectAllText: 'UnSelect All',
-          itemsShowLimit: 2,
+          itemsShowLimit: 1,
           allowSearchFilter: true
         };
       });
@@ -600,8 +663,18 @@ export class OrdersReceiptsComponent implements OnInit {
         console.log("Response",this.receiptDatalist)
       });
     }
-    shipmentDownload() {
-      this.gridApi.exportDataAsCsv();
+    convertedDateFormat() {
+       var x = new Date();
+       var y = x.getFullYear().toString();
+       var m = (x.getMonth() + 1).toString();
+       var d = x.getDate().toString();
+       (d.length == 1) && (d = '0' + d);
+       (m.length == 1) && (m = '0' + m);
+       return d + m + y;
+      
+   }
+    receiptsDownload() {
+      this.gridApi.exportDataAsCsv({ fileName: 'receipt_order' + this.convertedDateFormat() });
   
     }
     refresh() {
@@ -628,9 +701,11 @@ export class OrdersReceiptsComponent implements OnInit {
         search:this.searchText,
         currentuserId:this.loggedUserId
       }
+      const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
         console.log("Response",this.receiptDatalist)
       });
+      this.sharedServiceCalendar.filter('Register click')
     }
 }

@@ -125,6 +125,7 @@ export class MaterialsListComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
   currentPageName:string = "";
 
@@ -1032,6 +1033,7 @@ else
     this.typesI = [];
     this.productID = [];
     this.statusTypes = [];
+    this.searchText= '';
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_category,
@@ -1039,9 +1041,13 @@ else
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText,
-      isProduct:this.isproduct
+      isProduct:this.isproduct,
+     
 
     }
+    
+  const searchInput = document.getElementById('searchInput') as HTMLInputElement;   
+  if (searchInput) { searchInput.value = this.searchText;}
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
@@ -1049,25 +1055,25 @@ else
   columnDefs: ColDef[] = [
     {
       headerName: "Name",
-      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', minWidth: 270
+      field: 'stockItemName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], sort: 'desc', minWidth: 270
     },
 
     {
       headerName: "Classification",
-      field: 'classification', type: ['nonEditableColumn'], minWidth: 250
+      field: 'classification',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 250, 
     },
 
     {
       headerName: "UoM",
-      field: 'uoMName', type: ['nonEditableColumn'], minWidth: 40
+      field: 'uoMName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 40
     },
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'], minWidth: 250
+      field: 'productGroupName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 250
     },
     {
       headerName: "SKU",
-      field: 'productSKUName', type: ['nonEditableColumn'], minWidth: 146
+      field: 'productSKUName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 146
     },
     {
       headerName: "Status",

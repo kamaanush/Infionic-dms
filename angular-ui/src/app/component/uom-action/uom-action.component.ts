@@ -25,8 +25,11 @@ export class UomActionComponent implements OnInit,  AfterViewInit {
   public isOpen = false;
   private tippyInstance;
   selected:boolean=false;
+  usertype:any
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.usertype = localStorage.getItem('userType')
+  }
   @ViewChild('content') container;
 
   @ViewChild('trigger') button;

@@ -16,7 +16,7 @@
                 <div class="addUserForm">
                     <div class="row">
                         <div class="col">
-                            <label>Product Group Name<span>*</span></label>
+                            <label id="fontfamily">Product Group Name<span>*</span></label>
                             <br>
                             <input type="text" id="uname" name="uname" value="{{prodName}}"
                             style="width: 404px; position: relative; height: 38px; font-weight: bolder;color: black;" disabled>
@@ -33,7 +33,7 @@
 
                     </div>
                     <div class="row">
-                        <button class="btn btn-primary btn-block justify-center" style="background-color:#000000;width: 168px; height: 43px; position: relative; left: 33%; top: 32px;" [disabled]="!productSubGroup" (click)="addSubProduct()">Add </button>
+                        <button class="btn btn-primary btn-block justify-center" style="background-color:rgba(1,139,117,1);width: 168px; height: 43px; position: relative; left: 33%; top: 32px;" [disabled]="!productSubGroup" (click)="addSubProduct()">Add </button>
 
                     </div>
                 </div>

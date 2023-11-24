@@ -1,3 +1,29 @@
+.BInformation
+{
+  font-family: 'Gilroy-Medium';
+  
+}
+.fontfamily
+{
+  font-family: 'Gilroy-Bold';
+  border-radius: 10px;
+  background-color: rgba(1, 139, 117, 1);
+  color: white;
+  position: relative;
+  right: 1px;
+}
+
+
+
+.imagesheading
+{
+  
+  margin-top: -40px;
+  position: absolute;
+  margin-left: 90px;
+  
+color: rgba(104, 110, 116, 0.75);
+}
 .mat-form-field-label-wrapper {
   left: 10px;
 }
@@ -111,6 +137,9 @@ form[name="myBasicInfo"] {
   margin-top: 8px;
   font-family: 'Gilroy';
 }
+.mcContent{
+  margin-top: 48px;
+}
 
 ::ng-deep.mat-stepper-vertical,
 .mat-stepper-horizontal {
@@ -119,8 +148,8 @@ form[name="myBasicInfo"] {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 900px;
-  margin-top: -51px;
+   width: 1020px; 
+   margin-top: -95px;
 }
 
 .mat-horizontal-stepper-wrapper {
@@ -145,7 +174,7 @@ form[name="myBasicInfo"] {
 }
 
 .main {
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  
 
 }
 
@@ -182,7 +211,7 @@ form[name="myBasicInfo"] {
 
 .addU {
   position: relative;
-  font-weight: bold;
+  font-family: 'Gilroy-Bold';
   font-size: 20px;
 }
 
@@ -241,9 +270,10 @@ span {
 
 
 label {
-  font-size: 12px;
+  font-size: 14px;
   margin: 5px;
-  font-weight: 500;
+  font-family: 'Gilroy-Medium';
+
 }
 
 .mat-align {
@@ -261,13 +291,13 @@ label {
 .brandname {
   /* margin-top: 1px;
   margin-left: -5px; */
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .globalcode {
   /* margin-top: -35px;
   margin-left: 388px; */
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .brandpl {
@@ -276,22 +306,22 @@ label {
 
 .sku {
 margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .shortcode {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productg {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .manualsort {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productdrp ng-select {
@@ -304,12 +334,12 @@ margin-top: 9px;
 
 .productsg {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productlink {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productsdrp ng-select {
@@ -319,7 +349,7 @@ margin-top: 9px;
 .productci {
   margin-top: 10px;
   margin-left: -5px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 
@@ -335,7 +365,7 @@ margin-top: 9px;
 
 .mat-slide {
   color: black;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   text-align: right;
 }
 
@@ -354,7 +384,7 @@ margin-top: 9px;
 }
 
 ::ng-deep.mat-slide .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: #212529;
+  background-color: rgba(1, 139, 117, 1);
   position: fixed;
 
 }
@@ -387,8 +417,8 @@ margin-top: 9px;
 
 mat-card {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 25px;
   height: 212px;
   width: 15rem;
@@ -396,7 +426,7 @@ mat-card {
 
 .catg {
   background: #EAEEFF;
-  border: 1px solid #00187A;
+  border: 1px solid  #686E74;
   border-radius: 10px;
   margin-bottom: 10px;
   color: #00187A;
@@ -609,15 +639,32 @@ li {
 
 ::ng-deep.uomdrp .material-add-edit .mat-horizontal-content-container {
   max-height: 58vh;
-  overflow-y: hidden;
+  overflow-y: hidden ;
 }
+
+
 
 .submitbtn {
   margin-top: 12px;
-  background-color: #000000;
+  /* background-color: #000000; */
+  background-color:#018B75 ;
   width: 20rem;
   position: relative;
   left: 125%;
+  border:  rgba(1, 139, 117, 1);
+  border-radius: 10px;
+  color: white;
+}
+.updatebutton
+{
+     background-color: #000000;
+      width: 20rem;
+      height: 35px;
+      border: 1px solid  #686E74;
+      border-radius: 6px;
+      color: white;
+      margin-top: 18px;
+      cursor: pointer;
 }
 
 #abc::placeholder {
@@ -625,32 +672,32 @@ li {
 }
 
 ::ng-deep.categorydrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.subcategorydrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.typedrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.uomdrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.customidentifier .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
@@ -711,8 +758,8 @@ align-items: center;
 }
 
 .materialname-placeholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 35px;
@@ -727,8 +774,8 @@ align-items: center;
   line-height: 16px;
   display: flex;
   align-items: center;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 35px;
   background-color: white;
@@ -745,8 +792,8 @@ align-items: center;
 }
 
 .addmaterial-align {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
@@ -755,15 +802,15 @@ align-items: center;
   height: 31px;
   background-color: white;
   /* margin-top: 7px; */
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   padding-left: 8px;
 }
 
 .global-codeplaceholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   /* width: 324px; */
   height: 31px;
@@ -773,8 +820,8 @@ align-items: center;
 }
 
 .sku-placeholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 31px;
@@ -784,8 +831,8 @@ align-items: center;
 }
 
 .shortcode-placeholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   padding-left: 8px;
@@ -794,8 +841,8 @@ align-items: center;
 }
 
 .sort-placeh {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 31px;
@@ -806,8 +853,8 @@ align-items: center;
 }
 
 .link-placeh {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 31px;
@@ -817,14 +864,14 @@ align-items: center;
 }
 
 ::ng-deep.productg-align .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .geo-align {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
@@ -845,13 +892,26 @@ align-items: center;
 
 .d-flex {
   justify-content: right;
+  position: relative;
+  bottom: 52px;
 }
+.rowFirst{
+  margin-top :27px
+}
+.rowSecond{
+  margin-top: 8px;
+}
+.rowThird{
+  margin-top :3px
+}
+
+
 
 .stepperHeader-b {
   color: #000000;
   font-size: 20px;
   font-weight: 100;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Light';
 }
 
 .materialDesc {
@@ -878,7 +938,7 @@ textarea {
 .imagePl {
   border: 1px solid !important;
   border-radius: 8px;
-  height: 130px;
+  height: 136px;
   /* width: 126px; */
   background-color: white;
   display: flex;
@@ -904,7 +964,7 @@ textarea {
   color: #000000;
   font-size: 20px;
   font-weight: lighter;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Light';
 }
 
 .imagePlus {
@@ -922,14 +982,14 @@ textarea {
   background-color: white;
   margin-top: -22px;
   margin-left: 216px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .min-qP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 83px;
   height: 30px;
@@ -944,14 +1004,14 @@ textarea {
   background-color: white;
   margin-top: -33px;
   margin-left: 413px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .marginP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 83px;
   height: 30px;
@@ -961,8 +1021,8 @@ textarea {
 }
 
 .discountP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 83px;
   height: 30px;
@@ -977,14 +1037,14 @@ textarea {
   background-color: white;
   margin-top: -33px;
   margin-left: 709px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .regP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 141px;
   height: 30px;
@@ -996,13 +1056,13 @@ textarea {
 ::ng-deep.arrowHide .ng-arrow-wrapper {
   width: 25px;
   padding-right: 5px;
-  display: none;
+  /* display: none; */
 }
 
 .selctn-box {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 343px;
   height: 43px;
@@ -1021,8 +1081,8 @@ textarea {
 }
 
 .applybtn {
-  background: #000000;
-  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  background:  #686E74;
+  /* box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 7px;
   width: 69.34px;
   height: 30px;
@@ -1040,8 +1100,8 @@ textarea {
 .countryinput {
   width: 83px;
   height: 34px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
 }
@@ -1049,8 +1109,8 @@ textarea {
 .regNuminput {
   width: 173px;
   height: 34px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
 }
@@ -1061,8 +1121,8 @@ textarea {
 }
 
 .addedNum {
-  background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  background:  #686E74;
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 18.5px;
   width: 34px;
   height: 34px;
@@ -1104,6 +1164,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  font-family: 'Gilroy-Medium';
 }
 
 .cdk-overlay-pane {
@@ -1119,7 +1180,7 @@ textarea {
 }
 
 .Geo-headerlabel {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Light';
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -1159,7 +1220,7 @@ textarea {
 
 .country {
 
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1169,7 +1230,7 @@ textarea {
 }
 
 .State {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1180,7 +1241,7 @@ textarea {
 }
 
 .District {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1191,7 +1252,7 @@ textarea {
 }
 
 .City {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1201,7 +1262,7 @@ textarea {
 }
 
 .Regions {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1211,7 +1272,7 @@ textarea {
 }
 
 .Area {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1221,7 +1282,7 @@ textarea {
 }
 
 .Sub Area {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1277,7 +1338,7 @@ textarea {
 }
 
 .uom-cls {
-  border: 0.5px solid #000000;
+  border: 0.5px solid  #686E74;
   border-radius: 7px;
   width: 60px
 }
@@ -1344,22 +1405,22 @@ textarea {
 }
 
 .add-img {
-  width: -webkit-fill-available;
-  height: -webkit-fill-available;
+    width: -webkit-fill-available; 
+   height: -webkit-fill-available;  
 }
 
 .dropdown-file {
 
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
   box-sizing: border-box;
   /* position: absolute; */
-  width: 371.82px;
+  width: 350.82px;
   height: 45px;
 
-  margin-left: 519px;
+  margin-left: 636px;
   top: 492px;
 }
 
@@ -1391,8 +1452,9 @@ textarea {
   left: 873.66px;
   top: 498.67px;
   margin-left: 10px;
-  background: #000000;
-  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* background: #000000; */
+  background-color:#018B75 ;
+  /* box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 7px;
   cursor: pointer;
 }
@@ -1423,7 +1485,7 @@ textarea {
   top: 26%;
   position: relative;
   transition: all 5s ease-in-out;
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+
   border: 0.5px solid #000000;
   border-radius: 25px;
 }
@@ -1555,7 +1617,7 @@ mat-icon {
 .refreshbtn {
   width: 39px;
   border-radius: 10px;
-  background-color: black;
+  background: #686E74;    
   height: 41px;
   /* margin-top: 6px; */
   /* margin-left: 88px; */
@@ -1573,9 +1635,19 @@ mat-icon {
   display: inline-block;
   margin-left: -15px;
 }
+::ng-deep.searchbtn_Icon.ng-select .ng-arrow-wrapper .ng-arrow {
+  display: none !important;
+}
+
+::ng-deep.searchbtn_Icon.ng-select span.ng-arrow-wrapper:before {
+  content: url(/assets/img/search-icon.svg);
+   display: inline-block;
+   margin-left: -15px; 
+   
+}
 
 .geography-popupsize {
-  height: 380px;
+  height: 401px;
 }
 
 .sidentifier {

@@ -12,7 +12,7 @@
 
           <h6 class="INFOR">Information</h6>
           <!-- <p style="color: red;">{{errorMsg}}</p> -->
-          <label class="defaultCurrLabel">Default Currency =<b> Indian Rupee (INR)</b><span>*</span></label>
+          <label class="defaultCurrLabel">Default Currency =<b> {{defaultCurrency.uoMName}}({{defaultCurrency.uomSymbol}})</b><span>*</span></label>
 
         </div>
 
@@ -23,7 +23,9 @@
               <label class="name1">Name <span>*</span></label>
               <br>
               <input type="text" id="currencyName" name="currencyName" required (keyup)="onKeyName($event)"
-                placeholder="Enter Name" [(ngModel)]="EUomName" class="imputtext" #currencyName="ngModel">
+                placeholder="Enter Name" [(ngModel)]="EUomName" class="imputtext" #currencyName="ngModel"
+
+                (input)="restrictToAlphabets($event)">
               <p style="margin-bottom:-22px;padding: 0px;"
                 *ngIf="currencyName.invalid && (currencyName.dirty || currencyName.touched)" class="alert">
                 <span style="color:red;position: relative;" *ngIf="currencyName.errors?.['required']">
@@ -31,7 +33,7 @@
                 </span>
               </p>
               <div>
-                <p style="position: absolute; bottom:-38px;left:320px;width:158px;
+                <p style="position: absolute; bottom:-38px;left:336px;width:158px;
                  padding: 0px;" *ngIf="displayUnit.invalid && (displayUnit.dirty || displayUnit.touched)"
                 class="alert">
                 <span style="color:red;position: relative;" *ngIf="displayUnit.errors?.['required']">
@@ -40,7 +42,7 @@
               </p>
               </div>
             </div>
-            <div class="col">
+            <div class="col leftunits">
               <label class="dunits">Display Units<span>*</span></label>
               <br>
               <input type="text" id="displayUnit" name="displayUnit" (keyup)="onKeyShortName($event)" required
@@ -76,7 +78,7 @@
 
               <label class="conver">Conversion<span>*</span></label>
               <br>
-              <input type="text" [value]="editedConversion" placeholder="0.011 GBP" [(ngModel)]="EConversionShow"
+              <input type="text" [value]="editedConversion" placeholder="0.00011 GBP" [(ngModel)]="EConversionShow"
                 class="imputtext" disabled>
 
             </div>
@@ -91,7 +93,7 @@
               <label><span style="color: aliceblue;">.</span></label>
               <br>
               <div>
-                <input type="text" placeholder="1 INR" disabled [(ngModel)]="EuomSymbol" class="imputtext">
+                <input type="text" placeholder="1 {{defaultCurrency.uoMShortName}}" disabled [(ngModel)]="EuomSymbol" class="imputtext">
               </div>
             </div>
 
@@ -100,18 +102,19 @@
           </div>
           <br>
           <!-- </form> -->
-          <div class="row">
+          <div class="row rr">
             <div class="col">
               <button class="btn btn-primary btn-block" *ngIf="editButton"
                 [disabled]="(!EUomName || !EuoMShortName || !EConversionRate || !EConversionShow || !EuomSymbol)"
-                style="background-color: black; border-radius: 10px;" (click)="addcurncy()">Save</button>
-              <button class="btn btn-primary btn-block" *ngIf="!editButton"
+                style="background-color: #018B75; border-radius: 10px;border:rgba(1,139,117,1);height: 43px;width: 250px;" (click)="addcurncy()">Save</button>
+              <button class="btn btn-primary btn-block " *ngIf="!editButton"
                 [disabled]="(!Name || !uomShortName || !conversionRates || !UOMSymbol || !conversion)"
-                style="background-color: black; border-radius: 10px;" (click)="addcurncy()">Save</button>
+                style="background-color: black; border-radius: 10px; height: 43px;width: 250px;" (click)="addcurncy()">Save</button>
             </div>
-            <div class="col">
+
+            <div class="col leftunits ">
               <button class="btn btn-primary btn-block" (click)="closeDialog()"
-                style="background-color: white;color: black; border: 2px solid black; border-radius: 10px;">Cancel</button>
+                style="background-color: #018B75;color: white;border:rgba(1,139,117,1);border-radius: 10px;height: 43px;width: 250px;">Cancel</button>
 
             </div>
           </div>

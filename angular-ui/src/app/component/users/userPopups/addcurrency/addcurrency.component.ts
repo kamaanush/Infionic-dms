@@ -31,6 +31,8 @@ export class AddcurrencyComponent implements OnInit {
     EConversionShow:any;
     editButton:boolean=false;
     uomShortName:any;
+    defaultCurrency:any;
+    UserId:any;  
   constructor(private dialogRef: MatDialogRef<any>,
     private dialog: MatDialog,
     private user:UserService,
@@ -47,6 +49,11 @@ export class AddcurrencyComponent implements OnInit {
 
   ngOnInit(): void {
     // this.addcurrency()
+    const user = localStorage.getItem("logInId");
+    this.UserId = user
+    this.user.getDefaultCurrency((this.UserId)).subscribe((result:any)=>{
+      console.log("Get default currency",result.response.uoMName);
+      this.defaultCurrency = result.response;})
      this.editcurrencyHeader =localStorage.getItem('headerStatus');
     if(this.editcurrencyHeader == "EditCurrency"){
       this.headerName ="Edit Currency";
@@ -69,7 +76,7 @@ export class AddcurrencyComponent implements OnInit {
       this.EConversionRate = this.editUomData.conversionRate;
       this.EuomSymbol = this.editUomData.uomSymbol;
       let convo = 1/(this.EConversionRate);
-      let conversion = convo.toFixed(3);
+      let conversion = convo.toFixed(5);
       this.EConversionShow = conversion+" "+this.EuoMShortName;
       this.EConversion = conversion;
       console.log("editUomData",this.editUomData);
@@ -91,7 +98,7 @@ this.uomShortName = shortName;
   this.conversionRates = keyConversion;
   if(this.conversionRates>=1){
     let convo = 1/(this.conversionRates);
-    this.conversion = convo.toFixed(3);
+    this.conversion = convo.toFixed(5);
     this.editedConversion = this.conversion +" "+this.currencyForm.value['displayUnits'];
   }
   else{
@@ -135,11 +142,16 @@ this.uomShortName = shortName;
  console.log("editUomData",this.editUomData);
       });
   }
- this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'activeSuccessPop'});
+ this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'currencyactiveSuccessPop'});
 
    this.closeDialog();
   }
   currencyConverteredValue(data:any){
     // alert("suceccy key finction")
+  }
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
   }
 }

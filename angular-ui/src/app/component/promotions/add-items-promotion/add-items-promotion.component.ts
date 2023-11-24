@@ -43,76 +43,93 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-add-items-promotion',
   templateUrl: './add-items-promotion.component.html',
-  styleUrls: ['./add-items-promotion.component.css']
+  styleUrls: ['./add-items-promotion.component.css'],
 })
 export class AddItemsPromotionComponent implements OnInit {
-
-  
-
-  
-
-
+  selectedTabIndex = 0
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-   isLinear = false;
+  isLinear = false;
   private gridApi!: GridApi;
   gridApi2!: GridApi;
   gridApi3!: GridApi;
   gridApi4!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
-
     {
-      headerName: "Product Name",
-      field: 'productName', type: ['nonEditableColumn'], pinned: 'left',
+      headerName: 'Product Code',
+      field: 'productCode',
+      type: ['nonEditableColumn'],
       checkboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+    },
+    {
+      headerName: 'Product Name',
+      field: 'productName',
+      type: ['nonEditableColumn'],
+      // pinned: 'left',
       // (
       //   params: CheckboxSelectionCallbackParams<any>
       // ) => {
       //   return !!params.data && params.data.isProductSelected ;
       // }
     },
+    {
+      headerName: 'Product Identifier',
+      field: 'productIdentifier',
+      type: ['nonEditableColumn'],
+    },
+    {
+      headerName: 'Product Group',
+      field: 'productGroup',
+      type: ['nonEditableColumn'],
+    },
+    {
+      headerName: 'Product Sub-Group',
+      field: 'productSubGroup',
+      type: ['nonEditableColumn'],
+    },
+    // {
+    //   headerName: 'Classification',
+    //   field: 'classification',
+    //   type: ['nonEditableColumn'],
+    // },
+    {
+      headerName: 'Product Shot Code',
+      field: 'productShortCode',
+      type: ['nonEditableColumn'],
+    },
+    {
+      headerName:'Registration No',
+      field:'registrationNo'
+    }
 
-    { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
-
-    { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'] },
-
-    {
-      headerName: "Product Identifier",
-      field: 'productIdentifier', type: ['nonEditableColumn']
-    },
-
-    {
-      headerName: "Product Group",
-      field: 'productGroup', type: ['nonEditableColumn'],
-    },
-    {
-      headerName: "Product Code",
-      field: 'productCode', type: ['nonEditableColumn'],
-    },
-    {
-      headerName: "Product Shot Code",
-      field: 'productShortCode', type: ['nonEditableColumn'],
-    },
-    {
-      headerName: '',
-      colId: 'action',
-      // cellRenderer: UseractionComponent,
-      editable: false,
-      maxWidth: 75
-      //    headerName: "",
-      // field: '',  filter: false, sortable: false,width:20,
-      // cellRenderer: function clickNextRendererFunc(){
-      //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-      // }, 
-      //  cellEditorPopup: true,
-      //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
-      // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
-    },
+    // { headerName: 'SKU', field: 'sku', type: ['nonEditableColumn'] },
+    
+    // {
+    //   headerName: 'Product Shot Code',
+    //   field: 'productShortCode',
+    //   type: ['nonEditableColumn'],
+    // },
+    // {
+    //   headerName: '',
+    //   colId: 'action',
+    //   // cellRenderer: UseractionComponent,
+    //   editable: false,
+    //   maxWidth: 75,
+    //   //    headerName: "",
+    //   // field: '',  filter: false, sortable: false,width:20,
+    //   // cellRenderer: function clickNextRendererFunc(){
+    //   //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+    //   // },
+    //   //  cellEditorPopup: true,
+    //   //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+    //   // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
+    // },
 
     // {
     //   headerName: "Avatar",
@@ -120,22 +137,29 @@ export class AddItemsPromotionComponent implements OnInit {
     //   width: 100,
     //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
     //  },
-
   ];
   columnDefs1: ColDef[] = [
-
     {
-      headerName: "Product Shot Code",
-      field: 'productShortCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      headerName: 'Product Shot Code',
+      field: 'productShortCode',
+      type: ['nonEditableColumn'],
+      sort: 'desc',
+      checkboxSelection: true,
     },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
-      headerName: "# of Products", field: 'noofproducts', type: ['nonEditableColumn'],
-      cellStyle: { color: '#017EFA' },
+      headerName: '# of Products',
+      field: 'noofproducts',
+      type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       cellEditorPopup: true,
-      onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, { panelClass: 'pscgrid-popup', width: '999px' })
+      onCellClicked: (event: CellClickedEvent) =>
+        this.dialog.open(PopupGridTableComponent, {
+          panelClass: 'pscgrid-popup',
+          width: '999px',
+        }),
     },
 
     {
@@ -143,12 +167,12 @@ export class AddItemsPromotionComponent implements OnInit {
       colId: 'action',
       // cellRenderer: UseractionComponent,
       editable: false,
-      maxWidth: 75
+      maxWidth: 75,
       //    headerName: "",
       // field: '',  filter: false, sortable: false,width:20,
       // cellRenderer: function clickNextRendererFunc(){
       //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-      // }, 
+      // },
       //  cellEditorPopup: true,
       //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
       // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
@@ -160,74 +184,85 @@ export class AddItemsPromotionComponent implements OnInit {
     //   width: 100,
     //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
     //  },
-
   ];
   columnDefs2: ColDef[] = [
-
     {
-      headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      headerName: 'Product Group',
+      field: 'productGroupName',
+      type: ['nonEditableColumn'],
+      sort: 'desc',
+      checkboxSelection: true,
     },
 
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
+
+    // {
+    //   headerName: "",
+    //   field: '', type: ['nonEditableColumn']
+    // },
 
     {
-      headerName: "",
-      field: '', type: ['nonEditableColumn']
-    },
-
-    {
-      headerName: "# of products",
-      field: 'noofproducts', type: ['nonEditableColumn'],
-      cellStyle: { color: '#017EFA' },
+      headerName: '# of products',
+      field: 'noofproducts',
+      type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       cellEditorPopup: true,
-      onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, { panelClass: 'grid-popup' })
+      onCellClicked: (event: CellClickedEvent) =>
+        this.dialog.open(PopupGridTableComponent, { panelClass: 'grid-popup' }),
     },
 
-    {
-      headerName: '',
-      colId: 'action',
-      // cellRenderer: UseractionComponent,
-      editable: false,
-      maxWidth: 75
-
-    },
+    // {
+    //   headerName: '',
+    //   colId: 'action',
+    //   // cellRenderer: UseractionComponent,
+    //   editable: false,
+    //   maxWidth: 75,
+    // },
   ];
   columnDefs3: ColDef[] = [
-
     {
-      headerName: "Product Sub-Group",
-      field: 'productSubGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      headerName: 'Product Sub-Group',
+      field: 'productSubGroupName',
+      type: ['nonEditableColumn'],
+      sort: 'desc',
+      checkboxSelection: true,
     },
 
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
-
-    { headerName: "Product Group", field: 'productGroupName', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
-      headerName: "",
-      field: '', type: ['nonEditableColumn']
+      headerName: 'Product Group',
+      field: 'productGroupName',
+      type: ['nonEditableColumn'],
     },
 
+    // {
+    //   headerName: "",
+    //   field: '', type: ['nonEditableColumn']
+    // },
+
     {
-      headerName: "# of Products",
-      field: 'noofproducts', type: ['nonEditableColumn'],
-      cellStyle: { color: '#017EFA' },
+      headerName: '# of Products',
+      field: 'noofproducts',
+      type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       cellEditorPopup: true,
-      onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, { panelClass: 'psubgrid-popup' })
+      onCellClicked: (event: CellClickedEvent) =>
+        this.dialog.open(PopupGridTableComponent, {
+          panelClass: 'psubgrid-popup',
+        }),
     },
 
     // suppressMovable:true,
-    {
-      headerName: '',
-      colId: 'action',
-      // cellRenderer: UseractionComponent,
-      editable: false,
-      maxWidth: 75
-    },
-
+    // {
+    //   headerName: '',
+    //   colId: 'action',
+    //   // cellRenderer: UseractionComponent,
+    //   editable: false,
+    //   maxWidth: 75,
+    // },
   ];
   gridOptions: GridOptions = {
     defaultColDef: {
@@ -236,10 +271,8 @@ export class AddItemsPromotionComponent implements OnInit {
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
-
-  }
+  };
   public defaultColDef: ColDef = {
-
     suppressSizeToFit: true,
     width: 170,
     // set the default column width
@@ -257,39 +290,48 @@ export class AddItemsPromotionComponent implements OnInit {
   public columnTypes: {
     [key: string]: ColDef;
   } = {
-      numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
-      medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
-      nonEditableColumn: { editable: false },
-      dateColumn: {
-        // specify we want to use the date filter
-        filter: 'agDateColumnFilter',
-        // add extra parameters for the date filter
-        filterParams: {
-          // provide comparator function
-          comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
-            // In the example application, dates are stored as dd/mm/yyyy
-            // We create a Date object for comparison against the filter date
-            const dateParts = cellValue.split('/');
-            const day = Number(dateParts[0]);
-            const month = Number(dateParts[1]) - 1;
-            const year = Number(dateParts[2]);
-            const cellDate = new Date(year, month, day);
-            // Now that both parameters are Date objects, we can compare
-            if (cellDate < filterLocalDateAtMidnight) {
-              return -1;
-            } else if (cellDate > filterLocalDateAtMidnight) {
-              return 1;
-            } else {
-              return 0;
-            }
-          },
+    numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
+    medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
+    nonEditableColumn: { editable: false },
+    dateColumn: {
+      // specify we want to use the date filter
+      filter: 'agDateColumnFilter',
+      // add extra parameters for the date filter
+      filterParams: {
+        // provide comparator function
+        comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
+          // In the example application, dates are stored as dd/mm/yyyy
+          // We create a Date object for comparison against the filter date
+          const dateParts = cellValue.split('/');
+          const day = Number(dateParts[0]);
+          const month = Number(dateParts[1]) - 1;
+          const year = Number(dateParts[2]);
+          const cellDate = new Date(year, month, day);
+          // Now that both parameters are Date objects, we can compare
+          if (cellDate < filterLocalDateAtMidnight) {
+            return -1;
+          } else if (cellDate > filterLocalDateAtMidnight) {
+            return 1;
+          } else {
+            return 0;
+          }
         },
       },
-    };
+    },
+  };
   public rowGroupPanelShow = 'always';
   public pivotPanelShow = 'always';
 
-  displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
+  displayedColumns: string[] = [
+    'position',
+    'name',
+    'symbol',
+    'email',
+    'phonenum',
+    'login',
+    'status',
+    'edit',
+  ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   // toppings = new FormControl('');
   // toppings1 = new FormControl('');
@@ -304,7 +346,7 @@ export class AddItemsPromotionComponent implements OnInit {
   scrolledIndex = 0;
   defaultPageSize = 12;
   paginationScrollCount: any;
-  public rowData5:any = [];
+  public rowData5: any = [];
   rowDatashortcode = [];
   rowDataproductGroup = [];
   rowDataProductSubG = [];
@@ -318,6 +360,7 @@ export class AddItemsPromotionComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
+  dropdownSettings10: IDropdownSettings = {};
   dropdownSettings5: IDropdownSettings = {};
   dropdownSettings6: IDropdownSettings = {};
   productchk: boolean = true;
@@ -343,13 +386,14 @@ export class AddItemsPromotionComponent implements OnInit {
   typeI: any = [];
   myForms: any = FormGroup;
   products: any = FormGroup;
+  subGroupProducts:any = FormGroup
   productidentifier: any = FormGroup;
   Productarr: any = [];
   productID: any = [];
   prodArray: any[] = [];
   prodData: any = [];
   sub_categorys: any = [];
-  typeTosend: any[] = []
+  typeTosend: any[] = [];
   itemId1: any;
   types: any;
   subcatagData: any = [];
@@ -358,11 +402,11 @@ export class AddItemsPromotionComponent implements OnInit {
   allcatlist: any[] = [];
   closeIcon: boolean = false;
   typesI: any = [];
-  allTypelist: any[] = []
+  allTypelist: any[] = [];
   ShowFilter = false;
   limitSelection = false;
   StatusFilter = false;
-  productCustomIdentifierArray: any[] = []
+  productCustomIdentifierArray: any[] = [];
   @ViewChild('stepper') myStepper: MatStepper | any;
   productselectedRows: any = [];
   productSubGselectedRows: any = [];
@@ -373,21 +417,23 @@ export class AddItemsPromotionComponent implements OnInit {
   ProductList: any = [];
   productSubGroupDrpdwn = [];
   // showproductfropdown : any;
-  constructor(private _formBuilder: FormBuilder,
+  constructor(
+    private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     public promotionTypes: PromotionService,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   ngOnInit(): void {
-    this.productidentify()
+    this.productidentify();
     this.productListtable();
     this.oncatselect();
     this.getProductSelect();
     this.GetProductShortCodeList();
     this.AddProductGroupList();
-    this.GetProductSubGroupList1()
+    this.GetProductSubGroupList1();
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'catId',
@@ -395,7 +441,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.dropdownSettings1 = {
       singleSelection: false,
@@ -404,7 +450,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.dropdownSettings2 = {
       singleSelection: false,
@@ -413,8 +459,8 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
-    }
+      allowSearchFilter: true,
+    };
     this.dropdownSettings3 = {
       singleSelection: false,
       idField: 'productGroupId',
@@ -422,8 +468,17 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
-    }
+      allowSearchFilter: true,
+    };
+    this.dropdownSettings10 = {
+      singleSelection: false,
+      idField: 'productGroupId',
+      textField: 'productGroupName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: true,
+    };
     this.dropdownSettings5 = {
       singleSelection: false,
       idField: 'productCustomIdentifierId',
@@ -431,8 +486,8 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
-    }
+      allowSearchFilter: true,
+    };
     this.dropdownSettings6 = {
       singleSelection: false,
       idField: 'productGroupId',
@@ -440,25 +495,29 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
-    }
+      allowSearchFilter: true,
+    };
     this.myForm = this.fb.group({
-      city: [this.selectedItems]
+      city: [this.selectedItems],
     });
     this.myForms = this.fb.group({
-      citys: [this.selectedItems]
+      citys: [this.selectedItems],
     });
     this.subCategory = this.fb.group({
-      subcatty: [this.selectedItems]
+      subcatty: [this.selectedItems],
     });
     this.type = this.fb.group({
-      type: [this.selectedItems]
+      type: [this.selectedItems],
     });
     this.products = this.fb.group({
-      products: [this.selectedItems]
+      products: [this.selectedItems],
     });
+    this.subGroupProducts = this.fb.group({
+      subgroupproducts: [this.selectedItems],
+    });
+   
     this.productidentifier = this.fb.group({
-      productidentifier: [this.selectedItems]
+      productidentifier: [this.selectedItems],
     });
   }
   onGridReady(params: GridReadyEvent) {
@@ -486,26 +545,26 @@ export class AddItemsPromotionComponent implements OnInit {
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     // params.api.paginationGoToPage(4);
     params.api.forEachNode((node) =>
-    node.setSelected(!!node.data && node.data.isProductSelected)
-  );
+      node.setSelected(!!node.data && node.data.isProductSelected)
+    );
   }
   openDialog() {
     // alert('mani')
-
   }
   handleScroll(event) {
-    var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
+    var tippyPopups: NodeListOf<Element> | null | undefined =
+      document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
 
-    tippyPopups.forEach(element => {
-      element.parentNode?.removeChild(element)
-    })
+    tippyPopups.forEach((element) => {
+      element.parentNode?.removeChild(element);
+    });
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
       const scrollPos = gridBody.offsetHeight + event.top;
       const scrollDiff = gridBody.scrollHeight - scrollPos;
       //const api =  this.rowData5;
-      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.stayScrolledToEnd = scrollDiff <= this.paginationPageSize;
       this.paginationScrollCount = this.rowData5.length;
     }
   }
@@ -513,18 +572,17 @@ export class AddItemsPromotionComponent implements OnInit {
   onCellClicked(e): void {
     console.log('cellClicked', e);
     if (e.data.productShortCode) {
-      localStorage.setItem('selectedtable', 'productshortCode')
+      localStorage.setItem('selectedtable', 'productshortCode');
       localStorage.setItem('selectedtableId', e.data.productShortCode);
-
     }
     if (e.data.productGroupId) {
-      localStorage.setItem('selectedtable', 'productgroup')
-      localStorage.setItem('selectedtableId', e.data.productGroupId)
+      localStorage.setItem('selectedtable', 'productgroup');
+      localStorage.setItem('selectedtableId', e.data.productGroupId);
     }
     if (e.data.productSubGroupId) {
-      localStorage.setItem('selectedtable', 'productSubgroup')
-      localStorage.setItem('selectedtableId', e.data.productSubGroupId)
-      localStorage.setItem('selectedtableId2', e.data.productGroupId)
+      localStorage.setItem('selectedtable', 'productSubgroup');
+      localStorage.setItem('selectedtableId', e.data.productSubGroupId);
+      localStorage.setItem('selectedtableId2', e.data.productGroupId);
     }
     // this.userId = e.data.userId;
     // this.employeeName = e.data.userName;
@@ -532,7 +590,10 @@ export class AddItemsPromotionComponent implements OnInit {
     // localStorage.setItem('userID', this.userId)
     // localStorage.setItem('employeeName', this.employeeName);
 
-    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
+    if (
+      e.event.target.dataset.action == 'toggle' &&
+      e.column.getColId() == 'action'
+    ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
@@ -551,23 +612,25 @@ export class AddItemsPromotionComponent implements OnInit {
       type: [],
       productgroup: [],
       productidentifier: [],
-      search: ''
-    }
+      search: '',
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
-      console.log("*******************");
-      console.log('this.data',this.data);
-      
+      console.log('*******************');
+      console.log('this.data', this.data);
+
       let rowData = res.response;
 
-      rowData = rowData.map(x => {
-        let index = this.data.findIndex(y=> y.stockItemId == x.stockItemId)
-        x.isProductSelected = index == -1 ?  false : true;
+      rowData = rowData.map((x) => {
+        let index = this.data.findIndex((y) => y.stockItemId == x.stockItemId);
+        x.isProductSelected = index == -1 ? false : true;
         return x;
       });
-      this.rowData5 = rowData.sort((a, b) => b.isProductSelected - a.isProductSelected);
-      console.log('  this.rowData5this.rowData5', this.rowData5)
-    })
+      this.rowData5 = rowData.sort(
+        (a, b) => b.isProductSelected - a.isProductSelected
+      );
+      console.log('  this.rowData5this.rowData5', this.rowData5);
+    });
   }
   onSearchChange($event: any, anything?: any) {
     const { target } = $event;
@@ -578,23 +641,37 @@ export class AddItemsPromotionComponent implements OnInit {
       type: [],
       productgroup: [],
       productidentifier: [],
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('search data', res);
       this.rowData5 = res.response;
+    });
+  }
+  selectedRows: any[] = [];
+  deselectedRows: any[] = [];
 
-    })
-  }
   onProductRowSelect(event) {
-    const productselectedRows = this.gridApi.getSelectedRows();
-    console.log(productselectedRows);
-    return productselectedRows;
+    const rowData = event.node.data;
+    if (event.node.isSelected()) {
+      this.selectedRows.push(event.node.data);
+      // console.log(this.selectedRows,'this.selectedRows');
+      this.deselectedRows = this.deselectedRows.filter(item => item !== rowData);
+    } else {
+      this.deselectedRows.push(event.node.data);
+      // console.log(this.deselectedRows,'this.deselectedRows');
+      this.selectedRows = this.selectedRows.filter(item => item !== rowData);
+    }
+    // const productselectedRows = this.gridApi.getSelectedRows();
+    // console.log(productselectedRows);
+    // return productselectedRows;
   }
+ 
+  
   addproductitems() {
-    this.productselectedRows = this.gridApi.getSelectedRows();
-    console.log(this.productselectedRows);
-    localStorage.setItem('productselectedRows', JSON.stringify(this.productselectedRows))
+   
+    localStorage.setItem('productselectedRows',JSON.stringify(this.selectedRows));
+    localStorage.setItem('productdeselectedRows', JSON.stringify(this.deselectedRows));
     this.dialogRef.close(true);
 
     // this.productScselectedRows.map((data:{stockItemId: any;}) => {
@@ -605,66 +682,69 @@ export class AddItemsPromotionComponent implements OnInit {
   additemsProductShortCode(item: any) {
     // this.productScselectedRows = this.gridApi2.getSelectedRows();
     // console.log(this.productScselectedRows);
-    localStorage.setItem('productselectedRows', JSON.stringify(this.productScselectedRows))
+    localStorage.setItem(
+      'productselectedRows',
+      JSON.stringify(this.productScselectedRows)
+    );
     this.dialogRef.close(true);
 
     // this.goForward(this.myStepper)
-
   }
 
   addproductGroup() {
     // this.pGselectedRows = this.gridApi3.getSelectedRows();
     // console.log(this.pGselectedRows);
-    localStorage.setItem('productselectedRows', JSON.stringify(this.pGselectedRows))
+    localStorage.setItem(
+      'productselectedRows',
+      JSON.stringify(this.pGselectedRows)
+    );
     this.dialogRef.close(true);
-
   }
-
-
 
   addItemProductSubG() {
     // this.productSubGselectedRows = this.gridApi4.getSelectedRows();
     // console.log('rowl',this.productSubGselectedRows);
-    localStorage.setItem('productselectedRows', JSON.stringify(this.productSubGselectedRows));
+    localStorage.setItem(
+      'productselectedRows',
+      JSON.stringify(this.productSubGselectedRows)
+    );
 
     this.dialogRef.close(true);
   }
 
   oncatselect() {
     this.promotionTypes.GetCategories().subscribe((res) => {
-
       this.catgname = res.response.allOtherCats;
       console.log('search data', this.catgname);
-      this.catgname.forEach(element => {
+      this.catgname.forEach((element) => {
         return this.allcatlist.push(element.catId);
-      })
-      console.log('allcatlist', this.allcatlist)
-    })
+      });
+      console.log('allcatlist', this.allcatlist);
+    });
     // let localdata = res.response.allOtherCats;
     // this.toppingList = localdata.map((data: { promotionTypesId: any; promotionTypesName: any; }) => {
 
     //   return { promotionTypesId: data.promotionTypesId, promotionTypesName: data.promotionTypesName };
 
     // });
-
   }
   addItemSelect(item: any) {
     // this.selectedItem = item;
     this.catergory.push(item.catId);
-    console.log("Catttyyyyy", this.catergory)
-    console.log('item Subcatty', item)
+    console.log('Catttyyyyy', this.catergory);
+    console.log('item Subcatty', item);
 
     this.itemId = item.catId;
     this.catagoryName = item.catName;
     let Subdata = {
-      catId: this.catergory
-    }
+      catId: this.catergory,
+    };
     this.promotionTypes.GetSUbCAtsOfMultiCats(Subdata).subscribe((res) => {
       this.sub_category = res.response.allOtherSubCAts;
-      console.log("response1", res)
+      console.log('response1', res);
       // console.log("responseeee", subcaty);
       // this.sub_category = subcaty.allOtherSubCAts;
-      console.log("SubCategory", this.sub_category);
+      console.log('SubCategory', this.sub_category);
       this.topping1 = new FormControl(this.sub_category);
     });
     const data = {
@@ -681,25 +761,24 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
+    });
   }
   addItemDeSelect(item: any) {
     this.catergory.forEach((element, index) => {
       if (element == item.catId) this.catergory.splice(index, 1);
-
     });
     let SubdataD = {
-      catId: this.catergory
-    }
+      catId: this.catergory,
+    };
     this.promotionTypes.GetSUbCAtsOfMultiCats(SubdataD).subscribe((res) => {
       let subcaty = res.response;
-      console.log("response1", res)
-      console.log("responseeee", subcaty);
+      console.log('response1', res);
+      console.log('responseeee', subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
     });
     console.log('this.catergory', this.catergory);
@@ -710,13 +789,12 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
-
+    });
   }
   addItemDeSelectOrAll(item: any) {
     this.catergory = [];
@@ -731,39 +809,37 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
   }
   addItemSelectOrAll(item: any) {
-    this.catergory = this.allcatlist
+    this.catergory = this.allcatlist;
     let Subdataall = {
-      catId: this.catergory
-    }
-    console.log("Category Array", this.catergory)
+      catId: this.catergory,
+    };
+    console.log('Category Array', this.catergory);
     this.itemId = item.catId;
     this.catagoryName = item.catName;
     this.promotionTypes.GetSUbCAtsOfMultiCats(Subdataall).subscribe((res) => {
       let subcaty = res.response;
-      console.log("responseeee", subcaty);
+      console.log('responseeee', subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
-      console.log("SubCategory", this.sub_category);
+      console.log('SubCategory', this.sub_category);
       this.topping1 = new FormControl(this.sub_category);
     });
-    console.log("catArray", this.catergory)
+    console.log('catArray', this.catergory);
     const data = {
-
       category: this.catergory,
       subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
@@ -778,21 +854,19 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     // alert(data)
-    console.log("tttttt", data)
+    console.log('tttttt', data);
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      console.log("this TYpe", this.typeI)
+      console.log('this TYpe', this.typeI);
     });
     console.log(item);
   }
   addTypeDeSelect(item: any) {
-
     this.typeTosend.forEach((element, index) => {
       if (element == item.typeId) this.typeTosend.splice(index, 1);
-
     });
 
     const data = {
@@ -802,17 +876,15 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
-
+    });
   }
 
   addTypeDeSelectOrAll(item: any) {
-
     this.typeTosend = [];
     const data = {
       category: this.catergory,
@@ -821,14 +893,13 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
+    });
   }
-
 
   addTypeSelectOrAll(item: any) {
     this.typeTosend = this.allTypelist;
@@ -840,14 +911,13 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
+    });
   }
-
 
   productidentify() {
     this.promotionTypes.GetProductIdentifier().subscribe((res) => {
@@ -855,32 +925,60 @@ export class AddItemsPromotionComponent implements OnInit {
 
       this.toppingList = res.response;
 
-      this.toppingList.forEach(element => {
-        return this.productCustomIdentifierArray.push(element.productCustomIdentifierId);
-
-      })
+      this.toppingList.forEach((element) => {
+        return this.productCustomIdentifierArray.push(
+          element.productCustomIdentifierId
+        );
+      });
 
       // this.categorydrp = res.response
-    })
+    });
   }
+  prodSubGroup:any = [];
+  DataArray:any= [];
   onProductSelect(item: any) {
+    this.DataArray.push(item.productGroupId);
+    console.log("DataArray",this.DataArray)
     this.productID.push(item.productGroupId);
+    this.promotionTypes.getProductSubGroups(this.DataArray).subscribe((res:any) => {
+this.prodSubGroup = res.response;
+console.log("ProductSubGroup",this.prodSubGroup);
+    })
     console.log(item);
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
       type: this.typeTosend,
+      productgroup: this.DataArray,
+      productidentifier: this.productIDentifire,
+      //  status: this.statusTypes,
+      search: this.searchText,
+    };
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+     console.log("RowDataaa",this.rowData5);
+    });
+  }
+  subGroupId:any = [];
+  onProductSubGroupSelect(item: any) {
+    this.subGroupId.push(item.productGroupId);
+    console.log(item);
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      productSubGroup: this.subGroupId,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
-    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
-      // this.rowData5 = res.response;
+      search: this.searchText,
+    };
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      console.log('product lis', this.Productarr)
+     console.log("RowDataaa checking",this.rowData5);
     });
   }
+  SubProductData:any = [];
+  subprodArray:any = [];
   getProductSelect() {
     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
       // this.rowData5 = res.response;
@@ -889,49 +987,89 @@ export class AddItemsPromotionComponent implements OnInit {
       //     return this.prodArray.push(element.productGroupId);
 
       //   })
-      let dataProd = res.response
+      let dataProd = res.response;
       this.ProductList = new FormControl(this.Productarr);
-      this.productData = dataProd.map((data: { productGroupId: any; productGroupName: any; }) => {
-        return { productGroupId: data.productGroupId, productGroupName: data.productGroupName };
-      });
+      this.productData = dataProd.map(
+        (data: { productGroupId: any; productGroupName: any }) => {
+          return {
+            productGroupId: data.productGroupId,
+            productGroupName: data.productGroupName,
+          };
+        }
+      );
 
       if (!this.productData?.length) {
-        this.productData = dataProd.map((prod: { designationName: any; }) => {
+        this.productData = dataProd.map((prod: { designationName: any }) => {
           return prod.designationName;
         });
       }
-      this.productData.push()
-      this.productData.forEach(element => {
+      this.productData.push();
+      this.productData.forEach((element) => {
         return this.prodArray.push(element.productGroupId);
+      });
 
-      })
-      console.log('product lis', this.prodArray)
+
+      this.promotionTypes.GetSubGroupProductGroupList1(this.prodArray).subscribe((res:any) => {
+        console.log('productlist is works', res);
+        let subGroupData = res.response;
+        console.log('SubGroupResponse', subGroupData);
+        this.SubProductData = subGroupData.map(
+          (data: { productGroupId: any; productGroupName: any }) => {
+            return {
+              productGroupId: data.productGroupId,
+              productGroupName: data.productGroupName,
+            };
+          }
+        );
+  
+        if (!this.SubProductData?.length) {
+          this.SubProductData = subGroupData.map((prod: { designationName: any }) => {
+            return prod.designationName;
+          });
+        }
+        this.SubProductData.push();
+        this.SubProductData.forEach((element) => {
+          return this.subprodArray.push(element.productGroupId);
+        });
+      });
+
+      
+      console.log('product lis', this.prodArray);
+      console.log('Sub product lis', this.subprodArray);
     });
   }
   onProductDeSelect(item: any) {
-    this.productID.forEach((element, index) => {
-      if (element == item.productGroupId) this.productID.splice(index, 1);
-
+    this.DataArray.forEach((element, index) => {
+      if (element == item.productGroupId) this.DataArray.splice(index, 1);
     });
-    console.log(' this.catergory', this.catergory)
+    console.log("Prodductaty",this.DataArray)
+    this.promotionTypes.getProductSubGroups(this.DataArray).subscribe((res:any) => {
+      this.prodSubGroup = res.response;
+      console.log("ProductSubGroup",this.prodSubGroup);
+          })
+    console.log(' this.catergory', this.catergory);
 
     // this.userTypes.pop(item.roleId);
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
       type: this.typeTosend,
-      productgroup: this.productID,
+      productgroup: this.DataArray,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
+     console.log("RowDataaa",this.rowData5);
     });
-
   }
   onProductDeSelectOrAll(item: any) {
     this.productID = [];
+    this.promotionTypes.getProductSubGroups(this.productID).subscribe((res:any) => {
+      this.prodSubGroup = res.response;
+      console.log("ProductSubGroup",this.prodSubGroup);
+          })
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
@@ -939,16 +1077,20 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
+     console.log("RowDataaa",this.rowData5);
     });
-
   }
   onProductSelectOrAll(item: any) {
     this.productID = this.prodArray;
-    console.log("ProdData", this.productID);
+    this.promotionTypes.getProductSubGroups(this.productID).subscribe((res:any) => {
+      this.prodSubGroup = res.response;
+      console.log("ProductSubGroup",this.prodSubGroup);
+          })
+    console.log('ProdData', this.productID);
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
@@ -956,10 +1098,66 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
+     console.log("RowDataaa",this.rowData5);
+    });
+  }
+
+  onSubGroupDeSelect(item: any) {
+    this.subGroupId.forEach((element, index) => {
+      if (element == item.productGroupId) this.subGroupId.splice(index, 1);
+    });
+    console.log(' this.catergory', this.subGroupId);
+
+    // this.userTypes.pop(item.roleId);
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      productSubGroup: this.subGroupId,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
+      //  status: this.statusTypes,
+      search: this.searchText,
+    };
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+     console.log("RowDataaa",this.rowData5);
+    });
+  }
+  onSubGroupDeSelectOrAll(item: any) {
+    this.subGroupId = [];
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      productSubGroup: this.subGroupId,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
+      //  status: this.statusTypes,
+      search: this.searchText,
+    };
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+     console.log("RowDataaa",this.rowData5);
+    });
+  }
+  onSubGroupSelectOrAll(item: any) {
+    this.subGroupId = this.subprodArray;
+    console.log('ProdData', this.subGroupId);
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      productSubGroup: this.subGroupId,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
+      //  status: this.statusTypes,
+      search: this.searchText,
+    };
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+     console.log("RowDataaa",this.rowData5);
     });
   }
   onproductIdentifierSelect(item: any) {
@@ -972,21 +1170,21 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
       // this.rowData5 = res.response;
       this.rowData5 = res.response;
-      console.log('product lis', this.Productarr)
+      console.log('product lis', this.Productarr);
     });
   }
 
   onproductIdentifierDeSelect(item: any) {
     this.productIDentifire.forEach((element, index) => {
-      if (element == item.productCustomIdentifierId) this.productIDentifire.splice(index, 1);
-
+      if (element == item.productCustomIdentifierId)
+        this.productIDentifire.splice(index, 1);
     });
-    console.log(' this.catergory', this.catergory)
+    console.log(' this.catergory', this.catergory);
 
     // this.userTypes.pop(item.roleId);
     const data = {
@@ -996,12 +1194,11 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-
   }
   onproductIdentifierDeSelectOrAll(item: any) {
     this.productIDentifire = [];
@@ -1012,12 +1209,11 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-
   }
   onproductIdentifierSelectOrAll(item: any) {
     this.productIDentifire = this.productCustomIdentifierArray;
@@ -1029,13 +1225,12 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
   }
-
 
   //   onproductSelect(item : any){
   //     const data = {
@@ -1052,17 +1247,15 @@ export class AddItemsPromotionComponent implements OnInit {
       if (element == item.statusId) this.statusTypes.splice(index, 1);
     });
     // this.statusTypes.pop(item.statusId);
-    console.log(' this.statusTypes', this.userTypes)
+    console.log(' this.statusTypes', this.userTypes);
     const data = {
-
       statuss: this.statusTypes,
       search: this.searchText,
-
-    }
+    };
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
     console.log('onItemSelect', item);
   }
   // onsubcatg(item : any){
@@ -1075,7 +1268,7 @@ export class AddItemsPromotionComponent implements OnInit {
   //   })
   // }
   addSubCategorySelect(item: any) {
-    console.log(" item Types", item);
+    console.log(' item Types', item);
     // this.sub_category =[];
     this.sub_categorys.push(item.subCatId);
     const datajson = {
@@ -1085,60 +1278,56 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(datajson).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
+    });
 
     let data1 = {
-      subCatId: this.sub_categorys
-    }
-    console.log("Typeess Catttyy", this.subcatArray)
+      subCatId: this.sub_categorys,
+    };
+    console.log('Typeess Catttyy', this.subcatArray);
     this.promotionTypes.GettypesOfMultiSubCats(data1).subscribe((res) => {
       let typs = res.response;
-      console.log("types..res", typs);
+      console.log('types..res', typs);
       this.typeI = typs;
-      this.typeI.forEach(element => {
+      this.typeI.forEach((element) => {
         return this.allTypelist.push(element.typeId);
-      })
-      console.log("Typess", this.typss);
+      });
+      console.log('Typess', this.typss);
       // this.topping2 = new FormControl(this.typeI);
     });
-    this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
+    this.subcatagData = item.map((data: { subCatId: any; subCatName: any }) => {
       return { subCatId: data.subCatId, subCatName: data.subCatName };
     });
 
     if (!this.subcatagData?.length) {
-      this.subcatagData = item.map((subCatData: { designationName: any; }) => {
+      this.subcatagData = item.map((subCatData: { designationName: any }) => {
         return subCatData.designationName;
       });
     }
-    this.subcatagData.push()
-    this.subcatagData.forEach(element => {
+    this.subcatagData.push();
+    this.subcatagData.forEach((element) => {
       return this.subcatArray.push(element.subCatId);
-
-    })
-
+    });
   }
   addSubCategoryDeSelect(item: any) {
     this.sub_categorys.forEach((element, index) => {
       if (element == item.subCatId) this.sub_categorys.splice(index, 1);
-
     });
     let data1 = {
-      subCatId: this.sub_categorys
-    }
+      subCatId: this.sub_categorys,
+    };
     this.promotionTypes.GetSUbCAtsOfMultiCats(data1).subscribe((res) => {
       let typs = res.response;
       this.typeI = typs;
-      this.typeI.forEach(element => {
+      this.typeI.forEach((element) => {
         return this.allTypelist.push(element.typeId);
-      })
-
+      });
     });
-    console.log(' this.sub_category', this.sub_category)
+    console.log(' this.sub_category', this.sub_category);
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
@@ -1146,18 +1335,18 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
-    })
+    });
   }
   addSubCategoryDSelectOrAll(item: any) {
     this.sub_categorys = [];
-    this.typeI = []
-    this.allTypelist = []
+    this.typeI = [];
+    this.allTypelist = [];
 
-    this.typeTosend = []
+    this.typeTosend = [];
     // this.sub_category=[];
     this.type = [];
     const data = {
@@ -1167,47 +1356,46 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
+    });
   }
   addSubCategorySelectOrAll(item: any) {
-    console.log(" item Types", item);
+    console.log(' item Types', item);
     this.sub_category.push(item.subCatId);
     this.itemId1 = item.subCatId;
     this.types = item.subCatName;
-    this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
+    this.subcatagData = item.map((data: { subCatId: any; subCatName: any }) => {
       return { subCatId: data.subCatId, subCatName: data.subCatName };
     });
 
     if (!this.subcatagData?.length) {
-      this.subcatagData = item.map((subCatData: { designationName: any; }) => {
+      this.subcatagData = item.map((subCatData: { designationName: any }) => {
         return subCatData.designationName;
       });
     }
-    this.subcatagData.push()
-    this.subcatagData.forEach(element => {
+    this.subcatagData.push();
+    this.subcatagData.forEach((element) => {
       return this.subcatArray.push(element.subCatId);
       // alert(this.subcatArray);
-
-    })
+    });
 
     let data1 = {
       subCatId: this.subcatArray,
-    }
+    };
     // this.sub_category = this.subcatArray;
-    console.log("Typeess Catttyy", this.subcatArray)
+    console.log('Typeess Catttyy', this.subcatArray);
     this.promotionTypes.GettypesOfMultiSubCats(data1).subscribe((res) => {
       let typs = res.response;
-      console.log("types..res", typs);
+      console.log('types..res', typs);
       this.typeI = typs;
-      this.typeI.forEach(element => {
+      this.typeI.forEach((element) => {
         return this.allTypelist.push(element.typeId);
-      })
-      console.log("Typess", this.typss);
+      });
+      console.log('Typess', this.typss);
       // this.topping2 = new FormControl(this.typeI);
     });
     this.sub_categorys = this.subcatArray;
@@ -1218,12 +1406,12 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
+    });
   }
   closeicon() {
     // this.closeIcon
@@ -1236,22 +1424,25 @@ export class AddItemsPromotionComponent implements OnInit {
   }
   addItemRefresh() {
     this.myForm = this.fb.group({
-      city: [this.selectedItems]
+      city: [this.selectedItems],
     });
     this.myForms = this.fb.group({
-      citys: [this.selectedItems]
+      citys: [this.selectedItems],
     });
     this.subCategory = this.fb.group({
-      subcatty: [this.selectedItems]
+      subcatty: [this.selectedItems],
     });
     this.type = this.fb.group({
-      type: [this.selectedItems]
+      type: [this.selectedItems],
     });
     this.products = this.fb.group({
-      products: [this.selectedItems]
+      products: [this.selectedItems],
+    });
+    this.subGroupProducts = this.fb.group({
+      subgroupproducts: [this.selectedItems],
     });
     this.productidentifier = this.fb.group({
-      productidentifier: [this.selectedItems]
+      productidentifier: [this.selectedItems],
     });
     this.catergory = [];
     this.sub_category = [];
@@ -1261,7 +1452,7 @@ export class AddItemsPromotionComponent implements OnInit {
     this.typeTosend = [];
     // this.Productarr = [];
     this.productID = [];
-    this.searchText = ''
+    this.searchText = '';
     this.productIDentifire = [];
     // this.productID = [];
     const data = {
@@ -1271,50 +1462,61 @@ export class AddItemsPromotionComponent implements OnInit {
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
       //  status: this.statusTypes,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;
-    })
+    });
   }
   toogleShowFilter() {
     this.ShowFilter = !this.ShowFilter;
-    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+    this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+      allowSearchFilter: this.ShowFilter,
+    });
   }
 
   handleLimitSelection() {
     if (this.limitSelection) {
-      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        limitSelection: 2,
+      });
     } else {
-      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, {
+        limitSelection: null,
+      });
     }
   }
   GetProductShortCodeList() {
     const data = {
-      Search: ''
-    }
+      Search: '',
+    };
     this.promotionTypes.GetProductShortCodeList(data).subscribe((res) => {
       console.log('shortcodeworks', res);
       this.rowDatashortcode = res.response;
 
       // this.rowDatashortcode = rowData.map(x => {
-        // let index = this.data.findIndex(y=> y.stockItemId == x.stockItemId)
-        // x.isProductSelected = index == -1 ?  false : true;
-        // return x;
+      // let index = this.data.findIndex(y=> y.stockItemId == x.stockItemId)
+      // x.isProductSelected = index == -1 ?  false : true;
+      // return x;
       // });
-    })
+    });
   }
   onSearchChangeShortcode($event: any, anything?: any) {
     const { target } = $event;
     this.searchText = target.value;
     const data = {
       search: this.searchText,
-    }
+    };
     this.promotionTypes.GetProductShortCodeList(data).subscribe((res) => {
       console.log('shortcodeworks', res);
       this.rowDatashortcode = res.response;
-    })
+    });
+  }
+  refreshData() {
+    this.searchText=""
+    this.GetProductShortCodeList();
   }
 
   goForward(stepper: MatStepper) {
@@ -1323,106 +1525,109 @@ export class AddItemsPromotionComponent implements OnInit {
   ProductShortCodeRowSelect(event) {
     const productScselectedRows = this.gridApi2.getSelectedRows();
     console.log(productScselectedRows);
-    let productShortCodeOfSelected = productScselectedRows.map(x => x.productShortCode);
-    console.log('productShortCodeOfSelected', productShortCodeOfSelected)
+    let productShortCodeOfSelected = productScselectedRows.map(
+      (x) => x.productShortCode
+    );
+    console.log('productShortCodeOfSelected', productShortCodeOfSelected);
     let data = {
       ProductShortCode: productShortCodeOfSelected,
-    }
+    };
 
     this.promotionTypes.getProductsubgropStockitemID(data).subscribe((res) => {
-      console.log(res.response)
-      this.productScselectedRows = res.response
-    })
+      console.log(res.response);
+      this.productScselectedRows = res.response;
+    });
     console.log('slct');
   }
   // add product group
   AddProductGroupList() {
     const data = {
-      Search: ''
-    }
+      Search: '',
+    };
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
-      console.log('check productGlist', res);
+      // console.log('check productGlist', res);
       this.rowDataproductGroup = res.response;
-    })
+    });
+  }
+  // add product group search
+  onSearchproductGroup($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      search: this.searchText,
+    };
+    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
+      // console.log('shortcodeworks', res);
+      this.rowDataproductGroup = res.response;
+    });
   }
   onLoad() {
     const data = {
-      Search: ''
-    }
+      Search: '',
+    };
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
       this.rowDataproductGroup = res.response;
     });
-
   }
   onSearchChangeProductGroup($event: any, anything?: any) {
     const { target } = $event;
     this.searchText = target.value;
     const data = {
       search: this.searchText,
-    }
+    };
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
       this.rowDataproductGroup = res.response;
     });
-
   }
   onRowSelectProductGroup(event) {
     const pGselectedRows = this.gridApi3.getSelectedRows();
     console.log('pGselectedRows', pGselectedRows);
-    let productShortCodeOfSelected = pGselectedRows.map(x => x.productGroupId);
+    let productShortCodeOfSelected = pGselectedRows.map(
+      (x) => x.productGroupId
+    );
 
-    pGselectedRows
+    pGselectedRows;
     let data = {
-      id: productShortCodeOfSelected
-    }
+      id: productShortCodeOfSelected,
+    };
     this.promotionTypes.getProductGroup(data).subscribe((res) => {
-      console.log(res.response)
-      this.pGselectedRows = res.response
-      console.log('this.pGselectedRows', this.pGselectedRows)
-    })
-
-
-
+      console.log(res.response);
+      this.pGselectedRows = res.response;
+      console.log('this.pGselectedRows', this.pGselectedRows);
+    });
   }
 
   // product SubGroup
   ProductSubGroupDrpdwn(item: any) {
-
     // this.statusTypes.push(item.statusId);
-
     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
-
       this.Productarr = res.response;
-
-      console.log('product lis', this.Productarr)
-
+      console.log('product lis', this.Productarr);
     });
-
-
-
   }
   ProductsubGroupDeselect(item: any) {
     this.statusTypes.forEach((element, index) => {
       if (element == item.statusId) this.statusTypes.splice(index, 1);
     });
     // this.statusTypes.pop(item.statusId);
-    console.log(' this.statusTypes', this.userTypes)
+    console.log(' this.statusTypes', this.userTypes);
     const data = {
-      productgroup: []
-    }
+      productgroup: [],
+    };
     this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
       this.rowDataProductSubG = res.response;
     });
-    console.log('products', this.promotionTypes)
+    console.log('products', this.promotionTypes);
     console.log('onItemSelect', item);
   }
   ProductsubGroupDeSelectAll(item: any) {
     const data = {
-      productgroup: []
-    }
+      productgroup: [],
+    };
     this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
       this.rowDataProductSubG = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
   }
   ProductsubGroupSelectAll(item: any) {
     this.productID = this.prodArray;
@@ -1431,7 +1636,7 @@ export class AddItemsPromotionComponent implements OnInit {
       status: this.statusTypes,
       Search: this.searchText,
       productgroup: [],
-    }
+    };
     this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
       this.rowDataProductSubG = res.response;
     });
@@ -1439,36 +1644,34 @@ export class AddItemsPromotionComponent implements OnInit {
   GetProductSubGroupList1() {
     const data = {
       productgroup: [],
-    }
+    };
     this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
       console.log('productsubgroup is works', res);
       this.rowDataProductSubG = res.response;
-    })
+    });
   }
   ProductSubGroupRowSelect(event) {
     const productSubGselectedRows = this.gridApi4.getSelectedRows();
 
-    let productShortCodeOfSelected = productSubGselectedRows.map(x => x.productSubGroupId);
+    let productShortCodeOfSelected = productSubGselectedRows.map(
+      (x) => x.productSubGroupId
+    );
 
     let data = {
-      id: productShortCodeOfSelected
-    }
+      id: productShortCodeOfSelected,
+    };
     this.promotionTypes.getProductSubGroup(data).subscribe((res) => {
-      this.productSubGselectedRows = res.response
-    })
+      this.productSubGselectedRows = res.response;
+    });
     console.log(productSubGselectedRows);
   }
 
   matsteptabClick(tab) {
-     
-   
     if (tab.matStepLabel == 'productlb') {
       this.searchfeild = false;
-    }
-    else if (tab.matStepLabel == 'productgroup') {
+    } else if (tab.matStepLabel == 'productgroup') {
       this.searchfeild = true;
-    }
-    else if (tab.step == 2) {
+    } else if (tab.step == 2) {
       this.searchfeild = true;
     }
   }

@@ -3,7 +3,7 @@
 <div #content *ngIf="isOpen" class="menu-container">
  
   <div (click)="editUser()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-  <div  (click)="deleteUom()" class="menu-item tick">Delete<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div  *ngIf="usertype!=='Viewer'" (click)="deleteUom()" class="menu-item tick">Delete<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
 
  
 </div>

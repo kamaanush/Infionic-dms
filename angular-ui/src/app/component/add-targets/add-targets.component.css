@@ -1,12 +1,11 @@
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     overflow-x: hidden !important;
 }
 
 .add-target {
     overflow-x: hidden;
     width: 100%;
-    height: 530px;
+    height: 417px;
 }
 
 .head-t h3 {
@@ -15,9 +14,12 @@
     margin-top: -18px;
     margin-bottom: 2px;
 }
-.productCountpopup{
+
+.productCountpopup {
     color: blue;
+    cursor: pointer;
 }
+
 .close-icon {
     left: 100%;
     position: relative;
@@ -26,20 +28,28 @@
     cursor: pointer;
 }
 
+.targetstyle {
+    position: relative;
+    bottom: 33px;
+    left: 12px;
+}
+
 .addU {
     position: relative;
     /* font-family: 'Gilroy-Bold';  */
     font-weight: bold;
     font-size: 20px;
 }
+
 ::ng-deep .psubgrid-popup {
     width: 999px !important;
-  }
-  
-  ::ng-deep .psubgrid-popup .mat-dialog-container {
+}
+
+::ng-deep .psubgrid-popup .mat-dialog-container {
     padding: 0 !important;
     margin-top: 72px;
-  }
+}
+
 .addU:after {
     content: "";
     display: block;
@@ -85,8 +95,8 @@ label {
     height: 30px;
     font-family: 'Gilroy';
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -97,8 +107,8 @@ label {
     height: 35.03px;
     font-family: 'Gilroy';
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -109,8 +119,8 @@ label {
     height: 30px;
     font-family: 'Gilroy';
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -137,8 +147,8 @@ label {
     position: relative;
     width: 1168px;
     height: 35.03px;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 20px;
@@ -173,7 +183,7 @@ label {
 }
 
 .IteminputBoxes {
-    width: 51px;
+    width: 62px;
     height: 30px;
     background: none;
     border-radius: 10px;
@@ -181,8 +191,12 @@ label {
     font-size: 12.5px;
     margin: 3px;
     background: #FFFFFF;
-}
+    border: 2px solid  rgba(1, 139, 117, 1); 
 
+}
+/* .changed-border {
+    border: 2px solid  rgba(1, 139, 117, 1);
+} */
 .IteminputBoxesDisable {
     width: 62px;
     height: 30px;
@@ -252,8 +266,8 @@ label {
     width: 130px;
     height: 30px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
     font-family: 'Gilroy';
 }
@@ -273,7 +287,7 @@ label {
     top: 33px;
     left: 10px;
     font-family: 'Gilroy';
-    font-size: 13px;
+    font-size: 14px;
     line-height: 15px;
     display: flex;
     align-items: center;
@@ -287,9 +301,10 @@ label {
 .btn-save {
     width: 168px;
     height: 43px;
-    background: #000000;
+    background: rgba(1, 139, 117, 1);
+    border: 2px solid rgba(1, 139, 117, 1);
     box-sizing: border-box;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 15px;
@@ -298,15 +313,18 @@ label {
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .btn-cancel {
     width: 168px;
     height: 43px;
     box-sizing: border-box;
-    background: #FFFFFF;
-    border: 2px solid #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* background: #FFFFFF; */
+    color:white;
+    background:  rgba(1, 139, 117, 1);
+    border: 2px solid rgba(1, 139, 117, 1);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 15px;
@@ -314,6 +332,7 @@ label {
     /* display: flex; */
     align-items: center;
     text-align: center;
+    cursor: pointer;
 
 }
 
@@ -334,7 +353,7 @@ label {
 
 .all-dlr {
     position: relative;
-    top: 20px;
+    top: -20px;
     right: 6px;
     font-family: 'Gilroy';
 }
@@ -347,6 +366,7 @@ label {
 .dlr-info {
     padding-left: 24px;
 }
+
 .dropdown-placeholder {
     background: white;
     color: #808080;
@@ -354,43 +374,167 @@ label {
     position: absolute;
     height: 41px;
     line-height: 41px;
-    left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    left: 0px;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     width: 80%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
     pointer-events: none;
-  }
+}
+
 ::ng-deep.targetdrp .ng-select.ng-select-single .ng-select-container {
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
     border-radius: 10px;
-  }
-  ::ng-deep.targetdrp .ng-placeholder {
+}
+
+::ng-deep.targetdrp .ng-placeholder {
     color: #999;
     font-size: 14px;
     line-height: 16px;
     display: flex;
     align-items: center;
-  }
-  ::ng-deep.searchbtnIcon.ng-select .ng-arrow-wrapper .ng-arrow {
+}
+
+::ng-deep.searchbtnIcon.ng-select .ng-arrow-wrapper .ng-arrow {
     display: none !important;
-  }
-  
-  ::ng-deep.searchbtnIcon.ng-select span.ng-arrow-wrapper:before{
+}
+
+::ng-deep.searchbtnIcon.ng-select span.ng-arrow-wrapper:before {
     content: url(/assets/img/search-icon.svg);
     display: inline-block;
     margin-left: -15px;
-  }
-  .Dealers-placeholder.dropdown-placeholder .selected-placeholder {
+}
+
+.Dealers-placeholder.dropdown-placeholder .selected-placeholder {
     color: #D23F00 !important;
- }
- ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
-   background: #D23F00 !important;
-   font-size: 12px;
- }
+}
+
+::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    font-size: 12px;
+}
+
+::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #D23F00 !important;
+}
+
+.addtargetDiv {
+    position: relative;
+    bottom: 45px;
+}
+
+.addtargetDivTwo {
+    position: relative;
+    bottom: 45px;
+}
+
+.buttonDivs {
+    position: relative;
+    bottom: 150px;
+}
+
+::ng-deep .dealersdropdown .dropdown-btn span .ng-star-inserted {
+  
+
  
- ::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+     position: absolute !important;
+     right: -28px !important;
+    
+    top: 50px !important;
+   
+     bottom: 0px;
+  
+     width: 46px;
+   border: 1px solid #337ab7;
    background: #D23F00 !important;
- }
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       color: #fff;
+       height: 20px;
+       border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+  
+    padding-left: 5px;
+  }
+
+  ::ng-deep.addtargetsbubbles .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    font-size: 12px;
+    height: fit-content;
+    right: 7px;
+  }
+
+
+  ::ng-deep.addtargetsbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.addtargetsbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -7px !important;
+     height: 5px;
+     display: table-cell;
+     background: #D23F00 !important;
+
+     bottom: 0px;
+    width: 41px;
+    border: 1px solid #337ab7;
+
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+    padding-left: 5px;
+   }
+
+
+   
+  ::ng-deep.Geoaddtargetsbubbles .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    font-size: 12px;
+    height: fit-content;
+    right: 7px;
+  }
+
+
+  ::ng-deep.Geoaddtargetsbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.Geoaddtargetsbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -7px !important;
+     height: 5px;
+     display: table-cell;
+     background: #D23F00 !important;
+
+     bottom: 0px;
+    width: 41px;
+    border: 1px solid #337ab7;
+
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+    padding-left: 5px;
+   }

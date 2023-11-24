@@ -19,10 +19,10 @@
     background: #44026C !important;
     font-size: 12px;
   }
-  ::ng-deep.product .multiselect-dropdown{
+  /* ::ng-deep.product .multiselect-dropdown{
     border: 1px solid black;
     border-radius: 6px;
-  }
+  } */
   ::ng-deep.product .dropdown-btn span .ng-star-inserted {
     position: absolute !important;
     right: -18px !important;
@@ -74,7 +74,7 @@
 }
 
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+   
 }
 
 .font {
@@ -290,7 +290,7 @@ mat-form-field {
     text-align: center;
     color: #FFFFFF;
     background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     margin-left: -15px;
   }

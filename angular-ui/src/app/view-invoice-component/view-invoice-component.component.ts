@@ -104,18 +104,32 @@ export class ViewInvoiceComponentComponent implements OnInit {
 
     {
       headerName: "Batch ID",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc',
+      cellStyle: {
+        'color': '#686E74' 
+      },
       tooltipField:"employeeCode",
     },
 
-    { headerName: "Upload Date", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
+    { headerName: "Upload Date", field: 'userName', type: ['nonEditableColumn'],
+    cellStyle: {
+      'color': '#686E74' 
+    },
+    tooltipField:"userName", },
 
-    { headerName: "Product Name", field: 'roleName', type: ['nonEditableColumn'], tooltipField:"roleName", },
+    { headerName: "Product Name", field: 'roleName', type: ['nonEditableColumn'],
+    cellStyle: {
+      'color': '#686E74' 
+    },
+     tooltipField:"roleName", },
 
     {
       headerName: "Product Code",
       field: 'email', type: ['nonEditableColumn'],
-      tooltipField:"email",      
+      tooltipField:"email",  
+      cellStyle: {
+        'color': '#686E74' 
+      },    
       minWidth:200,
       // flex: 1,
     },
@@ -123,12 +137,18 @@ export class ViewInvoiceComponentComponent implements OnInit {
     {
       headerName: "Total Items",
       field: 'mobile', type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
       tooltipField:"mobile"
     },
 
     {
       headerName: "Dealer",
       field: 'lastLoginDate', type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
       cellRenderer: function dateFormtter(params) {
         return moment(params.value).format('DD MMM YYYY, HH:mm A')
       },
@@ -312,7 +332,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
   
   onSelectAll(items: any) {

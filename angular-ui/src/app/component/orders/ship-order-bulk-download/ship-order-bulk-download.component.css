@@ -23,24 +23,24 @@
     font-size: 20px;
   }
   
-  .bulk-head :after {
+  .bulk-head:after {
     content: "";
     display: block;
-    width: 578px;
+    width: 346px;
     height: 0.5px;
     background: #686E74;
-    right: 74px;
+    right: 2%;
     top: 50%;
     position: absolute;
   }
   
-  .bulk-head :before {
+  .bulk-head:before {
     content: "";
     display: block;
-    width: 565px;
+    width: 346px;
     height: 0.5px;
     background: #686E74;
-    left: 0;
+    left: 1%;
     top: 50%;
     position: absolute;
   }
@@ -54,7 +54,7 @@ padding: 15px;
 margin-left: 17px;
   }
   .bulk-download{
-    background: #000000;
+    background:  #808080;
     border-radius: 50%;
     width: 37px;
     height: 37px;
@@ -136,8 +136,8 @@ text-align: center;
     height: 41px;
     line-height: 41px;
     left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
     width: 80%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
@@ -145,7 +145,7 @@ text-align: center;
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
+    border: 1px solid #808080!important;
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;
@@ -156,7 +156,7 @@ text-align: center;
     vertical-align: middle;
     cursor: pointer;
     background-image: none;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     background: white !important;
     height: 41px;
   }
@@ -176,6 +176,7 @@ text-align: center;
   ::ng-deep.dealer .multiselect-dropdown .dropdown-btn .selected-item {
     background: #006466 !important;
     font-size: 12px;
+    height: fit-content;
   }
   
   ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -189,9 +190,10 @@ text-align: center;
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     width: 43px;
     height: 41px;
-    background: #000000;
-    border-radius: 10px;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 7px;
     margin-left: 10px;
+    /* transform: rotate(90deg); */
 
   }
   .refresh-img {
@@ -226,20 +228,18 @@ text-align: center;
 }
 
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  /* color: #686E74 !important; */
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
 }
 
-::ng-deep.ag-theme-material .ag-root-wrapper,
-.ag-theme-material .ag-sticky-top {
-
-  border: 0.5px solid #000000 !important;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 25px !important;
-
-}
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
+  .ag-theme-material .ag-sticky-top {
+    border: 1px solid #989CA04D !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+  }
 
 .ag-root-wrapper {
   border: solid 10px;
@@ -283,11 +283,23 @@ text-align: center;
 
 .pagination {
   float: right !important;
+  margin-top: 12px;
 }
 
 .pagination-cls {
   font-size: 14px;
-  font-weight: 900;
+  color: #686E74;
+  font-weight: 500;
+}
+.pag-ination {
+  float: right !important;
+  margin-right: 12px;
+}
+.pagination-length
+{
+    font-size: 14px;
+    font-weight: 900;
+    color: #686E74;
 }
 
 .ag-theme-material {
@@ -326,8 +338,10 @@ text-align: center;
 }
 .download-csv{
   color: #fff;
-  background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* background: #000000; */
+  background-color:#018B75;   
+  border: none; 
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 8px;
   float: right;
   margin-top: 10px;
@@ -336,19 +350,23 @@ text-align: center;
 height: 43px;
 }
 .cancel{
-  color: black;
-  background: white;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  color: white;
+  /* background: white; */
+  background-color:#018B75;  
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 8px;
   float: left;
   margin-top: 10px;
   cursor: pointer;
   width: 280px;
   height: 43px;
+  border: none;
 }
 ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
   background: #006466 !important;
   font-size: 12px;
+  left: -20px;
+  height: fit-content;
 }
 
 .geography-placeholder.dropdown-placeholder .selected-placeholder {
@@ -372,7 +390,7 @@ height: 43px;
 }
 #DP
 {
-  border-left: 1px solid black;
+  border-left: 1px solid  #808080;
 }
 ::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
@@ -419,15 +437,17 @@ margin-right: -1px;
 padding-left: 5px;
 }
 ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
-  display: none;
+  /* display: none; */
     }
 ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
   font-size: 12px;
+  height: fit-content;
 }
 .dealers .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
   font-size: 12px;
+  height: fit-content;
 }
 ::ng-deep .dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
   background: #D23F00 !important;
@@ -477,3 +497,41 @@ padding-left: 5px;
   left: 80%;
   top: -2px;
   }
+
+
+
+
+
+
+  
+
+::ng-deep.shipordersbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.shipordersbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 0 !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+   
+::ng-deep.shipordersbulkbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.shipordersbulkbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     left: 0 !important;
+     height: 5px;
+     display: table-cell;
+   }

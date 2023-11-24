@@ -1,6 +1,19 @@
+
+.ordersreceiptsbubblesGeography{
+  height: 41px;
+    border-left: 1px solid gray !important;
+   border-radius: 12px;
+}
+
+
+
+::ng-deep .multiselectdropwidth .dropdown-list {
+  left: -6%;
+  width: 106%;
+}
 .container-fluid
 {
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   height: 600px;
 }
@@ -35,13 +48,15 @@
   }
   
   .sales-refreshbtn {
-    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
-    width: 43px;
-    height: 41px;
-    background: #000000;
-    border-radius: 10px;
-    margin-left: 10px;
+    /* filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2)); */
+    width: 37px;
+    height: 37px;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 16%;
+    margin-left: 22px;
     cursor: pointer;
+    margin-top: 2px;
+    /* transform: rotate(90deg); */
   }
   .sales-refreshbtn:hover
   {
@@ -49,8 +64,8 @@
     color: white !important;
   }
   .refresh-img {
-    margin-top: 11px;
-    margin-left: 11px;
+    margin-top: 8px;
+    margin-left: 7px;
   }
   
   .ag-theme-material .ag-filter-toolpanel-header,
@@ -81,20 +96,20 @@
     background-color: #b81111 !important;
   }
   
-  ::ng-deep.ag-header-cell-text {
+  /* ::ng-deep.ag-header-cell-text {
     color: #686E74 !important;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
-  }
+  } */
   
-  ::ng-deep.ag-theme-material .ag-root-wrapper,
+  :host ::ng-deep.ag-theme-material .ag-root-wrapper,
   .ag-theme-material .ag-sticky-top {
-  
-    border: 0.5px solid #000000 !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 25px !important;
-  
+    border: 1px solid #989CA04D !important;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important; */
+    /* border-bottom-left-radius: 10px 10px !important;
+    border-bottom-right-radius: 10px 10px !important; */
+    border-radius: 10px !important;
   }
   
   .ag-root-wrapper {
@@ -143,16 +158,25 @@
   
   .pagination {
     float: right !important;
+    margin-top: 12px;
   }
   
   .pagination-cls {
     font-size: 14px;
+    color: #686E74;
+    font-weight: 500;
+  }
+
+  .pagination-cLASSS{
+    font-size: 14px;
     font-weight: 900;
+    color: #686E74;
   }
   
   .ag-theme-material {
     height: 350px;
-    border-radius: 20px;
+    border-radius: 10px;
+    border-radius: 10px !important;
     background-color: white;
     font-family: Gilroy;
   }
@@ -160,6 +184,7 @@
   .listicon {
     display: flex;
     justify-content: end;
+    margin-top: 9px;
   }
   
   .searchBox1 {
@@ -178,8 +203,8 @@
     left: 10px;
   }
   .sales-download{
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
@@ -196,8 +221,8 @@
     left: 10px;
   }
   .sales-upload{
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
@@ -214,8 +239,8 @@
     left: 10px;
   }
   .sales-dwnld{
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     cursor: pointer;
@@ -228,15 +253,15 @@
   .imgdwnl{
     position: relative;
     top: 8px;
-    left: 10px;
+    left: 11px;
   }
   .searchButton {
           display:block;
           color: #FFFFFF;
           width: 37px;
           height: 37px;
-          border-radius: 50%;
-          background: #000000;
+          border-radius: 13%;
+          background: rgba(104, 110, 116, 0.66);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -273,7 +298,7 @@
           position: relative;    
           right: 282px;
           color:#000;
-          top: 3px;
+          top: 1px;
         }
         .searchBox:hover >.search-btn {
           display:block;
@@ -375,6 +400,16 @@
         position: relative;
         top: 39px !important;
       }
+      #DEALERBORDER
+      {
+        margin-left: -1px;
+        border-left: 1px solid #808080;
+      }
+      #SeleectGEPBORDER
+      {
+        margin-left: -2px;
+        border-left: 1px solid #808080;
+      }
       .dropdown-placeholder {
         background: white;
         color: #808080;
@@ -383,8 +418,8 @@
         height: 41px;
         line-height: 41px;
         left: 1px;
-        border-top: 1px solid #000;
-        border-bottom: 1px solid #000;
+        border-top: 1px solid gray !important;
+        border-bottom: 1px solid gray !important;
         width: 80%;
         border-radius: 10px 0 0 10px !important;
         padding-left: 10px;
@@ -392,7 +427,7 @@
       }
       ::ng-deep.multiselect-dropdown .dropdown-btn {
         display: inline-block;
-        border: 1px solid #000000 !important;
+        border: 1px solid gray !important;
         width: 100%;
         /* height: 62%; */
         padding: 9px 12px !important;
@@ -423,6 +458,9 @@
       ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .selected-item {
         background: #D23F00 !important;
         font-size: 12px;
+        height: fit-content;
+        right: 7px;
+        
       }
       .dealers .multiselect-dropdown .dropdown-btn .selected-item {
         background: #D23F00 !important;
@@ -478,9 +516,9 @@
     background: white;
   }
   ::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
-    position: absolute !important;
+    /* position: absolute !important;
   right: 62px !important;
-  bottom: 0px;
+  bottom: 0px; */
   top: 50px !important;
   
   
@@ -523,7 +561,7 @@
   }
 
  ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
-display: none;
+/* display: none; */
   }
 
   .searchReceipts{
@@ -531,6 +569,7 @@ display: none;
   position: relative;
   left: 69%;
   top: -2px;
+  display: none;
   }
   .Geography-placeholder.dropdown-placeholder .selected-placeholder {
     color: #006466 !important;
@@ -566,4 +605,95 @@ display: none;
   
     padding-left: 5px;
 }
+
+
+
+
+
+::ng-deep.ordersreceiptsbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.ordersreceiptsbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -6px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+
+   
+::ng-deep.ordersreceiptsbubblesGeography .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.ordersreceiptsbubblesGeography .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 11px !important;
+     height: 5px;
+     display: table-cell;
+   
+   }
+
+  
  
+
+   .search_Box1 >.searchButtonn .material-iconss {
+    position: relative;
+    right: 282px;
+    color: #000;
+    top: 3px;
+    
+}
+.search_Box1:hover>.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+
+}
+.search_Input11 {
+  display: block;
+  width: 100%;
+  height: 42px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  border: 1px solid gray !important;
+}
+.searchiconshipment
+{
+    color: #9B9FA3;
+    top: 11px;
+position: relative;
+left: 4px;
+}
+.searchBTN {
+  display: block;
+  height: 26px;
+  border: none;
+  background: rgba(104, 110, 116, 0.66);
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: -7px;
+  top: 8px;
+}

@@ -76,6 +76,7 @@ export class EditDealerTargetComponent implements OnInit {
   TargetAssociationId:any;
   LoginId:any;
   dealerTargetSetItem:any;
+  dealerTargetaddorderdit:any;
   targetGroupId:any;
   mainadd: any = [{
   }]
@@ -95,19 +96,21 @@ export class EditDealerTargetComponent implements OnInit {
 
   }
   ngOnInit(): void {
- 
 
-
+  
     this.LoginId=localStorage.getItem("logInId");
 
     let id = localStorage.getItem('editOrAddTarget');
     this.TargetAssociationId=id;
     this.dealerTargetSetItem=localStorage.getItem('dealerTargetSetItem')
+    this.dealerTargetaddorderdit=localStorage.getItem('dealerTargetaddorderdit');
 
     let data = {
       "TargetAssociationId":Number(id),
       "CurrentUserId":this.LoginId
     }
+    
+ 
     this.targetList.getTargetById(data).subscribe((res) => {
       console.log(res.response);
       
@@ -180,7 +183,7 @@ geographyobj.vtotal  =res.response.vtotal
     this.userId = localStorage.getItem("logInId");
   }
   onSelectFinancialYear(event: any) {
-    alert(event.target.value)
+    // alert(event.target.value)
     this.mainadd[0].geography[0].year = event.target.value;
   }
 
@@ -742,7 +745,7 @@ geographyobj.vtotal  =res.response.vtotal
 
 
   saveTargetData() {
-
+    localStorage.setItem("updateAddEditTarget",'edit');
     console.log('mm saveTargetData', this.mainadd);
     let obj: any;
     if (this.selectedDealer.length >= 1) {
@@ -861,7 +864,7 @@ console.log('obj1obj1obj1',obj1)
           console.log("Added TargetData ", this.addedTargetData);
           if (res.response.result == 'DealerTargets Update Successfully') {
             this.dialogRef.close();
-            this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'activeSuccessPop'})
+            this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'TargetSuccessPop'})
             // alert('Dealer Targets Update Successfully')
             this.sharedService.filter('Register click')
 
@@ -871,7 +874,7 @@ console.log('obj1obj1obj1',obj1)
       });
     }
     else {
-      alert('select any dealer')
+      // alert('select any dealer')
     }
   }
 
@@ -892,4 +895,10 @@ console.log('obj1obj1obj1',obj1)
       console.log("this.ProductCount ", this.ProductCount);
     })
   }
+
+  getSelectedTargetGroupName(): string {
+    const selectedTarget = this.targetListData.find(item => item.targetGroupId === this.targetId);
+    return selectedTarget ? selectedTarget.targetGroupName : '';
+  }
+  
 }

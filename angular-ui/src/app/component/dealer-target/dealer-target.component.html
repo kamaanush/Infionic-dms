@@ -1,123 +1,134 @@
+<div class="mainclass">
+  <div class="row" style="position: relative;top:1%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 15px;">
+      <div class="col-md-2 col-lg-2 col-sm-2 targetselectedbubbles" style="padding-left: 2px;">
+          <form [formGroup]="targetForm">
+            <ng-multiselect-dropdown class="target target-select" name="targetForm" [placeholder]="''" formControlName="targetForm"
+              [disabled]="disabled" [settings]="targetSettings" [data]="targetListData" (onSelect)="onTargetItemSelect($event)" (onDeSelect)="onTargetItemDeSelect($event)"
+              (onDeSelectAll)="onTargetItemDeSelectOrAll($event)" (onSelectAll)="onTargetItemSelectOrAll($event)">
+            </ng-multiselect-dropdown>
+          </form>
+          <div class="dropdown-placeholder target-placeholder">
+            <span *ngIf="targetForm.get('targetForm').value.length == 0" style="margin-left: 7px;"> Target Group </span>
+            <span *ngIf="targetForm.get('targetForm').value.length == 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target selected </span>
+            <span *ngIf="targetForm.get('targetForm').value.length > 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target(s) selected </span>
+ 
+          </div>
+        </div>
+     
+     
+     
+     
+      <div class="col-md-2 col-lg-2 col-sm-2 geographybubblestarget" style="padding-left: 2px;">
+        <form [formGroup]="geographyForm">
+          <ng-multiselect-dropdown class="geography geograph" name="geographyForm" [placeholder]="''" formControlName="geographyForm"
+            [disabled]="disabled" [settings]="dropdownSettings" [data]="geographyList"
+            (onSelect)="onGeographyItemSelect($event)" (onDeSelect)="onGeographyItemDeSelect($event)"
+            (onDeSelectAll)="onGeographyItemDeSelectOrAll($event)" (onSelectAll)="onGeographyItemSelectOrAll($event)">
+          </ng-multiselect-dropdown>
+        </form>
+        <div class="dropdown-placeholder geography-placeholder">
+          <span *ngIf="geographyForm.get('geographyForm').value.length == 0"  style="margin-left: 7px;"> Geographies </span>
+          <span *ngIf="geographyForm.get('geographyForm').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography selected </span>
+          <span *ngIf="geographyForm.get('geographyForm').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography(s) selected </span>
 
-   <div class="mainclass">
-    <div class="row" style="position: relative;top: 5%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 15px;">
-        <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 1px;">
-            <form [formGroup]="targetForm">
-              <ng-multiselect-dropdown class="target target-select" name="targetForm" [placeholder]="''" formControlName="targetForm"
-                [disabled]="disabled" [settings]="targetSettings" [data]="targetListData" (onSelect)="onTargetItemSelect($event)" (onDeSelect)="onTargetItemDeSelect($event)"
-                (onDeSelectAll)="onTargetItemDeSelectOrAll($event)" (onSelectAll)="onTargetItemSelectOrAll($event)">
-              </ng-multiselect-dropdown>
-            </form>
-            <div class="dropdown-placeholder target-placeholder">
-              <span *ngIf="targetForm.get('targetForm').value.length == 0"> Target Group </span>
-              <span *ngIf="targetForm.get('targetForm').value.length == 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target selected </span>
-              <span *ngIf="targetForm.get('targetForm').value.length > 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target(s) selected </span>
+        </div>
+      </div>
+
+      <div class="col-md-2 col-lg-2 col-sm-2 selecteddealersbubblestarget" style="padding-left: 1px;">
+        <form [formGroup]="dealerForm">
+          <ng-multiselect-dropdown class="dealer deal" name="dealerForm" [placeholder]="'Dealer'" formControlName="dealerForm"
+            [disabled]="disabled" [settings]="dealerDropdownSettings" [data]="dealerListData"
+            (onSelect)="onDealerItemSelect($event)" (onDeSelect)="onDealerItemDeSelect($event)"
+            (onDeSelectAll)="onDealerItemDeSelectOrAll($event)" (onSelectAll)="onDealerItemSelectOrAll($event)">
+          </ng-multiselect-dropdown>
+        </form>
+        <div class="dropdown-placeholder dealer-placeholder">
+          <span *ngIf="dealerForm.get('dealerForm').value.length == 0">  </span>
+          <span *ngIf="dealerForm.get('dealerForm').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealer selected </span>
+          <span *ngIf="dealerForm.get('dealerForm').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealer(s) selected </span>
+
+        </div>
+      </div>
+
+      <div class="col-md-2 col-lg-2 col-sm-2 yearsbubbles" style="font-family: 'Gilroy'; color: grey; padding-left: 1px;">
+        <form [formGroup]="myForms">
+          <ng-multiselect-dropdown class="year fyear" name="citys" [placeholder]="'Financial year'" formControlName="citys"
+            [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+            (onSelect)="onYearSelect($event)" (onDeSelect)="onYearDeSelect($event)"
+            (onDeSelectAll)="onYearDeSelectOrAll($event)" (onSelectAll)="onYearSelectOrAll($event)">
+          </ng-multiselect-dropdown>
+        </form>
+        <div class="dropdown-placeholder year-placeholder">
+          <span *ngIf="myForms.get('citys').value.length == 0">  </span>
+          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Financial year selected </span>
+          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Financial year(s) selected </span>
+
+        </div>
+      </div>
+      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style=" cursor: pointer" *ngIf="usertype ==='Admin' ">
+        <input  id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+          placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
+        <mat-icon  class="searchicons1">search</mat-icon>
+        <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+      </div>
+      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style=" cursor: pointer" *ngIf="usertype !=='Admin' ">
+        <input  id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+          placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
+        <mat-icon  class="searchicons2">search</mat-icon>
+        <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+      </div>
+      
     
-            </div>
-          </div>
-       
-       
-       
-       
-        <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 1px;">
-          <form [formGroup]="geographyForm">
-            <ng-multiselect-dropdown class="geography geograph" name="geographyForm" [placeholder]="''" formControlName="geographyForm"
-              [disabled]="disabled" [settings]="dropdownSettings" [data]="geographyList"
-              (onSelect)="onGeographyItemSelect($event)" (onDeSelect)="onGeographyItemDeSelect($event)"
-              (onDeSelectAll)="onGeographyItemDeSelectOrAll($event)" (onSelectAll)="onGeographyItemSelectOrAll($event)">
-            </ng-multiselect-dropdown>
-          </form>
-          <div class="dropdown-placeholder geography-placeholder">
-            <span *ngIf="geographyForm.get('geographyForm').value.length == 0"> Geographies </span>
-            <span *ngIf="geographyForm.get('geographyForm').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography selected </span>
-            <span *ngIf="geographyForm.get('geographyForm').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography(s) selected </span>
-  
-          </div>
-        </div>
-  
-        <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 1px;">
-          <form [formGroup]="dealerForm">
-            <ng-multiselect-dropdown class="dealer deal" name="dealerForm" [placeholder]="'Dealer'" formControlName="dealerForm"
-              [disabled]="disabled" [settings]="dealerDropdownSettings" [data]="dealerListData"
-              (onSelect)="onDealerItemSelect($event)" (onDeSelect)="onDealerItemDeSelect($event)"
-              (onDeSelectAll)="onDealerItemDeSelectOrAll($event)" (onSelectAll)="onDealerItemSelectOrAll($event)">
-            </ng-multiselect-dropdown>
-          </form>
-          <div class="dropdown-placeholder dealer-placeholder">
-            <span *ngIf="dealerForm.get('dealerForm').value.length == 0">  </span>
-            <span *ngIf="dealerForm.get('dealerForm').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealer selected </span>
-            <span *ngIf="dealerForm.get('dealerForm').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealer(s) selected </span>
-  
-          </div>
-        </div>
-  
-        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey; padding-left: 1px;">
-          <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="year fyear" name="citys" [placeholder]="'Financial year'" formControlName="citys"
-              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
-              (onSelect)="onYearSelect($event)" (onDeSelect)="onYearDeSelect($event)"
-              (onDeSelectAll)="onYearDeSelectOrAll($event)" (onSelectAll)="onYearSelectOrAll($event)">
-            </ng-multiselect-dropdown>
-          </form>
-          <div class="dropdown-placeholder year-placeholder">
-            <span *ngIf="myForms.get('citys').value.length == 0">  </span>
-            <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Financial year selected </span>
-            <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Financial year(s) selected </span>
-  
-          </div>
-        </div>
+      
         <div class="icon btnhover refreshbtn"  (click)="refresh()" style="cursor: pointer;">
-          <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px; "
+          <img class="refresh" src="assets/img/Refreshbutton.svg"style="position: relative;top: 9px;left: 9px; "
             alt="refresh" >
         </div>
-      </div>
-      <div class="row" style="margin-bottom:90px;">
-        <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-        <div class="col-md-4" style="margin-left: 67%;margin-bottom:13px;margin-top: -29px;">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="searchBox d-flex" style=" cursor: pointer">
-                <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                  placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-                <button class="searchButton" href="#">
-                  <i class="material-icons">
-                    search
-                  </i>
-                </button>
-                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-              </div>
-            </div>
-            <div class="col-md-1"userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
+            <!-- <div userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
               <div class="add-user" (click)="addTarget()" style=" cursor: pointer" >
-                <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+                <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
-            </div>
-            <div class="col-md-0">
+            </div> -->
+            <div>
+              <div class="target-upload" (click)="orderTargetUpload()" *ngIf="usertype!=='Viewer'">
+                  <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
+                      alt="add-user-btn">
+              </div>
+              </div>
+            <div>
               <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
-                <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+                <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
                   alt="add-user-btn">
               </div>
+
+              <div userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
+                <div class="add-user" (click)="addTarget()" style=" cursor: pointer" >
+                  <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-  
-  
-      <div>
-        <div class="ag-grid-dummy" id="ag-grid-dummy"></div>  
-        <ag-grid-angular id="gridContainer" 
-          style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy; margin-left: 20px;"
-          class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-          [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
-          [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
-          (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
-          (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-          (bodyScroll)="handleScroll($event)"></ag-grid-angular>
-  
-      </div>
-      <div class="pagination">
-        <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
-        <span class="pagination-cls">{{rowData5.length}}</span>
-      </div>
-  
+ 
     </div>
+
+
+
+    <div class="mt-5">
+      <div class="ag-grid-dummy" id="ag-grid-dummy"></div>  
+      <ag-grid-angular id="gridContainer"
+        style=" height: 390px;background-color: white;font-family: Gilroy; margin-left: 20px; cursor: pointer;"
+        class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+        [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+        [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+        (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+        (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+        (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+
+    </div>
+    <div class="pagination">
+      <!-- <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span style=" color: #686E74;" class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+      <span class="pagination-cls">&nbsp;{{rowData5.length}}</span> -->
+      <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+      <span class="pagination-cl">&nbsp;{{rowData5.length}}</span>
+    </div>
+
+  </div>

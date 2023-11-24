@@ -104,6 +104,12 @@ deactv :any = ['name', 'dfdfdd'];
     if (this.isOpen) {
       this.configureTippyInstance();
       this.tippyInstance.setContent(this.container.nativeElement);
+      const rowData = this.params.node.data;
+      if (rowData.statusName === 'Active') {
+        this.DeactiveDealer = true;
+      } else if (rowData.statusName === 'Inactive') {
+        this.DeactiveDealer = false;
+      }
     } else {
       this.tippyInstance.unmount();
     }
@@ -111,7 +117,7 @@ deactv :any = ['name', 'dfdfdd'];
 
   editDealer(){
     localStorage.setItem('edit-dealer','Edit')
-    this.dialog.open(AddDealerPopupComponent,{height:"570px"});
+    this.dialog.open(AddDealerPopupComponent,{ minWidth :'96vw',height:'670px' });
     this.isOpen = false;
   }
 

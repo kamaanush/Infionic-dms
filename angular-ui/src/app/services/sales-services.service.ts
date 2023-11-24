@@ -19,7 +19,7 @@ export class SalesServicesService {
     const idToken = localStorage.getItem("token");
     debugger
     console.log('idtoken', idToken)
-    alert(idToken)
+    // alert(idToken)
 
     if (idToken) {
       const cloned = req.clone({
@@ -121,11 +121,20 @@ getTargetList() {
 return this.http.get<any>(this.userurl + 'MaterialApi/GetTargetGroupList');
 }
 onClickSubCat(data:any){
-  return this.http.get<any>(`${this.userurl}MaterialApi/GetSUbCAts?catId=${data.catId}&flag=${data.flag}`);
+  return this.http.get<any>(this.userurl + 'MaterialApi/GetSUbCAtsOfMultiCats', data);
 
 }
 onclickType(data:any){
   return this.http.get<any>(`${this.userurl}MaterialApi/GetTypes?subCatId=${data.subCatId}&flag=${data.flag}`);
+
+}
+
+public getReceiptBulkUploadTarget(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/AddBulkDealerTargets', data);
+
+}
+public SaveGetbulkuploadTarget(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/SaveBulkDealerTargetsBulk', data);
 
 }
 }

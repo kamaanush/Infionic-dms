@@ -62,25 +62,25 @@ export class SalesInventoryComponent implements OnInit {
     }, 
     {   headerName: "Current stock",
       field: 'currentStock',      tooltipField:"currentStock",
-      type: ['nonEditableColumn']},
+      type: ['nonEditableColumn','rightAligned']},
   
       {   headerName: "In Transit Qty",
-      field: 'inTransit',type: ['nonEditableColumn'],      tooltipField:"inTransit",
+      field: 'inTransit',type: ['nonEditableColumn','rightAligned'],      tooltipField:"inTransit",
     },
       {  headerName: "Pending Qty",
-      field: 'pendingQty',      tooltipField:"pendingQty",
+      field: 'pendingQty',      tooltipField:"pendingQty",type: ['rightAligned'],
     }, 
       {  headerName: "Purchase Qty(YTD)",
-      field: 'purchaseQtyYTD',      tooltipField:"purchaseQtyYTD",
+      field: 'purchaseQtyYTD',      tooltipField:"purchaseQtyYTD",type: ['rightAligned'],
     }, 
     { headerName: "Sales(YTD)",
-    field: 'salesQtyYTD',      tooltipField:"salesQtyYTD",
+    field: 'salesQtyYTD',      tooltipField:"salesQtyYTD",type: ['rightAligned'],
   },
   {  headerName: "Annual Target",
-      field: 'annualTarget',      tooltipField:"annualTarget",
+      field: 'annualTarget',      tooltipField:"annualTarget",type: ['rightAligned'],
     },
     {  headerName: " Achieve Target",
-      field: 'targetAchieved',      tooltipField:"targetAchieved",
+      field: 'targetAchieved',      tooltipField:"targetAchieved", type: ['rightAligned'],
     },
      
   // {    
@@ -113,6 +113,7 @@ export class SalesInventoryComponent implements OnInit {
       minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
   
   public columnTypes: {
@@ -204,7 +205,7 @@ export class SalesInventoryComponent implements OnInit {
 
   };
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
 
   
@@ -246,7 +247,7 @@ export class SalesInventoryComponent implements OnInit {
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -285,7 +286,9 @@ export class SalesInventoryComponent implements OnInit {
     }
   }
   addSales() {
-    this.dialog.open(AddSalesPopupComponent, {minWidth: '90vw', 
+    this.dialog.open(AddSalesPopupComponent, {
+      minWidth: '90vw', 
+      height:'630px',
     panelClass: 'material-add-edit'
   });
   }
@@ -310,7 +313,7 @@ export class SalesInventoryComponent implements OnInit {
         textField: 'customerName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
   }
@@ -406,7 +409,7 @@ export class SalesInventoryComponent implements OnInit {
         textField: 'stockItemName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
   }
@@ -503,7 +506,7 @@ export class SalesInventoryComponent implements OnInit {
         textField: 'geographyName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
     });
@@ -630,6 +633,7 @@ console.log("SalesList",this.salesListData)
 
 
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.salesService.getDealeList(data).subscribe((res)=>{
       console.log(res.response)
       this.salesListData=res.response;
@@ -645,7 +649,17 @@ console.log("SalesList",this.salesListData)
       productForm: [this.selectedItems]
     });
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv();
+    // this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv({ fileName: 'salesInventory_' + this.convertedDateFormat() });
   }
 }

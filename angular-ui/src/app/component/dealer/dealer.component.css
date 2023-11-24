@@ -38,7 +38,8 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 33px;
     padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+    /* overflow-y: hidden; */
+    /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
@@ -59,30 +60,41 @@ mat-tab{
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  width: 378px !important;
+  width: 650px !important;
   border-radius: 25px;
-  background: white;
-  left: 30%;
+  /* background: white; */
+  /* left: 30%; */
   font-size: 15px;
+  margin: 11px 0px;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
     color: white;
-    border-radius: 25px;
+    /* border-radius: 25px; */
     opacity: 1;
+    background-color: rgba(1, 139, 117, 1)!important;
+    border-radius: 0px;
+    
 }
 
 ::ng-deep .order1-lab .mat-tab-label{
-  height: 31px !important;
-  min-width: 165px !important;
+  height: 33px !important;
+  min-width: 155px !important;
+  border: 1px solid rgba( 1, 139, 117, 1);
+  border-right: 1px solid rgba(1, 139, 117, 1);
+  color: rgba(1, 139, 117, 1) ;
 }
 .order1-lab .mat-tab-labels:nth-child(1) {
   width: 50% !important;
 }
+/* .mat-drawer-content{
+  overflow-x: hidden;
+  overflow: hidden;
 
+
+} */
 ::ng-deep.order1-lab .mat-tab-header{
   display: flex;
   overflow: hidden;
@@ -96,7 +108,8 @@ mat-tab{
   background: white;
   left: 23%;
   font-size: 15px;
-
+  border-bottom: 1px solid rgba(1,139,117,1);
+  border-top: 1px solid rgba(1, 139, 117, 1);
 }
 
 :ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
@@ -112,9 +125,10 @@ mat-tab{
     height: 0px;
     color: #000000;
     position: relative;
-    top: 6%;
+    top: 4%;
     font-weight: bold;
-    left: 20px; 
+    /* left: 20px;  */
+    margin-left: 20px;
   }
 
   .print-img{
@@ -148,6 +162,10 @@ mat-tab{
         right: 2px;
       }
   }
+
+  ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: rgba(1, 139, 117, 1);
+}
 
 
 

@@ -1,18 +1,31 @@
+::ng-deep .shipmentdropdown .dropdown-list {
+  left: -6%;
+  width: 106%;
+}
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
+  .ag-theme-material .ag-sticky-top {
+    border: 1px solid #989CA04D !important;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important; */
+    /* border-bottom-left-radius: 10px 10px !important;
+    border-bottom-right-radius: 10px 10px !important; */
+    border-radius: 10px !important;
+  }
 .container-fluid
 {
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  overflow-y: hidden;
   overflow-x: hidden;
   height: 610px;
 }
 ::ng-deep.received {
     
   
-  color: #09BC8A!important;
+  color: #686E74!important;
 }
 
 
 ::ng-deep.Transit{
-  color: #0D4C86 !important;
+  color: #686E74!important;
   
        }
 
@@ -46,13 +59,12 @@
 }
 
 .sales-refreshbtn {
-  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
-  width: 43px;
-  height: 41px;
-  background: #000000;
-  border-radius: 10px;
-  margin-left: 10px;
+  background: rgba(104, 110, 116, 0.66);
   cursor: pointer;
+  border-radius: 16%;
+  width: 40px;
+  height: 40px;
+  margin-right: 460px;
 }
 .sales-refreshbtn:hover
 {
@@ -60,8 +72,9 @@
   color: white !important;
 }
 .refresh-img {
-  margin-top: 11px;
-  margin-left: 11px;
+  margin-top: 9px;
+  margin-left: 9px;
+ 
 }
 
 .ag-theme-material .ag-filter-toolpanel-header,
@@ -91,21 +104,13 @@
   background-color: #b81111 !important;
 }
 
-::ng-deep.ag-header-cell-text {
+/* ::ng-deep.ag-header-cell-text {
   color: #686E74 !important;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
-}
+} */
 
-::ng-deep.ag-theme-material .ag-root-wrapper,
-.ag-theme-material .ag-sticky-top {
-
-  border: 0.5px solid #000000 !important;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 25px !important;
-
-}
 
 .ag-root-wrapper {
   border: solid 10px;
@@ -149,16 +154,27 @@
 
 .pagination {
   float: right !important;
+  margin-top: 2px;
+  margin-right: 3px;
 }
 
 .pagination-cls {
   font-size: 14px;
-  font-weight: 900;
+  font-family: 'Calibri';
+  font-weight: 500;
+  color: #686E74;
+}
+.pagination-classa {
+  font-size: 14px;
+   font-weight: 900;
+  font-family: 'Calibri';
+  color: #686E74;
 }
 
 .ag-theme-material {
-  height: 350px;
-  border-radius: 20px;
+  height: 410px;
+  border-radius: 10px !important;
+  /* border-radius: 20px; */
   background-color: white;
   font-family: Gilroy;
 }
@@ -184,10 +200,10 @@
   left: 10px;
 }
 .sales-download{
-  background: #000000;
-  border-radius: 50%;
-  width: 37px;
-  height: 37px;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -202,10 +218,10 @@
   left: 10px;
 }
 .sales-upload{
-  background: #000000;
-  border-radius: 50%;
-  width: 37px;
-  height: 37px;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -220,11 +236,11 @@
   left: 10px;
 }
 .sales-dwnld{
-  background: #000000;
-  border-radius: 50%;
-  width: 37px;
-  height: 37px;
-  cursor: pointer;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 .sales-dwnld:hover
 {
@@ -234,15 +250,15 @@
 .imgdwnl{
   position: relative;
   top: 8px;
-  left: 10px;
+  left: 12px;
 }
 .searchButton {
         display:block;
         color: #FFFFFF;
         width: 37px;
         height: 37px;
-        border-radius: 50%;
-        background: #000000;
+        border-radius: 13%;
+        background: rgba(104, 110, 116, 0.66);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -388,17 +404,19 @@
       position: absolute;
       height: 41px;
       line-height: 41px;
-      left: 1px;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
+      left: 0px;
+      border-top: 1px solid gray !important;
+      border-bottom: 1px solid gray !important;
+      border-left: 1px solid gray !important;
       width: 80%;
       border-radius: 10px 0 0 10px !important;
       padding-left: 10px;
       pointer-events: none;
     }
-    ::ng-deep.multiselect-dropdown .dropdown-btn {
+    :host::ng-deep.multiselect-dropdown .dropdown-btn {
       display: inline-block;
-      border: 1px solid #000000 !important;
+      border: 1px solid gray !important;
+      /* border-left: 2px solid gray !important; */
       width: 100%;
       /* height: 62%; */
       padding: 9px 12px !important;
@@ -409,9 +427,10 @@
       vertical-align: middle;
       cursor: pointer;
       background-image: none;
-      border-radius: 10px !important;
+      border-radius: 14px !important;
       background: white !important;
       height: 41px;
+      left: 0px;
     }
     ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
       color: #17c017 !important;
@@ -429,6 +448,8 @@
     ::ng-deep.dealer .multiselect-dropdown .dropdown-btn .selected-item {
       background: #006466 !important;
       font-size: 12px;
+      right: 21px;
+      height: fit-content;
     }
     
     ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -443,6 +464,8 @@
    ::ng-deep.Status .multiselect-dropdown .dropdown-btn .selected-item {
      background: #000000 !important;
      font-size: 12px;
+     height: fit-content;
+     left: -6px;
    }
    
    ::ng-deep .Status .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -467,7 +490,8 @@
    /* padding: .75em .75em 0 .75em;  */
    padding: 5px;
    background: white !important;
-   border: 1px black solid;
+   border: 1px solid gray !important;
+   height: 41px;
 }
 ::ng-deep.invoice .mat-select-arrow-wrapper{
  /* background-image: url('/assets/img/calenderImage.svg') !important; */
@@ -480,17 +504,17 @@
   padding: 5px !important;
   background: white;
 }
-::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
-  position: absolute !important;
-right: 62px !important;
+::ng-deep.dlsrr  .dropdown-btn span .ng-star-inserted {
+  /* position: absolute !important;
+right: 12px !important;
 bottom: 0px;
-top: 50px !important;
+top: 50px !important; */
 
 
 
  width: 42px;
 border: 1px solid #337ab7;
- background: #D23F00 !important;
+background: #006466 !important; 
    font-size: 12px;
    box-shadow: 1px 1px #959595;
    color: #fff;
@@ -523,4 +547,157 @@ margin-left: 10px;
 margin-right: -1px;
 
 padding-left: 5px;
+}
+
+
+
+
+
+
+::ng-deep.custom-bubblesorders-shipment .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.custom-bubblesorders-shipment .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 0 !important;
+     height: 5px;
+     display: table-cell;
+   }
+   .searchInput11 {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: #FFFFFF;
+    float: left;
+    padding-left: 11%;
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    color: #263643;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    right: -2px;
+    border: 1px solid gray !important;
+    
+}
+.Legened
+{
+  font-family: 'Calibri';
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0.04em;
+color: #000000;
+
+
+}
+.searchBox11:hover>.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+
+}
+.searchBox11 >.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+  
+}
+
+.searchInput11 {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  right: -2px;
+  border:1px solid black;
+  
+}
+.searchicons
+{
+color: #9B9FA3;
+top: 10px;
+position: relative;
+left: -7px;
+}
+.search-bt_n {
+  display: block;
+  height: 26px;
+  border: none;
+  background: #686E74;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+
+.searchBox11:hover>.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+
+}
+.searchBox11 >.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+  
+}
+
+.material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+}
+
+.search-bt_n {
+  display: block;
+  height: 26px;
+  border: none;
+  /* background: #000000; */
+  background: rgba(104, 110, 116, 0.66);  
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.AllText
+{
+    font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0em;
+color: #000000;
+margin-top: 18px;
+display: flex;
+justify-content: end;
+
 }

@@ -26,6 +26,7 @@ export class MaterialAddEditpopupComponent {
   chipControl = new FormControl(new Set());
   labelPosition: any = 'before';
   disabled = false;
+  visible:boolean = true;
   catgname: any = [];
   base64textString = "";
   selecetdFile: any;
@@ -87,6 +88,7 @@ export class MaterialAddEditpopupComponent {
   productId: any;
   subProductId: any;
   uomID: any;
+ 
   stateName: any;
   districtName: any;
 
@@ -122,7 +124,7 @@ export class MaterialAddEditpopupComponent {
   // geograhies related variables
 
 
-
+  image:boolean=true;
 
 
 
@@ -130,6 +132,7 @@ export class MaterialAddEditpopupComponent {
   geoProperties: any
   gepGraphiesFormGroup!: FormGroup;
   UserId: any;
+  MaterialcustomidentifierAdd: any[]=[];
   geoGraphyHirerachyData: any;
   geoGraphyFullData: any = [];
   selectedGeographiesCityNames: any = [];
@@ -139,6 +142,7 @@ export class MaterialAddEditpopupComponent {
   aarrayToPush: any[] = [];
   css: any[] = [];
   ProductId: any = []
+  customIdentifierData:any = [];
   businessData: any = [];
   productData: any = [];
   productSettingData: any = [];
@@ -168,6 +172,7 @@ export class MaterialAddEditpopupComponent {
   ProductIdentifiersNames: any = [];
   businessIdentifiersNames: any = [];
   flag: boolean = true;
+  selectedProductFullData:any = [];
   selectedProductIdentifierData: any = [];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
@@ -338,7 +343,15 @@ export class MaterialAddEditpopupComponent {
         this.dataGetById = res.response;
         // let isProduct = this.dataGetById.isProduct
         console.log("EditData", this.dataGetById);
-
+        if(res.response.isProduct==false)
+        {
+          this.checked=true
+        }
+        else
+        {
+          this.checked=false
+        }
+  //  alert(this.checked);
 
         this.getGeographyForMaterial(0, this.getEditId);
         this.editData = true;
@@ -369,18 +382,19 @@ export class MaterialAddEditpopupComponent {
 
     this.stockItemDesc = this.dataGetById.stockItemDesc
     this.materialName = this.dataGetById.stockItemName
-    this.base64textString = this.dataGetById.imageurl
+   this.base64textString = this.dataGetById.imageurl
 
     this.expiryDate = this.dataGetById.expiryPeriod
-    // this.MaterialCustomIdentifiersEdit = this.dataGetById.materialcustomidentifier
+  //  this.MaterialCustomIdentifiersEdit = this.dataGetById.materialcustomidentifier
     let materialData = this.dataGetById.materialcustomidentifier
     this.MaterialCustomIdentifiersEdit = materialData.map(item => {
       return item.materilCustomIdentifierId;
     });
     console.log("MaterialIdentifier", this.MaterialCustomIdentifiersEdit)
     this.categeoryData = this.dataGetById.categoryId
+    let flag = true
     if (this.categeoryData != '') {
-      this.addMaterials.onclickcat(this.categeoryData).subscribe((res) => {
+      this.addMaterials.onclickcat(this.categeoryData,flag).subscribe((res) => {
         let subcaty = res.response;
         console.log("response1", res)
         console.log("catId", this.catId);
@@ -391,7 +405,7 @@ export class MaterialAddEditpopupComponent {
     }
 
     if (this.subCategoryData != '') {
-      this.addMaterials.onclicksubcat(this.subCategoryData).subscribe((res) => {
+      this.addMaterials.onclicksubcat(this.subCategoryData,flag).subscribe((res) => {
         let typs = res.response;
         console.log("subCatId", this.subCatId);
         this.typeI = typs;
@@ -404,7 +418,7 @@ export class MaterialAddEditpopupComponent {
     if (this.typesData != '') {
       this.getAllUom();
     }
-    this.baseUoMData = this.dataGetById.baseUoMId
+    this.uomID = this.dataGetById.baseUoMId
     this.gloabKey = this.dataGetById.globalCode
     this.Sku = this.dataGetById.productSKUName
     this.shortCode = this.dataGetById.shortCode
@@ -423,19 +437,20 @@ export class MaterialAddEditpopupComponent {
     }
 
     // this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
-    let productData = this.dataGetById.productCustomIdentifierId
-    this.selectedProductIdEdit = productData.map(item => {
-      return item.productCustomIdentifierId;
-    });
+    let productData = this.dataGetById.productCustomIdentifierId;
+    this.selectedProductFullData = productData;
+    this.selectedProductIdentifierData = this.selectedProductFullData.map(x=> x.productCustomName);
+    this.selectedProductId = this.selectedProductFullData.map(item =>  item.productCustomIdentifierId);
+    
     let data = this.dataGetById.materialcustomidentifier;
     this.MaterialCustomIdentifiersNames = data.map(item => {
       return item.materialCustomName;
     });
-    console.log("MaterialIdentifier", this.MaterialCustomIdentifiersNames)
-    let datas = this.dataGetById.productCustomIdentifierId;
-    this.selectedProductIdentifierData = datas.map(item => {
-      return item.productCustomName;
-    });
+    // console.log("MaterialIdentifier", this.MaterialCustomIdentifiersNames)
+    // let datas = this.dataGetById.productCustomIdentifierId;
+    // this.selectedProductIdentifierData = datas.map(item => {
+    //   return item.productCustomName;
+    // });
 
 
   }
@@ -447,6 +462,17 @@ export class MaterialAddEditpopupComponent {
       // let dataCat = data.allOtherCats;
       // this.categeoryData = new FormControl(this.catgname);
     })
+  }
+
+  geoPropertyChange(geoObj, type, index){
+    if(this.selectedHirerachyIndex != index){
+      for(var i=index; i<this.geoGraphyFullData.length;i++){
+        let geoPropertyItemList = this.geoGraphyFullData[i];
+        geoPropertyItemList.geoProperties.forEach(x=>{
+          x[type]= geoObj[type];
+        })
+      }
+    }
   }
   getProductList() {
     this.addMaterials.getProductGroup().subscribe((res) => {
@@ -461,13 +487,13 @@ export class MaterialAddEditpopupComponent {
   addMaterialProduct() {
     // this.saveMaterial = localStorage.getItem('saveMaterials');
     localStorage.setItem("updateAddEdit", 'add');
-    this.selectedProductId = [...this.bussinessIdentifiers, ...this.ProductIdentifiersSettingId, ...this.ProductIdentifiersId]
+    // this.selectedProductId = [...this.bussinessIdentifiers, ...this.ProductIdentifiersSettingId, ...this.ProductIdentifiersId]
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
       DefalultgeoId: selectedGeographies,
     }
     if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
-      alert("Plz select the last geography grid");
+      // alert("Plz select the last geography grid");
       return;
     }
 
@@ -485,7 +511,10 @@ export class MaterialAddEditpopupComponent {
       StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+      
+      // MaterialcustomidentifierAdd:this.MaterialCustomIdentifiers,
+        Materialcustomidentifier: this.MaterialCustomIdentifiers,
+       
       ExpiryPeriod: this.expiryDate ?? '0',
       ProductCustomIdentifierId: this.selectedProductId,
       IsProduct: +!this.checked,
@@ -504,14 +533,14 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-        alert(res.response.result)
+        // alert(res.response.result)
       } else {
         this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
           console.log(res, "defaultGeoID")
         });
         this.dialog.closeAll()
         this.materialListService.filter('Register click');
-        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'materialsSuccessPop' })
       }
     })
 
@@ -519,7 +548,7 @@ export class MaterialAddEditpopupComponent {
   addMaterialProductAfterEdit() {
     localStorage.setItem("updateAddEdit", 'edit');
     if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
-      alert("Plz select atleast one city");
+      // alert("Plz select atleast one city");
       return;
     }
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties));
@@ -536,11 +565,14 @@ export class MaterialAddEditpopupComponent {
       StockItemTypeId: this.typesData,
       StockItemName: this.materialName,
       StockItemDesc: this.stockItemDesc,
-      BaseUoMId: this.baseUoMData,
+      BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
+      //  MaterialCustomIdentifiers:this.MaterialCustomIdentifiersNames,
+      //  MaterialCustomIdentifiers:this.MaterialCustomIdentifiers,
+      // MaterialcustomidentifierAdd:this.MaterialCustomIdentifiers,
       Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
       ExpiryPeriod: this.expiryDate ?? '0',
-      ProductCustomIdentifierId: this.selectedProductIdEdit,
+      ProductCustomIdentifierId: this.selectedProductId,
       IsProduct: +!this.checked,
       BrandName: this.BrandName,
       GlobalCode: this.gloabKey ?? '0',
@@ -550,19 +582,18 @@ export class MaterialAddEditpopupComponent {
       ProductLink: this.AddSP ?? '',
       ProductSubGroupId: this.subproductGroupData,
       ProductGeographys: this.geoProperties
-
     }
 
     // console.log(data)
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-        alert(res.response.result)
+        //  alert(res.response.result)
       } else {
 
         this.dialog.closeAll()
 
-        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'materialsSuccessPop' })
       }
     })
     // this.dialog.closeAll()
@@ -571,6 +602,7 @@ export class MaterialAddEditpopupComponent {
 
   }
   addMaterialIfNotProduct() {
+      console.log(this.selctedIdentifier)
     let data = {
       DoneById: this.UserId,
       StockItemSubCategoryId: this.subCatId,
@@ -579,14 +611,17 @@ export class MaterialAddEditpopupComponent {
       StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+     //  Materialcustomidentifiers:this.MaterialCustomIdentifiersNames,
+      //  MaterialCustomIdentifiers:this.MaterialCustomIdentifiers,
+      // MaterialcustomidentifierAdd:this.MaterialCustomIdentifiers,
+      Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
       ExpiryPeriod: this.expiryDate ?? '0',
       IsProduct: +!this.checked
     }
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-        alert(res.response.result)
+        //  alert(res.response.result)
       } else {
 
         this.dialog.closeAll()
@@ -608,26 +643,32 @@ export class MaterialAddEditpopupComponent {
       StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+      //  Materialcustomidentifiers:this.MaterialCustomIdentifiersNames,
+      //  MaterialCustomIdentifiers:this.MaterialCustomIdentifiers,
+      // MaterialcustomidentifierAdd:this.MaterialCustomIdentifiers,
+
+      Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
+      
       ExpiryPeriod: this.expiryDate ?? '0',
       IsProduct: +!this.checked
     }
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-        alert(res.response.result)
+        // alert(res.response.result)
       } else {
-        // this.dialog.closeAll()
+        this.dialog.closeAll()
       }
     })
-    console.log(data)
-  }
+    console.log(data)  
+    } 
   onSubCategoryAll(items: any) {
     console.log('onSelectAll', items);
   }
   onItemSelect(item: any) {
     this.catId = item.catId;
-    this.addMaterials.onclickcat(item.catId).subscribe((res) => {
+    let flag = true
+    this.addMaterials.onclickcat(item.catId,flag).subscribe((res) => {
       let subcaty = res.response;
       console.log("response1", res)
       console.log("catId", this.catId);
@@ -638,7 +679,8 @@ export class MaterialAddEditpopupComponent {
 
   onSubCategorySelect(item: any) {
     this.subCatId = item.subCatId;
-    this.addMaterials.onclicksubcat(item.subCatId).subscribe((res) => {
+    let flag = true
+    this.addMaterials.onclicksubcat(item.subCatId,flag).subscribe((res) => {
       let typs = res.response;
       console.log("subCatId", this.subCatId);
       this.typeI = typs;
@@ -778,17 +820,21 @@ export class MaterialAddEditpopupComponent {
     this.dialog.open(AddProductSubGroupComponent);
 
   }
+
+  
   customIdentifier() {
     // this.dialog.open(AddIdentifierComponent);
+    this.customIdentifierData = [];
     this.addMaterials.getProductCustomIdentifier().subscribe((res: any) => {
       this.ProductId = res.response;
-      console.log("ProductID", this.ProductId);
-      this.businessData = res.response[0].productCustomeIdentifiers;
-      console.log("BusinessIdentifier", this.businessData);
-      this.productData = res.response[1].productCustomeIdentifiers;
-      console.log("ProductIdentifier", this.productData);
-      this.productSettingData = res.response[2].productCustomeIdentifiers;
-      console.log("productSettingData", this.productSettingData)
+      this.customIdentifierData = res.response;
+      // console.log("ProductID", this.ProductId);
+      // this.businessData = res.response[0].productCustomeIdentifiers;
+      // console.log("BusinessIdentifier", this.businessData);
+      // this.productData = res.response[1].productCustomeIdentifiers;
+      // console.log("ProductIdentifier", this.productData);
+      // this.productSettingData = res.response[2].productCustomeIdentifiers;
+      // console.log("productSettingData", this.productSettingData)
 
 
     });
@@ -1188,16 +1234,37 @@ export class MaterialAddEditpopupComponent {
   }
 
   // image uploader and converter to base64
-  public onFileChanged(event) {
+  // public onFileChanged(event) {
+  //    this.image=false;
+  //   this.selecetdFile = event.target.files[0];   
+  //   if (this.selecetdFile.size <= 1 * 1024 * 1024) {
+  //     this.handleInputChange(this.selecetdFile);
+  //   }
+  //   else {
+  //     alert('File size should not be greater than 1MB');
+  //   }
+  // }
+  onFileChanged(event: any) {
+    this.image = false;
     this.selecetdFile = event.target.files[0];
+   
     if (this.selecetdFile.size <= 1 * 1024 * 1024) {
-      this.handleInputChange(this.selecetdFile);
-    }
-    else {
-      alert('File size should not be greater than 1MB');
+      if (this.isImage(this.selecetdFile)) {
+        this.handleInputChange(this.selecetdFile);
+      } else {
+        // alert('Only images are allowed.');
+      }
+    } else {
+      // alert('File size should not be greater than 1MB');
     }
   }
-  handleInputChange(files) {
+ 
+  private isImage(file: File): boolean {
+    // Check if the file type is an allowed image type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    return allowedTypes.includes(file.type);
+  }
+  handleInputChange(files) {   
     this.imagePreview = files
     var reader = new FileReader();
     reader.onloadend = this.handleReaderLoaded.bind(this);
@@ -1214,10 +1281,13 @@ export class MaterialAddEditpopupComponent {
 
   popup() {
     this.materialIdentifierPopup = true;
+    this.visible=false;
+
   }
   closePopup() {
     this.materialIdentifierPopup = false;
     this.productIdentifierPopup = false;
+    this.visible=true;
 
   }
 
@@ -1262,14 +1332,15 @@ export class MaterialAddEditpopupComponent {
 
   productIdentifier() {
     this.productIdentifierPopup = true;
-    this.customIdentifier();
+     this.customIdentifier();
   }
   isSelectedMaterialIdentifier(materialIdentifier: any): boolean {
     const index = this.selctedIdentifier.indexOf(materialIdentifier);
     return index >= 0;
   }
 
-  selectMaterialIdentifier(materialIdentifier: any): void {
+  selectMaterialIdentifier(materialIdentifier: any): void { 
+    console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
     // let index = this.selctedIdentifier.indexOf(materialIdentifier);
     let index = this.selctedIdentifier.findIndex(x => x.materilCustomIdentifierId == materialIdentifier.materilCustomIdentifierId)
     if (index >= 0) {
@@ -1289,30 +1360,32 @@ export class MaterialAddEditpopupComponent {
 
   isSelectedBusiness(businessIdentifier: any): boolean {
     console.log("SelectedIdentifier", businessIdentifier);
-    const index = this.businessSelctedIdentifier.indexOf(businessIdentifier);
+    const index = this.selectedProductId.indexOf(businessIdentifier.productCustomIdentifierId);
     return index >= 0;
-  }
+  } 
 
-  selectBusinessProduct(businessIdentifier: any, temp): void {
-    let index = this.businessSelctedIdentifier.findIndex(x => x.productCustomIdentifierId == businessIdentifier.productCustomIdentifierId);
+  
+  selectBusinessProduct(businessIdentifier: any): void {   
+    let index = this.selectedProductId.indexOf(businessIdentifier.productCustomIdentifierId);
 
     if (index >= 0) {
-      this.businessSelctedIdentifier.splice(index, 1);
-      this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
-      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
-      console.log("bussinessIdentifiers", this.bussinessIdentifiers);
-      this.selectedProductIdentifierData = this.businessIdentifiersNames;
-      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
+      this.selectedProductId.splice(index, 1);
+      this.selectedProductFullData.splice(index, 1);
+      
+
+      // this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
+      // this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
+      // console.log("bussinessIdentifiers", this.bussinessIdentifiers);
+      // this.selectedProductIdentifierData = this.businessIdentifiersNames;
+      // console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
       // console.log("businessIdentifiersNames", businessIdentifiersNames);
     } else {
-      this.businessSelctedIdentifier.push(businessIdentifier);
-      this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
-      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
-      // console.log("businessIdentifiersNames", businessIdentifiersNames);
-      this.selectedProductIdentifierData = this.businessIdentifiersNames;
-      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
-      console.log("bussinessIdentifiers", this.bussinessIdentifiers);
+      this.selectedProductId.push(businessIdentifier.productCustomIdentifierId);
+      this.selectedProductFullData.push(businessIdentifier);
     }
+
+    this.selectedProductIdentifierData = this.selectedProductFullData.map(x=> x.productCustomName);
+   
   }
 
   isSelectedProductIdentifier(IdentifierProduct: any): boolean {
@@ -1329,7 +1402,7 @@ export class MaterialAddEditpopupComponent {
       this.ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
-      this.selectedProductIdentifierData = this.businessIdentifiersNames + "," + this.ProductIdentifiersNames;
+       this.selectedProductIdentifierData = this.businessIdentifiersNames + "," + this.ProductIdentifiersNames;
       console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
 
       // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
@@ -1348,7 +1421,7 @@ export class MaterialAddEditpopupComponent {
 
   isSelectedProductIdentifierSetting(IdentifierSetting: any): boolean {
     const index = this.productSettingIdentifier.indexOf(IdentifierSetting);
-    return index >= 0;
+    return index >= 1;
   }
 
   selectProductIdentifierSetting(IdentifierSetting: any): void {
@@ -1404,7 +1477,6 @@ export class MaterialAddEditpopupComponent {
 
   }
   expandMaterialIdentifier() {
-
     this.materialIdentifierexpand = !this.materialIdentifierexpand;
     if (this.materialIdentifierexpand === false) {
       this.image1 = 'assets/img/maximize-arrow.png';
@@ -1417,6 +1489,28 @@ export class MaterialAddEditpopupComponent {
   refresh() {
     this.selectedGeoField = '';
     this.updateGeographyValue = '';
+  }
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
+  }
+  restrictToNumbers(event: any): void {
+
+ 
+
+    const input = event.target as HTMLInputElement;
+
+ 
+
+    const value = input.value;
+
+ 
+
+    input.value = value.replace(/[^0-9]/g, '');
+
+ 
+
   }
 }
 

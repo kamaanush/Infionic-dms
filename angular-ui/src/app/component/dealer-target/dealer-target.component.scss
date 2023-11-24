@@ -1,7 +1,7 @@
 .mainclass
 {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: hidden;
+  overflow-x: auto;
   height: 620px;
 }
 /* .tableclass{
@@ -49,7 +49,9 @@
   
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    
+   
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;
@@ -64,6 +66,7 @@
     background: white !important;
     height: 41px;
     //  margin-left: 26px;
+    right: 0px;
   }
   
   ::ng-deep.dropdown-list {
@@ -185,7 +188,7 @@
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
     box-sizing: content-box;
     content: "";
-    color: #000000;
+    color: rgba(1, 139, 117, 1)!important;;
     position: absolute;
     top: 50%;
     left: 0;
@@ -204,13 +207,14 @@
   
   
   .btnhover {
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
-    background: #000000;
-    border-radius: 28%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     position: relative;
-    width: 43px;
+    width: 42px;
     cursor: pointer;
+    height: 41px;
 
   }
  
@@ -222,37 +226,39 @@
 
     cursor: pointer;
 
+    height: 41px;
+
     
   }
   
-  .searchButton {
-    display: bolck;
-    color: #FFFFFF;
-    float: left;
-    width: 37px;
-    height: 37px;
-    border-radius: 50%;
-    background: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.2s;
-    border: none;
-    margin-top: 80px;
-  }
+  // .searchButton {
+  //   display: bolck;
+  //   color: #FFFFFF;
+  //   float: left;
+  //   width: 37px;
+  //   height: 37px;
+  //   background: rgba(104, 110, 116, 0.66);
+  //   border-radius: 13%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   transition: 0.2s;
+  //   border: none;
+  //   margin-top: 80px;
+  // }
   
-  .searchBox:hover>.searchButton,
-  .searchBox>.searchInput,
-  .search-btn {
-    display: none;
-  }
+  // .searchBox:hover>.searchButton,
+  // .searchBox>.searchInput,
+  // .search-btn {
+  //   display: none;
+  // }
   
-  .searchBox {
-    float: right;
-    position: absolute;
-    left: 91%;
-    top: 8px;
-  }
+  // .searchBox {
+  //   float: right;
+  //   position: absolute;
+  //   left: 84%;
+  //   top: 8px;
+  // }
   
   // .searchBox:hover >.searchButton {
   //   display:bolck;
@@ -272,19 +278,19 @@
   
   // }
   
-  .searchBox:hover>.searchButton {
-    display: block;
-  }
+  // .searchBox:hover>.searchButton {
+  //   display: block;
+  // }
   
-  .searchBox:hover>.searchButton .material-icons {
-    position: relative;
-    right: 298px;
-    color: #000;
-    top: 3px;
-  }
+  // .searchBox:hover>.searchButton .material-icons {
+  //   position: relative;
+  //   right: 298px;
+  //   color: #000;
+  //   top: 3px;
+  // }
   
   ::ng-deep.target .multiselect-dropdown .dropdown-btn .selected-item {
-    right: 6% !important;
+    right: 4% !important;
   }
   ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
@@ -293,46 +299,46 @@
     right: 6% !important;
   }
   ::ng-deep.year .multiselect-dropdown .dropdown-btn .selected-item {
-    right: 6% !important;
+    right: 4% !important;
   }
   .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
     transform: rotate(180deg) !important;
   }
   
-  .searchBox:hover>.search-btn {
-    display: block;
-    height: 26px;
-    border: none;
-    background: #000000;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    right: 10px;
-    top: 84px;
-  }
+  // .searchBox:hover>.search-btn {
+  //   display: block;
+  //   height: 26px;
+  //   border: none;
+  //   background: #000000;
+  //   color: white;
+  //   border-radius: 5px;
+  //   position: absolute;
+  //   right: 10px;
+  //   top: 84px;
+  // }
   
   
-  .searchBox:hover>.searchInput {
-    display: block;
-    width: 335px;
-    height: 43px;
-    background: #FFFFFF;
-    float: left;
-    padding: 5px 32px 6px;
-    border-radius: 10px;
-    font-family: 'Gilroy-medium';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 17px;
-    letter-spacing: 0.08em;
-    color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-    // transition: 0.2s  ease-in-out;
-    position: absolute;
-    right: 0px;
-    bottom: -3px;
-  }
+  // .searchBox:hover>.searchInput {
+  //   display: block;
+  //   width: 335px;
+  //   height: 43px;
+  //   background: #FFFFFF;
+  //   float: left;
+  //   padding: 5px 32px 6px;
+  //   border-radius: 10px;
+  //   font-family: 'Gilroy-medium';
+  //   font-style: normal;
+  //   font-weight: 500;
+  //   font-size: 12px;
+  //   line-height: 17px;
+  //   letter-spacing: 0.08em;
+  //   color: #263643;
+  //   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  //   // transition: 0.2s  ease-in-out;
+  //   position: absolute;
+  //   right: 0px;
+  //   bottom: -3px;
+  // }
   
   .addU:before {
     width: 201px;
@@ -342,60 +348,59 @@
     width: 205px;
   }
   
-  @media screen and (max-width: 620px) {
-    .searchBox:hover>.searchInput {
-      width: 228px !important;
-      padding: 0 28px;
-      left: -302% !important;
-    }
+  // @media screen and (max-width: 620px) {
+  //   .searchBox:hover>.searchInput {
+  //     width: 228px !important;
+  //     padding: 0 28px;
+  //     left: -302% !important;
+  //   }
   
-    .searchBox {
-      left: 37%
-    }
+  //   .searchBox {
+  //     left: 37%
+  //   }
   
-    .searchBox:hover>.search-btn {
-      right: 183px !important;
+  //   .searchBox:hover>.search-btn {
+  //     right: 183px !important;
   
-    }
+  //   }
   
-    .searchBox:hover>.searchButton {
-      /* right: 190px !important; */
-      background: transparent !important;
-    }
+  //   .searchBox:hover>.searchButton {
+  //     /* right: 190px !important; */
+  //     background: transparent !important;
+  //   }
   
-    .searchBox:hover>.searchButton {
-      display: block;
-    }
+  //   .searchBox:hover>.searchButton {
+  //     display: block;
+  //   }
   
-    .searchBox:hover>.searchButton .material-icons {
-      position: relative;
-      right: -47px !important;
-      color: #000;
-    }
+  //   .searchBox:hover>.searchButton .material-icons {
+  //     position: relative;
+  //     right: -47px !important;
+  //     color: #000;
+  //   }
   
   
-  }
+  // }
   
   .add-user {
     border: none;
-    background: #000000;
-    border-radius: 50%;
-    width: 37px;
-    height: 37px;
-    top: 87px;
-    position: absolute;
-    left: 62%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 92px;
+    bottom: 40px;
   }
   
   .download-btn {
     border: none;
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     position: relative;
-    width: 37px;
-    height: 37px;
-    top: 87px;
-    left: 90%;
+    width: 40px;
+    height: 40px;
+    left: 41px;
   }
   
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -426,37 +431,39 @@
   }
   
   ::ng-deep.my-class-1 {
-    color: #F5B666 !important;
+    color:   #686E74
+    !important;
   }
   
   ::ng-deep.my-class-2 {
-    color: #17B15C !important;
+    color:  #686E74
+    !important;
   }
   
   ::ng-deep.my-class-3 {
-    color: #F5B666 !important;
+    color:   #686E74
+    !important;
   }
   
   ::ng-deep.my-class-4 {
-    color: #017EFA !important;
+    color:   #686E74
+    !important;
   }
   
   
   
   
-  ::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
-  
-    // background: red !important;
-    // border-radius: 10px;
-  
-  }
+
   
   ::ng-deep.ag-sticky-top {
-    border-bottom: 0.5px solid #000000;
+    border-bottom: 0.5px solid white;
+    
   }
+
+  
+  
   
   .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     border-radius: 30px;
   }
   
@@ -503,7 +510,7 @@
   .ag-theme-alpine .ag-multi-filter-group-title-bar {
   
     --ag-background-color: rgba(219, 19, 19, 0.863);
-    --ag-border-radius: 25px;
+    // --ag-border-radius: 25px;
   
   
   }
@@ -530,18 +537,17 @@
   }
   
   ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    // color: #686E74 !important;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
   }
   
-  ::ng-deep.ag-theme-material .ag-root-wrapper,
+  :host ::ng-deep.ag-theme-material .ag-root-wrapper,
   .ag-theme-material .ag-sticky-top {
   
-    border: 0.5px solid #000000 !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 25px !important;
+    border: 1px solid #989CA04D !important;
+    border-radius: 10px !important;
   
   }
   
@@ -581,8 +587,8 @@
     --ag-card-radius: 100px;
     --ag-border-radius: 20px;
     --ag-header-height: 30px;
-    /* --ag-header-foreground-color: blue; */
-    --ag-header-background-color: rgba(0, 0, 0, 0);
+     --ag-header-foreground-color: white; 
+     --ag-header-background-color:  #018B75CC  !important ;
     /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
     --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
   }
@@ -902,7 +908,9 @@
     min-width: calc(75% + 64px);
   
   }
-  
+  // .refresh{
+  //   transform: rotate(90deg);
+  // }
   ::ng-deep.mat-select-panel {
     background: red;
   }
@@ -929,16 +937,16 @@
     //     animation: pulse 1s infinite !important;
     //     transition: .3s !important;
     //   }
-    .searchBox {
-      top: 6px;
-    }
+    // .searchBox {
+    //   top: 6px;
+    // }
   
     //   .UNFAPP-asmnt-rgt-area{
     //   margin-left: 59px;
     //  }
-    .searchButton {
-      margin-left: -108px;
-    }
+    // .searchButton {
+    //   margin-left: -108px;
+    // }
   
     .add-user {
       margin-left: -25px;
@@ -1002,11 +1010,20 @@
   
   .pagination {
     float: right !important;
+    margin-top: 1px;
+    margin-right: 16px;
   }
   
   .pagination-cls {
     font-size: 14px;
+    font-weight: 500;
+    color: #686E74;
+  }
+  
+  .pagination-cl {
+    font-size: 14px;
     font-weight: 900;
+    color:  #686E74;
   }
   
   .country-info {
@@ -1021,8 +1038,8 @@
     height: 41px;
     line-height: 41px;
     left: 2px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid rgba(179, 179, 179, 1);
+    border-bottom: 1px solid rgba(179, 179, 179, 1);
     /* width: 80%; */
     border-radius: 10px 0 0 10px !important;
     // padding-left: 10px;
@@ -1107,4 +1124,253 @@
     margin-right: -1px;
   
     padding-left: 5px;
+  }
+  .target-upload{
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    left: 30px;
+  }
+  .target-upload:hover
+  {
+    background-color: grey !important;
+    color: white !important;
+  }
+  .imgupload{
+    position: relative;
+    top: 8px;
+    left: 10px;
+  }
+  ::ng-deep.ag-ltr .ag-cell {
+    cursor: pointer;
+  }
+
+
+  .target-placeholder.dropdown-placeholder .selected-placeholder {
+   color: #0353A4 !important;;
+  }
+  
+  .geography-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #006466  !important;;
+   }
+
+   
+  .dealer-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #38405F  !important;;
+   }
+
+    
+  .year-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #B43E8F !important;
+    
+   }          
+::ng-deep.targetselectedbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.targetselectedbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+               
+::ng-deep.geographybubblestarget .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.geographybubblestarget .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }
+   
+
+                  
+::ng-deep.selecteddealersbubblestarget .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.selecteddealersbubblestarget .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+
+                    
+::ng-deep.yearsbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.yearsbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+
+
+.searchBox {
+
+   position: relative;
+    right: 15px;
+    top: 6px;
+
+  }
+
+ 
+
+  .searchButton {
+
+    display: block;
+
+    color: #000;
+
+    float: left;
+
+    width: 42px;
+
+    height: 41px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: 0.2s;
+
+    background: none;
+
+    position: relative;
+
+    right: 184px;
+
+    top: -4px;
+
+    border: none;
+
+    border-radius: 13%;
+
+    transition: 0.2s;
+
+  }
+
+ 
+
+ 
+
+ 
+
+  .search-btn {
+
+    display: block;
+
+    height: 26px;
+
+    border: none;
+
+    background: rgba(104, 110, 116, 0.66);
+
+
+    color: white;
+
+    border-radius: 5px;
+
+    position: absolute;
+
+    right: 10px;
+
+    top:4px;
+
+   
+
+  }
+
+ 
+
+ 
+
+  .searchInput {
+
+    display: block;
+
+    width: 223px;
+
+    height: 41px;
+
+    background: #FFFFFF;
+
+    float: left;
+
+    padding: 5px 25px 6px;
+
+    border-radius: 10px;
+
+    font-family: 'Gilroy-medium';
+
+    font-style: normal;
+
+    font-weight: 500;
+
+    font-size: 11px;
+
+    line-height: 17px;
+
+    letter-spacing: 0.08em;
+
+    color: #263643;
+
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+
+    position: absolute;
+
+    right: 0px;
+
+    bottom: -3px;
+
+    top: -5px;
+    border: 1px solid rgba(0, 0, 0, 0.3)
+
+  }
+  .searchicons1 {
+    position: relative;
+    top: 23%;
+    // left: 9px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #9B9FA3;
+  }
+  .searchicons2 {
+    display: flex;
+    position: relative;
+    top: 37%;
+    left: 2px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #9B9FA3;
   }

@@ -19,7 +19,9 @@
   background-color: #fff !important;
   border: 1px solid #000;
   white-space: nowrap;
-  height: auto;
+  /* height: auto;
+  width: auto; */
+  /* width: 800px !important; */
 }
 .tooltipRed{
   color: red;
@@ -31,13 +33,13 @@
 }
 .bulletDesign{
   vertical-align: middle;
-  list-style-position: outside;
+  /* list-style-position: outside; */
   font-size: 30 rem;
   }
 ul.contentStyle{
   column-count: 2;
-  column-gap: 50px;
-  word-break: break-word;
+  column-gap:30px;
+  width: fit-content;
   padding-left: 12px;
   
   

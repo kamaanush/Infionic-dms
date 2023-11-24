@@ -1,5 +1,26 @@
 
+.purchaes
+{
+    font-family: 'Calibri';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0.04em;
+    color: #000000;
 
+}
+.Orders_Text
+{
+font-family: 'Calibri';
+font-size: 24px;
+font-weight: 700;
+line-height: 29px;
+letter-spacing: 0.04em;
+color: #000000;
+margin-left: 17px;
+
+
+}
 
 .font{
     font-family: 'Gilroy';
@@ -40,7 +61,8 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 35px;  
     padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+    overflow-x: hidden;
+    /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
@@ -65,17 +87,17 @@ mat-tab{
     width: 547px !important;
     border-radius: 25px;
     background: white;
-    left: 35%;
+    /* left: 35%; */
 height: 35px;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
-    color: white;
-    border-radius: 25px;
-    opacity: 1;
+    color: white; 
+    border-radius: 0px;
+     opacity: 1; 
+    font-family: 'Gilroy-SemiBold';
 }
 
 
@@ -92,7 +114,7 @@ height: 35px;
     height: 0px;
     color: #000000;
     position: relative;
-    top: 6%;
+    top: 5%;
     font-weight: bold;
     left: 20px; 
   }
@@ -133,7 +155,6 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 35px;
     padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
@@ -161,19 +182,22 @@ mat-tab{
     position: relative;
     flex-shrink: 0;
     width: 656px !important;
-
+top:3px;
     border-radius: 25px;
     background: white;
     left: 23%;
+    /* border: 0.5px solid rgba(0, 0, 0, 0.58); */
+    border: 1px solid rgba(1, 139, 117, 1);
 
-}::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+}
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
     color: white;
-    border-radius: 25px;
+    border-radius: 0px;
     opacity: 1;
+
 }
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;
@@ -206,16 +230,24 @@ mat-tab{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
-    color: white;
-    border-radius: 25px;
+    font-family: 'Calibri';
+   color: white;
+    border-radius: 0px;
+    font-size: 15px;
     opacity: 1;
 }
 
 ::ng-deep .order-lab .mat-tab-label{
     height: 35px !important;
     min-width: 161px !important;
-  }
+    font-family: 'Calibri';
+    color:rgba(1, 139, 117, 1);
+    font-size: 15px;
 
+  }
+ ::ng-deep.classi .mat-tab-label .mat-tab-label-content{
+    font-family: 'Calibri';
+    font-size: 15px;
+  }
 
 

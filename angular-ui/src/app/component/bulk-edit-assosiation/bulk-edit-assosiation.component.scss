@@ -31,8 +31,18 @@
     height: 10px;
 } */
 
-
-
+.mainclass
+{
+   height: 653px;
+  overflow: hidden;
+  overflow-y: hidden;
+  width: 97%;
+  margin-left: 2%;
+}
+.savebtnall
+{
+  margin-top: 14px;
+}
 
 .user-text {
     font-size: 30px;
@@ -46,7 +56,7 @@
   
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
+    border: 1px solid rgba(0, 0, 0, 0.3)!important;
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;
@@ -71,7 +81,7 @@
     border-radius: 3px;
     background: #fff;
     margin-top: 0px !important;
-    box-shadow: 0 1px 5px #959595;
+    // box-shadow: 0 1px 5px #959595;
   }
   
   ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
@@ -160,21 +170,21 @@
     border: none;
   } */
   .btnhover {
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
-    background: #000000;
+    background: #686E74;  
     border-radius: 35%;
     position: relative;
     width: 43px;
     height: 42px;
     margin-right: 23px;
-    right: -31px;
-    top: 4px;
+    right: -196px;
+    top: 24px;
   }
   .btnhover1{
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
-    background: #000000;
+    background: #686E74;  
     border-radius: 35%;
     position: relative;
     width: 43px;
@@ -269,7 +279,7 @@
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    // box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
     // transition: 0.2s  ease-in-out;
     position: absolute;
     right: 0px;
@@ -469,7 +479,7 @@
   }
   
   ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    // color: #686E74 !important;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
@@ -479,8 +489,8 @@
   .ag-theme-material .ag-sticky-top {
   
     border: 0.5px solid #000000 !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 25px !important;
+    // box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 0px !important;
   
   }
   
@@ -821,7 +831,7 @@
   
   ::ng-deep.mat-select-panel {
     background: #FFFFFF !important;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05) !important;
+    // box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05) !important;
     border-radius: 8px !important;
     transform: translate(29px, 50px) !important;
   }
@@ -978,8 +988,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   height: 41px;
   line-height: 41px;
   left: 1px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+  border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   width: 80%;
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -1011,6 +1021,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
      /* font-family: 'Gilroy-Bold';  */
      font-weight: bold;
      font-size: 20px;
+     bottom: 27px;
+     left: 550px;
   }
   .addU:after{
     content: "";
@@ -1024,9 +1036,23 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
     position: absolute;
     margin-right: 55px;
   }
+
+  .addU:before{
+    content: "";
+    display: block;
+    width: 931px;
+    height: 2px;
+    background: #686E74;
+    right: 1384px;
+    top: 50%;
+    height: 0.5px;
+    position: absolute;
+    // margin-right: 55px;
+  }
+  
   
   .footer {
-    position: fixed;
+     position: fixed;
     border-radius: 0px 0px 25px 25px;
     height: 50px;
     width: 860px !important;
@@ -1034,36 +1060,47 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   }
   .saveas-draft4 {
     color: #fff;
-    background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    // background: #000000;
+    background-color:#018B75;  
+    // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
     // margin-top: 10px;
     cursor: pointer;
     width: 168px;
     height: 43px;
+    position: relative;
+    bottom: 21px;
+    border:1px solid #018B75;
+    outline: none;
   }
   .saveas-draft {
     color: #fff;
-    background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    // background: #000000;
+    background-color:#018B75;  
+    // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
     margin-top: 25px;
     cursor: pointer;
     width: 168px;
     height: 43px;
+    border: #018B75;
   }
   .saveas-draft2 {
     color: black;
+    // color:white;
+    // background-color:#018B75;
     background: white;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: left;
     margin-top: 25px;
     cursor: pointer;
     width: 168px;
     height: 43px;
+     border: #018B75;
+     outline: none;
   }
   
 .footer {
@@ -1076,8 +1113,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
 
 .saveas-draft {
   color: #fff;
-  background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  // background: #000000;
+  // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
   margin-top: 25px;
@@ -1086,9 +1123,11 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   height: 43px;
 }
 .saveas-draft2 {
-  color: black;
-  background: white;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  // color: black;
+  color:white;
+  background-color:#018B75;
+  // background: white;
+  // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: left;
   margin-top: 25px;
@@ -1104,7 +1143,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   width: 290px;
   border: solid 1px;
 border-radius: 10px;
-margin-left: -25px;
+margin-left: 136px;
   }
   .promotiont2{
     width: 92%;
@@ -1125,13 +1164,15 @@ margin-left: -25px;
 }
 .saveas-draft1 {
   color: #fff;
-  background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  // background: #000000;
+  background-color:#018B75;  
+  // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
   cursor: pointer;
   width: 68px;
   height: 38px;
+  border: #018B75;
 }
 .searchInput1{
   width: 121%;
@@ -1146,19 +1187,24 @@ margin-left: -25px;
   }
   .uom-cls {
     border-radius: 10px;
+    color:  #686E74;
+    text-align: center;
+    align-items: center;
     width: 83px;
     height: 34px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+    border: 0.5px solid  #686E74;
+    // box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
 }
   .main-d{
     background-color: white;
     padding: 10px;
-    border: solid 1px black;
-    border-radius: 10px;
-    height: 360px;
+    border: solid 1px #686E74;
+    border-radius: 2px;
+     height: 385px;
     overflow-y: scroll;
+    position: relative;
+    top: 20px;
 
   }
   .flexcss{
@@ -1170,6 +1216,8 @@ margin-left: -25px;
     resize: none;
     outline: none;
     width: 100px;
+    color:  #686E74;
+   
     }
     .dropdown-form {
       position: relative;
@@ -1183,7 +1231,7 @@ margin-left: -25px;
       border: 1px solid #337ab7;
       background: #44026C !important;
       font-size: 12px;
-      box-shadow: 1px 1px #959595;
+      // box-shadow: 1px 1px #959595;
       color: #fff;
       height: 22px;
       border-radius: 15px;
@@ -1191,14 +1239,14 @@ margin-left: -25px;
     }
     ::ng-deep .roless .dropdown-btn span .ng-star-inserted {
       position: absolute !important;
-      right: -18px !important;
+      right: 55px !important;
       bottom: 0px;
       top: 50px !important;
       /* width: 51px; */
       border: 1px solid #337ab7;
       background: #006466 !important;
       font-size: 12px;
-      box-shadow: 1px 1px #959595;
+      // box-shadow: 1px 1px #959595;
       color: #fff;
       height: 22px;
       border-radius: 15px;
@@ -1213,9 +1261,21 @@ margin-left: -25px;
       border: 1px solid #337ab7;
       background: #000000 !important;
       font-size: 12px;
-      box-shadow: 1px 1px #959595;
+      // box-shadow: 1px 1px #959595;
       color: #fff;
       height: 22px;
       border-radius: 15px;
       text-align: center;
     }
+    .DropDownFlex{
+      position: relative;
+      top: 33px;
+    }
+    .bulkEditLabel{
+      margin-bottom: 4%;
+
+    }
+    .mandatory{
+      color: red;
+    }
+    

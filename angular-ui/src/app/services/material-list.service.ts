@@ -13,9 +13,9 @@ export class MaterialListService {
     next: HttpHandler): Observable<HttpEvent<any>> {
 
 const idToken = localStorage.getItem("token");
-debugger
+
 console.log('idtoken',idToken)
-alert(idToken)
+// alert(idToken)
 
 if (idToken) {
   const cloned = req.clone({

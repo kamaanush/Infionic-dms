@@ -1,10 +1,10 @@
 <div class="m_ainclass">
-  <div class="UNFAPP-asmnt-rgt-area main" style="padding: 12px; padding-left: 19px;overflow-x: hidden;">
+  <div class="UNFAPP-asmnt-rgt-area main" style=" padding-left: 19px;overflow-x: hidden;">
 
     <div class="row"
       style="position: relative;top: 3%;bottom: 8px;margin-top: 30px; font-family: 'Gilroy'; color: grey;">
 
-      <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
+      <div class="col-md-2 col-lg-2 col-sm-2 currencyCbubbles" style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
           <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
@@ -21,15 +21,28 @@
         </div>
       </div>
       <!-- <button (click)="otherstatus()">bhbh</button> -->
-      <div class="icon btnhover refreshbtn" (click)="refresh()">
-        <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh">
+
+      <div class="searchBox3 ">
+        <input id="searchInput" class="searchInput3" type="text" name="" placeholder="Search Here Anything"(keyup)="onSearchChange($event)">
+         <mat-icon  class="searchicons3">search</mat-icon> 
+        <button class="search-bt_n3">Search</button>
+         <!-- <button class="searchButtonn" href="#">
+        </button> -->
       </div>
+
+      <div class="icon btnhover refreshbtn" (click)="refresh()">
+        <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 9px;" alt="refresh">
+      </div>
+      <div class="add-user" (click)="addCurrencyButton()" *ngIf="usertype!=='Viewer'">
+        <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+      </div>
+
     </div>
     <div class="row" style="margin-bottom:5px;">
       <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
       <div class="col-md-4" style="margin-left: 73%;margin-bottom:10px;">
         <div class="row">
-          <div class="col-md-8">
+          <!-- <div class="col-md-8">
             <div class="searchBox d-flex">
               <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
                 placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
@@ -40,12 +53,12 @@
               </button>
               <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
             </div>
-          </div>
-          <div class="col-md-2">
+          </div> -->
+          <!-- <div class="col-md-12">
             <div class="add-user" (click)="addCurrencyButton()">
               <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
-          </div>
+          </div> -->
           <!-- <div class="col-md-0">
 <div class="download-btn" (click)="onBtnExport()">
 <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
@@ -58,7 +71,7 @@
 
     <div>
       <ag-grid-angular id="gridContainer"
-        style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width:100%;"
+        style=" height: 435px;background-color: white;font-family: Gilroy;width:100%;"
         class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs"
         [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true"
         [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
@@ -67,10 +80,10 @@
         [paginationPageSize]="paginationPageSize" (bodyScroll)="handleScroll($event)"></ag-grid-angular>
 
     </div>
+
     <div class="pagination">
-      <span class="pagination-cls">1&nbsp;</span> to&nbsp; <span
-        class="pagination-cls">{{paginationScrollCount}}&nbsp;</span> of&nbsp; <span
-        class="pagination-cls">{{rowData5.length}}</span>
+      <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cl">{{paginationScrollCount}}</span> <span class="pagination-cl"> &nbsp; of&nbsp;</span>
+      <span class="pagination-cl">&nbsp;{{rowData5.length}}</span>
     </div>
 
   </div>

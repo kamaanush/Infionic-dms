@@ -11,19 +11,27 @@
       <div class="row">
         <p class="col-10 cate">Category ({{coutCatagory}})</p>
         <p class="col-2">
-          <mat-icon (click)=addCategory() style="cursor: pointer;"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
+          <mat-icon (click)=addCategory() style="cursor: pointer;color:  rgba(1, 139, 117, 1);"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
         </p>
       </div>
       <mat-card    [ngClass]="{ 'scroll': coutCatagory > 6 }">
         <p class="primary">Primary categories</p>
         <mat-card-content>
           <div class=" d-flex" *ngFor="let catg of catgname">
-            <p class="col-11 catg cursor-pointer" (click)="catg.isActive==true ?  onClick(catg) : false" [ngClass]="{ 'selected': catg.catId == selectedItem.catId ,'selectedInactive': catg.isActive==false }" style="cursor: pointer;">{{catg.catName}} 
-               <span *ngIf="!(catg.catId == selectedItem.catId)" ><img src="../../../assets/img/power.svg"  alt="" class="tickmark" (click)="deativateCat(catg)" >
-                 <img src="../../../assets/img/pencil.svg"  alt="" class="tickmark"*ngIf="catg.isActive"  (click)="editcategory(catg)" ></span>
-                 <span *ngIf="catg.catId == selectedItem.catId" ><img src="../../../assets/img/Group.svg"  alt="" class="tickmark" (click)="deativateCat(catg)" >
-                  <img src="../../../assets/img/editMeterial.svg"  alt="" class="tickmark"*ngIf="catg.isActive"  (click)="editcategory(catg)" ></span>
-                </p>
+            <p class="col-11 catg cursor-pointer" (click)="catg.isActive==true ?  onClick(catg) : false"
+              [ngClass]="{ 'selected': catg.catId == selectedItem.catId ,'selectedInactive': catg.isActive==false }"
+              style="cursor: pointer;">{{catg.catName}}
+              <span *ngIf="!(catg.catId == selectedItem.catId) && usertype !== 'Viewer'">
+                <img src="../../../assets/img/power.svg" alt="" class="tickmark" (click)="deativateCat(catg)">
+                <img src="../../../assets/img/pencil.svg" alt="" class="tickmark" *ngIf="catg.isActive"
+                  (click)="editcategory(catg)">
+              </span>
+              <span *ngIf="(catg.catId == selectedItem.catId) && usertype !== 'Viewer' ">
+                <img src="../../../assets/img/Group.svg" alt="" class="tickmark" (click)="deativateCat(catg)">
+                <img src="../../../assets/img/editMeterial.svg" alt="" class="tickmark" *ngIf="catg.isActive"
+                  (click)="editcategory(catg)">
+              </span>
+            </p>
              
             <!-- <mat-icon class="col-2" (click)="removecatg(catg)" style="cursor: pointer;padding-top: 2px;">remove_circle</mat-icon> -->
           </div>
@@ -50,7 +58,7 @@
 
       
         <p class="col-2"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">
-          <mat-icon (click)=addSubCategory() style="cursor: pointer;">add_circle</mat-icon>
+          <mat-icon (click)=addSubCategory() style="cursor: pointer;color:  rgba(1, 139, 117, 1);">add_circle</mat-icon>
         </p>
       </div>
       <!-- sub category -->
@@ -87,7 +95,7 @@
       <div class="row">
         <p class="col-10 type1">Type ({{typecount}})</p>
         <p class="col-2">
-          <mat-icon (click)=addTypeCategory() style="cursor: pointer;"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
+          <mat-icon (click)=addTypeCategory() style="cursor: pointer;color:  rgba(1, 139, 117, 1);"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
         </p>
       </div>
       <!-- type -->
@@ -123,6 +131,7 @@
         </mat-card-content>
       </mat-card>
 
+      
     </div>
   </div>
 </div>

@@ -265,7 +265,7 @@ export class SalesReportsComponent implements OnInit {
   };
   AddpromotionData: any;
   clickNextRendererFunc() {
-    alert('hlo');
+    // alert('hlo');
   }
 
 
@@ -445,7 +445,7 @@ export class SalesReportsComponent implements OnInit {
     textField: 'customername',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 2,
+    itemsShowLimit: 1,
     allowSearchFilter: true
   };
   salesReportData: any = [];
@@ -693,7 +693,7 @@ export class SalesReportsComponent implements OnInit {
         textField: 'promotionTypesName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedItems = [];
@@ -843,7 +843,7 @@ export class SalesReportsComponent implements OnInit {
         textField: 'customername',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedItems = [];
@@ -1032,7 +1032,7 @@ export class SalesReportsComponent implements OnInit {
     textField: 'stockItemName',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 2,
+    itemsShowLimit: 1,
     allowSearchFilter: true
   };
 
@@ -1336,7 +1336,7 @@ export class SalesReportsComponent implements OnInit {
 
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -1427,7 +1427,7 @@ export class SalesReportsComponent implements OnInit {
       textField: 'geographyName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.selectedStatus = [];
@@ -1535,7 +1535,15 @@ export class SalesReportsComponent implements OnInit {
     });
   }
   onClickAdvancedFilter() {
-    this.dialog.open(AdvancedFilterComponent, { width: '643px', height: '686px' });
+
+    const dialogRef = this.dialog.open(AdvancedFilterComponent, { width: '643px', height: '686px' });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log("ggggggggggggg", res);
+      if(res){
+        this.selectedFilters = {...this.selectedFilters, ...res};
+        console.log(this.selectedFilters);
+      }
+    })
   }
 }
 

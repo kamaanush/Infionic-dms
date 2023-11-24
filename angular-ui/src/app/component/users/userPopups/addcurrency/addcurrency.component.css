@@ -2,22 +2,25 @@
     
     border-radius: 21px;
 }
+.leftunits
+{
+    left: 19px;
+}
 
 .INFOR
 {
-    font-family: 'Gilroy';
+    font-family: 'bold';
 font-size: 21px;
 line-height: 23px;
 color: #000000;
-font-weight: 300;
+
 }
 .conver
 {
-    font-family: 'Gilroy';
 font-size: 21px;
 line-height: 23px;
 align-items: center;
-font-weight: 300;
+font-family: 'Gilroy-Light';
 color: #000000;
 }
 .name1
@@ -26,7 +29,6 @@ color: #000000;
 font-size: 16px;
 line-height: 15px;
 align-items: center;
-font-weight: 400;
 
 color: #000000;
 }
@@ -36,7 +38,7 @@ color: #000000;
     font-size: 16px;
     line-height: 15px;
     align-items: center;
-    font-weight: 400;
+    /* font-weight: 400; */
     
     color: #000000;
 }
@@ -62,14 +64,16 @@ color: #000000;
     /* background-color: #CED4DA; */
 }
 
-.main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+/* .main {
+ 
 
-}
+} */
 
-.font {
+   .font {
     font-family: 'Gilroy';
-}
+}   
+
+ 
 
 .head-t h3 {
     color: #000000;
@@ -80,8 +84,8 @@ color: #000000;
 
 .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+
     font-size: 20px;
 }
 
@@ -110,13 +114,17 @@ color: #000000;
 .addUserForm input {
     border-radius: 10px;
     /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-    border: black 1px solid;
+    /* border: black 1px solid; */
+    border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
     outline: none !important;
-    font-weight: lighter;
-    color: #000000;
+    /* font-weight: lighter; */
+    /* color: #000000; */
+    font-family: 'Gilroy-Bold';
+    color: rgba(104, 110, 116, 0.75);
+    
   
 }
 .divAlign{
@@ -154,10 +162,10 @@ mat-form-field {
     padding: 0em 0 0.7em 0;
     } */
 
-::ng-deep.mat-dialog-container {
+/* ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
-}
+    
+} */
 
 .btn-primary:disabled {
     border-color: black;
@@ -168,9 +176,11 @@ mat-form-field {
 }
 .imputtext{
     height: 43px;
+    
 }
 .defaultCurrLabel{
     position: relative;
     left: 300px;
     bottom: 36px;
+    font-family: 'Gilroy-Medium';
 }

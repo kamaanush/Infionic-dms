@@ -56,7 +56,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { PopupCellRendererComponent } from '../popup-cell-renderer/popup-cell-renderer.component';
 import * as moment from 'moment';
 import { UseractionComponent } from '../useraction/useraction.component';
-import { parseMessage } from '@angular/localize/src/utils';
+
+// uncomment this based on need****sainathreddy***
+// import { parseMessage } from '@angular/localize/src/utils';
 
 @Component({
   selector: 'app-users',
@@ -110,31 +112,32 @@ export class UsersComponent implements OnInit {
 
     {
       headerName: "User ID",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-      tooltipField: "employeeCode", maxWidth: 200,
+      field: 'employeeCode', type: ['nonEditableColumn'], 
+      // sort: 'desc',
+      tooltipField: "employeeCode",cellStyle: { color: '#686E74' }, maxWidth: 200,
 
     },
 
-    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'], tooltipField: "userName", },
+    { headerName: "Username", field: 'userName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "userName", },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField: "roleName", },
+    { headerName: "Role", field: 'roleName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "roleName", },
 
     {
       headerName: "Email ",
-      field: 'email', type: ['nonEditableColumn'],
+      field: 'email', type: ['nonEditableColumn'],cellStyle: { color: '#686E74' },
       tooltipField: "email",
       // flex: 1,
     },
 
     {
       headerName: "Phone No",
-      field: 'mobile', type: ['nonEditableColumn'],
+      field: 'mobile', type: ['nonEditableColumn','rightAligned'],cellStyle: { color: '#686E74' },
       tooltipField: "mobile"
     },
 
     {
       headerName: "Last Login",
-      field: 'lastLoginDate', type: ['nonEditableColumn'],
+      field: 'lastLoginDate',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
       cellRenderer: function dateFormtter(params) {
         if (params.value == null) {
           return params.value = ''
@@ -185,6 +188,7 @@ export class UsersComponent implements OnInit {
     flex: 1,
     resizable: true,
     sortable: true,
+    lockVisible:true,
   };
 
 
@@ -370,7 +374,7 @@ export class UsersComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
 
   onSelectAll(items: any) {
@@ -408,6 +412,7 @@ export class UsersComponent implements OnInit {
   refresh() {
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
+    this.searchText = '';
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
@@ -421,6 +426,7 @@ export class UsersComponent implements OnInit {
       search: '',
 
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
@@ -774,8 +780,17 @@ export class UsersComponent implements OnInit {
     // alert('mani')
 
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv({ fileName: 'users_' + this.convertedDateFormat() });
 
   }
   onGridReady(params: GridReadyEvent) {

@@ -5,7 +5,7 @@
     <div class="col-xl-12 col-md-12 ACVTY-no-pad screen-width">
       <div class="UNFAPP-asmnt-rgt-area screen-h"><br>
         <div class="row">
-          <div class="col-md-2 col-lg-2 col-6">
+          <div class="col-md-2 col-lg-2 col-6 categorybubblesmaterials">
             <form [formGroup]="myForm">
               <ng-multiselect-dropdown class="catty catty22" name="city" [placeholder]="'Categor'"
                 formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname"
@@ -23,7 +23,7 @@
               </div>
             </form>
           </div>
-          <div class="col-md-2 col-lg-2 col-6">
+          <div class="col-md-2 col-lg-2 col-6 subcategorybubblesmaterials">
             <form [formGroup]="subCategory">
               <ng-multiselect-dropdown class="subcatty sub2" name="subCategory" [placeholder]="''"
                 formControlName="subCategory" [disabled]="disabled" [settings]="dropdownSettings2" [data]="sub_category"
@@ -43,7 +43,7 @@
 
             </div>
           </div>
-          <div class="col-md-2 col-lg-2 col-6">
+          <div class="col-md-2 col-lg-2 col-6 typecategorybubblesmaterials">
             <form [formGroup]="type">
               <ng-multiselect-dropdown class="typy typy22" name="type" [placeholder]="''" formControlName="type"
                 [disabled]="disabled" [settings]="dropdownSettings3" [data]="typeI" (onSelect)="onTypeSelect($event)"
@@ -63,7 +63,7 @@
 
             </div>
           </div>
-          <div class="col-md-2 col-lg-2 col-6">
+          <div class="col-md-2 col-lg-2 col-6 productcategorybubblesmaterials">
             <form [formGroup]="product">
               <ng-multiselect-dropdown class="producty producty22 " name="product" [placeholder]="''"
                 formControlName="product" [disabled]="disabled" [settings]="dropdownSettings4" [data]="Product"
@@ -80,7 +80,7 @@
 
             </div>
           </div>
-          <div class="col-md-2 col-lg-2 col-6">
+          <div class="col-md-2 col-lg-2 col-6 categorybubblesmaterials">
             <form [formGroup]="myForms">
               <ng-multiselect-dropdown class="sttss sttss22" name="citys" [placeholder]="'Status'"
                 formControlName="citys" [disabled]="disabled" [settings]="dropdownSettings1" [data]="statusList"
@@ -99,30 +99,27 @@
           </div>
           <div class="col-lg-2 col-6">
             <div class="icon btnhover refreshbtn" (click)="refresh()">
-              <img src="assets/img/Vector.png" class="imageRefresh" alt="refresh">
+              <img src="assets/img/Refreshbutton.svg" class="imageRefresh" alt="refresh">
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row searchRoww">
           <div class="col-lg-12 listicon">
             <div class="searchBox d-flex">
-              <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"
+              <input id="searchInput" class="searchInput font" type="text" name="" placeholder="Type & Search for Anything"
                 (keyup)="onSearchChange($event)">
-              <button class="searchButton" href="#">
-                <i class="material-icons">
-                  search
-                </i>
-              </button>
+                <mat-icon  class="searchButton">search</mat-icon>
               <button class="search-btn searchAlign">Search</button>
             </div>
             <div class="add-user" (click)="addMaterials()"  userRoleDirective="MAT_ADD" pageName="settingmaterials">
-              <img src="assets/img/add-btn.png" class="addImage" alt="add-user-btn">
+              <img src="assets/img/ADD.svg" class="addImage" alt="add-user-btn">
             </div>
+            
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-4">
+        <div class="row ">
+          <div class="col-4 showOnlyCheckbox">
             <mat-checkbox class="example-margin font" [checked]="allComplete" [color]="color"
               (change)="setAll($event.checked)">
               Show only products
@@ -135,7 +132,7 @@
         </div>
         <!-- <br> -->
 
-        <div>
+        <div class="gridMaterial">
           <ag-grid-angular id="gridContainer" style="height: 400px;" class="ag-theme-material gridAlign"
             [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
             [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
@@ -144,9 +141,9 @@
             (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
             [paginationPageSize]="paginationPageSize" (bodyScroll)="handleScroll($event)"></ag-grid-angular>
         </div>
-        <div class="pagination">
-          <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
-          <span class="pagination-cls">{{rowData5.length}}</span>
+       <div class="pagination">
+          <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+          <span class="pagination-cl">&nbsp;{{rowData5.length}}</span>
         </div>
       </div>
 

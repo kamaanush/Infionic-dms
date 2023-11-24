@@ -17,9 +17,9 @@ export class UserService {
     next: HttpHandler): Observable<HttpEvent<any>> {
 
     const idToken = localStorage.getItem("token");
-    debugger
+    
     console.log('idtoken', idToken)
-    alert(idToken)
+    // alert(idToken)
 
     if (idToken) {
       const cloned = req.clone({
@@ -84,18 +84,21 @@ export class UserService {
 
     return this.http.post<any>(this.userurl + 'UserMgmtApi/GetAllUsers', data);
   }
+  public getGeography(data) {
 
+    return this.http.post<any>(this.userurl + 'MaterialApi/GetShippingPackingChargesList', data);
+  }
 
   public dealerDropdownOrderlist() {
     return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
   }
 
   public dealerDropdownOrderlist1() {
-    debugger
+    
     return this.http.get<any>(`${this.userurl}DealerApi/GettargetDealerdropdown`);
   }
   public dealerDropdownOrderlist2(data) {
-    debugger
+    
     return this.http.post<any>(this.userurl + 'DealerApi/GetDealerdropdownByTragetGroupId', data);
   }
   // http://13.126.235.145:801/api/DealerApi/GetAssoDealerdrop
@@ -123,6 +126,25 @@ export class UserService {
     return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserStatusList');
   }
 
+  public GetGeoDetailsForGeographySettings(id) {
+    return this.http.get<any>(this.userurl + 'MaterialApi/GetDefaultGeographydrop?CurrentUserId='+id);
+  }
+  public addStockPrice(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/AddShippingCharges', data);
+  }
+  public addPackingCharge(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/AddPackingCharges', data);
+  }
+
+  public UpdateStockPrice(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/UpdateShippingCharges', data);
+  }
+  public UpdatePackingCharge(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/UpdatePackingCharges', data);
+  }
+  public editById(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/GetPackingShippingChargesByID', data);
+  }
   public dealersStatus() {
     return this.http.get<any>(this.userurl + 'DealerApi/GetDealerStatusdrop');
   }
@@ -156,8 +178,13 @@ export class UserService {
     // userId=215&currentPassword=Abc@123&newPassword=Abc@1233
   }
 
-  public getcurrencylist(data) {
+  public getcurrencylist(data)
+ {
     return this.http.post<any>(this.userurl + 'OtherMasterApi/GetCurrencyList', data);
+  }
+  public getDefaultCurrency(userId: any)
+  {
+    return this.http.get<any>(`${this.userurl}OtherMasterApi/GetDefaultCurrency?CurrentUserId=${userId}`);
   }
   public getDistrictLevelDataOnMouseOver(data) {
     return this.http.post<any>(this.userurl + 'DealerApi/GetDealergeonames', data);

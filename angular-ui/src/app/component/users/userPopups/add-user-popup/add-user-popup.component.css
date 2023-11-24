@@ -13,6 +13,10 @@ align-items: center;
 
 color: #000000;
 }
+.una_me
+{
+    font-family: 'Gilroy-Medium';
+}
 .rs
 {
     font-family: 'Gilroy-Light';
@@ -44,14 +48,11 @@ color: #000000;
 
 }
 
-.main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 
-}
 
-.font {
+/* .font {
     font-family: 'Gilroy';
-}
+} */
 
 .head-t h3 {
     color: #000000;
@@ -62,8 +63,7 @@ color: #000000;
 
 .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+     font-family: 'Gilroy-Bold';
     font-size: 20px;
 }
 
@@ -100,14 +100,14 @@ color: #000000;
 .addUserForm input {
     height: 43px;
 
-    border-radius: 10px;
-    /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    border-radius: 7px;
+    border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     border: 0.5px solid #000000;
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
     outline: none !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
 }
 ::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
     margin-bottom: 0px !important;
@@ -125,12 +125,14 @@ span {
     color: #686E74;
     font-weight:  #686E74;
     cursor: pointer;
+    bottom: 17px;
 }
 
 label {
     /* padding: 2px 0; */
     font-size: 14px;
     margin: 5px;
+    font-family: 'Gilroy-Medium';
 }
 
 mat-form-field {
@@ -142,10 +144,7 @@ mat-form-field {
     padding: 0em 0 0.7em 0;
     } */
 
-::ng-deep.mat-dialog-container {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
-}
+
 
 .btn-primary:disabled {
     border-color: black;

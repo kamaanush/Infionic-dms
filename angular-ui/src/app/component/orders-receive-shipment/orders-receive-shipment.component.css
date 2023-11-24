@@ -1,12 +1,124 @@
-/* .mat-form-field {
-  width: 680px;
-  font-family: 'Gilroy';
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-} */
+
+::ng-deep .orders-tab-group .mat-tab-label{
+  height: 35px !important;
+  min-width: 166px !important;
+  font-family: 'Calibri';
+  color:rgba(1, 139, 117, 1);
+  font-size: 15px;
+
+}
+
+.datapromoname
+{
+  position: relative;
+  left: 20px;
+  font-family: 'Calibri';
+  font-size: 15px;
+ line-height: 18px;
+ letter-spacing: 0em;
+ color: black!important;
+ font-weight: 500;
+}
+.collapse-icon
+{
+  position: relative;
+  left: 8px;
+}
+.text-secondary
+{
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+letter-spacing: 0em;
+color: #686E74;
+}
+.TOtalorderQTY
+{
+  font-family: 'Calibri';
+  font-size: 15px;
+ font-weight: 700;
+color: #000000;
+}
+
+.Order-SHIP  td {
+  padding: 2px !important;
+  
+}
+.Order-Information td
+{
+  padding: 0px;
+}
+.FreePromoitems
+{
+  color: #018B75 !important;
+}
+
+.DEalername
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: 0em;
+color: #000000;
+}
+.tooltip-content
+{
+  font-family: 'Calibri';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #000000;
+}
+.card_orderinfo
+{
+background-color: white !important;
+border: 1px solid #989CA04D;
+border-radius: 10px;
+}
+.OrderInformation
+{
+  font-family: 'Calibri';
+  font-size: 17px;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  color: #000000 !important;
+  font-weight: bold;
+  position: relative;
+  left: 1px;
+  top: -12px;
+
+}
 .proheight
 {
   width: 90vw;
 }
+
+::ng-deep .mat-tab-header {
+  border: 1px solid grey;
+  border-radius: 35px;
+  flex-shrink: 0;
+  width: 322px !important;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled){
+  border-radius: 0px;
+   background: rgba(1, 139, 117, 1) !important; 
+}
+
+::ng-deep.mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted{
+  height: 35px !important;
+  /* background-color:  rgba(1, 139, 117, 1) !important; */
+}
+
+::ng-deep .mat-tab-body-wrapper{
+  margin-top: 20px;
+}
+
 .mat-form-field::placeholder {
     bottom: 2px;
   }
@@ -168,18 +280,6 @@
     margin-top: -51px;
   }
   
-
-
-  td {
-    text-align: right;
-    padding: 3px 0 0 10px;
-  }
-  th{
-    text-align: right;
-    padding: 3px 0 0 10px;
-  }
-  
-  
   .mat-horizontal-stepper-wrapper {
     margin-top: -47px;
   
@@ -206,10 +306,7 @@
     /* background-color: #CED4DA; */
   }
   
-  .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  
-  }
+
   
   .font {
     font-family: 'Gilroy';
@@ -231,14 +328,14 @@
   
   .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+    /* font-weight: bold; */
     font-size: 20px;
   }
   .addU12 {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+    /* font-weight: bold; */
     font-size: 20px;
   }
 
@@ -272,10 +369,10 @@
   .addU:after {
     content: "";
     display: block;
-    width: 300px;
+    width: 40%;
     height: 2px;
     background: #686E74;
-    right: 111px;
+    right: 1%;
     top: 50%;
     position: absolute;
   }
@@ -283,7 +380,7 @@
   .addU:before {
     content: "";
     display: block;
-    width: 300px;
+    width: 40%;
     height: 2px;
     background: #686E74;
     left: 0;
@@ -308,13 +405,14 @@
     color: red;
   }
   
-  .close-icon {
-    left: 100%;
+  .close_icon {
+    left: 98%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 11px;
+    margin-top: -1px;
+    font-weight: bold;
   
   }
   
@@ -322,14 +420,35 @@
     margin: 3px;
     font-size: 14px;
     align-items: center;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-family: 'Gilroy-SemiBold';
   }
   
   .DescInfo-label {
     margin: 5px;
+    font-size: 14px;
+    font-family: 'calibri';
+    font-weight: normal;
+  }
+  .DescInfo-labels {
+    margin: 5px;
     font-size: 13px;
     align-items: center;
     font-weight: 500;
+    position: relative;
+    font-family: 'Gilroy-Medium';
+    /* top: 25px;
+    right: 17%; */
+  }
+  .DescInfo-labelss {
+    margin: 5px;
+    font-size: 13px;
+    align-items: center;
+    font-weight: 500;
+    position: relative;
+    font-family: 'Gilroy-Medium';
+    /* top: 25px;
+    right: 19%; */
   }
   
   ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
@@ -338,13 +457,25 @@
   }
   
   ::ng-deep.mat-dialog-container {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    overflow: auto;
-  max-width: 95vw;
+    /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    overflow-x: hidden;
+    overflow-y: hidden;
+  /* max-width: 95vw; */
+  height: 100%;
   
   }
   
-  
+  .shipmentOnes{
+    width: 100%;
+  }
+  .tabell
+  {
+    width: 100%;
+    
+  }
+  .shipmentTwo{
+    width: 98%;
+  }
   
   .categorydrp {
     width: 205px;
@@ -581,9 +712,9 @@
     color: white;
   }
   
-  .row {
-    width: 100%;
-  }
+  /* .row {
+    width: 96%;
+  } */
   
   .bar {
     height: 400px;
@@ -880,17 +1011,16 @@
   }
   
   .collapsible {
-    cursor: pointer;
-    padding: 5px;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
     border-radius: 10px 10px 0px 0px;
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
-    border-radius: 10px;
+    color: white;
+    border: 0.5px solid rgba(1, 139, 117, 1);
+    background: rgba(1, 139, 117, 1);
+    height: 52px;
   }
   
   /* .active, .collapsible:hover {
@@ -898,15 +1028,14 @@
     } */
   
   .content {
-    padding: 0 18px 10px;
+    /* padding: 0 18px 10px; */
     overflow: hidden;
     box-sizing: border-box;
     border-width: 0px 1px 1px 1px;
-    border-style: solid;
-    border-color: #686E74;
+    /* border-style: solid;
+    border-color: #686E74; */
     border-radius: 0px 0px 10px 10px;
-    overflow: auto;
-    margin: 0px 10px;
+    border: 1px solid #989CA04D;
   }
   .content-order {
     padding: 0 18px 10px;
@@ -923,12 +1052,29 @@
   height: 5px;
   }
   .top-bottom {
-    margin-top: 25px;
+    margin-top: 14px;
   }
   
   .label-cls {
     position: relative;
-    top: 6px;
+    top: 14px;
+    font-size: 17px;
+    margin-left: 1%;
+    font-family: 'Calibri';
+    left: 33px;
+    color: #FFFFFF !important;
+
+
+  }
+  .Total-Orderinfo
+  {
+    font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+/* color: #000000; */
+;
+ 
   }
   
   
@@ -969,12 +1115,22 @@
   
   .main {
     overflow-x: hidden !important;
-  
+    height: 635px;
   
   }
+  /* .reciveShipscroll{
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  } */
   
   .promotionpopup-scroll {
     min-height: 601px !important;
+  }
+  .receivementscroball
+  {
+    height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   
   .total_total
@@ -982,13 +1138,26 @@
   
   width: 129px;
   height: 52px;
-  margin-right: -6px;
-  background: #686E74;
+  margin-right: -1px;
+  background: #018B75CC;
+  font-family: "Calibri";
   border-radius: 0px 21.2px 21.2px 0px;
   margin-top: -5px;
   color: white;
   text-align:left;
 padding-left: 20px;
+margin-top: 0px;
+}
+.SUBTotaldatacolor
+{
+  position: relative;
+  right: 100px;
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+
+
 }
 .totaltotal
 {
@@ -1009,7 +1178,9 @@ padding-left: 20px;
  
 }
 .dispatchC{
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: 'Gilroy-SemiBold';
+  font-size: 14px;
 }
   .footer {
     /* position: fixed; */
@@ -1051,7 +1222,7 @@ padding-left: 20px;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
-    margin-top: 15px;
+    margin-top: 4%;
     cursor: pointer;
     width: 168px;
     height: 43px;
@@ -1061,9 +1232,10 @@ padding-left: 20px;
     font-family: 'Gilroy-SemiBold';
     font-size: 15px;
     line-height: 18px;
-  
     align-items: center;
     text-align: center;
+    background: rgba(1, 139, 117, 1);
+    border-color: rgba(1, 139, 117, 1) ;
   
     color: #FFFFFF;
   }
@@ -1083,8 +1255,9 @@ padding-left: 20px;
     font-weight: bold;
     text-decoration-line: underline;
     cursor: pointer;
-  
+    margin-top: 4%;
     font-family: 'Gilroy-Bold';
+    margin-left: 1%;
   
   
   
@@ -1180,7 +1353,7 @@ padding-left: 20px;
   .expand-arrow {
     width: 24%;
     position: relative;
-    right: -28px;
+    right: -80px;
     top: 4px;
   }
   
@@ -1233,22 +1406,137 @@ padding-left: 20px;
     top: 0px !important;
   }
   
-  .IteminputBoxes {
-    width: 100px;
-    height: 30px;
-    background: none;
-    font-size: 12.5px;
+  .IteminputBoxes1 {
+    left: 32px;
+    position: relative;
+    top: 2px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+
   }
+  .IteminputBoxes2 {
+    left: 165px;
+    position: relative;
+    top: 2px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes3
+  {
+    position: relative;
+    left: 63px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes4
+  {
+    position: relative;
+    left: 120px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes5
+  {
+    position: relative;
+    right: 3px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes6
+  {
+    position: relative;
+    left: 49px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes7
+  {
+    position: relative;
+    left: 121px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+ 
+  .IteminputBoxes8
+  {
+    position: relative;
+    right: 4px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes9
+  {
+    position: relative;
+    left: 47px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+
+  .Shipmentorders
+  {
+    background: rgba(1, 139, 117, 1);
+    color: white;
+    height: 52px;
+    padding-top: 15px;
+    font-size: 17px;
+    font-family: 'Calibri';
+   font-weight: 700;
+   line-height: 22px;
+   border-top-left-radius: 3px;
+   border-top-right-radius: 3px;
+  }
+  .numeric {
+    text-align: right;
+  }
+  .Charactersleft
+  {
+    text-align: right;
+  }
+ .text-right{
+  width: 100px;
+ }
+ .text_right
+ {
+  text-align: right;
+ }
+ .OrdersItems
+ {
+  font-family: 'Calibri';
+font-size: 17px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: 0em;
+color: white;
+background: rgba(1, 139, 117, 1);
+height: 52px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+
+ }
+  
+  
   
   .itemLeft {
     font-size: 12.5px;
     text-align: left;
+    margin-right: -39px;
+    font-family: 'Gilroy-SemiBold';
   }
   
   .itemLeft1 {
     font-size: 12.5px;
     margin-left: 22px;
     text-align: left;
+    font-family: 'Gilroy-SemiBold';
   }
   
   
@@ -1267,30 +1555,77 @@ padding-left: 20px;
     border-radius: 68%;
     color: white;
     padding: 3px 5px;
+    margin-left: -8px;
   }
   
   .totall {
-    width: 750px;
-    height: 53px;
+    width: 50%;
+    height: 51%;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
+    border-top:1px  solid  #989CA04D;
+    border-bottom: 1px solid #989CA04D;
+    border-left: 1px solid #989CA04D;
+    border-right: 1px solid #989CA04D;
     border-radius: 21px;
-    padding: 5px;
     font-size: 13px;
-    margin-left: 63px;
+    position: relative;
+    /* left: 60.2%; */
+   
   }
   
   .subitem {
     font-size: 13px;
     width: 179px;
+    text-align: right;
+    padding: 5px;
+  }
+  .tr .subitem
+  {
+    background-color: #0091EA !important;
+  }
+  .totall td {
+    padding: 6px;
+  }
+  .SUBTOTALORDERS
+  {
+    position: relative;
+    right: 57px;
+  }
+
+
+
+  .SUBITEMNAME {
+    font-family: 'Calibri';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    position: absolute;
+    left: 53px;
+  }
+
+  .numbers {
+   /* right: 70px; */
+   /* position: relative; */
+   font-family: 'Calibri';
+ font-size: 15px;
+ font-weight: 400;
+ line-height: 15px;
+ letter-spacing: 0em;
+ color:  #686E74;
+
   }
   
   .innerTotal {
     margin-left: 15px;
   }
-  
+
+  .subitem:nth-child(odd){
+    background: #DEE2E633;
+  }
   .alltotals {
     margin-bottom: 1px;
+    font-family: 'Gilroy-Medium';
   }
   
   /*---*/
@@ -1329,6 +1664,7 @@ padding-left: 20px;
     border-radius: 10px;
     border: 1px solid black;
     font-size: 12.5px;
+     text-align: right;
   }
   
   .ShipmentinputBoxes1 {
@@ -1340,6 +1676,7 @@ padding-left: 20px;
     font-size: 12.5px;
     background-color: white;
     color: black;
+    text-align: right;
   }
   .ShipmentinputBoxes4 {
     width: 70px;
@@ -1350,6 +1687,7 @@ padding-left: 20px;
     font-size: 12.5px;
     background-color: transparent;
     color: black;
+    /* text-align: center; */
   }
   .ShipmentinputBoxes3 {
     width: 70px;
@@ -1385,15 +1723,16 @@ padding-left: 20px;
   }
   
   .dispatchComments {
-    width: 825px;
+    width: 1289px;
     height: 73px;
     padding-bottom: 45px;
     padding-left: 7px;
     border-radius: 10px;
     border: 1px solid black;
-    font-size: 12.5px;
+    font-size: 13px;
     background-color: white;
     color: black;
+    font-family: 'Gilroy-Regular';
   }
   
   .label-div {
@@ -1463,11 +1802,13 @@ padding-left: 20px;
   }
   .invoice{
     border-radius: 10px;
-    padding: 3px;
+    padding: 10px;
     background: none !important;
-    width: 183px;
+    width: 223px;
     border: 1px black solid;
     height: 35px;
+    margin-left: 17%;
+
   }
   ::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0.4375em 0;
@@ -1499,3 +1840,352 @@ padding-left: 20px;
     width: 20px;
     right: 10px;
   }
+  .paddinginth
+  {
+    padding: 2px 3px 5px 30px;
+    font-family: 'Gilroy-Bold';
+    font-size: 14px;
+    position: relative;
+    /* left: 3%; */
+  }
+  /* table */
+  .number{
+    text-align: right;
+  }
+  .IteminputBoxes{
+    text-align: right;
+  }
+  .fontweight
+  {
+    font-weight: 500;
+  }
+  .label1
+  {
+    margin-left: 15%;
+  }
+  .label2
+  {
+    margin-left: 17%;
+    font-family: 'Gilroy-SemiBold';
+  }
+  .receive_date
+  {
+    margin-left: 16%;
+  }
+
+  ::ng-deep .mat-tooltip {
+    color: black !important;
+    /* font-size: 16px !important; */
+    background-color: white !important;
+    border: 1px solid grey !important;
+    zoom: 1.2;
+}
+
+
+.Receiveshipmentheader
+{
+  font-family: 'Calibri';
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.DealerInfo-label
+{
+  margin: 5px;
+  font-size: 15px;
+  align-items: center;
+  /* color: #000000; */
+  font-family: 'Calibri';
+ font-weight: 600;
+}
+.Dealerdata
+{
+  font-family: 'Calibri';
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 6px;
+}
+.Receiveshipmentheaderitems
+{
+  font-family: 'Calibri';
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.itemLeft {
+  font-size: 12.5px;
+  text-align: left;
+  margin-right: -39px;
+  font-family: 'Gilroy-SemiBold';
+}
+.Iteminput__Boxes {
+  width: 100px;
+  height: 30px;
+  background: none;
+  font-size: 13px;
+  position: relative;
+  top: 9px;
+  font-family: 'Calibri';
+}
+.promoItem {
+  width: 30px;
+  height: 30px;
+  background: #0091EA;
+  border-radius: 68%;
+  color: white;
+  padding: 3px 5px;
+  margin-left: -8px;
+}
+.totall_shipment{
+  width: 44%;
+  height: 51%;
+  background: #FFFFFF;
+  border-top:1px  solid  #018B75;
+  border-bottom: 1px solid #018B75;
+  border-left: 1px solid #018B75;
+  border-right: 1px solid #018B75;
+  border-radius: 21px;
+  font-size: 13px;
+  position: relative;
+  left: 60.2%;
+  /* background: #018B75; */
+ 
+ 
+}
+.innerTotalshipment{
+  margin-left: 15px;
+}
+  .subitemshipments {
+  font-size: 13px;
+  width: 179px;
+}
+.alltotals__shipments
+{
+   margin-bottom: 1px;
+font-family: 'Calibri';
+}
+.TOTALDATAshipmenst
+{
+  margin-top: 1px;
+    margin-left: 12px;
+    color: white;
+    font-size: 16px;
+}
+#Totaldatashihp
+{
+  margin-left: 12px;
+ 
+}
+#shipmentschargs
+{
+  margin-left: 12px;
+  color: black;
+}
+ 
+.InviceData {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+}
+.invicedatalabel {
+  position: relative;
+  top: 6px;
+  font-size: 18px;
+  margin-left: 1%;
+  font-family: 'Calibri'
+}
+.shipmentstwodata{
+  padding: 0 18px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px; */
+  overflow: auto;
+  margin: 0px 10px;
+}
+ 
+ 
+.shipmentstwodata::-webkit-scrollbar{
+  height: 5px;
+}
+.fontweightshipmenst
+  {
+    font-weight: 500;
+  }
+  .inviceno
+  {
+    margin-left: 17%;
+    font-family: 'Calibri';
+    font-weight: 800;
+    font-size: 15px;
+  }
+   
+  .STARTMESSAGE {
+    color: red;
+  }
+  ::ng-deep.inputDATEpicker .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px;
+    padding: 3px;
+    background: white !important;
+    border: 1px black solid;
+  }
+ 
+  ::ng-deep.inputDATEpicker .mat-form-field-flex {
+    cursor: pointer;
+    height: 37px;
+  }
+  .INVICE{
+    border-radius: 10px;
+    padding: 10px;
+    background: none !important;
+    width: 223px;
+    border: 1px black solid;
+    height: 35px;
+    margin-left: 17%;
+  }
+  .label111
+  {
+    margin-left: 15%;
+  }
+  ::ng-deep.Shipmentdatepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.4375em 0;
+    margin-top: -4px !important;
+  }
+  .PLACEALIGN{
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+    border-radius: 10px;
+    height: 41px;
+    background-color: white;
+  }
+  .calendaToggleSHIPMENTS {
+    position: absolute;
+    bottom: 4px;
+    width: 20px;
+    right: 10px;
+  }
+  .receive_DATE
+  {
+    margin-left: 16%;
+  }
+  .Paddingshipments
+  {
+    padding: 2px 3px 5px 30px;
+    font-family: 'Gilroy-Bold';
+    font-size: 14px;
+    text-align: right;
+  }
+  .IteminputBoxesSecondShipments {
+    width: 100px;
+    height: 30px;
+    background: none;
+    font-size: 12.5px;
+      position: relative;
+    top: 9px;
+  }
+  .ShipinputBoxes {
+    width: 70px;
+    height: 30px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 12.5px;
+     text-align: right;
+  }
+  .DiscountC{
+    /* font-weight: bold; */
+    font-family: 'Gilroy-SemiBold';
+    font-size: 14px;
+  }
+  .DispatchComments {
+    width: 1289px;
+    height: 73px;
+    padding-bottom: 45px;
+    padding-left: 7px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 13px;
+    background-color: white;
+    color: black;
+    font-family: 'Gilroy-Regular';
+  }
+ 
+  .SAVE-Draft{
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    float: right;
+    margin-top: 4%;
+    cursor: pointer;
+    width: 168px;
+    height: 43px;
+    border-radius: 10px;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 15px;
+    line-height: 18px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  .Orders_Items
+  {
+    width: 102%;
+  }
+  .close-iconreceive {
+    left: 99%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 14px;
+    font-weight: bolder;
+ 
+  }
+  .addshipments {
+    position: relative;
+    font-family: 'Gilroy-Bold';
+    font-size: 20px;
+  }
+  .addshipments:after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 2px;
+    background: #686E74;
+    right: 1%;
+    top: 50%;
+    position: absolute;
+  }
+ 
+  .addshipments:before {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 2px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+  }
+  .SUBTotaldatacolor
+  {
+    position: relative;
+    right: 57px;
+    font-family: 'Calibri';
+    font-size: 15px;
+    font-weight: 700;
+    color: #000000;
+ 
+ 
+  }
+
+  

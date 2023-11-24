@@ -2,15 +2,36 @@
   margin-top: 50px;
 }
 
+.container {
+  min-width: 93vw;
+
+
+}
+.addressline2
+{
+  font-family: 'Gilroy';
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+  position: relative;
+  left: 38px;
+}
+
 
 .search {
   width: 20px;
   position: relative;
-  left: 94%;
+  left: 92%;
   top: -32px;
 }
-.form-row{
+
+.form-row {
   margin-left: 20px;
+  position: relative;
+  bottom: 35px;
 }
 
 .d-flex {
@@ -23,13 +44,13 @@
 
 
 input[type=checkbox] {
-  accent-color: black;
+  accent-color: green;
 }
 
 .horizontal-scroll {
   display: flex;
   gap: 10px;
-  /* height: 450px; */
+  height: 393px;
   overflow-x: auto;
   /* -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
@@ -42,7 +63,7 @@ input[type=checkbox] {
 } */
 .horizontal-scroll__item {
   /* border: 1px solid black; */
-  flex: 0 0 249px;
+  flex: 0.2 0 249px;
   scroll-snap-align: start;
 }
 
@@ -129,7 +150,7 @@ mat-card {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
+  border-radius: 15px;
   height: 400px;
   height: 235px;
 }
@@ -192,7 +213,7 @@ li {
 .input-country-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -209,7 +230,7 @@ li {
 .input-district-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -225,7 +246,7 @@ li {
 .input-region-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -242,7 +263,7 @@ li {
 .input-countrycode-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -258,7 +279,7 @@ li {
 .input-district-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -276,7 +297,7 @@ li {
 .addcode {
   background: #000;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 5px;
   font-size: 11px;
   color: rgba(104, 110, 116, 0.75);
@@ -385,7 +406,7 @@ li {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 20px;
-  background: #000000;
+  background: rgba(1, 139, 117, 1);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -468,13 +489,14 @@ li {
 
 .addDelercolss {
   box-sizing: border-box;
-  width: 242px;
+  /* width: 281px; */
   height: 43px;
   font-family: 'Gilroy';
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
+  font-size: 15px;
 }
 
 
@@ -511,13 +533,13 @@ li {
   font-family: 'Gilroy';
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .headefont {
 
-  width: 195px;
+  /* width: 195px; */
   height: 38px;
   left: 0px;
   top: 0px;
@@ -731,6 +753,7 @@ li {
 .scroll {
   overflow-y: auto;
   overflow-x: auto;
+
 }
 
 ::-webkit-scrollbar {
@@ -810,8 +833,8 @@ li {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 974px;
-  margin-top: -51px;
+  width: 1197px;
+  margin-top: -10px;
 
 }
 
@@ -843,14 +866,14 @@ li {
   /* background-color: #CED4DA; */
 }
 
-.main {
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 
-}
 
 .scr {
-  height: 350px;
+
   overflow-x: hidden;
+  height: 500px;
+  overflow-y: auto;
+  width: 102%;
 
 }
 
@@ -861,7 +884,7 @@ li {
 .head-t h3 {
   color: #000000;
   text-align: center;
-  margin-top: -18px;
+  /* margin-top: -18px; */
   margin-bottom: 2px;
 }
 
@@ -875,10 +898,10 @@ li {
 .addU:after {
   content: "";
   display: block;
-  width: 380px;
+  width: 541px;
   height: 1px;
   background: #686E74;
-  right: 0;
+  right: 52px;
   top: 50%;
   position: absolute;
 }
@@ -886,10 +909,10 @@ li {
 .addU:before {
   content: "";
   display: block;
-  width: 380px;
+  width: 565px;
   height: 1px;
   background: #686E74;
-  left: 0;
+  left: 27px;
   top: 50%;
   position: absolute;
 }
@@ -908,18 +931,20 @@ span {
 }
 
 .close-icon {
-  left: 99%;
+  left: 98%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  top:6px;
 }
 
 label {
   /* padding: 2px 0; */
-  font-size: 12px;
+  font-size: 14px;
   margin: 5px;
   font-family: 'Gilroy';
+  font-weight: bold;
 }
 
 mat-form-field {
@@ -932,10 +957,7 @@ mat-form-field {
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
 
-::ng-deep.mat-dialog-container {
-  background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  ;
-}
+
 
 .categorydrp {
   width: 205px;
@@ -1322,7 +1344,7 @@ li {
   font-family: 'Gilroy';
   bottom: 68px;
   position: absolute;
-  left: 1px;
+  left: 27px;
 }
 
 ::ng-deep.mat-step-label {
@@ -1565,6 +1587,10 @@ li {
   overflow-x: auto;
 }
 
+.rr {
+  margin-top: 98px;
+}
+
 .save-btn {
   width: 168px;
   height: 43px;
@@ -1574,61 +1600,80 @@ li {
   align-items: center;
   text-align: center;
   color: #FFFFFF;
-  background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  background: rgba(1, 139, 117, 1);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
-  border-color: black;
+  border:rgba(1, 139, 117, 1) ;
+  margin-left: 100px;
+
+}
+
+.errormsg {
+  margin-left: 100px;
 }
 
 .cancel-btn {
   width: 168px;
   height: 43px;
-  background: #FFFFFF;
-  border: 2px solid #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  background: rgba(1, 139, 117, 1);
+  /* border: 2px solid #000000; */
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
-  color: #000000;
+  /* color: #000000; */
+  color:white;
   font-family: 'Gilroy';
+  border: rgba(1, 139, 117, 1);
 }
 
 .add-dealer-scroll {
   /* height:470px; */
   overflow-x: hidden;
+  /* overflow-y: scroll;
+  height: 500px; */
 
 }
 
 .addtype {
   width: 82px !important;
+  color: #686E74;
 }
 
 .addname {
   width: 135px !important;
+  
 }
 
 .addtax {
   width: 70px !important;
+  color: #686E74;
 }
 
 .addadress {
-  width: 135px !important;
-  height: 22px;
+  width: 125px !important;
+  height: 45px;
 }
 
 .addcountry {
-  width: 70px !important;
+  width: 100px !important;
 }
 
 .aastate {
-  width: 70px !important;
+  width: 100px !important;
 }
 
 .addcity {
   width: 135px !important;
-  height: 22px;
+  height: 40px;
+  width: 135px !important;
+  height: 40px;
+  position: relative;
+  left: 0px;
+
 }
 
 .addphone {
-  width: 70px !important;
+  width: 123px !important;
+  height: 38px;
 }
 
 .remove-address {
@@ -1636,7 +1681,23 @@ li {
   top: 25px;
   /* color: red; */
   cursor: pointer;
-  color: grey;
+  color: red;
+  left: 22px;
+}
+
+.remove-admin{
+  position: relative;
+  top: 25px;
+  /* color: red; */
+  cursor: pointer;
+  color: red;
+  left: 70px;
+}
+.remove-admins{
+  position: relative;
+  top: 25px;
+  color: red;
+  cursor: pointer;
 }
 
 .remove-addresss {
@@ -1649,8 +1710,23 @@ li {
 .addMore-icon {
   cursor: pointer;
   margin-left: 13px;
+
   /* cursor: not-allowed;
     pointer-events: none !important; */
+}
+.addMore-iconn {
+  cursor: pointer;
+  margin-left: 59px;
+  position: relative;
+  top: 30px;
+  color: rgba(1, 139, 117, 1);
+}
+
+.adminicon {
+  cursor: pointer;
+  margin-left: 45px;
+  position: relative;
+  color: rgba(1, 139, 117, 1);
 }
 
 .addMore-icons {
@@ -1662,7 +1738,7 @@ li {
 
 .status-class {
   box-sizing: border-box;
-  width: 318px;
+  width: 416px;
   height: 43px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -1706,9 +1782,21 @@ li {
 
 .addzip,
 .addadressLine1 {
-  width: 135px !important;
-  margin-top: 4px;
-  height: 22px;
+  width: 125px !important;
+  /* margin-top: 4px; */
+  height: 45px;
+  position: relative;
+  bottom: 46px;
+  left: 133px;
+}
+
+.addzip,
+.addadressLine11 {
+  position: relative;
+  bottom: 41px;
+  left: 141px;
+  width: 125px !important;
+  height: 40px;
 }
 
 .backenendcolor {
@@ -1765,10 +1853,28 @@ li {
 }
 
 ::ng-deep.mat-dialog-container {
-  padding: 9px;
-
+  padding: 5px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  /* left: 29px; */
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: black !important;
+  background-color: rgba(1, 139, 117, 1) !important;
+}
+
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+  padding: 16px 5px 1px 24px;
+}
+
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header,
+.mat-vertical-stepper-header {
+  padding: 24px 81px;
+}
+
+.disabled-button {
+  opacity: 0.5;
+  pointer-events: none; 
+
 }

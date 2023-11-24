@@ -207,6 +207,13 @@ import { DealerTargetPopupGridComponent } from './dealer-target-popup-grid/deale
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DealerTargetSuccessPopupComponent } from './dealer-target-success-popup/dealer-target-success-popup.component';
 import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/add-geolist-shipping-popup.component';
+import { EditProfilePopupComponent } from './component/edit-profile-popup/edit-profile-popup.component';
+import { AddSalesSuccessComponent } from './component/sales-list/sales-inventory/add-sales-popup/add-sales-success/add-sales-success.component';
+import { AssociationBulkUploadComponent } from './association-bulk-upload/association-bulk-upload.component';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { ChartscomponentComponent } from './chartscomponent/chartscomponent.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { AddGeolistSuccessPopupComponent } from './add-geolist-shipping-popup/add-geolist-success-popup/add-geolist-success-popup.component';
 
 
 @NgModule({
@@ -506,12 +513,18 @@ import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/a
           AddTargetGroupSuccessPopupComponent,
           DealerTargetPopupGridComponent,
           DealerTargetSuccessPopupComponent,
-          AddGeolistShippingPopupComponent
+          AddGeolistShippingPopupComponent,
+          EditProfilePopupComponent,
+          AddSalesSuccessComponent,
+          AssociationBulkUploadComponent,
+          ChartscomponentComponent,
+          AddGeolistSuccessPopupComponent
           
   ],
   imports: [
     Ng2SearchPipeModule,
     MatTooltipModule,
+    HighchartsChartModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -533,6 +546,7 @@ import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/a
     MatPaginatorModule,
     MatTabsModule,
     MatCheckboxModule,
+    MatMomentDateModule,
     NgSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,

@@ -37,9 +37,9 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
       this.route
       .data
       .subscribe(v => {
-        console.log('v',v)
+        
         let menuList = v['promotionList'];
-        let showCaseMenuList: string[] = [];
+        let showCaseMenuList: string[] = ['View'];
         let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
         userRolesData.forEach(element => {
           if (element.title == v['key']) {
@@ -50,13 +50,18 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
             })
           }
         })
+        
         switch (showCaseMenuList.length) {
-          case 4:
+          case 4:{
             this.offsetValue = [-100, 200];
             break;
-          case 3:
+          }
+            
+          case 3:{
             this.offsetValue = [-72, 200];
             break;
+          }
+            
           case 2:
             this.offsetValue = [-42, 200];
             break;
@@ -82,9 +87,12 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
 
   configureTippyInstance() {
-    this.tippyInstance.enable();
+    // this.tippyInstance = tippy(this.button.nativeElement);
+    if(this.tippyInstance.enable){
+      this.tippyInstance.enable();
+    }
+        
     this.tippyInstance.show();
-
     this.tippyInstance.setProps({
       trigger: 'manual',
       placement: 'left',
@@ -121,8 +129,8 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
     localStorage.setItem('addOrEdit','editpromo');
     
     const config: MatDialogConfig = {
-      width: '1100px',
-      height: '583px',
+      minWidth: '90vw',      
+      height: '610px',
      
     };
     this.isOpen = false;
@@ -133,15 +141,12 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
   viewPromo(){
     const config: MatDialogConfig = {
-    
-
-       minWidth: '78vw',
-       height: '87vh',
-    
-     
+      minWidth: '90vw',      
+      height: '610px',
+      autoFocus:false
     };
     this.isOpen = false;
-    this.dialog.open( ViewPromotionPopupComponent, config);
+    this.dialog.open( ViewPromotionPopupComponent,config);
   }
 
   togglePopup() {

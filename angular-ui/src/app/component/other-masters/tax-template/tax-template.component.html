@@ -1,4 +1,4 @@
-<div class="main_class" style="padding:12px;padding-left:0px;">
+<div class="main_class" style="padding-left:0px;">
   <br>
   <section >
     <div class="d-flex">
@@ -23,8 +23,22 @@
   <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status(s) selected </span>
 </div>
   </div>
+<!-- annu -->
+
+<div class="searchBox2 ">
+  <input id="searchInput" class="searchInput2" type="text" name="" placeholder="Search Here Anything"(keyup)="onSearchChange($event)">
+   <mat-icon  class="searchicons2">search</mat-icon> 
+  <button class="search-bt_n2">Search</button>
+   <!-- <button class="searchButtonn" href="#">
+  </button> -->
+</div>
+
   <div class="icon btnhover refreshbtn" (click)="refresh()" >
-    <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
+    <img class="refresh" src="assets/img/Refreshbutton.svg"style="position: relative;top: 9px;left: 9px;" alt="refresh" >
+  </div>
+
+  <div class="add-user" (click)="addtaxTempl()">
+    <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
   </div>
 </div>
     <div class="row">
@@ -35,7 +49,7 @@
         <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
         <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px;margin-top: -26px;">
           <div class="row">
-          <div class="col-md-8">
+          <!-- <div class="col-md-8">
         <div class="searchBox d-flex">
           <input class="searchInput"  type="text" name="" placeholder="Type & search for anything"  (keyup)="onSearchChange($event)"
           style="font-family: 'Gilroy'"  >
@@ -46,12 +60,12 @@
           </button>
           <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
         </div>  
-      </div>
-      <div class="col-md-2">
+      </div> -->
+      <!-- <div class="col-md-12">
        <div class="add-user" (click)="addtaxTempl()">
          <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
        </div>
-      </div>
+      </div> -->
       <!-- <div class="col-md-4">
        <div class="download-btn" >
          <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
@@ -65,7 +79,7 @@
 
   <ag-grid-angular
   id="gridContainer"
-  style=" height: 400px;margin-left: 20px;border-radius: 20px;background-color: white;font-family: Gilroy"
+  style=" height: 420px;margin-left: 20px;border-radius: 20px;background-color: white;font-family: Gilroy"
   class="ag-theme-material"
   [rowHeight]="25"
   [headerHeight]="48"
@@ -83,9 +97,9 @@
   [paginationPageSize]="paginationPageSize"
   (bodyScroll)="handleScroll($event)"
 
-  ></ag-grid-angular>
-  <div class="pagination">
-    <span class="pagination-cls">1&nbsp;</span> to&nbsp; <span class="pagination-cls">{{rowData5.length}}&nbsp;</span> of&nbsp; <span class="pagination-cls">{{rowData5.length}}</span>
+  ></ag-grid-angular> 
+    <div class="pagination">
+      <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cls">{{rowData5.length}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+      <span class="pagination-cl">&nbsp;{{rowData5.length}}</span>
     </div>
-     
 </div>

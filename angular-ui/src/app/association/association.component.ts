@@ -49,6 +49,8 @@ import { AssosiationActionComponent } from '../component/assosiation-action/asso
 import { BulkEditAssosiationComponent } from '../component/bulk-edit-assosiation/bulk-edit-assosiation.component';
 import { AssosiationServicesService } from '../services/assosiation-services.service';
 import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
+import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
+import { AssociationBulkUploadComponent } from '../association-bulk-upload/association-bulk-upload.component';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -85,6 +87,8 @@ export class AssociationComponent implements OnInit {
   ProductListArray:any=[];
   dealerListArray:any=[];
 
+  userType: any;
+
 
   gridOptions: GridOptions = {
     defaultColDef: {
@@ -104,57 +108,74 @@ export class AssociationComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Product",
-       field: 'stockItemName', type: ['nonEditableColumn'],
+        headerName: 'ProductSKUGeographyId',
+       field: 'productSKUGeographyId',
+       cellStyle: { color: '#686E74' }, 
     },
 
-    { headerName: "Dealer",
+    {
+      headerName: "ProductName",
+       field: 'stockItemName',cellStyle: { color: '#686E74' },  type: ['nonEditableColumn'],
+    },
+
+    {
+       headerName:"ProductCode",
+          //1  field: 'productCode',
+         field: 'productCode',cellStyle: { color: '#686E74' }, 
+    },
+
+    { headerName: "DealerName",
     minWidth:250,
-    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc',
+     field: 'customerName',
+    // field:'DealerName',
+     type: ['nonEditableColumn'], sort: 'desc',cellStyle: { color: '#686E74' }, 
     },
     {
-      headerName: "Geography",
-      minWidth:250,
-      field: 'geographyName', 
+      headerName: "GeographyName",
+      // minWidth:220,
+       field: 'geographyName',
+      // field: 'GeographyName',  
+
       // ellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },
-      type: ['nonEditableColumn']
+      cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 
     {
       headerName: "MRP",
-      field: "mrp", 
-      type: ['nonEditableColumn']
+       field: "mrp", cellStyle: { color: '#686E74' },     
+      type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Min.Order.Qty",
-      field: "minOrder", 
-      type: ['nonEditableColumn']
+      headerName: "MinOrderQty",
+       field: "minOrder",  cellStyle: { color: '#686E74' },     
+      type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Max.Order.Qty",
-      field: "maxOrder", 
-      type: ['nonEditableColumn']
+      headerName: "MaxOrderQty",
+         field: "maxOrder", cellStyle: { color: '#686E74' },        
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Margin",
-      field: "margin", 
-
-      type: ['nonEditableColumn']
+         field: "margin", cellStyle: { color: '#686E74' },   
+         type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Discount",
-      field: "discount", 
-      type: ['nonEditableColumn']
+         field: "discount", cellStyle: { color: '#686E74' },     
+        type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Lead Time",
-      field: "leadTimeIndays", 
-      type: ['nonEditableColumn']
+      headerName: "LeadTimeDays",
+        field: "leadTimeIndays",cellStyle: { color: '#686E74' },        
+      type: ['nonEditableColumn','rightAligned']
     },
 
+
+    
     // {
     //   headerName: '',
     //   colId: 'action',
@@ -166,6 +187,7 @@ export class AssociationComponent implements OnInit {
 
    
   ];
+  
 
 
   rowData: any;
@@ -178,6 +200,7 @@ export class AssociationComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
 
 
@@ -350,13 +373,17 @@ export class AssociationComponent implements OnInit {
         this.sidenav.open();
       }
     });
-    this.message = this.child.message
+    
+    if(this.child){
+      this.message = this.child.message;
+    }
     console.log('parent is working', this.message)
   }
 
 
 
   ngOnInit() {
+    this.userType = localStorage.getItem('userType');
     this.loggedUserId = localStorage.getItem('logInId');
     this.getusertabeldata();
     // this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
@@ -383,7 +410,7 @@ export class AssociationComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
 
   onSelectAll(items: any) {
@@ -460,6 +487,7 @@ export class AssociationComponent implements OnInit {
     Search:this.searchText,
     CurrentUserId:this.loggedUserId
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
   
@@ -512,7 +540,7 @@ export class AssociationComponent implements OnInit {
         textField: 'geographyName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedItems = [];
@@ -543,7 +571,7 @@ export class AssociationComponent implements OnInit {
         textField: 'stockItemName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedStatus = [];
@@ -574,7 +602,7 @@ export class AssociationComponent implements OnInit {
         textField: 'customerName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedStatus = [];
@@ -964,10 +992,10 @@ console.log(item)
   }
 
   addUser() {
-    this.dialog.open(AddDealerAssociationsComponent,{width: '1300px',height:'600px'});
+    this.dialog.open(AddDealerAssociationsComponent,{minWidth :'88vw',height:'700px'});
   }
   editBulk(){
-    this.dialog.open(BulkEditAssosiationComponent,{maxWidth :'106vw'});
+    this.dialog.open(BulkEditAssosiationComponent,{minWidth :'88vw',height:'702px'});
 
   }
 
@@ -1049,8 +1077,17 @@ console.log(item)
     // alert('mani')
 
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv({ fileName: 'association_' + this.convertedDateFormat() });
 
   }
   onGridReady(params: GridReadyEvent) {
@@ -1109,6 +1146,14 @@ console.log(item)
   element.appendChild(document.createTextNode(params.value));
   element.appendChild(imageElement);
   return element;
+  }
+  orderTargetUpload(){
+    localStorage.setItem('UploadTarget','dealertarget')
+    // sessionStorage.setItem("orderTarget",'target');
+      this.dialog.open(AssociationBulkUploadComponent,
+        {minWidth :'91vw',height:'702px'}
+        );
+      // this.isOpen = false;
   }
 
 }

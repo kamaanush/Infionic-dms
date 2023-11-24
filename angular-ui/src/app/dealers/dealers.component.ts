@@ -89,6 +89,7 @@ export class DealersComponent implements OnInit {
     defaultColDef: {
       resizable: true,
     },
+    suppressDragLeaveHidesColumns : true,
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
@@ -102,13 +103,13 @@ export class DealersComponent implements OnInit {
 
     {
       headerName: "Code",
-      field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'customerCode', cellStyle: { color: '#686E74' },  type: ['nonEditableColumn'], sort: 'desc',
     },
 
     {
       headerName: "Name",
       minWidth: 450,
-      field: 'customerName', type: ['nonEditableColumn'], pinned: 'left',
+      field: 'customerName', cellStyle: { color: '#686E74' },  type: ['nonEditableColumn'], 
     },
     {
       headerName: "Geography",
@@ -118,7 +119,7 @@ export class DealersComponent implements OnInit {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },
       cellRenderer: IconHoverComponent,
-      type: ['nonEditableColumn']
+      cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 
     // suppressMovable:true,
@@ -158,6 +159,7 @@ export class DealersComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
 
 
@@ -323,13 +325,17 @@ export class DealersComponent implements OnInit {
         this.sidenav.open();
       }
     });
-    this.message = this.child.message
+    
+    if(this.child){
+      this.message = this.child.message;
+    }
     console.log('parent is working', this.message)
   }
 
-
+  userType:any
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();
@@ -352,7 +358,7 @@ export class DealersComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
 
   onSelectAll(items: any) {
@@ -430,6 +436,7 @@ export class DealersComponent implements OnInit {
       statuss: this.statusTytpes,
       Search: this.searchText,
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
@@ -492,7 +499,7 @@ export class DealersComponent implements OnInit {
       textField: 'geographyName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.selectedStatus = [];
@@ -522,7 +529,7 @@ export class DealersComponent implements OnInit {
       textField: 'stockItemName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.selectedStatus = [];
@@ -647,7 +654,7 @@ export class DealersComponent implements OnInit {
         textField: 'statusName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: false
       };
       this.selectedStatus = [];
@@ -848,7 +855,8 @@ export class DealersComponent implements OnInit {
 
   addUser() {
     localStorage.setItem('edit-dealer', 'Add')
-    this.dialog.open(AddDealerPopupComponent, { height: "590px" });
+     this.dialog.open(AddDealerPopupComponent, { minWidth :'97vw',height:'670px' });
+    
   }
 
   editUser() {
@@ -912,8 +920,17 @@ export class DealersComponent implements OnInit {
     // alert('mani')
 
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv({ fileName: 'dealers_' + this.convertedDateFormat() });
 
   }
   onGridReady(params: GridReadyEvent) {

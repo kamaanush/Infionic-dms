@@ -4,10 +4,21 @@
   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 } */
 
-.items1{
+/* .items1{
   position: relative;
-  right: 41px;
+  left: -11px;
 }
+.items2
+{
+  position: relative;
+  left: -11px;
+}
+.items3
+{
+  position: relative;
+  
+} */
+
 
 .total_subitem
 {
@@ -28,6 +39,12 @@
   .alltotalss
   {
     margin-bottom: 1px;
+  }
+  .alltotal2
+  {
+    text-align: right!important;
+    align-items: end;
+
   }
 
   .totaltotalL
@@ -256,7 +273,6 @@
 }
 
 .main {
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
   max-width: 100vw !important;
   height: auto;
 
@@ -276,14 +292,14 @@
 
 .addU {
   position: relative;
-  /* font-family: 'Gilroy-Bold';  */
-  font-weight: bold;
+  font-family: 'Gilroy-Bold'; 
+  /* font-weight: bold; */
   font-size: 20px;
 }
 .addView{
   position: relative;
-  /* font-family: 'Gilroy-Bold';  */
-  font-weight: bold;
+  font-family: 'Gilroy-Bold'; 
+  /* font-weight: bold; */
   font-size: 20px;
   right: 30%;
 }
@@ -300,10 +316,10 @@
 .addU:after {
   content: "";
   display: block;
-  width: 300px;
+  width: 40%;
   height: 2px;
   background: #686E74;
-  right: 110px;
+  right: 2%;
   top: 50%;
   position: absolute;
 }
@@ -311,10 +327,10 @@
 .addU:before {
   content: "";
   display: block;
-  width: 300px;
+  width: 40%;
   height: 2px;
   background: #686E74;
-  left: 0;
+  left: 2%;
   top: 50%;
   position: absolute;
 }
@@ -337,7 +353,7 @@
 }
 
 .close-icon {
-  left: 100%;
+  left: 99%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
@@ -345,12 +361,18 @@
   margin-top: 11px;
 
 }
-
+.shipmentOnes{
+  width: 94%;
+}
+.shipmentTwo{
+  width: 96%;
+}
 .DealerInfo-label {
   margin: 3px;
   font-size: 14px;
   align-items: center;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: 'Gilroy-SemiBold';
 }
 
 .DescInfo-label {
@@ -366,9 +388,13 @@
 }
 
 ::ng-deep.mat-dialog-container {
-  background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+overflow: hidden;
 
-
+}
+.mainout{
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -404,7 +430,8 @@ padding-left: 20px;
 
 }
 .dispatchC{
-  font-weight: bold;
+  /* font-weight: bold; */
+font-family: 'Gilroy-SemiBold';
 }
 .categorydrp {
   width: 205px;
@@ -642,7 +669,8 @@ li {
 }
 
 .row {
-  width: 100%;
+  width: 99%;
+  margin-left: 2px;
 }
 
 .bar {
@@ -941,16 +969,17 @@ li {
 
 .collapsible {
   cursor: pointer;
-  padding: 5px;
+  /* padding: 5px; */
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
   font-size: 15px;
   border-radius: 10px 10px 0px 0px;
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
+  color: white;
+  border: 0.5px solid rgba(1, 139, 117, 1);
   border-radius: 10px;
+  background: rgba(1, 139, 117, 1);
 }
 
 /* .active, .collapsible:hover {
@@ -983,13 +1012,15 @@ li {
 height: 5px;
 }
 .top-bottom {
-  margin-top: 25px;
+  /* margin-top: 25px; */
   padding-bottom: 15px;
 }
 
 .label-cls {
   position: relative;
   top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
 }
 
 
@@ -1034,7 +1065,8 @@ height: 5px;
 
 .promotionpopup-scroll {
   height: 659px !important;
-  padding-right: 20px;
+  padding-right: 4px;
+  margin-top: -13px;
   /* width: 3000px !important; */
   /* max-width: 97vw !important; */
 }
@@ -1050,8 +1082,9 @@ height: 5px;
 }
 
 .save-submit {
-  background: #000000;
-  border: 2px solid #000000;
+  /* background: #000000;
+  border: 2px solid #000000; */
+  background: rgba(1, 139, 117, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
 
@@ -1197,12 +1230,14 @@ height: 5px;
 
 .addbtns {
   float: right;
+
 }
 
 .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-datepicker-toggle-default-icon,
 .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-datepicker-toggle-default-icon {
   margin: auto;
-  margin-top: -27px;
+  margin-top: -2px;
+
 }
 
 
@@ -1210,7 +1245,7 @@ height: 5px;
 .expand-arrow {
   width: 20%;
   position: relative;
-  right: -28px;
+  right: -78px;
   top: 4px;
 }
 
@@ -1265,7 +1300,7 @@ height: 5px;
 
 .IteminputBoxes {
   width: 100px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   font-size: 12.5px;
 }
@@ -1291,10 +1326,11 @@ height: 5px;
 }
 
 .promoItem {
-  width: 30px;
-  height: 30px;
+  /* width: 30px;
+  height: 30px; */
   background: #0091EA;
-  border-radius: 68%;
+  /* border-radius: 68%; */
+  border-radius: 15px;
   color: white;
   padding: 4px 5px;
 }
@@ -1318,6 +1354,7 @@ height: 5px;
 
 .innerTotal {
   margin-left: 15px;
+  font-family: 'Gilroy-Medium';
 }
 
 .alltotals {
@@ -1358,22 +1395,29 @@ height: 5px;
 }
 .ShipmentinputBoxes {
   width: 70px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.SHIPBOX
+{
+  margin-bottom: 14px;
 }
 
 .ShipmentinputBoxes1 {
   width: 70px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
   background-color: white;
   color: black;
+  text-align: center;
 }
 
 .subtotalBox {
@@ -1385,22 +1429,25 @@ height: 5px;
   font-size: 12.5px;
   background-color: white;
   color: black;
+  text-align: right;
 }
 
 .dispatchComments {
-  width: 1201px;
+  width: 110%;
   height: 73px;
   padding-bottom: 45px;
   padding-left: 7px;
   border-radius: 10px;
   border: 1px solid black;
-  font-size: 12.5px;
+  font-size: 13px;
   background-color: white;
   color: black;
+  font-family: 'Gilroy-Regular';
 }
 
 .label-div {
   margin-top: 15px;
+  /* font-family: 'Gilroy-SemiBold'; */
 }
 
  .orderhistorytable {
@@ -1420,6 +1467,7 @@ tr:nth-child(even) {
 } */
 th {
   padding: 10px;
+  font-family: 'Gilroy-Bold';
 }
 
 td {
@@ -1486,6 +1534,8 @@ th{
 ::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.4375em 0;
   margin-top: -4px !important;
+  left: 4%;
+  color: #000000 !important;
 }
 .placeh-align {
   border: 0.5px solid #000000;
@@ -1514,4 +1564,42 @@ th{
   bottom: 4px;
   width: 20px;
   right: 10px;
+}
+.DescInfo-labeltt {
+  margin: 5px;
+  font-size: 13px;
+  align-items: center;
+  font-weight: 500;
+  position: relative;
+  /* top: 25px; */
+  /* right: -3%; */
+}
+.DescInfo-labelss {
+  margin: 5px;
+  font-size: 13px;
+  align-items: center;
+  font-weight: 500;
+  position: relative;
+  /* top: 25px; */
+  /* right: 0%; */
+}
+.shipNow{
+  position: relative;
+  left: 33px;
+}
+.shipText{
+  position: relative;
+  left: 26px;
+}
+.shipTill{
+  position: relative;
+  left: 26px;
+}
+.shiptillText{
+  position: relative;
+  left: 26px;
+  text-align: right;
+}
+::ng-deep.invNo{
+  font-family: 'Gilroy-SemiBold';
 }

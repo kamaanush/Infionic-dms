@@ -9,6 +9,8 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
 import { AddeditgeoComponent } from './addeditgeo/addeditgeo.component';
 import { GeoActivateDeactivateComponent } from './geo-activate-deactivate/geo-activate-deactivate.component';
 import { GeoStatusPopComponent } from './geo-status-pop/geo-status-pop.component';
+import { FirstDataRenderedEvent } from 'ag-grid-community';
+import { GeographySettingSharedService } from 'src/app/services/geography-setting-shared.service';
 
 @Component({
   selector: 'app-geo-classification',
@@ -75,6 +77,7 @@ export class GeoClassificationComponent implements OnInit {
 
   geoGraphyHirerachyData: any;
   geoGraphyFullData: any;
+  usertype:any
 
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
@@ -95,7 +98,9 @@ export class GeoClassificationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
     private dialog: MatDialog, private route: ActivatedRoute,
-    private classification: ClassificationserviseService, private sanitizer: DomSanitizer) {
+    private classification: ClassificationserviseService, private sanitizer: DomSanitizer,
+    private sharedService: GeographySettingSharedService,
+    ) {
     this.route.data.subscribe(v => {
       this.currentPageName = v['key'];
     });
@@ -109,13 +114,29 @@ export class GeoClassificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usertype = localStorage.getItem('userType')
     this.logedUserId = localStorage.getItem("logInId");
     this.userIdNumber = Number(this.logedUserId);
     console.log(this.userIdNumber);
     // this.getCountryList();
     this.getGeographyHierarchy();
+    // this.sharedService.listen().subscribe((m: any) => {
+    //   console.log("RefreshData",m)
+    //   setTimeout (() => {
+    //     this.getGeographyHierarchy();
+    //  }, 2000);
+     
+    // })
   }
-
+  // onFirstDataRendered(params: FirstDataRenderedEvent) {
+  //   this.sharedService.listen().subscribe((m: any) => {
+  //     console.log("RefreshData",m)
+  //     setTimeout (() => {
+  //       this.getGeographyHierarchy();
+  //    }, 2000);
+     
+  //   })
+  // }
   getGeographyHierarchy() {
     this.spinner.show();
     this.geoGraphyHirerachyData = null;

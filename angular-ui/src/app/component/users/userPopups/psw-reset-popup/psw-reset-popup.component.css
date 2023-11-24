@@ -1,9 +1,15 @@
+label
+{
+    font-family: 'Gilroy-Medium';
+}
+
 
 .head-text{
 font-size: 20px;
 font-weight: 600;
 margin-bottom: 0;
 margin-top: -20px;
+font-family: 'Gilroy-Bold';
 }
 .olpass
 {
@@ -48,30 +54,31 @@ margin-top: 5px;
 input{
     padding: 5px 12px;
     margin-bottom: 10px;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     width: 404px;
     height: 43px;
      /* margin-left: -21px; */
 }
 .update-btn{
-background: black;
+background-color:#018B75;
 color: white;
 width: 183px;
 height: 43px;
-border: #000000;
+border:  #686E74;
 border-radius: 5px;
 margin-right: 35px;
 }
 .cancel-btn{
-    border: 2px solid #000000;
+    border: 2px solid  #686E74;
     border-radius: 5px;
     width: 184px;
     height: 43px;
-    background: white;
+    background-color:#018B75;
     font-weight: 700;
     cursor: pointer;
+    color: white;
 }
 .close-icon{
     left: 100%;
@@ -86,6 +93,10 @@ margin-right: 35px;
 position: relative;
 top: -10px;
 }
+.mat-dialog-container {
+    overflow-x: hidden;
+}
+
 .mat-dialog-container {
     padding: 16px !important;
     padding-top: 2px !important;
@@ -107,6 +118,10 @@ mat-icon {
   }
   .repsrd{
     margin-top: 6px;
+  }
+  .new
+  {
+     font-family: 'Gilroy-Light';
   }
 
  

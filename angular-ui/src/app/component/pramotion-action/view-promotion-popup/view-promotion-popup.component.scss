@@ -1,4 +1,13 @@
-
+#REAMRKs
+{
+    position: relative;
+    float: left;
+    right: -66px;
+    top: 10px;
+}
+.promoinfo{
+  padding: 0px !important;
+}
 
 .view-dealer-promotion-cls {
     overflow-x: hidden;
@@ -16,7 +25,7 @@
 
 .head-t h3 {
     /* color: #000000; */
-    text-align: left;
+    text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
     font-family: 'Gilroy';
@@ -29,15 +38,25 @@
     color: #686E74;
 }
 
+.viewPromo:before {
+  content: "";
+  display: block;
+  width: 42%;
+  height: 1px;
+  background: #686E74;
+  left: 0;
+  top: 50%;
+  position: absolute;
+}
 .viewPromo:after {
-    content: "";
-    display: block;
-    width: 651px;
-    height: 1px;
-    background: #686E74;
-    right: 93px;
-    top: 50%;
-    position: absolute;
+  content: "";
+  display: block;
+  width: 42%;
+  height: 1px;
+  background: #686E74;
+  right: 0;
+  top: 50%;
+  position: absolute;
 }
 
 .viewPromohead {
@@ -83,6 +102,7 @@
 .viewpromoItem {
     font-weight: 300;
     font-size: 18px;
+    margin-left: 12px;
   }
   .plus-image {
     width: 22px;
@@ -172,20 +192,17 @@ margin-left: -34px;
   }
   
   .buyoneSet {
-    background: #CED4DA;
-    border: 1px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    padding: 10px;
+    // padding: 10px;
+    box-shadow: none;
   }
   
   .getSet1,
   .additionalGetset-2 {
-    background: #CED4DA;
     /* border: 1px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px; */
-    padding: 10px;
+     padding: 1px;
   }
   
   /* .mat-form-field::placeholder {
@@ -270,11 +287,12 @@ margin-left: -34px;
   .qtyOfItems {
     width: 100px;
     height: 43px;
-    background: linear-gradient(90deg, #CED4DA -5%, #F8F9FA 86%);
+    // background: linear-gradient(90deg, #CED4DA -5%, #F8F9FA 86%);
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     margin-bottom: 8px;
+    text-align: right;
   }
   
   .addAlign {
@@ -319,11 +337,12 @@ margin-left: -34px;
   }
   
   .minimumorderquantity {
-    width: 461px;
+    // width: 461px;
     height: 43px;
     border: 0.5px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+    // text-align: right;
   }
   
   .scroll {
@@ -380,7 +399,7 @@ margin-left: -34px;
   }
   
   ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 767px;
+    // width: 767px;
     margin-top: -51px;
   }
   
@@ -395,10 +414,7 @@ margin-left: -34px;
   
   
    
-  .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  
-  }
+ 
   
   .font {
     font-family: 'Gilroy';
@@ -467,7 +483,6 @@ margin-left: -34px;
     outline: none;
   } */
   .slctd-row {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -483,13 +498,15 @@ margin-left: -34px;
 
   
   .slctd-geo-btn {
-    background: #000000;
+    // background: #000000;
+    background:  rgba(1, 139, 117, 1);
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     height: 33px;
     color: white;
     float: right;
     cursor: pointer;
+    border: 2px solid rgba(1, 139, 117, 1);
   }
   
   .sltd-span {
@@ -519,19 +536,23 @@ margin-left: -34px;
   .searchGeo {
     background: #FFFFFF;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    // box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     height: 43px;
     width: 456px;
   }
+
+  input[type=checkbox] {
+    accent-color:#018B75!important;
+  }
   
   .addtnlRemarks {
-    background:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    // box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     height: 43px;
-    width: 941px;
+    // width: 941px;
+  
   }
   
   .saveDraft {
@@ -563,7 +584,7 @@ margin-left: -34px;
   label {
     /* padding: 2px 0; */
     font-size: 14px;
-    margin: 15px 5px 5px;
+    margin: 0px 5px 5px;
   }
   
   /* mat-form-field {
@@ -646,7 +667,6 @@ margin-left: -34px;
   }
   
   .qty-box {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -656,7 +676,6 @@ margin-left: -34px;
   }
   
   .mty-box {
-    background:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -705,9 +724,9 @@ margin-left: -34px;
   }
   
   .addproImg {
-    width: 207px;
-    height: 108px;
-    margin-top: -7px;
+    width:373px;
+    height: 137px;
+    // margin-top: -7px;
     border-radius: 10px;
   }
   
@@ -738,7 +757,6 @@ margin-left: -34px;
   
   
   .list-item-view {
-    background: linear-gradient(90deg, #CED4DA 101%, #F8F9FA 86%);
     border: 0.5px solid #000000;
     /* width: 401px; */
     height: 173px;
@@ -747,6 +765,10 @@ margin-left: -34px;
   
   .item-in-box-view {
     height: 132px;
+    overflow-y: auto;
+  }
+  .item-in-secondpromotions
+  {
     overflow-y: auto;
   }
   
@@ -877,7 +899,7 @@ margin-left: -34px;
   
   ::ng-deep.mat-icon {
     width: 2em;
-    color: grey;
+    // color: rgba(1, 139, 117, 1);
   }
   
   .itempromtion {
@@ -961,6 +983,13 @@ margin-left: -34px;
   .item-header {
     font-size: 18px;
   }
+  .secomdpromoheaderGetbuy
+  {
+    font-size: 17px;
+    font-family: 'Calibri';
+    font-weight: 400;
+
+  }
   .item-header1{
     font-size: 18px;
     margin-left: 19px;
@@ -1001,3 +1030,21 @@ margin-left: -34px;
     border: none;
   }
   /*end old css*/
+  .ag-theme-material {
+
+    --ag-card-radius: 100px;
+    --ag-border-radius: 20px;
+    --ag-header-height: 30px;
+    --ag-header-foreground-color: white;
+    --ag-header-background-color:  #018B75CC  !important ;
+    /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+   --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
+  }
+  :host ::ng-deep.ag-theme-material .ag-root-wrapper,
+  .ag-theme-material .ag-sticky-top {
+  
+   border: 1px solid rgba(152, 156, 160, 0.30) !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+  
+  }

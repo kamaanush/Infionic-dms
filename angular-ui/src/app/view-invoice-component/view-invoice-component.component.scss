@@ -30,6 +30,12 @@
 /* ::ng-deep.mat-row{
     height: 10px;
 } */
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
+  .ag-theme-material .ag-sticky-top {
+    border: 1px solid #989CA04D !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+  }
 .user-text {
     font-size: 30px;
     line-height: 41px;
@@ -42,7 +48,7 @@
   
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
+    border: 1px solid rgba(0, 0, 0, 0.3)!important;
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;
@@ -363,7 +369,7 @@
   }
   
   ::ng-deep.my-class-2 {
-    color: #17B15C !important;
+    color: #686E74 !important;
   }
   
   ::ng-deep.my-class-3 {
@@ -384,11 +390,11 @@
   
   }
   
-  ::ng-deep.ag-sticky-top {
-    border-bottom: 0.5px solid #000000;
-  }
+  // ::ng-deep.ag-sticky-top {
+  //   border-bottom: 0.5px solid #000000;
+  // }
   .main{
-      background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    
       border-radius: 19px;
   }
   
@@ -462,20 +468,12 @@
   }
   
   ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    // color: #686E74 !important;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
   }
   
-  ::ng-deep.ag-theme-material .ag-root-wrapper,
-  .ag-theme-material .ag-sticky-top {
-  
-    border: 0.5px solid #000000 !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 25px !important;
-  
-  }
   
   /* ::ng-deep.ag-root-wrapper {
     --ag-border: solid;
@@ -927,10 +925,11 @@
   .pagination {
     float: right !important;
   }
-  
-  .pagination-cls {
-    font-size: 14px;
-    font-weight: 900;
+
+    .pagination-cls {
+      font-size: 14px;
+      font-weight: 600;
+      color: #686E74;
   }
   
   .dropdown-form {
@@ -961,7 +960,7 @@
     color: #000 !important;
   }
   .close-icon{
-    left: 100%;
+    left: 98%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
@@ -999,7 +998,7 @@
   .saveas-draft {
     color: #fff;
     background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
     margin-top: 10px;
@@ -1009,7 +1008,7 @@
   .saveas-draft2 {
     color: black;
     background: white;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: left;
     margin-top: 10px;

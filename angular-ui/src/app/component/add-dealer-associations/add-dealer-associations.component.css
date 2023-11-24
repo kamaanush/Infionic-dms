@@ -3,6 +3,15 @@
   margin-top: 40px;
   
 }
+.left
+{
+  padding-left: 23px;
+}
+
+.container
+{
+  min-width: 80vw;
+}
 
 
 .pr_omo
@@ -18,15 +27,20 @@
   border: 1px solid #337ab7;
   background: #00187A !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
   text-align: center;
   right: -43px !important;
   padding-left: 4px;
-  width: 39px;
+  width: 41px;
+  display: inline-block;
   padding-top: 1px;
+}
+
+::ng-deep.promo1-placeholder  .dropdown-btn span .ng-star-inserted{
+  display: none;
 }
 
 ::ng-deep .subcatbubbles .dropdown-btn span .ng-star-inserted {
@@ -38,15 +52,16 @@
   border: 1px solid #337ab7;
   background: #0C5A3E !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
   text-align: center;
   right: -43px !important;
   padding-left: 4px;
-  width: 39px;
+  width: 41px;
   padding-top: 1px;
+  display: inline-block;
 }
 
 ::ng-deep .selecttypes .dropdown-btn span .ng-star-inserted {
@@ -58,7 +73,7 @@
   border: 1px solid #337ab7;
   background: #C32F27 !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
@@ -78,7 +93,7 @@
   border: 1px solid #337ab7;
   background: #44026C !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
@@ -97,7 +112,7 @@
   border: 1px solid #337ab7;
   background:#006466 !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
@@ -168,7 +183,7 @@
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05); */
     position: absolute;
     right: 0px;
     bottom: -3px;
@@ -281,7 +296,7 @@ input.form-check-input1 {
   .refreshbtn1{
     width: 39px;
     border-radius: 10px;
-    background-color: black;
+    background: #686E74;
     height: 41px;
     /* margin-left: 25px; */
 
@@ -294,15 +309,18 @@ input.form-check-input1 {
   color: white !important;
   }
 
+
+
   .refreshbtn2{
-    width: 39px;
+    width: 44px;
     border-radius: 10px;
-    background-color: black;
-    height: 41px;
-    margin-top: -90px;
+    background: #686E74;  
+    height: 44px;
+    margin-top: -103px;
     /* margin-left: 88px; */
     position: relative;
-    left: 222px;
+    left: 273px;
+    top: 56px;
 
 
   }
@@ -318,12 +336,12 @@ input.form-check-input1 {
     color: white !important;
   }
   .refreshbtn3{
-    width: 39px;
+    width: 44px;
     border-radius: 10px;
     background-color: black;
-    height: 41px;
+    height: 44px;
     
-    margin-left: 18px;
+    margin-left: 58px;
     position: relative;
     margin-top: 3px;
 
@@ -336,12 +354,12 @@ input.form-check-input1 {
     color: white !important;
   }
   .refreshbtn4{
-    width: 39px;
+    width: 44px;
     border-radius: 10px;
     background-color: black;
-    height: 41px;
+    height: 44px;
     margin-top: 3px;
-    margin-left: 26px;
+    margin-left: 57px;
     
     position: relative;
 
@@ -375,15 +393,15 @@ input.form-check-input1 {
 
     
     .searchBox1 {
-    top: -43px;
+    /* top: -43px; */
     background-color: white;
     padding-top: -3px;
     padding-bottom: -3px;
-    width: 295px;
+    width: 348px;
     border: solid 1px;
     border-radius: 10px;
     position: relative;
-    left: -107px;
+    left: -100px;
     }
 
     .searchBox2 {
@@ -391,11 +409,11 @@ input.form-check-input1 {
       background-color: white;
       padding-top: -3px;
       padding-bottom: -3px;
-      width: 295px;
+      width: 343px;
       border: solid 1px;
       border-radius: 10px;
       position: relative;
-      left: 56px;
+      left: 82px;
       }
       .searchBox3 {
         
@@ -403,12 +421,12 @@ input.form-check-input1 {
         background-color: white;
         padding-top: -3px;
         padding-bottom: -3px;
-        width: 295px;
+        width: 348px;
         border: solid 1px;
         border-radius: 10px;
         position: relative;
         
-        left: 63px;
+        left: 73px;
         }
         
       
@@ -430,12 +448,13 @@ input.form-check-input1 {
     height: 41px;
     line-height: 41px;
     left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     width: 80%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
     pointer-events: none;
+
   }
   .dropdown-form {
     position: relative;
@@ -458,24 +477,25 @@ input.form-check-input1 {
     color: #006466 !important;
     font-size: 12px;
     font-weight: 600;
+    display: none;
   }
-  ::ng-deep.promo1 .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep.promo_1-placeholder .multiselect-dropdown .dropdown-btn .selected-item {
       background: #006466 !important;  
      
-    
+    display: none;
     right: 0% !important;
     color:white !important;
   }
-  ::ng-deep.promo_1 .multiselect-dropdown .dropdown-btn .selected-item {
+  /* ::ng-deep.promo_1 .multiselect-dropdown .dropdown-btn .selected-item {
     background: #006466 !important;  
    
   
   right: 0% !important;
   color:white !important;
-}
+} */
 .select-asso{
     width: 100%;
-    height: 38px;
+     height: 38px; 
     border-radius: 12px;
 }
 .mat-form-field {
@@ -513,18 +533,20 @@ input.form-check-input1 {
   }
   .img1{
     position: absolute;
-    left: 493px;
+    left: 93%;
     top: 41px;  }
   .promo1-dropdown-btn span .ng-star-inserted {
     visibility: hidden;
     position: absolute !important;
     right: 20px !important;
     bottom: 10px;
+    display: none;
 }
 .searchInput1{
-    width: 124%;
+    width: 130%;
     height: 38px;
-    border: solid 0.5px;
+    /* border: solid 0.5px; */
+    border: 1px solid #B3B3B3;
     border-radius: 10px;
     padding: 7px;
 }
@@ -662,7 +684,7 @@ input.form-check-input1 {
   }
   
   ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 767px;
+    /* width: 767px; */
     margin-top: -51px;
   }
   
@@ -693,7 +715,7 @@ input.form-check-input1 {
   }
   
   .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
   
   }
   
@@ -752,11 +774,12 @@ input.form-check-input1 {
   }
   
   .close-icon {
-    left: 100%;
+    left: 101%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    top: 2px;
   }
   
   label {
@@ -773,7 +796,7 @@ input.form-check-input1 {
   
   .required-border {
     border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   }
   
@@ -783,8 +806,11 @@ input.form-check-input1 {
   }
   
   ::ng-deep.mat-dialog-container {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
+    /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    /* height: 90%; */
+    margin: auto;
+     /* padding-top: 56px;  */
+    
   }
   
   .categorydrp {
@@ -924,7 +950,7 @@ input.form-check-input1 {
   .mat-card {
     background: #FFFFFF;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 25px;
     height: 190px;
     width: 186px;
@@ -980,7 +1006,7 @@ input.form-check-input1 {
   .addcat {
     background: #FFFFFF;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     margin-right: 10px;
     font-size: 13px;
@@ -993,7 +1019,7 @@ input.form-check-input1 {
   .addcode {
     background: #FFFFFF;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     font-size: 13px;
     color: rgba(104, 110, 116, 0.75);
@@ -1165,7 +1191,7 @@ input.form-check-input1 {
   
   ::ng-deep.mat-horizontal-content-container {
     overflow: hidden;
-    padding: 0px 0px 0px 0px;
+    padding: -1px 0px 0px 0px;
   }
   
   .submitbtn {
@@ -1319,7 +1345,7 @@ input.form-check-input1 {
     padding: 4px 10px;
     font: 12px/3 sans-serif;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
   }
   
@@ -1361,12 +1387,13 @@ input.form-check-input1 {
   .label-cls {
     position: relative;
     top: 6px;
+    left: -67px;
   }
   
   .add-edit-promo {
     color: #fff;
     background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-size: 10px;
     align-items: center;
@@ -1378,7 +1405,7 @@ input.form-check-input1 {
   .add-edit-non-promo {
     background: #FFFFFF;
     border: 2px solid #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-size: 10px;
     align-items: center;
@@ -1403,10 +1430,12 @@ input.form-check-input1 {
   
   .main {
     overflow-x: hidden !important;
+    height: 509px;
+    overflow-y: auto;
   }
   
   .promotionpopup-scroll {
-    height: 470px !important;
+    /* height: 470px !important; */
   }
   
   .footer {
@@ -1414,6 +1443,12 @@ input.form-check-input1 {
     border-radius: 0px 0px 25px 25px;
     height: 50px;
     margin: auto;
+ 
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    z-index: 0;
+    top: 80%; 
 
   
   }
@@ -1421,7 +1456,7 @@ input.form-check-input1 {
   .cancel {
     background: #FFFFFF;
     border: 2px solid #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 8px;
     margin-top: 10px;
     cursor: pointer;
@@ -1430,35 +1465,42 @@ input.form-check-input1 {
   
   .saveas-draft {
     color: #fff;
-    background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    background:  rgba(1, 139, 117, 1);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 8px;
     float: right;
     margin-top: 10px;
     cursor: pointer;
     width: 168px;
-    height: 33.56px;
+    height: 44.56px;
+    border:1px rgba(1, 139, 117, 1);
   }
   .saveas-draft2 {
-    color: black;
-    background: white;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* color: black; */
+    color:white;
+    background:  rgba(1, 139, 117, 1);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 8px;
     float: left;
     margin-top: 10px;
     cursor: pointer;
     width: 168px;
-    height: 33.56px;
+    height: 44.56px;
+    border:1px rgba(1, 139, 117, 1);
   }
   .saveas-draft1 {
     color: #fff;
-    background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* background: #000000; */
+    background:  rgba(1, 139, 117, 1);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 8px;
     float: right;
     cursor: pointer;
-    width: 68px;
+    width: 75px;
     height: 38px;
+    margin-left: 8px;
+    border:1px rgba(1, 139, 117, 1);
+
   }
   
   .cancel {
@@ -1483,7 +1525,9 @@ input.form-check-input1 {
   .uom-cls {
     border: 0.5px solid #000000;
     border-radius: 10px;
-    width: 67px
+    width: 67px;
+    text-align: center;
+    
   }
   
   .qyt-cls {
@@ -1531,7 +1575,7 @@ input.form-check-input1 {
   .company-cls {
     background: #FFFFFF;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     width: 100%;
     height: 35px;
@@ -1547,9 +1591,9 @@ input.form-check-input1 {
   
   
   .expand-arrow {
-    width: 40%;
+    width: 29%;
     position: relative;
-    right: -28px;
+    right: -50px;
     top: 4px;
   }
 
@@ -1564,18 +1608,19 @@ input.form-check-input1 {
     font-weight: 300;
     font-size: 20px;
     position: relative;
-    left: 16px;
+    left: 20px;
+    top: 5px;
   }
   .slctd-row{
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     height: 43px;
     padding: 4px;
     padding-top: 7px;
     position: relative;
-    left: 16px;
+    left: 20px;
   }
   .sltd-span{
     margin-top: 6px;
@@ -1590,23 +1635,28 @@ input.form-check-input1 {
     color: #FF0000;
   }
   .slctd-geo-btn{
-    background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    background:  rgba(1, 139, 117, 1);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
   height: 28px;
   color: white;
   float: right;
+  margin-right: -26px;
+  border: rgba(1, 139, 117, 1);
   }
   :disabled.slctd-geo-btn{
-    background: grey;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* background: grey; */
+  background:  rgba(1, 139, 117, 1);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
   height: 28px;
   color: white;
   float: right;
+  margin-right: -26px;
+  border: rgba(1, 139, 117, 1);
   }
   #top {
-    top: -41px;
+    top: -65px;
     /* left: 175px; */
     right: 0px;
   }
@@ -1654,7 +1704,7 @@ width: 100%;
   }
   th, td{
     padding: 2px;
-    font-size: 12px;
+    font-size: 11px;
     /* width: 3%; */
   }
   td{
@@ -1688,9 +1738,13 @@ width: 100%;
 }
 ::ng-deep.categoryy .multiselect-dropdown .dropdown-btn .selected-item {
    background: #00187A !important; 
+   height: fit-content;
+  right: 3% !important;
+  /* display: none; */
   
-  right: 0% !important;
 }
+
+
 .subCategoryy-placeholder.dropdown-placeholder .selected-placeholder {
   color: #0C5A3E !important;
   font-size: 12px;
@@ -1699,7 +1753,8 @@ width: 100%;
 }
 ::ng-deep.subCategoryy .multiselect-dropdown .dropdown-btn .selected-item {
   background: #0C5A3E !important;
-  right: 0% !important;
+  right: 3% !important;
+  height: fit-content;
 }
 .typess-placeholder.dropdown-placeholder .selected-placeholder {
   color: #C32F27 !important;
@@ -1708,7 +1763,8 @@ width: 100%;
 }
 ::ng-deep.typess .multiselect-dropdown .dropdown-btn .selected-item {
   background: #C32F27 !important;
-  right: 0% !important;
+  right: 4% !important;
+  height: fit-content;
 }
 .productt-placeholder.dropdown-placeholder .selected-placeholder {
   color: #44026C !important;
@@ -1717,7 +1773,8 @@ width: 100%;
 }
 ::ng-deep.productt .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
-  right: 0% !important;
+  right: 3% !important;
+  height: fit-content;
 }
 .mainclass {
   margin-left: 5px;
@@ -1725,7 +1782,7 @@ width: 100%;
 
 ::ng-deep.dealerr .ng-select-container {
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 30px;
 }
@@ -1742,7 +1799,7 @@ width: 100%;
   border: 1px solid #337ab7;
   background: #00187A !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
@@ -1757,7 +1814,7 @@ width: 100%;
   border: 1px solid #337ab7;
   background: #0C5A3E !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
@@ -1772,11 +1829,12 @@ width: 100%;
   border: 1px solid #337ab7;
   background: #C32F27 !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
   text-align: center;
+  display: inline-block;
 }
 ::ng-deep .productt .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
@@ -1787,29 +1845,32 @@ width: 100%;
   border: 1px solid #337ab7;
   background: #44026C !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
   text-align: center;
+  display: inline-block;
 }
-::ng-deep .promo_1 .dropdown-btn span .ng-star-inserted {
+ ::ng-deep .promo_1 .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   right: 279px !important;
   bottom: 0px;
   top: 50px !important;
-  /* width: 51px; */
+  
   border: 1px solid #337ab7;
   background: #006466 !important;
   font-size: 12px;
-  box-shadow: 1px 1px #959595;
+  /* box-shadow: 1px 1px #959595; */
   color: #fff;
   height: 22px;
   border-radius: 15px;
   padding-left: 7px;
   padding-top: 1px;
   text-align: center;
-}
+  display: none;
+  display: none;
+} 
 
 
 ::ng-deep .subCategoryy .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -1851,5 +1912,62 @@ width: 100%;
 }
 .contentStyle{
   color: #000000;
+}
+
+
+
+::ng-deep.dynamicbubbles .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamicbubbles .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
+}
+
+
+::ng-deep.dynamicsubcats .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamicsubcats .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
+}
+
+
+::ng-deep.dynamictypesbubbles .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamictypesbubbles .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
+}
+
+
+::ng-deep.dynamicproductbubbles .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamicproductbubbles .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
 }
 

@@ -9,6 +9,8 @@ import { AddorderpromotionsComponent } from '../../orders/addorderpromotions/add
 
 import { OrderCancelPopupComponent } from '../order-cancel-popup/order-cancel-popup.component';
 import { OrderlistShipPopupComponent } from '../orderlist-ship-popup/orderlist-ship-popup.component';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 @Component({
   selector: 'app-orderlist-action-popup',
   templateUrl: './orderlist-action-popup.component.html',
@@ -27,15 +29,19 @@ export class OrderlistActionPopupComponent implements OnInit {
   @ViewChild('trigger') button;
 
   orderStatusAction = {
-    'ordered': ['confirm_order', 'cancel_order'], // done
+    'submitted': ['confirm_order', 'cancel_order','edit_order'], // done
     'returned': ['edit_order', 'cancel_order'], // NA
     'rejected': [], // done
-    'confirmed': ['ship_order', 'close'], // done
+    'confirmed': ['ship_order', 'close','edit_order'], // done Confirmed
+
+    'processing': ['edit_order', 'close'],
+    
+
     'cancelled': [], // need to check
     'preclosed': [], // NA
     'in-transit': ['ship_order', 'close'], //done
     'draft': ['edit_order', 'cancel_order'], //done
-    'fulfilled': [], // Spelling check
+    'complete': [], // Spelling check
     'to-ship': ['ship_order', 'close'],
     'received': [], // done
   }
@@ -52,17 +58,19 @@ export class OrderlistActionPopupComponent implements OnInit {
     'fulfilled': [], // Spelling check
     'to-ship': ['ship_order', 'close'],
     'received': [], // done
+    
   }
+  isShowEdit:any
   showCaseMenuList:string[] = [];
   constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog,
-    private route: ActivatedRoute,) {
-    this.route
-      .data
+    private route: ActivatedRoute,private service:OrdersApisService,private SS:SharedService) {
+    this.route.data
       .subscribe(v => {
         let menuList = v['orderList'];
         this.showCaseMenuList = [];
         let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
         userRolesData.forEach(element => {
+
           if (element.title == v['key']) {
             element.permission.forEach(item => {
               if (menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
@@ -91,8 +99,11 @@ export class OrderlistActionPopupComponent implements OnInit {
         // }
       });
   }
-
+  CustomerPoId:any;
+  LoginId:any;
   ngOnInit(): void {
+    this.CustomerPoId =localStorage.getItem('CustomerPoId')
+    this.LoginId = localStorage.getItem("logInId");
   }
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -112,8 +123,6 @@ export class OrderlistActionPopupComponent implements OnInit {
 
     // this.currentActionMenu.push('view');
     }
-
-    
 
     // console.log("menu", menu);
     this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
@@ -146,6 +155,7 @@ export class OrderlistActionPopupComponent implements OnInit {
   }
 
   configureTippyInstance() {
+    this.isShowEdit = JSON.parse(localStorage.getItem('isShowEdit')||'null')
     this.tippyInstance.enable();
     this.tippyInstance.show();
 
@@ -183,11 +193,12 @@ export class OrderlistActionPopupComponent implements OnInit {
     // localStorage.setItem('edit-dealer','Edit')
     // this.dialog.open(OrderlistEditPopupComponent,{height:"570px"});
     // this.isOpen = false;
+    localStorage.removeItem('calculation')
     sessionStorage.setItem("Confirm", "");
     localStorage.setItem("Edit", 'Edit')
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
-       minWidth: '90vw',
-       height: '93vh',
+       minWidth: '100vw',
+       height: '730px',
       
       panelClass: 'order-add-edit'
     });
@@ -197,47 +208,98 @@ export class OrderlistActionPopupComponent implements OnInit {
       localStorage.setItem('Edit', '');
 
     })
+
   }
-  orderCancel() {
+  orderCancel(type:any) {
     this.dialog.open(OrderCancelPopupComponent);
     this.isOpen = false;
+    localStorage.setItem('statustype',type)
+    // const data={
+    //   CustomerPoId:this.CustomerPoId,
+    //   CurrentUserId:this.LoginId,
+    //   StatusToBeUpdated:type
+    // }
+    //   this.service.closeOrder(data).subscribe((res:any)=>{
+    //     console.log(res.response.result);
+    //       if(res.response.result=='Success'){
+    //         this.SS.deletepromo()
+    //       }
+    //   })
+    // }
   }
 
   viewOrder() {
     sessionStorage.setItem("viewOrder", "View");
-    this.dialog.open(OrderlistShipPopupComponent, { width: "987px", height: "1461px" });
+    this.dialog.open(OrderlistShipPopupComponent,
+       {
+         width: "987px",
+          height: "200px"
+         
+        
+         });
     this.isOpen = false;
   }
   orderShip() {
     sessionStorage.setItem("viewOrder", "")
 
-    this.dialog.open(OrderlistShipPopupComponent, {minWidth: '98vw',height:"95vh" });
+    this.dialog.open(OrderlistShipPopupComponent,
+       {
+       minWidth: '100vw',
+       height: '731px',
+       autoFocus:false,
+       });
     this.isOpen = false;
   }
 
   orderReceive() {
-    this.dialog.open(OrdersReceiveShipmentComponent, {width:"2087px",height:"1661px"});
+    this.dialog.open(OrdersReceiveShipmentComponent,
+       {
+        width:"2087px",
+       height:"1661px"
+      });
     this.isOpen = false;
   }
   ReceiveShipment() {
+    // alert('ok')
     localStorage.setItem('ViewOrReceive', 'Receive');
     localStorage.setItem('orderOrShipmentOrRecipt','shipment')
-    this.dialog.open(OrdersReceiveShipmentComponent, {maxWidth: '95vw',height:"95vh"});
+    this.dialog.open(OrdersReceiveShipmentComponent,
+       {
+        maxWidth: '100vw',
+       height:"95vh"
+      });
     this.isOpen = false;
   }
   confirmOrder() {
     localStorage.setItem("Edit", '')
     sessionStorage.setItem("Confirm", "Confirm");
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
-      
-      minWidth: '90vw',
-      height: '93vh',
-      
+      minWidth: '100vw',
+      height: '731px',
       panelClass: 'order-add-edit'
     });
     this.isOpen = false;
     dialogRef.afterClosed().subscribe((res) => {
       sessionStorage.setItem("Confirm", "");
+    })
+  }
+  deleteshipment(){
+    let userid = localStorage.getItem('logInId')
+    let invoiceId = localStorage.getItem('customerPOIdForShipment')
+
+    let data ={
+      InvoiceId:invoiceId,
+      CurrentUserId:userid
+    }
+    this.service.deleteshipment(data).subscribe((res:any)=> {
+      if(res.response.status){
+        console.log(res)
+        // alert(res.response.result)
+        this.SS.deletepromo()
+      }else{
+        // alert(res.response.result)
+        this.SS.deletepromo()
+      }
     })
   }
 }

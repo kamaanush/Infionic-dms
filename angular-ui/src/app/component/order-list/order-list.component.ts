@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit,  } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, ViewChild } from '@angular/core';
@@ -13,7 +13,7 @@ import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.com
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserService } from 'src/app/services/user.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
@@ -33,6 +33,7 @@ import moment from 'moment';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
+import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -63,21 +64,22 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.css']
+  styleUrls: ['./order-list.component.css'],
 })
-
-
 export class OrderListComponent implements OnInit {
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
   // dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));
   // dateRange1 = DateRange.nextTwoWeeks();
   // maxDate = new Date();
+
+  userType: any;
   disableSelect = new FormControl(false);
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm: any = FormGroup;
   myForm1: any = FormGroup;
   myForm2: any = FormGroup;
+
   disabled = false;
   ShowFilter = false;
   StatusFilter = false;
@@ -95,8 +97,7 @@ export class OrderListComponent implements OnInit {
 
   DealerId: any = [];
 
-  OrderDate: any = "";
-
+  OrderDate: any = '';
 
   statusTypes: any = [];
   searchText: any = '';
@@ -105,105 +106,26 @@ export class OrderListComponent implements OnInit {
   dropdownSettings2: IDropdownSettings = {};
   public rowData5 = [];
 
-  public rowDatalist:any = [];
-
+  public rowDatalist: any = [];
 
   public popupParent: HTMLElement = document.body;
   roleArray: any[] = [];
   statusArray: any = [];
   stayScrolledToEnd = true;
   paginationScrollCount: any;
-
-  columnDefs: ColDef[] = [
-    // { headerName: "User Id",
-    //   field: 'employeeCode' , sort: 'desc'},
-
-    { headerName: "Order No.", field: 'orderNUmber' ,
-    cellStyle: { color: '#017EFA' },
-    cellEditorPopup: true,
-    onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"})
-  },
-
-    { headerName: "Order Date", field: 'orderDate',       
-
-
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
-  },
-  tooltipField:"orderDate",
- },
-
-    {
-      headerName: "Dealer",
-      field: 'dealerName'
-    },
-
-    {
-      headerName: "Geography",
-      field: 'geographyName',
-    },
-
-    {
-      headerName: "Total Value",
-      field: 'totalValue',
-    },
-    {
-      headerName: "Completed Value",
-      field: 'compleatedValue',
-    },
-    {
-      headerName: "Status",
-      field: 'status',
-      maxWidth: 120,
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Closed', 'Approved',],
-      },
-      cellClass: params => {
-        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Confirmed' ? 'myclass3' : params.value == 'Ordered' ? 'myclassss' : params.value == 'Returned' ? 'myclass5'
-          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In-Transit' ? 'myclass8' : params.value == 'Fullfilled' ? 'Mmyclass' : params.value == 'ToShip' ? 'myclass10' : 'myclass11'
-      },
-
-      tooltipField: "statusName",
-    },
-
-    // {
-    //   headerName: "",
-    //   field: '', filter: false, sortable: false,
-    //   cellRenderer: function clickNextRendererFunc() {
-    //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-    //   }
-    // },
-    {
-      headerName: '',
-
-      colId: 'action',
-
-      cellRenderer: OrderlistActionPopupComponent,
-      editable: false,
-      maxWidth: 70
-    },
-    // {
-    //   headerName: "Avatar",
-    //   field: "avatar",
-    //   width: 100,
-    //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-    //  },
-
-  ];
+  columnDefs: ColDef[] = []
+   
 
   rowData: any;
-  rowData1 = []
+  rowData1 = [];
   public defaultColDef: ColDef = {
-
     suppressSizeToFit: true,
     width: 170,
-    filter: 'agTextColumnFilter',
+    filter: false,
     flex: 1,
     minWidth: 100,
     resizable: true,
     sortable: true,
-
   };
 
   // public defaultColDef: ColDef = {
@@ -217,39 +139,37 @@ export class OrderListComponent implements OnInit {
   public columnTypes: {
     [key: string]: ColDef;
   } = {
-      numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
-      medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
-      nonEditableColumn: { editable: false },
-      dateColumn: {
-        // specify we want to use the date filter
-        filter: 'agDateColumnFilter',
-        // add extra parameters for the date filter
-        filterParams: {
-          // provide comparator function
-          comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
-            // In the example application, dates are stored as dd/mm/yyyy
-            // We create a Date object for comparison against the filter date
-            const dateParts = cellValue.split('/');
-             const day = Number(dateParts[0]);
-             const month = Number(dateParts[1]) - 1;
-             const year = Number(dateParts[2]);
+    numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
+    medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
+    nonEditableColumn: { editable: false },
+    dateColumn: {
+      // specify we want to use the date filter
+      filter: 'agDateColumnFilter',
+      // add extra parameters for the date filter
+      filterParams: {
+        // provide comparator function
+        comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
+          // In the example application, dates are stored as dd/mm/yyyy
+          // We create a Date object for comparison against the filter date
+          const dateParts = cellValue.split('/');
+          const day = Number(dateParts[0]);
+          const month = Number(dateParts[1]) - 1;
+          const year = Number(dateParts[2]);
 
-           
-             const cellDate = new Date(year, month, day);
-           
+          const cellDate = new Date(year, month, day);
 
-            // Now that both parameters are Date objects, we can compare
-            if (cellDate < filterLocalDateAtMidnight) {
-              return -1;
-            } else if (cellDate > filterLocalDateAtMidnight) {
-              return 1;
-            } else {
-              return 0;
-            }
-          },
+          // Now that both parameters are Date objects, we can compare
+          if (cellDate < filterLocalDateAtMidnight) {
+            return -1;
+          } else if (cellDate > filterLocalDateAtMidnight) {
+            return 1;
+          } else {
+            return 0;
+          }
         },
       },
-    };
+    },
+  };
 
   // public sideBar: SideBarDef | string | string[] | boolean | null = {
   //   toolPanels: ['columns'],
@@ -257,9 +177,8 @@ export class OrderListComponent implements OnInit {
   public rowGroupPanelShow = 'always';
   public pivotPanelShow = 'always';
 
-
   sorting: GuiSorting = {
-    enabled: true
+    enabled: true,
   };
 
   paging: GuiPaging = {
@@ -269,34 +188,41 @@ export class OrderListComponent implements OnInit {
     pageSizes: [10, 25, 50],
     pagerTop: true,
     pagerBottom: true,
-    display: GuiPagingDisplay.BASIC
+    display: GuiPagingDisplay.BASIC,
   };
 
   searching: GuiSearching = {
     enabled: true,
-    placeholder: 'Search heroes'
+    placeholder: 'Search heroes',
   };
 
   columnMenu: GuiColumnMenu = {
     enabled: true,
     sort: true,
     columnsManager: true,
-
   };
   UomId: any;
   uomId: any;
   uomName: any;
   CustomerPoId: any;
   clickNextRendererFunc() {
-    alert('hlo');
+    // alert('hlo');
   }
-
 
   // sorting: GuiSorting = {
   // 	enabled: true,
   // 	multiSorting: true
   // };
-  displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
+  displayedColumns: string[] = [
+    'position',
+    'name',
+    'symbol',
+    'email',
+    'phonenum',
+    'login',
+    'status',
+    'edit',
+  ];
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
@@ -313,67 +239,76 @@ export class OrderListComponent implements OnInit {
   instancePopup: any = null;
   dealerlist: any = [];
   dealerAllarray: any = [];
-  dealerss: any = []
+  dealerss: any = [];
   dealerType: any;
-  selectedDealer: any = []
+  selectedDealer: any = [];
   geogropdownlist: any = [];
-  geoAllarray: any = []
+  geoAllarray: any = [];
   geogragphies: any = [];
-  statusDropList: any = []
+  statusDropList: any = [];
   statusList: any = [];
   statusAllarray: any = [];
   selectedDateRange: any;
   startDate: any = '';
   endDate: any = '';
-  currentPageName:string="";
-  loggedUserId:any;
-  constructor(public dialog: MatDialog,
-    private sharedService :SharedService,
+  currentPageName: string = '';
+  loggedUserId: any;
+  constructor(
+    public dialog: MatDialog,
+    private sharedService: SharedService,
     private router: Router,
-    private otherMasterService:OtherMasterService,
+    private otherMasterService: OtherMasterService,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
     public orders: OrdersApisService,
     private fb: FormBuilder,
     private observer: BreakpointObserver,
     private route: ActivatedRoute,
-    private sharedserviceForshipment:SharedServicesShipmentService,
-
-    private materialListService:SharedServiceMaterialListService
+    private sharedserviceForshipment: SharedServicesShipmentService,
+    private sharedServiceCalendar: SharedServiceCalendarService,
+    private SS:SharedService,
+    private materialListService: SharedServiceMaterialListService
   ) {
-
-
-    
     this.sharedserviceForshipment.listen().subscribe((m: any) => {
-      console.log(m)
-      this.orderlistGrid();  
+      console.log(m);
+      this.orderlistGrid();
+    });
+    this.SS.ReloadaddOrg.subscribe(()=>{
+      // alert('refresh')
+    //  this.refresh()
+      this.orderlistGrid();
     })
     sort: [];
-    this.route.data.subscribe(v => {
+    this.route.data.subscribe((v) => {
       this.currentPageName = v['key'];
       let actionColumn = v['orderList'];
       let showCaseMenuList: string[] = [];
       let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
 
-      userRolesData.forEach(element => {
+      userRolesData.forEach((element) => {
         if (element.title == this.currentPageName) {
-          this.columnDefs = this.columnDefs.filter(x => {
-            if (x.colId != 'action' || element == undefined || element == null) return true;
+          this.columnDefs = this.columnDefs.filter((x) => {
+            if (x.colId != 'action' || element == undefined || element == null)
+              return true;
 
-            element.permission.forEach(item => {
-              if (actionColumn.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+            element.permission.forEach((item) => {
+              if (
+                actionColumn.indexOf(item.action.toLowerCase()) !== -1 &&
+                item.status
+              ) {
                 showCaseMenuList.push(item.action);
               }
-            })
+            });
             return showCaseMenuList.length !== 0;
           });
         }
-      })
-  })
+      });
+    });
+  }
 
-}
+
   @ViewChild(MatSort)
-  sort: MatSort = new MatSort;
+  sort: MatSort = new MatSort();
 
   ngAfterViewInit() {
     // this.dataSource.sort = this.sort;
@@ -388,40 +323,647 @@ export class OrderListComponent implements OnInit {
     });
   }
 
-
-
   ngOnInit(): void {
-      
-    this.loggedUserId = localStorage.getItem('logInId')
+    this.userType = localStorage.getItem('userType');
+    this.loggedUserId = localStorage.getItem('logInId');
     this.uomId = localStorage.getItem('niId');
+     this.updateColumnDefs();
     // this.roleItems();
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
     this.orderlistGrid();
-
+    // this.updateColumnDefs()
     this.dealerOrder();
     this.geogrphyOrder();
     this.myForm = this.fb.group({
-      city: [this.selectedItems]
+      city: [this.selectedItems],
     });
     this.myForm1 = this.fb.group({
-      geo: [this.selectedItems]
+      geo: [this.selectedItems],
     });
     this.myForm2 = this.fb.group({
-      status: [this.selectedItems]
+      status: [this.selectedItems],
     });
   }
-  refresh() {
+  updateColumnDefs(){
+    if(this.userType === 'Admin'){
+      this.columnDefs=[
+        
+      {
+        headerName: 'Order #',
+        field: 'orderNUmber',
+        filter: false,
+        cellStyle: { color: '#017EFA' },
+        maxWidth: 110,
+        cellEditorPopup: true,
+        onCellClicked: (event: CellClickedEvent) =>
+          this.dialog.open(OrdersReceiveShipmentComponent, {
+            maxWidth: '95vw',
+            height: '95vh',
+          }),
+      },
+  
+      {
+        headerName: 'Order Date',
+        field: 'orderDate',
+        minWidth: 110,
+        maxWidth: 150,
+  
+        // cellRenderer: (data) => {
+        //   return this.sharedService.dateformat(data.value);
+        // },
+        cellRenderer: (data) => {
+          const formattedDate = this.sharedService.dateformat(data.value);
+          const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+          return coloredDate;
+        },
+        tooltipField: 'orderDate',
+        
+        
+      },
+  
+      {
+        headerName: 'Dealer',
+        field: 'dealerName',
+        minWidth: 245,
+        tooltipField: 'dealerName',
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+      {
+        headerName: 'ERP Ref # ',
+        minWidth: 110,
+        maxWidth: 150,
+        field: 'companyReferenceNo',
+        type: ['leftAligned'],
+        cellStyle: {
+          'color': '#686E74' 
+        }
+        
+      },
+  
+      {
+        headerName: 'Geography',
+        minWidth: 115,
+        maxWidth: 150,
+        field: 'geographyName',
+        tooltipField:'geographyName',
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+      {
+        headerName: 'ODV($)',
+        minWidth:100,
+        maxWidth: 115,
+        field: 'totalValue',
+        type: ['rightAligned'],
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+  
+      {
+        headerName: 'ODQ ',
+        field: 'orderedQty',
+        minWidth:90,
+        maxWidth: 115,
+        type: ['rightAligned'],
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+      {
+        headerName: 'RDQ',
+        field: 'receivedQty',
+        minWidth:90,
+        maxWidth: 115,
+        type: ['rightAligned'],
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+      {
+        headerName: 'OSQ',
+        field: 'outstandingQty',
+        minWidth:90,
+        maxWidth: 115,
+        type: ['rightAligned'],
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+      {
+        headerName: 'OSV($)',
+        minWidth:100,
+        maxWidth: 115,
+        field: 'outstandingValue',
+        type: ['rightAligned'],
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+  
+      {
+        headerName: 'ITQ',
+        minWidth:90,
+        maxWidth: 115,
+        field: 'inTransitQty',
+        type: ['rightAligned'],
+        cellStyle: {
+          'color': '#686E74' 
+        }
+      },
+      // {
+      //   headerName: "Total Value",
+      //   minWidth: 130,
+      //   field: 'totalValue',
+      //   type:['leftAligned']
+      // },
+      // {
+      //   headerName: "Completed Value",
+      //   minWidth: 170,
+      //   field: 'compleatedValue',
+      //   type:['leftAligned']
+      // },
+      {
+        headerName: 'Status',
+        field: 'status',
+        minWidth: 100,
+        cellEditor: 'agSelectCellEditor',
+        cellEditorParams: {
+          values: ['Closed', 'Approved'],
+        },
+        cellClass: (params) => {
+          return params.value == 'Rejected'
+            ? 'myclass1'
+            : params.value == 'Draft'
+            ? 'myclass2'
+            : params.value == 'Processed'
+            ? 'myclass3'
+            : params.value == 'Submitted'
+            ? 'myclassss'
+            : params.value == 'Returned'
+            ? 'myclass5'
+            : params.value == 'Cancelled'
+            ? 'myclass6'
+            : params.value == 'Pre-closed'
+            ? 'myclass7'
+            : params.value == 'In-Transit'
+            ? 'myclass8'
+            : params.value == 'complete'
+            ? 'Mmyclass'
+            : params.value =='Processing'
+            ? 'myclass22'
+            : params.value == 'ToShip'
+            ? 'myclass10'
+            : params.value == 'Closed'
+            ? 'myclass10'
+            : 'myclass11';
+            
+        },
+  
+        tooltipField: 'statusName',
+      },
+  
+      // {
+      //   headerName: "",
+      //   field: '', filter: false, sortable: false,
+      //   cellRenderer: function clickNextRendererFunc() {
+      //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+      //   }
+      // },
+      {
+        headerName: '',
+        colId: 'action',
+        cellRenderer: OrderlistActionPopupComponent,
+        editable: false,
+        maxWidth: 65,
+        
+      },
+      // {
+      //   headerName: "Avatar",
+      //   field: "avatar",
+      //   width: 100,
+      //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+      //  },
+      ]
+    }else if(this.userType === 'Viewer'){
+      this.columnDefs=[
+        
+        {
+          headerName: 'Order #',
+          field: 'orderNUmber',
+          filter: false,
+          cellStyle: { color: '#017EFA' },
+          maxWidth: 110,
+          cellEditorPopup: true,
+          onCellClicked: (event: CellClickedEvent) =>
+            this.dialog.open(OrdersReceiveShipmentComponent, {
+              maxWidth: '95vw',
+              height: '95vh',
+            }),
+        },
+    
+        {
+          headerName: 'Order Date',
+          field: 'orderDate',
+          minWidth: 110,
+          maxWidth: 150,
+    
+          // cellRenderer: (data) => {
+          //   return this.sharedService.dateformat(data.value);
+          // },
+          cellRenderer: (data) => {
+            const formattedDate = this.sharedService.dateformat(data.value);
+            const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+            return coloredDate;
+          },
+          tooltipField: 'orderDate',
+          
+          
+        },
+    
+        {
+          headerName: 'Dealer',
+          field: 'dealerName',
+          minWidth: 245,
+          tooltipField: 'dealerName',
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'ERP Ref # ',
+          minWidth: 110,
+          maxWidth: 150,
+          field: 'companyReferenceNo',
+          type: ['leftAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+          
+        },
+    
+        {
+          headerName: 'Geography',
+          minWidth: 115,
+          maxWidth: 150,
+          field: 'geographyName',
+          tooltipField:'geographyName',
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'ODV($)',
+          minWidth:100,
+          maxWidth: 115,
+          field: 'totalValue',
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+    
+        {
+          headerName: 'ODQ ',
+          field: 'orderedQty',
+          minWidth:90,
+          maxWidth: 115,
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'RDQ',
+          field: 'receivedQty',
+          minWidth:90,
+          maxWidth: 115,
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'OSQ',
+          field: 'outstandingQty',
+          minWidth:90,
+          maxWidth: 115,
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'OSV($)',
+          minWidth:100,
+          maxWidth: 115,
+          field: 'outstandingValue',
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+    
+        {
+          headerName: 'ITQ',
+          minWidth:90,
+          maxWidth: 115,
+          field: 'inTransitQty',
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        // {
+        //   headerName: "Total Value",
+        //   minWidth: 130,
+        //   field: 'totalValue',
+        //   type:['leftAligned']
+        // },
+        // {
+        //   headerName: "Completed Value",
+        //   minWidth: 170,
+        //   field: 'compleatedValue',
+        //   type:['leftAligned']
+        // },
+        {
+          headerName: 'Status',
+          field: 'status',
+          minWidth: 100,
+          cellEditor: 'agSelectCellEditor',
+          cellEditorParams: {
+            values: ['Closed', 'Approved'],
+          },
+          cellClass: (params) => {
+            return params.value == 'Rejected'
+              ? 'myclass1'
+              : params.value == 'Draft'
+              ? 'myclass2'
+              : params.value == 'Processed'
+              ? 'myclass3'
+              : params.value == 'Submitted'
+              ? 'myclassss'
+              : params.value == 'Returned'
+              ? 'myclass5'
+              : params.value == 'Cancelled'
+              ? 'myclass6'
+              : params.value == 'Pre-closed'
+              ? 'myclass7'
+              : params.value == 'In-Transit'
+              ? 'myclass8'
+              : params.value == 'complete'
+              ? 'Mmyclass'
+              : params.value =='Processing'
+              ? 'myclass22'
+              : params.value == 'ToShip'
+              ? 'myclass10'
+              : params.value == 'Closed'
+              ? 'myclass10'
+              : 'myclass11';
+              
+          },
+    
+          tooltipField: 'statusName',
+        },
+    
+        // {
+        //   headerName: "",
+        //   field: '', filter: false, sortable: false,
+        //   cellRenderer: function clickNextRendererFunc() {
+        //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+        //   }
+        // },
+        // {
+        //   headerName: '',
+        //   colId: 'action',
+        //   cellRenderer: OrderlistActionPopupComponent,
+        //   editable: false,
+        //   maxWidth: 65,
+          
+        // },
+        // {
+        //   headerName: "Avatar",
+        //   field: "avatar",
+        //   width: 100,
+        //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+        //  },
+        ]
+    }else {
+      this.columnDefs = [
+        {
+          headerName: 'Order #',
+          field: 'orderNUmber',
+          filter: false,
+          cellStyle: { color: '#017EFA' },
+          maxWidth: 110,
+          cellEditorPopup: true,
+          onCellClicked: (event: CellClickedEvent) =>
+            this.dialog.open(OrdersReceiveShipmentComponent, {
+              maxWidth: '95vw',
+              height: '95vh',
+            }),
+        },
 
+        {
+          headerName: 'Order Date',
+          field: 'orderDate',
+          minWidth: 100,
+          maxWidth: 150,
+
+          // cellRenderer: (data) => {
+          //   return this.sharedService.dateformat(data.value);
+          // },
+          cellRenderer: (data) => {
+            const formattedDate = this.sharedService.dateformat(data.value);
+            const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+            return coloredDate;
+          },
+          tooltipField: 'orderDate',
+        },
+
+        {
+          headerName: 'Dealer Ref No#',
+          field: 'dealerReferenceNo',
+          minWidth: 235,
+          tooltipField: 'dealerReferenceNo',
+          cellStyle: {
+            color: '#686E74',
+          },
+        },
+        // {
+        //   headerName: 'ERP Ref # ',
+        //   minWidth: 110,
+        //   maxWidth: 150,
+        //   field: 'companyReferenceNo',
+        //   type: ['leftAligned'],
+        //   cellStyle: {
+        //     color: '#686E74',
+        //   },
+        // },
+
+        // {
+        //   headerName: 'Geography',
+        //   minWidth: 115,
+        //   maxWidth: 150,
+        //   field: 'geographyName',
+        //   tooltipField: 'geographyName',
+        //   cellStyle: {
+        //     color: '#686E74',
+        //   },
+        // },
+        {
+          headerName: 'Order Value($)',
+          minWidth: 100,
+          // maxWidth: 115,
+          field: 'totalValue',
+          type: ['rightAligned'],
+          cellStyle: {
+            color: '#686E74',
+          },
+        },
+
+        {
+          headerName: 'Ordered Quantity ',
+          field: 'orderedQty',
+          minWidth: 145,
+          // maxWidth: 115,
+          type: ['rightAligned'],
+          cellStyle: {
+            color: '#686E74',
+          },
+        },
+        {
+          headerName: 'Received Quantity',
+          field: 'receivedQty',
+          minWidth: 150,
+          // maxWidth: 115,
+          type: ['rightAligned'],
+          cellStyle: {
+            color: '#686E74',
+          },
+        },
+        {
+          headerName: 'Outstanding Quantity',
+          field: 'outstandingQty',
+          minWidth: 150,
+          // maxWidth: 115,
+          type: ['rightAligned'],
+          cellStyle: {
+            color: '#686E74',
+          },
+        },
+        {
+          headerName: 'Outstanding Value($)',
+          minWidth: 140,
+          // maxWidth: 115,
+          field: 'outstandingValue',
+          type: ['rightAligned'],
+          cellStyle: {
+            color: '#686E74',
+          },
+        },
+
+        {
+          headerName: 'In-Transit Quantity',
+          minWidth: 80,
+          // maxWidth: 115,
+          field: 'inTransitQty',
+          type: ['rightAligned'],
+          cellStyle: {
+            color: '#686E74',
+          },
+        },
+        // {
+        //   headerName: "Total Value",
+        //   minWidth: 130,
+        //   field: 'totalValue',
+        //   type:['leftAligned']
+        // },
+        // {
+        //   headerName: "Completed Value",
+        //   minWidth: 170,
+        //   field: 'compleatedValue',
+        //   type:['leftAligned']
+        // },
+        {
+          headerName: 'Status',
+          field: 'status',
+          minWidth: 100,
+          cellEditor: 'agSelectCellEditor',
+          cellEditorParams: {
+            values: ['Closed', 'Approved'],
+          },
+          cellClass: (params) => {
+            return params.value == 'Rejected'
+              ? 'myclass1'
+              : params.value == 'Draft'
+              ? 'myclass2'
+              : params.value == 'Processed'
+              ? 'myclass3'
+              : params.value == 'Submitted'
+              ? 'myclassss'
+              : params.value == 'Returned'
+              ? 'myclass5'
+              : params.value == 'Cancelled'
+              ? 'myclass6'
+              : params.value == 'Pre-closed'
+              ? 'myclass7'
+              : params.value == 'In-Transit'
+              ? 'myclass8'
+              : params.value == 'complete'
+              ? 'Mmyclass'
+              : params.value == 'Processing'
+              ? 'myclass22'
+              : params.value == 'ToShip'
+              ? 'myclass10'
+              : params.value == 'Closed'
+              ? 'myclass10'
+              : 'myclass11';
+          },
+
+          tooltipField: 'statusName',
+        },
+
+        // {
+        //   headerName: "",
+        //   field: '', filter: false, sortable: false,
+        //   cellRenderer: function clickNextRendererFunc() {
+        //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+        //   }
+        // },
+        {
+          headerName: '',
+
+          colId: 'action',
+
+          cellRenderer: OrderlistActionPopupComponent,
+          editable: false,
+          maxWidth: 65,
+        },
+        // {
+        //   headerName: "Avatar",
+        //   field: "avatar",
+        //   width: 100,
+        //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+        //  },
+      ];
+    }
+  }
+  refresh() {
     this.myForm = this.fb.group({
-      city: [this.selectedItems]
+      city: [this.selectedItems],
     });
     this.myForm1 = this.fb.group({
-      geo: [this.selectedItems]
+      geo: [this.selectedItems],
     });
     this.myForm2 = this.fb.group({
-      status: [this.selectedItems]
+      status: [this.selectedItems],
     });
+
     // this.GeographyId=[];
     // this.StatusId=[];
     // this.DealerId=[];
@@ -438,52 +980,67 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       startDate: this.startDate,
       endDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
+      CurrentUserId: this.loggedUserId,
       //   "GeographyId":[],
       //  "DealerId" : [],
       //   "OrderDate":"",
       //   "Search":""
-    }
+    };
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log("RefreshData", this.rowDatalist);
-
+      console.log('RefreshData', this.rowDatalist);
     });
+    this.sharedServiceCalendar.filter('Register click');
+  }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    d.length == 1 && (d = '0' + d);
+    m.length == 1 && (m = '0' + m);
+    return d + m + y;
   }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv({
+      fileName: 'orderList_' + this.convertedDateFormat(),
+    });
   }
   roleFilter(data: any) {
-    console.log('data', data)
+    console.log('data', data);
     this.roleName = this.toppings.value;
-    this.user.UserFilterServices(this.roleName, this.statusname).subscribe((res: any) => {
-      this.rowData = res.response;
-
-
-    });
-    console.log('rolename', this.rowData)
+    this.user
+      .UserFilterServices(this.roleName, this.statusname)
+      .subscribe((res: any) => {
+        this.rowData = res.response;
+      });
+    console.log('rolename', this.rowData);
   }
 
   onCellClicked(e): void {
     console.log('cellClicked', e);
+    // this.SS.isShowEdit()
+    // console.log(e.data.isShowEdit);
+    localStorage.setItem('isShowEdit',JSON.stringify(e.data.isShowEdit))
     this.UomId = e.data.uoMId;
     this.uomName = e.data.uoMName;
     let ordernumber = e.data.orderNUmber;
-    this.CustomerPoId = e.data.id
-    localStorage.setItem('ViewOrReceive', 'View')
-    localStorage.setItem('customerPOIdForShipment',e.data.id)
-    localStorage.setItem('OrderNumberToShow',e.data.orderNUmber)
+    this.CustomerPoId = e.data.id;
+    localStorage.setItem('ViewOrReceive', 'View');
+    localStorage.setItem('customerPOIdForShipment', e.data.id);
+    localStorage.setItem('OrderNumberToShow', e.data.orderNUmber);
 
-    localStorage.setItem('orderOrShipmentOrRecipt','order')
+    localStorage.setItem('orderOrShipmentOrRecipt', 'order');
     // this.employeeName=e.data.userName;
     console.log('CustomerPoId', this.CustomerPoId);
-    localStorage.setItem('CustomerPoId', this.CustomerPoId)
-    sessionStorage.setItem("OrderStatus", e.data.status)
-    localStorage.setItem('UomId', e.data.uoMId)
-    localStorage.setItem('UomName', e.data.uoMName)
-    sessionStorage.setItem("orderNumber", ordernumber);
-    localStorage.setItem('niId', e.data.uoMId)
-    localStorage.setItem('Niname', e.data.uoMName)
+    localStorage.setItem('CustomerPoId', this.CustomerPoId);
+    sessionStorage.setItem('OrderStatus', e.data.status);
+    localStorage.setItem('UomId', e.data.uoMId);
+    localStorage.setItem('UomName', e.data.uoMName);
+    sessionStorage.setItem('orderNumber', ordernumber);
+    localStorage.setItem('niId', e.data.uoMId);
+    localStorage.setItem('Niname', e.data.uoMName);
     // localStorage.setItem('employeeName',this.employeeName )
     if (
       e.event.target.dataset.action == 'toggle' &&
@@ -496,22 +1053,18 @@ export class OrderListComponent implements OnInit {
       if (cellRendererInstances.length > 0) {
         const instance = cellRendererInstances[0];
         instance.togglePopup();
-
       }
     }
-
   }
 
-
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value);
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
   }
 
   onItemSelect(item: any) {
-
     // alert(item.roleName)
     this.userTypes.push(item.roleId);
 
@@ -519,12 +1072,11 @@ export class OrderListComponent implements OnInit {
       userTypes: this.userTypes,
       statuss: this.statusTypes,
       search: this.searchText,
-
-    }
+    };
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
     console.log('onItemSelect', item);
   }
   onItemSelectOrAll(item: any) {
@@ -533,12 +1085,11 @@ export class OrderListComponent implements OnInit {
       userTypes: this.userTypes,
       statuss: this.statusTypes,
       search: this.searchText,
-
-    }
+    };
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
     console.log('onItemSelect', item);
   }
   onItemDeSelectOrAll(item: any) {
@@ -546,30 +1097,25 @@ export class OrderListComponent implements OnInit {
       userTypes: this.userTypes,
       statuss: [],
       search: this.searchText,
-
-    }
+    };
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
     console.log('onItemSelect', item);
   }
-
-
 
   onItemDeSelectOrAllStatus(item: any) {
     const data = {
       userTypes: this.userTypes,
       statuss: [],
       search: this.searchText,
-
-    }
+    };
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
   }
-
 
   onItemSelectOrAllStatus(item: any) {
     this.statusTypes = this.statusArray;
@@ -577,12 +1123,11 @@ export class OrderListComponent implements OnInit {
       userTypes: this.userTypes,
       statuss: this.statusTypes,
       search: this.searchText,
-
-    }
+    };
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.statusTypes)
+    console.log('rolefilter', this.statusTypes);
   }
 
   // onStatusSelect(item: any) {
@@ -638,36 +1183,29 @@ export class OrderListComponent implements OnInit {
   //   // console.log('onItemSelect', item);
   // }
   applyFilter(event: Event) {
-
-
     const filterValue = (event.target as HTMLInputElement).value;
     // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
-
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
     this.materialListService.listen().subscribe((m: any) => {
-      console.log("RefreshData",m)
-      setTimeout (() => {
+      console.log('RefreshData', m);
+      setTimeout(() => {
         this.orderlistGrid();
-     }, 2000);
-     this.otherMasterService.listen().subscribe((m: any) => {
-      console.log("RefreshData",m)
-      setTimeout (() => {
-        this.orderlistGrid();
-     }, 2000);
-     
-    })
-     
-    })
+      }, 2000);
+      this.otherMasterService.listen().subscribe((m: any) => {
+        console.log('RefreshData', m);
+        setTimeout(() => {
+          this.orderlistGrid();
+        }, 2000);
+      });
+    });
   }
-  openDialog() {
-
-  }
+  openDialog() {}
   handleScroll(event) {
     if (this.instancePopup && this.instancePopup.isOpen) {
       this.instancePopup.togglePopup();
@@ -679,27 +1217,44 @@ export class OrderListComponent implements OnInit {
       const scrollPos = gridBody.offsetHeight + event.top;
       const scrollDiff = gridBody.scrollHeight - scrollPos;
       //const api =  this.rowData5;
-      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.stayScrolledToEnd = scrollDiff <= this.paginationPageSize;
       this.paginationScrollCount = this.rowDatalist.length;
     }
   }
 
-
-
   addOrderPromotion() {
-    const dialogRef = this.dialog.open(AddorderpromotionsComponent,{minWidth: '90vw', height: '93vh', 
-      panelClass: 'material-add-edit'
+    localStorage.removeItem('calculation')
+    localStorage.removeItem('productdata')
+    // 1 Promotion calculations
+    localStorage.removeItem('FirstPromotionCalculation');
+    localStorage.removeItem('FirstPromotionTotalAmountValue');
+
+    // 4 Promotion calculations
+    localStorage.removeItem('ForthPromotionTotalAmount');
+    localStorage.removeItem('ForthPromotionSelectedQTy');
+
+    localStorage.removeItem('ForthPromotionCalculationsTotalQty');
+    localStorage.removeItem('ForthPromotionCalculationsAmount');
+    //  3 Promotions
+    localStorage.removeItem('ThreePrommotionTotalselectedQuantity');
+    localStorage.removeItem('ThreePromotionTotalAmount');
+    // 3 Non Promotions calculations
+    localStorage.removeItem('ThreeePromotionCalculationsTotalQty');
+    localStorage.removeItem('ThreePromotionCalculationsAmount');
+
+    const dialogRef = this.dialog.open(AddorderpromotionsComponent, {
+      minWidth: '100vw',
+      height: '731px',
+      panelClass: 'material-add-edit',
     });
-    sessionStorage.setItem("Confirm",'')
+    sessionStorage.setItem('Confirm', '');
     localStorage.setItem('Edit', 'Add');
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.orderlistGrid();
       }
-    })
-
+    });
   }
-
 
   // ORDER SEARCH SELECT
 
@@ -722,7 +1277,6 @@ export class OrderListComponent implements OnInit {
   //   this.user.getGographicDropdown().subscribe((res: any) => {
   //     let localdata = res.response;
 
-
   //     this.toppingList = localdata.map((data: { geographyId: any; geographyName: any; }) => {
   //       return { geographyId: data.geographyId, geographyName: data.geographyName };
   //     });
@@ -730,7 +1284,6 @@ export class OrderListComponent implements OnInit {
   //     this.toppingList.push()
   //     this.toppingList.forEach(element => {
   //       return this.roleArray.push(element.geographyId);
-
 
   //     })
   //     this.toppings = new FormControl(this.toppingList);
@@ -748,44 +1301,35 @@ export class OrderListComponent implements OnInit {
   //   });
   // }
 
-
-
-  onSearchChangeDEAL($event: any, anything?: any) {
-
-  }
+  onSearchChangeDEAL($event: any, anything?: any) {}
 
   orderlistGrid() {
-
     const data = {
       // userTypes: this.userTypes,
       // statuss: this.statusTypes,
       // search: this.searchText,
-      "StatusId": [],
-      "GeographyId": [],
-      "DealerId": [],
-      "OrderDate": "",
+      StatusId: [],
+      GeographyId: [],
+      DealerId: [],
+      OrderDate: '',
 
-      "Search": this.searchText,
-      CurrentUserId:this.loggedUserId,
-      
-
-    }
+      Search: this.searchText,
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-       this.rowDatalist.forEach(element=>{
-         element.orderDate= this.sharedService.dateformat
-         (element.orderDate);
-         })
-
+      console.log(res.response, '..............');
+      this.rowDatalist.forEach((element) => {
+        element.orderDate = this.sharedService.dateformat(element.orderDate);
+      });
     });
   }
   orderUpload() {
-
     sessionStorage.setItem('sales', '');
     this.dialog.open(SalesBulkUploadComponent);
   }
   selectdays() {
-    this.dialog.open(CustomDatePopupComponent, { panelClass: 'custmdays' })
+    this.dialog.open(CustomDatePopupComponent, { panelClass: 'custmdays' });
   }
   // selectedDateRange = {
   //   startDate: '11/11/2022',
@@ -804,8 +1348,8 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
@@ -813,14 +1357,19 @@ export class OrderListComponent implements OnInit {
   dealerOrder() {
     this.user.dealerDropdownOrderlist().subscribe((res: any) => {
       let localdata = res.response;
-      this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
-        return { customerId: data.customerId, customerName: data.customerName };
-      });
-      this.dealerlist.push()
-      this.dealerlist.forEach(element => {
+      this.dealerlist = localdata.map(
+        (data: { customerId: any; customerName: any }) => {
+          return {
+            customerId: data.customerId,
+            customerName: data.customerName,
+          };
+        }
+      );
+      this.dealerlist.push();
+      this.dealerlist.forEach((element) => {
         return this.dealerAllarray.push(element.customerId);
-      })
-      console.log('dealerAllarray', this.dealerAllarray)
+      });
+      console.log('dealerAllarray', this.dealerAllarray);
     });
     this.dropdownSettings = {
       singleSelection: false,
@@ -829,7 +1378,7 @@ export class OrderListComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.selectedStatus = [];
   }
@@ -842,14 +1391,14 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
   DealerDeselect(item: any) {
-    console.log(item)
+    console.log(item);
     this.dealerss.forEach((element, index) => {
       if (element == item.customerId) this.dealerss.splice(index, 1);
     });
@@ -860,8 +1409,8 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
@@ -875,15 +1424,15 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
   DealerorderSelectAll(item: any) {
     this.dealerss = this.dealerAllarray;
-    console.log("AllDealers", this.dealerss);
+    console.log('AllDealers', this.dealerss);
     const data = {
       StatusId: this.statusList,
       GeographyId: this.geogragphies,
@@ -891,39 +1440,44 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log("All Dealers", this.rowDatalist)
+      console.log('All Dealers', this.rowDatalist);
     });
   }
   geogrphyOrder() {
     this.user.getGeographies().subscribe((res: any) => {
       let localdata = res.response;
-      this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
-        return { geographyId: data.geographyId, geographyName: data.geographyName };
-      });
+      this.geogropdownlist = localdata.map(
+        (data: { geographyId: any; geographyName: any }) => {
+          return {
+            geographyId: data.geographyId,
+            geographyName: data.geographyName,
+          };
+        }
+      );
 
-      this.geogropdownlist.push()
-      this.geogropdownlist.forEach(element => {
+      this.geogropdownlist.push();
+      this.geogropdownlist.forEach((element) => {
         return this.geoAllarray.push(element.geographyId);
-      })
-      console.log('buleditGeo', this.geoAllarray)
+      });
+      console.log('buleditGeo', this.geoAllarray);
       this.dropdownSettings1 = {
         singleSelection: false,
         idField: 'geographyId',
         textField: 'geographyName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: true
+        itemsShowLimit: 1,
+        allowSearchFilter: true,
       };
     });
   }
   geographyselect(item: any) {
     this.geogragphies.push(item.geographyId);
-    console.log("geographics", this.geogragphies);
+    console.log('geographics', this.geogragphies);
     const data = {
       StatusId: this.statusList,
       GeographyId: this.geogragphies,
@@ -931,8 +1485,8 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
@@ -948,12 +1502,12 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
     console.log('onItemSelect', item);
   }
   geographyDeselectAll(item: any) {
@@ -965,16 +1519,16 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log("GeoSelectALL", this.rowDatalist)
+      console.log('GeoSelectALL', this.rowDatalist);
     });
   }
   geographyselectAll(item: any) {
     this.geogragphies = this.geoAllarray;
-    console.log("geographics", this.geogragphies);
+    console.log('geographics', this.geogragphies);
     const data = {
       StatusId: this.statusList,
       GeographyId: this.geogragphies,
@@ -982,32 +1536,33 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log("GeoSelectALL", this.rowDatalist)
+      console.log('GeoSelectALL', this.rowDatalist);
     });
     // console.log('rolefilter', this.userTypes)
     // console.log('onItemSelect', item);
   }
-  statusItems()
-   {
+  statusItems() {
     this.user.statusDropdownOrderlist().subscribe((res: any) => {
       let localdata = res.response;
-      this.statusDropList = localdata.map((data: { statusId: any; statusName: any; }) => {
-        return { statusId: data.statusId, statusname: data.statusName };
-      });
+      this.statusDropList = localdata.map(
+        (data: { statusId: any; statusName: any }) => {
+          return { statusId: data.statusId, statusname: data.statusName };
+        }
+      );
       // if (!this.statusDropList?.length) {
       //   this.statusDropList = localdata.map((status: { statusname: any; }) => {
       //     return status.statusname;
       //   });
       // }
-      this.statusDropList.push()
-      this.statusDropList.forEach(element => {
+      this.statusDropList.push();
+      this.statusDropList.forEach((element) => {
         return this.statusAllarray.push(element.statusId);
       });
-      console.log('buleditGeo', this.statusAllarray)
+      console.log('buleditGeo', this.statusAllarray);
       this.dropdownSettings2 = {
         singleSelection: false,
         idField: 'statusId',
@@ -1015,7 +1570,7 @@ export class OrderListComponent implements OnInit {
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
         itemsShowLimit: 1,
-        allowSearchFilter: false
+        allowSearchFilter: false,
       };
       this.selectedItems = [];
     });
@@ -1029,10 +1584,10 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
-      this.rowDatalist = res.response;  
+      this.rowDatalist = res.response;
     });
   }
   statusDeselect(item: any) {
@@ -1046,12 +1601,12 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.userTypes);
     console.log('onItemSelect', item);
   }
   statusDeselectAll(item: any) {
@@ -1063,14 +1618,14 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
   statusselectAll(item: any) {
-    this.statusList = this.statusAllarray
+    this.statusList = this.statusAllarray;
     const data = {
       StatusId: this.statusList,
       GeographyId: this.geogragphies,
@@ -1078,8 +1633,8 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
@@ -1094,8 +1649,8 @@ export class OrderListComponent implements OnInit {
       Search: this.searchText,
       StartDate: this.startDate,
       EndDate: this.endDate,
-      CurrentUserId:this.loggedUserId,
-    }
+      CurrentUserId: this.loggedUserId,
+    };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });

@@ -1,7 +1,7 @@
 
 .head-text{
     font-size: 20px;
-    font-weight: 600;
+    font-family: 'Gilroy-Bold';
     margin-top: -43px;
     }
     /* .deact
@@ -11,7 +11,7 @@
     } */
     .undo{
         padding: 5px 52px;
-        background: black;
+        background: rgba(1,137,117,1);
         color: white;
         margin-right: 20px;
         /* border: #000000; */
@@ -19,15 +19,17 @@
         margin-top: 15px;
         width: 150px;
         height: 41px;
+        cursor: pointer;
         }
     .exit{
-    background: #fff;
-    color: black;
+    background: rgba(1,137,117,1);
+    color: white;
     padding: 5px 52px;
     border: 2px solid #000000;
     border-radius: 10px;
     height: 41px;
     width: 150px;
+    cursor: pointer;
     }
     .close-icon{
         left: 100%;
@@ -35,6 +37,7 @@
         font-size: 15px;
         font-weight: 600;
         top:-10px;
+        cursor: pointer;
     }
     
     .areus

@@ -1,12 +1,13 @@
 .head-text {
     font-size: 20px;
-    font-weight: 600;
-    font-family: 'Gilroy';
+    /* font-weight: 600; */
+    font-family: 'Gilroy-Bold';
 }
 
 .undo {
     /* padding: 5px 52px; */
-    background: black;
+    /* background: black; */
+    background-color:#018B75 ;
     color: white;
     margin-right: 20px;
     /* border: #000000; */
@@ -14,13 +15,16 @@
     width: 115px;
     height: 43px;
     cursor: pointer;
+    border: 2px solid rgba(1, 139, 117, 1);
 }
 
 .exit {
-    background: #fff;
-    color: black;
+    /* background: #fff; */
+    background-color:#018B75 ;
+    /* color: black; */
+    color: white;
     /* padding: 5px 52px; */
-    border: 2px solid #000000;
+    border: 2px solid rgba(1, 139, 117, 1);
     border-radius: 10px;
     width: 115px;
     height: 43px;
@@ -28,11 +32,12 @@
 }
 
 .close-icon {
-    left: 100%;
+    left: 104%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    top: -15px;
 }
 
 .popUpSize {
@@ -47,9 +52,7 @@
 
 .deleted1
 {
-    font-family: 'Gilroy-Medium';
-
-        color: #36454f;
-
-        font-size: 16px;
+       font-family: 'Gilroy-Medium';
+       color: #36454f;
+       font-size: 16px;
 }

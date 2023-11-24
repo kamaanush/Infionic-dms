@@ -8,7 +8,7 @@
         <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px;margin-top: -26px;">
           <div class="row">
             <div class="col-md-8">
-              <div class="searchBox d-flex">
+              <!-- <div class="searchBox d-flex">
                 <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
                   placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
                 <button class="searchButton" href="#">
@@ -17,11 +17,21 @@
                   </i>
                 </button>
                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-              </div>
+              </div> -->
+<!-- annu -->
+
+<div class="searchBox1 ">
+  <input class="searchInput1" type="text" name="" placeholder="Search Here Anything"(keyup)="onSearchChange($event)">
+   <mat-icon  class="searchicons1">search</mat-icon> 
+  <button class="search-bt_n1">Search</button>
+   <!-- <button class="searchButtonn" href="#">
+  </button> -->
+</div>
+
             </div>
             <div class="col-md-2">
               <div class="add-user " (click)="adduom()" userRoleDirective="ADD_UOM" pageName="settingothermasters">
-                <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+                <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
             </div>
             <!-- <div class="col-md-4">
@@ -36,7 +46,7 @@
   </section>
 
   <ag-grid-angular id="gridContainer"
-    style=" height: 400px; margin-left: 20px;border-radius: 20px;background-color: white;font-family: Gilroy"
+    style=" height: 470px; margin-left: 20px;background-color: white;font-family: Gilroy"
     class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true"
     [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
@@ -45,7 +55,9 @@
     [paginationPageSize]="paginationPageSize" (bodyScroll)="handleScroll($event)"></ag-grid-angular>
 
   <div class="pagination">
-    <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span
-      class="pagination-cls">{{rowData5.length}}</span>
+    <span class="pagination-cls">1</span>&nbsp; -&nbsp; &nbsp; <span  class="pagination-cls">{{rowData5.length}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+    <span class="pagination-cl">&nbsp;{{rowData5.length}}</span>
   </div>
+  
+  
 </div>

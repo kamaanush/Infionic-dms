@@ -47,6 +47,8 @@ import { AddTargetsComponent } from '../add-targets/add-targets.component';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { DealerTargetActionComponent } from '../dealer-target-action/dealer-target-action.component';
 import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
+import { SalesBulkUploadComponent } from '../sales-bulk-upload/sales-bulk-upload.component';
+import { OrderReceiptsBulkUploadComponent } from 'src/app/orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 
 // import { UseractionComponent } from '../useraction/useraction.component';
 
@@ -91,6 +93,7 @@ export class DealerTargetComponent implements OnInit {
   targetListArray:any = [];
   targetAllArray:any = [];
   yearSelected:any = [];
+  isitemtarget:any;
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,
@@ -109,47 +112,52 @@ export class DealerTargetComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Target Group",
-       field: 'targetGroupName', type: ['nonEditableColumn']
+      headerName: "TargetGroup",
+       field: 'targetGroupName',cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
     },
 
     { headerName: "Geography",
-    field: 'geographyName', type: ['nonEditableColumn']
+    field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
     {
-      headerName: "Dealer",
-      field: 'customername', type: ['nonEditableColumn']
+      headerName: "DealerName",
+      field: 'customername',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
    
     // suppressMovable:true,
     {
-      headerName: "Financial year",
+      headerName: "Financialyear",
       field: 'year',
-      type: ['nonEditableColumn'],
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
     {
       headerName: "No of Products",
       field: 'productCount',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
     {
       headerName: "Target Total",
       field: 'volumeTotal',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
     {
       headerName: "Actual PY",
       field: 'actualPy',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
 
     {
       headerName: "Actual YTD",
       field: 'actualYTD',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
 
@@ -157,7 +165,8 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: "% of YTD Target",
       field: 'ytdTarget',
-      type: ['nonEditableColumn'],
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
     {
@@ -183,6 +192,7 @@ export class DealerTargetComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
 
 
@@ -343,21 +353,26 @@ export class DealerTargetComponent implements OnInit {
 
    // this.dataSource.sort = this.sort;
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      } else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
+      if(this.sidenav){
+        if (res.matches) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
+        } else {
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
       }
     });
-    this.message = this.child.message
-    console.log('parent is working', this.message)
+    if(this.child){
+      this.message = this.child.message;
+    }
+    // console.log('parent is working', this.message)
   }
 
 
-
+  usertype:any
   ngOnInit(): void {
+    this.usertype = localStorage.getItem('userType')
     this.loggedUserId = localStorage.getItem('logInId');
     this.TargetTabelData();
     this.Geography();
@@ -385,15 +400,15 @@ export class DealerTargetComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
 
   onSelectAll(items: any) {
-    console.log('onSelectAll', items);
+    // console.log('onSelectAll', items);
   }
 
   onStatusAll(items: any) {
-    console.log('onSelectAll', items);
+    // console.log('onSelectAll', items);
   }
 
   toogleShowFilter() {
@@ -452,9 +467,10 @@ export class DealerTargetComponent implements OnInit {
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
     // this.TargetTabelData();
@@ -471,7 +487,7 @@ export class DealerTargetComponent implements OnInit {
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -490,7 +506,7 @@ export class DealerTargetComponent implements OnInit {
       this.geographyListData.forEach(element => {
         return this.geographyArray.push(element.geographyId);
       })
-      console.log('geographyArray', this.geographyArray)
+      // console.log('geographyArray', this.geographyArray)
       this.toppings = new FormControl(this.geographyListData);
       this.dropdownSettings = {
         singleSelection: false,
@@ -506,7 +522,7 @@ export class DealerTargetComponent implements OnInit {
   }
   onGeographyItemSelect(item: any) {
     this.geographySelected.push(item.geographyId);
-console.log("SelectedGeo",this.geographySelected)
+// console.log("SelectedGeo",this.geographySelected)
     const data = {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
@@ -518,7 +534,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -535,7 +551,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -552,7 +568,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -572,7 +588,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -608,7 +624,7 @@ console.log("SelectedGeo",this.geographySelected)
     this.targetList.financialYear().subscribe((res: any) => {
       this.toppingList1 = res.response;
       
-      console.log('New Year', this.toppingList1)
+      // console.log('New Year', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
       
@@ -644,7 +660,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -661,7 +677,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -678,7 +694,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -698,20 +714,20 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
   }
   roleFilter(data: any) {
-    console.log('data', data)
+    // console.log('data', data)
     this.roleName = this.toppings.value;
     this.user.UserFilterServices(this.roleName, this.statusname).subscribe((res: any) => {
       this.rowData = res.response;
 
 
     });
-    console.log('rolename', this.rowData)
+    // console.log('rolename', this.rowData)
   }
   onDealerItemSelect(item: any) {
     this.dealerSelected.push(item.customerId);
@@ -727,7 +743,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -744,7 +760,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -761,7 +777,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -781,7 +797,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -840,9 +856,6 @@ console.log("SelectedGeo",this.geographySelected)
 
   onCellValueChanged(event: CellValueChangedEvent) {
     // alert(event.value)
-    console.log(
-      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
-    );
   }
 
   onSearchChange($event: any, anything?: any) {
@@ -859,7 +872,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -876,8 +889,17 @@ console.log("SelectedGeo",this.geographySelected)
     // alert('mani')
 
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv( { fileName: 'dealerTarget_' + this.convertedDateFormat() });
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -888,7 +910,12 @@ console.log("SelectedGeo",this.geographySelected)
     this.gridOptions.api!.sizeColumnsToFit();
   }
 
-
+  orderTargetUpload(){
+    localStorage.setItem('UploadTarget','dealertarget')
+    // sessionStorage.setItem("orderTarget",'target');
+      this.dialog.open(OrderReceiptsBulkUploadComponent,{minWidth :'91vw',height:'702px'});
+      // this.isOpen = false;
+  }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
   }
@@ -906,10 +933,10 @@ console.log("SelectedGeo",this.geographySelected)
   }
 
   onCellClicked(e): void {
-    console.log('cellClicked', e);
+    // console.log('cellClicked', e);
     this.userId = e.data.targetAssociationId;
     this.employeeName = e.data.userName;
-    console.log('userID', this.userId);
+    // console.log('userID', this.userId);
     localStorage.setItem('editOrAddTarget', this.userId)
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
@@ -937,7 +964,7 @@ console.log("SelectedGeo",this.geographySelected)
   targetListGroup(){
     this.targetList.getTargetList().subscribe((res) => {
       this.targetListData  = res.response;
-    console.log("check target",this.targetListData );
+    // console.log("check target",this.targetListData );
     let localdata =this.targetListData;
           this.targetListArray = localdata.map((data: { targetGroupId: any; targetGroupName: any; }) => {
             return { targetGroupId: data.targetGroupId, targetGroupName: data.targetGroupName };
@@ -947,7 +974,7 @@ console.log("SelectedGeo",this.geographySelected)
           this.targetListArray.forEach(element => {
             return this.targetAllArray.push(element.targetGroupId);
           })
-          console.log('targetAllArray', this.targetAllArray)
+          // console.log('targetAllArray', this.targetAllArray)
     
     })
     this.targetSettings = {
@@ -974,7 +1001,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -991,7 +1018,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -1008,7 +1035,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -1028,7 +1055,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -1037,7 +1064,7 @@ console.log("SelectedGeo",this.geographySelected)
     this.targetList.getDealers().subscribe((res) => {
       this.dealerListData  = res.response;
       let localdata = this.dealerListData
-    console.log("check Dealer",this.dealerListData );
+    // console.log("check Dealer",this.dealerListData );
           this.dealerList = localdata.map((data: { customerId: any; customerName: any; }) => {
             return { customerId: data.customerId, customerName: data.customerName };
           });
@@ -1046,7 +1073,7 @@ console.log("SelectedGeo",this.geographySelected)
           this.dealerList.forEach(element => {
             return this.dealerArray.push(element.customerId);
           })
-          console.log('dealerArray', this.dealerArray)
+          // console.log('dealerArray', this.dealerArray)
     
     })
     this.dealerDropdownSettings = {

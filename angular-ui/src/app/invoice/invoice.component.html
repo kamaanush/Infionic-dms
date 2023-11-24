@@ -1,15 +1,15 @@
-<div >
-    <section >
+<div class="invoiceee ">
+    <section style="margin-top: -3px;">
       <div class="row">
           <div class="col-6">
   </div>
-      <div class="col-6" style="margin-bottom:7px;">
+      <div class="col-6" style="margin-bottom:7px;margin-top: -60px;">
           <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
           <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px">
             <div class="row">
             <div class="col-md-8">
           <div class="searchBox d-flex">
-            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
+            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & Search For Anything" 
                (keyup)="onSearchChange($event)" >
             <button class="searchButton" href="#"> 
                 <i class="material-icons">
@@ -36,7 +36,7 @@
   
     <ag-grid-angular
     id="gridContainer"
-    style=" height: 400px;margin-left: 20px;border-radius: 20px;background-color: white;font-family: Gilroy"
+    style=" height: 464px;margin-left: 20px;background-color: white;font-family: Gilroy"
     class="ag-theme-material"
     [rowHeight]="25"
     [headerHeight]="48"
@@ -56,6 +56,6 @@
     ></ag-grid-angular>
   
     <div class="pagination">
-      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span class="pagination-cls">{{rowData5.length}}</span>
+      <span class="pagination-cls">1 &nbsp;</span><span class="pagination-cls">-&nbsp;</span><span class="pagination-cls">{{rowData5.length}}</span> <span class="pagination-cls">&nbsp; of</span> <span class="pagination-clASS">&nbsp;{{rowData5.length}}</span>
       </div>
   </div>

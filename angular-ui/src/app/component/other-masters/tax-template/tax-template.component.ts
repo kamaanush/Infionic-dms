@@ -62,7 +62,7 @@ export class TaxTemplateComponent implements OnInit {
   columnDefs: ColDef[] = [ 
 
     { headerName: "Name",
-  field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:500
+  field: 'taxTemplateName' ,type: ['nonEditableColumn'],minWidth:500
   },
   
   {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] },
@@ -111,6 +111,7 @@ export class TaxTemplateComponent implements OnInit {
     // make columns resizable
     resizable: true,
     sortable: true,
+    lockVisible:true,
     flex: 1,
     width:100
   };
@@ -280,6 +281,7 @@ instancePopup:any = null;
     refresh(){
       this.toppings = new FormControl(this.toppingList);
       this.toppings1 = new FormControl(this.toppingList1);
+      this.searchText = '';
       this.myForm = this.fb.group({
         city: [this.selectedItems]
     });
@@ -294,6 +296,7 @@ instancePopup:any = null;
         Search:"",
     
       }
+      const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
       this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });
@@ -521,7 +524,7 @@ openDialog(){
 }
 
 onCellValueChanged(event: CellValueChangedEvent) {
-  alert(event.value)
+  // alert(event.value)
   console.log(
     'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
   );
@@ -530,7 +533,7 @@ onCellValueChanged(event: CellValueChangedEvent) {
 
 onRowValueChanged(event: RowValueChangedEvent) {
   var data = event.data;
-  alert(data.status)
+  // alert(data.status)
   // console.log(
   //   'onRowValueChanged: (' +
   //     data.make +
@@ -544,9 +547,9 @@ onRowValueChanged(event: RowValueChangedEvent) {
   // );
 }
 clickNextRendererFunc(){
-  alert('hlo');
+  // alert('hlo');
 }
 editfn(){
-  alert('revs')
+  // alert('revs')
 }
 }

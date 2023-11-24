@@ -5,6 +5,7 @@ import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRender
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { UserService } from 'src/app/services/user.service';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 @Component({
   selector: 'app-ship-order-bulk-download',
   templateUrl: './ship-order-bulk-download.component.html',
@@ -49,41 +50,97 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   emptyDownloadArray:any = [];
   columnDefs: ColDef[] = [
     {  headerName: "Order No.",
-       field: 'orderNo',      tooltipField:"orderNo",type: ['nonEditableColumn']
+       field: 'orderNo',      tooltipField:"orderNo",type: ['nonEditableColumn'],
+       cellStyle: {
+        'color': '#686E74' 
+      }
       },
   
     {   headerName: "Order Date",
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
+  },
+
+
+
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
       field: 'orderDate',      tooltipField:"orderDate",
       type: ['nonEditableColumn']},
       {  headerName: "Product Name",
-      field: 'productName',      tooltipField:"productName",type: ['nonEditableColumn']
+      field: 'productName',      tooltipField:"productName",type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
      },
      {  headerName: "Product Code",
-     field: 'productCode',      tooltipField:"productCode",type: ['nonEditableColumn']
+     field: 'productCode',      tooltipField:"productCode",type: ['nonEditableColumn'],
+     cellStyle: {
+      'color': '#686E74' 
+    },
     },
   
       {   headerName: "Order Qty",
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
       field: 'orderQty',type: ['nonEditableColumn'],tooltipField:"orderQty",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },
       {  headerName: "Shipped Till Qty",
-      field: 'shippedTillQty',      tooltipField:"shippedTillQty",type: ['nonEditableColumn']
+      field: 'shippedTillQty',      tooltipField:"shippedTillQty",type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
   },
       {  headerName: "Dispatch Qty",
-      field: 'dispatchQty',      tooltipField:"dispatchQty",type: ['nonEditableColumn']
+      field: 'dispatchQty',      tooltipField:"dispatchQty",type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
    
   {  headerName: "Dispatch Date",
-      field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
+  },
+     field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
     },
     {  headerName: "Invoice Date",
+  //   cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
+  },
     field: 'invoiceDate',      tooltipField:"invoiceDate",type: ['nonEditableColumn']
   },
   {  headerName: "Invoice No.",
-  field: 'invoiceNo',      tooltipField:"invoiceNo",type: ['nonEditableColumn']
+  field: 'invoiceNo',      tooltipField:"invoiceNo",type: ['nonEditableColumn'],
+  cellStyle: {
+    'color': '#686E74' 
+  }
 },
 {  headerName: "Uploaded Date",
+// cellRenderer: (data) => 
+//   { return this.sharedService.dateformat(data.value);
+//   },
+cellRenderer: (data) => {
+  const formattedDate = this.sharedService.dateformat(data.value);
+  const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+  return coloredDate;
+},
 field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
 },
   
@@ -91,35 +148,59 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
   columnReceiptDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",minWidth:160,
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
+    cellStyle: {
+      'color': '#686E74' 
+    },
    },
    {  headerName: "Shipment Date",minWidth:160,
    field: 'shipmentDate',      tooltipField:"shipmentDate",
+   cellStyle: {
+    'color': '#686E74' 
+  },
   },
     {  headerName: "Order No.",minWidth:160,
        field: 'customerPONumber',      tooltipField:"customerPONumber",
+       cellStyle: {
+        'color': '#686E74' 
+      }
       },
   
     {   headerName: "Order Date",minWidth:160,
       field: 'orderDate',      tooltipField:"orderDate",
+      cellStyle: {
+        'color': '#686E74' 
+      },
       type: ['nonEditableColumn']},
   
       {   headerName: "Dealer",minWidth:160,
       field: 'dealer',type: ['nonEditableColumn'],      tooltipField:"dealer",
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
       {  headerName: "Invoice No.",minWidth:160,
       field: 'invoiceNumber',      tooltipField:"invoiceNumber",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
       {  headerName: "Invoice Date",minWidth:160,
       field: 'invoiceDate',      tooltipField:"invoiceDate",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
    
     {  headerName: "Total Items ",
     field:"totalitems",tooltipField:"totalitems", resizable:true,
-            children:[
-          {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
-          {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
-          {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
-        ]
+    cellStyle: {
+      'color': '#686E74' 
+    },
+        //     children:[
+        //   {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
+        //   {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
+        //   {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
+        // ]
     
       },
   
@@ -229,10 +310,11 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
 
   };
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
   constructor(private user: UserService,
     public orders:OrdersApisService,
+    private sharedService :SharedService,
     private fb: FormBuilder,) { }
 
   ngOnInit(): void {
@@ -242,6 +324,14 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.geographyForm = this.fb.group({
       geography: [this.selectedItems]
     });
+
+    // this.dealerForm = this.fb.group({
+    //   city: [this.selectedItems]
+    // });
+    // this.geographyForm = this.fb.group({
+    //   geo: [this.selectedItems]
+    // });
+   
     this.dealerOrder();
     this.geogrphyOrder();
     this.getDownloadBulkUpload();
@@ -257,7 +347,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -334,6 +424,33 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
       console.log("Response Receipt",this.receiptDatalist)
+
+
+      this.receiptDatalist.forEach(element => {
+
+        element.orderDate=this.sharedService.dateformat
+        (element.orderDate);
+      
+      }) 
+
+
+       this.receiptDatalist.forEach(element=>{
+          
+
+            
+         element.shipmentDate= this.sharedService.dateformat
+        (element.shipmentDate);
+        })
+
+        this.receiptDatalist.forEach(element=>{
+          
+
+            
+          element.invoiceDate= this.sharedService.dateformat
+         (element.invoiceDate);
+         })
+
+     
     });
   }
   customDatePickerEvent(eventChange) {
@@ -346,6 +463,10 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       DealerId:this.dealerss,
       StartDate:this.startDate,
       EndDate:this.endDate,
+      // ShipmentStartDate:this.startDateShip,
+      // ShipmentEndDate:this.endDateShip,
+      // InvoiceStartDate:this.startDateInvoice,
+      // InvoiceEndDate:this.endDateInvoice,
     }
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
@@ -371,11 +492,26 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       console.log("Response",this.receiptDatalist)
     });
   }
+  selectedDateRanges:any;
   customInvoiceDatePickerEvent(eventChange){
-    this.selectedDateRange = eventChange.selectedDate;
-    this.startDateInvoice = this.selectedDateRange.startDate;
-    this.endDateInvoice = this.selectedDateRange.endDate;
-    console.log(this.selectedDateRange);
+    // this.selectedDateRange = eventChange.selectedDate;
+    // this.startDateInvoice = this.selectedDateRange.startDate;
+    // this.endDateInvoice = this.selectedDateRange.endDate;
+    // console.log(this.selectedDateRange);
+    // let data = {
+    //   DealerId:this.dealerss,
+    //   GeographyId:this.geographySelected,
+    //   ShipmentStartDate:this.startDateShip,
+    //   ShipmentEndDate:this.endDateShip,
+    //   InvoiceStartDate:this.startDateInvoice,
+    //   InvoiceEndDate:this.endDateInvoice,
+    //   search:''
+    // }
+
+    this.selectedDateRanges = eventChange.selectedDate;
+    this.startDateInvoice = this.selectedDateRanges.startDate;
+    this.endDateInvoice = this.selectedDateRanges.endDate;
+    console.log(this.selectedDateRanges);
     let data = {
       DealerId:this.dealerss,
       GeographyId:this.geographySelected,
@@ -387,7 +523,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     }
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log("Response DATE",this.receiptDatalist)
     });
   }
   dealerOrder(){
@@ -703,12 +839,24 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.geographyForm = this.fb.group({
       geography: [this.selectedItems]
     });
+    this.dealerForm = this.fb.group({
+      dealer: [this.selectedItems]
+    });
+    this.geographyForm = this.fb.group({
+      geography: [this.selectedItems]
+    });
     this.dealerss = [];
     this.geographySelected = [];
     this.startDateShip = '';
     this.endDateShip = '';
     this.startDateInvoice = '';
     this.endDateInvoice = '';
+    this.startDate = '';
+    this.endDate = '';
+    this.selectedDateRange = null;
+    this.selectedDateRanges=''
+    
+   
     let data = {
       DealerId:this.dealerss,
       GeographyId:this.geographySelected,
@@ -720,7 +868,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     }
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log("Response kkkkkk",this.receiptDatalist)
     });
   }
   refresh() {
@@ -734,6 +882,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.geographySelected = [];
     this.startDate = '';
     this.endDate = '';
+     this.selectedDateRange = null;
     let data = {
       GeographyId:this.geographySelected,
       DealerId:this.dealerss,
@@ -745,8 +894,17 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       console.log("Response Data",this.shipmentDatalist)
     });
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
   bulkDownload() {
-    this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv({ fileName: 'ordersShipment_' + this.convertedDateFormat() });
   }
   emptyDownload(){
 this.emptyDownloadArray = this.shipmentDatalist;

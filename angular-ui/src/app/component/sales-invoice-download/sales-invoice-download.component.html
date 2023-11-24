@@ -5,12 +5,12 @@
             <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         </div>
         <div class="sales-head">
-        <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Invoice Download</h3>
+        <h3 class="sales-add"><span style="color: #686E74;">Preview:</span> Invoice Download</h3>
         </div>
         <!-- Grid Table  -->
         <div class="sales-grid-table mt-3">
             <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
-            style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+            style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
             class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
             [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="salesUploadList"
             [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
@@ -39,12 +39,12 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="sales-head">
-            <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Invoice Download</h3>
+            <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Sales View</h3>
             </div>
             <!-- Grid Table  -->
             <div class="sales-grid-table mt-3">
                 <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
-                style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+                style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
                 class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
                 [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="viewUploadList"
                 [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
@@ -53,8 +53,8 @@
                 (bodyScroll)="handleScroll($event)"></ag-grid-angular>
           </div>
           <div class="pagination">
-            <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-            <span class="pagination-cls">{{salesUploadList.length}}</span>
+            <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{viewUploadList.length}}</span> of 
+            <span class="pagination-cls">{{viewUploadList.length}}</span>
           </div>
             <!-- <div class="row footer">
                 <div class="col-md-6" (click)="onBtnExport()">
@@ -73,12 +73,12 @@
                     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
                 </div>
                 <div class="sales-head">
-                <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Invoice Download</h3>
+                <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Sales Download</h3>
                 </div>
                 <!-- Grid Table  -->
                 <div class="sales-grid-table mt-3">
                     <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
-                    style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+                    style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
                     class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
                     [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="viewUploadList"
                     [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
@@ -87,8 +87,8 @@
                     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
               </div>
               <div class="pagination">
-                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-                <span class="pagination-cls">{{salesUploadList.length}}</span>
+                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{viewUploadList.length}}</span> of 
+                <span class="pagination-cls">{{viewUploadList.length}}</span>
               </div>
                 <div class="row footer">
                     <div class="col-md-6" (click)="onBtnExport()">
