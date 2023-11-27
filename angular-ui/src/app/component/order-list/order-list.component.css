@@ -1475,6 +1475,12 @@ mat-sidenav {
     position: absolute;
     right: 10px;
     top: 8px;
+    border: 1px solid grey;
+    outline: none;
+}
+
+.search-bt_n:focus {
+    border: 1px solid grey; 
 }
 
 .searchBox1:hover>.searchInput1 {
@@ -1492,7 +1498,7 @@ mat-sidenav {
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05); */
     position: absolute;
     right: 4px;
     bottom: -3px;
@@ -1512,11 +1518,16 @@ mat-sidenav {
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05); */
     position: absolute;
     right: -2px;
     border: 1px solid gray !important;
+    outline: none;
     
+}
+
+.searchInput11:focus {
+    border: 1px solid gray; 
 }
 .AllText
 {
@@ -1557,7 +1568,7 @@ justify-content: end;
     border-top: 1px solid rgba(104, 110, 116, 0.75);
     border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     width: 80%;
-    border-radius: 10px 0 0 10px !important;
+    border-radius: 9px 0 0 9px !important;
     padding-left: 10px;
     pointer-events: none;
    

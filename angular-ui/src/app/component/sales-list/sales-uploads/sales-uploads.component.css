@@ -73,6 +73,11 @@
    border-left: 1px solid rgba(104, 110, 116, 0.75);
    border-right: 1px solid rgba(104, 110, 116, 0.75);
 }
+
+:host::ng-deep.mat-form-field-type-mat-select .mat-form-field-label {
+  margin-top: -10px;
+  width: calc(100% - 18px);
+}
 ::ng-deep.shipment .mat-select-arrow-wrapper{
  /* background-image: url('/assets/img/calenderImage.svg') !important; */
  content: url(../../../../assets/img/Calendar.svg);

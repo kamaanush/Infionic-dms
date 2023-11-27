@@ -1,6 +1,6 @@
 <div class="promainclass">
   <div class="dealer-promotion mt-3 mb-4 ">
-    <div class="row" style="margin-left: 4px;">
+    <div class="row d-flex justify-content-evenly" style="margin-left: 4px;">
       <div class="col-md-2 col-lg-2 col-sm-2 promotionsbubbles">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="promo" formControlName="city1" [disabled]="disabled"
@@ -19,7 +19,7 @@
           </div>
         </form>
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2 promotionsproductbubbles">
+      <div class="col-md-2 col-lg-2 col-sm-2 promotionsproductbubbles" style="margin-left: -17px;">
         <form [formGroup]="myForms" class="dropdown-form">
           <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Product'" formControlName="city2"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"

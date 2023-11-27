@@ -172,11 +172,10 @@
                                                                 </div>
                                                                 <div class="col-md-1 col-lg-1 col-sm-1">
                                                                     <span id="se_lected">{{ promos.moq >=
-                                                                        totalSelectedQuantity ? "Remaining" : "Additional"
+                                                                        totalSelectedQuantity ? "Remaining" : "Remaining"
                                                                         }}<br>&nbsp; &nbsp;{{ promos.moq >
                                                                         totalSelectedQuantity ? (promos.moq -
-                                                                        moqselectedreamining(promos)) :
-                                                                        (totalSelectedQuantity - promos.moq) }}</span>
+                                                                        moqselectedreamining(promos)) : 0 }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="tabel-div">
@@ -474,11 +473,10 @@
                                                                 }}</span> -->
 
                                                             <span id="se_lected">
-                                                                {{promos.moq >=promos.totalQuantity?"Remaining" : "Additional"}} 
+                                                                {{promos.moq >=promos.totalQuantity?"Remaining" : "Remaining"}} 
                                                                 <br>&nbsp; &nbsp;{{ promos.moq >
                                                                     promos.totalQuantity ? (promos.moq -
-                                                                    moqselectedreaminingFORTHPromotion(promos)) :
-                                                                    (promos.totalQuantity - promos.moq) }}
+                                                                    moqselectedreaminingFORTHPromotion(promos)) : 0 }}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -672,10 +670,9 @@
                                                             <!-- <span id="Remaining">Remaining<br>
                                                                 {{ promos.foc - getTotalEntitledSelectedRemaining(promos) }}
                                                             </span> -->
-                                                            {{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? "Remaining" : "Additional" }}<br>
+                                                            {{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? "Remaining" : "Remaining" }}<br>
                                                                 &nbsp; &nbsp;{{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? 
-                                                                    (promos.foc - getTotalEntitledSelectedRemaining(promos)) : 
-                                                                    (getTotalEntitledSelectedRemaining(promos) - promos.foc) }}
+                                                                    (promos.foc - getTotalEntitledSelectedRemaining(promos)) : 0 }}
                                                         </div>
                                                     </div>
                                                     <!-- tabels for 1st promotions -->

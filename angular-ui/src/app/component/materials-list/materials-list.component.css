@@ -763,6 +763,19 @@ padding-left: 11px;
   position: relative;
     bottom: 26px;
 }
+.Viewer
+{
+  border: none;
+  border-radius: 13%;
+  width: 40px;
+  height: 40px;
+  margin-left: -25px;
+  margin-left: 17px;
+  cursor: pointer;
+  top: 5px;
+  position: relative;
+}
+
 .gridMaterial{
   position: relative;
     bottom: 16px;

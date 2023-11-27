@@ -894,7 +894,7 @@
 } */
  .searchInput1 {
    width: 100%;
-   height: 42px;
+   height: 40px;
    background: #FFFFFF;
    /* padding: 7px 40px 6px 26px; */
    padding: 7px 40px 6px 35px;
@@ -906,9 +906,14 @@
    line-height: 17px;
    letter-spacing: 0.08em;
    color: #263643;
-   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-   border: 1px solid rgba(0, 0, 0, 0.3)!important;
+   /* box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05); */
+   border: 1px solid grey !important;
+   outline: none;
  }
+
+ .searchInput11:focus {
+  border: 1px solid gray;
+}
 
  .searchicons1 {
    position: absolute;
@@ -931,7 +936,12 @@
    top: 50%;
    transform: translateY(-50%);
    cursor: pointer;
+   border: 1px solid grey;
+   outline: none;
  }
+ .search-bt_n:focus {
+  border: 1px solid grey;
+}
 
  .sales-dwnld {
    background: rgba(104, 110, 116, 0.66);

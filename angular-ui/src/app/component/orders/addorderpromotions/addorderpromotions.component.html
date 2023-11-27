@@ -27,7 +27,7 @@
                             <div class="col-lg-4">
                                 <div class="dealerReff">
                                     <label class="DealerInfo-label">Dealer Reference <span class="astr">*</span></label>
-                                    <input type="text" disabled placeholder="Enter" id="DealerReferenceNo" (keypress)="onKeyPress($event)"
+                                    <input type="text" disabled placeholder="Enter" id="DealerReferenceNo" 
                                         [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                                 </div>
                             </div>
@@ -339,8 +339,8 @@
                                     <label class="DealerInfo-label"> ERP Reference No <span
                                             class="astr"></span></label>
                                     <input type="text" placeholder="Enter" id="CompanyReferenceNo"
-                                        [(ngModel)]="CompanyReferenceNo" class="form-control container input-box"
-                                        (keypress)="onKeyPress($event)">
+                                        [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
+                                        <!-- (keypress)="onKeyPress($event)" -->
                                 </div>
                             </div>
                         </div>

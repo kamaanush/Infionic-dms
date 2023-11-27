@@ -50,6 +50,7 @@
     cursor: pointer;
     width: 280px;
     height: 43px;
+    border: none;
     background: rgba(1, 139, 117, 0.8);
     border-color:rgba(1, 139, 117, 0.8);
   }
@@ -65,6 +66,7 @@
     cursor: pointer;
     width: 280px;
     height: 43px;
+    border: none;
   }
   .sales-grid-table {
     margin-left: 5px;
@@ -130,13 +132,14 @@
 
     display: block;
 
-    width: 272px;
+    width: 431px;
 
     height: 0.5px;
 
     background: #686E74;
 
-    right: 59px;
+    /* right: 59px; */
+    /* left: 658px; */
 
     top: 50%;
 
@@ -150,7 +153,7 @@
 
     display: block;
 
-    width: 272px;
+    width: 428px;
 
     height: 0.5px;
 

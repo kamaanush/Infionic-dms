@@ -106,6 +106,8 @@ export class MaterialsListComponent implements OnInit {
   allComplete: boolean = true;
   isproduct:any;
   color:any='primary';
+  userType: any;
+  
 
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
@@ -161,7 +163,7 @@ export class MaterialsListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
+this.userType = localStorage.getItem('userType');
 if(    this.allComplete == true ){
   this.isproduct=1
 }
