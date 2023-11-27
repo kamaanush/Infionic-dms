@@ -15,18 +15,18 @@
         </p>
       </div>
       <mat-card    [ngClass]="{ 'scroll': coutCatagory > 6 }">
-        <p class="primary">Primary categories</p>
+        <p class="primary">Primary categories </p>
         <mat-card-content>
           <div class=" d-flex" *ngFor="let catg of catgname">
             <p class="col-11 catg cursor-pointer" (click)="catg.isActive==true ?  onClick(catg) : false"
               [ngClass]="{ 'selected': catg.catId == selectedItem.catId ,'selectedInactive': catg.isActive==false }"
               style="cursor: pointer;">{{catg.catName}}
-              <span *ngIf="!(catg.catId == selectedItem.catId) && usertype !== 'Viewer'">
+              <span *ngIf="!(catg.catId == selectedItem.catId) && usertype !== 'Viewer' && usertype !=='Order Manager'">
                 <img src="../../../assets/img/power.svg" alt="" class="tickmark" (click)="deativateCat(catg)">
                 <img src="../../../assets/img/pencil.svg" alt="" class="tickmark" *ngIf="catg.isActive"
                   (click)="editcategory(catg)">
               </span>
-              <span *ngIf="(catg.catId == selectedItem.catId) && usertype !== 'Viewer' ">
+              <span *ngIf="(catg.catId == selectedItem.catId) && usertype !== 'Viewer' && usertype !=='Order Manager'">
                 <img src="../../../assets/img/Group.svg" alt="" class="tickmark" (click)="deativateCat(catg)">
                 <img src="../../../assets/img/editMeterial.svg" alt="" class="tickmark" *ngIf="catg.isActive"
                   (click)="editcategory(catg)">
@@ -68,10 +68,16 @@
             <!-- <mat-icon>arrow_drop_down</mat-icon> -->
           </div>
           <div class=" d-flex" *ngFor="let subc of subname">
-            <p class="col-11 subc" (click)="subc.isActive==true ?  oclicksub(subc): false" [ngClass]="{ 'subselected': subc == selectedsubItem ,'selectedInactivesub': subc.isActive == false,'selectedactivesub': subc.isActive == true}" style="cursor: pointer;">{{subc.subCatName}}
-                <span *ngIf="!(subc == selectedsubItem)"><img src="../../../assets/img/power.svg" (click)="deactivate(subc)"  alt="" class="tickmark" >
-                <img src="../../../assets/img/pencil.svg" *ngIf="subc.isActive"  alt="" class="tickmark" (click)="editSubcategory(subc)"  ></span>
-                <span *ngIf="subc == selectedsubItem"><img src="../../../assets/img/Group.svg" (click)="deactivate(subc)"  alt="" class="tickmark" >
+            <p class="col-11 subc"  (click)="subc.isActive==true ?  oclicksub(subc): false" [ngClass]="{ 'subselected': subc == selectedsubItem ,'selectedInactivesub': subc.isActive == false,'selectedactivesub': subc.isActive == true}" style="cursor: pointer;">{{subc.subCatName}}
+                 <span *ngIf="!(subc == selectedsubItem) && usertype !== 'Order Manager' ">
+                  <img src="../../../assets/img/power.svg" (click)="deactivate(subc)"  alt="" class="tickmark" >
+                <img src="../../../assets/img/pencil.svg" *ngIf="subc.isActive"  alt="" class="tickmark" (click)="editSubcategory(subc)"  >
+              </span>
+              
+               
+            
+                <span *ngIf="subc == selectedsubItem && usertype !== 'Order Manager'">
+                  <img src="../../../assets/img/Group.svg" (click)="deactivate(subc)"  alt="" class="tickmark" >
                   <img src="../../../assets/img/editMeterial.svg" *ngIf="subc.isActive"  alt="" class="tickmark" (click)="editSubcategory(subc)"  ></span>
               </p>
             <!-- <mat-icon class="col-2" (click)="removesub(subc)" style="cursor: pointer;padding-top: 2px;">remove_circle</mat-icon> -->
@@ -109,9 +115,9 @@
           <div class=" d-flex" *ngFor="let type of typename">
             
             <p class="col-11 type" (click)="type.isActive==true ? typeselect(type): false " [ngClass]="{ 'typeselected': type == selectedtypeItem ,'selectedInactive': type.isActive==false,'selectedTypeInactive': type.isActive==true}" style="cursor: pointer;">{{type.typeName}} 
-               <span *ngIf="!(type == selectedtypeItem)"> <img src="../../../assets/img/power.svg"  alt="" class="tickmark"(click)='deactivateType(type)' >
+               <span *ngIf="!(type == selectedtypeItem) && usertype !== 'Order Manager'"> <img src="../../../assets/img/power.svg"  alt="" class="tickmark"(click)='deactivateType(type)' >
                 <img src="../../../assets/img/pencil.svg"  alt="" class="tickmark"  *ngIf="type.isActive"  (click)="edittype(type)"></span>
-                <span *ngIf="type == selectedtypeItem"> <img src="../../../assets/img/Group.svg"  alt="" class="tickmark"(click)='deactivateType(type)' >
+                <span *ngIf="type == selectedtypeItem && usertype !== 'Order Manager'"> <img src="../../../assets/img/Group.svg"  alt="" class="tickmark"(click)='deactivateType(type)' >
                   <img src="../../../assets/img/editMeterial.svg"  alt="" class="tickmark"  *ngIf="type.isActive"  (click)="edittype(type)"></span>
             </p>
             <!-- <mat-icon class="col-2" (click)="removetype(type)" style="cursor: pointer;padding-top: 2px;">remove_circle</mat-icon> -->

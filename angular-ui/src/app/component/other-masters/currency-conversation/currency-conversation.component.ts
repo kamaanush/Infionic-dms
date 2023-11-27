@@ -284,7 +284,7 @@ export class CurrencyConversationComponent implements OnInit {
       citys: [this.selectedItems]
     });
 
-    if(this.usertype !=='Viewer'){
+    if(this.usertype !=='Viewer' && this.usertype !=='Order Manager'){
       this.columnDefs=[
         {
           headerName: "Name",

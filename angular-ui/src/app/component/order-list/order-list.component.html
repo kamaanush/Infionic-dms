@@ -95,7 +95,7 @@
           
         
         &nbsp; &nbsp;&nbsp;
-        <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
+        <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName" *ngIf="(userType !== 'Order Manager' && userType) || userType == 'Viewer'">
           <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
         </div>
 
@@ -108,7 +108,7 @@
         <img class="OrderlistDownloaded" src="../../../assets/img/ll.svg">
       </div> 
       &nbsp; &nbsp;&nbsp;
-      <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
+      <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName" *ngIf="(userType !== 'Order Manager' && userType) || userType === 'Viewer'">
         <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
       </div>
     </div>

@@ -15,6 +15,7 @@ import { SharedServiceAddsalesService } from 'src/app/services/shared-service-ad
   styleUrls: ['./sales-inventory.component.css']
 })
 export class SalesInventoryComponent implements OnInit {
+  userType: any;
   dealerForm: any = FormGroup;
   geographyForm: any = FormGroup;
   productForm:any = FormGroup;
@@ -222,6 +223,7 @@ export class SalesInventoryComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
     this.loggedUserId = localStorage.getItem('logInId');
 
     this.ProductItems();

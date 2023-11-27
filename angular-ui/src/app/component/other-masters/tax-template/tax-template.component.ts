@@ -13,6 +13,7 @@ import { TaxTemplateServiceService } from 'src/app/services/tax-template-service
 import { TaxTempleateActionComponent } from '../../tax-templeate-action/tax-templeate-action.component';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 export interface PeriodicElement {
+  
   name: any;
   position: string;
   weight: number;
@@ -58,46 +59,9 @@ export class TaxTemplateComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   public popupParent: HTMLElement = document.body;
-  
-  columnDefs: ColDef[] = [ 
+  userType: any;
 
-    { headerName: "Name",
-  field: 'taxTemplateName' ,type: ['nonEditableColumn'],minWidth:500
-  },
-  
-  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] },
-  
-  // suppressMovable:true,
-  { headerName: "Status",
-   field: 'statusName',
-   
-   type: ['nonEditableColumn'],
-  cellEditor: 'agSelectCellEditor',
-  cellEditorParams: {
-  values: ['Active', 'Inactive', 'Invited', 'Locked',],
-  },
-  maxWidth:108,
-  cellClass: params => {                      
-    return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
-  }
-  },
-  { 
-  
-    headerName: '',
-    colId: 'action',
-    cellRenderer: TaxTempleateActionComponent,
-    editable: false,
-    maxWidth:60
-  },
-  
-  // {
-  //   headerName: "Avatar",
-  //   field: "avatar",
-  //   width: 100,
-  //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-  //  },
-  
-  ];
+  columnDefs: ColDef[] = [];
   
   rowData :any;
   rowData1=[]
@@ -239,6 +203,7 @@ instancePopup:any = null;
      
     }
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
     this.statusItems();
     this.getusertabeldata();
     // this.roleItems();
@@ -249,6 +214,76 @@ instancePopup:any = null;
   this.myForms = this.fb.group({
     citys: [this.selectedItems]
   });
+
+  if(this.userType !=='Order Manager')
+  {
+    this.columnDefs=[
+      { headerName: "Name",
+  field: 'taxTemplateName' ,type: ['nonEditableColumn'],minWidth:500
+  },
+  
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] },
+  
+  // suppressMovable:true,
+  { headerName: "Status",
+   field: 'statusName',
+   
+   type: ['nonEditableColumn'],
+  cellEditor: 'agSelectCellEditor',
+  cellEditorParams: {
+  values: ['Active', 'Inactive', 'Invited', 'Locked',],
+  },
+  maxWidth:108,
+  cellClass: params => {                      
+    return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+  }
+  },
+  { 
+  
+    headerName: '',
+    colId: 'action',
+    cellRenderer: TaxTempleateActionComponent,
+    editable: false,
+    maxWidth:60
+  },
+  
+  // {
+  //   headerName: "Avatar",
+  //   field: "avatar",
+  //   width: 100,
+  //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+  //  },
+  
+    ];
+  }
+  else
+  {
+    this.columnDefs=[
+
+      { headerName: "Name",
+  field: 'taxTemplateName' ,type: ['nonEditableColumn'],minWidth:500
+  },
+  
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] },
+  
+  // suppressMovable:true,
+  { headerName: "Status",
+   field: 'statusName',
+   
+   type: ['nonEditableColumn'],
+  cellEditor: 'agSelectCellEditor',
+  cellEditorParams: {
+  values: ['Active', 'Inactive', 'Invited', 'Locked',],
+  },
+  maxWidth:108,
+  cellClass: params => {                      
+    return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+  }
+  },
+    ]
+  }
+
+
   }
   scrolledIndexChange(i): void {
     this.scrolledIndex = i;

@@ -409,7 +409,7 @@ export class GeographicListComponent implements OnInit {
 
 
       this.shippingChk = true;
-      if(this.usertype !=='Viewer'){
+      if(this.usertype !=='Viewer' && this.usertype !=='Order Manager'){
         this.columnDefs = [
           {
             headerName: 'Destination', field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
@@ -448,7 +448,7 @@ export class GeographicListComponent implements OnInit {
       this.user.getGeography(data1).subscribe((res) => {
         this.rowData6 = res.response;
       });
-      if(this.usertype !=='Viewer'){
+      if(this.usertype !=='Viewer' && this.usertype !=='Order Manager'){
         this.columnDefs1 = [
           {
             headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],

@@ -27,18 +27,14 @@
               </div>
             </div> -->
             <div class="col-md-4 srch-hover" >
-    
               <div class="searchBox1 d-flex">
                 <input class="searchInput1" type="text" name="" placeholder="Search Here Anything"(keyup)="onSearchChange($event)">
-                
                 <mat-icon  class="searchButton">search</mat-icon>
                 <button class="search-btn">Search</button>
               </div>
-             
             </div>
             <div class="col-md-1">
-         
-              <div *ngIf="!shippingBtn && usertype!=='Viewer'"  class="add-user" (click)="addUser()">
+              <div *ngIf="(usertype !== 'Order Manager' && usertype !== 'Viewer')" class="add-user" (click)="addUser()">
                 <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
             </div>

@@ -26,8 +26,11 @@ export class TaxTempleateActionComponent implements OnInit,  AfterViewInit {
   private tippyInstance;
   selected:boolean=false;
   DeactiveDealer: any;
+  userType: any;
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.userType = localStorage.getItem('userType');
+  }
   @ViewChild('content') container;
 
   @ViewChild('trigger') button;

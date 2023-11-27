@@ -14,6 +14,7 @@ import { AddcurrencyComponent } from 'src/app/component/users/userPopups/addcurr
   styleUrls: ['./currency-action.component.css']
 })
 export class CurrencyActionComponent implements OnInit {
+  userType: any;
   private params;
   public isOpen = false;
   private tippyInstance;
@@ -22,6 +23,7 @@ export class CurrencyActionComponent implements OnInit {
   constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
   }
   @ViewChild('content') container;
 

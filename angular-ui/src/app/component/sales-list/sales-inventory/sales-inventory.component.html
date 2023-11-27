@@ -59,16 +59,20 @@
         <div class="sales-refreshbtn" (click)="refreshSales()">
           <img class="refresh-img" src="assets/img/Refreshbutton.svg" alt="refresh">
         </div>
-
+        
+        <div class="ordermanagerlogin"  *ngIf=" userType =='Order Manager'">
+          &nbsp; &nbsp; &nbsp; &nbsp;
+      </div>
         <div class="sales-dwnld" (click)="onBtnExport()">
           <img   class="imgdwnl" src="assets/img/ll.svg"
               alt="add-user-btn">    
       </div>
-
-        <div class="sales-add" (click)="addSales()">
+             
+        <div class="sales-add" (click)="addSales()"  *ngIf=" userType !=='Order Manager'">
           <img class="imgorder" src="assets/img/ADD.svg"
               alt="add">
       </div>
+      
 
 
       </div>

@@ -37,11 +37,18 @@
               <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
             </div>
           </div>
-          <div class="col-md-2">
-            <div class="add-user" (click)="addTarget()" *ngIf="usertype !=='Viewer'">
+          <div class="col-md-2" *ngIf="(usertype !== 'Order Manager' && usertype !== 'Viewer')">
+            <div class="add-user" (click)="addTarget()" >
               <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
-          </div>
+          </div> 
+
+          <div class="col-md-2" *ngIf="usertype == 'Order Manager' || usertype == 'Viewer'">
+            <div class="ordermanagerlogin">
+            </div>
+        </div>
+        
+          
 
         </div>
       </div>

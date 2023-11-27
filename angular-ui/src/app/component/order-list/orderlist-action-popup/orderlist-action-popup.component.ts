@@ -17,6 +17,7 @@ import { SharedService } from 'src/app/services/shared-services.service';
   styleUrls: ['./orderlist-action-popup.component.css']
 })
 export class OrderlistActionPopupComponent implements OnInit {
+  userType: any
   private params;
   public isOpen = false;
   private tippyInstance;
@@ -102,6 +103,7 @@ export class OrderlistActionPopupComponent implements OnInit {
   CustomerPoId:any;
   LoginId:any;
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
     this.CustomerPoId =localStorage.getItem('CustomerPoId')
     this.LoginId = localStorage.getItem("logInId");
   }
