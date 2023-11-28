@@ -71,12 +71,17 @@
         <mat-icon  class="searchicons1">search</mat-icon>
         <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
       </div>
-      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style=" cursor: pointer" *ngIf="usertype !=='Admin' ">
-        <input  id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-          placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
-        <mat-icon  class="searchicons2">search</mat-icon>
-        <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-      </div>
+     
+      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style="cursor: pointer"
+     *ngIf="usertype === 'Order Manager' || usertype === 'Viewer' || usertype === 'Business Manager' || usertype === 'Dealer Admin'">
+  <input id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+         placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
+  <mat-icon class="searchicons2">search</mat-icon>
+  <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+</div>
+
+
+      
       
     
       

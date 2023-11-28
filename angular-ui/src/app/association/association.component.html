@@ -60,17 +60,37 @@
           alt="refresh">
       </div>
    <!-- bulk uplod -->
-        <div class="col-md-0" userRoleDirective="BULK_EDIT_ASSOCIATION" [pageName]="currentPageName" class="bulkEditAss">
-          <div class="add-user1" (click)="editBulk()" style=" cursor: pointer">
-            <img src="assets/img/editasso.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+   <div class="col-md-0" class="bulkEditAss" *ngIf="userType !== 'Order Manager' && userType !== 'Viewer' && userType === 'Business Manager' && userType === 'Admin'">
+    <div class="add-user1" (click)="editBulk()" style="cursor: pointer">
+      <img src="assets/img/editasso.svg" style="position: relative; top: 8px; left: 10px;" alt="add-user-btn">
+    </div>
+  </div>
+
+  <div class="col-md-0" class="bulkEditAss" *ngIf=" userType === 'Business Manager' || userType === 'Admin'">
+    <div class="add-user1" (click)="editBulk()" style="cursor: pointer">
+      <img src="assets/img/editasso.svg" style="position: relative; top: 8px; left: 10px;" alt="add-user-btn">
+    </div>
+  </div>
+  
+
+        <div class="col-md-0"  class="ORDERVIEWER" *ngIf="userType === 'Order Manager' || userType === 'Viewer'">
+          <div class="AllLOgin" >
           </div>
         </div>
+        
+        
         <!-- upload -->
         <div class="col-md-0">
           <div class="asso-upload" (click)="orderTargetUpload()" *ngIf="userType !== ('Dealer Admin' && 'Viewer')">
             <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
           </div>
         </div>
+
+
+
+        
+
+
         <!-- export -->
         <div class="col-md-0">
           <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" *ngIf="userType !== 'Dealer Admin'">
