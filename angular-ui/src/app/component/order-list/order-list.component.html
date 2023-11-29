@@ -34,13 +34,9 @@
         </form>
       </div> -->
       <div class="invoice">
-        <!-- <mat-form-field appearance="fill">
+         <!-- <mat-form-field appearance="fill">
           <mat-label>Order Date</mat-label>
-          <mat-select [disabled]="disableSelect.value">
-       
-        
-          
-        
+          <mat-select [disabled]="disableSelect.value"> -->
         <app-customdatepicker class="dateplaceholder" [showInputField]="true" label="Order Date " [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
     <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown  custom-bubbles" >
@@ -67,10 +63,9 @@
           </button>
         </div>
       </div>
-      <!-- refresh -->
+      <!-- Refresh -->
       <div class="col-md-1 col-lg-1 col-sm-1" >
             <div class="icon btnhover1 refreshbtn1" (click)="refresh()">
-    
         <img src="assets/img/Refreshbutton.svg" class="refresh1">
       </div>
       </div>
@@ -84,7 +79,7 @@
       <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType !== 'Dealer Admin'" >
       </div>
       
-      <!--Add Promotion  -->
+      <!-- Add Promotions -->
       <div class="col-md-0 col-lg-0 col-sm-0 " style="position: relative; display:flex;" *ngIf="userType !== 'Dealer Admin'">
        
         <div class="OrderDataDownloadeddiv" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
@@ -96,10 +91,9 @@
         <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName" *ngIf="(userType !== 'Order Manager' && userType) || userType == 'Viewer'">
           <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
         </div>
-
-        
       </div>
-    <!--  Add promotion Dealer admin  -->
+
+      <!-- Add promotion Dealer admin   -->
     <div class="col-md-0 col-lg-0 col-sm-0" style="display: flex;" *ngIf="userType == 'Dealer Admin'">
       
       <div class="OrderDataDownloadeddiv" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
@@ -111,22 +105,20 @@
       </div>
     </div>
 
-<!-- down Dealer admin -->
-<!-- <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'">
+<!-- down Dealer Admin -->
+ <!-- <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'">
+</div>  -->
   
-</div> -->
-  
-      <!-- Download -->
-      <!-- <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'">
-        
-      </div> -->
+      <!-- Downloaded -->
+       <!-- <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'">
+      </div>  -->
 
 
 </div>
 </div>
 
-<!-- filter ends -->
-<!-- <div class="row listicon">
+<!-- Filter Ends -->
+ <!-- <div class="row listicon">
    <div class="col-md-4 srch-hover" >
     
     <div class="searchBox1 d-flex">
@@ -168,6 +160,9 @@
 </div>
 </div>
 </div> -->
+
+
+
   <div  class="AllText" *ngIf="userType !== 'Dealer Admin'">
     <span class="ml-0" id="OrderValue">ODV:<span class="ml-1" id="OrderValue">Order Value</span></span>&nbsp;
     <span class="ml-3" id="OrderValue">ODQ:<span class="ml-1" id="OrderValue">Order Quantity</span></span>&nbsp;
