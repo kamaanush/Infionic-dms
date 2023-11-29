@@ -582,13 +582,13 @@
   }
   
   .ref {
-    border: 1px solid rgba(104, 110, 116, 0.66);
-    border-radius: 10px;
+    border-radius: 13%;
     background: rgba(104, 110, 116, 0.66);
     margin-left: 26px;
-    width: 43px;
-    padding: 8px 0px 0px 10px;
-    height: 43px;
+    width: 39px;
+    padding-left: 8px;
+    padding-top: 8px;
+    height: 39px;
     cursor: pointer;
     /* margin-top: -33px; */
   }

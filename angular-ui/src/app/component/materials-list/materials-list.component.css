@@ -290,10 +290,14 @@ padding-left: 11px;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
   position: relative;
-  width: 43px;
-  height: 40px;
+  width: 39px;
+  height: 39px;
   cursor: pointer;
   margin-left: -22px;
+}
+.btnhover:hover {
+  background-color: grey !important;
+  color: white !important;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -695,8 +699,8 @@ padding-left: 11px;
 
 .imageRefresh {
   position: relative;
-  top: 9px;
-  left: 9px;
+  top: 8px;
+  left: 8px;
   /* transform: rotate(90deg); */
 }
 

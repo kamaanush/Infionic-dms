@@ -252,6 +252,13 @@
   top: 8px;
   left: 12px;
 }
+.downloadedIcons
+{
+  width: 40px;
+   height: 40px;
+    padding-top: 11px;
+    padding-bottom: 9px;
+}
 .searchButton {
         display:block;
         color: #FFFFFF;

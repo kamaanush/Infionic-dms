@@ -186,7 +186,8 @@ background: #D23F00 !important;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
   position: relative;
-  width: 43px;
+  width: 39px;
+  height: 39px;
   cursor: pointer;
 }
 

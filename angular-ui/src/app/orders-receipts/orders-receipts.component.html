@@ -32,9 +32,9 @@
 
         </form>
       </div>
-        <div class="shipment mr-3">
+         <div class="shipment mr-3">
         <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>
-      </div>
+      </div> 
         <div class="invoice">
           <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRanges" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
       </div>
@@ -86,7 +86,7 @@
    <!-- receiptsDownload -->
    <div class="col-md-0 col-lg-0 col-sm-0">
     <div class="sales-dwnld" (click)="receiptsDownload()">
-      <img   class="imgdwnl" src="assets/img/download-btn.png"
+      <img   class="DownloadedIcons" src="../../../assets/img/ll.svg"
           alt="add-user-btn">    
     </div>
    </div>

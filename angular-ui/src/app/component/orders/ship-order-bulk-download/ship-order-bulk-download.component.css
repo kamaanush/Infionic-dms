@@ -186,19 +186,40 @@ text-align: center;
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
     border: 2px solid #000000 !important;
   }
-  .refreshbtn {
+  .REfreshbtn {
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
-    width: 43px;
-    height: 41px;
+    width: 39px;
+    height: 39px;
     background: rgba(104, 110, 116, 0.66);
-    border-radius: 7px;
+    border-radius: 13%;
     margin-left: 10px;
-    /* transform: rotate(90deg); */
 
   }
+  .REfreshbtn:hover{
+    background-color: grey !important;
+    color: white !important;
+  }
+ 
+  .refreshbtn {
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    width: 39px;
+    height: 39px;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
+    margin-left: 10px;
+
+  }
+  .refreshbtn:hover {
+    background-color: grey !important;
+    color: white !important;
+}
   .refresh-img {
-    margin-top: 11px;
-    margin-left: 11px;
+    margin-top: 9px;
+    margin-left: 8px;
+  }
+  .refresh_img {
+    margin-top: 8px;
+    margin-left: 8px;
   }
   .ag-theme-material .ag-filter-toolpanel-header,
 .ag-theme-material .ag-filter-toolpanel-search,
