@@ -273,21 +273,26 @@ export class GeoClassificationComponent implements OnInit {
     this.spinner.show();
     this.classification.ActivateDeActivateGeoGraphy(geoItem.geographyId, this.userIdNumber, hirerachyIndex).subscribe({
       next: (res) => {
-        if (res.response.result.indexOf("Successfully") != -1) {
-          let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == geoItem.geographyId);
-          if (geoGraphyObj) {
-            geoGraphyObj.isActive = !geoGraphyObj.isActive;
-            let geoGraphyIndex = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(geoGraphyObj.geographyId);
-            if (geoGraphyIndex != -1) {
-              this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(geoGraphyIndex, 1);
-              this.removeOtherGeographiesData(hirerachyIndex);
+        if (res.response.result === 'Successfully Activated' || res.response.result === 'Successfully Deactivated'){
+          if (res.response.result.indexOf("Successfully") != -1) {
+            let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == geoItem.geographyId);
+            if (geoGraphyObj) {
+              geoGraphyObj.isActive = !geoGraphyObj.isActive;
+              let geoGraphyIndex = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(geoGraphyObj.geographyId);
+              if (geoGraphyIndex != -1) {
+                this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(geoGraphyIndex, 1);
+                this.removeOtherGeographiesData(hirerachyIndex);
+              }
+  
+              this.dialog.open(GeoStatusPopComponent, { panelClass: (geoGraphyObj.isActive ? 'activeSuccessPop' : 'deactiveSuccessPop'), data: geoGraphyObj });
+  
             }
-
-            this.dialog.open(GeoStatusPopComponent, { panelClass: (geoGraphyObj.isActive ? 'activeSuccessPop' : 'deactiveSuccessPop'), data: geoGraphyObj });
-
           }
+          this.spinner.hide();
+        }else{
+          alert(res.response.result)
+          this.spinner.hide();
         }
-        this.spinner.hide();
       },
       error: (e) => {
         console.error(e)
