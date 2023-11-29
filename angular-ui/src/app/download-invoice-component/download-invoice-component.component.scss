@@ -926,11 +926,13 @@ mat-sidenav {
 
 .pagination {
   float: right !important;
+  margin-right: 6px;
 }
 
 .pagination-cls {
   font-size: 14px;
   font-weight: 900;
+  color: #808080;
 }
 
 .dropdown-form {
@@ -1020,5 +1022,6 @@ mat-sidenav {
   cursor: pointer;
   width: 168px;
   height: 85%;
+  border: none;
 }
 

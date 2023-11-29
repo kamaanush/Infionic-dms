@@ -15,7 +15,9 @@
     width: 115px;
     height: 43px;
     cursor: pointer;
-    border: 2px solid rgba(1, 139, 117, 1);
+    /* border: 2px solid rgba(1, 139, 117, 1)!important; */
+    border: none;
+    outline: none;
 }
 
 .exit {

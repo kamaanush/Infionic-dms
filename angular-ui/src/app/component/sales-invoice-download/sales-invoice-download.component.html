@@ -19,8 +19,8 @@
             (bodyScroll)="handleScroll($event)"></ag-grid-angular>
       </div>
       <div class="pagination">
-        <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-        <span class="pagination-cls">{{salesUploadList.length}}</span>
+        <span class="pagination-cls">1</span>  <span class="pagination-cls">to {{paginationScrollCount}}</span> of 
+        <span class="pagination-cls">of{{salesUploadList.length}}</span>
       </div>
         <div class="row footer">
             <div class="col-md-6" (click)="onBtnExport()">
@@ -53,8 +53,8 @@
                 (bodyScroll)="handleScroll($event)"></ag-grid-angular>
           </div>
           <div class="pagination">
-            <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{viewUploadList.length}}</span> of 
-            <span class="pagination-cls">{{viewUploadList.length}}</span>
+            <span class="pagination-cls">1</span>  <span class="pagination-cls">to{{viewUploadList.length}}</span> 
+            <span class="pagination-cls">of{{viewUploadList.length}}</span>
           </div>
             <!-- <div class="row footer">
                 <div class="col-md-6" (click)="onBtnExport()">
@@ -87,8 +87,8 @@
                     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
               </div>
               <div class="pagination">
-                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{viewUploadList.length}}</span> of 
-                <span class="pagination-cls">{{viewUploadList.length}}</span>
+                <span class="pagination-cls">1</span>   <span class="pagination-cls">to{{viewUploadList.length}}</span> 
+                <span class="pagination-cls">of{{viewUploadList.length}}</span>
               </div>
                 <div class="row footer">
                     <div class="col-md-6" (click)="onBtnExport()">
