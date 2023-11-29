@@ -2,13 +2,13 @@
   <div class="row" style="position: relative;top:1%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 15px;">
       <div class="col-md-2 col-lg-2 col-sm-2 targetselectedbubbles" style="padding-left: 2px;">
           <form [formGroup]="targetForm">
-            <ng-multiselect-dropdown class="target target-select" name="targetForm" [placeholder]="''" formControlName="targetForm"
+            <ng-multiselect-dropdown class="target target-select" name="targetForm" [placeholder]="' Target Group'" formControlName="targetForm"
               [disabled]="disabled" [settings]="targetSettings" [data]="targetListData" (onSelect)="onTargetItemSelect($event)" (onDeSelect)="onTargetItemDeSelect($event)"
               (onDeSelectAll)="onTargetItemDeSelectOrAll($event)" (onSelectAll)="onTargetItemSelectOrAll($event)">
             </ng-multiselect-dropdown>
           </form>
-          <div class="dropdown-placeholder target-placeholder">
-            <span *ngIf="targetForm.get('targetForm').value.length == 0" style="margin-left: 7px;"> Target Group </span>
+          <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+            <!-- <span *ngIf="targetForm.get('targetForm').value.length == 0" style="margin-left: 7px;"> Target Group </span> -->
             <span *ngIf="targetForm.get('targetForm').value.length == 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target selected </span>
             <span *ngIf="targetForm.get('targetForm').value.length > 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target(s) selected </span>
  
@@ -20,14 +20,14 @@
      
       <div class="col-md-2 col-lg-2 col-sm-2 geographybubblestarget" style="padding-left: 2px;">
         <form [formGroup]="geographyForm">
-          <ng-multiselect-dropdown class="geography geograph" name="geographyForm" [placeholder]="''" formControlName="geographyForm"
+          <ng-multiselect-dropdown class="geography geograph" name="geographyForm" [placeholder]="'Geographies'" formControlName="geographyForm"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="geographyList"
             (onSelect)="onGeographyItemSelect($event)" (onDeSelect)="onGeographyItemDeSelect($event)"
             (onDeSelectAll)="onGeographyItemDeSelectOrAll($event)" (onSelectAll)="onGeographyItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder geography-placeholder">
-          <span *ngIf="geographyForm.get('geographyForm').value.length == 0"  style="margin-left: 7px;"> Geographies </span>
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <!-- <span *ngIf="geographyForm.get('geographyForm').value.length == 0"  style="margin-left: 7px;"> Geographies </span> -->
           <span *ngIf="geographyForm.get('geographyForm').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography selected </span>
           <span *ngIf="geographyForm.get('geographyForm').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography(s) selected </span>
 

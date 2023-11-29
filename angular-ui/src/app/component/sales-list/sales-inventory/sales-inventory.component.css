@@ -15,12 +15,12 @@
 }
 
 
-::ng-deep .multi_select .dropdown-list {
+/* ::ng-deep .multi_select .dropdown-list {
   left: -6%;
   width: 106%;
-}
+} */
 .salesclass {
-  margin-left: 4px;
+  /* margin-left: 4px; */
   font-family: 'Gilroy-Medium';
 }
 
@@ -693,8 +693,9 @@ margin-left: 1%;
 }
 
 .searchicons1 {
-  position: absolute;
-  top: 55%;
+  position: relative;
+  bottom: 19px;
+  
   left: 6px;
   transform: translateY(-50%);
   font-size: 24px;
@@ -709,9 +710,9 @@ margin-left: 1%;
   background: rgba(104, 110, 116, 0.66);
   color: white;
   border-radius: 5px;
-  position: absolute;
-  right: 10px;
-  top: 50%;
+  position: relative;
+  left: 185px;
+  bottom: 47px;
   transform: translateY(-50%);
   cursor: pointer;
 }

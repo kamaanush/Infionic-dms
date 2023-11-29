@@ -21,7 +21,9 @@ font-family: 'Gilroy-Bold';
      height:41px ;
     width: 150px; 
     cursor: pointer;
-    border: 2px solid rgba(1, 139, 117, 1);
+    /* border: 2px solid rgba(1, 139, 117, 1); */
+    border: none;
+    outline: none;
     }
 .exit{
 background:#018B75 ;

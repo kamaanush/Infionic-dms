@@ -1,22 +1,22 @@
 <div class="association mt-3">
   <div class="row ml-3">
-    <div class="col-md-2 col-lg-2 col-sm-2 associationgeobubbles dropdownlistadjust ">
+    <div class="col-md-2 col-lg-2 col-sm-2 dropdownlistadjust ">
         <form [formGroup]="myForm">
-          <ng-multiselect-dropdown class="role11" name="city" [placeholder]="''" formControlName="city"
+          <ng-multiselect-dropdown class="role11" name="city" [placeholder]="'Geographies'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
             (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder role11-placeholder"id="DP">
-          <span *ngIf="myForm.get('city').value.length == 0" id="GP"> Geographies </span>
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;" id="DP">
+          <!-- <span *ngIf="myForm.get('city').value.length == 0" id="GP"> Geographies </span> -->
           <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography selected </span>
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography(s) selected </span>
  
         </div>
       </div>
  
-      <div class="col-md-2 col-lg-2 col-sm-2 productassociationgeobubbles droplistuili">
+      <div class="col-md-2 col-lg-2 col-sm-2  droplistuili">
         <form [formGroup]="myForm1">
           <ng-multiselect-dropdown class="role12-product" name="city" [placeholder]="'Product'" formControlName="city1"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
@@ -24,15 +24,15 @@
             (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder role12-placeholder">
-          <span *ngIf="myForm1.get('city1').value.length == 0">  </span>
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;" >
+          <!-- <span *ngIf="myForm1.get('city1').value.length == 0">  </span> -->
           <span *ngIf="myForm1.get('city1').value.length == 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Products selected </span>
           <span *ngIf="myForm1.get('city1').value.length > 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Product selected </span>
  
         </div>
       </div>
  
-      <div class="col-md-2 col-lg-2 col-sm-2 dealersassociationgeobubbles " style="font-family: 'Gilroy'; color: grey;">
+      <div class="col-md-2 col-lg-2 col-sm-2 " style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
           <ng-multiselect-dropdown class="Dealerdrp" name="citys" [placeholder]="'Dealer'" formControlName="citys"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"
@@ -40,8 +40,8 @@
             (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder Dealerdrp-placeholder">
-          <span *ngIf="myForms.get('citys').value.length == 0">  </span>
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <!-- <span *ngIf="myForms.get('citys').value.length == 0">  </span> -->
           <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer selected </span>
           <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer(s) selected </span>
  

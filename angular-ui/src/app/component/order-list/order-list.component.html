@@ -41,12 +41,12 @@
       </div>
     <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown  custom-bubbles" >
         <form [formGroup]="myForm2" class="dropdown-form">
-          <ng-multiselect-dropdown class="Status STATUSS1" name="status" [placeholder]="'Status'" formControlName="status"
+          <ng-multiselect-dropdown style="color: grey;" class="Status STATUSS1" name="status" [placeholder]="'Select Status'" formControlName="status"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropList" (onSelect)="statusdropdownselect($event)"
             (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
-          <div class="dropdown-placeholder Status-placeholder">
-            <span *ngIf="myForm2.get('status').value.length == 0"> Select Status </span>
+          <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+            <!-- <span *ngIf="myForm2.get('status').value.length == 0"> Select Status </span> -->
             <span *ngIf="myForm2.get('status').value.length == 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status selected </span>
             <span *ngIf="myForm2.get('status').value.length > 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status(s) selected </span>
 

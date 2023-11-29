@@ -6,14 +6,14 @@
 
       <div class="col-md-2 col-lg-2 col-sm-2 currencyCbubbles" style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
-          <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+          <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Select Status'" formControlName="citys"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
             (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder stts-placeholder">
-          <span *ngIf="myForms.get('citys').value.length == 0">Select Status</span>
+        <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <!-- <span *ngIf="myForms.get('citys').value.length == 0">Select Status</span> -->
           <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
             {{myForms.get('citys').value.length}} status selected </span>
           <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
@@ -38,36 +38,7 @@
     </div>
     
     </div>
-    <div class="row" style="margin-bottom:5px;">
-      <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-      <div class="col-md-4" style="margin-left: 73%;margin-bottom:10px;">
-        <div class="row">
-          <!-- <div class="col-md-8">
-            <div class="searchBox d-flex">
-              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-              <button class="searchButton" href="#">
-                <i class="material-icons">
-                  search
-                </i>
-              </button>
-              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-            </div>
-          </div> -->
-          <!-- <div class="col-md-12">
-            <div class="add-user" (click)="addCurrencyButton()">
-              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-            </div>
-          </div> -->
-          <!-- <div class="col-md-0">
-<div class="download-btn" (click)="onBtnExport()">
-<img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
-</div>
-</div> -->
-        </div>
-      </div>
-    </div>
-
+    
 
     <div>
       <ag-grid-angular id="gridContainer"

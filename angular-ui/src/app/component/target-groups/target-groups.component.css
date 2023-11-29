@@ -189,6 +189,7 @@ background: #D23F00 !important;
   width: 39px;
   height: 39px;
   cursor: pointer;
+  height: 43px;
 }
 
 ::ng-deep.btnhover1:hover{

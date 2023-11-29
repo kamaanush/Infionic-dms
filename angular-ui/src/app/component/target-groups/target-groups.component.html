@@ -6,13 +6,13 @@
 
       <div class="col-md-2 col-lg-2 col-sm-2 targetgroupbubles"  style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
-          <ng-multiselect-dropdown class="stts1 tgd" name="citys" [placeholder]="'Target'" formControlName="citys"
+          <ng-multiselect-dropdown class="stts1 tgd" name="citys" [placeholder]="'Select Target'" formControlName="citys"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="targetListData"(onSelect)="onTargetGroupSelect($event)" (onDeSelect)="onTargetGroupDeSelect($event)"
             (onDeSelectAll)="onTargetGroupDeSelectOrAll($event)" (onSelectAll)="onTargetGroupSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder stts1-placeholder">
-          <span *ngIf="myForms.get('citys').value.length == 0">Select Target</span>
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <!-- <span *ngIf="myForms.get('citys').value.length == 0">Select Target</span> -->
           <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
             {{myForms.get('citys').value.length}} target selected </span>
           <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">

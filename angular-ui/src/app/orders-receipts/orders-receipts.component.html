@@ -5,13 +5,13 @@
 <div class="row ml-2">
      <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubbles" style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
+          <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
             (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder dealers-placeholder" id="DEALERBORDER">
-          <span *ngIf="myForm.get('city').value.length == 0">  Dealers </span>
+        <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;" id="DEALERBORDER">
+          <!-- <span *ngIf="myForm.get('city').value.length == 0">  Dealers </span> -->
           <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer selected </span>
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
            <img src="../assets/img/search.png" class="searchReceipts">

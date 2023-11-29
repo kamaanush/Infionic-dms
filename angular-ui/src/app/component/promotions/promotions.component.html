@@ -3,17 +3,17 @@
     <div class="row d-flex justify-content-evenly" style="margin-left: 4px;">
       <div class="col-md-2 col-lg-2 col-sm-2 promotionsbubbles">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="promo" formControlName="city1" [disabled]="disabled"
+          <ng-multiselect-dropdown class="promo" formControlName="city1"  [placeholder]="'Select Promotions'" [disabled]="disabled"
             [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
             (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
             (onSelectAll)="onItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
  
-          <div class="dropdown-placeholder promo-placeholder">
-            <span *ngIf="myForm.get('city1').value.length == 0">Select Promotions </span>
-            <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder">
+          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+            <!-- <span *ngIf="myForm.get('city1').value.length == 0">Select Promotions </span> -->
+            <span *ngIf="myForm.get('city1').value.length == 1" >
               {{myForm.get('city1').value.length}} Promotions selected </span>
-            <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder">
+            <span *ngIf="myForm.get('city1').value.length > 1" >
               {{myForm.get('city1').value.length}} selected </span>
  
           </div>
@@ -21,17 +21,17 @@
       </div>
       <div class="col-md-2 col-lg-2 col-sm-2 promotionsproductbubbles" style="margin-left: -17px;">
         <form [formGroup]="myForms" class="dropdown-form">
-          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Product'" formControlName="city2"
+          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Select Product '" formControlName="city2"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
             (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
           </ng-multiselect-dropdown>
  
-          <div class="dropdown-placeholder product-placeholder">
-            <span *ngIf="myForms.get('city2').value.length == 0">Select Product </span>
-            <span *ngIf="myForms.get('city2').value.length == 1" class="selected-placeholder">
+          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+            <!-- <span *ngIf="myForms.get('city2').value.length == 0">Select Product </span> -->
+            <span *ngIf="myForms.get('city2').value.length == 1" >
               {{myForms.get('city2').value.length}} Products selected </span>
-            <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
+            <span *ngIf="myForms.get('city2').value.length > 1" >
               {{myForms.get('city2').value.length}} Products selected </span>
  
           </div>
@@ -39,16 +39,16 @@
       </div>
       <div class="col-md-2 col-lg-2 col-sm-2 geobubbles" *ngIf="userType === 'Admin'">
         <form [formGroup]="myForms2" class="dropdown-form">
-          <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Geography'" formControlName="city3"
+          <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Select Geography '" formControlName="city3"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="geoList" (onSelect)="onGeoSelect($event)"
             (onDeSelect)="onGeoDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAllGeo($event)"
             (onSelectAll)="onItemSelectOrAllGeo($event)">
           </ng-multiselect-dropdown>
-          <div class="dropdown-placeholder geog-placeholder">
-            <span *ngIf="myForms2.get('city3').value.length == 0">Select Geography </span>
-            <span *ngIf="myForms2.get('city3').value.length == 1" class="selected-placeholder">
+          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+            <!-- <span *ngIf="myForms2.get('city3').value.length == 0">Select Geography </span> -->
+            <span *ngIf="myForms2.get('city3').value.length == 1" >
               {{myForms2.get('city3').value.length}} Geography selected </span>
-            <span *ngIf="myForms2.get('city3').value.length > 1" class="selected-placeholder">
+            <span *ngIf="myForms2.get('city3').value.length > 1">
               {{myForms2.get('city3').value.length}} Geography selected </span>
  
           </div>
@@ -57,33 +57,33 @@
       <div class="col-md-2 col-lg-2 col-sm-2 dealerbubblespro"
         style="font-family: 'Gilroy'; color: grey;margin-left: 9px;" *ngIf="userType === 'Admin'">
         <form [formGroup]="myForms4" class="dropdown-formdealer">
-          <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Dealer'" formControlName="city5"
+          <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Select Dealer'" formControlName="city5"
             [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
             (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
             (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder dealr-placeholder">
-          <span *ngIf="myForms4.get('city5').value.length == 0">Select Dealer </span>
-          <span *ngIf="myForms4.get('city5').value.length == 1" class="selected-placeholder">
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <!-- <span *ngIf="myForms4.get('city5').value.length == 0">Select Dealer </span> -->
+          <span *ngIf="myForms4.get('city5').value.length == 1" >
             {{myForms4.get('city5').value.length}} Dealer selected </span>
-          <span *ngIf="myForms4.get('city5').value.length > 1" class="selected-placeholder">
+          <span *ngIf="myForms4.get('city5').value.length > 1" >
             {{myForms4.get('city5').value.length}} Dealer(s) selected </span>
  
         </div>
       </div>
       <div class="col-md-2 col-lg-2 col-sm-2 statusprobubbles" style="margin-left:-17px">
         <form [formGroup]="myForms3" class="dropdown-form">
-          <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="city4"
+          <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Select Status '" formControlName="city4"
             [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1"
             (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
           </ng-multiselect-dropdown>
-          <div class="dropdown-placeholder stts-placeholder">
-            <span *ngIf="myForms3.get('city4').value.length == 0">Select Status </span>
-            <span *ngIf="myForms3.get('city4').value.length == 1" class="selected-placeholder">
+          <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+            <!-- <span *ngIf="myForms3.get('city4').value.length == 0">Select Status </span> -->
+            <span *ngIf="myForms3.get('city4').value.length == 1" >
               {{myForms3.get('city4').value.length}} Status selected </span>
-            <span *ngIf="myForms3.get('city4').value.length > 1" class="selected-placeholder">
+            <span *ngIf="myForms3.get('city4').value.length > 1">
               {{myForms3.get('city4').value.length}} Status selected </span>
  
           </div>
@@ -135,7 +135,7 @@
   </div>
   <br>
   <ag-grid-angular id="gridContainer"
-    style=" height: 390px;background-color: white;font-family: Gilroy;margin-left: 20px;margin-top: -20px;"
+    style=" height: 390px;background-color: white;font-family: Gilroy;margin-left: 20px;margin-top: -70px;"
     class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
     [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
     [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"

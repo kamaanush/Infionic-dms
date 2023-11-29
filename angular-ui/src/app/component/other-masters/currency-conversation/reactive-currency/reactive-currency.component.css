@@ -25,6 +25,8 @@
     width: 115px;
     height: 43px;
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .exit {

@@ -2,48 +2,48 @@
   <div class="section sales">
     <div class="sales-search-drop">
       <div class="row salesclass">
-        <div class="col-md-2 col-lg-2 col-sm-2 inventorydealersbubbles multi_select">
+        <div class="col-md-2 col-lg-2 col-sm-2  multi_select">
           <form [formGroup]="dealerForm" class="dropdown-form">
-            <ng-multiselect-dropdown class="Dealerdrp" name="dealerForm" [placeholder]="'Dealer'" formControlName="dealerForm"
+            <ng-multiselect-dropdown style="color: grey;" class="Dealerdrp" name="dealerForm" [placeholder]="'Dealer'" formControlName="dealerForm"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerList"(onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
               (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)"
              >
             </ng-multiselect-dropdown>
           </form>          
-          <div class="dropdown-placeholder Dealerdrp-placeholder"id="DP">
-            <span *ngIf="dealerForm.get('dealerForm').value.length == 0" id="GP"> Dealers </span>
-            <span *ngIf="dealerForm.get('dealerForm').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealers selected </span>
-            <span *ngIf="dealerForm.get('dealerForm').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealers(s) selected </span>
+          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;"id="DP">
+            <!-- <span *ngIf="dealerForm.get('dealerForm').value.length == 0" id="GP"> Dealers </span> -->
+            <span *ngIf="dealerForm.get('dealerForm').value.length == 1" > {{dealerForm.get('dealerForm').value.length}} Dealers selected </span>
+            <span *ngIf="dealerForm.get('dealerForm').value.length > 1" > {{dealerForm.get('dealerForm').value.length}} Dealers(s) selected </span>
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2 salesIdealersbubbles multi_select">
+        <div class="col-md-2 col-lg-2 col-sm-2  multi_select">
           <form [formGroup]="productForm" class="dropdown-form">
-            <ng-multiselect-dropdown class="product" name="city" [placeholder]="'Product'" formControlName="productForm"
+            <ng-multiselect-dropdown style="color: grey;" class="product" name="city" [placeholder]="'Product'" formControlName="productForm"
               [disabled]="disabled" [settings]="dropdownSettings2" [data]="productList"(onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
               (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)"
              >
             </ng-multiselect-dropdown>
           </form>
-          <div class="dropdown-placeholder product-placeholder"id="DP">
-            <span *ngIf="productForm.get('productForm').value.length == 0" id="GP"> Product </span>
+          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;"id="DP">
+            <!-- <span *ngIf="productForm.get('productForm').value.length == 0" id="GP"> Product </span> -->
             <span *ngIf="productForm.get('productForm').value.length == 1" class="selected-placeholder"> {{productForm.get('productForm').value.length}} Product selected </span>
             <span *ngIf="productForm.get('productForm').value.length > 1" class="selected-placeholder"> {{productForm.get('productForm').value.length}} Product(s) selected </span>
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2 sales-invertygeophybubbles multi_select">
+        <div class="col-md-2 col-lg-2 col-sm-2  multi_select">
           <form [formGroup]="geographyForm" class="dropdown-form">
-            <ng-multiselect-dropdown class="geography" name="city" [placeholder]="'Geography'" formControlName="geographyForm"
+            <ng-multiselect-dropdown style="color: grey;" class="geography" name="city" [placeholder]="'Geography'" formControlName="geographyForm"
               [disabled]="disabled" [settings]="dropdownSettings3" [data]="geographyList" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)"
              >
             </ng-multiselect-dropdown>
           </form>
-          <div class="dropdown-placeholder geography-placeholder"id="DP">
-            <span *ngIf="geographyForm.get('geographyForm').value.length == 0" id="GP"> Geographies </span>
-            <span *ngIf="geographyForm.get('geographyForm').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography selected </span>
-            <span *ngIf="geographyForm.get('geographyForm').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography(s) selected </span>
+          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;" id="DP">
+            <!-- <span *ngIf="geographyForm.get('geographyForm').value.length == 0" id="GP"> Geographies </span> -->
+            <span *ngIf="geographyForm.get('geographyForm').value.length == 1" > {{geographyForm.get('geographyForm').value.length}} Geography selected </span>
+            <span *ngIf="geographyForm.get('geographyForm').value.length > 1" > {{geographyForm.get('geographyForm').value.length}} Geography(s) selected </span>
 
           </div>
         </div>
@@ -107,7 +107,7 @@
     </div> -->
     <!-- grid -->
     <div class="sales-grid-table mt-3">
-      <ag-grid-angular id="gridContainer" style="height: 400px;background-color: white;font-family: Gilroy;width: 101%;margin-top: 3%;"
+      <ag-grid-angular id="gridContainer" style="height: 400px;background-color: white;font-family: Gilroy;width: 101%;margin-top: -2%;"
        class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
         [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
         [rowData]="salesListData" [suppressExcelExport]="true" [popupParent]="popupParent"

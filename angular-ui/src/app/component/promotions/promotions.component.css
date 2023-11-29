@@ -885,7 +885,7 @@
    position: relative;
    width: 243px;
    /* top: 67%; */
-   border: 1px solid rgba(0, 0, 0, 0.3)!important;
+   /* border: 1px solid rgba(0, 0, 0, 0.3)!important; */
    border-radius: 11px;
    
  }
@@ -916,8 +916,9 @@
 }
 
  .searchicons1 {
-   position: absolute;
-   top: 55%;
+   /* position: absolute; */
+   position: relative;
+   top: -17px;
    left: 6px;
    transform: translateY(-50%);
    font-size: 24px;
@@ -931,9 +932,11 @@
    background: rgba(104, 110, 116, 0.66);
    color: white;
    border-radius: 5px;
-   position: absolute;
-   right: 10px;
-   top: 50%;
+   /* position: absolute; */
+   position: relative;
+   left: 74%;
+   top: -50px;
+
    transform: translateY(-50%);
    cursor: pointer;
    border: 1px solid grey;

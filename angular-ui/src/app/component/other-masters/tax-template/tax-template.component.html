@@ -6,7 +6,7 @@
       <form [formGroup]="myForms">
     <ng-multiselect-dropdown class="stts"
         name="citys"
-        [placeholder]="'Status'"
+        [placeholder]="'Select Status'"
         formControlName="citys"
         [disabled]="disabled"
         [settings]="dropdownSettings1"
@@ -17,8 +17,8 @@
         (onSelectAll)="onItemSelectOrAllStatus($event)">
     </ng-multiselect-dropdown>
 </form> 
-<div class="dropdown-placeholder stts-placeholder">
-  <span *ngIf="myForms.get('citys').value.length == 0">Select Status</span>
+<div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+  <!-- <span *ngIf="myForms.get('citys').value.length == 0">Select Status</span> -->
  <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status selected </span>
   <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status(s) selected </span>
 </div>
@@ -41,15 +41,15 @@
     <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
   </div>
 </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-6" style="margin-top: 26px;">
          
 </div>
     <div class="col-6" style="margin-bottom:10px;">
-        <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
+        <div class="col-lg-offset-6 col-md-offset-6"></div>
         <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px;margin-top: -26px;">
           <div class="row">
-          <!-- <div class="col-md-8">
+          <div class="col-md-8">
         <div class="searchBox d-flex">
           <input class="searchInput"  type="text" name="" placeholder="Type & search for anything"  (keyup)="onSearchChange($event)"
           style="font-family: 'Gilroy'"  >
@@ -60,21 +60,21 @@
           </button>
           <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
         </div>  
-      </div> -->
-      <!-- <div class="col-md-12">
+      </div>
+      <div class="col-md-12">
        <div class="add-user" (click)="addtaxTempl()">
          <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
        </div>
-      </div> -->
-      <!-- <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
        <div class="download-btn" >
          <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
        </div>
-      </div> -->
+      </div>
       </div>
     </div>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <ag-grid-angular

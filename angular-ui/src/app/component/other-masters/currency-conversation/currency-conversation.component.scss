@@ -200,6 +200,7 @@ background: #D23F00 !important;
   height: 41px;
   cursor: pointer;
   left:1%;
+  height: 43px;
 }
 // ::ng-deep.btnhover:hover,
 // .btnhover:focus {
@@ -939,8 +940,10 @@ mat-sidenav {
 }
 
 .searchicons3 {
-  position: absolute;
-  top: 55%;
+  position: relative;
+  bottom: 19px;
+
+  // top: 55%;
   left: 6px;
   transform: translateY(-50%);
   font-size: 24px;
@@ -956,9 +959,10 @@ mat-sidenav {
 
   color: white;
   border-radius: 5px;
-  position: absolute;
-  right: 10px;
-  top: 50%;
+  position: relative;
+  left: 179px;
+  bottom: 50px;
+
   transform: translateY(-50%);
   cursor: pointer;
 }
