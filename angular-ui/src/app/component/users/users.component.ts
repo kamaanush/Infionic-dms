@@ -11,6 +11,7 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ITooltipParams, PaginationNumberFormatterParams, } from 'ag-grid-community';
 import { SharedService } from 'src/app/services/shared-services.service';
+import * as XLSX from 'xlsx';
 
 export interface PeriodicElement {
 
@@ -789,14 +790,133 @@ export class UsersComponent implements OnInit {
     (m.length == 1) && (m = '0' + m);
     return d + m + y;
   }
-  onBtnExport() {
-    this.gridApi.exportDataAsCsv({ fileName: 'users_' + this.convertedDateFormat() });
+  // onBtnExport() {
+  //   console.log(this.rowData5, 'this.rowData5');
 
-  }
+  //   const excludedProperties = ['userId', 'imageUrl','lastLoginDate'];
+
+  //   const headers = Object.keys(this.rowData5[0])
+  //   .filter(key => !excludedProperties.includes(key))
+  //   .map(header => header.toUpperCase())
+  //   const worksheetData = [headers];
+  //   this.rowData5.forEach((item) => {
+  //       const row = headers.map((key) => {
+  //           const value = item[key];
+  //           if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+  //               return `"${value}"`;
+  //           }
+  //           return value;
+  //       });
+  //       worksheetData.push(row);
+  //   });
+
+  //   const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+  //   const workbook = XLSX.utils.book_new();
+  //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+  //   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  //   const url = URL.createObjectURL(blob);
+
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.download = 'Users_Data.xlsx';
+  //   link.click();
+  //   URL.revokeObjectURL(url);
+  // }
+
+//   onBtnExport() {
+//     console.log(this.rowData5, 'this.rowData5');
+
+//     const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+
+//     const headers = Object.keys(this.rowData5[0])
+//         .filter(key => !excludedProperties.includes(key))
+//         console.log(headers,'headers');
+
+//     const capitalizedRowData = this.rowData5.map(item => {
+//         const capitalizedItem = {};
+//         headers.forEach(key => {
+//             const value = item[key];
+//             if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+//                 capitalizedItem[key] = `"${value}"`;
+//             } else {
+//                 capitalizedItem[key] = value;
+//             }
+//         });
+//         return capitalizedItem;
+//     });
+
+//     const worksheetData = [headers];
+//     capitalizedRowData.forEach(item => {
+//         const row = headers.map(key => item[key]);
+//         worksheetData.push(row);
+//     });
+
+//     const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+//     const workbook = XLSX.utils.book_new();
+//     XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+//     const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type:'array'});
+//     const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+//     const url = URL.createObjectURL(blob);
+
+//     const link = document.createElement('a');
+//     link.href = url;
+//     link.download = 'Users_Data.xlsx';
+//     link.click();
+//     URL.revokeObjectURL(url);
+// }
+
+onBtnExport() {
+  console.log(this.rowData5, 'this.rowData5');
+
+  const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+
+  // Capitalize headers
+  const headers = Object.keys(this.rowData5[0])
+      .filter(key => !excludedProperties.includes(key))
+      //.map(header => header);// to get all capital letters
+      .map(header => header.charAt(0).toUpperCase() + header.slice(1));
+
+  const worksheetData = [headers];
+  this.rowData5.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach(key => {
+          // const capitalizedKey = key   // to get all capital letters
+          const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+          capitalizedItem[capitalizedKey] = item[key];
+      });
+
+      const row = headers.map((key) => {
+          const value = capitalizedItem[key];
+          if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+              return `"${value}"`;
+          }
+          return value;
+      });
+      worksheetData.push(row);
+  });
+
+  const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+  const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type:'array'});
+  const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'Users_Data.xlsx';
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
-
   }
   sizeToFit() {
     this.gridOptions.api!.sizeColumnsToFit();

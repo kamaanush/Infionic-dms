@@ -412,7 +412,7 @@ instancePopup:any = null;
         
       this.rowData5 = res.response;
       console.log("RowData5",this.rowData5)
-      if (this.rowData.length >= 1) {
+      if (this.rowData?.length >= 1) {
       this.rowData.forEach((element: { [x: string]: any; }) => {
       if (element['status']=='Confirmed'){
   }

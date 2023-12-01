@@ -40,11 +40,11 @@ export class AddTaxTemplateComponent implements OnInit {
     ) { 
       this.productForm = this.fb.group({
         DoneBy: this.LoginId,
-        TaxTemplateName: '',
+        TaxTemplateName: ['',Validators.required],
         TaxDetails: this.fb.array([]),
-        TaxCodeName: '',
-        PercentageValue: '',
-        Formula: '',
+        TaxCodeName: ['',Validators.required],
+        PercentageValue: ['',Validators.required],
+        Formula: ['',Validators.required],
         DisplayOrder: this.letter, 
       });
       }
@@ -122,9 +122,9 @@ setUpForm(cars: any[] ) {
     //   this.letter=item
     // }
       return this.fb.group({
-        TaxCodeName: '',
-        PercentageValue: '',
-        Formula: '',
+        TaxCodeName: ['',Validators.required],
+        PercentageValue: ['',Validators.required],
+        Formula: ['',Validators.required],
         DisplayOrder: this.letter
       });
     

@@ -449,7 +449,7 @@ export class CurrencyConversationComponent implements OnInit {
       this.rowData5 = res.response;
       console.log('tableDaaaata', this.rowData5)
       if (this.rowData5.length >= 1) {
-        this.rowData.forEach((element: { [x: string]: any; }) => {
+        this.rowData?.forEach((element: { [x: string]: any; }) => {
           if (element['status'] == 'Confirmed') {
           }
           else {
@@ -920,7 +920,7 @@ export class CurrencyConversationComponent implements OnInit {
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
-    this.gridOptions.api!.sizeColumnsToFit();
+    this.gridOptions.api?.sizeColumnsToFit();
 
   }
 

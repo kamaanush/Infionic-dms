@@ -1,67 +1,63 @@
 <div class="container" style="width: 700px;height: 350px;">
-    <div class="EditUser-p">
-        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-        <div class="head-t">
-            <h3 class="addU font">Add Tax Template</h3>
-          </div>
-        <br>
-       <div class="cl-tax">
-       <div class="tax-head scroll" >
-        <div>
-            
-            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
-                
-                <div  class="row font">
-                    <div class="col-8">
-                        <label class="name2">Name<span>*</span></label>
-                        <br>
-                        <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text" placeholder="Enter" id="TaxTemplateName" name="TaxTemplateName"  formControlName="TaxTemplateName" >
-                       
-                    </div>
-                    <div class="col">
-                        <br>
-                        <br>
-                      <p class="fontused">  Used <b>T</b> for <b>Total</b> in Formula<span>*</span></p>
-                    </div>
-                   
-                </div> 
-              <table formArrayName="TaxDetails" class="font" >
-                    <tr>
-                        <th></th>
-                        <th class="taxitems">Tax item Name</th>
-                        <th class="Optionsin">Options (in %)</th>       
-                        <th class="formula">Formula</th>
-                        <td (click)="addQuantity(0)"><mat-icon  style="cursor: pointer;color: #018B75;">add_circle</mat-icon>
-                         
-                        </td>
-    
-                    </tr>
-                    <tr *ngFor="let quantity of TaxDetails().controls; let i=index" [formGroupName]="i" class="aligment11">
-                        <td><input type="text"  class="minus-icon1"  formControlName="DisplayOrder" readonly></td>
-                        <td><input type="text" placeholder="Enter" style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;" formControlName="TaxCodeName" ></td>
-                        <td><input type="text" placeholder="Enter" style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="PercentageValue"></td>
-                        <td><input type="text" placeholder="Enter"  style="width: 190px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="Formula"  ></td>
-                        <td (click)="removeQuantity(i)"><p class="minus-icon">-</p></td>
-                        
-                      
-                         <mat-icon *ngIf="i !== 0" (click)="moveRowUp(i)" class="arrowppp">keyboard_arrow_up</mat-icon>
-                        <mat-icon *ngIf="i !== TaxDetails().length - 1" (click)="moveRowDown(i)" class="arrow">keyboard_arrow_down</mat-icon>
-               
-                          
-                    </tr>
-                   
-                </table>
-
-              </form>  
-          <div style="text-align: center; padding:20px">
-            <button class="btn E-saveBtn" type="submit" (click)="onSubmit()"  [disabled]="TaxTemplateName">Add</button>
-              <!-- <button class="btn E-cancelBtn" (click)=" close()" >Cancel</button>  -->
-            </div>
-
-        </div>
-       
-       </div>
-       </div>
-      
+  <div class="EditUser-p">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    <div class="head-t">
+      <h3 class="addU font">Add Tax Template</h3>
     </div>
+    <br>
+    <div class="cl-tax">
+      <div class="tax-head scroll">
+        <div>
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="row font">
+              <div class="col-8">
+                <label class="name2">Name<span>*</span></label>
+                <br>
+                <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text"
+                  placeholder="Enter" id="TaxTemplateName" name="TaxTemplateName" formControlName="TaxTemplateName">
+              </div>
+              <div class="col">
+                <br>
+                <br>
+                <p class="fontused"> Used <b>T</b> for <b>Total</b> in Formula<span>*</span></p>
+              </div>
+            </div>
+            <table formArrayName="TaxDetails" class="font">
+              <tr>
+                <th></th>
+                <th class="taxitems">Tax item Name <span>*</span></th>
+                <th class="Optionsin">Options (in %)<span>*</span></th>
+                <th class="formula">Formula<span>*</span></th>
+                <td (click)="addQuantity(0)"><mat-icon style="cursor: pointer;color: #018B75;">add_circle</mat-icon>
+                </td>
+              </tr>
+              <tr *ngFor="let quantity of TaxDetails().controls; let i=index" [formGroupName]="i" class="aligment11">
+                <td><input type="text" class="minus-icon1" formControlName="DisplayOrder" readonly></td>
+                <td><input type="text" placeholder="Enter"
+                    style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"
+                    formControlName="TaxCodeName"></td>
+                <td><input type="text" placeholder="Enter"
+                    style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"
+                    formControlName="PercentageValue"></td>
+                <td><input type="text" placeholder="Enter"
+                    style="width: 190px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"
+                    formControlName="Formula"></td>
+                <td (click)="removeQuantity(i)">
+                  <p class="minus-icon">-</p>
+                </td>
+                <mat-icon *ngIf="i !== 0" (click)="moveRowUp(i)" class="arrowppp">keyboard_arrow_up</mat-icon>
+                <mat-icon *ngIf="i !== TaxDetails().length - 1" (click)="moveRowDown(i)"
+                  class="arrow">keyboard_arrow_down</mat-icon>
+              </tr>
+            </table>
+          </form>
+          <div style="text-align: center; padding:20px">
+            <button class="btn E-saveBtn" type="submit" (click)="onSubmit()"
+              [disabled]="TaxTemplateName || !productForm.valid">Add</button>
+            <!-- <button class="btn E-cancelBtn" (click)=" close()" >Cancel</button>  -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

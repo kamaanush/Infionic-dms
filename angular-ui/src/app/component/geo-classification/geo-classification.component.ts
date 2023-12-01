@@ -260,11 +260,11 @@ export class GeoClassificationComponent implements OnInit {
     // console.log(geoGraphyGrid);
     let data = { geography: {}, title: geoGraphyGrid.geographyHierarchyName, isEdit: false, GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0], hirerachyIndex: hirerachyIndex };
     const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '338px', disableClose: true, data: data });
-    dialogRef.afterClosed().subscribe(({ res, result }) => {
+    dialogRef.afterClosed().subscribe(({ res, result }:any) => {
       console.log(result);
-      this.addEditapiResponse(res, result, hirerachyIndex);
-
+      alert('ok')
       // this.AddEditGeography(result, hirerachyIndex);
+      this.addEditapiResponse(res, result, hirerachyIndex);
     });
   }
 
