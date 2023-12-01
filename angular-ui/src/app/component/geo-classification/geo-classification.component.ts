@@ -262,7 +262,7 @@ export class GeoClassificationComponent implements OnInit {
     const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '338px', disableClose: true, data: data });
     dialogRef.afterClosed().subscribe(({ res, result }:any) => {
       console.log(result);
-      alert('ok')
+      // alert('ok')
       // this.AddEditGeography(result, hirerachyIndex);
       this.addEditapiResponse(res, result, hirerachyIndex);
     });

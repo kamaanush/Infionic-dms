@@ -127,12 +127,7 @@ export class MaterialsClassificationComponent implements OnInit {
 
         this.subCatId = data.firstCat.subCAts.firstSubCat.subCatId;
         localStorage.setItem('Subcatidset', this.subCatId)
-
-
-
       }
-
-
       else {
         this.catagoryroouting = '';
         this.CattyName = '';
@@ -215,17 +210,8 @@ this.selectedItem=this.num
     localStorage.setItem('activeCatId', item.catId);
     localStorage.setItem('activeCatName', item.catName)
     localStorage.setItem('activeCatIsActive', item.isActive)
-
-
-
-
     this.dialog.open(DeactivateClassificationPopUpComponent);
     localStorage.setItem('Catidset', this.itemId)
-
-
-
-
-
   }
 
   removeaddformcat() {
@@ -291,10 +277,6 @@ this.selectedItem=this.num
     localStorage.setItem('activeTypeName', item.typeName)
     localStorage.setItem('activeTypeIsActive', item.isActive)
     this.dialog.open(DeactiveTypeCompoComponent);
-
-
-
-
   }
 
   removeaddformtype() {
