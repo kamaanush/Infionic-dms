@@ -1053,20 +1053,22 @@ span {
   /* z-index: 1; */
   cursor: pointer;
   margin-top: 12px;
-  margin-left: 94%;
+  margin-left: 93%;
 }
 .close_icon
 {
-  /* position: fixed;
+   /* position: fixed;
   top: 0;
   float: right;
  
   cursor: pointer;
-  margin-top: 12px;
-  margin-left: 94%; */
+  margin-top: 12px; */
+  /* margin-left: 94%;  */
   cursor: pointer;
   float: right;
   margin-top: 7px;
+  position: relative;
+  right: 37px;
 }
 .close-iconn {
   left: 97%;
@@ -2008,7 +2010,7 @@ li {
   line-height: 18px;
   align-items: center;
   text-align: center;
-margin-right: 235px;
+margin-right: 327px;
   color: #FFFFFF;
 
 
