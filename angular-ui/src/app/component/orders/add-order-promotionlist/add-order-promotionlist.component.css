@@ -2364,6 +2364,12 @@ letter-spacing: 0.04em;
   position: relative;
   /* left: 9%; */
 }
+.check
+{
+  position: relative;
+  top: 4px;
+  left: 5px;
+}
 .MOQFirst
 {
   position: relative;

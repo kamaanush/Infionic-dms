@@ -243,7 +243,7 @@
                                                                                    
                                                                                 <td  style="padding-left: 8px;">{{  Item.materialcustomidentifier }}</td>
                                                                                   
-                                                                                <td style="padding-left: 8px;">{{ Item.registrationNumber }}</td>   
+                                                                                <td style="padding-left: 14px;">{{ Item.registrationNumber }}</td>   
                                                                                 <td style="padding-left: 30px;">{{ promos.moq }}</td>
                                                                                 <td style="padding-left: 42px;">${{ Item.price }}</td>
                                                                                 <td style="padding-left: 61px;" class="QUantityFirst">
@@ -339,8 +339,8 @@
                                                     <table class="tableclass1">
                                                         <thead class="table-headercolor1">
                                                             <tr>
-                                                                <!-- <th width="30"></th> -->
-                                                                <th data-sortable="true" >Product Code
+                                                                 <th width="30"></th> 
+                                                                <th data-sortable="true" style="text-align: left;">Product Code
                                                                 </th>
                                                                 <th data-sortable="true" class="GetgroupProductname" >Product Name
                                                                 </th>
@@ -362,7 +362,7 @@
                                                                 *ngFor="let Item of promos.stockitemid |filter:searchTextFreeItems">
                                                                 <ng-container
                                                                     *ngIf="toggleStatefreeitems ? Item.isProductSelected : true">
-                                                                    <td style="width:24px"><input type="checkbox"
+                                                                    <td style="width:24px"><input type="checkbox" 
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
                                                                     </td>
@@ -372,7 +372,7 @@
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="padding-left: 40px;" >
+                                                                    <td >
                                                                         {{Item.registrationNumber}}
                                                                     </td>
                                                                     <td style="padding-left: 25px;" >{{promos.moq}}</td>
@@ -520,7 +520,7 @@
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative;padding-left: 28px;">
+                                                                    <td style="position: relative;">
                                                                         {{Item.registrationNumber}}</td>
                                                                     <td style="position: relative;padding-left: 12px;">{{promos.moq}}</td>
                                                                     <td style="position: relative;padding-left: 28px;">${{Item.price}}</td>
@@ -715,7 +715,7 @@
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative; padding-left: 20px;">
+                                                                    <td style="position: relative;">
                                                                         {{Item.registrationNumber}}</td>
                                                                     <td style="position: relative;padding-left: 21px;">{{promos.moq}}</td>
                                                                     <td style="position: relative;padding-left: 28px;" >${{Item.price}}</td>
@@ -934,7 +934,7 @@
                                                                     <td style="text-align: left;">
                                                                         {{Item.materialcustomidentifier}}</td>
     
-                                                                    <td style="position: relative;    padding-left: 22px">
+                                                                    <td style="position: relative;">
                                                                         {{Item.registrationNumber}}
                                                                     </td>
                                                                     <td class="txt-right" style="padding-left: 8px;">{{data.promoDetails.moq}}</td>
@@ -1133,7 +1133,7 @@
                                                                         <td style="position: relative;">
                                                                             {{Item.materialcustomidentifier}}
                                                                         </td>
-                                                                        <td style="position: relative;padding-left: 22px">
+                                                                        <td style="position: relative;">
                                                                             {{Item.registrationNumber}}
                                                                         </td>
                                                                         <td class="txt-right" style="padding-left: 8px;" >{{data.promoDetails.moq}}</td>

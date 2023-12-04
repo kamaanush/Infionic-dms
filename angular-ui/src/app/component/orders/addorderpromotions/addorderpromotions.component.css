@@ -3219,8 +3219,17 @@ cursor: pointer;
  color: rgba(1, 139, 117, 1);
  position: relative;
  right: 67px !important;
-
-
+}
+.edit_data
+{
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 16px;
+cursor: pointer;
+ color: rgba(1, 139, 117, 1);
+ position: relative;
+ right: 48px !important;
 }
 .edit {
   cursor: pointer;

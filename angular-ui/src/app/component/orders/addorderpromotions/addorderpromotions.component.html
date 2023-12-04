@@ -176,8 +176,8 @@
                                         <td class="" style="padding: 4px;">
                                                  <mat-icon (click)="ExpandPromotion(i)"
                                                  style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ expandedPromotions[i] ?'keyboard_arrow_down': 'keyboard_arrow_up'}}</mat-icon>
-                                                <span  style="position: relative;left: 13px;right: 6px;color: black;top: -6px;" >Promotion &nbsp;{{PromotionObj.promotionTypesNmae}}</span>
-                                                    <!-- {{PromotionObj.promotionName}} -->
+                                                <span  style="position: relative;left: 13px;right: 6px;color: black;top: -6px;" >Promotion  &nbsp;{{PromotionObj.promotionTypesNmae}}</span>
+                                                    <!-- {{PromotionObj.promotionName}} -->                                                         
                                                     <!-- {{PromotionObj.promotionTypesNmae}}</span>    -->
                                         </td>
                                         <td></td>
@@ -273,7 +273,7 @@
                             <div class="row mt-3">
                                 <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                     <tr>
-                                        <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Sub-Total</p></td>
+                                        <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;height: 10px;">Sub-Total</p></td>
                                         <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal| currency:'USD':'symbol':'1.2-2'}}</td>
                                     </tr>
                                     <tr>
@@ -294,7 +294,8 @@
     
                                     </tr>
                                 </table>
-                            </div>
+                            </div>&nbsp; &nbsp; &nbsp; &nbsp;
+                            
                     </div>
                 </div>
             </div>
@@ -519,15 +520,15 @@
                                 </tr>
                                 
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
-                                    <!-- {{AddOrderPromotionData|json}} -->
+                                    <!-- {{AddOrderPromotionData|json}}  Add order Promotions data-->
                                         <tr>
                                             <td class="" style="padding: 4px;">
                                                 <mat-icon (click)="ExpandPromotion(i)"
                                                     style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ expandedPromotions[i] ?'keyboard_arrow_down': 'keyboard_arrow_up'}} </mat-icon>
                                                 <span style="position: relative;left: 13px;right: 6px;color: black;top: -6px;">Promotion
-                                                    &nbsp;{{PromotionObj.promotionTypesNmae}}</span>
-                                            </td>
-                                            <td> <span class="EDIT-data" (click)="editPromotionItem(PromotionObj.promotionId)">Edit</span></td>
+                                                    &nbsp;{{PromotionObj.promotionTypeNmae}}{{PromotionObj.promotionTypesNmae}} </span>
+                                            </td>                                                         
+                                            <td> <span class="edit_data" (click)="editPromotionItem(PromotionObj.promotionId)">Edit</span></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -636,7 +637,7 @@
                         <div class="row mt-3">
                             <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                 <tr>
-                                    <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Sub-Total</p></td>
+                                    <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;height: 10px;">Sub-Total</p></td>
                                     <td class="text-right numbers" 
                                     [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">
                                         {{  (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD':'symbol':'1.2-2'}}
@@ -666,7 +667,8 @@
                             </table>
 
                             <!-- </div>  -->
-                        </div>
+                        </div>&nbsp; &nbsp; &nbsp; &nbsp;
+                       
                     </div>
                   </div>
                 <!--  ===============================Promotions start ==================================-->
