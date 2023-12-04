@@ -6,10 +6,12 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { UserService } from 'src/app/services/user.service';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedService } from 'src/app/services/shared-services.service';
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-ship-order-bulk-download',
   templateUrl: './ship-order-bulk-download.component.html',
-  styleUrls: ['./ship-order-bulk-download.component.css']
+  styleUrls: ['./ship-order-bulk-download.component.css'],
 })
 export class ShipOrderBulkDownloadComponent implements OnInit {
   dealerForm: any = FormGroup;
@@ -17,196 +19,249 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   disabled = false;
   dealerSettings: IDropdownSettings = {};
   geographySettings: IDropdownSettings = {};
-  dealersdrop: any = ['dealr','d'];
+  dealersdrop: any = ['dealr', 'd'];
 
   private gridApi!: GridApi;
   public popupParent: HTMLElement = document.body;
-  instancePopup:any = null;
+  instancePopup: any = null;
   paginationPageSize = 10;
   stayScrolledToEnd = true;
-  dealerListData:any = [];
-  dealerlist:any = [];
-  dealerAllArray:any = [];
-  geographyData:any = [];
-  geogropdownlist:any = [];
-  paginationScrollCount:any;
-  geoAllarray:any  = [];
+  dealerListData: any = [];
+  dealerlist: any = [];
+  dealerAllArray: any = [];
+  geographyData: any = [];
+  geogropdownlist: any = [];
+  paginationScrollCount: any;
+  geoAllarray: any = [];
   selectedDateRange: any;
   startDate: any = '';
   endDate: any = '';
-  geographySelected:any = [];
-  dealerss:any = [];
-  shipmentDatalist:any = [];
+  geographySelected: any = [];
+  dealerss: any = [];
+  shipmentDatalist: any = [];
   selectedItems: any = [];
-  shipmentData:any;
-  receiptData:any;
-  shipDownload:boolean = false;
-  receiptDownload:boolean = false;
-  startDateShip:any = '';
-  endDateShip:any = '';
-  startDateInvoice:any = '';
-  endDateInvoice:any = '';
-  receiptDatalist:any = [];
-  emptyDownloadArray:any = [];
+  shipmentData: any;
+  receiptData: any;
+  shipDownload: boolean = false;
+  receiptDownload: boolean = false;
+  startDateShip: any = '';
+  endDateShip: any = '';
+  startDateInvoice: any = '';
+  endDateInvoice: any = '';
+  receiptDatalist: any = [];
+  emptyDownloadArray: any = [];
   columnDefs: ColDef[] = [
-    {  headerName: "Order No.",
-       field: 'orderNo',      tooltipField:"orderNo",type: ['nonEditableColumn'],
-       cellStyle: {
-        'color': '#686E74' 
-      }
+    {
+      headerName: 'Order No.',
+      field: 'orderNo',
+      tooltipField: 'orderNo',
+      type: ['nonEditableColumn'],
+      cellStyle: {
+        color: '#686E74',
       },
-  
-    {   headerName: "Order Date",
-  // cellRenderer: (data) => 
-  // { return this.sharedService.dateformat(data.value);
-  // },
-  cellRenderer: (data) => {
-    const formattedDate = this.sharedService.dateformat(data.value);
-    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
-    return coloredDate;
-  },
+    },
 
-
+    {
+      headerName: 'Order Date',
+      // cellRenderer: (data) =>
+      // { return this.sharedService.dateformat(data.value);
+      // },
+      cellRenderer: (data) => {
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
+      },
 
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'orderDate',      tooltipField:"orderDate",
-      type: ['nonEditableColumn']},
-      {  headerName: "Product Name",
-      field: 'productName',      tooltipField:"productName",type: ['nonEditableColumn'],
+      field: 'orderDate',
+      tooltipField: 'orderDate',
+      type: ['nonEditableColumn'],
+    },
+    {
+      headerName: 'Product Name',
+      field: 'productName',
+      tooltipField: 'productName',
+      type: ['nonEditableColumn'],
       cellStyle: {
-        'color': '#686E74' 
+        color: '#686E74',
       },
-     },
-     {  headerName: "Product Code",
-     field: 'productCode',      tooltipField:"productCode",type: ['nonEditableColumn'],
-     cellStyle: {
-      'color': '#686E74' 
     },
+    {
+      headerName: 'Product Code',
+      field: 'productCode',
+      tooltipField: 'productCode',
+      type: ['nonEditableColumn'],
+      cellStyle: {
+        color: '#686E74',
+      },
     },
-  
-      {   headerName: "Order Qty",
+
+    {
+      headerName: 'Order Qty',
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'orderQty',type: ['nonEditableColumn'],tooltipField:"orderQty",
+      field: 'orderQty',
+      type: ['nonEditableColumn'],
+      tooltipField: 'orderQty',
       cellStyle: {
-        'color': '#686E74' 
+        color: '#686E74',
       },
     },
-      {  headerName: "Shipped Till Qty",
-      field: 'shippedTillQty',      tooltipField:"shippedTillQty",type: ['nonEditableColumn'],
+    {
+      headerName: 'Shipped Till Qty',
+      field: 'shippedTillQty',
+      tooltipField: 'shippedTillQty',
+      type: ['nonEditableColumn'],
       cellStyle: {
-        'color': '#686E74' 
+        color: '#686E74',
       },
-  },
-      {  headerName: "Dispatch Qty",
-      field: 'dispatchQty',      tooltipField:"dispatchQty",type: ['nonEditableColumn'],
-      cellStyle: {
-        'color': '#686E74' 
-      },
-    }, 
-   
-  {  headerName: "Dispatch Date",
-  // cellRenderer: (data) => 
-  // { return this.sharedService.dateformat(data.value);
-  // },
-  cellRenderer: (data) => {
-    const formattedDate = this.sharedService.dateformat(data.value);
-    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
-    return coloredDate;
-  },
-     field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
     },
-    {  headerName: "Invoice Date",
-  //   cellRenderer: (data) => 
-  // { return this.sharedService.dateformat(data.value);
-  // },
-  cellRenderer: (data) => {
-    const formattedDate = this.sharedService.dateformat(data.value);
-    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
-    return coloredDate;
-  },
-    field: 'invoiceDate',      tooltipField:"invoiceDate",type: ['nonEditableColumn']
-  },
-  {  headerName: "Invoice No.",
-  field: 'invoiceNo',      tooltipField:"invoiceNo",type: ['nonEditableColumn'],
-  cellStyle: {
-    'color': '#686E74' 
-  }
-},
-{  headerName: "Uploaded Date",
-// cellRenderer: (data) => 
-//   { return this.sharedService.dateformat(data.value);
-//   },
-cellRenderer: (data) => {
-  const formattedDate = this.sharedService.dateformat(data.value);
-  const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
-  return coloredDate;
-},
-field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
-},
-  
+    {
+      headerName: 'Dispatch Qty',
+      field: 'dispatchQty',
+      tooltipField: 'dispatchQty',
+      type: ['nonEditableColumn'],
+      cellStyle: {
+        color: '#686E74',
+      },
+    },
+
+    {
+      headerName: 'Dispatch Date',
+      // cellRenderer: (data) =>
+      // { return this.sharedService.dateformat(data.value);
+      // },
+      cellRenderer: (data) => {
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
+      },
+      field: 'dispatchDate',
+      tooltipField: 'dispatchDate',
+      type: ['nonEditableColumn'],
+    },
+    {
+      headerName: 'Invoice Date',
+      //   cellRenderer: (data) =>
+      // { return this.sharedService.dateformat(data.value);
+      // },
+      cellRenderer: (data) => {
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
+      },
+      field: 'invoiceDate',
+      tooltipField: 'invoiceDate',
+      type: ['nonEditableColumn'],
+    },
+    {
+      headerName: 'Invoice No.',
+      field: 'invoiceNo',
+      tooltipField: 'invoiceNo',
+      type: ['nonEditableColumn'],
+      cellStyle: {
+        color: '#686E74',
+      },
+    },
+    {
+      headerName: 'Uploaded Date',
+      // cellRenderer: (data) =>
+      //   { return this.sharedService.dateformat(data.value);
+      //   },
+      cellRenderer: (data) => {
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
+      },
+      field: 'dispatchDate',
+      tooltipField: 'dispatchDate',
+      type: ['nonEditableColumn'],
+    },
   ];
-  columnReceiptDefs: (ColDef| ColGroupDef)[] = [
-    {  headerName: "Shipment No.",minWidth:160,
-    field: 'shipmentNumber',      tooltipField:"shipmentNumber",
-    cellStyle: {
-      'color': '#686E74' 
+  columnReceiptDefs: (ColDef | ColGroupDef)[] = [
+    {
+      headerName: 'Shipment No.',
+      minWidth: 160,
+      field: 'shipmentNumber',
+      tooltipField: 'shipmentNumber',
+      cellStyle: {
+        color: '#686E74',
+      },
     },
-   },
-   {  headerName: "Shipment Date",minWidth:160,
-   field: 'shipmentDate',      tooltipField:"shipmentDate",
-   cellStyle: {
-    'color': '#686E74' 
-  },
-  },
-    {  headerName: "Order No.",minWidth:160,
-       field: 'customerPONumber',      tooltipField:"customerPONumber",
-       cellStyle: {
-        'color': '#686E74' 
-      }
-      },
-  
-    {   headerName: "Order Date",minWidth:160,
-      field: 'orderDate',      tooltipField:"orderDate",
+    {
+      headerName: 'Shipment Date',
+      minWidth: 160,
+      field: 'shipmentDate',
+      tooltipField: 'shipmentDate',
       cellStyle: {
-        'color': '#686E74' 
+        color: '#686E74',
       },
-      type: ['nonEditableColumn']},
-  
-      {   headerName: "Dealer",minWidth:160,
-      field: 'dealer',type: ['nonEditableColumn'],      tooltipField:"dealer",
-      cellStyle: {
-        'color': '#686E74' 
-      }
     },
-      {  headerName: "Invoice No.",minWidth:160,
-      field: 'invoiceNumber',      tooltipField:"invoiceNumber",
+    {
+      headerName: 'Order No.',
+      minWidth: 160,
+      field: 'customerPONumber',
+      tooltipField: 'customerPONumber',
       cellStyle: {
-        'color': '#686E74' 
+        color: '#686E74',
       },
-    }, 
-      {  headerName: "Invoice Date",minWidth:160,
-      field: 'invoiceDate',      tooltipField:"invoiceDate",
-      cellStyle: {
-        'color': '#686E74' 
-      },
-    }, 
-   
-    {  headerName: "Total Items ",
-    field:"totalitems",tooltipField:"totalitems", resizable:true,
-    cellStyle: {
-      'color': '#686E74' 
     },
-        //     children:[
-        //   {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
-        //   {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
-        //   {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
-        // ]
-    
+
+    {
+      headerName: 'Order Date',
+      minWidth: 160,
+      field: 'orderDate',
+      tooltipField: 'orderDate',
+      cellStyle: {
+        color: '#686E74',
       },
-  
+      type: ['nonEditableColumn'],
+    },
+
+    {
+      headerName: 'Dealer',
+      minWidth: 160,
+      field: 'dealer',
+      type: ['nonEditableColumn'],
+      tooltipField: 'dealer',
+      cellStyle: {
+        color: '#686E74',
+      },
+    },
+    {
+      headerName: 'Invoice No.',
+      minWidth: 160,
+      field: 'invoiceNumber',
+      tooltipField: 'invoiceNumber',
+      cellStyle: {
+        color: '#686E74',
+      },
+    },
+    {
+      headerName: 'Invoice Date',
+      minWidth: 160,
+      field: 'invoiceDate',
+      tooltipField: 'invoiceDate',
+      cellStyle: {
+        color: '#686E74',
+      },
+    },
+
+    {
+      headerName: 'Total Items ',
+      field: 'totalitems',
+      tooltipField: 'totalitems',
+      resizable: true,
+      cellStyle: {
+        color: '#686E74',
+      },
+      //     children:[
+      //   {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
+      //   {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
+      //   {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
+      // ]
+    },
   ];
   public defaultColDef: ColDef = {
-
     suppressSizeToFit: true,
     // set the default column width
     // make every column editable
@@ -215,12 +270,12 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     filter: 'agTextColumnFilter',
     // enable floating filters by default
     // make columns resizable
-    flex:1,
-      minWidth: 100,
+    flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
   };
-  
+
   public columnTypes: {
     [key: string]: ColDef;
   } = {
@@ -254,75 +309,78 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     },
   };
   columns: Array<GuiColumn> = [
-		{
-			header: 'Name',
-			field: 'name' 			//source {name: 'T-shirt'}
-		},
-		{
-			header: 'Type',
-			field: 'type' 			//source {type: 'clothes'}
-		},
-		{
-			header: 'Price',
-			field: 'price'			//source {price: '15$'}
-		}];
+    {
+      header: 'Name',
+      field: 'name', //source {name: 'T-shirt'}
+    },
+    {
+      header: 'Type',
+      field: 'type', //source {type: 'clothes'}
+    },
+    {
+      header: 'Price',
+      field: 'price', //source {price: '15$'}
+    },
+  ];
 
-	source: Array<any> = [
-		{
-			name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
-			type: 'clothes',		//columns {header: 'Type', field: 'type'}
-			price: '15$' 			//columns {header: 'Price', field: 'price'}
-		},
-		{
-			name: 'Shoes',
-			type: 'footwear',
-			price: '100$'
-		},
-		{
-			name: 'Ball cap',
-			type: 'headgear',
-			price: '50$'
-		}];
+  source: Array<any> = [
+    {
+      name: 'T-shirt', //columns {header: 'Name', field: 'name'}
+      type: 'clothes', //columns {header: 'Type', field: 'type'}
+      price: '15$', //columns {header: 'Price', field: 'price'}
+    },
+    {
+      name: 'Shoes',
+      type: 'footwear',
+      price: '100$',
+    },
+    {
+      name: 'Ball cap',
+      type: 'headgear',
+      price: '50$',
+    },
+  ];
 
-    sorting: GuiSorting = {
-	    enabled: true
-	};
+  sorting: GuiSorting = {
+    enabled: true,
+  };
 
-	paging: GuiPaging = {
-		enabled: true,
-		page: 1,
-		pageSize: 10,
-		pageSizes: [10, 25, 50],
-		pagerTop: true,
-		pagerBottom: true,
-		display: GuiPagingDisplay.BASIC
-	};
+  paging: GuiPaging = {
+    enabled: true,
+    page: 1,
+    pageSize: 10,
+    pageSizes: [10, 25, 50],
+    pagerTop: true,
+    pagerBottom: true,
+    display: GuiPagingDisplay.BASIC,
+  };
 
-	searching: GuiSearching = {
-		enabled: true,
-		placeholder: 'Search heroes'
-	};
+  searching: GuiSearching = {
+    enabled: true,
+    placeholder: 'Search heroes',
+  };
 
   columnMenu: GuiColumnMenu = {
-		enabled: true,
-		sort: true,
-		columnsManager: true,
-
+    enabled: true,
+    sort: true,
+    columnsManager: true,
   };
-  clickNextRendererFunc(){
+  clickNextRendererFunc() {
     // alert('hlo');
   }
-  constructor(private user: UserService,
-    public orders:OrdersApisService,
-    private sharedService :SharedService,
-    private fb: FormBuilder,) { }
+  constructor(
+    private user: UserService,
+    public orders: OrdersApisService,
+    private sharedService: SharedService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.dealerForm = this.fb.group({
-      dealer: [this.selectedItems]
+      dealer: [this.selectedItems],
     });
     this.geographyForm = this.fb.group({
-      geography: [this.selectedItems]
+      geography: [this.selectedItems],
     });
 
     // this.dealerForm = this.fb.group({
@@ -331,7 +389,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     // this.geographyForm = this.fb.group({
     //   geo: [this.selectedItems]
     // });
-   
+
     this.dealerOrder();
     this.geogrphyOrder();
     this.getDownloadBulkUpload();
@@ -341,7 +399,6 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
-    
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
@@ -352,13 +409,14 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
   }
-  openDialog(){
-
-  }
-  onCellClicked( e): void {
-    let cellCLickedpromotion = '1'
-    localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+  openDialog() {}
+  onCellClicked(e): void {
+    let cellCLickedpromotion = '1';
+    localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion);
+    if (
+      e.event.target.dataset.action == 'toggle' &&
+      e.column.getColId() == 'action'
+    ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
@@ -371,86 +429,75 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     }
   }
   handleScroll(event) {
-    if(this.instancePopup && this.instancePopup.isOpen){
+    if (this.instancePopup && this.instancePopup.isOpen) {
       this.instancePopup.togglePopup();
       this.instancePopup = null;
     }
-    
+
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
       const scrollPos = gridBody.offsetHeight + event.top;
       const scrollDiff = gridBody.scrollHeight - scrollPos;
-      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.stayScrolledToEnd = scrollDiff <= this.paginationPageSize;
       this.paginationScrollCount = this.shipmentDatalist.length;
     }
   }
   handleScrollReceipt(event) {
-    if(this.instancePopup && this.instancePopup.isOpen){
+    if (this.instancePopup && this.instancePopup.isOpen) {
       this.instancePopup.togglePopup();
       this.instancePopup = null;
     }
-    
+
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
       const scrollPos = gridBody.offsetHeight + event.top;
       const scrollDiff = gridBody.scrollHeight - scrollPos;
-      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.stayScrolledToEnd = scrollDiff <= this.paginationPageSize;
       this.paginationScrollCount = this.receiptDatalist.length;
     }
   }
   getDownloadBulkUpload() {
     let data = {
-      GeographyId:[],
-      DealerId:[],
-      StartDate:"",
-      EndDate:""
-    }
+      GeographyId: [],
+      DealerId: [],
+      StartDate: '',
+      EndDate: '',
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
-  receiptList(){
+  receiptList() {
     let data = {
-      DealerId:[],
-      ShipmentStartDate:"",
-      ShipmentEndDate:"",
-      InvoiceStartDate:"",
-      InvoiceEndDate:"",
-      search:""
-    }
+      DealerId: [],
+      ShipmentStartDate: '',
+      ShipmentEndDate: '',
+      InvoiceStartDate: '',
+      InvoiceEndDate: '',
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response Receipt",this.receiptDatalist)
+      console.log('Response Receipt', this.receiptDatalist);
 
+      this.receiptDatalist.forEach((element) => {
+        element.orderDate = this.sharedService.dateformat(element.orderDate);
+      });
 
-      this.receiptDatalist.forEach(element => {
+      this.receiptDatalist.forEach((element) => {
+        element.shipmentDate = this.sharedService.dateformat(
+          element.shipmentDate
+        );
+      });
 
-        element.orderDate=this.sharedService.dateformat
-        (element.orderDate);
-      
-      }) 
-
-
-       this.receiptDatalist.forEach(element=>{
-          
-
-            
-         element.shipmentDate= this.sharedService.dateformat
-        (element.shipmentDate);
-        })
-
-        this.receiptDatalist.forEach(element=>{
-          
-
-            
-          element.invoiceDate= this.sharedService.dateformat
-         (element.invoiceDate);
-         })
-
-     
+      this.receiptDatalist.forEach((element) => {
+        element.invoiceDate = this.sharedService.dateformat(
+          element.invoiceDate
+        );
+      });
     });
   }
   customDatePickerEvent(eventChange) {
@@ -459,41 +506,41 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.endDate = this.selectedDateRange.endDate;
     console.log(this.selectedDateRange);
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
       // ShipmentStartDate:this.startDateShip,
       // ShipmentEndDate:this.endDateShip,
       // InvoiceStartDate:this.startDateInvoice,
       // InvoiceEndDate:this.endDateInvoice,
-    }
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
-  customShipDatePickerEvent(eventChange){
+  customShipDatePickerEvent(eventChange) {
     this.selectedDateRange = eventChange.selectedDate;
     this.startDateShip = this.selectedDateRange.startDate;
     this.endDateShip = this.selectedDateRange.endDate;
     console.log(this.selectedDateRange);
     let data = {
-      DealerId:this.dealerss,
-      GeographyId:this.geographySelected,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search:''
-    }
+      DealerId: this.dealerss,
+      GeographyId: this.geographySelected,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
-  selectedDateRanges:any;
-  customInvoiceDatePickerEvent(eventChange){
+  selectedDateRanges: any;
+  customInvoiceDatePickerEvent(eventChange) {
     // this.selectedDateRange = eventChange.selectedDate;
     // this.startDateInvoice = this.selectedDateRange.startDate;
     // this.endDateInvoice = this.selectedDateRange.endDate;
@@ -513,189 +560,194 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.endDateInvoice = this.selectedDateRanges.endDate;
     console.log(this.selectedDateRanges);
     let data = {
-      DealerId:this.dealerss,
-      GeographyId:this.geographySelected,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search:''
-    }
+      DealerId: this.dealerss,
+      GeographyId: this.geographySelected,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response DATE",this.receiptDatalist)
+      console.log('Response DATE', this.receiptDatalist);
     });
   }
-  dealerOrder(){
+  dealerOrder() {
     this.user.dealerDropdownOrderlist().subscribe((res: any) => {
-        this.dealerListData = res.response;
-        let localdata = res.response;
-        this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
-          return { customerId: data.customerId, customerName  : data.customerName };
-        });
-        this.dealerlist.push()
-        this.dealerlist.forEach(element => {
-          return this.dealerAllArray.push(element.customerId);
-        })       
-        console.log('dealerAllarray',this.dealerAllArray)                                                    
+      this.dealerListData = res.response;
+      let localdata = res.response;
+      this.dealerlist = localdata.map(
+        (data: { customerId: any; customerName: any }) => {
+          return {
+            customerId: data.customerId,
+            customerName: data.customerName,
+          };
+        }
+      );
+      this.dealerlist.push();
+      this.dealerlist.forEach((element) => {
+        return this.dealerAllArray.push(element.customerId);
       });
-      this.dealerSettings = {
-        singleSelection: false,
-        idField: 'customerId',
-        textField: 'customerName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 1,
-        allowSearchFilter: true
-      };
+      console.log('dealerAllarray', this.dealerAllArray);
+    });
+    this.dealerSettings = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: true,
+    };
   }
   OrderDownload() {
-    this.shipmentData = sessionStorage.getItem("bulkShipDownload");
-    if(this.shipmentData != '') {
-      this.shipDownload =true;
+    this.shipmentData = sessionStorage.getItem('bulkShipDownload');
+    if (this.shipmentData != '') {
+      this.shipDownload = true;
       this.receiptDownload = false;
     }
-   this.receiptData = sessionStorage.getItem("OrderReceiptDownload");
-   if(this.receiptData != '') {
-    this.shipDownload = false;
-    this.receiptDownload = true;
+    this.receiptData = sessionStorage.getItem('OrderReceiptDownload');
+    if (this.receiptData != '') {
+      this.shipDownload = false;
+      this.receiptDownload = true;
+    }
   }
-  }
-  DealerorderSelect(item: any){
+  DealerorderSelect(item: any) {
     this.dealerss.push(item.customerId);
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
-  DealerDeselect(item:any){
-    console.log(item)
+  DealerDeselect(item: any) {
+    console.log(item);
     this.dealerss.forEach((element, index) => {
       if (element == item.customerId) this.dealerss.splice(index, 1);
     });
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
-  DealerDeselectAll(item:any){
+  DealerDeselectAll(item: any) {
     this.dealerss = [];
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
-  DealerorderSelectAll(item:any){
+  DealerorderSelectAll(item: any) {
     this.dealerss = this.dealerAllArray;
-    console.log("AllDealers",this.dealerss);
+    console.log('AllDealers', this.dealerss);
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
-  DealerorderReceiptSelect(item: any){
+  DealerorderReceiptSelect(item: any) {
     this.dealerss.push(item.customerId);
     let data = {
-      DealerId:this.dealerss,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
-  DealerReceiptDeselect(item:any){
-    console.log(item)
+  DealerReceiptDeselect(item: any) {
+    console.log(item);
     this.dealerss.forEach((element, index) => {
       if (element == item.customerId) this.dealerss.splice(index, 1);
     });
     let data = {
-      DealerId:this.dealerss,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
-  DealerReceiptDeselectAll(item:any){
+  DealerReceiptDeselectAll(item: any) {
     this.dealerss = [];
     let data = {
-      DealerId:this.dealerss,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
-  DealerorderReceiptSelectAll(item:any){
+  DealerorderReceiptSelectAll(item: any) {
     this.dealerss = this.dealerAllArray;
-    console.log("AllDealers",this.dealerss);
+    console.log('AllDealers', this.dealerss);
     let data = {
-      DealerId:this.dealerss,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
   geographyReceiptselect(item: any) {
     this.geographySelected.push(item.geographyId);
-    console.log("geographics", this.geographySelected);
+    console.log('geographics', this.geographySelected);
     let data = {
-      DealerId:this.dealerss,
-      GeographyId:this.geographySelected,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      GeographyId: this.geographySelected,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
   geographyReceiptDeselect(item: any) {
@@ -703,66 +755,71 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       if (element == item.geographyId) this.geographySelected.splice(index, 1);
     });
     let data = {
-      DealerId:this.dealerss,
-      GeographyId:this.geographySelected,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      GeographyId: this.geographySelected,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
   geographyReceiptDeselectAll(item: any) {
     this.geographySelected = [];
     let data = {
-      DealerId:this.dealerss,
-      GeographyId:this.geographySelected,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      GeographyId: this.geographySelected,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
   geographyReceiptselectAll(item: any) {
     this.geographySelected = this.geoAllarray;
-    console.log("geographics", this.geographySelected);
+    console.log('geographics', this.geographySelected);
     let data = {
-      DealerId:this.dealerss,
-      GeographyId:this.geographySelected,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      GeographyId: this.geographySelected,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log('Response', this.receiptDatalist);
     });
   }
 
-  geogrphyOrder(){
+  geogrphyOrder() {
     this.user.getGeographies().subscribe((res: any) => {
       let localdata = res.response;
       this.geographyData = res.response;
-      this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
-        return { geographyId: data.geographyId, geographyName: data.geographyName };
-      });
+      this.geogropdownlist = localdata.map(
+        (data: { geographyId: any; geographyName: any }) => {
+          return {
+            geographyId: data.geographyId,
+            geographyName: data.geographyName,
+          };
+        }
+      );
 
-      this.geogropdownlist.push()
-      this.geogropdownlist.forEach(element => {
+      this.geogropdownlist.push();
+      this.geogropdownlist.forEach((element) => {
         return this.geoAllarray.push(element.geographyId);
-      })
-      console.log('buleditGeo', this.geoAllarray)
+      });
+      console.log('buleditGeo', this.geoAllarray);
       this.geographySettings = {
         singleSelection: false,
         idField: 'geographyId',
@@ -770,22 +827,22 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
         itemsShowLimit: 1,
-        allowSearchFilter: true
+        allowSearchFilter: true,
       };
     });
   }
-  geographyselect(item:any){
+  geographyselect(item: any) {
     this.geographySelected.push(item.geographyId);
-    console.log("geographics",this.geographySelected);
+    console.log('geographics', this.geographySelected);
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
   geographyDeselect(item: any) {
@@ -793,57 +850,57 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       if (element == item.geographyId) this.geographySelected.splice(index, 1);
     });
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
     console.log('onItemSelect', item);
   }
   geographyDeselectAll(item: any) {
-    this.geographySelected=[];
+    this.geographySelected = [];
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
   geographyselectAll(item: any) {
     this.geographySelected = this.geoAllarray;
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
     // console.log('rolefilter', this.userTypes)
     // console.log('onItemSelect', item);
   }
   Receiptrefresh() {
     this.dealerForm = this.fb.group({
-      dealer: [this.selectedItems]
+      dealer: [this.selectedItems],
     });
     this.geographyForm = this.fb.group({
-      geography: [this.selectedItems]
+      geography: [this.selectedItems],
     });
     this.dealerForm = this.fb.group({
-      dealer: [this.selectedItems]
+      dealer: [this.selectedItems],
     });
     this.geographyForm = this.fb.group({
-      geography: [this.selectedItems]
+      geography: [this.selectedItems],
     });
     this.dealerss = [];
     this.geographySelected = [];
@@ -854,44 +911,43 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.startDate = '';
     this.endDate = '';
     this.selectedDateRange = null;
-    this.selectedDateRanges=''
-    
-   
+    this.selectedDateRanges = '';
+
     let data = {
-      DealerId:this.dealerss,
-      GeographyId:this.geographySelected,
-      ShipmentStartDate:this.startDateShip,
-      ShipmentEndDate:this.endDateShip,
-      InvoiceStartDate:this.startDateInvoice,
-      InvoiceEndDate:this.endDateInvoice,
-      search: ''
-    }
+      DealerId: this.dealerss,
+      GeographyId: this.geographySelected,
+      ShipmentStartDate: this.startDateShip,
+      ShipmentEndDate: this.endDateShip,
+      InvoiceStartDate: this.startDateInvoice,
+      InvoiceEndDate: this.endDateInvoice,
+      search: '',
+    };
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response kkkkkk",this.receiptDatalist)
+      console.log('Response kkkkkk', this.receiptDatalist);
     });
   }
   refresh() {
     this.dealerForm = this.fb.group({
-      dealer: [this.selectedItems]
+      dealer: [this.selectedItems],
     });
     this.geographyForm = this.fb.group({
-      geography: [this.selectedItems]
+      geography: [this.selectedItems],
     });
     this.dealerss = [];
     this.geographySelected = [];
     this.startDate = '';
     this.endDate = '';
-     this.selectedDateRange = null;
+    this.selectedDateRange = null;
     let data = {
-      GeographyId:this.geographySelected,
-      DealerId:this.dealerss,
-      StartDate:this.startDate,
-      EndDate:this.endDate,
-    }
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
-      console.log("Response Data",this.shipmentDatalist)
+      console.log('Response Data', this.shipmentDatalist);
     });
   }
   convertedDateFormat() {
@@ -899,16 +955,123 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     var y = x.getFullYear().toString();
     var m = (x.getMonth() + 1).toString();
     var d = x.getDate().toString();
-    (d.length == 1) && (d = '0' + d);
-    (m.length == 1) && (m = '0' + m);
+    d.length == 1 && (d = '0' + d);
+    m.length == 1 && (m = '0' + m);
     return d + m + y;
   }
   bulkDownload() {
-    this.gridApi.exportDataAsCsv({ fileName: 'ordersShipment_' + this.convertedDateFormat() });
+    console.log(this.shipmentDatalist,'this.shipmentDatalist');
+    
+    const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+
+    // Capitalize headers
+    const headers = Object.keys(this.shipmentDatalist[0])
+      // .filter((key) => !excludedProperties.includes(key))
+      //.map(header => header);// to get all capital letters
+      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+
+    const worksheetData = [headers];
+    this.shipmentDatalist.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach((key) => {
+        // const capitalizedKey = key   // to get all capital letters
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        capitalizedItem[capitalizedKey] = item[key];
+      });
+
+      const row = headers.map((key) => {
+        const value = capitalizedItem[key];
+        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+          return `"${value}"`;
+        }
+        return value;
+      });
+      worksheetData.push(row);
+    });
+
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'ordersShipment_' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
   }
-  emptyDownload(){
-this.emptyDownloadArray = this.shipmentDatalist;
-this.emptyDownloadArray = [];
-    this.gridApi.exportDataAsCsv(this.emptyDownloadArray);
+  //   this.gridApi.exportDataAsCsv({ fileName: 'ordersShipment_' + this.convertedDateFormat() });
+  // }
+  emptyDownload() {
+    this.dealerss = [];
+    this.geographySelected = [];
+    this.startDate = '';
+    this.endDate = '';
+    this.selectedDateRange = null;
+    let data = {
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+    };
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.emptyDownloadArray = res.response;
+      console.log('Response Data', this.emptyDownloadArray);
+
+       // Capitalize headers
+      const headers = Object.keys(this.emptyDownloadArray[0])
+      // .filter((key) => !excludedProperties.includes(key))
+      //.map(header => header);// to get all capital letters
+      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+
+    const worksheetData = [headers];
+    this.emptyDownloadArray.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach((key) => {
+        // const capitalizedKey = key   // to get all capital letters
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        capitalizedItem[capitalizedKey] = item[key];
+      });
+
+      const row = headers.map((key) => {
+        const value = capitalizedItem[key];
+        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+          return `"${value}"`;
+        }
+        return value;
+      });
+      worksheetData.push(row);
+    });
+
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'ordersShipment_' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
+    });
+
+    // this.emptyDownloadArray = [];
+    // this.gridApi.exportDataAsCsv(this.emptyDownloadArray);
+    
   }
 }

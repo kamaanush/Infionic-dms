@@ -30,12 +30,12 @@
                 <mat-tab label="Shipments" *ngIf="tabList.indexOf('view_shipment') !== -1">
                     <app-orders-shipment></app-orders-shipment>
                 </mat-tab>
-                <mat-tab class="mati1" label="Invoice" *ngIf="tabList.indexOf('view_shipment') !== -1" >
+                <mat-tab class="mati1" label="Uploads" *ngIf="tabList.indexOf('view_shipment') !== -1" >
                     <app-invoice></app-invoice>
                 </mat-tab>
-                <mat-tab label="Receipts" *ngIf="userType !== 'Dealer Admin'">
+                <!-- <mat-tab label="Receipts" *ngIf="userType !== 'Dealer Admin'">
                     <app-orders-receipts></app-orders-receipts>
-                </mat-tab>
+                </mat-tab> -->
             </mat-tab-group>
         </div>
     </mat-sidenav-content>
