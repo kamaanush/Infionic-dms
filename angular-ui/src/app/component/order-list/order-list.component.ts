@@ -366,7 +366,7 @@ export class OrderListComponent implements OnInit {
       {
         headerName: 'Order Date',
         field: 'orderDate',
-        minWidth: 110,
+        minWidth: 130,
         maxWidth: 150,
   
         // cellRenderer: (data) => {
@@ -387,6 +387,7 @@ export class OrderListComponent implements OnInit {
         field: 'dealerName',
         minWidth: 245,
         tooltipField: 'dealerName',
+        
         cellStyle: {
           'color': '#686E74' 
         }
@@ -759,7 +760,8 @@ export class OrderListComponent implements OnInit {
           field: 'orderNUmber',
           filter: false,
           cellStyle: { color: '#017EFA' },
-          maxWidth: 110,
+          minWidth: 100,
+          maxWidth: 100,
           cellEditorPopup: true,
           onCellClicked: (event: CellClickedEvent) =>
             this.dialog.open(OrdersReceiveShipmentComponent, {
@@ -771,8 +773,8 @@ export class OrderListComponent implements OnInit {
         {
           headerName: 'Order Date',
           field: 'orderDate',
-          minWidth: 100,
-          maxWidth: 150,
+          minWidth: 120,
+          maxWidth: 120,
 
           // cellRenderer: (data) => {
           //   return this.sharedService.dateformat(data.value);
@@ -783,12 +785,14 @@ export class OrderListComponent implements OnInit {
             return coloredDate;
           },
           tooltipField: 'orderDate',
+          
         },
 
         {
           headerName: 'Dealer Ref No#',
           field: 'dealerReferenceNo',
-          minWidth: 235,
+          minWidth: 140,
+          maxWidth: 140,
           tooltipField: 'dealerReferenceNo',
           cellStyle: {
             color: '#686E74',
@@ -817,8 +821,8 @@ export class OrderListComponent implements OnInit {
         // },
         {
           headerName: 'Order Value($)',
-          minWidth: 100,
-          // maxWidth: 115,
+          minWidth: 150,
+          maxWidth: 150,
           field: 'totalValue',
           type: ['rightAligned'],
           cellStyle: {
@@ -827,27 +831,27 @@ export class OrderListComponent implements OnInit {
         },
 
         {
-          headerName: 'Ordered Quantity ',
+          headerName: 'Ordered QTY ',
           field: 'orderedQty',
-          minWidth: 145,
-          // maxWidth: 115,
+          minWidth: 130,
+          maxWidth: 130,
           type: ['rightAligned'],
           cellStyle: {
             color: '#686E74',
           },
         },
         {
-          headerName: 'Received Quantity',
+          headerName: 'Received QTY',
           field: 'receivedQty',
-          minWidth: 150,
-          // maxWidth: 115,
+          minWidth: 130,
+          maxWidth: 130,
           type: ['rightAligned'],
           cellStyle: {
             color: '#686E74',
           },
         },
         {
-          headerName: 'Outstanding Quantity',
+          headerName: 'Outstanding QTY',
           field: 'outstandingQty',
           minWidth: 150,
           // maxWidth: 115,
@@ -858,8 +862,8 @@ export class OrderListComponent implements OnInit {
         },
         {
           headerName: 'Outstanding Value($)',
-          minWidth: 140,
-          // maxWidth: 115,
+          minWidth: 180,
+          maxWidth: 180,
           field: 'outstandingValue',
           type: ['rightAligned'],
           cellStyle: {
@@ -868,9 +872,9 @@ export class OrderListComponent implements OnInit {
         },
 
         {
-          headerName: 'In-Transit Quantity',
-          minWidth: 80,
-          // maxWidth: 115,
+          headerName: 'In-Transit QTY',
+          minWidth: 140,
+          maxWidth: 140,
           field: 'inTransitQty',
           type: ['rightAligned'],
           cellStyle: {
@@ -892,7 +896,8 @@ export class OrderListComponent implements OnInit {
         {
           headerName: 'Status',
           field: 'status',
-          minWidth: 100,
+          minWidth: 120,
+          maxWidth: 120,
           cellEditor: 'agSelectCellEditor',
           cellEditorParams: {
             values: ['Closed', 'Approved'],
