@@ -60,7 +60,12 @@ export class CustomdatepickerComponent implements OnInit {
     {
       title: 'Last Year',
       range: [dayjs().subtract(1, 'year').startOf('year'), dayjs().subtract(1, 'year').endOf('year')]
-    }];
+    },
+    {
+      title: 'Financial Year',
+      range: [dayjs().startOf('year').month(3).format('DD MMM YY'),dayjs().add(1, 'year').startOf('year').month(2).add(30,'day').format('DD MMM YY')]
+    }
+  ];
 
   @Input() selectedDate: any;
   @Input() showInputField: boolean = false;

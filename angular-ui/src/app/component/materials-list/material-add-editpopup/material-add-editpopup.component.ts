@@ -1456,25 +1456,13 @@ export class MaterialAddEditpopupComponent {
   }
   gobackward(stepper: MatStepper) {
     stepper.previous();
-
   }
-
-
   nextbutton() {
     this.goForward(this.stepper);
-
-
-
-
-
   }
 
   Backbutton() {
     this.gobackward(this.stepper);
-
-
-
-
   }
   expandMaterialIdentifier() {
     this.materialIdentifierexpand = !this.materialIdentifierexpand;
@@ -1482,7 +1470,6 @@ export class MaterialAddEditpopupComponent {
       this.image1 = 'assets/img/maximize-arrow.png';
     } else {
       this.image1 = 'assets/img/minimize-tag.png';
-
     }
 
   }
@@ -1496,21 +1483,9 @@ export class MaterialAddEditpopupComponent {
     input.value = value.replace(/[^a-zA-Z]/g, '');
   }
   restrictToNumbers(event: any): void {
-
- 
-
     const input = event.target as HTMLInputElement;
-
- 
-
     const value = input.value;
-
- 
-
     input.value = value.replace(/[^0-9]/g, '');
-
- 
-
   }
 }
 

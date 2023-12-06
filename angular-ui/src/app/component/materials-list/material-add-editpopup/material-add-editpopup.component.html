@@ -144,7 +144,7 @@
               </div>
               <div class="col-md-3">
                 <div class="imageofm">
-                    <label>Image of Material</label>
+                    <label>Image of Material<span>*</span></label>
                 </div>
                 <label class="form-control container imagePl" *ngIf="Imgpreview">
                     <input type="file" id="file" style="display: none" placeholder="Add Image" (change)="onFileChanged($event)">
@@ -211,14 +211,8 @@
                 <!-- <div *ngIf="matExpiry.errors?.['pattern']">
                     <span class="patternValidation">Only Numbers allowed </span>
                   </div>  -->
-                  
-
               </div>
             </div>
-
-
-
-
             <div class="col-6">
               <div class="row">
                 <div class="col-1"></div>
@@ -463,9 +457,7 @@
 
             </div>
           </mat-step>
-        
           <!-- geographies -->
-
           <mat-step [stepControl]="thirdformGroup" *ngIf="!checked">
             <div class="geography-popupsize">
               <form [formGroup]="gepGraphiesFormGroup">

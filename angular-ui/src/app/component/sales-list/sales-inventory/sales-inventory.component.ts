@@ -9,6 +9,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog } from '@angular/material/dialog';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import { SharedServiceAddsalesService } from 'src/app/services/shared-service-addsales.service';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-sales-inventory',
   templateUrl: './sales-inventory.component.html',
@@ -673,6 +674,47 @@ console.log("SalesList",this.salesListData)
   }
   onBtnExport() {
     // this.gridApi.exportDataAsCsv();
-    this.gridApi.exportDataAsCsv({ fileName: 'salesInventory_' + this.convertedDateFormat() });
+    // this.gridApi.exportDataAsCsv({ fileName: 'salesInventory_' + this.convertedDateFormat() });
+    console.log(this.salesListData, 'this.salesListData');
+ 
+    // const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+   
+    // Capitalize headers
+    const headers = Object.keys(this.salesListData[0])
+        // .filter(key => !excludedProperties.includes(key))
+        //.map(header => header);// to get all capital letters
+        .map(header => header.charAt(0).toUpperCase() + header.slice(1));
+   
+    const worksheetData = [headers];
+    this.salesListData.forEach((item) => {
+        const capitalizedItem = {};
+        Object.keys(item).forEach(key => {
+            // const capitalizedKey = key   // to get all capital letters
+            const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+            capitalizedItem[capitalizedKey] = item[key];
+        });
+   
+        const row = headers.map((key) => {
+            const value = capitalizedItem[key];
+            if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+                return `"${value}"`;
+            }
+            return value;
+        });
+        worksheetData.push(row);
+    });
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+  
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type:'array'});
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = URL.createObjectURL(blob);
+  
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'salesInventory_' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
   }
 }
