@@ -238,7 +238,7 @@
                                                     <div *ngIf="data.promotionTypesId==1">
                                                         <div *ngFor="let promos of data.promoDetails.buyGroups ">
                                                             <div class="row">
-                                                                <div class="col" style="margin-left: 14px;">
+                                                                <div class="col-4" style="margin-left: 14px;">
                                                                     <span class="buy-grp"> Paid Items</span>
                                                                     <span class="total-itemss">
                                                                         <span style="color:#000;" [ngClass]="{ 'txt-error-span': !(promos.isItemValid) && data.showWarningMsg }">
@@ -249,12 +249,7 @@
                                                                         </span>
                                                                     </span>
                                                                 </div>
-                                                                <div class="col-md-0 col-lg-0 col-sm-0">
-                                                                </div>
-                                                                <div class="col-md-0 col-lg-0 col-sm-0">
-                                                                </div>
-                                                                <div class="col-md-1 col-lg-1 col-sm-1">
-                                                                </div>
+                                                               
                                                                 <div class="col-md-0 col-lg-0 col-sm-0"
                                                                     style="margin-top: 10px;">
                                                                     <mat-slide-toggle (click)="toggleDatapromotionm() ">
@@ -274,11 +269,15 @@
                                                                     <span id="m_oq"> MOQ <br> &nbsp;{{promos.moq}}</span>
                                                                 </div>
                                                                 <div class="col-md-1 col-lg-1 col-sm-1">
-                                                                    <span id="se_lected">Selected<br>&nbsp;&nbsp; {{
-                                                                        totalSelectedQuantity }}</span>
                                                                 </div>
                                                                 <div class="col-md-1 col-lg-1 col-sm-1">
-                                                                    <span id="se_lected">{{ promos.moq >=
+                                                                    <span class="FirstPrmo_Selected">Selected<br>&nbsp;&nbsp; {{
+                                                                        totalSelectedQuantity }}</span>
+                                                                </div>
+                                                                <div class="col-md-0 col-lg-0 col-sm-0">
+                                                                </div>
+                                                                <div class="col-md-1 col-lg-1 col-sm-1">
+                                                                    <span class="First_Reaming">{{ promos.moq >=
                                                                         totalSelectedQuantity ? "Remaining" : "Remaining"
                                                                         }}<br>&nbsp; &nbsp;{{ promos.moq >
                                                                         totalSelectedQuantity ? (promos.moq -
@@ -387,7 +386,7 @@
                                                 <!-- {{promos}} -->
                                                 <div class="buyGrp 1">
                                                     <div class="row">
-                                                        <div class="col col-lg-5">
+                                                        <div class="col-4">
                                                             <span class="buy-grp"> Free Items </span>
                                                             <!-- <span class="ml-1" style="color:#000;"
                                                                 [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg }"></span> -->
@@ -412,35 +411,27 @@
     
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-1">
-                                                            <span id="Entitled"> Entitled </span>
+                                                        <div class="col-md-1 col-lg-1 col-sm-1">
+                                                            <span id="Entitled"> Entitled 
+                                                                <span class="En_titled"> <br> &nbsp; {{Foc_calculation || getTotalSelectedQuantity(promos)}}</span>
+                                                            </span>
                                                         </div>
-                                                        <div class="col-lg-1">
-                                                            <span id="Freeitemselected">Selected </span>
+                                                        <div class="col-md-1 col-lg-1 col-sm-1">
                                                         </div>
-                                                        <div class="col col-lg-1">
-                                                            <span id="Remaining">Remaining </span>
+                                                        <div class="col-md-1 col-lg-1 col-sm-1">
+                                                            <span id="Freeitemselected">  Selected<br>&nbsp;&nbsp;
+                                                            {{ getTotalSelectedQuantity(promos) }}</span>
                                                         </div>
-    
-                                                    </div>
-    
-                                                    <div class="row">
-                                                        <div class="col col-lg-9">
-    
-                                                        </div>
-                                                        <div class="col col-lg-1">
-                                                            <!-- {{promos.foc }} -->
-                                                            {{Foc_calculation || getTotalSelectedQuantity(promos)}}
-                                                        </div>
-                                                        <div class=" col-lg-1">
-                                                            {{ getTotalSelectedQuantity(promos) }}
-                                                        </div>
-                                                        <div class="col col-lg-1">
-                                                            {{ (promos.foc>getTotalSelectedQuantity(promos))?promos.foc -
-                                                            getTotalSelectedQuantity(promos):0 }}
+                                                        <div class="col-md-1 col-lg-1 col-sm-1">
+                                                            <span id="Remaining">Remaining <br>&nbsp; &nbsp;
+                                                                {{ (promos.foc>getTotalSelectedQuantity(promos))?promos.foc -
+                                                                    getTotalSelectedQuantity(promos):0 }}
+                                                            </span>
                                                         </div>
     
                                                     </div>
+    
+                                                   
                                                 </div>
                                                 <div class="tabel-div1">
                                                     <table class="tableclass1">
@@ -477,7 +468,7 @@
                                                                     </td>
                                                                     <td >{{Item.stockitemname}}
                                                                     </td>
-                                                                    <td >
+                                                                    <td style="padding-left: 18px;">
                                                                         {{Item.materialcustomidentifier}}</td>
                                                                     <td style="padding-left: 14px;">
                                                                         {{Item.registrationNumber}}
@@ -525,7 +516,7 @@
                                                         </div> -->
     
                                                     <div class="row">
-                                                        <div class="col">
+                                                        <div class="col-4">
                                                             <span class="buy-grp" style="margin-left: 15px;"> Paid Items
                                                             </span>
                                                             <span class="total-itemss">
@@ -566,20 +557,15 @@
                                                         </div>
     
                                                         <div class="col col-lg-1">
-    
-                                                            <span id="m_oq"> MOQ<br>{{promos.moq }}</span>
+                                                            <span class="Second_PromoMOQ"> MOQ<br>{{promos.moq }}</span>
                                                         </div>
     
                                                         <div class="col col-lg-1">
-                                                            <span id="se_lected">Selected <br>{{promos.totalQuantity
-                                                                }}</span>
+                                                            <span class="SECONDPROMOTIONSelected">Selected <br>{{promos.totalQuantity
+                                                                }}</span> 
                                                         </div>
                                                         <div class="col col-lg-0">
-                                                            <!-- <span id="se_lected">Remaining <br>
-                                                                {{ moqselectedreaminingFORTHPromotion(promos)
-                                                                }}</span> -->
-
-                                                            <span id="se_lected">
+                                                            <span class="REAmingSecondPromo">
                                                                 {{promos.moq >=promos.totalQuantity?"Remaining" : "Remaining"}} 
                                                                 <br>&nbsp; &nbsp;{{ promos.moq >
                                                                     promos.totalQuantity ? (promos.moq -
@@ -732,7 +718,7 @@
     
                                                     <!-- </div> -->
                                                     <div class="row" style="width: 92%;">
-                                                        <div class="col col-lg-3">
+                                                        <div class="col-4">
                                                             <span class="buy-grp" style="margin-left: 10%;"> Free Items
                                                             </span>
                                                             <span class="total-itemss">
@@ -764,22 +750,25 @@
                                                         </div>
     
                                                         <div class="col-md-1 col-lg-1 col-sm-1">
-                                                            <span id="Entitled"> Entitled<br>
+                                                            <span class="EntitledSecondPromotions"> Entitled<br>
                                                                 {{promos.foc}}
                                                             </span>
                                                         </div>
     
                                                         <div class="col-md-1 col-lg-1 col-sm-1">
-                                                            <span id="Freeitemselected">Selected<br>
+                                                            <span class="Freeitemselectedsecondpromotions">Selected<br>
                                                                 {{ getTotalEntitledSelectedRemaining(promos) }} </span>
                                                         </div>
                                                         <div class="col-md-1 col-lg-1 col-sm-1">
                                                             <!-- <span id="Remaining">Remaining<br>
                                                                 {{ promos.foc - getTotalEntitledSelectedRemaining(promos) }}
                                                             </span> -->
-                                                            {{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? "Remaining" : "Remaining" }}<br>
+                                                            <span class="REAMINGFREEitemsSecond">
+                                                                {{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? "Remaining" : "Remaining" }}<br>
                                                                 &nbsp; &nbsp;{{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? 
                                                                     (promos.foc - getTotalEntitledSelectedRemaining(promos)) : 0 }}
+                                                            </span>
+                                                            
                                                         </div>
                                                     </div>
                                                     <!-- tabels for 1st promotions -->
@@ -890,7 +879,7 @@
                                                 <div class="row label-div ">
     
                                                     <div class="row">
-                                                        <div class="col">
+                                                        <div class="col-4">
                                                             <span class="buy-grp" style="margin-left:17px"> Paid Items
                                                             </span>
                                                             <span class="total-itemss">
@@ -922,17 +911,17 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-1">
-                                                            <span id="m_oq"> MOQ<br>
+                                                            <span class="Paidpromotionsthreemoq"> MOQ<br>
                                                                 {{data.promoDetails.moq}}</span>
                                                         </div>
     
                                                         <div class="col-1">
-                                                            <span id="se_lected">Selected <br>
+                                                            <span class="PaidPromotionsThreeSelected">Selected <br>
                                                                 {{data.promoDetails.totalQuantity}}</span>
                                                         </div>
     
                                                         <div class="col-1">
-                                                            <span id="se_lected">Remaining <br>
+                                                            <span class="PaidPromotionsthreeReaming">Remaining <br>
                                                                {{data.promoDetails.moq >= data.promoDetails.totalQuantity ?
                                                                 (data.promoDetails.moq - data.promoDetails.totalQuantity) :0
                                                                 }}
@@ -1127,7 +1116,7 @@
                                             <div class="buyGrp 1" style="margin-top: -10px;margin-bottom:15px">
                                                 <!-- headingds for 4th promotions -->
                                                 <div class="row">
-                                                    <div class="col">
+                                                    <div class="col-4">
                                                         <span class="buy-grp" style="margin-left:40px"> Paid Items </span>
                                                         <span class="total-itemss" style="margin-left: 2px;">
                                                             <span style="color:#000;"
@@ -1156,17 +1145,17 @@
     
                                                     </div>
                                                     <div class="col-1">
-                                                        <span id="m_oq"> MOQ<br>
+                                                        <span class="ForthPromotionsMOQPaid"> MOQ<br>
                                                             {{data.promoDetails.moq}}</span>
                                                     </div>
     
                                                     <div class="col-1">
-                                                        <span id="ForthPromotionse_lected">Selected <br>
+                                                        <span class="ForthPromotionse_lected">Selected <br>
                                                             {{data.promoDetails.totalQuantity}}
                                                         </span>
                                                     </div>
                                                     <div class="col-1">
-                                                        <span id="se_lected">Remaining <br>
+                                                        <span class="ForthPromotionsREamingPaid">Remaining <br>
                                                             {{data.promoDetails.moq >= data.promoDetails.totalQuantity ?
                                                                 (data.promoDetails.moq - data.promoDetails.totalQuantity) :0
                                                                 }}

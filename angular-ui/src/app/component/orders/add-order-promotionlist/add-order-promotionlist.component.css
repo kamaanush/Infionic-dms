@@ -38,7 +38,7 @@
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   position: absolute;
-  right: -2px;
+  right: 13%;
   /* border:1px solid black; */
   border: 1px solid #B3B3B3;
   top: 0px;
@@ -61,8 +61,7 @@
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   position: absolute;
-  right: 3px;
-  /* border:1px solid black; */
+  right: 28px;
   border: 1px solid #B3B3B3;
   top: 7px;
   
@@ -84,7 +83,7 @@
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   position: relative;
-  right: 3px;
+  right: 32px;
   /* border:1px solid black; */
   border: 1px solid #B3B3B3;
 }
@@ -105,7 +104,7 @@
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   position: relative;
-  right: 3px;
+  right: 46px;
   /* border:1px solid black; */
   border: 1px solid #B3B3B3;
   top:7px;
@@ -147,9 +146,9 @@ font-weight: 700;
 .searchiconsFREEITEMS
 {
  color: #9B9FA3;
-  top: 6px;
+  top: 8px;
   position: relative;
- left: -7px;
+  right: 35px;
  font-weight: 700;
 }
 .searchiconsFREEITEMSsecondpro
@@ -157,16 +156,16 @@ font-weight: 700;
  color: #9B9FA3;
   top: 15px;
   position: relative;
- left: -7px;
+ right: 33px;
  font-weight: 700;
 }
 .searchiconsFREEITEMSsecondpro11
 {
  color: #9B9FA3;
   /* top: 15px; */
-  top: 6px;
+  top: 7px;
   position: absolute;
- left: 27px;
+ left:-8px;
  z-index: 1;
  font-weight: 700;
 }
@@ -175,7 +174,7 @@ font-weight: 700;
  color: #9B9FA3;
   top:7px;
   position: absolute;
- left: 27px;
+ left: -8px;
  z-index: 1;
  font-weight: 700;
 }
@@ -184,7 +183,7 @@ font-weight: 700;
  color: #9B9FA3;
   top:15px;
   position: absolute;
- left: 27px;
+ left: -20px;
  z-index: 1;
  font-weight: 700;
 }
@@ -207,7 +206,7 @@ font-weight: 700;
   color: white;
   border-radius: 5px;
   position: absolute;
-  right: 10px;
+  right: 37px;
   top: 5px;
 }
 .searchBTNFREEITEMSsecondpro{
@@ -218,7 +217,7 @@ font-weight: 700;
   color: white;
   border-radius: 5px;
   position: absolute;
-  right: 10px;
+  right: 34px;
   top: 12px;
 }
 .searchBTNFREEITEMSsecondproguy{
@@ -229,7 +228,7 @@ font-weight: 700;
   color: white;
   border-radius: 5px;
   position: relative;
-  right: 68PX;
+  right: 98px;
   /* top: 12px; */
   top: 5px;
 }
@@ -241,7 +240,7 @@ font-weight: 700;
   color: white;
   border-radius: 5px;
   position: relative;
-  right: 68PX;
+  right: 98PX;
   top: 5px;
 }
 .searchBTNforthpro
@@ -253,8 +252,8 @@ font-weight: 700;
   color: white;
   border-radius: 5px;
   position: relative;
-  right: 68PX;
-  top: 13px;
+  right: 112PX;
+  top: 12px;
 }
 .searchBox11 >.searchButtonn .material-iconss {
   position: relative;
@@ -610,8 +609,59 @@ border: 1px solid rgba(225, 226, 227, 1)
 font-size: 15px;
 font-weight: 700;
 line-height: 18px;
-
-
+}
+.Second_PromoMOQ
+{
+  position: relative;
+    top: 10px;
+    color: rgba(104, 110, 116, 1);
+    font-family: 'Calibri';
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+    right: 18px;
+}
+.Paidpromotionsthreemoq
+{
+  position: relative;
+  top: 6px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  right: 79px;
+}
+.ForthPromotionsMOQPaid
+{
+  position: relative;
+  top: 6px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  right: 100px;
+}
+.EntitledSecondPromotions
+{
+  position: relative;
+    top: 10px;
+    color: rgba(104, 110, 116, 1);
+    font-family: 'Calibri';
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+    right: 55px;
+}
+.En_titled
+{
+  position: relative;
+   color: rgba(104, 110, 116, 1);
+   font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
 }
 #se_lected
 {
@@ -624,24 +674,127 @@ font-size: 15px;
 font-weight: 700;
 line-height: 18px;
 }
-#ForthPromotionse_lected
+.SECONDPROMOTIONSelected
 {
- position: relative;
- top: 10px;
- color: rgba(104, 110, 116, 1);
- font-family: 'Calibri';
+  position: relative;
+    left: 44px;
+    top: 10px;
+    color: rgba(104, 110, 116, 1);
+    font-family: 'Calibri';
 font-size: 15px;
 font-weight: 700;
 line-height: 18px;
 }
+.PaidPromotionsThreeSelected
+{
+  position: relative;
+  top: 6px;
+  right: 52px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+.ForthPromotionse_lected
+{
+  position: relative;
+  top: 6px;
+  right:72px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+.Freeitemselectedsecondpromotions
+{
+  position: relative;
+  left: 11px;
+  top: 10px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+.REAmingSecondPromo
+{
+  position: relative;
+  left: 82px;
+  top: 10px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+.PaidPromotionsthreeReaming
+{
+  position: relative;
+  top: 6px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+.ForthPromotionsREamingPaid
+{
+  position: relative;
+  top: 6px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+right: 31px;
+}
+.REAMINGFREEitemsSecond
+{
+  position: relative;
+  left: 25px;
+  top: 10px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+.First_Reaming
+{
+  position: relative;
+  /* right: 47px; */
+  top: 10px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+.FirstPrmo_Selected
+{
+  position: relative;
+  right: 37px;
+  top: 10px;
+  color: rgba(104, 110, 116, 1);
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+
 #Entitled
 {
   font-family: 'Calibri';
   font-size: 15px;
+  right: 24px;
+  top: 3px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: 0.04em;
   color: rgba(0, 0, 0, 1);
+  position: relative;
   
   
 }
@@ -653,6 +806,8 @@ font-weight: 400;
 line-height: 18px;
 letter-spacing: 0.04em;
 color: rgba(0, 0, 0, 1);
+position: relative;
+right: 60px;
 
 }
 #Remaining
@@ -663,7 +818,8 @@ color: rgba(0, 0, 0, 1);
   line-height: 18px;
   letter-spacing: 0.04em;
   color: rgba(0, 0, 0, 1);
-
+position: relative;
+right: 24px;
   
 }
 
