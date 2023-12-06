@@ -379,9 +379,9 @@
 
 
 
-::ng-deep.ag-sticky-top {
-  border-bottom: 0.5px solid #000000;
-}
+// ::ng-deep.ag-sticky-top {
+//   border-bottom: 0.5px solid #000000;
+// }
 .main{
   
     border-radius: 19px;
@@ -993,7 +993,7 @@ mat-sidenav {
   position: fixed;
   border-radius: 0px 0px 25px 25px;
   height: 50px;
-  width: 860px !important;
+  width:  65%  !important;
 
 }
 

@@ -75,7 +75,7 @@
 }
 
 :host::ng-deep.mat-form-field-type-mat-select .mat-form-field-label {
-  margin-top: -10px;
+  margin-top: -8px;
   width: calc(100% - 18px);
 }
 ::ng-deep.shipment .mat-select-arrow-wrapper{

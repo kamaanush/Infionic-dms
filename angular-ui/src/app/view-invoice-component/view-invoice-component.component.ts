@@ -168,7 +168,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
   public defaultColDef: ColDef = {
     suppressSizeToFit: true,
     width: 170,
-    filter: 'agTextColumnFilter',
+    // filter: 'agTextColumnFilter',
     flex: 1,
     minWidth: 100,
     resizable: true,
