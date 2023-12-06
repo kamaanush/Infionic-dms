@@ -2335,59 +2335,64 @@ letter-spacing: 0.04em;
 }
 
 .quatity-inp1 {
-  width: 100%;
+  width: 84%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
-  margin-left: -54px;
+  margin-left: -48px;
   margin-top: 4px;
 }
 .quatity-inp2{
-  width: 70%;
+  width: 57%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
   margin-top: 4px;
+  margin-left: 15px;
 }
 .quatity-inp3 {
-  width: 70%;
+  width: 57%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
   margin-top: 4px;
+  margin-left: 8px;
 }
 .quatity-inp4 {
-  width: 70%;
+  width: 57%;
+  margin-left: 4px;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 .quatity-inp5 {
-  width: 70%;
+  width: 63%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
   margin-top: 4px;
+  margin-left: 4px;
 }
 .quatity-inp6 {
-  width: 70%;
+  width: 63%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
   margin-top: 4px;
+  margin-left: 4px;
 }
  
  
@@ -2432,7 +2437,8 @@ letter-spacing: 0.04em;
 .GetgroupProductname
 {
   position: relative;
-  /* right: 2%; */
+  right:-10px;
+
  
 }
 .GetGroupIdentifiers
@@ -2463,7 +2469,7 @@ letter-spacing: 0.04em;
 .secondpromoProductname
 {
   position: relative;
-  right: 23px;
+  right: -13px;
 }
 .secondPromoidentifiers
 {
@@ -2494,6 +2500,7 @@ letter-spacing: 0.04em;
 {
   position: relative;
   /* right: 19px; */
+  padding-left: 22px;
 }
 .SecondPromofreeIdettifiers
 {
@@ -2523,7 +2530,7 @@ letter-spacing: 0.04em;
 .ThirPrmoProductname
 {
   position: relative;
-  right: 15px;
+  right: -12px
 }
 .ThirPromoIdentifiers
 {
@@ -2559,6 +2566,8 @@ letter-spacing: 0.04em;
 {
   position: relative;
   /* right: 2%; */
+  padding-left: 22px;
+
 }
 .forthPromotionIdentifiers
 {
@@ -2613,10 +2622,11 @@ th {
 input[type=checkbox] {
   accent-color:#018B75!important;
 }
+
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background: black !important;
 }
- 
+
 tr:nth-child(even) {
   background: rgba(222, 226, 230, 0.2);
 }
@@ -2855,4 +2865,3 @@ tr:nth-child(even) {
   background-color: rgb(249, 15, 147);
   color: white;
 }
- 

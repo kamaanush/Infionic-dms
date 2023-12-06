@@ -289,7 +289,7 @@
                                                                 <table class="tableclass">
                                                                     <thead class="table-headercolor">
                                                                         <tr>
-                                                                            <th data-sortable="true">
+                                                                            <th data-sortable="true" style="padding-left: 25px;">
                                                                                 Product Code</th>
                                                                             <th data-sortable="true" class="Product_namefirstpromo">
                                                                                 Product Name</th>
@@ -337,7 +337,7 @@
                                                                                 </td> -->
     
     
-                                                                              <td style="width: 0px">
+                                                                              <td style="width:24px;padding-left: 6px;">
                                                                                     <input type="checkbox"
                                                                                         [checked]="Item.isProductSelected"
                                                                                         (change)="checkboxChange($event, Item,data)"/>
@@ -345,7 +345,7 @@
                                                                               
                                                                                
                                                                                   
-                                                                                <td style="padding-left: 61px;"style="padding-left: 61px;">{{ Item.productSKUName }}</td>
+                                                                                <td> {{ Item.productSKUName }}</td>
                                                                                 <td style="padding-left: 8px;">{{ Item.stockitemname }}</td>
                                                                                    
                                                                                 <td  style="padding-left: 8px;">{{  Item.materialcustomidentifier }}</td>
@@ -446,8 +446,8 @@
                                                     <table class="tableclass1">
                                                         <thead class="table-headercolor1">
                                                             <tr>
-                                                                 <th width="30"></th> 
-                                                                <th data-sortable="true" style="text-align: left;">Product Code
+                                                                
+                                                                <th data-sortable="true" style="text-align: left;padding-left: 22px;">Product Code
                                                                 </th>
                                                                 <th data-sortable="true" class="GetgroupProductname" >Product Name
                                                                 </th>
@@ -469,11 +469,11 @@
                                                                 *ngFor="let Item of promos.stockitemid |filter:searchTextFreeItems">
                                                                 <ng-container
                                                                     *ngIf="toggleStatefreeitems ? Item.isProductSelected : true">
-                                                                    <td style="width:24px"><input type="checkbox" 
+                                                                    <td style="width:24px;padding-left: 6px;"><input type="checkbox" 
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
                                                                     </td>
-                                                                    <td style="padding-left: 40px;" >{{Item.productSKUName}}
+                                                                    <td  >{{Item.productSKUName}}
                                                                     </td>
                                                                     <td >{{Item.stockitemname}}
                                                                     </td>
@@ -616,7 +616,7 @@
                                                             <tbody class="tbodayheight4">
                                                                 <tr
                                                                     *ngFor="let Item of promos.stockitemid  |filter:searchTextSecondPromotion;" >
-                                                                    <td style="width:24px"><input type="checkbox"
+                                                                    <td style="width:24px;padding-left: 6px;"><input type="checkbox"
                                                                             [checked]="Item.isProductSelected"
                                                                             [disabled]="!promos.isEnable"
                                                                             (change)="checkboxChange($event,Item, data)" />
@@ -811,7 +811,7 @@
                                                             <tbody class="tbodayheightGetset">
                                                                 <tr class="table-row"
                                                                     *ngFor="let Item of promos.stockitemid |filter:searchTextSecondPromotionfree">
-                                                                    <td style="width: 30px;"><input type="checkbox"
+                                                                    <td style="width: 30px;padding-left: 6px;"><input type="checkbox"
                                                                             [disabled]="!promos.isEnable"
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
@@ -1025,7 +1025,7 @@
                                                                 *ngFor="let Item of data.promoDetails.stockitems |filter:ThirdPromotion">
                                                                 <ng-container
                                                                     *ngIf="togglethiredpromotion ? Item.isProductSelected : true">
-                                                                    <td style="width: 24px;"><input type="checkbox"
+                                                                    <td style="width: 24px;padding-left: 6px;"><input type="checkbox"
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
                                                                     </td>
@@ -1228,7 +1228,7 @@
                                                                     *ngFor="let Item of data.promoDetails.stockitems | filter:ForthPromotionsearch">
                                                                     <ng-container
                                                                         *ngIf="togglefrthpromotion ? Item.isProductSelected : true">
-                                                                        <td style="width: 16px;"><input type="checkbox"
+                                                                        <td style="width:24px;padding-left: 6px;"><input type="checkbox"
                                                                                 [checked]="Item.isProductSelected"
                                                                                 (change)="checkboxChange($event,Item, data)">
                                                                         </td>
