@@ -250,7 +250,7 @@
    font-size: 14px !important;
  }
  ::ng-deep.ag-root-wrapper.ag-layout-normal {
-  height: 100%;
+  height: 96%;
   width: 99%;
 }
 
