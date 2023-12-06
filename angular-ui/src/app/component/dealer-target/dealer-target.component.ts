@@ -810,7 +810,12 @@ export class DealerTargetComponent implements OnInit {
   }
 
   addTarget() {
-    this.dialog.open(AddTargetsComponent,{ width: '1900px',});
+    this.dialog.open(AddTargetsComponent,
+      {
+        
+        minWidth: '95vw',
+        height: '95vh',
+        });
   }
 
   editUser() {

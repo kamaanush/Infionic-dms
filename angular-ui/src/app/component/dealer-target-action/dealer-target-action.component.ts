@@ -96,14 +96,24 @@ export class DealerTargetActionComponent implements OnInit {
 
 
 edit(){
-  this.dialog.open(EditDealerTargetComponent,{ width: '1900px',});
+  this.dialog.open(EditDealerTargetComponent,
+    {
+      
+      minWidth: '95vw',
+      height: '95vh',
+      });
   this.isOpen = false;
 localStorage.setItem('dealerTargetSetItem','edit')
 localStorage.setItem('dealerTargetaddorderdit','Edit')
 
 }
 view(){
-  this.dialog.open(EditDealerTargetComponent,{ width: '1900px',});
+  this.dialog.open(EditDealerTargetComponent,
+    { 
+     
+      minWidth: '95vw',
+      height: '95vh',
+      });
   this.isOpen = false;
 localStorage.setItem('dealerTargetSetItem','view')
 localStorage.setItem('dealerTargetaddorderdit','View')

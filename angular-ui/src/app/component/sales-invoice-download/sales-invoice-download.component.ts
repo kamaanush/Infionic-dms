@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
-
+import { SharedService } from 'src/app/services/shared-services.service';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-sales-invoice-download',
   templateUrl: './sales-invoice-download.component.html',
@@ -18,7 +19,8 @@ export class SalesInvoiceDownloadComponent implements OnInit {
   salesUploadList:any = [];
   viewUploadList:any = [];
   public popupParent: HTMLElement = document.body;
-  constructor(private salesService:SalesServicesService) { }
+  constructor(private salesService:SalesServicesService,
+    private sharedService: SharedService,) { }
 
   ngOnInit(): void {
     this.SalesInvoiceList();
@@ -35,7 +37,13 @@ export class SalesInvoiceDownloadComponent implements OnInit {
     {   headerName: "BatchId",field: 'batchId' ,      tooltipField:"batchId",type: ['nonEditableColumn']
   },
   
-    {  headerName: "Upload Date",field: 'uploadDate',      tooltipField:"uploadDate   ",type: ['nonEditableColumn']
+    {  headerName: "Upload Date",field: 'uploadDate', 
+    cellRenderer: (data) => {
+      const formattedDate = this.sharedService.dateformat(data.value);
+      const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+      return coloredDate;
+    },
+         tooltipField:"uploadDate   ",type: ['nonEditableColumn']
   },     
   
     {  headerName: "Product Name",
@@ -203,6 +211,42 @@ console.log("BatchId",e.data.batchId)
     return d + m + y;
   }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv({ fileName: 'salesInvoiceUploads_' + this.convertedDateFormat() });
+    // this.gridApi.exportDataAsCsv({ fileName: 'salesInvoiceUploads_' + this.convertedDateFormat() });
+   console.log(this.viewUploadList," Checking data coming or not");
+    const headers = Object.keys(this.viewUploadList[0]).map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+
+    const worksheetData = [headers];
+    this.viewUploadList.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach((key) => {
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        capitalizedItem[capitalizedKey] = item[key];
+      });
+      const row = headers.map((key) => {
+        const value = capitalizedItem[key];
+        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+          return `"${value}"`;
+        }
+        return value;
+      });
+      worksheetData.push(row);
+    });
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'salesInvoiceUploads_' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
+
   }
 }

@@ -31,7 +31,7 @@ import { PramotionActionComponent } from '../pramotion-action/pramotion-action.c
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
 import moment from 'moment';
-
+import * as XLSX from 'xlsx';
 import { SharedService } from 'src/app/services/shared-services.service';
 export interface PeriodicElement {
 
@@ -1297,8 +1297,48 @@ export class PromotionsComponent implements OnInit {
     return d + m + y;
   }
   onBtnExport() {
-    // this.gridApi.exportDataAsCsv();
-    this.gridApi.exportDataAsCsv({ fileName: 'Promotions_' + this.convertedDateFormat() });
+    
+    // this.gridApi.exportDataAsCsv({ fileName: 'Promotions_' + this.convertedDateFormat() });
+   console.log(this.rowData5,"Checking Data coming or not");
+  //  const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+    const headers = Object.keys(this.rowData5[0]).map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+
+    const worksheetData = [headers];
+    this.rowData5.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach((key) => {
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        capitalizedItem[capitalizedKey] = item[key];
+      });
+      const row = headers.map((key) => {
+        const value = capitalizedItem[key];
+        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+          return `"${value}"`;
+        }
+        return value;
+      });
+      worksheetData.push(row);
+    });
+
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Promotions_' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
   }
+
 }
 

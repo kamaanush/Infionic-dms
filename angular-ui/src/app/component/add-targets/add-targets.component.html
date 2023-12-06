@@ -111,8 +111,9 @@
                             </div>
                             <input type="text" class="total-rows total-bg col-md-12" disabled>
                             <div (click)="expandTotalRows()">
-                                <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                                <img  class="expand-arrow">
                             </div>
+                            
                         </div>
                         <div *ngIf="!rowsTotal" class="dealers-tabel">
                             <div  *ngFor="let dealer of dealer.targets;let j=index">
@@ -307,7 +308,7 @@
 
                 <!-- Save and Cancel Button -->
 
-                <div class="col-12" style="position: relative;top: -10px;" >
+                <div class="col-12" >
                     <div class="row" >
                         <div class="col-4"></div>
                         <div (click)="saveTargetData()">
