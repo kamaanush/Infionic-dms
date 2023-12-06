@@ -188,4 +188,8 @@ export class OrdersApisService {
   closeOrder(data){
     return this.http.post(this.userurl+'OrdersApi/UpdateOrderStatus',data)
   }
+
+  GetSampleTemplates(data){
+    return this.http.post(this.userurl+'CommonApi/GetSampleTemplates',data)
+  }
 }

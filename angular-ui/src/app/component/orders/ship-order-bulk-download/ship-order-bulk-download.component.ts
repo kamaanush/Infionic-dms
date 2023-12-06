@@ -1011,65 +1011,51 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   //   this.gridApi.exportDataAsCsv({ fileName: 'ordersShipment_' + this.convertedDateFormat() });
   // }
   emptyDownload() {
-    this.dealerss = [];
-    this.geographySelected = [];
-    this.startDate = '';
-    this.endDate = '';
-    this.selectedDateRange = null;
-    let data = {
-      GeographyId: this.geographySelected,
-      DealerId: this.dealerss,
-      StartDate: this.startDate,
-      EndDate: this.endDate,
-    };
-    this.orders.getDownloadShipmentList(data).subscribe((res) => {
-      this.emptyDownloadArray = res.response;
-      console.log('Response Data', this.emptyDownloadArray);
-
-       // Capitalize headers
-      const headers = Object.keys(this.emptyDownloadArray[0])
-      // .filter((key) => !excludedProperties.includes(key))
-      //.map(header => header);// to get all capital letters
-      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
-
-    const worksheetData = [headers];
-    this.emptyDownloadArray.forEach((item) => {
-      const capitalizedItem = {};
-      Object.keys(item).forEach((key) => {
-        // const capitalizedKey = key   // to get all capital letters
-        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
-        capitalizedItem[capitalizedKey] = item[key];
-      });
-
-      const row = headers.map((key) => {
-        const value = capitalizedItem[key];
-        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
-          return `"${value}"`;
-        }
-        return value;
-      });
-      worksheetData.push(row);
+    let userid = JSON.parse(localStorage.getItem('logInId') ||'null')
+    const payload ={
+      CurrentUserId:userid,
+      TemplateName:"Shipments"
+    }
+    this.orders.GetSampleTemplates(payload).subscribe({
+      next: (res: any) => {
+        console.log(res, 'res');
+    
+        // Extracting column names from the response
+        const data = res.response.map((x: any) => x.columnName);
+    
+        // Creating worksheet data with only column names
+        const worksheetData = [data];
+    
+        // Creating Excel sheet
+        const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    
+        // Creating Excel buffer
+        const excelBuffer = XLSX.write(workbook, {
+          bookType: 'xlsx',
+          type: 'array',
+        });
+    
+        // Creating Blob and triggering download
+        const blob = new Blob([excelBuffer], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'sampleTemplates_' + this.convertedDateFormat();
+        link.click();
+        URL.revokeObjectURL(url);
+      },
+      error: (error: any) => {
+        console.error(error, 'error');
+        // Handle error as needed
+      },
     });
+    
 
-    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-
-    const excelBuffer = XLSX.write(workbook, {
-      bookType: 'xlsx',
-      type: 'array',
-    });
-    const blob = new Blob([excelBuffer], {
-      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'ordersShipment_' + this.convertedDateFormat();
-    link.click();
-    URL.revokeObjectURL(url);
-    });
-
+       
     // this.emptyDownloadArray = [];
     // this.gridApi.exportDataAsCsv(this.emptyDownloadArray);
     

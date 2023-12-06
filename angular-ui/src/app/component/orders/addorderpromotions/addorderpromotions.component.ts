@@ -1998,9 +1998,7 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(event, changedPromotionObj);
     changedPromotionObj.isPromotionSelected = event.target.checked;
     this.isNonPromoCheck=event.target.checked;
-
     this.quantityChange(changedPromotionObj);
-
     this.nonPromotionCalculation(changedPromotionObj);
 
     // this.quantityadd = 0;
@@ -2218,9 +2216,12 @@ export class AddorderpromotionsComponent implements OnInit {
       itemcount: itemsCount,
       AddType: submitType,
       CustomerPOId: this.CustomerPoId,
+      ShippingCharges:Number(this.shippingPackingchargeDetails.shippingCharges),
+      PackingCharges:Number(this.shippingPackingchargeDetails.packingCharges)
     };
 
     this.orders.addorderNonPromotions(data).subscribe((res) => {
+      console.log(res);
       if (res.response.result.toLowerCase().indexOf('succesfully') == -1) {
         // if (res.response.status == false) {
         // alert(res.response.result);
@@ -2712,5 +2713,11 @@ Freeitemsguygroup:any
       event.preventDefault();
       return false;
     }
+  }
+
+  restrictToNumbers(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^0-9]/g, '');
   }
 }
