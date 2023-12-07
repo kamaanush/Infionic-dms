@@ -966,8 +966,13 @@ mat-sidenav {
 
   top: 4px;
 
- 
+  border: 1px solid grey;
+  outline: none;
 
+}
+
+.search-bt_n:focus {
+  border: 1px solid grey; 
 }
 
  
@@ -1013,6 +1018,12 @@ mat-sidenav {
   bottom: -3px;
 
   top: -5px;
-  border: 1px solid rgba(0, 0, 0, 0.3)!important;
+  /* border: 1px solid rgba(0, 0, 0, 0.3)!important; */
+  border: 1px solid gray !important;
+  outline: none;
 
+}
+
+.searchInput11:focus {
+  border: 1px solid gray; 
 }
