@@ -316,3 +316,6 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
+.placeholder{
+  font-size: 12px;
+}

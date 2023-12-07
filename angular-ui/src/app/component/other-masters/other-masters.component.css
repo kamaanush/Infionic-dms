@@ -33,7 +33,10 @@ mat-tab{
     flex-basis: 0;
     flex-grow: 1;
      /* border: 1px solid rgba(107, 107, 107, 1); */
-     border: 1px solid rgba(1, 139, 117, 1);
+     border-right: 0px solid rgba(1, 139, 117, 1);
+     border-bottom: 0px solid rgba(1, 139, 117, 1);
+     border-top: 0px solid rgba(1, 139, 117, 1);
+     border-left: 1px solid rgba(1, 139, 117, 1);
      border-top-right-radius: 1px;
     border-bottom-right-radius: 2px;
     border-top-left-radius: 1px;

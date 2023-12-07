@@ -336,7 +336,7 @@
                                                                                 </td> -->
     
     
-                                                                              <td style="width:24px;padding-left: 6px;">
+                                                                              <td style="width:24px;padding-left: 6px;padding-top: 5px;">
                                                                                     <input type="checkbox"
                                                                                         [checked]="Item.isProductSelected"
                                                                                         (change)="checkboxChange($event, Item,data)"/>
@@ -460,7 +460,7 @@
                                                                 *ngFor="let Item of promos.stockitemid |filter:searchTextFreeItems">
                                                                 <ng-container
                                                                     *ngIf="toggleStatefreeitems ? Item.isProductSelected : true">
-                                                                    <td style="width:24px;padding-left: 6px;"><input type="checkbox" 
+                                                                    <td style="width:24px;padding-left: 6px; padding-top: 5px;"><input type="checkbox" 
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
                                                                     </td>
@@ -602,7 +602,7 @@
                                                             <tbody class="tbodayheight4">
                                                                 <tr
                                                                     *ngFor="let Item of promos.stockitemid  |filter:searchTextSecondPromotion;" >
-                                                                    <td style="width:24px;padding-left: 6px;"><input type="checkbox"
+                                                                    <td style="width:24px;padding-left: 6px;padding-top: 5px;"><input type="checkbox"
                                                                             [checked]="Item.isProductSelected"
                                                                             [disabled]="!promos.isEnable"
                                                                             (change)="checkboxChange($event,Item, data)" />
@@ -800,7 +800,7 @@
                                                             <tbody class="tbodayheightGetset">
                                                                 <tr class="table-row"
                                                                     *ngFor="let Item of promos.stockitemid |filter:searchTextSecondPromotionfree">
-                                                                    <td style="width: 30px;padding-left: 6px;"><input type="checkbox"
+                                                                    <td style="width: 30px;padding-left: 6px;padding-top: 5px;"><input type="checkbox"
                                                                             [disabled]="!promos.isEnable"
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
@@ -1014,7 +1014,7 @@
                                                                 *ngFor="let Item of data.promoDetails.stockitems |filter:ThirdPromotion">
                                                                 <ng-container
                                                                     *ngIf="togglethiredpromotion ? Item.isProductSelected : true">
-                                                                    <td style="width: 24px;padding-left: 6px;"><input type="checkbox"
+                                                                    <td style="width: 24px;padding-left: 6px;padding-top: 5px;"><input type="checkbox"
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
                                                                     </td>
@@ -1217,7 +1217,7 @@
                                                                     *ngFor="let Item of data.promoDetails.stockitems | filter:ForthPromotionsearch">
                                                                     <ng-container
                                                                         *ngIf="togglefrthpromotion ? Item.isProductSelected : true">
-                                                                        <td style="width:24px;padding-left: 6px;"><input type="checkbox"
+                                                                        <td style="width:24px;padding-left: 6px;padding-top: 5px;"><input type="checkbox"
                                                                                 [checked]="Item.isProductSelected"
                                                                                 (change)="checkboxChange($event,Item, data)">
                                                                         </td>
