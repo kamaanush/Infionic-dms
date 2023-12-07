@@ -645,18 +645,18 @@
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;margin-top: 7px;">Packing Charge</p></td>
-                                    <td class="text-right numbers" style="padding-right: 135px;">$<input type="text" (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.packingCharges"  style="width:65px"></td>
-                                    <!-- <td class="text-right numbers "
-                                    [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
-                                </tr> -->
+                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="padding-right: 135px;">$<input type="text"
+                                            (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.packingCharges"
+                                            style="width:65px"></td>
+                                    <td *ngIf="actineLabel !=='Edit order'" class="text-right numbers " [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
+                                </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                    <td class="text-right numbers" style="padding-right: 135px;">$<input type="text" class="text-end" (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.shippingCharges"  style="width:65px"></td>
-                                    <!-- <td class="text-right numbers"
+                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="padding-right: 135px;">$<input type="text" class="text-end" (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.shippingCharges"  style="width:65px"></td>
+                                    <td  *ngIf="actineLabel !=='Edit order'" class="text-right numbers"
                                         [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}
                                     </td> 
-                                    value="{{(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')| number: '1.2-2'}}"
-                                    -->
+                                    <!-- value="{{(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')| number: '1.2-2'}}" -->  
                                 </tr>
                                 <!-- <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
