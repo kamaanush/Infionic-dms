@@ -118,6 +118,15 @@ color: #FFFFFF;
   /* text-align: left; */
   
 }
+.cONFIROMoRDERCSSCOLORREEITEMSCOLOR
+{
+  font-family: 'Calibri';
+  font-size: 14px;
+  color: rgba(1, 139, 117, 1);
+  background-color: #018B75;
+  border: none;
+  background: none;
+}
 .nonpromoclassName
 {
   font-family: 'Calibri';
@@ -125,6 +134,13 @@ color: #FFFFFF;
   border: none;
   background: none;
   /* text-align: left; */
+}
+.FREEITEMSCSSCOLOR
+{
+  font-family: 'Calibri';
+  font-size: 14px;
+  border: none;
+  background: none;
 }
 
 
@@ -2522,6 +2538,15 @@ right: -65px;
   font-size: 12.5px;
   border: 0px;
   /* text-align: center; */
+}
+.IteminputBox_fREEITEMS{
+  /* width: 300px;
+  height: 30px; */
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 12.5px;
+  border: 0px;
 }
 
 .itemLeft {

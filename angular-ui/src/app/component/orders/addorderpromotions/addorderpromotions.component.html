@@ -166,8 +166,11 @@
                                     <th scope="col"  class="ConfiramPrice">Price</th>
                                     <th scope="col"  class="ConfiramOrderDiscount">Discounted Price </th>
                                     <th scope="col"   class="ConfiramorderQTY">QTY</th>
-                                    <th scope="col" class="COnfiramordrSubtotal">Sub Total</th>
+                                    <th scope="col" class="COnfiramordrSubtotal" style="padding-left: 87px;">Sub Total</th>
                                     <th scope="col"></th>
+                                    <th  scope="col">&nbsp;&nbsp;</th>
+                                    <th  scope="col">&nbsp;&nbsp;</th>
+                                    <th  scope="col">&nbsp;&nbsp;</th>
                                 </tr>
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr>
@@ -193,25 +196,35 @@
                                     <ng-container *ngIf='!expandedPromotions[i]'>
                                         <tr *ngFor="let Item of PromotionObj.itemDetails; let i=index;">
                                             
-                                            <td style="padding-left: 35px;" [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">{{Item.productSKUName}}</td>
-                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">{{Item.stockitemname}}</td>
-                                            <td style="text-align: right;" >
-                                                <input type="text" disabled [(ngModel)]="'$'+Item.price" style="text-align: right;border: none;background: none;"
-                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
+                                            <td style="padding-left: 35px;"
+                                             [ngClass]="{'cONFIROMoRDERCSSCOLORREEITEMSCOLOR': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox_fREEITEMS' : (Item.discount === 0 ? 'cONFIROMoRDERCSSCOLORREEITEMSCOLOR' : 'FREEITEMSCSSCOLOR')">
+                                            {{Item.productSKUName}}
+                                        </td>
+                                            <td 
+                                             [ngClass]="{'cONFIROMoRDERCSSCOLORREEITEMSCOLOR': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox_fREEITEMS' : (Item.discount === 0 ? 'cONFIROMoRDERCSSCOLORREEITEMSCOLOR' : 'FREEITEMSCSSCOLOR')"> 
+                                            {{Item.stockitemname}}</td>
+
+                                            <td style="text-align: right;">
+                                                <input  [ngClass]="{'cONFIROMoRDERCSSCOLORREEITEMSCOLOR': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox_fREEITEMS' : (Item.discount === 0 ? 'cONFIROMoRDERCSSCOLORREEITEMSCOLOR' : 'FREEITEMSCSSCOLOR')"
+                                                type="text" disabled [(ngModel)]="'$'+Item.price" style="text-align: right;border: none;background: none;">
+                                                
                                             </td>
+
+                                           
                                           
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="'$'+Item.discount" style="text-align: right;border: none;background: none;" 
-                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
+                                                <input [ngClass]="{'cONFIROMoRDERCSSCOLORREEITEMSCOLOR': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox_fREEITEMS' : (Item.discount === 0 ? 'cONFIROMoRDERCSSCOLORREEITEMSCOLOR' : 'FREEITEMSCSSCOLOR')"
+                                                type="text" disabled [(ngModel)]="'$'+Item.discount" style="text-align: right;border: none;background: none;" >
                                             </td>
                                       
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.quantity" style="text-align: right;border: none;background: none;" 
-                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
+                                            
+                                                <input [ngClass]="{'cONFIROMoRDERCSSCOLORREEITEMSCOLOR': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox_fREEITEMS' : (Item.discount === 0 ? 'cONFIROMoRDERCSSCOLORREEITEMSCOLOR' : 'FREEITEMSCSSCOLOR')"
+                                                 type="text" disabled [(ngModel)]="Item.quantity" style="text-align: right;border: none;background: none;">
                                             </td>
-                                            <td>
-                                                <input type="text" disabled [(ngModel)]="'$'+Item.finalValue" style="text-align: right;border: none;position: relative;left: 20px;background: none;"
-                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
+                                            <td >
+                                                <input [ngClass]="{'cONFIROMoRDERCSSCOLORREEITEMSCOLOR': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox_fREEITEMS' : (Item.discount === 0 ? 'cONFIROMoRDERCSSCOLORREEITEMSCOLOR' : 'FREEITEMSCSSCOLOR')"
+                                                 type="text" disabled [(ngModel)]="Item.finalValue" style="text-align: right;border: none;position: relative;background: none;">
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -248,12 +261,13 @@
                                             <td style="padding-left: 35px;">{{ item.productSKUName }}</td>
                                             <td>{{ item.stockitemname }}</td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="'$'+item.price" class="NONPromotionsPrice">
+                                                <input type="text" disabled [(ngModel)]="item.price" class="NONPromotionsPrice">
                                             </td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="'$'+item.discount"
-                                                    [ngClass]="item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
-                                                    style="text-align: right;background: none;border: none;">
+                                                <input type="text" disabled [(ngModel)]="item.discount"
+                                                style="text-align: right;background: none;border: none;">
+                                                    <!-- [ngClass]="item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'" -->
+                                                 
                                             </td>
                                             <td style="text-align: right;">
                                                 <input type="text" disabled [(ngModel)]="item.quantity" class="NON_promotionsQTY">
@@ -278,7 +292,12 @@
                                     <td style="text-align: end;"><b>Total</b></td>
                                     <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                     <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                    <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
+                                    <td style="text-align: right;position: relative; width:1px;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                              </table>
                             </div>
@@ -291,16 +310,16 @@
                                         <td class="text-right numbersCOnfiramorder " style="padding-right: 47px;">{{shippingPackingchargeDetails.subTotal| currency:'USD'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
-                                        <td class="text-right numbers " style="padding-right: 47px;">{{shippingPackingchargeDetails.packingCharges| currency:'USD':'symbol':'1.2-2'}}</td>
+                                        <td class="text-left SUB_ITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
+                                        <td class="text-right numbers " style="padding-right: 47px;">{{shippingPackingchargeDetails.packingCharges| currency:'USD'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                        <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.shippingCharges| currency:'USD':'symbol':'1.2-2'}}</td>
+                                        <td class="text-left SUB_ITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
+                                        <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.shippingCharges| currency:'USD'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
-                                        <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.total| currency:'USD':'symbol':'1.2-2'}}</td>
+                                        <td class="text-left SUB_ITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
+                                        <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.total| currency:'USD'}}</td>
                                     </tr>
                                 </table>
                             </div>&nbsp; &nbsp; &nbsp; &nbsp;
@@ -638,7 +657,7 @@
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                         <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: center;padding-right: 13px;" [style.padding-left]="value?.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':''}}</b></td>
+                                        <td style="text-align: center;padding-right: 21px;" [style.padding-left]="value?.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD'}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>
@@ -646,22 +665,31 @@
                         <div class="row mt-3">
                             <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                 <tr>
+                                
                                     <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;height: 10px;">Sub-Total</p></td>
                                     <td class="text-right numbers" 
-                                    [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">
-                                        {{  (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD':'symbol':'1.2-2'}}
-                                    </td>                                
+                                    [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '11%' : '13%'">
+                                        {{  (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD'}}
+                                    </td>    
+                                    <td></td>
+                                    <td></td>
+                                    
+                                    
+                                     <td></td>
+                                     <td></td>
+                                    <td></td>                            
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;margin-top: 7px;">Packing Charge</p></td>
-                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="padding-right: 135px;">$<input type="text"
+                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="padding-right: 135px;"><span style="position: relative;left: 38px;color: rgba(1, 139, 117, 1);">$<input type="text"
                                             (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.packingCharges"
-                                            style="width:65px"></td>
+                                            style="width:65px;outline-color:#abd4ff;"></span></td>
                                     <td *ngIf="actineLabel !=='Edit order'" class="text-right numbers " [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="padding-right: 135px;">$<input type="text" class="text-end" (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.shippingCharges"  style="width:65px"></td>
+                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="padding-right: 135px;">
+                                       <span style="position: relative;left: 38px; color: rgba(1, 139, 117, 1);">$ <input type="text" class="text-end" (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.shippingCharges"  style="width:65px;outline-color:#abd4ff;"></span></td>
                                     <td  *ngIf="actineLabel !=='Edit order'" class="text-right numbers"
                                         [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}
                                     </td> 
@@ -672,7 +700,7 @@
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
                                 </tr> -->
                                 <tr>
-                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
+                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value </p></td>
                                     <td class="text-right numberss"
                                     [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
                                     </td>
