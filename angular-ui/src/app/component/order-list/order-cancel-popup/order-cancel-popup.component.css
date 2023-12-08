@@ -20,6 +20,7 @@
         /* border: 0px solid rgba(1,139,117,1); */
         border-color: white;
         border: none;
+        outline: none;
         border-radius: 10px;
         margin-top: 15px;
         width: 150px;

@@ -20,7 +20,9 @@ export class OrderCancelPopupComponent implements OnInit {
   ) {}
   CustomerPoId: any;
   LoginId: any;
+  statustype:any
   ngOnInit(): void {
+    this.statustype =JSON.parse(localStorage.getItem('statustype')||'null')
     this.CustomerPoId = localStorage.getItem('CustomerPoId');
     this.LoginId = localStorage.getItem('logInId');
     sessionStorage.getItem('orderNumber');

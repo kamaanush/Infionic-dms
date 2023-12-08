@@ -215,7 +215,7 @@ export class OrderlistActionPopupComponent implements OnInit {
   orderCancel(type:any) {
     this.dialog.open(OrderCancelPopupComponent);
     this.isOpen = false;
-    localStorage.setItem('statustype',type)
+    localStorage.setItem('statustype',JSON.stringify(type))
     // const data={
     //   CustomerPoId:this.CustomerPoId,
     //   CurrentUserId:this.LoginId,

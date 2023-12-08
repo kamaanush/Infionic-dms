@@ -2042,7 +2042,7 @@ margin-right: 327px;
 
   background: rgba(1, 139, 117, 1);
   border: 1px solid rgba(152, 156, 160, 1);
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 8px;
   margin-top: 15px;
   cursor: pointer;
@@ -2057,7 +2057,8 @@ margin-right: 327px;
 
   align-items: center;
   text-align: center;
-
+  border: none;
+  outline: none;
   color: #FFFFFF;
 }
 .save-submit {
@@ -2127,7 +2128,8 @@ margin-left: 230px;
 
   align-items: center;
   text-align: center;
-
+  border: none;
+  outline: none;
   color: #FFFFFF;
 }
 .tabel-div {
@@ -3087,7 +3089,8 @@ table thead, table tbody tr {
   text-align: center;
   color: #FFFFFF;
   margin-top: 71px; 
-
+  border: none;
+  outline: none;
   position: absolute;
     z-index: 10000;
     left: 45%;
