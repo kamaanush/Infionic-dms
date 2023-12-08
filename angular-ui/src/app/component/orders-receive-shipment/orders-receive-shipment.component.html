@@ -125,14 +125,14 @@
                           <td style="text-align: right;" class="text-secondary">
                             <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">$ {{data.price}}</label>
                           </td>
-                          <td style="text-align: right;" class="text-secondary">
+                          <td style="text-align: right;padding-right: 14px;" class="text-secondary">
                             <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">$
                               {{data.finalValue}}</label>
                           </td>
                           <td style="text-align: right;" class="text-secondary">
                             <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">{{data.quantity}}</label>
                           </td>
-                          <td style="text-align: right;position: relative;right: 49px; " class="text-secondary">
+                          <td style="text-align: right;position: relative;right: 62px; " class="text-secondary">
                             <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">${{data.amount}}</label>
                           </td>
                         </tr>
@@ -143,10 +143,10 @@
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td style="text-align: end;"><span class="Total-Orderinfo">Total</span></td>
+                      <td style="text-align: end;position: relative;right: 15px;"><span class="Total-Orderinfo">Total</span></td>
                       <td style="text-align: end;"><span class="Total-Orderinfo">{{shipmentArray.orderedQty}}</span>
                       </td>
-                      <td style="position: relative;text-align: right;right: 48px;"><span
+                      <td style="position: relative;text-align: right;right: 61px;"><span
                           class="Total-Orderinfo">{{shipmentArray.subTotal| currency:'USD':'symbol':'1.2-2'}}</span></td>
                     </tr>
                   </table>

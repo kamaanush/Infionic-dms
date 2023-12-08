@@ -167,8 +167,11 @@
                                     <th scope="col"  class="ConfiramPrice">Price</th>
                                     <th scope="col"  class="ConfiramOrderDiscount">Discounted Price </th>
                                     <th scope="col"   class="ConfiramorderQTY">QTY</th>
-                                    <th scope="col" class="COnfiramordrSubtotal">Sub Total</th>
+                                    <th scope="col" class="COnfiramordrSubtotal" style="padding-left: 87px;">Sub Total</th>
                                     <th  scope="col"></th>
+                                    <th  scope="col">&nbsp;&nbsp;</th>
+                                    <th  scope="col">&nbsp;&nbsp;</th>
+                                    <th  scope="col">&nbsp;&nbsp;</th>
                                 </tr>
                                
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
@@ -184,6 +187,10 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -210,11 +217,14 @@
                                             </td>
                                             <td>
                                                 <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                style="text-align: right;border: none;position: relative;left: 20px;background: none;">
+                                                style="text-align: right;border: none;position: relative;background: none;">
                                             </td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
+
+                                            
                                         </tr>
                                     </ng-container>
                                     <tr>
@@ -228,6 +238,10 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -252,6 +266,11 @@
                                                 <input type="text" disabled [(ngModel)]="item.finalValue" class="FINALValueNONPromotions">
                                             </td>
                                             <td></td>
+
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                     </ng-container>
                                     <tr *ngIf="(editTotalqty||shippingPackingchargeDetails.subTotal)>0">
@@ -262,7 +281,13 @@
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                         <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
+                                        <td style="text-align: right;position: relative;width:1px;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 </ng-container> 
                                 
@@ -271,26 +296,22 @@
 
                             <!-- Packing charges and shipping charges  my code -->
                             <div class="row mt-3">
-                                <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
+                                <table class="TOtal_Calculations" *ngIf="shippingPackingchargeDetails">
                                     <tr>
-                                        <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;height: 10px;">Sub-Total</p></td>
-                                        <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal| currency:'USD':'symbol':'1.2-2'}}</td>
+                                        <td class="text-left SUB_ITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;height: 10px;">Sub-Total</p></td>
+                                        <td class="text-right numbersCOnfiramorder " style="padding-right: 47px;">{{shippingPackingchargeDetails.subTotal| currency:'USD'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
-                                        <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
+                                        <td class="text-left SUB_ITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
+                                        <td class="text-right numbersCOnfiramorder " style="padding-right: 47px;">{{shippingPackingchargeDetails.packingCharges|currency:'USD'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                        <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
+                                        <td class="text-left SUB_ITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
+                                        <td class="text-right numbersCOnfiramorder" style="padding-right: 47px;">{{shippingPackingchargeDetails.shippingCharges |currency:'USD'}}</td>
                                     </tr>
-                                    <!-- <tr>
-                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
-                                        <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
-                                    </tr> -->
                                     <tr>
-                                        <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
-                                        <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
+                                        <td class="text-left SUB_ITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
+                                        <td class="text-right numbersCOnfiramorder" style="padding-right: 47px;">{{shippingPackingchargeDetails.total  |currency:'USD'}}</td>
     
                                     </tr>
                                 </table>
@@ -515,7 +536,7 @@
                                     <th scope="col"  class="PRICE">Price</th>
                                     <th scope="col"  class="DISCOUNTPRICE">Discounted Price </th>
                                     <th scope="col"   class="QTY">QTY</th>
-                                    <th scope="col" class="SUBTOTAL">Sub-Total</th>
+                                    <th scope="col" class="SUBTOTAL" style="position: relative;right: 5px;">Sub-Total</th>
                                     <th  scope="col"></th>
                                 </tr>
                                 
@@ -613,7 +634,7 @@
                                                 [(ngModel)]="Item.quantity" class="NonPromodataquantity"> </td>
                                         <td> 
                                             <input type="text" disabled [(ngModel)]="'$'+Item.finalValue"
-                                                class="FInalvaluenonpromo" [style.left]="value?.length>0?'0px':'18px'" >
+                                                class="FInalvaluenonpromo" [style.left]="value?.length>0?'0px':'0px'" >
                                              </td>
                                         <td>
                                             <div class="removeCircleNONPromodata" (click)="removeNonPromotionItem(Item)">
@@ -629,7 +650,7 @@
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                         <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: center;" [style.padding-left]="value?.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
+                                        <td style="text-align: center;padding-right: 13px;" [style.padding-left]="value.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':''}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>

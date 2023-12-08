@@ -1,3 +1,6 @@
+
+
+
 .searchInput11 {
   display: block;
   width: 100%;
@@ -2495,17 +2498,20 @@ letter-spacing: 0.04em;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
+  outline-color:#abd4ff;
   border-radius: 5px;
   text-align: right;
   margin-left: -48px;
   margin-top: 4px;
 }
+
 .quatity-inp2{
   width: 57%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   border-radius: 5px;
+  outline-color:#abd4ff;
   text-align: right;
   margin-top: 4px;
   margin-left: 15px;
@@ -2515,6 +2521,7 @@ letter-spacing: 0.04em;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
+  outline-color:#abd4ff;
   border-radius: 5px;
   text-align: right;
   margin-top: 4px;
@@ -2526,6 +2533,7 @@ letter-spacing: 0.04em;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
+  outline-color:#abd4ff;
   border-radius: 5px;
   text-align: right;
   margin-top: 8px;
@@ -2535,6 +2543,7 @@ letter-spacing: 0.04em;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
+  outline-color:#abd4ff;
   border-radius: 5px;
   text-align: right;
   margin-top: 4px;
@@ -2545,6 +2554,7 @@ letter-spacing: 0.04em;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
+  outline-color:#abd4ff;
   border-radius: 5px;
   text-align: right;
   margin-top: 4px;
