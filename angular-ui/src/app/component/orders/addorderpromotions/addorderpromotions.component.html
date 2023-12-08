@@ -159,21 +159,16 @@
                     </div> 
                     <div class="card-body p-0" *ngIf="!orderitem">
                         <div class="" style="padding-top: 10px;">
-                         
-                             <table>
+                             <table >
                                 <tr>
                                     <th scope="col"  class="ConfiramorderProductcode">Product Code </th>
                                     <th scope="col" class="ConfiramorderProductname">Product Name</th>
                                     <th scope="col"  class="ConfiramPrice">Price</th>
                                     <th scope="col"  class="ConfiramOrderDiscount">Discounted Price </th>
                                     <th scope="col"   class="ConfiramorderQTY">QTY</th>
-                                    <th scope="col" class="COnfiramordrSubtotal" style="padding-left: 87px;">Sub Total</th>
-                                    <th  scope="col"></th>
-                                    <th  scope="col">&nbsp;&nbsp;</th>
-                                    <th  scope="col">&nbsp;&nbsp;</th>
-                                    <th  scope="col">&nbsp;&nbsp;</th>
+                                    <th scope="col" class="COnfiramordrSubtotal">Sub Total</th>
+                                    <th scope="col"></th>
                                 </tr>
-                               
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr>
                                         <td class="" style="padding: 4px;">
@@ -196,28 +191,27 @@
                                         <td></td>
                                     </tr>
                                     <ng-container *ngIf='!expandedPromotions[i]'>
-                                        <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
+                                        <tr *ngFor="let Item of PromotionObj.itemDetails; let i=index;">
                                             
-                                            <td style="padding-left: 35px;">{{Item.productSKUName}}</td>
-                                            <td>{{Item.stockitemname}}</td>
-                                            <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.price"
-                                                      style="text-align: right;border: none;background: none;">
+                                            <td style="padding-left: 35px;" [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">{{Item.productSKUName}}</td>
+                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">{{Item.stockitemname}}</td>
+                                            <td style="text-align: right;" >
+                                                <input type="text" disabled [(ngModel)]="'$'+Item.price" style="text-align: right;border: none;background: none;"
+                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
                                             </td>
                                           
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.discount"
-                                                    [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
-                                                    style="text-align: right;border: none;background: none;">
+                                                <input type="text" disabled [(ngModel)]="'$'+Item.discount" style="text-align: right;border: none;background: none;" 
+                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
                                             </td>
                                       
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.quantity"
-                                                style="text-align: right;border: none;background: none;">
+                                                <input type="text" disabled [(ngModel)]="Item.quantity" style="text-align: right;border: none;background: none;" 
+                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
                                             </td>
                                             <td>
-                                                <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                style="text-align: right;border: none;position: relative;background: none;">
+                                                <input type="text" disabled [(ngModel)]="'$'+Item.finalValue" style="text-align: right;border: none;position: relative;left: 20px;background: none;"
+                                                [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -227,10 +221,12 @@
                                             
                                         </tr>
                                     </ng-container>
+                                </ng-container>   
+                                <ng-container>
                                     <tr>
                                         <td>
                                             <mat-icon (click)="toggleRow()" style="cursor: pointer; position: relative; left: 3%; top: 1px;">
-                                                {{ rowVisibility[i] ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+                                                {{ rowVisibility ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
                                             </mat-icon>
                                             <span style="position: relative; left: 13px; color: black; top: -6px;">Non Promotions</span>
                                         </td>
@@ -247,15 +243,15 @@
                                         <td></td>
                                     </tr>
                                 
-                                    <ng-container *ngFor="let item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-                                        <tr *ngIf="!rowVisibility">
+                                    <ng-container  *ngIf="!rowVisibility">
+                                        <tr *ngFor="let item of AddorderNonpromotiondata?.itemDetails; let j=index;">
                                             <td style="padding-left: 35px;">{{ item.productSKUName }}</td>
                                             <td>{{ item.stockitemname }}</td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="item.price" class="NONPromotionsPrice">
+                                                <input type="text" disabled [(ngModel)]="'$'+item.price" class="NONPromotionsPrice">
                                             </td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="item.discount"
+                                                <input type="text" disabled [(ngModel)]="'$'+item.discount"
                                                     [ngClass]="item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
                                                     style="text-align: right;background: none;border: none;">
                                             </td>
@@ -263,7 +259,7 @@
                                                 <input type="text" disabled [(ngModel)]="item.quantity" class="NON_promotionsQTY">
                                             </td>
                                             <td>
-                                                <input type="text" disabled [(ngModel)]="item.finalValue" class="FINALValueNONPromotions">
+                                                <input type="text" disabled [(ngModel)]="'$'+item.finalValue" class="FINALValueNONPromotions">
                                             </td>
                                             <td></td>
 
@@ -273,24 +269,17 @@
                                             <td></td>
                                         </tr>
                                     </ng-container>
-                                    <tr *ngIf="(editTotalqty||shippingPackingchargeDetails.subTotal)>0">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <!-- <td></td> -->
-                                        <td style="text-align: end;"><b>Total</b></td>
-                                        <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
-                                        <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: right;position: relative;width:1px;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
-                                        <td></td>
-                                        <td></td>
-
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </ng-container> 
-                                
+                                </ng-container>
+                                <tr *ngIf="(editTotalqty||shippingPackingchargeDetails.subTotal)>0">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <!-- <td></td> -->
+                                    <td style="text-align: end;"><b>Total</b></td>
+                                    <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
+                                    <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
+                                    <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
+                                </tr>
                              </table>
                             </div>
 
@@ -302,17 +291,16 @@
                                         <td class="text-right numbersCOnfiramorder " style="padding-right: 47px;">{{shippingPackingchargeDetails.subTotal| currency:'USD'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUB_ITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
-                                        <td class="text-right numbersCOnfiramorder " style="padding-right: 47px;">{{shippingPackingchargeDetails.packingCharges|currency:'USD'}}</td>
+                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
+                                        <td class="text-right numbers " style="padding-right: 47px;">{{shippingPackingchargeDetails.packingCharges| currency:'USD':'symbol':'1.2-2'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUB_ITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                        <td class="text-right numbersCOnfiramorder" style="padding-right: 47px;">{{shippingPackingchargeDetails.shippingCharges |currency:'USD'}}</td>
+                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
+                                        <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.shippingCharges| currency:'USD':'symbol':'1.2-2'}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="text-left SUB_ITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
-                                        <td class="text-right numbersCOnfiramorder" style="padding-right: 47px;">{{shippingPackingchargeDetails.total  |currency:'USD'}}</td>
-    
+                                        <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
+                                        <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.total| currency:'USD':'symbol':'1.2-2'}}</td>
                                     </tr>
                                 </table>
                             </div>&nbsp; &nbsp; &nbsp; &nbsp;
@@ -650,7 +638,7 @@
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                         <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: center;padding-right: 13px;" [style.padding-left]="value.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':''}}</b></td>
+                                        <td style="text-align: center;padding-right: 13px;" [style.padding-left]="value?.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':''}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>
