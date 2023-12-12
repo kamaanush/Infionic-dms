@@ -331,8 +331,10 @@ export class AddorderpromotionsComponent implements OnInit {
         this.onItemSelectdealers(obj);
 
         this.dealerDisabled = true;
-      });
+      }); 
+     
     }
+    
     this.ordersDealers();
 
     this.taxdropdown();
@@ -431,6 +433,7 @@ export class AddorderpromotionsComponent implements OnInit {
     if (editV == 'Edit') {
       this.actineLabel = 'Edit order';
       this.updateOrSave = !this.updateOrSave;
+      this.dealerDisabled = true;
       this.GetOrdersToEdit();
     } else {
       this.actineLabel = 'Add Order';

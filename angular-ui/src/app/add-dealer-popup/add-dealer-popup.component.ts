@@ -836,7 +836,7 @@ export class AddDealerPopupComponent implements OnInit {
       CustomerName: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Code: ['', [Validators.required]],
-      website: ['', [Validators.required]],
+website: [''],
       Phoneno: ['', [Validators.required]],
       company_id: [''],
       OtherIdentifier: [''],
@@ -1064,8 +1064,8 @@ export class AddDealerPopupComponent implements OnInit {
   }
 
   restrictToAlphabets(event: any): void {
-    const input = event.target as HTMLInputElement;
-    const value = input.value;
-    input.value = value.replace(/[^a-zA-Z\s]/g, '');
-  }
+  const input = event.target as HTMLInputElement;
+  const value = input.value;
+  input.value = value.replace(/[^a-zA-Z\s]/g, '');
+   }
 }

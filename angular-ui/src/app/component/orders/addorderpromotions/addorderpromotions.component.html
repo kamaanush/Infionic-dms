@@ -432,7 +432,7 @@
                 
                                     <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
                                     <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
-                                        name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
+                                        name="GeoGrapydropdown" required   [disabled]="dealerDisabled" [virtualScroll]="true" bindLabel="geographyName"
                                         bindValue="geographyId" [searchable]="true" [clearable]="false" placeholder="Select geography"
                                         [(ngModel)]="geographyId" appendTo="body" (change)="onItemSelectgeo($event)">
                                     </ng-select>
@@ -444,7 +444,7 @@
                                             class="astr">*</span></label>
                                     <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
                                     <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
-                                        name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
+                                        name="BillingAddress" required [disabled]="dealerDisabled" [virtualScroll]="true" bindLabel="Billingaddress"
                                         bindValue="BillingaddressId" [searchable]="true" [clearable]="false"
                                         placeholder="Select  billing address" [(ngModel)]="BillingaddressId" appendTo="body"
                                         (change)="onItemSelectBillingAddress($event)">
@@ -456,7 +456,7 @@
                                     <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
                 
                                     <ng-select class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
-                                        name="shipingAddress" required [virtualScroll]="true" bindLabel="address" bindValue="addressId"
+                                        name="shipingAddress" required  [disabled]="dealerDisabled" [virtualScroll]="true" bindLabel="address" bindValue="addressId"
                                         [searchable]="true" [clearable]="false" placeholder="Select shipping address"
                                         [(ngModel)]="addressId" appendTo="body" (change)="onItemSelectshippingAddress($event)">
                                     </ng-select>
@@ -670,7 +670,7 @@
                                     <td class="text-right numbers" 
                                     [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '11%' : '13%'">
                                         {{  (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD'}}
-                                    </td>    
+                                     </td>     
                                     <td></td>
                                     <td></td>
                                     
