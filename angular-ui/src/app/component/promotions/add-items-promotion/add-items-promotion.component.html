@@ -126,19 +126,21 @@
                 <!--  -->
               </div>
             </div>
-            <div class="col-lg-1">
-              <div class="ref">
-                <img class="refresh" (click)="addItemRefresh()" src="assets/img/Refreshbutton.svg" alt="refresh">
+            <div class="col-lg-1" >
+              <div class="ref" (click)="addItemRefresh()">
+                <img class="refresh"  src="assets/img/Refreshbutton.svg" >
               </div>
+             
             </div>
           </div>
-         
+        
           <div class="srch mt-3" style="margin-bottom:10px">
             <div class="row">
               <div class="col-md-12">
                 <div class="searchBox1 d-flex">
-                  <input id="searchInput" class="searchInput1" type="text" name="" placeholder="Search Here Anything"
+                  <input  #inputRef id="searchInput11" class="searchInput1" type="text" name="" placeholder="Search Here Anything"
                     (keyup)="onSearchChange($event)">
+                   
                   <mat-icon class="searchicons1">search</mat-icon>
                   <button class="search-bt_n1">Search</button>
                   <!-- <button class="searchButtonn" href="#">
@@ -194,7 +196,7 @@
               <div class="row">
                 <div class="col-md-11">
                   <div class="searchBox1 d-flex">
-                    <input id="searchInput" class="searchInput1" type="text" name="" placeholder="Search Here Anything"
+                    <input id="searchInput12" class="searchInput1" type="text" name="" placeholder="Search Here Anything"
                       (keyup)="onSearchChangeShortcode($event)">
                     <mat-icon class="searchicons1">search</mat-icon>
                     <button class="search-bt_n1">Search</button>
@@ -203,8 +205,9 @@
                   </div>
                 </div>
    
-                <div class="col-md-1" (click)="refreshData()">
-                  <div class="ref"><img class="refresh" src="assets/img/Refreshbutton.svg" alt="refresh" style="margin-left: 1px;">
+                <div class="col-md-1" (click)="refreshData()" >
+                  <div class="ref" >
+                    <img class="refresh" src="assets/img/Refreshbutton.svg" alt="refresh" style="margin-left: 1px;">
                   </div>
                 </div>
               </div>
@@ -256,7 +259,7 @@
               <div class="row">
                 <div class="col-md-11">
                   <div class="searchBox1 d-flex">
-                    <input id="searchInput" class="searchInput1" type="text" name="" placeholder="Search Here Anything"
+                    <input id="searchInput13" class="searchInput1" type="text" name="" placeholder="Search Here Anything"
                       (keyup)="onSearchproductGroup($event)">
                     <mat-icon class="searchicons1">search</mat-icon>
                     <button class="search-bt_n1">Search</button>
@@ -266,7 +269,8 @@
                 </div>
    
                 <div class="col-md-1">
-                  <div class="ref"><img class="refresh" src="assets/img/Refreshbutton.svg" alt="refresh" style="margin-left: 1px;">
+                  <div class="ref" (click)="RefreshdataProductGroup()">
+                    <img class="refresh" src="assets/img/Refreshbutton.svg" alt="refresh" style="margin-left: 1px;">
                   </div>
                 </div>
               </div>
@@ -335,22 +339,24 @@
                             {{myForms.get('citys').value.length}} product groups selected </span>
                         </div>
                       </div>
+                     
                 </div>
                   <div class="searchBox2 d-flex">
-                    <input id="searchInput" class="searchInput2" type="text" name="" placeholder="Search Here Anything"
+                    <input id="searchInput14" class="searchInput2" type="text" name="" placeholder="Search Here Anything"
                       (keyup)="onSearchChangeProductGroup($event)">
                     <mat-icon class="searchicons2">search</mat-icon>
-                    <button class="search-bt_n2">Search</button>
+                    <button class="search-bt_n2">Search</button>  
                    
                   </div>
-           
+                             
                   <div class="icon btnhover refreshbtn">
-                    <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 9px;"
-                      alt="refresh" (click)="addItemRefresh()">
+                    <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 9px; cursor: pointer;"
+                      alt="refresh" (click)="addItemRefreshSubGroup()">
                   </div>
+                
               </div>
             </div>
-   
+            
             <ag-grid-angular id="gridContainer"
               style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%;position: relative;top: 22px;"
               class="ag-theme-material" (gridReady)="onGridReady4($event)" [rowHeight]="25" [headerHeight]="48"

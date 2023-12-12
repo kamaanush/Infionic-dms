@@ -94,7 +94,7 @@
                                         <div class="col-3">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" maxlength="10" formControlName="Phoneno"  pattern="^((\\+91-?)|0)?[0-9]{10}$" 
+                                            <input type="text"  formControlName="Phoneno"  pattern="^((\\+91-?)|0)?[0-9]{10}$" 
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter dealer phone no" (input)="restrictToNumbers($event)">
                                             <span class="text-danger"
@@ -189,7 +189,7 @@
                                                 <label>User Name<span>*</span></label>
                                                 <br>
                                                 <input type="text" formControlName="UserName" class="addDelercols form-control" required
-                                                  placeholder="Enter admin name" (input)="restrictToAlphabets($event)">
+                                                  placeholder="Enter admin name">
                                                 <span class="text-danger" *ngIf="admin.get('UserName')?.touched && admin.get('UserName')?.hasError('required')">
                                                   UserName is required
                                                 </span>
@@ -212,7 +212,7 @@
                                               <div class="col-2 fontcolor">
                                                 <label>Phone No<span>*</span></label>
                                                 <br>
-                                                <input type="text" maxlength="10" formControlName="Mobile" pattern="^((\+91-?)|0)?[0-9]{10}$"
+                                                <input type="text"  formControlName="Mobile" pattern="^((\+91-?)|0)?[0-9]{10}$"
                                                   class="addDelercols form-control" required placeholder="Enter admin phone no"
                                                   (input)="restrictToNumbers($event)">
                                                 <span class="text-danger" *ngIf="admin.get('Mobile')?.touched && admin.get('Mobile')?.hasError('required')">
@@ -342,7 +342,7 @@
                                             <div class="col-1" style="margin-left: 53px;">
                                                 <label *ngIf="i == 0">Phone<span>*</span></label>
                                                 <br>
-                                                <input type="text" maxlength="10" placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
+                                                <input type="text"  placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
                                                     class="addDelercols addphone" (input)="restrictToNumbers($event)">
                                             </div>
 
