@@ -13,13 +13,13 @@
         <h2 class="header-text" *ngIf="userType !== 'Dealer Admin'">
             <span class="purchaes">
                 {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Shipments' : selectedTabIndex === 2 ?
-                'Invoice' : 'Receipts' }}
+                'Uploads' : 'Receipts' }}
             </span>
         </h2>
         <h2 class="header-text" *ngIf="userType == 'Dealer Admin'">
             <span class="purchaes">
                 {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Shipments' : selectedTabIndex === 2 ?
-                'Invoice' : 'Receipts' }}
+                'Uploads' : 'Receipts' }}
             </span>
         </h2>
         <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">

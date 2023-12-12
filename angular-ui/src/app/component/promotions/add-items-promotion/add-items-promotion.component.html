@@ -159,7 +159,7 @@
               [rowMultiSelectWithClick]="true"></ag-grid-angular>
           </div>
           <div class="pagination">
-            <span class="pagination-cls">1</span>-<span class="pagination-cls">{{paginationScrollCount}}</span>
+            <span class="pagination-cls">1</span><span class="pagination-cls">-{{paginationScrollCount}}</span>
             <span class="pagination-cls">&nbsp;of</span> 
             <span class="pagination-cl">&nbsp;{{rowData5.length}}</span>
           </div>
@@ -221,8 +221,8 @@
               (rowSelected)="ProductShortCodeRowSelect($event)"></ag-grid-angular>
           </div>
           <div class="pagination">
-            <span class="pagination-cls">1 &nbsp;-</span>  <span class="pagination-cls">{{paginationScrollCount}}</span> of
-            <span class="pagination-cl">{{rowData5.length}}</span>
+            <span class="pagination-cls">1 &nbsp;-</span>  <span class="pagination-cls">{{paginationScrollCount}}</span>&nbsp; 
+            <span class="pagination-cl">of&nbsp;{{rowData5.length}}</span>
           </div>
           <div class="addbtn mt-3 text-center">
             <button class="addItem-btn btn-btn-primary" (click)="additemsProductShortCode($event)">Add items</button>
@@ -286,8 +286,8 @@
               (rowSelected)="onRowSelectProductGroup($event)"></ag-grid-angular>
           </div>
           <div class="pagination">
-            <span class="pagination-cls">1 &nbsp;</span>  <span class="pagination-cls">{{paginationScrollCount}}</span> of
-            <span class="pagination-cls">{{rowData5.length}}</span>
+            <span class="pagination-cls">1 &nbsp;</span>  <span class="pagination-cls">-{{paginationScrollCount}}</span>&nbsp; 
+            <span class="pagination-cls">of&nbsp;{{rowData5.length}}</span>
           </div>
           <div class="addbtn mt-3 text-center">
             <button class="addItem-btn btn-btn-primary" (click)="addproductGroup()">Add items</button>
@@ -363,8 +363,8 @@
               (rowSelected)="ProductSubGroupRowSelect($event)"></ag-grid-angular>
           </div>
           <div class="pagination">
-            <span class="pagination-cls">1 &nbsp;to</span>  <span class="pagination-cls">{{paginationScrollCount}}</span> 
-            <span class="pagination-cl">{{rowData5.length}}</span>
+            <span class="pagination-cls">1 &nbsp;-</span>  <span class="pagination-cls">{{paginationScrollCount}}</span>&nbsp; 
+            <span class="pagination-cl">of&nbsp;{{rowData5.length}}</span>
           </div>
           <div class="addbtn mt-3 text-center">
             <button class="addItem-btn btn-btn-primary" (click)="addItemProductSubG()">Add items</button>

@@ -123,8 +123,8 @@
                             (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
                             (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
                             <div class="pagination">
-                                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{selectedProducts.length}}</span> of 
-                                <span class="pagination-cls">{{selectedProducts.length}}</span>
+                                <span class="pagination-cls">1</span>&nbsp; <span class="pagination-cls">-&nbsp;{{selectedProducts.length}}</span>&nbsp;  
+                                <span class="pagination-cls">of&nbsp;{{selectedProducts.length}}</span>
                               </div>
                               <div class="addbtn mt-3 text-center">
                                 <button class="addItem-btn btn-btn-primary" [disabled]="selectedProducts.length==0 || targetGrpName.length==0" (click)="editTarget()">Create</button>
@@ -190,8 +190,8 @@
                             (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
                             (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
                             <div class="pagination">
-                                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-                                <span class="pagination-cl">{{selectedProducts.length}}</span>
+                                <span class="pagination-cls">1</span>&nbsp;<span class="pagination-cls">-&nbsp;{{paginationScrollCount}}</span>&nbsp; 
+                                <span class="pagination-cl">of&nbsp;{{selectedProducts.length}}</span>
                               </div>
                               <div class="addbtn mt-3 text-center">
                                 <!-- <button class="addItem-btn btn-btn-primary" [disabled]="true" (click)="editTarget()">Create</button> -->

@@ -31,7 +31,9 @@ font-style: normal;
     /* margin-top: 18px; */
      height:41px ;
     width: 150px; 
-    border:1px white;
+    /* border:1px white; */
+    border: none;
+    outline:none;
     }
 .exit{
     background: rgba(1, 139, 117, 1) ;

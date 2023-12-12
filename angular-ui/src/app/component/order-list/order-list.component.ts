@@ -416,8 +416,8 @@ export class OrderListComponent implements OnInit {
       },
       {
         headerName: 'ODV($)',
-        minWidth:100,
-        maxWidth: 115,
+        minWidth:90,
+        maxWidth: 110,
         field: 'totalValue',
         type: ['rightAligned'],
         cellStyle: {
@@ -429,7 +429,7 @@ export class OrderListComponent implements OnInit {
         headerName: 'ODQ ',
         field: 'orderedQty',
         minWidth:90,
-        maxWidth: 115,
+        maxWidth: 110,
         type: ['rightAligned'],
         cellStyle: {
           'color': '#686E74' 
@@ -439,7 +439,7 @@ export class OrderListComponent implements OnInit {
         headerName: 'RDQ',
         field: 'receivedQty',
         minWidth:90,
-        maxWidth: 115,
+        maxWidth: 110,
         type: ['rightAligned'],
         cellStyle: {
           'color': '#686E74' 
@@ -449,7 +449,7 @@ export class OrderListComponent implements OnInit {
         headerName: 'OSQ',
         field: 'outstandingQty',
         minWidth:90,
-        maxWidth: 115,
+        maxWidth: 110,
         type: ['rightAligned'],
         cellStyle: {
           'color': '#686E74' 
@@ -457,8 +457,8 @@ export class OrderListComponent implements OnInit {
       },
       {
         headerName: 'OSV($)',
-        minWidth:100,
-        maxWidth: 115,
+        minWidth:90,
+        maxWidth: 110,
         field: 'outstandingValue',
         type: ['rightAligned'],
         cellStyle: {
@@ -469,7 +469,7 @@ export class OrderListComponent implements OnInit {
       {
         headerName: 'ITQ',
         minWidth:90,
-        maxWidth: 115,
+        maxWidth: 110,
         field: 'inTransitQty',
         type: ['rightAligned'],
         cellStyle: {
@@ -853,7 +853,7 @@ export class OrderListComponent implements OnInit {
         {
           headerName: 'Outstanding QTY',
           field: 'outstandingQty',
-          minWidth: 150,
+          minWidth: 130,
           // maxWidth: 115,
           type: ['rightAligned'],
           cellStyle: {
