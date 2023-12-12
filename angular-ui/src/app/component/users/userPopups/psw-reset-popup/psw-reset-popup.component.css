@@ -71,7 +71,7 @@ border-radius: 5px;
 margin-right: 35px;
 }
 .cancel-btn{
-    border: 2px solid  #686E74;
+    /* border: 2px solid  #686E74; */
     border-radius: 5px;
     width: 184px;
     height: 43px;
@@ -79,6 +79,8 @@ margin-right: 35px;
     font-weight: 700;
     cursor: pointer;
     color: white;
+    border: none;
+    outline: none;
 }
 .close-icon{
     left: 100%;

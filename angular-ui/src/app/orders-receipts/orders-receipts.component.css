@@ -488,10 +488,10 @@
      }
      
      ::ng-deep .Status .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-       background: #000000 !important;
+       background: #018B75 !important;
      }
       ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-        border: 2px solid #000000 !important;
+        border: 2px solid #018B75 !important;
       }
       ::ng-deep.shipment .mat-form-field-appearance-fill .mat-form-field-flex{
          border-radius: 10px;

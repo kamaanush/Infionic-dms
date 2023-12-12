@@ -145,7 +145,7 @@
   }
   
   ::ng-deep .Dealerdrp .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-    background: #38405F !important;
+    background: #018B75 !important;
   }
 
   
@@ -157,7 +157,7 @@
   
   
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-    border: 2px solid #000000 !important;
+    border: 2px solid #018B75 !important;
   }
   
   .add-user:hover {
@@ -222,7 +222,7 @@
   
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     animation: borderscale .2s ease-in;
-    background: #00187A !important;
+    background: #018B75 !important;
   }
   
   /* .btnhover:hover {
@@ -1106,7 +1106,7 @@
   }
   ::ng-deep .Dealerdrp .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     // background: #D23F00 !important;
-    background: #38405F !important;
+    background: #018B75 !important;
   }
   .listicon {
     display: flex;

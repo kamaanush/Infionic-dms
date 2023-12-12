@@ -23,7 +23,7 @@
 }
 
 ::ng-deep.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
-    background-color: black !important;
+    background-color: #018B75 !important;
 }
 
 .itemSelectedFilter {

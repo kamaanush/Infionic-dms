@@ -42,7 +42,7 @@
             (onDeSelectAll)="onDealerItemDeSelectOrAll($event)" (onSelectAll)="onDealerItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder dealer-placeholder">
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
           <span *ngIf="dealerForm.get('dealerForm').value.length == 0">  </span>
           <span *ngIf="dealerForm.get('dealerForm').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealer selected </span>
           <span *ngIf="dealerForm.get('dealerForm').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealerForm').value.length}} Dealer(s) selected </span>
@@ -58,7 +58,7 @@
             (onDeSelectAll)="onYearDeSelectOrAll($event)" (onSelectAll)="onYearSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder year-placeholder">
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
           <span *ngIf="myForms.get('citys').value.length == 0">  </span>
           <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Financial year selected </span>
           <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Financial year(s) selected </span>

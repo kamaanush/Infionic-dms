@@ -394,7 +394,7 @@
  }
 
  ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-   background: #000000 !important;
+   background: #018B75 !important;
  }
 
  ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
@@ -409,7 +409,7 @@
  }
 
  ::ng-deep .promo .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-   background: #479E00 !important;
+   background: #018B75 !important;
  }
 
  ::ng-deep.product .multiselect-dropdown .dropdown-btn .selected-item {
@@ -420,7 +420,7 @@
  }
 
  ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-   background: #44026C !important;
+   background: #018B75 !important;
  }
 
  ::ng-deep.geog .multiselect-dropdown .dropdown-btn .selected-item {
@@ -442,7 +442,7 @@
  }
 
  ::ng-deep .dealr .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-   background: #38405F !important;
+   background: #018B75 !important;
  }
 
  ::ng-deep.dropdown-btn span .ng-star-inserted {

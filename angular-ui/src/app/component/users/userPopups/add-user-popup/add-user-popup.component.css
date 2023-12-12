@@ -147,7 +147,7 @@ mat-form-field {
 
 
 .btn-primary:disabled {
-    border-color: black;
+    border-color: #018B75;
     background-color: black;
     /* margin-left: 79px; */
     /* margin-top: -12px; */

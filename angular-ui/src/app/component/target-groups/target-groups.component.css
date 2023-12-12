@@ -118,7 +118,7 @@ padding-left: 10px;
   right: 7px;
 }
  ::ng-deep .stts1 .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
-background:  #000000 !important;
+background:  #018B75 !important;
 }
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;

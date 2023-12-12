@@ -59,7 +59,7 @@ label
   }
   
   ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-    background: #44026C !important;
+    background: #018B75 !important;
   }
 
 .dropdown-form-packing {
