@@ -2261,7 +2261,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   processingSubmit = false;
   AddPromosaveAndSubmit(type) {
-    // alert("HElloooo")
+   
     if (this.processingSubmit) {
       return; 
     }
@@ -2269,7 +2269,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     localStorage.setItem('updatePromotionPopup', 'add');
     this.loggedUserId = localStorage.getItem('logInId');
     if (!this.checkValidation(this.selectedPromo)) return;
-    if(type =='Submit'){
+    if(type =='Submit'||type =='Draft'){
       if (this.selectedPromo == 1) {
         console.log('added items', this.buyGroupPlus);
         console.log('addgetgroup', this.addgetgroup);
