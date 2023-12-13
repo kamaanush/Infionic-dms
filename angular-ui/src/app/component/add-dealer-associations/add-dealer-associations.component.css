@@ -1885,7 +1885,7 @@ width: 100%;
 
 ::ng-deep .typess .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
 
-  background: #C32F27 !important;
+  background:#018B75 !important;
 }
 
 
@@ -1903,7 +1903,7 @@ width: 100%;
 ::ng-deep .productt .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
 
   
-  background: #44026C !important;
+  background:#018B75 !important;
 }
 .checkboxStyle{
   margin-top: 36px;

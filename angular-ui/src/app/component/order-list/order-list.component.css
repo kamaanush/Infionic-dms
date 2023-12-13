@@ -330,7 +330,7 @@ input {
     background: #D23F00 !important;
 } */
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-    border: 2px solid #000000 !important;
+    border: 2px solid #018B75 !important;
 }
 
 .add-user1:hover {

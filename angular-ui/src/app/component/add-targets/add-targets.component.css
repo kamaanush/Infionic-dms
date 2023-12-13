@@ -418,7 +418,7 @@ label {
 }
 
 ::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-    background: #D23F00 !important;
+    background:#018B75 !important;
 }
 
 .addtargetDiv {

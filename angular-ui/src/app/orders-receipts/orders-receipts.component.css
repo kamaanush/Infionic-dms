@@ -395,7 +395,7 @@
         transition: all .4s ease;
       }
       ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
-        border: 1px solid #337ab7;
+        border: 1px solid #018B75;
         margin-right: 4px;
         /* background: #00187A !important; */
         padding: 0 5px;

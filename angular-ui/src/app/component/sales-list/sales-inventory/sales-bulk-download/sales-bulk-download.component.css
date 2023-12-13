@@ -185,7 +185,7 @@ text-align: center;
     border: 2px solid #000000 !important;
   }
   .refreshbtn {
-    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    /* filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2)); */
     width: 43px;
     height: 41px;
     background: #000000;
