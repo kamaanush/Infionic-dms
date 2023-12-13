@@ -14,12 +14,11 @@
         <div class="row" style="width: 103%;">
           <div class="col-md-6">
             <div class="promotiont">
-              <label>Association Direction<span>*</span></label><br />
-              <select #teams (change)="selectedValue(teams.value)" class="form-select select-asso"
-                aria-label=".form-select-lg example">
+              <label>Type of Association<span>*</span></label><br />
+              <select #teams (change)="selectedValue(teams.value)" class="form-select select-asso" aria-label=".form-select-lg example" disabled>
                 <!-- <option  selected hidden>Select</option> -->
-                <option value="0" hidden>Select association</option>
-                <option value="1">Product to Dealer</option>
+                <!-- <option value="0" hidden>Select association</option>
+                <option value="1">Product to Dealer</option> -->
                 <option value="2">Dealer to Product</option>
               </select>
             </div>
@@ -89,7 +88,7 @@
                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
                   [virtualScroll]="true" bindLabel="customerName" bindValue="customerId" [searchable]="true"
-                  [clearable]="false" placeholder=" select dealer " (change)="selectedDealer($event)">
+                  [clearable]="false" placeholder=" Select Dealer " (change)="selectedDealer($event)">
                 </ng-select>
               </div>
               <div class="hover-text">

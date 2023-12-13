@@ -878,11 +878,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.isItemValid = true;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
-              item.promoDetails.totalQuantity = stockItem.Quantity;
+              // item.promoDetails.totalQuantity = stockItem.Quantity;
+              item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
 
               this.TotalselectedQuantitythreePromotion = item.promoDetails.totalQuantity;
-              this.totalSelectedQuantity += item.promoDetails.totalQuantity;
+              this.totalSelectedQuantity = item.promoDetails.totalQuantity;
+              // this.totalSelectedQuantity += item.promoDetails.totalQuantity;
               
 
             }
@@ -903,14 +905,15 @@ export class AddOrderPromotionlistComponent implements OnInit {
           this.totalPromotionOrderAmount = 0;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
-              item.promoDetails.totalQuantity = stockItem.Quantity;
+              // item.promoDetails.totalQuantity = stockItem.Quantity;
+              item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
               // stockItem.DiscountAmount = this.calculateDiscountAmount(item.promoDetails.prices, stockItem)
 
               // 4 Promotion Calculations
               this.selectedProQTY = item.promoDetails.totalQuantity;
 
-              this.totalSelectedQuantity += item.promoDetails.totalQuantity;
+              this.totalSelectedQuantity = item.promoDetails.totalQuantity;
 
             }
           });

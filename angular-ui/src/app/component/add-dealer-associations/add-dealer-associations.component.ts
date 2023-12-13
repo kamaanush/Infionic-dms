@@ -275,6 +275,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.getclassification();
     this.getProduct();
     this.customIdentifier();
+    this.selectedValue(2)
   }
 
   applySelectedValue(i) {
