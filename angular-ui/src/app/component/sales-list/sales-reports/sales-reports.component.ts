@@ -35,6 +35,7 @@ import { SharedService } from 'src/app/services/shared-services.service';
 import { AdvancedFilterComponent } from '../advanced-filter/advanced-filter.component';
 import { ReportsService } from 'src/app/services/reports.service';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import * as XLSX from 'xlsx';
 export interface PeriodicElement {
 
   name: any;
@@ -463,7 +464,54 @@ export class SalesReportsComponent implements OnInit {
   }
 
   downloadReports() {
-    this.gridApi.exportDataAsCsv({ fileName: 'salesReport_' + this.convertedDateFormat() });
+    // this.gridApi.exportDataAsCsv({ fileName: 'salesReport_' + this.convertedDateFormat() });
+
+    console.log('Sales report all table data ', this.reportResData);
+    // this.reportResData = this.salesReportData.gridData;
+    console.log(this.salesReportData.gridData,"RK")
+    
+     const excludedProperties = ['string5', 'string6', 'string7','string8','string9','string10','string11','string12',,'string13',,'string14','string15','string16','string17','string18','string19','string20'];
+    // Capitalize headers
+    const headers = Object.keys(this.reportResData[0])
+    // Removing header which in not needed
+       .filter((key) => !excludedProperties.includes(key))
+      //.map(header => header);// to get all capital letters
+      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+    const worksheetData = [headers];
+    this.reportResData.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach((key) => {
+        // const capitalizedKey = key   // to get all capital letters
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        capitalizedItem[capitalizedKey] = item[key];
+      });
+      const row = headers.map((key) => {
+        const value = capitalizedItem[key];
+        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+          return `"${value}"`;
+        }
+        return value;
+      });
+      worksheetData.push(row);
+    });
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'salesReport_' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
+
   }
 
   getReportList() {

@@ -871,7 +871,7 @@ export class UsersComponent implements OnInit {
 onBtnExport() {
   console.log(this.rowData5, 'this.rowData5');
 
-  const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+  const excludedProperties = ['userId', 'imageUrl', 'employeeName'];
 
   // Capitalize headers
   const headers = Object.keys(this.rowData5[0])

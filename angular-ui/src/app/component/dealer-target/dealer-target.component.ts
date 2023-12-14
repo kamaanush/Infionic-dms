@@ -13,7 +13,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PaginationNumberFormatterParams, } from 'ag-grid-community';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { Subscription } from 'rxjs'
-
+import * as XLSX from 'xlsx';
 export interface PeriodicElement {
 
   name: any;
@@ -904,7 +904,52 @@ export class DealerTargetComponent implements OnInit {
     return d + m + y;
   }
   onBtnExport() {
-    this.gridApi.exportDataAsCsv( { fileName: 'dealerTarget_' + this.convertedDateFormat() });
+    // this.gridApi.exportDataAsCsv( { fileName: 'dealerTarget_' + this.convertedDateFormat() });
+
+    console.log('All Target Table data list checking ', this.rowData5);
+    const excludedProperties = ['customerCode','targetAssociationId'];
+    // Capitalize headers
+    const headers = Object.keys(this.rowData5[0])
+    // Removing header which in not needed
+      .filter((key) => !excludedProperties.includes(key))
+      //.map(header => header);// to get all capital letters
+      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+    const worksheetData = [headers];
+    this.rowData5.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach((key) => {
+        // const capitalizedKey = key   // to get all capital letters
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        capitalizedItem[capitalizedKey] = item[key];
+      });
+      const row = headers.map((key) => {
+        const value = capitalizedItem[key];
+        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+          return `"${value}"`;
+        }
+        return value;
+      });
+      worksheetData.push(row);
+    });
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'dealerTarget_' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
+
+
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

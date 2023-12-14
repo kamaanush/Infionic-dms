@@ -1300,9 +1300,12 @@ export class PromotionsComponent implements OnInit {
     
     // this.gridApi.exportDataAsCsv({ fileName: 'Promotions_' + this.convertedDateFormat() });
    console.log(this.rowData5,"Checking Data coming or not");
-  //  const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
-    const headers = Object.keys(this.rowData5[0]).map((header) => header.charAt(0).toUpperCase() + header.slice(1));
-
+   const excludedProperties = ['productPromotionsId'];
+    const headers = Object.keys(this.rowData5[0])
+     // Removing header which in not needed
+    .filter((key) => !excludedProperties.includes(key))
+    //.map(header => header);// to get all capital letters
+    .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
     const worksheetData = [headers];
     this.rowData5.forEach((item) => {
       const capitalizedItem = {};

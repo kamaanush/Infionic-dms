@@ -677,11 +677,11 @@ console.log("SalesList",this.salesListData)
     // this.gridApi.exportDataAsCsv({ fileName: 'salesInventory_' + this.convertedDateFormat() });
     console.log(this.salesListData, 'this.salesListData');
  
-    // const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+     const excludedProperties = ['customerId', 'geographyId','stockItemId'];
    
     // Capitalize headers
     const headers = Object.keys(this.salesListData[0])
-        // .filter(key => !excludedProperties.includes(key))
+         .filter(key => !excludedProperties.includes(key))
         //.map(header => header);// to get all capital letters
         .map(header => header.charAt(0).toUpperCase() + header.slice(1));
    

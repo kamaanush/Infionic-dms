@@ -20,7 +20,7 @@ import { SharedServicesShipmentService } from 'src/app/services/shared-services-
 import { OrderShipmentService } from 'src/app/services/order-shipment.service';
 import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-orders-shipment',
   templateUrl: './orders-shipment.component.html',
@@ -934,9 +934,52 @@ public defaultColDef: ColDef = {
   }
 
   shipmentDownload() {
-    this.gridApi.exportDataAsCsv({
-      fileName: 'Shipment_order' + this.convertedDateFormat(),
+    // this.gridApi.exportDataAsCsv({
+    //   fileName: 'Shipment_order' + this.convertedDateFormat(),
+    // });
+    console.log('All  Table data list shipmentdata', this.shipmentDatalist);
+    const excludedProperties = ['id', 'isShowEdit', 'statusId'];
+    // Capitalize headers
+    const headers = Object.keys(this.shipmentDatalist[0])
+    // Removing header which in not needed
+      .filter((key) => !excludedProperties.includes(key))
+      //.map(header => header);// to get all capital letters
+      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+    const worksheetData = [headers];
+    this.shipmentDatalist.forEach((item) => {
+      const capitalizedItem = {};
+      Object.keys(item).forEach((key) => {
+        // const capitalizedKey = key   // to get all capital letters
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        capitalizedItem[capitalizedKey] = item[key];
+      });
+      const row = headers.map((key) => {
+        const value = capitalizedItem[key];
+        if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+          return `"${value}"`;
+        }
+        return value;
+      });
+      worksheetData.push(row);
     });
+    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Shipment_order' + this.convertedDateFormat();
+    link.click();
+    URL.revokeObjectURL(url);
+
   }
   refresh() {
     this.myForm = this.fb.group({
