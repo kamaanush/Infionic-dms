@@ -57,6 +57,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { PopupCellRendererComponent } from '../popup-cell-renderer/popup-cell-renderer.component';
 import * as moment from 'moment';
 import { UseractionComponent } from '../useraction/useraction.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 // uncomment this based on need****sainathreddy***
 // import { parseMessage } from '@angular/localize/src/utils';
@@ -298,6 +299,7 @@ export class UsersComponent implements OnInit {
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private sharedService: SharedService,
+    private SpinnerService: NgxSpinnerService
   ) {
     this.route.data.subscribe(v => {
       this.currentPageName = v['key'];
@@ -435,6 +437,7 @@ export class UsersComponent implements OnInit {
   }
 
   getusertabeldata() {
+    this.SpinnerService.show(); 
     const data = {
       userTypes: [],
       statuss: [],
@@ -443,7 +446,7 @@ export class UsersComponent implements OnInit {
 
       this.rowData5 = res.response;
 
-
+      this.SpinnerService.hide(); 
     });
   }
   makeCellClicked() {

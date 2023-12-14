@@ -22,9 +22,7 @@
     <div class="col">
       <label class="una_me">Username<span>*</span></label>
       <br>
-      <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;"
-
-      (input)="restrictToAlphabets($event)">
+      <input type="text" id="uname" name="uname"  required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;" (keydown.space)="$event.preventDefault()">
       <p style="margin-bottom:-22px; padding: 0px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"
       class="alert">
   
@@ -97,8 +95,8 @@
 
                 <label>Phone No<span>*</span></label>
                 <br>
-                <input type="text"id="mobile" maxlength="10" name="mobile" required placeholder="Enter your phone no" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel" (input)="restrictToNumbers($event)">
-                <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
+                <input type="text"id="mobile"  name="mobile" required placeholder="Enter your phone no" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel" (input)="restrictToNumbers($event)">
+                <!-- <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
                 class="alert">
               <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
                  *Phone Number is required 
@@ -108,7 +106,7 @@
                  
                  
               </span>
-            </p>
+            </p> -->
   
               </div>
             </div>

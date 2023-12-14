@@ -33,6 +33,7 @@ import { PromotionSharedServicesService } from 'src/app/services/promotion-share
 import moment from 'moment';
 import * as XLSX from 'xlsx';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 export interface PeriodicElement {
 
   name: any;
@@ -388,7 +389,8 @@ export class PromotionsComponent implements OnInit {
     private fb: FormBuilder,
     private associationService: AssosiationServicesService,
     private sharedService: PromotionSharedServicesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private SpinnerService: NgxSpinnerService,
   ) {
     sort: [];
     this.route.data.subscribe((v) => {
@@ -572,9 +574,11 @@ export class PromotionsComponent implements OnInit {
   }
 
   promotionList() {
+    this.SpinnerService.show(); 
+
     this.promotin.promotionlist().subscribe((res) => {
       let localdata = res.response;
-
+      this.SpinnerService.hide(); 
       this.toppingList = localdata.map(
         (data: { promotionTypesId: any; promotionTypesName: any }) => {
           return {

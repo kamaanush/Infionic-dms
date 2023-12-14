@@ -21,6 +21,8 @@ import { OrderShipmentService } from 'src/app/services/order-shipment.service';
 import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import * as XLSX from 'xlsx';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-orders-shipment',
   templateUrl: './orders-shipment.component.html',
@@ -91,7 +93,8 @@ export class OrdersShipmentComponent implements OnInit {
     private otherMasterService: OtherMasterService,
     private sharedServiceCalendar: SharedServiceCalendarService,
     private fb: FormBuilder,
-    private SS:SharedService
+    private SS:SharedService,
+    private SpinnerService: NgxSpinnerService
   ) {
     this.sharedserviceForshipment.listen().subscribe((m: any) => {
       console.log(m);
@@ -673,6 +676,7 @@ public defaultColDef: ColDef = {
     // this.isOpen = false;
   }
   shipmentList() {
+    this.SpinnerService.show(); 
     let data = {
       StatusId: [],
       DealerId: [],
@@ -686,6 +690,7 @@ public defaultColDef: ColDef = {
     this.orders.getShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
       console.log('Response', this.shipmentDatalist);
+      this.SpinnerService.hide(); 
       this.shipmentDatalist.forEach((element) => {
         element.shipmentDate = this.sharedService.dateformat(
           element.shipmentDate

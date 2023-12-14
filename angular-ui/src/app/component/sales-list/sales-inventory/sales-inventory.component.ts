@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import { SharedServiceAddsalesService } from 'src/app/services/shared-service-addsales.service';
 import * as XLSX from 'xlsx';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-sales-inventory',
   templateUrl: './sales-inventory.component.html',
@@ -226,6 +227,7 @@ export class SalesInventoryComponent implements OnInit {
     private salesService:SalesServicesService,
     private fb: FormBuilder,
     private sharedService: SharedServiceAddsalesService,
+    private SpinnerService: NgxSpinnerService
     ) { 
       this.sharedService.listen().subscribe((m: any) => {
         console.log(m)
@@ -307,8 +309,10 @@ export class SalesInventoryComponent implements OnInit {
   });
   }
     dealerItems(){
+      this.SpinnerService.show(); 
     this.salesService.getDealers().subscribe((res: any) => {
       this.dealerList = res.response;
+      this.SpinnerService.hide(); 
         let localdata = this.dealerList
         this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
           return { customerId: data.customerId, customerName  : data.customerName };
@@ -404,8 +408,10 @@ export class SalesInventoryComponent implements OnInit {
     })
   }
   ProductItems(){
+    this.SpinnerService.show(); 
     this.salesService.getproductlist().subscribe((res: any) => {
       this.productList = res.response;
+      this.SpinnerService.hide(); 
         let localdata = this.productList;
         this.productListArray = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
           return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
@@ -502,8 +508,10 @@ export class SalesInventoryComponent implements OnInit {
     })
   }
   GeographyItems() {
+    this.SpinnerService.show(); 
     this.salesService.getGeographies().subscribe((res: any) => {
       this.geographyList =res.response;
+      this.SpinnerService.hide(); 
       let localdata = this.geographyList;
       this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
         return { geographyId: data.geographyId, geographyName: data.geographyName };
@@ -600,6 +608,7 @@ export class SalesInventoryComponent implements OnInit {
     })
   }
   DealerListData() {
+    this.SpinnerService.show(); 
     const data = {
       GeographyId: [],
       ProductId: [],
@@ -611,6 +620,7 @@ export class SalesInventoryComponent implements OnInit {
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
       console.log(res.response)
+      this.SpinnerService.hide(); 
       this.salesListData=res.response;
 console.log("SalesList",this.salesListData)
     })

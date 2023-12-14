@@ -34,6 +34,7 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 // import { DateRange } from '@uiowa/date-range-picker';
 import * as XLSX from 'xlsx';
 export interface PeriodicElement {
@@ -267,7 +268,8 @@ export class OrderListComponent implements OnInit {
     private sharedserviceForshipment: SharedServicesShipmentService,
     private sharedServiceCalendar: SharedServiceCalendarService,
     private SS:SharedService,
-    private materialListService: SharedServiceMaterialListService
+    private materialListService: SharedServiceMaterialListService,
+    private SpinnerService: NgxSpinnerService
   ) {
     this.sharedserviceForshipment.listen().subscribe((m: any) => {
       console.log(m);
@@ -1353,6 +1355,7 @@ export class OrderListComponent implements OnInit {
   onSearchChangeDEAL($event: any, anything?: any) {}
 
   orderlistGrid() {
+    this.SpinnerService.show(); 
     const data = {
       // userTypes: this.userTypes,
       // statuss: this.statusTypes,
@@ -1368,10 +1371,12 @@ export class OrderListComponent implements OnInit {
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
       console.log(res.response, '..............');
+      this.SpinnerService.hide(); 
       this.rowDatalist.forEach((element) => {
         element.orderDate = this.sharedService.dateformat(element.orderDate);
       });
     });
+
   }
   orderUpload() {
     sessionStorage.setItem('sales', '');

@@ -38,6 +38,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-bulk-edit-assosiation',
@@ -47,12 +48,12 @@ import { SharedServicesDealerService } from 'src/app/services/shared-services-de
 export class BulkEditAssosiationComponent implements OnInit {
   // clickEventSubscription:Subscription;
 
-  SKUId:any;
-  productSKUId:any;
-  GROID:any;
-  ProductSKUGeographyId:any;
-  ProductSKUCode:boolean=false;
-  ProductGEOID:boolean=false;
+  SKUId: any;
+  productSKUId: any;
+  GROID: any;
+  ProductSKUGeographyId: any;
+  ProductSKUCode: boolean = false;
+  ProductGEOID: boolean = false;
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm: any = FormGroup;
@@ -71,11 +72,11 @@ export class BulkEditAssosiationComponent implements OnInit {
   userTypes: any = [];
   statusTypes: any = [];
   toppingList: any[] = [];
-  geographysSelected:any=[];
-  dealerSelected:any=[];
-  productSelected:any=[];
+  geographysSelected: any = [];
+  dealerSelected: any = [];
+  productSelected: any = [];
   toppingList1: any = [];
-  ProductName:any='mani'
+  ProductName: any = 'mani'
   searchText: any;
   selectedGeoField: string = "";
   updateGeographyValue: string = "";
@@ -83,8 +84,8 @@ export class BulkEditAssosiationComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   geoGraphyFullData: any = [];
-  ProductListArray:any=[];
-  dealerListArray:any=[];
+  ProductListArray: any = [];
+  dealerListArray: any = [];
   selectedHirerachyIndex: number = 0;
   gridOptions: GridOptions = {
     defaultColDef: {
@@ -104,23 +105,23 @@ export class BulkEditAssosiationComponent implements OnInit {
       headerName: 'Product GeographyId',
       field: 'productSKUGeographyId',
 
-    
+
     },
-   
-   
+
+
     {
       headerName: "ProductName",
       field: 'stockItemName',
-       type: ['nonEditableColumn'], sort: 'desc', 
+      type: ['nonEditableColumn'], sort: 'desc',
     },
-   
+
     {
       headerName: 'Product Code ',
       field: 'productCode',
 
-    
+
     },
-   
+
 
     {
       headerName: "GeographName",
@@ -140,41 +141,41 @@ export class BulkEditAssosiationComponent implements OnInit {
     {
       headerName: "MRP",
       field: 'mrp',
-    
+
     },
 
     {
       headerName: 'MinOrder',
       field: 'minOrder',
 
-    
+
     },
 
     {
       headerName: 'MaxOrder',
       field: 'maxOrder',
 
-    
-    },  {
+
+    }, {
       headerName: 'Margin',
       field: 'margin',
 
-    
+
     },
     {
       headerName: 'Discount',
       field: 'discount',
 
-    
+
     },
     {
       headerName: 'LeadTimeIndays',
       field: 'leadTimeIndays',
 
-    
+
     },
-   
-    
+
+
 
   ];
   public popupParent: HTMLElement = document.body;
@@ -232,7 +233,7 @@ export class BulkEditAssosiationComponent implements OnInit {
   public pivotPanelShow = 'always';
 
   displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
-;
+  ;
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
@@ -245,7 +246,7 @@ export class BulkEditAssosiationComponent implements OnInit {
   paginationScrollCount: any;
 
   @ViewChild(MatSidenav)
-  arrayToStore:any;
+  arrayToStore: any;
 
   sidenav!: MatSidenav;
   roleName: any;
@@ -260,11 +261,11 @@ export class BulkEditAssosiationComponent implements OnInit {
   stayScrolledToEnd = true;
   message: boolean = false;
   message1: boolean = true;
-  instancePopup:any = null;
-  productAllArray:any[]=[];
-  dealerAllArray:any[]=[];
+  instancePopup: any = null;
+  productAllArray: any[] = [];
+  dealerAllArray: any[] = [];
   addAddressDetailsForm!: FormGroup;
-  LoginId:any;
+  LoginId: any;
 
   paginationNumberFormatter: (
     params: PaginationNumberFormatterParams
@@ -300,13 +301,14 @@ export class BulkEditAssosiationComponent implements OnInit {
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private sharedService: SharedServicesDealerService,
-    private associationService:AssosiationServicesService,
+    private associationService: AssosiationServicesService,
     private _formBuilder: FormBuilder,
-    
+    private SpinnerService: NgxSpinnerService,
+
   ) {
     this.formReader();
-    
-  
+
+
 
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
@@ -327,7 +329,7 @@ export class BulkEditAssosiationComponent implements OnInit {
   ngAfterViewInit() {
 
 
-   // this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
     // this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
     //   if (res.matches) {
     //     this.sidenav.mode = 'over';
@@ -343,13 +345,13 @@ export class BulkEditAssosiationComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+
     this.getusertabeldata();
     this.ProductItems();
     this.dealerItems();
     this.roleItems();
-     let LoginId1=localStorage.getItem("logInId");
-     this.LoginId=Number(LoginId1)
+    let LoginId1 = localStorage.getItem("logInId");
+    this.LoginId = Number(LoginId1)
 
     this.myForm = this.fb.group({
       city: [this.selectedItems]
@@ -361,30 +363,30 @@ export class BulkEditAssosiationComponent implements OnInit {
       city1: [this.selectedItems]
     });
 
-        this.addAddressDetailsForm = this._formBuilder.group({
-          BulkAssociationsCount: this._formBuilder.array([]),  
+    this.addAddressDetailsForm = this._formBuilder.group({
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-          });
+    });
   }
-  
-  onBtnExport(){
+
+  onBtnExport() {
     this.gridApi.exportDataAsCsv();
   }
-  change(i){
+  change(i) {
 
-  this.addAddressDetailsForm.value.BulkAssociationsCount[i].MRP = this.arrayToStore.BulkAssociationsCount[i].MRP;
-  this.addAddressDetailsForm.value.BulkAssociationsCount[i].MinOrder = this.arrayToStore.BulkAssociationsCount[i].MinOrder
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].MRP = this.arrayToStore.BulkAssociationsCount[i].MRP;
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].MinOrder = this.arrayToStore.BulkAssociationsCount[i].MinOrder
 
-  this.addAddressDetailsForm.value.BulkAssociationsCount[i].MaxOrder = this.arrayToStore.BulkAssociationsCount[i].MaxOrder
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].MaxOrder = this.arrayToStore.BulkAssociationsCount[i].MaxOrder
 
-  this.addAddressDetailsForm.value.BulkAssociationsCount[i].Margin = this.arrayToStore.BulkAssociationsCount[i].Margin
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].Margin = this.arrayToStore.BulkAssociationsCount[i].Margin
 
-  this.addAddressDetailsForm.value.BulkAssociationsCount[i].Discount = this.arrayToStore.BulkAssociationsCount[i].Discount
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].Discount = this.arrayToStore.BulkAssociationsCount[i].Discount
 
-  this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays = this.arrayToStore.BulkAssociationsCount[i].LeadTimeIndays
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays = this.arrayToStore.BulkAssociationsCount[i].LeadTimeIndays
 
-this.addAddressDetailsForm.value.BulkAssociationsCount[i].productSKUId=this.arrayToStore.BulkAssociationsCount[i].productSKUId
-this.addAddressDetailsForm.value.BulkAssociationsCount[i].GROID=this.arrayToStore.BulkAssociationsCount[i].GROID
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].productSKUId = this.arrayToStore.BulkAssociationsCount[i].productSKUId
+    this.addAddressDetailsForm.value.BulkAssociationsCount[i].GROID = this.arrayToStore.BulkAssociationsCount[i].GROID
     // this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays=
   }
 
@@ -399,13 +401,13 @@ this.addAddressDetailsForm.value.BulkAssociationsCount[i].GROID=this.arrayToStor
 
   formReader() {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
     });
   }
 
-  
+
   BulkAssociationsCount(): FormArray {
-    return this.addAddressDetailsForm.controls["BulkAssociationsCount"]as FormArray
+    return this.addAddressDetailsForm.controls["BulkAssociationsCount"] as FormArray
   }
 
   scrolledIndexChange(i): void {
@@ -462,17 +464,17 @@ this.addAddressDetailsForm.value.BulkAssociationsCount[i].GROID=this.arrayToStor
       this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { statusSelection: 2 });
     } else {
       this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { statusSelection: null });
-    
-  }
+
+    }
   }
 
-  refresh() {  
-     this.selectedGeoField = '';
-     this.updateGeographyValue = '';
+  refresh() {
+    this.selectedGeoField = '';
+    this.updateGeographyValue = '';
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     this.toppings1 = new FormControl(this.toppingList1);
     this.myForm = this.fb.group({
       city: [this.selectedItems]
@@ -485,147 +487,149 @@ this.addAddressDetailsForm.value.BulkAssociationsCount[i].GROID=this.arrayToStor
     });
 
 
-    this.geographysSelected=[];
-    this.productSelected=[];
-    this.dealerSelected=[];
-    this.searchText=''
- const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+    this.geographysSelected = [];
+    this.productSelected = [];
+    this.dealerSelected = [];
+    this.searchText = ''
+    const data = {
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId);
-      GROID.setValue(details?.GROID);
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId);
+        GROID.setValue(details?.GROID);
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
 
-}
+      }
 
 
 
 
 
-    }); 
-   
-    
+    });
+
+
   }
 
   getusertabeldata() {
+    this.SpinnerService.show(); 
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
- this.associationService.getDealersList(data).subscribe((res) => {   
-this.rowData5 = res.response;
-let data=res.response;
-console.log("Dattaaa ",data)
-let details
-for(details of data){
-  let MRP: FormControl = new FormControl('');
-  let MinOrder: FormControl = new FormControl('');
-  let MaxOrder: FormControl = new FormControl('');
-  let Margin: FormControl = new FormControl('');
-  let Discount: FormControl = new FormControl('');
-  let LeadTimeIndays: FormControl = new FormControl('');
-  let   productSKUId:FormControl=new FormControl('');
-  let GROID:FormControl=new FormControl('');
-  let ProductName: FormControl = new FormControl('');
-let GeographName: FormControl = new FormControl('');
-let DealerName: FormControl = new FormControl('');
-let ProductSKUGeographyId: FormControl = new FormControl('');
-let LoginId: FormControl = new FormControl('');
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+      let data = res.response;
+      console.log("Dattaaa ", data)
+      this.SpinnerService.hide(); 
+      let details
+      for (details of data) {
+        let MRP: FormControl = new FormControl('');
+        let MinOrder: FormControl = new FormControl('');
+        let MaxOrder: FormControl = new FormControl('');
+        let Margin: FormControl = new FormControl('');
+        let Discount: FormControl = new FormControl('');
+        let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
+        let ProductName: FormControl = new FormControl('');
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
 
 
-MRP.setValue(details?.mrp)
-MinOrder.setValue(details?.minOrder)
-MaxOrder.setValue(details?.maxOrder)
-Margin.setValue(details?.margin)
-Discount.setValue(details?.discount)
-LeadTimeIndays.setValue(details?.leadTimeIndays)
-productSKUId.setValue(details?.productCode)
- GROID.setValue(details?.ProductSKUGeographyId)
-  ProductSKUGeographyId.setValue(details?.ProductSKUGeographyId)
-ProductName.setValue(details?.stockItemName)
-DealerName.setValue(details?.customerName)
-GeographName.setValue(details?.geographyName)
- ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-LoginId.setValue(this.LoginId)
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productCode)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductSKUGeographyId.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
 
 
-  this.getFormArray().push(new FormGroup({
-    MRP:MRP,
-    MinOrder:MinOrder,
-    MaxOrder:MaxOrder,
-    Margin:Margin,
-    Discount:Discount,
-    LeadTimeIndays:LeadTimeIndays,
-    productSKUId:productSKUId,
-    GROID:GROID,
-    ProductName:ProductName,
-    GeographName:GeographName,
-    DealerName:DealerName,
-    ProductSKUGeographyId:ProductSKUGeographyId,
-    donebyid:LoginId
-  }));
-}
+        this.getFormArray().push(new FormGroup({
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
+        }));
+      }
 
     });
 
   }
   getFormArray(): FormArray {
-    this.arrayToStore=this.addAddressDetailsForm.value;
-    console.log('arrayvalue',this.arrayToStore)
+    this.arrayToStore = this.addAddressDetailsForm.value;
+    console.log('arrayvalue', this.arrayToStore)
     return this.addAddressDetailsForm.get('BulkAssociationsCount') as FormArray;
   }
   makeCellClicked() {
@@ -663,90 +667,90 @@ LoginId.setValue(this.LoginId)
     });
   }
 
-  saveBulkEdit(){
+  saveBulkEdit() {
+    this.SpinnerService.show(); 
+    console.log('this.addAddressDetailsForm.value', this.addAddressDetailsForm.value)
+    this.associationService.editbulkdealer(this.addAddressDetailsForm.value).subscribe((res) => {
+     
+      if (res.response.result == 'successfully updated') {
+        this.sharedService.filter('Register click')
 
-console.log('this.addAddressDetailsForm.value',this.addAddressDetailsForm.value)
-  this.associationService.editbulkdealer(this.addAddressDetailsForm.value).subscribe((res)=>{
-
-if(res.response.result=='successfully updated'){
-  this.sharedService.filter('Register click')
-
-  this.dialog.closeAll();
-}
-
-
-
-  })
-  console.log("BulkEditAss",this.addAddressDetailsForm.value);  
-
-}
+        this.dialog.closeAll();
+      }
+      this.SpinnerService.hide(); 
 
 
+    })
+    console.log("BulkEditAss", this.addAddressDetailsForm.value);
 
-  ProductItems(){
+  }
+
+
+
+  ProductItems() {
     this.user.getproductlist().subscribe((res: any) => {
-        let localdata = res.response;
-        // console.log('checkdata', localdata)
-  
-        this.ProductListArray = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
-          return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
-        });
-  
-        this.ProductListArray.push()
-        this.ProductListArray.forEach(element => {
-          return this.productAllArray.push(element.stockItemId);
-          // console.log('rolecheck',rolecheck)
-  
-        })                                                                    
+      let localdata = res.response;
+      // console.log('checkdata', localdata)
+
+      this.ProductListArray = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
+        return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
       });
-    
-      this.dropdownSettings2 = {
-        singleSelection: false,
-        idField: 'stockItemId',
-        textField: 'stockItemName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: true
-      };
-      this.selectedStatus = [];
-      this.toppings1 = new FormControl(this.toppingList1);
+
+      this.ProductListArray.push()
+      this.ProductListArray.forEach(element => {
+        return this.productAllArray.push(element.stockItemId);
+        // console.log('rolecheck',rolecheck)
+
+      })
+    });
+
+    this.dropdownSettings2 = {
+      singleSelection: false,
+      idField: 'stockItemId',
+      textField: 'stockItemName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+    this.selectedStatus = [];
+    this.toppings1 = new FormControl(this.toppingList1);
   }
 
 
-  dealerItems(){
+  dealerItems() {
     this.associationService.getDealers().subscribe((res: any) => {
-        let localdata = res.response;
-        // console.log('checkdata', localdata)
-  
-        this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
-          return { customerId: data.customerId, customerName  : data.customerName };
-        });
+      let localdata = res.response;
+      // console.log('checkdata', localdata)
 
-        this.dealerListArray.push()
-        this.dealerListArray.forEach(element => {
-          return this.dealerAllArray.push(element.customerId);
-          // console.log('rolecheck',rolecheck)
-  
-        })       
-        console.log('dealerAllArray',this.dealerAllArray)                                                    
+      this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
+        return { customerId: data.customerId, customerName: data.customerName };
       });
-    
-      this.dropdownSettings1 = {
-        singleSelection: false,
-        idField: 'customerId',
-        textField: 'customerName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: true
-      };
-      this.selectedStatus = [];
-      this.toppings1 = new FormControl(this.toppingList1);
+
+      this.dealerListArray.push()
+      this.dealerListArray.forEach(element => {
+        return this.dealerAllArray.push(element.customerId);
+        // console.log('rolecheck',rolecheck)
+
+      })
+      console.log('dealerAllArray', this.dealerAllArray)
+    });
+
+    this.dropdownSettings1 = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+    this.selectedStatus = [];
+    this.toppings1 = new FormControl(this.toppingList1);
   }
 
 
-  
+
 
   handleRowDataChanged(event) {
     const index = this.messages.length - 1;
@@ -757,7 +761,7 @@ if(res.response.result=='successfully updated'){
 
   handleScroll(event) {
 
-    if(this.instancePopup && this.instancePopup.isOpen){
+    if (this.instancePopup && this.instancePopup.isOpen) {
       this.instancePopup.togglePopup();
       this.instancePopup = null;
     }
@@ -778,15 +782,15 @@ if(res.response.result=='successfully updated'){
   statusItems() {
     this.user.dealersStatus().subscribe((res: any) => {
       this.toppingList1 = res.response;
-      
+
       console.log('we have to check here', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
-      
+
 
       })
       console.log('statusArray', this.statusArray)
-    
+
       this.dropdownSettings1 = {
         singleSelection: false,
         idField: 'statusId',
@@ -811,71 +815,71 @@ if(res.response.result=='successfully updated'){
     });
     console.log('rolename', this.rowData)
   }
-  
+
   onItemSelect(item: any) {
 
     // alert(item.roleName)
     this.geographysSelected.push(item.geographyId);
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let   productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -886,69 +890,69 @@ if(res.response.result=='successfully updated'){
   onItemSelectOrAll(item: any) {
     this.geographysSelected = this.roleArray;
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
-      this.rowData5 = res.response;  
-      let data=res.response;
+      this.rowData5 = res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -957,66 +961,66 @@ if(res.response.result=='successfully updated'){
   }
   onItemDeSelectOrAll(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
-    this.geographysSelected=[];
+    });
+    this.geographysSelected = [];
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-       let productSKUId:FormControl=new FormControl('');
-       let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -1027,9 +1031,9 @@ if(res.response.result=='successfully updated'){
 
   onItemDeSelect(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
 
     this.geographysSelected.forEach((element, index) => {
       if (element == item.geographyId) this.geographysSelected.splice(index, 1);
@@ -1038,61 +1042,61 @@ if(res.response.result=='successfully updated'){
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let  productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -1103,68 +1107,68 @@ if(res.response.result=='successfully updated'){
 
   onItemProductSelect(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     // alert(item.roleName)
     this.productSelected.push(item.stockItemId);
 
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl =new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -1174,66 +1178,66 @@ if(res.response.result=='successfully updated'){
   }
   onItemProductSelectOrAll(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     this.productSelected = this.productAllArray;
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -1242,66 +1246,66 @@ if(res.response.result=='successfully updated'){
   }
   onItemProductDeSelectOrAll(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
-    this.productSelected=[];
+    });
+    this.productSelected = [];
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -1312,9 +1316,9 @@ if(res.response.result=='successfully updated'){
 
   onItemProductDeSelect(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     this.productSelected.forEach((element, index) => {
       if (element == item.stockItemId) this.productSelected.splice(index, 1);
     });
@@ -1322,61 +1326,61 @@ if(res.response.result=='successfully updated'){
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
     });
@@ -1385,71 +1389,71 @@ if(res.response.result=='successfully updated'){
 
 
 
-  
+
   onItemDealerSelect(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     // alert(item.roleName)
     this.dealerSelected.push(item.customerId);
 
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -1459,66 +1463,66 @@ if(res.response.result=='successfully updated'){
   }
   onItemDealerSelectOrAll(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
+    });
     this.dealerSelected = this.dealerAllArray;
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
     });
@@ -1526,66 +1530,66 @@ if(res.response.result=='successfully updated'){
   }
   onItemDealerDeSelectOrAll(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
-    this.dealerSelected=[];
+    });
+    this.dealerSelected = [];
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
     });
@@ -1595,10 +1599,10 @@ if(res.response.result=='successfully updated'){
 
   onItemDealerDeSelect(item: any) {
     this.addAddressDetailsForm = this._formBuilder.group({
-      BulkAssociationsCount: this._formBuilder.array([]),  
+      BulkAssociationsCount: this._formBuilder.array([]),
 
-      });
-console.log(item)
+    });
+    console.log(item)
     this.dealerSelected.forEach((element, index) => {
       if (element == item.customerId) this.dealerSelected.splice(index, 1);
     });
@@ -1606,61 +1610,61 @@ console.log(item)
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      geographys:this.geographysSelected,
-    product:this.productSelected,
-     dealer:this.dealerSelected,
-    Search:this.searchText
+      geographys: this.geographysSelected,
+      product: this.productSelected,
+      dealer: this.dealerSelected,
+      Search: this.searchText
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      let data=res.response;
+      let data = res.response;
       let details
-      for(details of data){
+      for (details of data) {
         let MRP: FormControl = new FormControl('');
         let MinOrder: FormControl = new FormControl('');
         let MaxOrder: FormControl = new FormControl('');
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
-        let productSKUId:FormControl=new FormControl('');
-        let GROID:FormControl=new FormControl('');
+        let productSKUId: FormControl = new FormControl('');
+        let GROID: FormControl = new FormControl('');
         let ProductName: FormControl = new FormControl('');
-      let GeographName: FormControl = new FormControl('');
-      let DealerName: FormControl = new FormControl('');
-      let ProductSKUGeographyId: FormControl = new FormControl('');
-      let LoginId: FormControl = new FormControl('');
-      
-      
-      MRP.setValue(details?.mrp)
-      MinOrder.setValue(details?.minOrder)
-      MaxOrder.setValue(details?.maxOrder)
-      Margin.setValue(details?.margin)
-      Discount.setValue(details?.discount)
-      LeadTimeIndays.setValue(details?.leadTimeIndays)
-      productSKUId.setValue(details?.productSKUId)
-      GROID.setValue(details?.ProductSKUGeographyId)
-      ProductName.setValue(details?.stockItemName)
-      DealerName.setValue(details?.customerName)
-      GeographName.setValue(details?.geographyName)
-      ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
-      LoginId.setValue(this.LoginId)
-      
-      
+        let GeographName: FormControl = new FormControl('');
+        let DealerName: FormControl = new FormControl('');
+        let ProductSKUGeographyId: FormControl = new FormControl('');
+        let LoginId: FormControl = new FormControl('');
+
+
+        MRP.setValue(details?.mrp)
+        MinOrder.setValue(details?.minOrder)
+        MaxOrder.setValue(details?.maxOrder)
+        Margin.setValue(details?.margin)
+        Discount.setValue(details?.discount)
+        LeadTimeIndays.setValue(details?.leadTimeIndays)
+        productSKUId.setValue(details?.productSKUId)
+        GROID.setValue(details?.ProductSKUGeographyId)
+        ProductName.setValue(details?.stockItemName)
+        DealerName.setValue(details?.customerName)
+        GeographName.setValue(details?.geographyName)
+        ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+        LoginId.setValue(this.LoginId)
+
+
         this.getFormArray().push(new FormGroup({
-          MRP:MRP,
-          MinOrder:MinOrder,
-          MaxOrder:MaxOrder,
-          Margin:Margin,
-          Discount:Discount,
-          LeadTimeIndays:LeadTimeIndays,
-          productSKUId:productSKUId,
-          GROID:GROID,
-          ProductName:ProductName,
-          GeographName:GeographName,
-          DealerName:DealerName,
-          ProductSKUGeographyId:ProductSKUGeographyId,
-          donebyid:LoginId
+          MRP: MRP,
+          MinOrder: MinOrder,
+          MaxOrder: MaxOrder,
+          Margin: Margin,
+          Discount: Discount,
+          LeadTimeIndays: LeadTimeIndays,
+          productSKUId: productSKUId,
+          GROID: GROID,
+          ProductName: ProductName,
+          GeographName: GeographName,
+          DealerName: DealerName,
+          ProductSKUGeographyId: ProductSKUGeographyId,
+          donebyid: LoginId
         }));
       }
 
@@ -1688,7 +1692,7 @@ console.log(item)
     console.log('onItemSelect', item);
   }
 
-  selectedValue(value){
+  selectedValue(value) {
     alert(value)
     console.log(value)
     let MRP: FormControl = new FormControl('');
@@ -1698,7 +1702,7 @@ console.log(item)
     this.addAddressDetailsForm.setValue(["AA"]);
 
     // this.addAddressDetailsForm.BulkAssociationsCount.at(0)['sd']
-    
+
     // let control = this.addAddressDetailsForm.controls[0];
     // setTimeout(() => control.patchValue("BulkAssociationsCount"), 250);
 
@@ -1716,22 +1720,19 @@ console.log(item)
 
   addUser() {
   }
-  editBulk(){
-    this.dialog.open(BulkEditAssosiationComponent,{width: '1000px',height:'660px'});
+  editBulk() {
+    this.dialog.open(BulkEditAssosiationComponent, { width: '1000px', height: '660px' });
 
   }
 
   applySelectedValue() {
-
-
-
     console.log(this.updateGeographyValue, this.selectedGeoField);
     console.log(this.getFormArray())
-    
+
     for (let i = 0; i < this.addAddressDetailsForm.value.BulkAssociationsCount.length; i++) {
       this.addAddressDetailsForm.value.BulkAssociationsCount.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
     }
-console.log('this.addAddressDetailsForm.value.BulkAssociationsCount',this.addAddressDetailsForm.value.BulkAssociationsCount)
+    console.log('this.addAddressDetailsForm.value.BulkAssociationsCount', this.addAddressDetailsForm.value.BulkAssociationsCount)
     this.selectedGeoField = "";
     this.updateGeographyValue = "";
   }

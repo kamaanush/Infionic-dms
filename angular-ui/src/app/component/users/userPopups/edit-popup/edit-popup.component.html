@@ -21,7 +21,7 @@
     <div class="col">
       <label>Username<span>*</span></label>
       <br>
-      <input id="euname" name="euname" required type="text" placeholder="Enter your username" [(ngModel)]="username" style="width: 530px;" #euname="ngModel">
+      <input id="euname" name="euname" required type="text" placeholder="Enter your username" [(ngModel)]="username" style="width: 530px;" #euname="ngModel" (keydown.space)="$event.preventDefault()">
       <p style="margin-bottom:-22px;padding: 0px;" *ngIf="euname.invalid && (euname.dirty || euname.touched)"
       class="alert">
   
@@ -80,7 +80,7 @@
                 <label>Phone No<span>*</span></label>
                 <br>
                 <input type="text" id="mobileno" name="mobileno" required placeholder="Enter your phone number" pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Enter your phone no." [(ngModel)]="phone" #mobileno="ngModel">
-                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="mobileno.invalid && (mobileno.dirty || mobileno.touched)"
+                <!-- <p style="margin-bottom:-22px;padding: 0px;" *ngIf="mobileno.invalid && (mobileno.dirty || mobileno.touched)"
                 class="alert">
               <span style="color:red;position: relative;" *ngIf="mobileno.errors?.['required']">
                 *Phone Number is required.
@@ -88,7 +88,7 @@
               <span style="color:red;position: relative;" *ngIf="mobileno.errors&&mobileno.errors?.['pattern']">
                 *Phone Number is Invalid.
               </span>
-            </p>
+            </p> -->
               </div>
             </div>
             <br>
