@@ -39,7 +39,7 @@
     </div>
      <br>
         <div class="action">
-            <button class="save-btn" (click)="SaveData()">{{isEditModal ? 'Save':'Add'}}</button>
+            <button class="save-btn" [disabled]="loginForm.invalid" (click)="SaveData()">{{isEditModal ? 'Save':'Add'}}</button>
         </div>
         <div style="color: red;text-align: center;" *ngIf="showWarning">*Required fields</div>
         

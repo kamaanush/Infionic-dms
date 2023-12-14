@@ -11,13 +11,13 @@ export class UserroledirectiveDirective implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.userRoleDirective, this.pageName);
-    console.log(this.elementRef);
+    // console.log(this.elementRef);
     if (localStorage.getItem('userroles')) {
       let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
       userRolesData.forEach(element => {
         if (element.title == this.pageName) {
           let currentMenu = element.permission.find(x => x.action.toLowerCase() === this.userRoleDirective.toLowerCase());
-          console.log(currentMenu);
+          // console.log(currentMenu);
           if (currentMenu == undefined || currentMenu == null || !currentMenu.status) {
             // console.log(this.elementRef);
             // this.vcr.clear();

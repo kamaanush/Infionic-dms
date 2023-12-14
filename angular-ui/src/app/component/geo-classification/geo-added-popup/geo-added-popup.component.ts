@@ -25,15 +25,13 @@ export class GeoAddedPopupComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(()=>{
       this.dialogRef.close();
-    }, 5*1000);
+      this.geoData();
+    }, 3000);
     this.geoData();
-
-
-    
   }
   geoData(){
     let editData = sessionStorage.getItem("EditModal")
-    console.log("editData",editData);
+    // console.log("editData",editData);
     if(editData == "true") {
       this.EditGeo =true;
     }
@@ -51,8 +49,8 @@ export class GeoAddedPopupComponent implements OnInit {
       this.geographyCode =geoCode;
       console.log("GeoName",geoName);
       console.log("GeoCode",geoCode);
-      console.log("uomName",uomName);
-      console.log("uomCode",uomCode)
+      // console.log("uomName",uomName);
+      // console.log("uomCode",uomCode)
     }
     else if(uomName != '') {
       sessionStorage.setItem("GeoName",'')
