@@ -33,7 +33,7 @@ export class DeactiveReactivePopupComponent implements OnInit {
   }
 
 
-  dectrv(){
+  dectrvv(){
     sessionStorage.setItem("Response",'')
    this.dialog.open(DealerDeactiveComponent ,{panelClass: 'deactiveSuccessPop'});
    this.dialogRef.close();
@@ -41,12 +41,36 @@ export class DeactiveReactivePopupComponent implements OnInit {
    CustomerId:this.customerId,
    logedUserId:this.LoginId,
    status:"deactivate"
-           }
+  };
   this.user.activateDeactivateDealers(data).subscribe((res)=>{
   this.sharedService.filter('Register click');
   this.dialogRef.close()
 
 })
    this.dialog.open(DealerDeactiveComponent ,{panelClass: 'deactiveSuccessPop'})
+  }
+  dectrv()
+  {
+    sessionStorage.setItem("Response",'');
+    this.dialogRef.close();
+    let data={
+      CustomerId:this.customerId,
+      logedUserId:this.LoginId,
+      status:"deactivate"
+     };
+    this.user.activateDeactivateDealers(data).subscribe((res)=>{
+      if(res.response.result === 'Succesfully Activated Dealer' || res.response.result === 'Succesfully DeActivated Dealer')
+      {
+        this.dialog.open(DealerDeactiveComponent ,{panelClass: 'deactiveSuccessPop'})
+        this.sharedService.filter('Register click');
+        this.dialogRef.close()
+      }
+      else
+      {
+        alert(res.response.result); 
+        this.dialogRef.close()
+      }
+    })
+    
   }
 }

@@ -64,10 +64,21 @@ else{
       }
 
 this.calssification.deactivateSub(data1).subscribe((res)=>{
-  this.sharedService.filter('Register click')
-  this.dialogRef.close();
+  if(res.response.result=='successfully Deactivated' || res.response.result=='successfully Activated' )
+  {
+    this.sharedService.filter('Register click')
+    this.dialogRef.close();
+    this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccess_Pop'})
+  }
+  // this.sharedService.filter('Register click')
+  // this.dialogRef.close();
+  else
+  {
+    alert(res.response.result);
+    this.dialogRef.close();
+  }
 });
-this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccess_Pop'})
+// this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccess_Pop'})
 
 // {panelClass: 'activeSuccessPop'}
     }
@@ -79,12 +90,22 @@ this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccess_Pop'})
           }
           
     this.calssification.deactivateSub(data1).subscribe((res)=>{
-      this.sharedService.filter('Register click')
+      if(res.response.result=='successfully Deactivated' || res.response.result=='successfully Activated' )
+      {
+        this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deaeSuPop'});
+        this.sharedService.filter('Register click')
       this.dialogRef.close();
-  
+      }
+      // this.sharedService.filter('Register click')
+      // this.dialogRef.close();
+   else
+   {
+    alert(res.response.result);
+    this.dialogRef.close()
+   }
     
     })
-    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deaeSuPop'});
+    // this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deaeSuPop'});
     // {panelClass: 'deactiveSuccessPop'}
         }
 
