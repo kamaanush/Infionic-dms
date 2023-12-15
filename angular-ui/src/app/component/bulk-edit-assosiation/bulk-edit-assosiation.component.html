@@ -167,7 +167,8 @@
         <tr *ngFor="let quantity of BulkAssociationsCount().controls; let i=index" [formGroupName]="i">
           <td *ngIf="ProductGEOID">
             <input type="text" class="uom-cls" formControlName="ProductSKUGeographyId" name="fname" id="fname"
-              [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductSKUGeographyId">
+              [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductSKUGeographyId"
+              >
 
           </td>
 
@@ -229,7 +230,7 @@
 
           <td>
 
-            <div class="icon btnhover1 refreshbtn" style=" cursor: pointer;" (click)="change(i)">
+            <div class="icon btnhover1 refreshbtn" style=" cursor: pointer;" (click)="change(i,quantity)">
               <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
                 alt="refresh">
             </div>

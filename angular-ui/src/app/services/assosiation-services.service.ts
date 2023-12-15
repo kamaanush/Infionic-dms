@@ -50,7 +50,9 @@ export class AssosiationServicesService {
     return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealerAssociation', data);
   }
 
- 
+ public getdealerslistafterresfresh(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/GetAssociationById', data)
+ }
 
 
   public editbulkdealer(data) {

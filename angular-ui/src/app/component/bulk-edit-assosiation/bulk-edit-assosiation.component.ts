@@ -372,24 +372,107 @@ export class BulkEditAssosiationComponent implements OnInit {
   onBtnExport() {
     this.gridApi.exportDataAsCsv();
   }
-  change(i) {
+  // change(i) {
+  //   this.userId = localStorage.getItem("logInId");
+  //   console.log(i);
+  //   this.SpinnerService.show();
+  //   const requestData = {
+  //     CurrentUserId: this.userId,
+  //     ProductSKUGeographyId: this.addAddressDetailsForm.value.BulkAssociationsCount[i].ProductSKUGeographyId,
+  //   };
+  
+  //   this.associationService.getdealerslistafterresfresh(requestData)
+  //     .subscribe({
+  //       next: (response) => {
+  //         console.log('API Response:', response);  
+          
+  //         const updatedData = response.data; 
+  //         const bulkAssociationsControl = this.addAddressDetailsForm.get('BulkAssociationsCount') as FormArray;
+  //         const currentForm = bulkAssociationsControl.at(i);
 
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].MRP = this.arrayToStore.BulkAssociationsCount[i].MRP;
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].MinOrder = this.arrayToStore.BulkAssociationsCount[i].MinOrder
-
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].MaxOrder = this.arrayToStore.BulkAssociationsCount[i].MaxOrder
-
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].Margin = this.arrayToStore.BulkAssociationsCount[i].Margin
-
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].Discount = this.arrayToStore.BulkAssociationsCount[i].Discount
-
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays = this.arrayToStore.BulkAssociationsCount[i].LeadTimeIndays
-
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].productSKUId = this.arrayToStore.BulkAssociationsCount[i].productSKUId
-    this.addAddressDetailsForm.value.BulkAssociationsCount[i].GROID = this.arrayToStore.BulkAssociationsCount[i].GROID
-    // this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays=
+  //         console.log('Before Update - Form Value:', currentForm.value);
+  //         currentForm.patchValue(updatedData);
+  //         // Log the updated form value
+  //         console.log('After Update - Form Value:', currentForm.value);
+  //         this.SpinnerService.hide();
+  //       },
+  //       error: (error) => {
+  //         console.error('Error refreshing data:', error); 
+  //         this.SpinnerService.hide();
+  //       }
+  //     });
+  // }
+  lowercaseFirstLetter(inputString: string): string {
+    if (inputString.length === 0) {
+      return inputString; // Return the input string if it's empty
+    }
+  
+    // Convert the first character to lowercase and concatenate the rest of the string
+    return inputString.charAt(0).toLowerCase() + inputString.slice(1);
   }
 
+  change(i, quantity) {
+    this.userId = localStorage.getItem("logInId");
+    this.SpinnerService.show();
+  
+    const requestData = {
+      CurrentUserId: this.userId,
+      ProductSKUGeographyId: this.addAddressDetailsForm.value.BulkAssociationsCount[i].ProductSKUGeographyId,
+    };
+  
+    this.associationService.getdealerslistafterresfresh(requestData)
+      .subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+          const updatedData = response.response;
+          console.log(updatedData);
+          const bulkAssociationsControl = this.addAddressDetailsForm.get('BulkAssociationsCount') as FormArray;
+          const currentForm:any = bulkAssociationsControl.at(i) as FormGroup;
+  
+          // Log form values before update
+          console.log('Before Update - Form Value:', currentForm.value);
+          console.log(currentForm.controls);
+          // Object.keys(currentForm.controls).forEach(key => {
+          //   if (updatedData.hasOwnProperty(key)) {
+          //     currentForm.get(key).setValue(updatedData[key]);
+          //     console.log(key);
+          //   }
+          // });
+
+          Object.keys(currentForm.controls).forEach(key => {
+            console.log(key);
+            let skey;
+            if(key === 'MRP'){
+              skey = 'mrp'
+            }else{
+             skey= this.lowercaseFirstLetter(key);
+            }
+            if (updatedData.hasOwnProperty(skey)) {
+              console.log(`Updating ${key} with value: ${updatedData[skey]}`);
+              
+              // Check if the control exists before setting its value
+              if (currentForm.get(key)) {
+                currentForm.get(key).setValue(updatedData[skey]);
+              } else {
+                console.error(`Control with key ${key} does not exist in the form.`);
+              }
+            }
+          });
+  
+          // Log form values after update
+          console.log('After Update - Form Value:', currentForm.value);
+          this.SpinnerService.hide();
+        },
+        error: (error) => {
+          console.error('Error refreshing data:', error);
+          this.SpinnerService.hide();
+        }
+      });
+  }
+  
+  
+  
+  
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
