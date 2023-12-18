@@ -435,8 +435,7 @@ export class OrdersShipmentComponent implements OnInit {
       colId: 'action',
       cellRenderer: OrderlistActionPopupComponent,
       editable: false,
-      maxWidth:20,
-      minWidth:20,
+      maxWidth:60,
     },
 
     // {

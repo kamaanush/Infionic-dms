@@ -31,6 +31,72 @@
         border-color: #686E74;
         border-radius: 0px 0px 10px 10px
           }
+          
+      .TargetuploaedTable {
+        position: relative;
+        width: 93%;
+        left: 5px;
+        top: 49px;
+         border-width: 0px 1px 1px 1px; 
+        border-style: solid;
+        border-color: #686E74;
+        border-radius: 0px 0px 10px 10px;
+        overflow-x: auto;
+          }
+          .Error_FreeROW
+          {
+            position: relative;
+            width: 93%;
+            left: 5px;
+            top: 67px;
+             border-width: 0px 1px 1px 1px; 
+            border-style: solid;
+            border-color: #686E74;
+            border-radius: 0px 0px 10px 10px;
+            overflow-x: auto;
+          }
+
+    ::ng-deep.duplicate_tabel::-webkit-scrollbar {
+            height: 6px!important; 
+          }
+          ::ng-deep.duplicate_tabel::-webkit-scrollbar-thumb {
+            background-color: #018B75; 
+          }
+          ::ng-deep.duplicate_tabel::-webkit-scrollbar {
+            height: 6px!important; 
+          }
+          ::ng-deep.duplicate_tabel::-webkit-scrollbar-thumb {
+            background-color: #018B75; 
+          }
+          
+
+          /*  */
+          ::ng-deep.TargetuploaedTable::-webkit-scrollbar {
+            height: 6px!important; 
+          }
+          ::ng-deep.TargetuploaedTable::-webkit-scrollbar-thumb {
+            background-color: #018B75; 
+          }
+          ::ng-deep.TargetuploaedTable::-webkit-scrollbar {
+            height: 6px!important; 
+          }
+          ::ng-deep.TargetuploaedTable::-webkit-scrollbar-thumb {
+            background-color: #018B75; 
+          }
+          
+          /*  */
+          ::ng-deep.Error_FreeROW::-webkit-scrollbar {
+            height: 6px!important; 
+          }
+          ::ng-deep.Error_FreeROW::-webkit-scrollbar-thumb {
+            background-color: #018B75; 
+          }
+          ::ng-deep.Error_FreeROW::-webkit-scrollbar {
+            height: 6px!important; 
+          }
+          ::ng-deep.Error_FreeROW::-webkit-scrollbar-thumb {
+            background-color: #018B75; 
+          }
 
           .class_table_shipment {
             width: 100%;
@@ -38,6 +104,48 @@
             box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
             border: none;
             border-radius: 12px !important;
+            height: 150px;
+            overflow-y: auto;
+          }
+          .class_table_shipmentDuplicate
+          {
+            width: 100%;
+            background: #FFFFFF !important;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border: none;
+            border-radius: 12px !important;
+            height: 150px;
+            overflow-y: auto;
+          }
+          .class_table_Incorrectdatacalue
+          {
+            width: 100%;
+            background: #FFFFFF !important;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border: none;
+            border-radius: 12px !important;
+            height: 150px;
+            overflow-y: auto;
+          }
+          .class_table_shipmentError
+          {
+            width: 100%;
+            background: #FFFFFF !important;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border: none;
+            border-radius: 12px !important;
+            height: 150px;
+            overflow-y: auto;
+          }
+          .class_table_shipmentError
+          {
+            width: 100%;
+            background: #FFFFFF !important;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border: none;
+            border-radius: 12px !important;
+            height: 150px;
+            overflow-y: auto;
           }
           .imageerror-style {
             top: 74px;
@@ -149,7 +257,6 @@
         width: 1079px;
         height: 43px;
         border: 0.5px solid #000000;
-        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
         border-radius: 10px;
         font-family: 'Gilroy';
         font-size: 20px;
@@ -505,6 +612,7 @@
         position: relative;
         width: 14px;
         right: 45px;
+        cursor: pointer;
         /* top: 55px; */
       }
       .expand-style {
@@ -541,19 +649,46 @@
      left: 95px;
      font-size: 14px;
   }
-  .duplicate-tabel
+  .duplicate_tabel
   {
     position: relative;
-    width: 91%;
-    left: 15px;
-    margin-bottom: 30px;
+  width: 93%;
+  left: 5px;
+  top: 85px;
+   border-width: 0px 1px 1px 1px; 
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px;
+  overflow-x: auto;
+}
+
+::ng-deep.duplicate-tabel::-webkit-scrollbar {
+      height: 6px!important; 
+    }
+    ::ng-deep.duplicate-tabel::-webkit-scrollbar-thumb {
+      background-color: #018B75; 
+    }
+
+    /* INcorrect data value */
+    .incorrectdata_table
+    {
+      position: relative;
+    width: 93%;
+    left: 5px;
     top: 85px;
-    border-width: 0px 1px 1px 1px;
+     border-width: 0px 1px 1px 1px; 
     border-style: solid;
     border-color: #686E74;
     border-radius: 0px 0px 10px 10px;
-}
-
+    overflow-x: auto;
+  }
+  
+  ::ng-deep.incorrectdata_table::-webkit-scrollbar {
+        height: 6px!important; 
+      }
+      ::ng-deep.incorrectdata_table::-webkit-scrollbar-thumb {
+        background-color: #018B75; 
+      }
 /* REceipts builk upload */
 
 .Redeiptsbulkupload {

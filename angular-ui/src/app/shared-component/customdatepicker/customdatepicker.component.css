@@ -49,7 +49,7 @@
 
 .datepicker-menu-list li:hover {
     background: #DEE2E6;
-    width: 188px;
+    width: 222px;
 }
 
 .direct-menu.datepicker-menu-list{
@@ -172,8 +172,7 @@ svg {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: padding-box;
-    margin-top: -3px !important;
-    margin-left:-2px !important;
+    margin-top: -28px !important;
     width: 224px;
 }
 

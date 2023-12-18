@@ -431,7 +431,7 @@ ngx-daterangepicker-material .md-drppicker {
 }
 
 ngx-daterangepicker-material .md-drppicker .btn{
-  border: 1px solid #000;
+  border: 1px solid rgba(1, 139, 117, 1);
     margin-right: 5px;
     border-radius: 10px;
     font-size: 15px;

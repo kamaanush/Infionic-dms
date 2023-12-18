@@ -4,7 +4,7 @@
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     </div>
     <span class="ship receiptT">Target:</span>
-    <h1 class="ship receiptBulk">Bulk Upload</h1>
+    <h1 class="ship receiptBulk">Bulk Upload </h1>
     <div class="receipts">
         <div class="row">
             <h4 class="bulk-txt">Bulk upload of Targets</h4>
@@ -63,76 +63,74 @@
                         <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div  *ngIf="!rowsTotal && TotalRows.length>0 " class="row totaltablewidth">
-                    <table matSort  class="class_table_shipment">
-                        <tr class="table-header-row">
-                         <th style="padding-left:20px;">Row No</th> 
-                            <th >Target Group</th>
+                <div  *ngIf="!rowsTotal && TotalRows.length>0 " class="row TargetuploaedTable" >
+                    <table matSort  class="class_table_shipmentError" border="1" >
+                         <tr class="table-header-row">
+                           <th style="padding-left:20px;">Row&nbsp;No</th> 
+                            <th >Target&nbsp;Group</th>
                             <th>Geography</th>
-                            <th>Dealer Name</th>
-                            <th>Dealer Code</th>
-                            <th>Financial year</th>
+                            <th>Dealer&nbsp;Name</th>
+                            <th>Dealer&nbsp;Code</th>
+                            <th>Financial&nbsp;year</th>
                             <th>TargetType</th>
-                             <th>JanValue</th>
-                            <th>JanUnit</th>
-                            <th>FebValue</th>
-                            <th>FebUnit</th>
-                            <th>MarValue</th>
-                            <th>MarUnit</th>
-                            <th>AprValue</th>
-                            <th>AprUnit</th>
-                            <th>MayValue</th>
-                            <th>MayUnit</th>
-                            <th>JunValue</th>
-                            <th>JunUnit</th>
-                            <th>JulValue</th>
-                            <th>JulUnit</th>
-                            <th>AugValue</th>
-                            <th>AugUnit</th>
-                            <th>SepValue</th>
-                            <th>SepUnit</th>
-                            <th>OctValue</th>
-                            <th>OctUnit</th>
-                            <th>NovValue</th>
-                            <th>NovUnit</th>
-                            <th>DecUnit</th>
-                            <th>DecValue</th> 
-
+                              <th>Jan&nbsp;Value</th>
+                            <th>Jan&nbsp;Unit</th>
+                            <th>Feb&nbsp;Value</th>
+                            <th>Feb&nbsp;Unit</th>
+                            <th>Mar&nbsp;Value</th>
+                            <th>Mar&nbsp;Unit</th>
+                            <th>Apr&nbsp;Value</th>
+                            <th>Apr&nbsp;Unit</th>
+                            <th>May&nbsp;Value</th>
+                            <th>May&nbsp;Unit</th>
+                            <th>Jun&nbsp;Value</th>
+                            <th>Jun&nbsp;Unit</th>
+                            <th>Jul&nbsp;Value</th>
+                            <th>Jul&nbsp;Unit</th>
+                            <th>Aug&nbsp;Value</th>
+                            <th>Aug&nbsp;Unit</th>
+                            <th>Sep&nbsp;Value</th>
+                            <th>Sep&nbsp;Unit</th>
+                            <th>Oct&nbsp;Value</th>
+                            <th>Oct&nbsp;Unit</th>
+                            <th>Nov&nbsp;Value</th>
+                            <th>Nov&nbsp;Unit</th>
+                            <th>Dec&nbsp;Unit</th>
+                            <th>Dec&nbsp;Value</th> 
                         </tr>
                         <tr *ngFor="let dupicateData of TotalRows">
-            
-                             <td title="" style="padding-left: 21px;">{{dupicateData.rowNumber}}</td>
-                              <td title="">{{dupicateData.targetGroup}}tt</td>
-                            <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.dealerName}}</td>
-                            <td>{{dupicateData.dealerCode}}</td>
-                            <td>{{dupicateData.financialYear}}</td>
-                            <td>{{dupicateData.targetType}}</td>
-                           <td>{{dupicateData.janValue}}</td>
-                            <td>{{dupicateData.janUnit}}</td>
-                            <td >{{dupicateData.febValue}}</td>
-                            <td>{{dupicateData.febUnit}}</td>
-                            <td>{{dupicateData.marValue}}</td>
-                            <td>{{dupicateData.marUnit}}</td>
-                             <td>{{dupicateData.aprValue}}</td>
-                            <td>{{dupicateData.aprUnit}}</td>
-                            <td>{{dupicateData.mayValue}}</td>
-                            <td>{{dupicateData.mayUnit}}</td>
-                            <td>{{dupicateData.junValue}}</td>
-                            <td>{{dupicateData.junUnit}}</td>
-                            <td>{{dupicateData.julValue}}</td>
-                            <td>{{dupicateData.julUnit}}</td>
-                            <td>{{dupicateData.augValue}}</td>
-                            <td>{{dupicateData.augUnit}}</td>
-                            <td>{{dupicateData.sepValue}}</td>
-                            <td>{{dupicateData.sepUnit}}</td>
-                            <td>{{dupicateData.octValue}}</td>
-                            <td>{{dupicateData.octUnit}}</td>
-                            <td>{{dupicateData.novValue}}</td>
-                            <td>{{dupicateData.novUnit}}</td>
-                             <td>{{dupicateData.decValue}}</td>
-                            <td>{{dupicateData.decUnit}}</td>
-            
+                             <td style="text-align: right;" >{{dupicateData.rowNumber}}</td>
+                              <td><span style="width: 200px;display: inline-flex;">{{dupicateData.targetGroup}}</span></td>
+                            <td >{{dupicateData.geography}}</td>
+                            <td><span style="width: 200px;display: inline-flex;">{{dupicateData.dealerName}}</span></td>
+                            <td >{{dupicateData.dealerCode}}</td>
+                            <td >{{dupicateData.financialYear}}</td>
+                            <td >{{dupicateData.targetType}}</td>
+                            <td style="text-align: right;">{{dupicateData.janValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.janUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.febValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.febUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.marValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.marUnit}}</td>
+                             <td style="text-align: right;" >{{dupicateData.aprValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.aprUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.mayValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.mayUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.junValue}}</td>
+                            <td style="text-align: right;" >{{dupicateData.junUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.julValue}}</td>
+                            <td style="text-align: right;" >{{dupicateData.julUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.augValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.augUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.sepValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.sepUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.octValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.octUnit}}</td>
+                            <td style="text-align: right;">{{dupicateData.novValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.novUnit}}</td>
+                             <td style="text-align: right;">{{dupicateData.decValue}}</td>
+                            <td style="text-align: right;">{{dupicateData.decUnit}}</td>
+             
                         </tr>
                     </table>
                 </div>
@@ -145,81 +143,80 @@
                     <img [src]="image2" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf=" ErrorFree && errorfreeRows.length> 0" class="row errorfreerows">
-                <table matSort  class="class_table_shipment">
+            <div  *ngIf=" ErrorFree && errorfreeRows.length> 0" class="row Error_FreeROW">
+                <table matSort  class="class_table_shipmentError" border="1">
                     <tr class="table-header-row">
-                        <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th> 
-                               <th >Target Group</th>
-                               <th>Geography</th>
-                               <th>Dealer Name</th>
-                               <th>Dealer Code</th>
-                               <th>Financial year</th>
-                               <th>TargetType</th>
-                                <th>JanValue</th>
-                               <th>JanUnit</th>
-                               <th>FebValue</th>
-                               <th>FebUnit</th>
-                               <th>MarValue</th>
-                               <th>MarUnit</th>
-                               <th>AprValue</th>
-                               <th>AprUnit</th>
-                               <th>MayValue</th>
-                               <th>MayUnit</th>
-                               <th>JunValue</th>
-                               <th>JunUnit</th>
-                               <th>JulValue</th>
-                               <th>JulUnit</th>
-                               <th>AugValue</th>
-                               <th>AugUnit</th>
-                               <th>SepValue</th>
-                               <th>SepUnit</th>
-                               <th>OctValue</th>
-                               <th>OctUnit</th>
-                               <th>NovValue</th>
-                               <th>NovUnit</th>
-                               <th>DecUnit</th>
-                               <th>DecValue</th>
-                    </tr>
+                        <th style="padding-left:20px;">Row&nbsp;No</th> 
+                        <th >Target&nbsp;Group</th>
+                        <th>Geography</th>
+                        <th>Dealer&nbsp;Name</th>
+                        <th>Dealer&nbsp;Code</th>
+                        <th>Financial&nbsp;year</th>
+                        <th>TargetType</th>
+                          <th>Jan&nbsp;Value</th>
+                        <th>Jan&nbsp;Unit</th>
+                        <th>Feb&nbsp;Value</th>
+                        <th>Feb&nbsp;Unit</th>
+                        <th>Mar&nbsp;Value</th>
+                        <th>Mar&nbsp;Unit</th>
+                        <th>Apr&nbsp;Value</th>
+                        <th>Apr&nbsp;Unit</th>
+                        <th>May&nbsp;Value</th>
+                        <th>May&nbsp;Unit</th>
+                        <th>Jun&nbsp;Value</th>
+                        <th>Jun&nbsp;Unit</th>
+                        <th>Jul&nbsp;Value</th>
+                        <th>Jul&nbsp;Unit</th>
+                        <th>Aug&nbsp;Value</th>
+                        <th>Aug&nbsp;Unit</th>
+                        <th>Sep&nbsp;Value</th>
+                        <th>Sep&nbsp;Unit</th>
+                        <th>Oct&nbsp;Value</th>
+                        <th>Oct&nbsp;Unit</th>
+                        <th>Nov&nbsp;Value</th>
+                        <th>Nov&nbsp;Unit</th>
+                        <th>Dec&nbsp;Unit</th>
+                        <th>Dec&nbsp;Value</th> 
+                </tr>
+                   
                     <tr *ngFor="let dupicateData of errorfreeRows">
-        
-                          
-                         <td title="" style="padding-left: 21px;">{{dupicateData.rowNumber}}</td>
-                         <td title="">{{dupicateData.targetGroup}}tt</td>
-                       <td title="">{{dupicateData.geography}}</td>
-                       <td>{{dupicateData.dealerName}}</td>
-                       <td>{{dupicateData.dealerCode}}</td>
-                       <td>{{dupicateData.financialYear}}</td>
-                       <td>{{dupicateData.targetType}}</td>
-                      <td>{{dupicateData.janValue}}</td>
-                       <td>{{dupicateData.janUnit}}</td>
-                       <td >{{dupicateData.febValue}}</td>
-                       <td>{{dupicateData.febUnit}}</td>
-                       <td>{{dupicateData.marValue}}</td>
-                       <td>{{dupicateData.marUnit}}</td>
-                        <td>{{dupicateData.aprValue}}</td>
-                       <td>{{dupicateData.aprUnit}}</td>
-                       <td>{{dupicateData.mayValue}}</td>
-                       <td>{{dupicateData.mayUnit}}</td>
-                       <td>{{dupicateData.junValue}}</td>
-                       <td>{{dupicateData.junUnit}}</td>
-                       <td>{{dupicateData.julValue}}</td>
-                       <td>{{dupicateData.julUnit}}</td>
-                       <td>{{dupicateData.augValue}}</td>
-                       <td>{{dupicateData.augUnit}}</td>
-                       <td>{{dupicateData.sepValue}}</td>
-                       <td>{{dupicateData.sepUnit}}</td>
-                       <td>{{dupicateData.octValue}}</td>
-                       <td>{{dupicateData.octUnit}}</td>
-                       <td>{{dupicateData.novValue}}</td>
-                       <td>{{dupicateData.novUnit}}</td>
-                        <td>{{dupicateData.decValue}}</td>
-                       <td>{{dupicateData.decUnit}}</td>
+                        <td style="text-align: right;" >{{dupicateData.rowNumber}}</td>
+                        <td><span style="width: 200px;display: inline-flex;">{{dupicateData.targetGroup}}</span></td>
+                      <td >{{dupicateData.geography}}</td>
+                      <td><span style="width: 200px;display: inline-flex;">{{dupicateData.dealerName}}</span></td>
+                      <td >{{dupicateData.dealerCode}}</td>
+                      <td >{{dupicateData.financialYear}}</td>
+                      <td >{{dupicateData.targetType}}</td>
+                      <td style="text-align: right;">{{dupicateData.janValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.janUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.febValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.febUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.marValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.marUnit}}</td>
+                       <td style="text-align: right;" >{{dupicateData.aprValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.aprUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.mayValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.mayUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.junValue}}</td>
+                      <td style="text-align: right;" >{{dupicateData.junUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.julValue}}</td>
+                      <td style="text-align: right;" >{{dupicateData.julUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.augValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.augUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.sepValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.sepUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.octValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.octUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.novValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.novUnit}}</td>
+                       <td style="text-align: right;">{{dupicateData.decValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.decUnit}}</td>
        
+                    </tr>
             
 
         
-                    </tr>
+                   
                 </table>
             </div>
         </div>
@@ -233,82 +230,81 @@
                     <img [src]="image3" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf ="!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel">
-                <table matSort  class="class_table_shipment">
-                    <tr class="table-header-row">
+            <div  *ngIf ="!duplicate && duplicateEntryy.length>0" class="row duplicate_tabel">
+                <table matSort  class="class_table_shipmentDuplicate" border="1">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th> 
-                               <th >Target Group</th>
-                               <th>Geography</th>
-                               <th>Dealer Name</th>
-                               <th>Dealer Code</th>
-                               <th>Financial year</th>
-                               <th>TargetType</th>
-                                <th>JanValue</th>
-                               <th>JanUnit</th>
-                               <th>FebValue</th>
-                               <th>FebUnit</th>
-                               <th>MarValue</th>
-                               <th>MarUnit</th>
-                               <th>AprValue</th>
-                               <th>AprUnit</th>
-                               <th>MayValue</th>
-                               <th>MayUnit</th>
-                               <th>JunValue</th>
-                               <th>JunUnit</th>
-                               <th>JulValue</th>
-                               <th>JulUnit</th>
-                               <th>AugValue</th>
-                               <th>AugUnit</th>
-                               <th>SepValue</th>
-                               <th>SepUnit</th>
-                               <th>OctValue</th>
-                               <th>OctUnit</th>
-                               <th>NovValue</th>
-                               <th>NovUnit</th>
-                               <th>DecUnit</th>
-                               <th>DecValue</th>
+                            <th style="padding-left:20px;">Row&nbsp;No</th> 
+                            <th >Target&nbsp;Group</th>
+                            <th>Geography</th>
+                            <th>Dealer&nbsp;Name</th>
+                            <th>Dealer&nbsp;Code</th>
+                            <th>Financial&nbsp;year</th>
+                            <th>TargetType</th>
+                              <th>Jan&nbsp;Value</th>
+                            <th>Jan&nbsp;Unit</th>
+                            <th>Feb&nbsp;Value</th>
+                            <th>Feb&nbsp;Unit</th>
+                            <th>Mar&nbsp;Value</th>
+                            <th>Mar&nbsp;Unit</th>
+                            <th>Apr&nbsp;Value</th>
+                            <th>Apr&nbsp;Unit</th>
+                            <th>May&nbsp;Value</th>
+                            <th>May&nbsp;Unit</th>
+                            <th>Jun&nbsp;Value</th>
+                            <th>Jun&nbsp;Unit</th>
+                            <th>Jul&nbsp;Value</th>
+                            <th>Jul&nbsp;Unit</th>
+                            <th>Aug&nbsp;Value</th>
+                            <th>Aug&nbsp;Unit</th>
+                            <th>Sep&nbsp;Value</th>
+                            <th>Sep&nbsp;Unit</th>
+                            <th>Oct&nbsp;Value</th>
+                            <th>Oct&nbsp;Unit</th>
+                            <th>Nov&nbsp;Value</th>
+                            <th>Nov&nbsp;Unit</th>
+                            <th>Dec&nbsp;Unit</th>
+                            <th>Dec&nbsp;Value</th> 
                     </tr>
                     <tr *ngFor="let dupicateData of duplicateEntryy">
-        
+                        <td style="text-align: right;" >{{dupicateData.rowNumber}}</td>
+                        <td><span style="width: 200px;display: inline-flex;">{{dupicateData.targetGroup}}</span></td>
+                      <td >{{dupicateData.geography}}</td>
+                      <td><span style="width: 200px;display: inline-flex;">{{dupicateData.dealerName}}</span></td>
+                      <td >{{dupicateData.dealerCode}}</td>
+                      <td >{{dupicateData.financialYear}}</td>
+                      <td >{{dupicateData.targetType}}</td>
+                      <td style="text-align: right;">{{dupicateData.janValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.janUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.febValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.febUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.marValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.marUnit}}</td>
+                       <td style="text-align: right;" >{{dupicateData.aprValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.aprUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.mayValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.mayUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.junValue}}</td>
+                      <td style="text-align: right;" >{{dupicateData.junUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.julValue}}</td>
+                      <td style="text-align: right;" >{{dupicateData.julUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.augValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.augUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.sepValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.sepUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.octValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.octUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.novValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.novUnit}}</td>
+                       <td style="text-align: right;">{{dupicateData.decValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.decUnit}}</td>
+       
                         
-                        <td title="" style="padding-left: 21px;">{{dupicateData.rowNumber}}</td>
-                        <td title="">{{dupicateData.targetGroup}}tt</td>
-                      <td title="">{{dupicateData.geography}}</td>
-                      <td>{{dupicateData.dealerName}}</td>
-                      <td>{{dupicateData.dealerCode}}</td>
-                      <td>{{dupicateData.financialYear}}</td>
-                      <td>{{dupicateData.targetType}}</td>
-                     <td>{{dupicateData.janValue}}</td>
-                      <td>{{dupicateData.janUnit}}</td>
-                      <td >{{dupicateData.febValue}}</td>
-                      <td>{{dupicateData.febUnit}}</td>
-                      <td>{{dupicateData.marValue}}</td>
-                      <td>{{dupicateData.marUnit}}</td>
-                       <td>{{dupicateData.aprValue}}</td>
-                      <td>{{dupicateData.aprUnit}}</td>
-                      <td>{{dupicateData.mayValue}}</td>
-                      <td>{{dupicateData.mayUnit}}</td>
-                      <td>{{dupicateData.junValue}}</td>
-                      <td>{{dupicateData.junUnit}}</td>
-                      <td>{{dupicateData.julValue}}</td>
-                      <td>{{dupicateData.julUnit}}</td>
-                      <td>{{dupicateData.augValue}}</td>
-                      <td>{{dupicateData.augUnit}}</td>
-                      <td>{{dupicateData.sepValue}}</td>
-                      <td>{{dupicateData.sepUnit}}</td>
-                      <td>{{dupicateData.octValue}}</td>
-                      <td>{{dupicateData.octUnit}}</td>
-                      <td>{{dupicateData.novValue}}</td>
-                      <td>{{dupicateData.novUnit}}</td>
-                       <td>{{dupicateData.decValue}}</td>
-                      <td>{{dupicateData.decUnit}}</td>
-      
-        
+                      
                     </tr>
                 </table>
             </div>
         </div>
+
         <div (click)="IncorrectDataValue()" style="margin-top:20px;">
             <div class="row">
                 <input type="text" [(ngModel)]="Incorrect" class="total-rows duplicate-txt col-md-11" disabled>
@@ -316,77 +312,77 @@
                     <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf="!incorrectData && incorrectRows"  class="row incorrectdatatable">
-                <table matSort  class="class_table_shipment">
-                    <tr class="table-header-row">
+            <div  *ngIf ="!incorrectData && incorrectRows?.length>0"  class="row incorrectdata_table">
+                
+                <table matSort  class="class_table_Incorrectdatacalue" border="1">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th> 
-                               <th >Target Group</th>
-                               <th>Geography</th>
-                               <th>Dealer Name</th>
-                               <th>Dealer Code</th>
-                               <th>Financial year</th>
-                               <th>TargetType</th>
-                                <th>JanValue</th>
-                               <th>JanUnit</th>
-                               <th>FebValue</th>
-                               <th>FebUnit</th>
-                               <th>MarValue</th>
-                               <th>MarUnit</th>
-                               <th>AprValue</th>
-                               <th>AprUnit</th>
-                               <th>MayValue</th>
-                               <th>MayUnit</th>
-                               <th>JunValue</th>
-                               <th>JunUnit</th>
-                               <th>JulValue</th>
-                               <th>JulUnit</th>
-                               <th>AugValue</th>
-                               <th>AugUnit</th>
-                               <th>SepValue</th>
-                               <th>SepUnit</th>
-                               <th>OctValue</th>
-                               <th>OctUnit</th>
-                               <th>NovValue</th>
-                               <th>NovUnit</th>
-                               <th>DecUnit</th>
-                               <th>DecValue</th>
+                            <th style="padding-left:20px;">Row&nbsp;No</th> 
+                             <th >Target&nbsp;Group</th>
+                             <th>Geography</th>
+                             <th>Dealer&nbsp;Name</th>
+                             <th>Dealer&nbsp;Code</th>
+                             <th>Financial&nbsp;year</th>
+                             <th>TargetType</th>
+                               <th>Jan&nbsp;Value</th>
+                             <th>Jan&nbsp;Unit</th>
+                             <th>Feb&nbsp;Value</th>
+                             <th>Feb&nbsp;Unit</th>
+                             <th>Mar&nbsp;Value</th>
+                             <th>Mar&nbsp;Unit</th>
+                             <th>Apr&nbsp;Value</th>
+                             <th>Apr&nbsp;Unit</th>
+                             <th>May&nbsp;Value</th>
+                             <th>May&nbsp;Unit</th>
+                             <th>Jun&nbsp;Value</th>
+                             <th>Jun&nbsp;Unit</th>
+                             <th>Jul&nbsp;Value</th>
+                             <th>Jul&nbsp;Unit</th>
+                             <th>Aug&nbsp;Value</th>
+                             <th>Aug&nbsp;Unit</th>
+                             <th>Sep&nbsp;Value</th>
+                             <th>Sep&nbsp;Unit</th>
+                             <th>Oct&nbsp;Value</th>
+                             <th>Oct&nbsp;Unit</th>
+                             <th>Nov&nbsp;Value</th>
+                             <th>Nov&nbsp;Unit</th>
+                             <th>Dec&nbsp;Unit</th>
+                             <th>Dec&nbsp;Value</th>
                     </tr>
                    
                     <tr *ngFor="let dupicateData of incorrectRows">
-                        <h4>{{dupicateData.incorrectColumn}}</h4>
-                        <td title="" style="padding-left: 21px;">{{dupicateData.rowNumber}}</td>
-                        <td title="">{{dupicateData.targetGroup}}tt</td>
-                      <td title="">{{dupicateData.geography}}</td>
-                      <td>{{dupicateData.dealerName}}</td>
-                      <td>{{dupicateData.dealerCode}}</td>
-                      <td>{{dupicateData.financialYear}}</td>
-                      <td>{{dupicateData.targetType}}</td>
-                     <td>{{dupicateData.janValue}}</td>
-                      <td>{{dupicateData.janUnit}}</td>
-                      <td >{{dupicateData.febValue}}</td>
-                      <td>{{dupicateData.febUnit}}</td>
-                      <td>{{dupicateData.marValue}}</td>
-                      <td>{{dupicateData.marUnit}}</td>
-                       <td>{{dupicateData.aprValue}}</td>
-                      <td>{{dupicateData.aprUnit}}</td>
-                      <td>{{dupicateData.mayValue}}</td>
-                      <td>{{dupicateData.mayUnit}}</td>
-                      <td>{{dupicateData.junValue}}</td>
-                      <td>{{dupicateData.junUnit}}</td>
-                      <td>{{dupicateData.julValue}}</td>
-                      <td>{{dupicateData.julUnit}}</td>
-                      <td>{{dupicateData.augValue}}</td>
-                      <td>{{dupicateData.augUnit}}</td>
-                      <td>{{dupicateData.sepValue}}</td>
-                      <td>{{dupicateData.sepUnit}}</td>
-                      <td>{{dupicateData.octValue}}</td>
-                      <td>{{dupicateData.octUnit}}</td>
-                      <td>{{dupicateData.novValue}}</td>
-                      <td>{{dupicateData.novUnit}}</td>
-                       <td>{{dupicateData.decValue}}</td>
-                      <td>{{dupicateData.decUnit}}</td>
-      
+                        
+                        <td style="text-align: right;" >{{dupicateData.rowNumber}}</td>
+                        <td><span style="width: 200px;display: inline-flex;">{{dupicateData.targetGroup}}</span></td>
+                      <td >{{dupicateData.geography}}</td>
+                      <td><span style="width: 200px;display: inline-flex;">{{dupicateData.dealerName}}</span></td>
+                      <td >{{dupicateData.dealerCode}}</td>
+                      <td >{{dupicateData.financialYear}}</td>
+                      <td >{{dupicateData.targetType}}</td>
+                      <td style="text-align: right;">{{dupicateData.janValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.janUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.febValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.febUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.marValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.marUnit}}</td>
+                       <td style="text-align: right;" >{{dupicateData.aprValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.aprUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.mayValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.mayUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.junValue}}</td>
+                      <td style="text-align: right;" >{{dupicateData.junUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.julValue}}</td>
+                      <td style="text-align: right;" >{{dupicateData.julUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.augValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.augUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.sepValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.sepUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.octValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.octUnit}}</td>
+                      <td style="text-align: right;">{{dupicateData.novValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.novUnit}}</td>
+                       <td style="text-align: right;">{{dupicateData.decValue}}</td>
+                      <td style="text-align: right;">{{dupicateData.decUnit}}</td>
+       
         
                     </tr>
                 </table>
