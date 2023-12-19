@@ -195,7 +195,7 @@ export class GeoClassificationComponent implements OnInit {
     console.log(clickedItem, hirerachyIndex);
     this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(
       (element) => {
-        if (element.geographyId == clickedItem.geographyId) {
+        if (element?.geographyId == clickedItem?.geographyId) {
           let index = this.geoGraphyFullData[
             hirerachyIndex - 1
           ].geographySelected.indexOf(element.geographyId);
@@ -321,55 +321,77 @@ export class GeoClassificationComponent implements OnInit {
     });
   }
   addEditapiResponse(apiResponse, result, hirerachyIndex) {
-    let geoGraphyObj = this.geoGraphyFullData[
-      hirerachyIndex - 1
-    ].allOtherGeography.find((x) => x.geographyId == result.id);
+    let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find((x) => x?.geographyId == result?.id);
+
     if (geoGraphyObj) {
-      geoGraphyObj.geographyName = result.name;
-      geoGraphyObj.geographyCode = result.code;
+      geoGraphyObj.geographyName = result?.name;
+      geoGraphyObj.geographyCode = result?.code;
     } else {
       // Need to updated based on the response success
       // let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
 
-      this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(
-        apiResponse.response.geography
-      );
-      this.geoGraphyFullData[hirerachyIndex - 1].geographyCount =
-        this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length;
+      this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(apiResponse?.response?.geography);
+      this.geoGraphyFullData[hirerachyIndex - 1].geographyCount =this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length;
     }
   }
 
+  // addGeographyForm(geoGraphyGrid, hirerachyIndex) {
+  //   // console.log(geoGraphyGrid);
+  //   let data = {
+  //     geography: {},
+  //     title: geoGraphyGrid.geographyHierarchyName,
+  //     isEdit: false,
+  //     GeographyParentId:
+  //       this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0],
+  //     hirerachyIndex: hirerachyIndex,
+  //   };
+  //   const dialogRef = this.dialog.open(AddeditgeoComponent, {
+  //     height: '338px',
+  //     disableClose: true,
+  //     data: data,
+  //   });
+  //   setTimeout(() => {
+  //     dialogRef.afterClosed().subscribe((response): any => {
+  //       if (response?.res !== undefined && response?.result !== undefined && response?.res.response.geography.geographyHierarchyId ==1) {
+  //         this.addEditapiResponse(response?.res, response?.result, hirerachyIndex);
+  //         this.getGeographyHierarchy()
+  //       }else{
+  //         this.addEditapiResponse(response?.res, response?.result, hirerachyIndex);
+  //       }
+  //       console.log(response?.res);
+  //     });
+  //   }, 4000);
+  // }
+
   addGeographyForm(geoGraphyGrid, hirerachyIndex) {
-    // console.log(geoGraphyGrid);
+  if (hirerachyIndex > 0 && hirerachyIndex <= this.geoGraphyFullData.length) {
     let data = {
-      geography: {},
       title: geoGraphyGrid.geographyHierarchyName,
       isEdit: false,
-      GeographyParentId:
-        this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0],
+      GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0],
       hirerachyIndex: hirerachyIndex,
     };
-    
-    //   if(data == null){
-    //   return this.dialog.closeAll()
-    // }
+
     const dialogRef = this.dialog.open(AddeditgeoComponent, {
       height: '338px',
       disableClose: true,
       data: data,
     });
-    setTimeout(() => {
-      dialogRef.afterClosed().subscribe(({ res, result }:any): any => {
-        if (res !== undefined && result !== undefined && res.response.geography.geographyHierarchyId ==1) {
-          this.addEditapiResponse(res, result, hirerachyIndex);
-          this.getGeographyHierarchy()
-        }else{
-          this.addEditapiResponse(res, result, hirerachyIndex);
-        }
-        console.log(res);
-      });
-    }, 4000);
+  
+    dialogRef.afterClosed().subscribe((response): any => {
+      if (response?.res?.response?.geography?.geographyHierarchyId == 1) {
+        this.addEditapiResponse(response?.res, response?.result, hirerachyIndex);
+        this.getGeographyHierarchy();
+      }else{
+        this.addEditapiResponse(response?.res, response?.result, hirerachyIndex);
+      }
+      console.log(response?.res);
+      console.log(response);
+      
+    });
   }
+}
+
 
   ActivateDeactivateGeography(geoItem, hirerachyIndex) {
     this.spinner.show();
