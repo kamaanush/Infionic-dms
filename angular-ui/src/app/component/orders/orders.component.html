@@ -12,13 +12,13 @@
         <!-- <h2 class="header-text" ><span class="purchaes">Order </span> </h2>  -->
         <h2 class="header-text" *ngIf="userType !== 'Dealer Admin'">
             <span class="purchaes">
-                {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Shipments' : selectedTabIndex === 2 ?
+                {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Invoice' : selectedTabIndex === 2 ?
                 'Uploads' : 'Receipts' }}
             </span>
         </h2>
         <h2 class="header-text" *ngIf="userType == 'Dealer Admin'">
             <span class="purchaes">
-                {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Shipments' : selectedTabIndex === 2 ?
+                {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Invoice' : selectedTabIndex === 2 ?
                 'Uploads' : 'Receipts' }}
             </span>
         </h2>
@@ -27,7 +27,7 @@
                 <mat-tab class="classi" *ngIf="tabList.indexOf('view') !== -1" label="Orders">
                     <app-order-list></app-order-list>
                 </mat-tab>
-                <mat-tab label="Shipments" *ngIf="tabList.indexOf('view_shipment') !== -1">
+                <mat-tab label="Invoice" *ngIf="tabList.indexOf('view_shipment') !== -1">
                     <app-orders-shipment></app-orders-shipment>
                 </mat-tab>
                 <mat-tab class="mati1" label="Uploads" *ngIf="tabList.indexOf('view_shipment') !== -1" >

@@ -61,11 +61,19 @@ export class AddItemsPromotionComponent implements OnInit {
   searchText;
   columnDefs: ColDef[] = [
     {
+      headerName: '',
+      checkboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+      maxWidth:20,
+       cellStyle: { 'padding-left': '9px' },
+    },
+    {
       headerName: 'Product Code',
       field: 'productCode',
       type: ['nonEditableColumn'],
-      checkboxSelection: true,
-      headerCheckboxSelectionFilteredOnly: true,
+      // checkboxSelection: true,
+      // headerCheckboxSelectionFilteredOnly: true,
+      // cellStyle: { 'padding-left': '5px' }, 
     },
     {
       headerName: 'Product Name',
@@ -139,12 +147,20 @@ export class AddItemsPromotionComponent implements OnInit {
     //  },
   ];
   columnDefs1: ColDef[] = [
+
+    {
+      headerName: '',
+      checkboxSelection: true,
+      // headerCheckboxSelectionFilteredOnly: true,
+      maxWidth:20,
+       cellStyle: { 'padding-left': '9px' },
+    },
     {
       headerName: 'Product Shot Code',
       field: 'productShortCode',
       type: ['nonEditableColumn'],
       sort: 'desc',
-      checkboxSelection: true,
+      // checkboxSelection: true,
     },
     // { headerName: "", field: '', type: ['nonEditableColumn'] },
     // { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -186,12 +202,19 @@ export class AddItemsPromotionComponent implements OnInit {
     //  },
   ];
   columnDefs2: ColDef[] = [
+
+    {
+      headerName: '',
+      checkboxSelection: true,
+      maxWidth:20,
+       cellStyle: { 'padding-left': '9px' },
+    },
     {
       headerName: 'Product Group',
       field: 'productGroupName',
       type: ['nonEditableColumn'],
       sort: 'desc',
-      checkboxSelection: true,
+      // checkboxSelection: true,
     },
 
     // { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -223,11 +246,17 @@ export class AddItemsPromotionComponent implements OnInit {
   ];
   columnDefs3: ColDef[] = [
     {
+      headerName: '',
+      checkboxSelection: true,
+      maxWidth:20,
+       cellStyle: { 'padding-left': '9px' },
+    },
+    {
       headerName: 'Product Sub-Group',
       field: 'productSubGroupName',
       type: ['nonEditableColumn'],
       sort: 'desc',
-      checkboxSelection: true,
+      // checkboxSelection: true,
     },
 
     // { headerName: "", field: '', type: ['nonEditableColumn'] },

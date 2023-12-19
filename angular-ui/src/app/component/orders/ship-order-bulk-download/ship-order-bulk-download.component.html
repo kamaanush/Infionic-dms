@@ -9,7 +9,7 @@
         </div>
 <div class="bulk-Dcontent">
     <p>Bulk download of invoices & shipment data</p>
-    <p><b>Option 1:</b> Download <b>Empty</b> Template</p>
+    <p><b>Option 1:</b> Download <b>Empty</b> Template  </p>
 </div>
 <div class="row">
     <div class="dowload"  (click)="emptyDownload()">
@@ -26,8 +26,8 @@
         <p><b>Option 2:</b> Download template with <b>filtered</b> data</p>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-3 ml-3 col-lg-3 col-sm-2 shipordersbubbles">
+<div class="row" style="margin-left: -5px;">
+    <div class="col-md-2 ml-2 col-lg-2 col-sm-2 shipordersbubbles">
         <form [formGroup]="dealerForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealer dlsr" name="city" [placeholder]="'Dealer'" formControlName="dealer"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerListData"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
@@ -42,7 +42,7 @@
 
         </div>
       </div>
-      <div class="col-md-3 col-lg-3 col-sm-2">
+      <div>
         <!-- <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="order" name="city" [placeholder]="'Order Date'" formControlName="city"
             [disabled]="disabled" [settings]="geographySettings" [data]="dealersdrop"
@@ -51,8 +51,8 @@
         </form> -->
         <app-customdatepicker [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
 
-      </div>
-      <div class="col-md-3 col-lg-3 col-sm-2 shipordersbulkbubbles">
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-2 col-lg-2 col-sm-2 shipordersbulkbubbles">
         <form [formGroup]="geographyForm" >
           <ng-multiselect-dropdown class="geography geograph" name="city" [placeholder]="'Geography'" formControlName="geography"
             [disabled]="disabled" [settings]="geographySettings" [data]="geographyData" (onSelect)="geographyselect($event)"

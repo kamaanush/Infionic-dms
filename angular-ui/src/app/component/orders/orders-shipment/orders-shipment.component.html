@@ -54,7 +54,7 @@
       </div>
 
       <!-- [pageName]="currentPageName" -->
-<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'" >
+<div class="col-md-0 col-lg-0 col-sm-0">
   <div class="sales-download" (click)="bulkDownload()" userRoleDirective="UPLOAD_SHIPMENT" >
     <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
         alt="add-user-btn">
@@ -68,9 +68,9 @@
         alt="add-user-btn">    
 </div>
 </div>
-<div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType == 'Dealer Admin'">
-  
-</div>
+
+<!-- <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType == 'Dealer Admin'">
+</div> -->
 
 <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'" >
   <div class="sales-dwnld" (click)="shipmentDownload()">

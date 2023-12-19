@@ -494,6 +494,9 @@ export class OrderListComponent implements OnInit {
         headerName: 'Status',
         field: 'status',
         minWidth: 100,
+        cellStyle: {
+          'color': '#686E74' 
+        },
         cellEditor: 'agSelectCellEditor',
         cellEditorParams: {
           values: ['Closed', 'Approved'],
@@ -697,6 +700,9 @@ export class OrderListComponent implements OnInit {
           headerName: 'Status',
           field: 'status',
           minWidth: 100,
+          cellStyle: {
+            'color': '#686E74' 
+          },
           cellEditor: 'agSelectCellEditor',
           cellEditorParams: {
             values: ['Closed', 'Approved'],
@@ -900,6 +906,9 @@ export class OrderListComponent implements OnInit {
           field: 'status',
           minWidth: 120,
           maxWidth: 120,
+          cellStyle: {
+            'color': '#686E74' 
+          },
           cellEditor: 'agSelectCellEditor',
           cellEditorParams: {
             values: ['Closed', 'Approved'],

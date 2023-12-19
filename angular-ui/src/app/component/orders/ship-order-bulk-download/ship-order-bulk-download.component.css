@@ -114,6 +114,7 @@ text-align: center;
     border: 2px solid #000000;
     text-align: center;
     transition: all .4s ease;
+    
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
     border: 1px solid #337ab7;
@@ -181,10 +182,11 @@ text-align: center;
   
   ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     background: #006466 !important;
+    
   }
   
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-    border: 2px solid #000000 !important;
+    border: 2px solid #018B75 !important;
   }
   .REfreshbtn {
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
@@ -407,7 +409,9 @@ height: 43px;
 }
 
 ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-  background: #D23F00 !important;
+  /* background: #D23F00 !important; */
+  background: #018B75!important;
+  border: 1px solid #018B75 !important;
 }
 #DP
 {
@@ -556,3 +560,32 @@ padding-left: 5px;
      height: 5px;
      display: table-cell;
    }
+
+   .dlsr .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #018B75!important;
+}
+::ng-deep .shipordersbubbles  .dropdown-list {
+  position: absolute;
+  padding-top: 6px;
+  left: -6px;
+  width: 100%;
+  z-index: 9999;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  margin-top: 0px !important;
+  box-shadow: 0 1px 5px #959595;
+}
+  
+  ::ng-deep .shipordersbulkbubbles  .dropdown-list {
+    position: absolute;
+    padding-top: 6px;
+    left: -6px;
+    width: 100%;
+    z-index: 9999;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    margin-top: 0px !important;
+    box-shadow: 0 1px 5px #959595;
+  }
