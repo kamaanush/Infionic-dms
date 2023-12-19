@@ -200,6 +200,8 @@
    border-radius: 10px;
    cursor: pointer;
    font-family: 'Gilroy-SemiBold';
+   border: none;
+   outline: none;
 }
 .cancelbtn
 {
@@ -213,6 +215,8 @@
    border-radius: 10px;
    cursor: pointer;
    margin-left: -41%;
+   border: none;
+   outline: none;
 }
 .nodicument
 {
