@@ -392,13 +392,12 @@
                     <mat-step [stepControl]="secondFormGroup">
                         <form [formGroup]="gepGraphiesFormGroup">
                             <ng-template matStepLabel> Geographies</ng-template>
-                            <div class="heading">
+                            <div class="heading" *ngIf="dealerAction!=='Edit'">
                                 <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
                             </div>
 
-                            <div class="horizontal-scroll">
-                                <div class="horizontal-scroll__item"
-                                    *ngFor="let item of geoGraphyFullData;let i =index; ">
+                            <div class="horizontal-scroll" style="height: 300px;"  *ngIf="dealerAction!=='Edit'">
+                                <div class="horizontal-scroll__item" *ngFor="let item of geoGraphyFullData;let i =index; ">
                                     <div class="geo-grid">
                                         <div class="row grid-heading">
                                             <div class="col-sm-10">
@@ -407,9 +406,7 @@
                                                         <img src="assets/img/double-blue-tick.svg"
                                                             alt="double-blue-tick"> </span>
                                                 </p>
-
                                             </div>
-
                                         </div>
                                         <mat-card class="mat-card mat-focus-indicator mat-card-content scroll">
                                             <mat-card-content class="mat-card-content">
@@ -430,18 +427,26 @@
                                                     </div>
                                                 </div>
                                             </mat-card-content>
+                                            <!-- <div class="row" *ngFor="let item of geoGraphyFullData">
+                                                {{item.geographyHierarchyName}}
+                                            </div> -->
                                         </mat-card>
                                     </div>
                                 </div>
-
                             </div>
-
-
-
-
-
-
-                            <div class="row">
+                            <div class="row"  *ngIf="dealerAction==='Edit'" style="margin-bottom: 300px;">
+                                <div class="col-md-2" *ngFor="let item of geoGraphyFullData">
+                                    <div *ngIf="item.geographySelected?.length > 0">
+                                        <strong>{{ item.geographyHierarchyName }}</strong>
+                                    </div>
+                                    <div *ngFor="let selectedGeo of item.geographySelected" class="card-body card">
+                                       <button class="btn btn-sm" style="background: rgba(1, 139, 117, 1);color: white;">{{ selectedGeo.geographyName }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row" >
                                 <div class="col-3">
 
                                 </div>

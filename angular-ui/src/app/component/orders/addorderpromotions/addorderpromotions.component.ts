@@ -1997,13 +1997,14 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   isNonPromoCheck:any
+  isCheckboxManuallyChecked: boolean = false;
   checkboxChange(event, changedPromotionObj) {
     console.log(event, changedPromotionObj);
     changedPromotionObj.isPromotionSelected = event.target.checked;
     this.isNonPromoCheck=event.target.checked;
     this.quantityChange(changedPromotionObj);
     this.nonPromotionCalculation(changedPromotionObj);
-
+    this.isCheckboxManuallyChecked = true;
     // this.quantityadd = 0;
     // this.price = 0;
     // this.orderNonPromotionsdata.forEach(item => {
@@ -2024,12 +2025,14 @@ export class AddorderpromotionsComponent implements OnInit {
 
   DisplayNonpromotion: boolean = false;
   addnonPromoItems() {
-    if (this.nonPromoQty == null || this.isNonPromoCheck) {
+    // if (this.nonPromoQty == null|| this.UpdatedQty ===0 || (this.isNonPromoCheck && !this.isCheckboxManuallyChecked)) {
+      if ((this.UpdatedQty == 0|| this.UpdatedQty == null) && (this.isNonPromoCheck || !this.isCheckboxManuallyChecked)) {
       const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
         data: {
           Alertpp: true,
         },
       });
+      this.isCheckboxManuallyChecked = false;
     } else {
       let selectedNonPromotionData: any = [];
       this.orderNonPromotionsdata.forEach((item) => {

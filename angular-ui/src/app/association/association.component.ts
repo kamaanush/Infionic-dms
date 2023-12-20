@@ -149,26 +149,26 @@ export class AssociationComponent implements OnInit {
        field: "mrp", cellStyle: { color: '#686E74' },     
       type: ['nonEditableColumn','rightAligned']
     },
-    {
-      headerName: "MinOrderQty",
-       field: "minOrder",  cellStyle: { color: '#686E74' },     
-      type: ['nonEditableColumn','rightAligned']
-    },
-    {
-      headerName: "MaxOrderQty",
-         field: "maxOrder", cellStyle: { color: '#686E74' },        
-      type: ['nonEditableColumn','rightAligned']
-    },
-    {
-      headerName: "Margin",
-         field: "margin", cellStyle: { color: '#686E74' },   
-         type: ['nonEditableColumn','rightAligned']
-    },
-    {
-      headerName: "Discount",
-         field: "discount", cellStyle: { color: '#686E74' },     
-        type: ['nonEditableColumn','rightAligned']
-    },
+    // {
+    //   headerName: "MinOrderQty",
+    //    field: "minOrder",  cellStyle: { color: '#686E74' },     
+    //   type: ['nonEditableColumn','rightAligned']
+    // },
+    // {
+    //   headerName: "MaxOrderQty",
+    //      field: "maxOrder", cellStyle: { color: '#686E74' },        
+    //   type: ['nonEditableColumn','rightAligned']
+    // },
+    // {
+    //   headerName: "Margin",
+    //      field: "margin", cellStyle: { color: '#686E74' },   
+    //      type: ['nonEditableColumn','rightAligned']
+    // },
+    // {
+    //   headerName: "Discount",
+    //      field: "discount", cellStyle: { color: '#686E74' },     
+    //     type: ['nonEditableColumn','rightAligned']
+    // },
     {
       headerName: "LeadTimeDays",
         field: "leadTimeIndays",cellStyle: { color: '#686E74' },        

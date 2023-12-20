@@ -983,7 +983,8 @@ export class DealerTargetComponent implements OnInit {
   }
 
   onCellClicked(e): void {
-    // console.log('cellClicked', e);
+    console.log('cellClicked', e.data);
+    localStorage.setItem('financialyear',e.data.year)
     this.userId = e.data.targetAssociationId;
     this.employeeName = e.data.userName;
     // console.log('userID', this.userId);

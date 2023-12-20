@@ -62,15 +62,38 @@ export class DealerTargetActionComponent implements OnInit {
     this.params = params;
   }
 
+  year:any
   ngOnInit(): void {
   }
   @ViewChild('content') container;
 
   @ViewChild('trigger') button;
+  getCurrentFinancialYear() {
+    const today = new Date();
+    const currentMonth = today.getMonth(); 
+  
+    let startYear, endYear;
+  
+    if (currentMonth >= 3) {
+      startYear = today.getFullYear();
+      endYear = startYear + 1;
+    } else {
+      endYear = today.getFullYear();
+      startYear = endYear - 1;
+    }
+    return `${startYear}-${endYear}`;
+  }
+  showedit:boolean=true
   configureTippyInstance() {
+    const currentFinancialYear = this.getCurrentFinancialYear();
+    // alert(currentFinancialYear)
     this.tippyInstance.enable();
     this.tippyInstance.show();
-
+    this.year = JSON.parse(localStorage.getItem('financialyear')||'null')
+    // alert(this.year)
+    if (this.year < parseInt(currentFinancialYear.split('-')[0], 10)) {
+      this.showedit = false
+    }
     this.tippyInstance.setProps({
       trigger: 'manual',
       placement: 'left',
@@ -89,12 +112,6 @@ export class DealerTargetActionComponent implements OnInit {
       },
     });
   }
-
-
-
-
-
-
 edit(){
   this.dialog.open(EditDealerTargetComponent,
     {
