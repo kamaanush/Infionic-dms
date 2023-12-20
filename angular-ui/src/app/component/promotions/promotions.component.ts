@@ -129,9 +129,10 @@ export class PromotionsComponent implements OnInit {
     {
       headerName: 'Name',
       field: 'promotionName',
-      minWidth: 250,
+      minWidth: 180,
+      maxWidth: 180,
       tooltipField: 'promotionName',
-      cellStyle: { color: '#686E74' }, 
+      cellStyle: { color: '#686E74', }, 
     },
 
     {
@@ -143,6 +144,8 @@ export class PromotionsComponent implements OnInit {
     {
       headerName: '# of Dealers',
       field: 'noOfDealers',
+      minWidth: 130,
+      maxWidth: 130,
       tooltipField: 'noOfDealers',
       type: 'rightAligned',
       cellStyle: { color: '#686E74' }, 
@@ -151,6 +154,8 @@ export class PromotionsComponent implements OnInit {
       headerName: 'Start Date',
       field: 'startDate',
       tooltipField: 'startDate',
+      minWidth: 150,
+      maxWidth: 150,
       cellStyle: { color: '#686E74' }, 
       cellRenderer: (data) => {
         return this.sharedServices.dateformat(data.value);
@@ -170,24 +175,28 @@ export class PromotionsComponent implements OnInit {
     },
     
     {
-      headerName: '# of orders',
+      headerName: '# of Orders',
       field: 'noOfOrders',
       tooltipField: 'noOfOrders',
+     
       type: ['rightAligned'],
       cellStyle: { color: '#686E74' }, 
     },
     {
-      headerName: 'Order Values ($)',
+      headerName: 'Order Values($)',
       field: 'invoicedValue',
+      minWidth: 180,
+      maxWidth: 180,
       tooltipField: 'invoicedValue',
       type: ['rightAligned'],
-      cellStyle: { color: '#686E74' }, 
+      cellStyle: { color: '#686E74'}, 
     },
    
     {
       headerName: 'Status',
       field: 'statusName',
       cellEditor: 'agSelectCellEditor',
+      //  type: ['rightAligned'],
       cellEditorParams: {
         values: ['Active', 'Closed', 'Draft'],
       },

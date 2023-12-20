@@ -3374,17 +3374,17 @@ cursor: pointer;
    }
 
    .cancel-icon .mat-icon{
-    background: #000000;
-    color: #FFFFFF;
+    background: rgba(1, 139, 117, 1);
+    color: #fff;
     position: absolute;
-    /* top: -20px; */
     top: -8px;
     padding-top: 1px;
     border-radius: 50%;
-    padding-left: 0px;
-    margin-left: -5px;
+    padding-left: -5px;
+    margin-left: 23px;
     cursor: pointer;
     display: none;
+    width: 23px;
    }
 
    

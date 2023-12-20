@@ -65,7 +65,12 @@ export class AddItemsPromotionComponent implements OnInit {
       checkboxSelection: true,
       headerCheckboxSelectionFilteredOnly: true,
       maxWidth:20,
-       cellStyle: { 'padding-left': '9px' },
+       cellStyle: { 'padding-left': '3px' },
+    },
+    {
+      headerName: 'Product Identifier',
+      field: 'productIdentifier',
+      type: ['nonEditableColumn'],
     },
     {
       headerName: 'Product Code',
@@ -86,35 +91,38 @@ export class AddItemsPromotionComponent implements OnInit {
       //   return !!params.data && params.data.isProductSelected ;
       // }
     },
-    {
-      headerName: 'Product Identifier',
-      field: 'productIdentifier',
-      type: ['nonEditableColumn'],
-    },
+  
     {
       headerName: 'Product Group',
       field: 'productGroup',
       type: ['nonEditableColumn'],
     },
     {
-      headerName: 'Product Sub-Group',
-      field: 'productSubGroup',
+      headerName: 'Product Category',
+      field: 'classification',
+      minWidth: 200,
+      maxWidth: 200,
       type: ['nonEditableColumn'],
     },
+    // {
+    //   headerName: 'Product Sub-Group',
+    //   field: 'productSubGroup',
+    //   type: ['nonEditableColumn'],
+    // },
     // {
     //   headerName: 'Classification',
     //   field: 'classification',
     //   type: ['nonEditableColumn'],
     // },
-    {
-      headerName: 'Product Shot Code',
-      field: 'productShortCode',
-      type: ['nonEditableColumn'],
-    },
-    {
-      headerName:'Registration No',
-      field:'registrationNo'
-    }
+    // {
+    //   headerName: 'Product Shot Code',
+    //   field: 'productShortCode',
+    //   type: ['nonEditableColumn'],
+    // },
+    // {
+    //   headerName:'Registration No',
+    //   field:'registrationNo'
+    // }
 
     // { headerName: 'SKU', field: 'sku', type: ['nonEditableColumn'] },
     
@@ -153,7 +161,7 @@ export class AddItemsPromotionComponent implements OnInit {
       checkboxSelection: true,
       // headerCheckboxSelectionFilteredOnly: true,
       maxWidth:20,
-       cellStyle: { 'padding-left': '9px' },
+       cellStyle: { 'padding-left': '3px' },
     },
     {
       headerName: 'Product Shot Code',
@@ -168,8 +176,9 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: '# of Products',
       field: 'noofproducts',
-      type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' },
+      // type: ['nonEditableColumn'],
+       type: ['rightAligned','nonEditableColumn'],
+      cellStyle: { color: '#686E74','text-align': 'right' },
       cellEditorPopup: true,
       onCellClicked: (event: CellClickedEvent) =>
         this.dialog.open(PopupGridTableComponent, {
@@ -207,7 +216,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: '',
       checkboxSelection: true,
       maxWidth:20,
-       cellStyle: { 'padding-left': '9px' },
+       cellStyle: { 'padding-left': '3px' },
     },
     {
       headerName: 'Product Group',
@@ -229,27 +238,27 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: '# of products',
       field: 'noofproducts',
-      type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' },
+      type: ['rightAligned','nonEditableColumn'],
+      cellStyle: { color: '#686E74','text-align': 'right' },
       cellEditorPopup: true,
       onCellClicked: (event: CellClickedEvent) =>
         this.dialog.open(PopupGridTableComponent, { panelClass: 'grid-popup' }),
     },
 
-    // {
-    //   headerName: '',
-    //   colId: 'action',
-    //   // cellRenderer: UseractionComponent,
-    //   editable: false,
-    //   maxWidth: 75,
-    // },
+    {
+      headerName: '',
+      colId: 'action',
+      // cellRenderer: UseractionComponent,
+      editable: false,
+      maxWidth: 75,
+    },
   ];
   columnDefs3: ColDef[] = [
     {
       headerName: '',
       checkboxSelection: true,
       maxWidth:20,
-       cellStyle: { 'padding-left': '9px' },
+       cellStyle: { 'padding-left': '3px' },
     },
     {
       headerName: 'Product Sub-Group',
@@ -275,8 +284,8 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: '# of Products',
       field: 'noofproducts',
-      type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' },
+      type: ['rightAligned','nonEditableColumn'],
+      cellStyle: { color: '#686E74','text-align': 'right' },
       cellEditorPopup: true,
       onCellClicked: (event: CellClickedEvent) =>
         this.dialog.open(PopupGridTableComponent, {
@@ -285,13 +294,13 @@ export class AddItemsPromotionComponent implements OnInit {
     },
 
     // suppressMovable:true,
-    // {
-    //   headerName: '',
-    //   colId: 'action',
-    //   // cellRenderer: UseractionComponent,
-    //   editable: false,
-    //   maxWidth: 75,
-    // },
+    {
+      headerName: '',
+      colId: 'action',
+      // cellRenderer: UseractionComponent,
+      editable: false,
+      maxWidth: 75,
+    },
   ];
   gridOptions: GridOptions = {
     defaultColDef: {

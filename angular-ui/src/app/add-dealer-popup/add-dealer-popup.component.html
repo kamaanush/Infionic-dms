@@ -109,13 +109,13 @@
                                             
                                         </div>
                                         <!-- company Id -->
-                                        <div class="col-3">
+                                        <!-- <div class="col-3">
                                             <label>Company ID</label>
                                             <br>
                                             <input type="text" formControlName="company_id"
                                                 class="addDelercolss form-control"
                                                 placeholder="Enter dealer company id">
-                                        </div>
+                                        </div> -->
                                         <!-- lead time in days -->
                                         <div class="col-3 " style="bottom:13px">
                                             <label class="otherId">Leadtime in days<span>*</span></label>
@@ -129,7 +129,7 @@
                                             <label class="otherId">Other Identifer</label>
                                             <br>
                                             <input type="text" formControlName="OtherIdentifier"
-                                                class="addDelercols form-control" style="width:93%;"
+                                                class="addDelercols form-control" style="width:100%;"
                                                 placeholder="Enter and select">
                                             <!-- <img src="../assets/img/search.png" class="search"> -->
                                         </div>
@@ -290,7 +290,7 @@
                                                     class="addDelercols addname">
                                             </div>
 
-                                            <div class="col-1" style="position: relative;right:88px;">
+                                            <!-- <div class="col-1" style="position: relative;right:88px;">
                                                 <label *ngIf="i == 0">Tax<span>*</span></label>
                                                 <br>
                                                 <select #teams class="addDelercols addtax"
@@ -303,9 +303,9 @@
                                                         <p>{{product.taxTemplateName}}</p>
                                                     </option>
                                                 </select>
-                                            </div>
+                                            </div> -->
 
-                                            <div class="col-2" style="position: relative;right:116px;">
+                                            <div class="col-2" style="position: relative;right:99px;">
                                                 <label *ngIf="i == 0">Address Line 1 <span>*</span></label>  <span *ngIf="i == 0" class="addressline2">Address Line2 <span>*</span></span><br>
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine1"
                                                     class="addDelercols addadress" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine1">

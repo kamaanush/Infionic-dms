@@ -118,7 +118,7 @@ export class DealersComponent implements OnInit {
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },
-      cellRenderer: IconHoverComponent,
+      // cellRenderer: IconHoverComponent,
       cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 

@@ -120,13 +120,13 @@ export class DealerTargetComponent implements OnInit {
     field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
     {
-      headerName: "DealerName",
+      headerName: "Dealer",
       field: 'customername',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
    
     // suppressMovable:true,
     {
-      headerName: "Financialyear",
+      headerName: "FY",
       field: 'year',
       type: ['nonEditableColumn','rightAligned'],
       cellStyle: { color: '#686E74' },

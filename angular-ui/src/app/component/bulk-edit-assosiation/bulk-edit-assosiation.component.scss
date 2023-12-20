@@ -189,7 +189,7 @@
     position: relative;
     width: 43px;
     height: 42px;
-    margin-right: 23px;
+    // margin-right: 23px;
     top: 4px;
   }
   
@@ -375,21 +375,21 @@
     background-color: #007bff;
   }
   
-  ::ng-deep.my-class-1 {
-    color: #FA3F3F !important;
-  }
+  // ::ng-deep.my-class-1 {
+  //   color: #FA3F3F !important;
+  // }
   
-  ::ng-deep.my-class-2 {
-    color: #17B15C !important;
-  }
+  // ::ng-deep.my-class-2 {
+  //   color: #17B15C !important;
+  // }
   
-  ::ng-deep.my-class-3 {
-    color: #F5B666 !important;
-  }
+  // ::ng-deep.my-class-3 {
+  //   color: #F5B666 !important;
+  // }
   
-  ::ng-deep.my-class-4 {
-    color: #017EFA !important;
-  }
+  // ::ng-deep.my-class-4 {
+  //   color: #017EFA !important;
+  // }
   
   
   
@@ -1021,7 +1021,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
      /* font-family: 'Gilroy-Bold';  */
      font-weight: bold;
      font-size: 20px;
-     bottom: 27px;
+     bottom: 10px;
      left: 550px;
   }
   .addU:after{
@@ -1059,20 +1059,11 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   
   }
   .saveas-draft4 {
-    color: #fff;
-    // background: #000000;
-    background-color:#018B75;  
-    // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
+   
     float: right;
-    // margin-top: 10px;
-    cursor: pointer;
-    width: 168px;
-    height: 43px;
+   
     position: relative;
-    bottom: 21px;
-    border:1px solid #018B75;
-    outline: none;
+   
   }
   .saveas-draft {
     color: #fff;
@@ -1204,7 +1195,7 @@ margin-left: 136px;
      height: 385px;
     overflow-y: scroll;
     position: relative;
-    top: 20px;
+    top: 30px;
 
   }
   .flexcss{

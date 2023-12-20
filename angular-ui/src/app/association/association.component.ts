@@ -110,6 +110,8 @@ export class AssociationComponent implements OnInit {
 
     {
         headerName: 'ProductSKUGeographyId',
+        minWidth: 200,
+        maxWidth: 200,
        field: 'productSKUGeographyId',
        cellStyle: { color: '#686E74' }, 
     },
@@ -126,14 +128,18 @@ export class AssociationComponent implements OnInit {
     },
 
     { headerName: "DealerName",
-    minWidth:250,
+    minWidth: 150,
+    maxWidth: 150,
      field: 'customerName',
+
     // field:'DealerName',
      type: ['nonEditableColumn'], sort: 'desc',cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: "GeographyName",
       // minWidth:220,
+      minWidth: 150,
+      maxWidth: 150,
        field: 'geographyName',
       // field: 'GeographyName',  
 
@@ -146,6 +152,8 @@ export class AssociationComponent implements OnInit {
 
     {
       headerName: "MRP",
+      minWidth: 80,
+      maxWidth: 80,
        field: "mrp", cellStyle: { color: '#686E74' },     
       type: ['nonEditableColumn','rightAligned']
     },

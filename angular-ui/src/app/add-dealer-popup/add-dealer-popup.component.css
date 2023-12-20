@@ -1716,7 +1716,8 @@ li {
 }
 .addMore-iconn {
   cursor: pointer;
-  margin-left: 59px;
+  /* margin-left: 59px; */
+  right: 60px;
   position: relative;
   top: 30px;
   color: rgba(1, 139, 117, 1);
