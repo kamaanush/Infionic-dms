@@ -9,23 +9,38 @@
             <h4 class="bulk-txt"><b>Bulk upload of sales</b></h4>
         </div>
         <div class="row">
-            <span class="step1-txt">Step 1:</span>
+            <span class="step1-txt">Step 1 :</span>
             <h4 class="up-doc"> Upload document</h4>
         </div>
         <label class=" row upload-div">
             <input  type="file" (change)="onFileChange($event)" style="display: none;">
+            <!-- <span *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</span> -->
             <img src="../../../assets/img/UPLOADED.svg"  class="upload-icon" alt="Upload icon">
-            <div class="row" *ngIf="uploadedTextShow">
+
+            <!-- <div class="row" *ngIf="uploadedTextShow">
                 <div  *ngFor="let file of files; let i=index">
                    <h6 class="uploadedText"> Document is <b>{{file.name}} </b><br></h6>
                    <h6 class="uploadedTexttt"> is successfully Uploaded!</h6>
                    </div>
-            </div>
+            </div> -->
+            <div class="row" *ngIf="uploadedTextShow">
+                <div *ngFor="let file of files; let i=index">
+                  <h6 class="uploadedText"> Document is <b>{{file.name}} </b><br></h6>
+                  <h6 class="uploadedTexttt"> is successfully Uploaded!</h6>
+                </div>
+              </div>
+              
             <div class="row" *ngIf="!uploadedTextShow">
                 <h6 class="upload-doc txt-1">Upload the document</h6>
             </div>
             <div class="row" *ngIf="!uploadedTextShow"> 
                 <h6 class="upload-doc txt-2">after adding all required information related to sales</h6>
+            </div>
+            <div class="row" *ngIf="isShowtext">
+                <h6 class="upload-doc textshow">Upload the document</h6>
+            </div>
+            <div class="row" *ngIf="isShowtext "> 
+                <h6 class="upload-doc TextSHOWdiv">after adding all required information related to sales</h6>
             </div>
        
         </label>
@@ -39,7 +54,7 @@
             <input type="text" class="total-rows no-doc col-md-11" placeholder="No document uploaded yet" disabled>
         </div> -->
         <div class="step-2-filled" *ngIf="showTable">
-            <div class="row step2">
+            <div class="row step2" *ngIf="isdocumen">
                 <span class="step1-txt">Step 2:</span>
                 <h4 class="up-doc">Analyzing Uploaded document</h4>
             </div>
@@ -50,7 +65,7 @@
                         <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div  *ngIf = "!rowsTotal && TotalRows.length>0" class="row ">
+                <div  *ngIf="!rowsTotal && TotalRows?.length>0" class="row ">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
@@ -59,7 +74,7 @@
                             <th>Geography</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
-                            <th>Customer Reference</th>
+                            <th>Remarks</th>
                             <th ></th>
                         </tr>
                         <tr *ngFor="let dupicateData of TotalRows">
@@ -94,7 +109,7 @@
                             <th>Geography</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
-                            <th>Customer Reference</th>
+                            <th>Remarks</th>
                             <th ></th>
                         </tr>
                         <tr *ngFor="let dupicateData of errorfreeRows">
@@ -129,7 +144,7 @@
                             <th>Geography</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
-                            <th>Customer Reference</th>
+                            <th>Remarks</th>
                             <th ></th>
                         </tr>
                         <tr *ngFor="let dupicateData of duplicateEntryy">
@@ -164,7 +179,7 @@
                             <th>Geography</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
-                            <th>Customer Reference</th>
+                            <th>Remarks</th>
                             <th ></th>
                         </tr>
                         <tr *ngFor="let dupicateData of incorrectRows">
@@ -184,8 +199,8 @@
                 </div>
             </div>
             <div class="button-save-chng row">
-                <div class="save-chng" (click)="UploadSales()">
-                    <button class="save-text">
+                <div class="save-chng"  >
+                    <button class="save-text" (click)="UploadSales()" [disabled]="duplicateEntryy.length>0 || incorrectRows.length>0">
                        Upload
                     </button>
                 </div>
@@ -411,8 +426,8 @@
                 </div>
             </div>
             <div class="button-save-chng row">
-                <div class="save-chng" (click)="uploadFile()">
-                    <button class="save-text">
+                <div class="save-chng" >
+                    <button class="save-text" (click)="uploadFile()" [disabled]="duplicateEntryy.length>0 || incorrectRows.length>0">
                        Upload
                     </button>
                 </div>

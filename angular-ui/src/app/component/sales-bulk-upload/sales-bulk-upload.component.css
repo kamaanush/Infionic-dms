@@ -256,9 +256,20 @@ color: rgba(104, 110, 116, 0.75);
     top: 38px;
     left: 127px;
 }
+.textshow
+{
+  top: 19px;
+    left: 144px;
+}
 .txt-2 {
     left: 88px;
     bottom: 8px;
+    font-weight: 600;
+}
+.TextSHOWdiv
+{
+  left: -21px;
+    bottom: -39px;
     font-weight: 600;
 }
 .txt-3 {

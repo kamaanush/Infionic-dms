@@ -88,7 +88,7 @@
           
         
         &nbsp; &nbsp;&nbsp;
-        <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName" *ngIf="(userType !== 'Order Manager' && userType) || userType == 'Viewer'">
+        <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName"  *ngIf="userType !== 'Order Manager' && (userType === 'Viewer' || userType !== 'Business Manager') ">
           <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
         </div>
       </div>
@@ -100,9 +100,10 @@
         <img class="OrderlistDownloaded" src="../../../assets/img/ll.svg">
       </div> 
       &nbsp; &nbsp;&nbsp;
-      <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName" *ngIf="(userType !== 'Order Manager' && userType) || userType === 'Viewer'">
+     
+       <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName"  *ngIf="userType !== 'Order Manager' && (userType === 'Viewer' || userType !== 'Business Manager')">
         <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
-      </div>
+      </div> 
     </div>
 
 <!-- down Dealer Admin -->

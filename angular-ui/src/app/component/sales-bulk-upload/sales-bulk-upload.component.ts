@@ -193,80 +193,127 @@ export class SalesBulkUploadComponent implements OnInit {
       this.image8 = 'assets/img/minimize-tag.png';
     }
   }
+  errorMessage: string | null = null;
 
-  // finctionality to read xlxs sheet and send array of object to api
-  onFileChange(event: any) {
-    // Iterate over selected files
-    for (let file of event.target.files) {
-      // Append to a list
-      this.files.push({
-        name: file.name,
-        type: file.type,
-        // Other specs
-      });
-    }
-    this.uploadedTextShow = true;
-    /* wire up file reader */
-    const target: DataTransfer = <DataTransfer>event.target;
-    if (target.files.length !== 1) {
-      throw new Error('Cannot use multiple files');
-    }
-    const reader: FileReader = new FileReader();
-    reader.readAsBinaryString(target.files[0]);
-    reader.onload = (e: any) => {
-      /* create workbook */
-      const binarystr: string = e.target.result;
-      const wb: XLSX.WorkBook = XLSX.read(binarystr, {
-        type: 'binary',
-        cellDates: true,
-      });
-      console.log(wb, 'wb');
-
-      /* selected the first sheet */
-      const wsname: string = wb.SheetNames[0];
-      console.log(wsname, 'wsname');
-      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-      console.log(ws, 'ws');
-
-      /* save data */
-
-      this.uploadedData = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
-      console.log('New Dataaaa', this.uploadedData); // Data will be logged in array format containing objects
-      const uploadedFile = {
-        CreateById: this.CreatedById,
-        BulkSales: this.uploadedData,
-      };
-      console.log('Daaataaa', uploadedFile);
-      this.salesService.getBulkSalesUpload(uploadedFile).subscribe((res) => {
-        if ((res.succeded = true)) {
-          this.showTable = true;
-        }
-        this.salesUploadList = res.response;
-        this.TotalRows = this.salesUploadList.allRows;
-        this.totalRows = 'Total rows = ' + this.TotalRows.length;
-        this.duplicateEntryy = this.salesUploadList.duplicateEntries;
-        this.duplicateEntry =
-          'Duplicate entries = ' + this.duplicateEntryy.length;
-        this.errorfreeRows = this.salesUploadList.errorFreeRows;
-        this.errorFree = 'Error free rows = ' + this.errorfreeRows.length;
-        console.log('this.salesUploadList', this.salesUploadList);
-        this.incorrectRows = this.salesUploadList.incorrectData;
-        this.incorrectRows.map((ele) => {
-          ele.incorrectColumn = ele.incorrectColumn
-            .split(':')[1]
-            .toLowerCase()
-            .trim();
-          console.log('dfdfd', ele.incorrectColumn);
-          return ele;
-        });
-        console.log('incoreectggggggggggggggggggggggg', this.incorrectRows);
-        this.Incorrect = 'Incorrect Data = ' + this.incorrectRows.length;
-        const SalesUploadData = res.response.allRows;
-        console.log('SalesUploadData', SalesUploadData);
-        this.batchId = SalesUploadData.map(({ batchId }) => batchId);
-      });
-    };
+  isExcelFile(file: File): boolean {
+    // Validate file type by checking the file extension
+    const allowedExtensions = ['.xls', '.xlsx'];
+    const fileName = file.name.toLowerCase();
+    return allowedExtensions.some(ext => fileName.endsWith(ext));
   }
+
+  
+  isShowtext:boolean=false;
+  isdocumen:boolean=false;
+  onFileChange(event: any): void {
+    // Reset error message
+    this.errorMessage = null;
+    let multipleFilesSelected = false;
+    // this.files = [];
+    // Check if files are selected
+    if (event.target.files && event.target.files.length > 0) {
+      // Check if multiple files are selected
+      if (event.target.files.length > 1) {
+        multipleFilesSelected = true;
+      }
+      this.files = [];
+      // Iterate over selected files
+      for (let file of event.target.files) {
+        // Validate file type (Excel format)
+        if (this.isExcelFile(file)) {
+          // Append to a list
+          this.files.push({
+            name: file.name,
+            type: file.type,
+            // Other specs
+          });
+          this.uploadedTextShow = true;
+          /* wire up file reader */
+          const target: DataTransfer = <DataTransfer>event.target;
+  
+          const reader: FileReader = new FileReader();
+          reader.readAsBinaryString(target.files[0]);
+          reader.onload = (e: any) => {
+            /* create workbook */
+            const binarystr: string = e.target.result;
+            const wb: XLSX.WorkBook = XLSX.read(binarystr, {
+              type: 'binary',
+              cellDates: true,
+            });
+  
+            /* selected the first sheet */
+            const wsname: string = wb.SheetNames[0];
+            const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+  
+            /* save data */
+            this.uploadedData = XLSX.utils.sheet_to_json(ws);
+            console.log('New Data', this.uploadedData);
+  
+           
+            const uploadedFile = {
+              CreateById: this.CreatedById,
+              BulkSales: this.uploadedData,
+            };
+  
+            console.log('Daaataaa', uploadedFile);
+            this.salesService.getBulkSalesUpload(uploadedFile).subscribe((res) => {
+              if (res.succeded === true) {
+                this.showTable = true;
+                this.isShowtext=false;
+              }
+            
+              this.isShowtext=false;
+              this.isdocumen=false;
+
+              this.salesUploadList = res.response;
+                    this.TotalRows = this.salesUploadList.allRows;
+                    this.totalRows = 'Total rows = ' + this.TotalRows.length;
+                    this.duplicateEntryy = this.salesUploadList.duplicateEntries;
+                    this.duplicateEntry =
+                      'Duplicate entries = ' + this.duplicateEntryy.length;
+                    this.errorfreeRows = this.salesUploadList.errorFreeRows;
+                    this.errorFree = 'Error free rows = ' + this.errorfreeRows.length;
+                    console.log('this.salesUploadList', this.salesUploadList);
+                    this.incorrectRows = this.salesUploadList.incorrectData;
+                    this.incorrectRows.map((ele) => {
+                      ele.incorrectColumn = ele.incorrectColumn
+                        .split(':')[1]
+                        .toLowerCase()
+                        .trim();
+                      console.log('dfdfd', ele.incorrectColumn);
+                      return ele;
+                    });
+             
+                    console.log('incoreect', this.incorrectRows);
+                          this.Incorrect = 'Incorrect Data = ' + this.incorrectRows.length;
+                          const SalesUploadData = res.response.allRows;
+                          console.log('SalesUploadData', SalesUploadData);
+                          this.batchId = SalesUploadData.map(({ batchId }) => batchId);
+                          this.isShowtext=false;
+                          this.isdocumen=false;
+            });
+          };
+        } else {
+          // Show an error message for invalid file type
+          this.errorMessage = 'Invalid file type. Please select an Excel file.';
+          event.target.value = '';
+          alert(this.errorMessage);
+           this.files.name;
+           this.uploadedTextShow = true;
+           this.isShowtext=true;
+           console.log(this.isShowtext,"Checkingconditions")
+        } if (multipleFilesSelected) {
+          alert('Multiple files were selected. Please select only one file.');
+          this.uploadedTextShow = true;
+          this.isShowtext=true;
+          console.log( this.isShowtext=true,"Checking");
+          return;
+        }
+      }
+    }
+  }
+
+  
   onUploadFile(event: any) {
     // Iterate over selected files
     for (let file of event.target.files) {

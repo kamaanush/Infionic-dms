@@ -806,27 +806,6 @@ export class OrderListComponent implements OnInit {
             color: '#686E74',
           },
         },
-        // {
-        //   headerName: 'ERP Ref # ',
-        //   minWidth: 110,
-        //   maxWidth: 150,
-        //   field: 'companyReferenceNo',
-        //   type: ['leftAligned'],
-        //   cellStyle: {
-        //     color: '#686E74',
-        //   },
-        // },
-
-        // {
-        //   headerName: 'Geography',
-        //   minWidth: 115,
-        //   maxWidth: 150,
-        //   field: 'geographyName',
-        //   tooltipField: 'geographyName',
-        //   cellStyle: {
-        //     color: '#686E74',
-        //   },
-        // },
         {
           headerName: 'Order Value($)',
           minWidth: 150,
@@ -889,18 +868,6 @@ export class OrderListComponent implements OnInit {
             color: '#686E74',
           },
         },
-        // {
-        //   headerName: "Total Value",
-        //   minWidth: 130,
-        //   field: 'totalValue',
-        //   type:['leftAligned']
-        // },
-        // {
-        //   headerName: "Completed Value",
-        //   minWidth: 170,
-        //   field: 'compleatedValue',
-        //   type:['leftAligned']
-        // },
         {
           headerName: 'Status',
           field: 'status',
@@ -942,30 +909,14 @@ export class OrderListComponent implements OnInit {
           },
 
           tooltipField: 'statusName',
-        },
-
-        // {
-        //   headerName: "",
-        //   field: '', filter: false, sortable: false,
-        //   cellRenderer: function clickNextRendererFunc() {
-        //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-        //   }
-        // },
+        },  
         {
           headerName: '',
-
           colId: 'action',
-
           cellRenderer: OrderlistActionPopupComponent,
           editable: false,
           maxWidth: 65,
-        },
-        // {
-        //   headerName: "Avatar",
-        //   field: "avatar",
-        //   width: 100,
-        //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-        //  },
+        }
       ];
     }
   }

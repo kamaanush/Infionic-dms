@@ -350,14 +350,15 @@
                     </tr>
                    
                     <tr *ngFor="let dupicateData of incorrectRows">
-                        
+                        {{dupicateData.incorrectColumn}}
                         <td style="text-align: right;" >{{dupicateData.rowNumber}}</td>
-                        <td><span style="width: 200px;display: inline-flex;">{{dupicateData.targetGroup}}</span></td>
+                        <td><span style="width: 200px;display: inline-flex;" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'targetgroup'}">{{dupicateData.targetGroup}}</span></td>
                       <td >{{dupicateData.geography}}</td>
                       <td><span style="width: 200px;display: inline-flex;">{{dupicateData.dealerName}}</span></td>
                       <td >{{dupicateData.dealerCode}}</td>
-                      <td >{{dupicateData.financialYear}}</td>
-                      <td >{{dupicateData.targetType}}</td>
+                      <td><span  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'financialyear'}">{{dupicateData.financialYear}}</span></td>
+                      <td><span  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'targettype'}">{{dupicateData.targetType}}</span></td>
+
                       <td style="text-align: right;">{{dupicateData.janValue}}</td>
                       <td style="text-align: right;">{{dupicateData.janUnit}}</td>
                       <td style="text-align: right;">{{dupicateData.febValue}}</td>
@@ -393,7 +394,7 @@
         <div class="maincontainer" style="margin-top: 8.5%;">
     <div class="row  mt-4   justify-content-center align-items-center">
       <div class="col-sm-4 d-flex justify-content-center">
-        <button class="upload w-75" (click)="UploadReceipt()" >Upload</button>
+        <button class="upload w-75"  [disabled]="duplicateEntryy.length>0 || incorrectRows.length>0" (click)="UploadReceipt()" >Upload</button>
        
       </div>
       <div class="col-sm-4 d-flex justify-content-center">

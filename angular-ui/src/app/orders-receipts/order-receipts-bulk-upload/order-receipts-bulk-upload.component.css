@@ -203,6 +203,14 @@
    border: none;
    outline: none;
 }
+.upload[disabled] {
+  background-color: gray; 
+  cursor: not-allowed;
+  
+}
+.errorText {
+  color: red !important;
+}
 .cancelbtn
 {
   background: #018B75;
