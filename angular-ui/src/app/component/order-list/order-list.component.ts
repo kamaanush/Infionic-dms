@@ -418,7 +418,7 @@ export class OrderListComponent implements OnInit {
       },
       {
         headerName: 'ODV($)',
-        minWidth:90,
+        minWidth:110,
         maxWidth: 110,
         field: 'totalValue',
         type: ['rightAligned'],
@@ -624,8 +624,8 @@ export class OrderListComponent implements OnInit {
         },
         {
           headerName: 'ODV($)',
-          minWidth:100,
-          maxWidth: 115,
+          minWidth:150,
+          maxWidth: 150,
           field: 'totalValue',
           type: ['rightAligned'],
           cellStyle: {

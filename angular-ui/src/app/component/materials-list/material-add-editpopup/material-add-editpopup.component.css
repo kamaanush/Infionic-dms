@@ -1340,7 +1340,8 @@ textarea {
 .uom-cls {
   border: 0.5px solid  #686E74;
   border-radius: 7px;
-  width: 60px
+  width: 60px;
+  text-align: end;
 }
 
 .table-data-row {

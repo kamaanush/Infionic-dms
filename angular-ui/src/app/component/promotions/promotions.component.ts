@@ -121,6 +121,8 @@ export class PromotionsComponent implements OnInit {
     //   field: 'employeeCode' , sort: 'desc'},
     {
       headerName: 'Code',
+      minWidth: 120,
+      maxWidth: 120,
       field: 'promoCode',
       tooltipField: 'promoCode',
       cellStyle: { color: '#686E74' }, 
@@ -139,13 +141,15 @@ export class PromotionsComponent implements OnInit {
       headerName: 'Type',
       field: 'promotionTypesName',
       tooltipField: 'promotionTypesName',
+      minWidth: 150,
+      maxWidth: 150,
       cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: '# of Dealers',
       field: 'noOfDealers',
-      minWidth: 130,
-      maxWidth: 130,
+      minWidth: 150,
+      maxWidth: 150,
       tooltipField: 'noOfDealers',
       type: 'rightAligned',
       cellStyle: { color: '#686E74' }, 
@@ -168,6 +172,8 @@ export class PromotionsComponent implements OnInit {
       field: 'endDate',
       type: ['nonEditableColumn'],
       tooltipField: 'endDate',
+      minWidth: 130,
+      maxWidth: 130,
       cellStyle: { color: '#686E74' }, 
       cellRenderer: (data) => {
         return this.sharedServices.dateformat(data.value);
@@ -178,7 +184,8 @@ export class PromotionsComponent implements OnInit {
       headerName: '# of Orders',
       field: 'noOfOrders',
       tooltipField: 'noOfOrders',
-     
+      minWidth: 150,
+      maxWidth: 150,
       type: ['rightAligned'],
       cellStyle: { color: '#686E74' }, 
     },
@@ -195,6 +202,9 @@ export class PromotionsComponent implements OnInit {
     {
       headerName: 'Status',
       field: 'statusName',
+      
+      minWidth: 120,
+      maxWidth: 120,
       cellEditor: 'agSelectCellEditor',
       //  type: ['rightAligned'],
       cellEditorParams: {
@@ -216,7 +226,8 @@ export class PromotionsComponent implements OnInit {
       colId: 'action',
       cellRenderer: PramotionActionComponent,
       editable: false,
-      maxWidth: 75,
+      minWidth: 50,
+      maxWidth: 50,
     },
     // {
     //   headerName: "Avatar",

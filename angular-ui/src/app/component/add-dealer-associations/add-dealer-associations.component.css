@@ -356,7 +356,7 @@ input.form-check-input1 {
   .refreshbtn4{
     width: 44px;
     border-radius: 10px;
-    background-color: black;
+    background-color: gray;
     height: 44px;
     margin-top: 3px;
     margin-left: 57px;
@@ -1526,7 +1526,7 @@ input.form-check-input1 {
     border: 0.5px solid #000000;
     border-radius: 10px;
     width: 67px;
-    text-align: center;
+    text-align: end;
     
   }
   
