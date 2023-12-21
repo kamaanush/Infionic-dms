@@ -18,7 +18,7 @@ import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success
 export class AddTargetsComponent implements OnInit {
   selectValueChanged = false;
   image1 = 'assets/img/minimize-tag.png';
-  rowsTotal: boolean = false;
+  rowsTotal = false;
   disableColumns: boolean = false;
   anuallySelected: boolean = false;
   allDlrSelected: boolean = false;
@@ -139,6 +139,7 @@ export class AddTargetsComponent implements OnInit {
     console.log("TargetSelected", this.targetSelected)
   }
   expandTotalRows() {
+ 
     this.rowsTotal = !this.rowsTotal;
 
     if (this.rowsTotal === false) {
@@ -148,6 +149,17 @@ export class AddTargetsComponent implements OnInit {
 
     }
   }
+ 
+  inumber: any;
+  expandDealerInfoDiv(i) {
+    this.inumber = i;
+    if (this.dealer[i].flagforopen === false) {
+      this.dealer[i].flagforopen = true;
+    } else {
+      this.dealer[i].flagforopen = false;
+    }
+  }
+
   allDealerSelected() {
     this.allDlrSelected = !this.allDlrSelected;
     if (this.allDlrSelected == true) {

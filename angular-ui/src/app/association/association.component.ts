@@ -1102,11 +1102,11 @@ console.log(item)
   onBtnExport() {
     // this.gridApi.exportDataAsCsv({ fileName: 'association_' + this.convertedDateFormat() });
       // /console.log(this.rowData5, 'this.rowData5');
-      // const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+       const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate','productSKUGeographyId'];
      
       // Capitalize headers
       const headers = Object.keys(this.rowData5[0])
-          // .filter(key => !excludedProperties.includes(key))
+       .filter(key => !excludedProperties.includes(key))
           //.map(header => header);// to get all capital letters
           .map(header => header.charAt(0).toUpperCase() + header.slice(1));
      

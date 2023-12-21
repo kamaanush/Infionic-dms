@@ -400,11 +400,11 @@
                   <!-- <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId"
                     [placeholder]="'Select the identifiers'" [disabled]="disabled" [settings]="dropdownSettings3">
                   </ng-multiselect-dropdown> -->
-                  <input type="text" disabled id="prodIdentifier" name="prodIdentifier"
+                  <input type="text"  id="prodIdentifier" name="prodIdentifier"
                     (click)="expandMaterialIdentifier()" class="form-control container materialIdentifier" required
                     placeholder="Select the identifiers" [(ngModel)]="selectedProductIdentifierData"
-                    #prodIdentifier="ngModel">
-                  <img [src]="image1" style="left: 97%;" class="expand-materialIdentifier" alt="add-user-btn" />
+                    #prodIdentifier="ngModel" >
+                  <img  (click)="expandMaterialIdentifier()"[src]="image1" style="left: 97%;" class="expand-materialIdentifier" alt="add-user-btn" />
                 </div>
 
                 <div class="overlay" *ngIf="productIdentifierPopup">

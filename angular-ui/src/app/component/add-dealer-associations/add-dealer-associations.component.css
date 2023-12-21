@@ -774,9 +774,9 @@ input.form-check-input1 {
   }
   
   .close-icon {
-    left: 101%;
+    left: 100%;
     position: relative;
-    font-size: 15px;
+    font-size: 21px;
     font-weight: 600;
     cursor: pointer;
     top: 2px;

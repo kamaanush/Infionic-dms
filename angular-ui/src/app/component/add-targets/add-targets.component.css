@@ -18,6 +18,11 @@
 .productCountpopup {
     color: blue;
     cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    left: 20px;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .close-icon {

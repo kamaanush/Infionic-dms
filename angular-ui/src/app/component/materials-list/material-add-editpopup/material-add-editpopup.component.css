@@ -3,6 +3,10 @@
   font-family: 'Gilroy-Medium';
   
 }
+#prodIdentifier
+{
+  cursor: pointer;
+}
 .fontfamily
 {
   font-family: 'Gilroy-Bold';
@@ -1601,7 +1605,7 @@ mat-icon {
 .expand-materialIdentifier {
   position: relative;
   height: 13px;
-  bottom: 27px;
+  bottom: 30px;
   left: 90%;
   /* position: fixed;
     height: 13px;

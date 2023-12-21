@@ -82,40 +82,42 @@
                                 <!-- <input type="checkbox" (click)="allDealerSelected()"> <span class="label-cls">All Dealers Selected</span> -->
                                 <mat-checkbox class="checkboxStyle" aria-label="Select All" 
                                 (change)="$event ? toggleAll($event) : null" [color]="color">
-                                 <span *ngIf="selectedDealer.length == 0" class="contentStyle">No Dealers Selected </span>
+                                 <span *ngIf="selectedDealer.length == 0" class="contentStyle">All Dealers Selected </span>
                                  <span  *ngIf="selectedDealer.length ==  mainadd[0].dealers?.length && mainadd[0].dealers.length>1" class="contentStyle">All Dealers Selected </span>
                                  <span *ngIf="selectedDealer.length > 0 && mainadd[0].dealers?.length != selectedDealer?.length && selectedDealer == 1" class="contentStyle"> Some Dealers Selected</span>
                                </mat-checkbox>
                         
                             </div>
-                        <div  *ngFor="let dealer of mainadd[0].dealers;let i=index" class="addtargetDiv">
+<div  *ngFor="let dealer of mainadd[0].dealers;let i=index" class="addtargetDiv">
                         <div>
                             <div class="row dealer-cntry">
                                 <div class="col-md-3 dlr-info">
                                     <mat-checkbox class="example-margin font" (click)="$event.stopPropagation()" [color]="color" (change)="$event ? toggle(dealer.CustomerId, $event) : null"
                                     [checked]="exists(dealer.CustomerId)">
                                   
-                                    <!-- <span class="dlr-name">{{dealer.CustomerName}}</span> -->
+                                    <span class="dlr-name">{{dealer.CustomerName}}</span>
                                 </mat-checkbox>
                                 </div>
                                 
                                 <div class="col-md-2">
                                     <p><b>{{dealer.targets[0].GeographyName}}</b>
                                 </div>
-                                <!-- <div class="col-md-2">
-                                    <p><b>Malaysia(0/124)</b>
-                                </div>
-                                <div class="col-md-2">
-                                    <p><b>Singapore(0/145)</b>
-                                </div> -->
+                               
                             </div>
-                            <input type="text" class="total-rows total-bg col-md-12" disabled>
+                            <input type="text" class="total-rows total-bg col-md-12">
                             <div (click)="expandTotalRows()">
-                                <img  class="expand-arrow">
-                            </div>
-                            
+                                <img  [src]="image1" class="expand-arrow">
+                             </div>   
+                             <!-- <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
+                                <img *ngIf="this.dealer[i].flagforopen" [src]="image1" class="expand-arrow"
+                                  alt="add-user-btn" />
+                                <img *ngIf="!this.dealer[i].flagforopen" [src]="image1" class="expand-arrow"
+                                  alt="add-user-btn" />
+            
+                              </div> -->
+                                                                           
                         </div>
-                        <div *ngIf="!rowsTotal" class="dealers-tabel">
+                        <div *ngIf="!rowsTotal" class="dealers-tabel" >
                             <div  *ngFor="let dealer of dealer.targets;let j=index">
                                 <div class="row finacial-target">
                                     <div class="promotiont2">
