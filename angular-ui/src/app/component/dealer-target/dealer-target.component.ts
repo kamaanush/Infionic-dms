@@ -131,8 +131,8 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: "FY",
       field: 'year',
-      minWidth: 130,
-      maxWidth: 130,
+      minWidth: 150,
+      maxWidth: 150,
       type: ['nonEditableColumn','rightAligned'],
       cellStyle: { color: '#686E74' },
     },
@@ -140,8 +140,8 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: "No of Products",
       field: 'productCount',
-      minWidth: 180,
-      maxWidth: 180,
+      minWidth: 150,
+      maxWidth: 150,
       type: ['nonEditableColumn','rightAligned'],
       cellStyle: { color: '#686E74' },
     },
@@ -156,9 +156,9 @@ export class DealerTargetComponent implements OnInit {
 
     {
       headerName: "LYTD",
-      field: 'actualPy',
-      minWidth: 120,
-      maxWidth: 120,
+      field: 'actualLYTD',
+      minWidth: 150,
+      maxWidth: 150,
       type: ['nonEditableColumn','rightAligned'],
       cellStyle: { color: '#686E74' },
     },
@@ -178,8 +178,8 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: "% of YTD Target",
       field: 'ytdTarget',
-      minWidth: 180,
-      maxWidth: 180,
+      minWidth: 160,
+      maxWidth: 160,
       type: ['nonEditableColumn','rightAligned'],
       cellStyle: { color: '#686E74' },
     },
@@ -189,8 +189,8 @@ export class DealerTargetComponent implements OnInit {
       colId: 'action',
       cellRenderer: DealerTargetActionComponent,
       editable: false,
-      minWidth: 30,
-      maxWidth: 30, 
+      minWidth: 50,
+      maxWidth: 50, 
     },
 
 

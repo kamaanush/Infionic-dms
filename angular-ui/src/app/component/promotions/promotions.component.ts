@@ -121,8 +121,7 @@ export class PromotionsComponent implements OnInit {
     //   field: 'employeeCode' , sort: 'desc'},
     {
       headerName: 'Code',
-      minWidth: 120,
-      maxWidth: 120,
+      
       field: 'promoCode',
       tooltipField: 'promoCode',
       cellStyle: { color: '#686E74' }, 
@@ -131,8 +130,7 @@ export class PromotionsComponent implements OnInit {
     {
       headerName: 'Name',
       field: 'promotionName',
-      minWidth: 180,
-      maxWidth: 180,
+  
       tooltipField: 'promotionName',
       cellStyle: { color: '#686E74', }, 
     },
@@ -141,15 +139,13 @@ export class PromotionsComponent implements OnInit {
       headerName: 'Type',
       field: 'promotionTypesName',
       tooltipField: 'promotionTypesName',
-      minWidth: 150,
-      maxWidth: 150,
+     
       cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: '# of Dealers',
       field: 'noOfDealers',
-      minWidth: 150,
-      maxWidth: 150,
+    
       tooltipField: 'noOfDealers',
       type: 'rightAligned',
       cellStyle: { color: '#686E74' }, 
@@ -158,8 +154,7 @@ export class PromotionsComponent implements OnInit {
       headerName: 'Start Date',
       field: 'startDate',
       tooltipField: 'startDate',
-      minWidth: 150,
-      maxWidth: 150,
+  
       cellStyle: { color: '#686E74' }, 
       cellRenderer: (data) => {
         return this.sharedServices.dateformat(data.value);
@@ -172,8 +167,7 @@ export class PromotionsComponent implements OnInit {
       field: 'endDate',
       type: ['nonEditableColumn'],
       tooltipField: 'endDate',
-      minWidth: 130,
-      maxWidth: 130,
+    
       cellStyle: { color: '#686E74' }, 
       cellRenderer: (data) => {
         return this.sharedServices.dateformat(data.value);
@@ -184,16 +178,14 @@ export class PromotionsComponent implements OnInit {
       headerName: '# of Orders',
       field: 'noOfOrders',
       tooltipField: 'noOfOrders',
-      minWidth: 150,
-      maxWidth: 150,
+      
       type: ['rightAligned'],
       cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Order Values($)',
       field: 'invoicedValue',
-      minWidth: 180,
-      maxWidth: 180,
+      
       tooltipField: 'invoicedValue',
       type: ['rightAligned'],
       cellStyle: { color: '#686E74'}, 
@@ -203,8 +195,7 @@ export class PromotionsComponent implements OnInit {
       headerName: 'Status',
       field: 'statusName',
       
-      minWidth: 120,
-      maxWidth: 120,
+  
       cellEditor: 'agSelectCellEditor',
       //  type: ['rightAligned'],
       cellEditorParams: {
@@ -228,6 +219,7 @@ export class PromotionsComponent implements OnInit {
       editable: false,
       minWidth: 50,
       maxWidth: 50,
+    
     },
     // {
     //   headerName: "Avatar",

@@ -55,6 +55,8 @@
 }
 
 :host ::ng-deep .mat-tab-label{
+  height: 33px !important;
+  min-width: 190px !important;
   /* border: 1px solid rgba(1,139,117,1)!important;s */
   border-right: 1px solid rgba(1, 139, 117, 1);
   border-bottom: 0px solid rgba(1, 139, 117, 1);
@@ -80,7 +82,13 @@
 .font {
   font-family: 'Gilroy';
 }
+:host ::ng-deep.mat-tab-header{
 
+
+  width: 750px !important;
+  left: 0px !important;
+  border-radius: 25px !important;
+}
 .head-t h3 {
   color: #686E74;
   text-align: center;
