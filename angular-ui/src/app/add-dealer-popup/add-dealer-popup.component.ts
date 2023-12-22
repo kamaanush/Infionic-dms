@@ -299,6 +299,16 @@ export class AddDealerPopupComponent implements OnInit {
       this.getGeographyForMaterial(0, 0);
     }
     //  this.ConsigneeName2='';
+    this.getcountry()
+  }
+  country:any
+  getcountry(){
+    this.calssification.getcountries().subscribe({
+      next: ((res:any)=>{
+        this.country = res.response
+        console.log('res',res.response);
+      })
+    }) 
   }
   selectedTax($event) {
     console.log($event);

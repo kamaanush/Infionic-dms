@@ -58,7 +58,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     'draft': ['edit_order', 'cancel_order'], //done
     'fulfilled': [], // Spelling check
     'to-ship': ['ship_order', 'close'],
-    'received': [], // done
+    'received': ['receive_shipment'], // done
     
   }
   isShowEdit:any
