@@ -184,13 +184,14 @@ export class DealerTargetComponent implements OnInit {
       cellStyle: { color: '#686E74' },
     },
 
-    // {
-    //   headerName: '',
-    //   colId: 'action',
-    //   cellRenderer: DealerTargetActionComponent,
-    //   editable: false,
-    //   maxWidth: 75  
-    // },
+    {
+      headerName: '',
+      colId: 'action',
+      cellRenderer: DealerTargetActionComponent,
+      editable: false,
+      minWidth: 30,
+      maxWidth: 30, 
+    },
 
 
    
