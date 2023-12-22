@@ -493,7 +493,7 @@ li {
   height: 43px;
   font-family: 'Gilroy';
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 2px solid #989CA04D;
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   font-size: 15px;
@@ -532,7 +532,7 @@ li {
   height: 43px;
   font-family: 'Gilroy';
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 2px solid #989CA04D;
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
@@ -833,8 +833,8 @@ li {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 1197px;
-  margin-top: -10px;
+  position: relative;
+    top: 1px;
 
 }
 
@@ -1822,6 +1822,8 @@ li {
   margin-left: 206%;
   margin-top: 60px;
   color: red;
+  position: relative;
+  
 }
 
 .error {

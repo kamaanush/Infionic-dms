@@ -234,8 +234,8 @@
                                                   Status is required
                                                 </span>
                                               </div>
-                                              <div class="col-1">
-                                                <mat-icon (click)="removeAdmin(i)"
+                                              <div class="col-1" >
+                                                <mat-icon (click)="removeAdmin(i)" 
                                                 class="col-1 remove-mat-icon delete-icon remove-admin"
                                                 [ngClass]="{'removeCircle': i > 0, 'removeCircle1': i === 1 }"
                                                 *ngIf="i >= 0">remove_circle
@@ -345,11 +345,11 @@
                                                 <input type="text"  placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
                                                     class="addDelercols addphone" (input)="restrictToNumbers($event)">
                                             </div>
+                                           
 
-
-                                            <div class="col-1">
+                                            <div class="col-1" style="position: relative;top: 8px;">
                                                 <label><span></span></label>
-                                                <mat-icon (click)="removeQuantity(i)"
+                                                <mat-icon (click)="removeQuantity(i)" style="position: relative;top: 9px;"
                                                     class="col-2 remove-mat-icon delete-icon remove-address"
                                                     [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==1 }"
                                                     *ngIf="i >= 0 ">remove_circle

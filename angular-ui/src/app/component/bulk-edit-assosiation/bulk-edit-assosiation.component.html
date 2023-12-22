@@ -129,9 +129,9 @@
   <div class="d-flex main-d">
 
 
-    <form [formGroup]="addAddressDetailsForm" style="position: relative;right: 11px;">
+    <form [formGroup]="addAddressDetailsForm" style="position: relative;right: 10px;">
 
-      <table formArrayName="BulkAssociationsCount">
+      <table formArrayName="BulkAssociationsCount" style="width: 101.4%;">
         <tr style="background-color:  rgba(1,137,117,1);height: 44px;position: relative;bottom: 10px;">
           <th style='width: 160px;color: white;'>
             Product
@@ -161,17 +161,21 @@
           <th style='width: 119px;color: white'>
             Lead time(days)
           </th>
+          <th style='width: 119px;color: white'>
+            Reset
+          </th>
 
         </tr>
 
-        <tr *ngFor="let quantity of BulkAssociationsCount().controls; let i=index" [formGroupName]="i">
+        <tr *ngFor="let quantity of BulkAssociationsCount().controls; let i=index" [formGroupName]="i"
+        style="border-bottom: 2px solid #989CA04D;">
           <td *ngIf="ProductGEOID">
             <input type="text" class="uom-cls" formControlName="ProductSKUGeographyId" name="fname" id="fname"
               [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductSKUGeographyId"
               >
 
           </td>
-
+          
           <td>
             <input type="text" class="testcalss" id="fname" tabindex="0" data-toggle="tooltip"
               [title]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductName" data-placement="top"
@@ -235,7 +239,9 @@
                 alt="refresh">
             </div>
           </td>
+
         </tr>
+        
 
 
 
