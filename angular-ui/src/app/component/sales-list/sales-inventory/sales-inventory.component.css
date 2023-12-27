@@ -726,3 +726,14 @@ margin-left: 1%;
 .search-bt_n:focus {
   border: 1px solid grey; 
 }
+
+::ng-deep .multiselect-item-checkbox input[type=checkbox]+div {
+  position: relative;
+  padding-left: 2em;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  margin: 0;
+   color: gray !important; 
+}

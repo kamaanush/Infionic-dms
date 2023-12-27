@@ -7,7 +7,7 @@
 
  .row {
    margin-top: 56px;
-   margin-left: -8px;
+   margin-left: 3px;
    width: 109%;
  }
 
@@ -965,3 +965,14 @@
    top: 8px;
    left: 12px;
  }
+
+ ::ng-deep .multiselect-item-checkbox input[type=checkbox]+div {
+  position: relative;
+  padding-left: 2em;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  margin: 0;
+   color: gray !important; 
+}

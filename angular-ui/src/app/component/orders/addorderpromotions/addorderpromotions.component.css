@@ -3155,7 +3155,7 @@ table thead, table tbody tr {
 }
 
 ::ng-deep .catty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-  background: #00187A !important;
+  background: #018B75 !important;
 }
 
 ::ng-deep.subcatty .multiselect-dropdown .dropdown-btn .selected-item {
@@ -3185,7 +3185,7 @@ table thead, table tbody tr {
 }
 
 ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-  background: #C32F27 !important;
+  background: #018B75 !important;
 }
 
 ::ng-deep.identifier .multiselect-dropdown .dropdown-btn .selected-item {
@@ -3203,7 +3203,7 @@ table thead, table tbody tr {
 }
 
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-  border: 2px solid #000000 !important;
+  border: 2px solid #018B75 !important;
 }
 
 

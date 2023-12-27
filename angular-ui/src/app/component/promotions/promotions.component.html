@@ -1,39 +1,38 @@
 <div class="promainclass">
   <div class="dealer-promotion mt-3 mb-4 ">
-    <div class="row d-flex justify-content-evenly" style="margin-left: 4px;">
+    <div class="row d-flex justify-content-evenly" style="margin-left: 4px;color: grey;">
       <div class="col-md-2 col-lg-2 col-sm-2 promotionsbubbles">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="promo" formControlName="city1"  [placeholder]="'Select Promotions'" [disabled]="disabled"
-            [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
+          <ng-multiselect-dropdown class="promo" formControlName="city1" [placeholder]="'Select Promotions'"
+            [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
             (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
             (onSelectAll)="onItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
- 
-          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
-            <!-- <span *ngIf="myForm.get('city1').value.length == 0">Select Promotions </span> -->
-            <span *ngIf="myForm.get('city1').value.length == 1" >
-              {{myForm.get('city1').value.length}} Promotions selected </span>
-            <span *ngIf="myForm.get('city1').value.length > 1" >
-              {{myForm.get('city1').value.length}} selected </span>
- 
-          </div>
         </form>
+        <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <!-- <span *ngIf="myForm.get('city1').value.length == 0">Select Promotions </span> -->
+          <span *ngIf="myForm.get('city1').value.length == 1">
+            {{myForm.get('city1').value.length}} Promotions selected </span>
+          <span *ngIf="myForm.get('city1').value.length > 1">
+            {{myForm.get('city1').value.length}} selected </span>
+
+        </div>
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2 promotionsproductbubbles" style="margin-left: -17px;">
+      <div class="col-md-2 col-lg-2 col-sm-2 promotionsproductbubbles">
         <form [formGroup]="myForms" class="dropdown-form">
-          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Select Product '" formControlName="city2"
-            [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Select Product '"
+            formControlName="city2" [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
             (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
           </ng-multiselect-dropdown>
- 
-          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+
+          <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
             <!-- <span *ngIf="myForms.get('city2').value.length == 0">Select Product </span> -->
-            <span *ngIf="myForms.get('city2').value.length == 1" >
+            <span *ngIf="myForms.get('city2').value.length == 1">
               {{myForms.get('city2').value.length}} Products selected </span>
-            <span *ngIf="myForms.get('city2').value.length > 1" >
+            <span *ngIf="myForms.get('city2').value.length > 1">
               {{myForms.get('city2').value.length}} Products selected </span>
- 
+
           </div>
         </form>
       </div>
@@ -44,13 +43,13 @@
             (onDeSelect)="onGeoDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAllGeo($event)"
             (onSelectAll)="onItemSelectOrAllGeo($event)">
           </ng-multiselect-dropdown>
-          <div  style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
             <!-- <span *ngIf="myForms2.get('city3').value.length == 0">Select Geography </span> -->
-            <span *ngIf="myForms2.get('city3').value.length == 1" >
+            <span *ngIf="myForms2.get('city3').value.length == 1">
               {{myForms2.get('city3').value.length}} Geography selected </span>
             <span *ngIf="myForms2.get('city3').value.length > 1">
               {{myForms2.get('city3').value.length}} Geography selected </span>
- 
+
           </div>
         </form>
       </div>
@@ -65,11 +64,11 @@
         </form>
         <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
           <!-- <span *ngIf="myForms4.get('city5').value.length == 0">Select Dealer </span> -->
-          <span *ngIf="myForms4.get('city5').value.length == 1" >
+          <span *ngIf="myForms4.get('city5').value.length == 1">
             {{myForms4.get('city5').value.length}} Dealer selected </span>
-          <span *ngIf="myForms4.get('city5').value.length > 1" >
+          <span *ngIf="myForms4.get('city5').value.length > 1">
             {{myForms4.get('city5').value.length}} Dealer(s) selected </span>
- 
+
         </div>
       </div>
       <div class="col-md-2 col-lg-2 col-sm-2 statusprobubbles" style="margin-left:-17px">
@@ -81,11 +80,11 @@
           </ng-multiselect-dropdown>
           <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
             <!-- <span *ngIf="myForms3.get('city4').value.length == 0">Select Status </span> -->
-            <span *ngIf="myForms3.get('city4').value.length == 1" >
+            <span *ngIf="myForms3.get('city4').value.length == 1">
               {{myForms3.get('city4').value.length}} Status selected </span>
             <span *ngIf="myForms3.get('city4').value.length > 1">
               {{myForms3.get('city4').value.length}} Status selected </span>
- 
+
           </div>
         </form>
       </div>
@@ -102,17 +101,19 @@
       </div>
       <!-- refresh -->
       <div class="ref">
-        <img class="refresh" src="assets/img/Refreshbutton.svg" (click)="refresh()" alt="refresh" style="margin-left: 0px;">
+        <img class="refresh" src="assets/img/Refreshbutton.svg" (click)="refresh()" alt="refresh"
+          style="margin-left: 0px;">
       </div>
       <!-- downloAD -->
-      <div class="download-btn mr-2" style=" cursor: pointer;left:16%" *ngIf="userType !== 'Admin'"  (click)="onBtnExport()">
+      <div class="download-btn mr-2" style=" cursor: pointer;left:16%" *ngIf="userType !== 'Admin'"
+        (click)="onBtnExport()">
         <img src="assets/img/ll.svg" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
       </div>
     </div>
- 
+
   </div>
   <div class="col-md-4" style="margin-left: 65%;margin-bottom: 10px;margin-top: -15px;" *ngIf="userType === 'Admin'">
-    <div class="row">
+    <div class="row ml-2">
       <div class="col-md-7" style="padding-left: 94px;">
         <div class="searchBox1 ">
           <input id="searchInput" class="searchInput1" type="text" name="" placeholder="Search Here Anything"
@@ -121,16 +122,17 @@
           <button class="search-bt_n1">Search</button>
         </div>
       </div>
- 
+
       <div class="col-md-4 d-flex" style="    position: relative;left: 10%;">
         <div class="download-btn" style=" cursor: pointer" (click)="onBtnExport()">
-          <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;" alt="add-user-btn">
+          <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
+            alt="add-user-btn">
         </div>
         <div class="add-user" (click)="addPromotions()" userRoleDirective="ADD_PROMOTION" [pageName]="currentPageName">
           <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
         </div>
       </div>
- 
+
     </div>
   </div>
   <br>
@@ -142,13 +144,14 @@
     (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
     (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
- 
- 
+
+
   <div class="pagination">
-    <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+    <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span class="pagination-cls">{{paginationScrollCount}}</span>
+    <span class="pagination-cls"> &nbsp; of&nbsp;</span>
     <span class="pagination-cl">&nbsp;{{rowData5.length}}</span>
   </div>
 </div>
-<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
-  <p style="color: white">Please Wait. </p>  
-  </ngx-spinner>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>

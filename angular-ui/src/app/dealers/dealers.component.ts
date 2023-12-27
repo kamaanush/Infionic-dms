@@ -1005,7 +1005,7 @@ export class DealersComponent implements OnInit {
     console.log('cellClicked', e);
     this.userId = e.data.userId;
     this.customerID = e.data.customerId;
-    this.employeeName = e.data.customerCode;
+    this.employeeName = e.data.customerName;
     console.log('userID', this.userId);
     localStorage.setItem('employeeNameOfDealer', this.employeeName);
     localStorage.setItem('customerIdOfDealer', this.customerID);
