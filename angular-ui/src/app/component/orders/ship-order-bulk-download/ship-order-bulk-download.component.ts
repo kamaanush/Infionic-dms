@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef, ColGroupDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import * as XLSX from 'xlsx';
+import { PromotionListService } from 'src/app/services/promotion-list.service';
 
 @Component({
   selector: 'app-ship-order-bulk-download',
@@ -14,6 +15,8 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./ship-order-bulk-download.component.css'],
 })
 export class ShipOrderBulkDownloadComponent implements OnInit {
+  myForms: any = FormGroup;
+  dropdownSettings1: IDropdownSettings = {};
   dealerForm: any = FormGroup;
   geographyForm: any = FormGroup;
   disabled = false;
@@ -372,6 +375,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     private user: UserService,
     public orders: OrdersApisService,
     private sharedService: SharedService,
+    private promotin: PromotionListService,
     private fb: FormBuilder
   ) {}
 
@@ -381,6 +385,9 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     });
     this.geographyForm = this.fb.group({
       geography: [this.selectedItems],
+    });
+    this.myForms = this.fb.group({
+      city2: [this.selectedItems],
     });
 
     // this.dealerForm = this.fb.group({
@@ -395,6 +402,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     this.getDownloadBulkUpload();
     this.OrderDownload();
     this.receiptList();
+    this.productList();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -510,6 +518,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       DealerId: this.dealerss,
       StartDate: this.startDate,
       EndDate: this.endDate,
+      ProductId:this.productSelected,
       // ShipmentStartDate:this.startDateShip,
       // ShipmentEndDate:this.endDateShip,
       // InvoiceStartDate:this.startDateInvoice,
@@ -802,6 +811,118 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     });
   }
 
+  // new Dropdown Added Here Products
+  productLisst: any = [];
+  toppingList: any = [];
+  productarray: any[] = [];
+  productList() {
+    this.promotin.getproductlist().subscribe((res) => {
+      let localdata = res.response;
+      this.productLisst = localdata.map(
+        (data: { stockItemId: any; stockItemName: any }) => {
+          return {
+            stockItemId: data.stockItemId,
+            stockItemName: data.stockItemName,
+          };
+        }
+      );
+      this.productLisst.push();
+      console.log('array check', this.toppingList);
+      this.productLisst.push();
+      this.productLisst.forEach((element) => {
+        return this.productarray.push(element.stockItemId);
+        // console.log('rolecheck',rolecheck)
+      });
+      console.log('productarray', this.productarray);
+      // this.toppingList = res.response;
+      this.product = new FormControl(this.productLisst);
+      this.dropdownSettings1 = {
+        singleSelection: false,
+        idField: 'stockItemId',
+        textField: 'stockItemName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 1,
+        allowSearchFilter: true,
+      };
+      this.selectedItems = [];
+    });
+  }
+  productSelected: any[] = [];
+  onProductSelect(item: any) {
+    // alert(item.roleName)
+     this.productSelected.push(item.stockItemId);
+
+    const data = {
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+      ProductId:this.productSelected
+     };
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log('Response Data', this.shipmentDatalist);
+    });
+    // console.log('rolefilter', this.userTypes);
+    // console.log('onItemSelect', item);
+  }
+  onProductDeSelect(item: any) {
+    this.productSelected.forEach((element, index) => {
+      if (element == item.stockItemId) this.productSelected.splice(index, 1);
+    });
+    //  console.log(' this.userTypes', this.userTypes);
+
+    //  this.userTypes.pop(item.roleId);
+     const data = {
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+      ProductId:this.productSelected
+     };
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log('Response Data', this.shipmentDatalist);
+    });
+  }
+
+  onItemDeSelectOrAllProduct(item: any) {
+     this.productSelected = [];
+    const data = {
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+      ProductId:this.productSelected
+     };
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log('Response Data', this.shipmentDatalist);
+    });
+    // console.log('rolefilter', this.userTypes);
+    // console.log('onItemSelect', item);
+  }
+
+  onItemSelectOrAllProduct(item: any) {
+     this.productSelected = this.productarray;
+
+    const data = {
+      GeographyId: this.geographySelected,
+      DealerId: this.dealerss,
+      StartDate: this.startDate,
+      EndDate: this.endDate,
+      ProductId:this.productSelected
+     };
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log('Response Data', this.shipmentDatalist);
+    });
+    // console.log('rolefilter', this.userTypes);
+    // console.log('onItemSelect', item);
+  }
+
+
   geogrphyOrder() {
     this.user.getGeographies().subscribe((res: any) => {
       let localdata = res.response;
@@ -831,6 +952,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       };
     });
   }
+  ProductID: any = [];
   geographyselect(item: any) {
     this.geographySelected.push(item.geographyId);
     console.log('geographics', this.geographySelected);
@@ -839,6 +961,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       DealerId: this.dealerss,
       StartDate: this.startDate,
       EndDate: this.endDate,
+      ProductId:this.ProductID
     };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
@@ -854,6 +977,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       DealerId: this.dealerss,
       StartDate: this.startDate,
       EndDate: this.endDate,
+      ProductId:this.ProductID
     };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
@@ -868,6 +992,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       DealerId: this.dealerss,
       StartDate: this.startDate,
       EndDate: this.endDate,
+      ProductId:this.ProductID
     };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
@@ -881,6 +1006,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       DealerId: this.dealerss,
       StartDate: this.startDate,
       EndDate: this.endDate,
+      ProductId:this.ProductID
     };
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
@@ -927,6 +1053,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       console.log('Response kkkkkk', this.receiptDatalist);
     });
   }
+  product = new FormControl('');
   refresh() {
     this.dealerForm = this.fb.group({
       dealer: [this.selectedItems],
@@ -934,6 +1061,11 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     this.geographyForm = this.fb.group({
       geography: [this.selectedItems],
     });
+    this.myForms = this.fb.group({
+      city2: [this.selectedItems],
+    });
+    this.product = new FormControl(this.productLisst);
+    this.productSelected = [];
     this.dealerss = [];
     this.geographySelected = [];
     this.startDate = '';

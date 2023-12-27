@@ -1,11 +1,11 @@
 <i class="fa fa-ellipsis-v" #trigger data-action="toggle" style="cursor: pointer;"
-  [ngClass]="{'no-display' : currentActionMenu.length == 0}"></i>
+  [ngClass]="{'no-display' : currentActionMenu.length == 0}" ></i>
 <div #content *ngIf="isOpen" class="menu-container" [ngClass]="{'single' : currentActionMenu.length == 1 }">
   
     <div (click)="orderedit()" class="menu-item tick"
-      *ngIf="!isShowEdit ? currentActionMenu.indexOf('confirm_order') !== -1 : (currentActionMenu.indexOf('edit_order') !== -1 || currentActionMenu.indexOf('confirm_order') !== -1) && userType !== 'Order Manager'">
+      *ngIf="!isShowEdit ? currentActionMenu.indexOf('confirm_order') !== -1 : (currentActionMenu.indexOf('edit_order') !== -1 || currentActionMenu.indexOf('confirm_order') !== -1) && userType !== 'Order Manager' ">
       Edit 
-      <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark">
+       <img  src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"> 
   </div>
 
   <div (click)="confirmOrder()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('confirm_order') !== -1">

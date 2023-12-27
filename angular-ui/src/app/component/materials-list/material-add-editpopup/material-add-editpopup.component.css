@@ -179,7 +179,7 @@ form[name="myBasicInfo"] {
 
 .main {
   
-
+background-color: white;
 }
 
 .font {
@@ -1480,7 +1480,6 @@ textarea {
 .popup {
   margin: 70px auto;
   padding: 20px;
-  background: #fff;
   border-radius: 5px;
   width: 369px;
   /* height: 263px; */
@@ -1493,6 +1492,7 @@ textarea {
 
   border: 0.5px solid #000000;
   border-radius: 25px;
+  background-color: white !important;
 }
 
 .popup h2 {

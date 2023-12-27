@@ -253,6 +253,7 @@ export class SalesBulkUploadComponent implements OnInit {
             const uploadedFile = {
               CreateById: this.CreatedById,
               BulkSales: this.uploadedData,
+              
             };
   
             console.log('Daaataaa', uploadedFile);

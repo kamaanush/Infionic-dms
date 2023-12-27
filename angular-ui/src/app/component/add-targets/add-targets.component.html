@@ -88,47 +88,48 @@
                                         class="contentStyle">Some Dealers Selected</span>
                                 </mat-checkbox>
                             </div>
+                            <br>
                         <div  *ngFor="let dealer of mainadd[0].dealers;let i=index" class="addtargetDiv">
                             <div>
                                 <div class="row dealer-cntry">
                                     <div class="col-md-3 dlr-info">
-                                        <mat-checkbox class="example-margin font" (click)="$event.stopPropagation()" [color]="color" (change)="$event ? toggle(dealer.CustomerId, $event) : null"
+                                        <mat-checkbox class="mt-2  example-margin font" (click)="$event.stopPropagation()" [color]="color" (change)="$event ? toggle(dealer.CustomerId, $event) : null"
                                         [checked]="exists(dealer.CustomerId)">
-                                    
                                         <span class="dlr-name">{{dealer.CustomerName}}</span>
                                     </mat-checkbox>
                                     </div>
-                                    
                                     <div class="col-md-2">
-                                        <p><b>{{dealer.targets[0].GeographyName}}</b>
+                                        <p class="mt-2"><b>{{dealer.targets[0].GeographyName}}</b>
                                     </div>
-                                
-                                </div>
-                                <input type="text" class="total-rows total-bg col-md-12">
-                                <div (click)="expandTotalRows()">
-                                    <img  [src]="image1" class="expand-arrow">
-                                </div>   
-                                <!-- <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
-                                    <img *ngIf="this.dealer[i].flagforopen" [src]="image1" class="expand-arrow"
-                                    alt="add-user-btn" />
-                                    <img *ngIf="!this.dealer[i].flagforopen" [src]="image1" class="expand-arrow"
-                                    alt="add-user-btn" />
-                
-                                </div> -->
-                                                                            
+                               <div class="col-md-7">
+                                <div class="total-rows" (click)="toggleRowVisibility(dealer.CustomerId)" >
+                                    <img *ngIf="isRowVisible(dealer.CustomerId)" [src]="image2" class="expand-arrowShoworhide">
+                                    <img *ngIf="!this.isRowVisible(dealer.CustomerId)" [src]="image3" class="expand-arrowShoworhide">
+                                  </div>
+                                  
+                                  
+                               </div>
                             </div>
-                            <div *ngIf="!rowsTotal" class="dealers-tabel" >
-                                <div  *ngFor="let dealer of dealer.targets;let j=index">
-                                    <div class="row finacial-target">
-                                        <div class="promotiont2">
-                                            <label>Financial Year<span class="astr">*</span></label>
-                                            <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].year" placeholder="Select Year">
-                                                <option value=""   selected hidden>Select Year</option>
-                                                <!-- <option value="2019">2019</option>
-                                                <option value="2020">2020</option>
-                                                <option value="2021">2021</option>
-                                                <option value="2022">2022</option>
-                                                <option value="2023" selected>2023</option> -->
+                        </div>
+                            
+                             <div>
+
+                          <br>
+                                                       
+                              <div *ngIf="isRowVisible(dealer.CustomerId)" >
+                        <div *ngIf="!rowsTotal" class="dealers-tabel" >
+
+                            <div  *ngFor="let dealer of dealer.targets;let j=index">
+                                <div class="row finacial-target">
+                                    <div class="promotiont2">
+                                        <label>Financial Year<span class="astr">*</span></label>
+                                        <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].year" placeholder="Select Year">
+                                            <option value=""   selected hidden>Select Year</option>
+                                            <!-- <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023" selected>2023</option> -->
 
                                                 <option  *ngFor="let item of financialYears ;" [value]="item">{{item}}</option>
                                             </select>
@@ -305,7 +306,6 @@
                             </div>
                         </div>
                 </div>
-                    </div>
                 </div>
 
                 <!-- Save and Cancel Button -->

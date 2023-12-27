@@ -117,8 +117,7 @@ export class PromotionsComponent implements OnInit {
   selectedDateRange: any;
   userType: any;
   columnDefs: ColDef[] = [
-    // { headerName: "User Id",
-    //   field: 'employeeCode' , sort: 'desc'},
+ 
     {
       headerName: 'Code',
       
@@ -228,6 +227,242 @@ export class PromotionsComponent implements OnInit {
     //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
     //  },
   ];
+
+  Updatecolumnsdef()
+  {
+    if(this.userType === 'Dealer Admin')
+    {
+       this.columnDefs=
+       [
+        {
+          headerName: 'Code',
+          minWidth: 120,
+          maxWidth: 120,
+          field: 'promoCode',
+          tooltipField: 'promoCode',
+          cellStyle: { color: '#686E74' }, 
+        },
+    
+        {
+          headerName: 'Name',
+          field: 'promotionName',
+          minWidth: 180,
+          maxWidth: 180,
+          tooltipField: 'promotionName',
+          cellStyle: { color: '#686E74', }, 
+        },
+    
+        {
+          headerName: 'Type',
+          field: 'promotionTypesName',
+          tooltipField: 'promotionTypesName',
+          minWidth: 150,
+          maxWidth: 150,
+          cellStyle: { color: '#686E74' }, 
+        },
+        {
+          headerName: '# of Dealers',
+          field: 'noOfDealers',
+          minWidth: 150,
+          maxWidth: 150,
+          tooltipField: 'noOfDealers',
+          type: 'rightAligned',
+          cellStyle: { color: '#686E74' }, 
+        },
+        {
+          headerName: 'Start Date',
+          field: 'startDate',
+          tooltipField: 'startDate',
+          minWidth: 150,
+          maxWidth: 150,
+          cellStyle: { color: '#686E74' }, 
+          cellRenderer: (data) => {
+            return this.sharedServices.dateformat(data.value);
+          },
+          type: ['nonEditableColumn'],
+        },
+    
+        {
+          headerName: 'End Date',
+          field: 'endDate',
+          type: ['nonEditableColumn'],
+          tooltipField: 'endDate',
+          minWidth: 130,
+          maxWidth: 130,
+          cellStyle: { color: '#686E74' }, 
+          cellRenderer: (data) => {
+            return this.sharedServices.dateformat(data.value);
+          },
+        },
+        
+        {
+          headerName: '# of Orders',
+          field: 'noOfOrders',
+          tooltipField: 'noOfOrders',
+          minWidth: 150,
+          maxWidth: 150,
+          type: ['rightAligned'],
+          cellStyle: { color: '#686E74' }, 
+        },
+        {
+          headerName: 'Order Values($)',
+          field: 'invoicedValue',
+          minWidth: 180,
+          maxWidth: 180,
+          tooltipField: 'invoicedValue',
+          type: ['rightAligned'],
+          cellStyle: { color: '#686E74'}, 
+        },
+       
+        {
+          headerName: 'Status',
+          field: 'statusName',
+          
+          minWidth: 120,
+          maxWidth: 120,
+          cellEditor: 'agSelectCellEditor',
+          //  type: ['rightAligned'],
+          cellEditorParams: {
+            values: ['Active', 'Closed', 'Draft'],
+          },
+          cellClass: (params) => {
+            return params.value == 'Active'
+              ? 'myclass1'
+              : params.value == 'Expired'
+              ? 'myclass2'
+              : params.value == 'Draft'
+              ? 'myclass3'
+              : 'myclass4';
+          },
+          tooltipField: 'statusName',
+        },
+        {
+          headerName: '',
+          colId: 'action',
+          cellRenderer: PramotionActionComponent,
+          editable: false,
+          minWidth: 50,
+          maxWidth: 50,
+        },
+       ];
+    }
+    else
+    {
+      this.columnDefs=
+      [
+        {
+          headerName: 'Code',
+          minWidth: 120,
+          maxWidth: 120,
+          field: 'promoCode',
+          tooltipField: 'promoCode',
+          cellStyle: { color: '#686E74' }, 
+        },
+    
+        {
+          headerName: 'Name',
+          field: 'promotionName',
+          minWidth: 180,
+          maxWidth: 180,
+          tooltipField: 'promotionName',
+          cellStyle: { color: '#686E74', }, 
+        },
+    
+        {
+          headerName: 'Type',
+          field: 'promotionTypesName',
+          tooltipField: 'promotionTypesName',
+          minWidth: 150,
+          maxWidth: 150,
+          cellStyle: { color: '#686E74' }, 
+        },
+        {
+          headerName: '# of Dealers',
+          field: 'noOfDealers',
+          minWidth: 150,
+          maxWidth: 150,
+          tooltipField: 'noOfDealers',
+          type: 'rightAligned',
+          cellStyle: { color: '#686E74' }, 
+        },
+        {
+          headerName: 'Start Date',
+          field: 'startDate',
+          tooltipField: 'startDate',
+          minWidth: 150,
+          maxWidth: 150,
+          cellStyle: { color: '#686E74' }, 
+          cellRenderer: (data) => {
+            return this.sharedServices.dateformat(data.value);
+          },
+          type: ['nonEditableColumn'],
+        },
+    
+        {
+          headerName: 'End Date',
+          field: 'endDate',
+          type: ['nonEditableColumn'],
+          tooltipField: 'endDate',
+          minWidth: 130,
+          maxWidth: 130,
+          cellStyle: { color: '#686E74' }, 
+          cellRenderer: (data) => {
+            return this.sharedServices.dateformat(data.value);
+          },
+        },
+        
+        {
+          headerName: '# of Orders',
+          field: 'noOfOrders',
+          tooltipField: 'noOfOrders',
+          minWidth: 150,
+          maxWidth: 150,
+          type: ['rightAligned'],
+          cellStyle: { color: '#686E74' }, 
+        },
+        {
+          headerName: 'Order Values($)',
+          field: 'invoicedValue',
+          minWidth: 180,
+          maxWidth: 180,
+          tooltipField: 'invoicedValue',
+          type: ['rightAligned'],
+          cellStyle: { color: '#686E74'}, 
+        },
+       
+        {
+          headerName: 'Status',
+          field: 'statusName',
+          
+          minWidth: 120,
+          maxWidth: 120,
+          cellEditor: 'agSelectCellEditor',
+          //  type: ['rightAligned'],
+          cellEditorParams: {
+            values: ['Active', 'Closed', 'Draft'],
+          },
+          cellClass: (params) => {
+            return params.value == 'Active'
+              ? 'myclass1'
+              : params.value == 'Expired'
+              ? 'myclass2'
+              : params.value == 'Draft'
+              ? 'myclass3'
+              : 'myclass4';
+          },
+          tooltipField: 'statusName',
+        },
+        {
+          headerName: '',
+          colId: 'action',
+          cellRenderer: PramotionActionComponent,
+          editable: false,
+          minWidth: 50,
+          maxWidth: 50,
+        },
+      ];
+    }
+  }
 
   rowData: any;
   rowData1 = [];
@@ -481,6 +716,7 @@ export class PromotionsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.Updatecolumnsdef();
     this.userType = localStorage.getItem('userType')
     this.loggedUserId = localStorage.getItem('logInId');
     this.AddpromotionData = localStorage.getItem('AddpromotionData');
@@ -562,6 +798,8 @@ export class PromotionsComponent implements OnInit {
       if (this.userType !== 'Admin') {
         this.columnDefs = this.columnDefs.filter(col => col.field !== 'noOfDealers');
       }
+     
+
       console.log('Promotion List', this.rowData5);
     });
   }
@@ -1316,10 +1554,10 @@ export class PromotionsComponent implements OnInit {
     
     // this.gridApi.exportDataAsCsv({ fileName: 'Promotions_' + this.convertedDateFormat() });
    console.log(this.rowData5,"Checking Data coming or not");
-   const excludedProperties = ['productPromotionsId'];
+   const excludedProperties = [''];
     const headers = Object.keys(this.rowData5[0])
      // Removing header which in not needed
-    .filter((key) => !excludedProperties.includes(key))
+    // .filter((key) => !excludedProperties.includes(key))
     //.map(header => header);// to get all capital letters
     .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
     const worksheetData = [headers];

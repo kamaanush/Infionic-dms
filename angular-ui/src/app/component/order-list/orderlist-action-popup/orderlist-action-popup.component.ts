@@ -22,6 +22,7 @@ export class OrderlistActionPopupComponent implements OnInit {
   public isOpen = false;
   private tippyInstance;
   selected: boolean = false;
+  status: any;
   offsetValue: number[] = [];
   currentActionMenu: string[] = [];
 
@@ -46,6 +47,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     'to-ship': ['ship_order', 'close'],
     'received': [], // done
   }
+  
 
   shipmentStatusAction = {
     'ordered': ['confirm_order', 'cancel_order'], // done
@@ -100,12 +102,16 @@ export class OrderlistActionPopupComponent implements OnInit {
         // }
       });
   }
+  retrievedStat:any;
   CustomerPoId:any;
   LoginId:any;
   ngOnInit(): void {
     this.userType = localStorage.getItem('userType');
     this.CustomerPoId =localStorage.getItem('CustomerPoId')
     this.LoginId = localStorage.getItem("logInId");
+    this. retrievedStat = sessionStorage.getItem('yourKey');
+    // alert(this.retrievedStat);
+    console.log(this.retrievedStat,"SUPER");
   }
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -304,4 +310,5 @@ export class OrderlistActionPopupComponent implements OnInit {
       }
     })
   }
+  
 }

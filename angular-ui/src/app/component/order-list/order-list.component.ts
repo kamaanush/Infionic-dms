@@ -956,7 +956,7 @@ export class OrderListComponent implements OnInit {
     const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log('RefreshData', this.rowDatalist);
+      console.log('RefreshData', this.rowDatalist,data);
     });
     this.sharedServiceCalendar.filter('Register click');
   }
@@ -1030,7 +1030,7 @@ export class OrderListComponent implements OnInit {
   }
 
   onCellClicked(e): void {
-    console.log('cellClicked', e);
+    console.log('cellClicked', e.data.status);
     // this.SS.isShowEdit()
     // console.log(e.data.isShowEdit);
     localStorage.setItem('isShowEdit',JSON.stringify(e.data.isShowEdit))
@@ -1330,7 +1330,12 @@ export class OrderListComponent implements OnInit {
     };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log(res.response, '..............');
+      let stat:any = [...new Set(res.response.filter((x:any)=> x.status =='Submitted').map((y:any)=> y.status))]
+      //  console.log([...new Set(stat)]);
+      //  console.log(stat,"RAKLPs");
+       sessionStorage.setItem('yourKey',stat);
+      //  alert(stat)
+       console.log(res.response.status, '........R A .. KKKs....');
       this.SpinnerService.hide(); 
       this.rowDatalist.forEach((element) => {
         element.orderDate = this.sharedService.dateformat(element.orderDate);

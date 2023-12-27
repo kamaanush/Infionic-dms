@@ -589,3 +589,51 @@ padding-left: 5px;
     margin-top: 0px !important;
     box-shadow: 0 1px 5px #959595;
   }
+  ::ng-deep.promotionsproductbubbles .dropdown-btn {
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+  }
+ 
+  ::ng-deep.promotionsproductbubbles .dropdown-btn span .ng-star-inserted {
+    position: relative !important;
+    top: 40px !important;
+    right: 11px !important;
+    height: 5px;
+    display: table-cell;
+  }
+  .dropdown-form {
+    position: relative;
+    width: 103%;
+ 
+  }
+  .product-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #44026C !important;
+  }
+  ::ng-deep.product .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #44026C !important;
+    font-size: 12px;
+    height: fit-content;
+    right: 10px;
+  }
+ 
+  ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #018B75 !important;
+  }
+  ::ng-deep.product .dropdown-btn span .ng-star-inserted {
+    position: absolute !important;
+    right: -18px !important;
+    bottom: 0px;
+    top: 50px !important;
+    /* width: 51px; */
+    border: 1px solid #337ab7;
+    background: #44026C !important;
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 22px;
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 2px;
+    padding-left: 4px;
+  }

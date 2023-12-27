@@ -479,7 +479,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      // year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
     }
@@ -496,7 +497,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      // year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -543,7 +545,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      // year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -560,7 +563,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      // year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -577,7 +581,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      // year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -597,7 +602,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      // year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -640,17 +646,27 @@ export class DealerTargetComponent implements OnInit {
     this.targetList.financialYear().subscribe((res: any) => {
       this.toppingList1 = res.response;
       
-      // console.log('New Year', this.toppingList1)
+       console.log('New Year', this.toppingList1)
       this.toppingList1.forEach(element => {
-        return this.statusArray.push(element.statusId);
+        return this.statusArray.push(element.financialYearId);
       
 
       })
+      
     
-      this.dropdownSettings1 = {
+      // this.dropdownSettings1 = {
+      //   singleSelection: false,
+      //   idField: 'statusId',
+      //   textField: 'statusName',
+      //   selectAllText: 'Select All',
+      //   unSelectAllText: 'UnSelect All',
+      //   itemsShowLimit: 1,
+      //   allowSearchFilter: false
+      // };
+       this.dropdownSettings1 = {
         singleSelection: false,
-        idField: 'statusId',
-        textField: 'statusName',
+        idField: 'financialYearId',
+        textField: 'financialYear',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
         itemsShowLimit: 1,
@@ -669,7 +685,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+       financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -686,7 +703,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+       financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -703,7 +721,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -717,13 +736,14 @@ export class DealerTargetComponent implements OnInit {
   onYearDeSelect(item: any) {
 
     this.yearSelected.forEach((element, index) => {
-      if (element == item) this.yearSelected.splice(index, 1);//yet to change
+      if (element == item.financialYearId) this.yearSelected.splice(index, 1);//yet to change
     });
     const data = {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -752,7 +772,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -769,7 +790,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -786,7 +808,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -806,7 +829,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -886,7 +910,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      //  year:this.yearSelected,
+      financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1061,7 +1086,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      financialYearId:this.yearSelected,
+      // year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1078,7 +1104,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      financialYearId:this.yearSelected,
+      // year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1095,7 +1122,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      financialYearId:this.yearSelected,
+      // year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1115,7 +1143,8 @@ export class DealerTargetComponent implements OnInit {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      year:this.yearSelected,
+      financialYearId:this.yearSelected,
+      // year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 

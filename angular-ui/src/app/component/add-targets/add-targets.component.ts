@@ -17,8 +17,11 @@ import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success
 })
 export class AddTargetsComponent implements OnInit {
   selectValueChanged = false;
+  // image1 = 'assets/img/minimize-tag.png';
   image1 = 'assets/img/minimize-tag.png';
-  rowsTotal = false;
+  image2 = 'assets/img/maximize-arrow.png';
+  image3 = 'assets/img/minimize-tag.png';
+   rowsTotal = false;
   disableColumns: boolean = false;
   anuallySelected: boolean = false;
   allDlrSelected: boolean = false;
@@ -92,9 +95,10 @@ export class AddTargetsComponent implements OnInit {
     private sharedService: DealerTargetSharedServicesService,
     public dialog: MatDialog,
   ) { 
-
+   
   }
   ngOnInit(): void {
+   
     console.log('mainadd', this.mainadd)
     this.targetListGroup();
     this.dealer = this.fb.group({
@@ -149,16 +153,20 @@ export class AddTargetsComponent implements OnInit {
 
     }
   }
- 
-  inumber: any;
-  expandDealerInfoDiv(i) {
-    this.inumber = i;
-    if (this.dealer[i].flagforopen === false) {
-      this.dealer[i].flagforopen = true;
+
+  visibleRows: Set<string> = new Set<string>();
+  defaultOpenCustomerIds: string[]=[];
+  toggleRowVisibility(customerId: string): void {
+    if (this.visibleRows.has(customerId)) {
+      this.visibleRows.delete(customerId);
     } else {
-      this.dealer[i].flagforopen = false;
-    }
+      this.visibleRows.add(customerId);
+        }
   }
+  isRowVisible(customerId: string): boolean {
+    return this.visibleRows.has(customerId);
+  }
+ 
 
   allDealerSelected() {
     this.allDlrSelected = !this.allDlrSelected;
@@ -890,4 +898,5 @@ this.geographyArray=[];
   {
      this.dialogRef.close();
   }
+  expandedDealers: string[] = [];
 }

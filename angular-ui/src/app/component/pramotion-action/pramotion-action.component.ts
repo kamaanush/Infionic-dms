@@ -26,8 +26,11 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
   private tippyInstance;
   selected:boolean=false;
   offsetValue: number[] = [];
-
-  ngOnInit(){}
+  userType:any;
+    currentPageName: string = '';
+  ngOnInit(){
+    this.userType = localStorage.getItem('userType');
+  }
   @ViewChild('content') container;
 
   @ViewChild('trigger') button;

@@ -4,6 +4,38 @@ color: #000000 !important;
     background: #000000 !important;
     border-radius: 20px;
 }
+.upload[disabled] {
+  background-color: gray; 
+  cursor: not-allowed;
+  
+}
+.upload
+{
+   background-color: #018B75;
+   color: white;
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   border-radius: 10px;
+   cursor: pointer;
+   font-family: 'Gilroy-SemiBold';
+   border: none;
+   outline: none;
+}
+.cancelbtn
+{
+  background: #018B75;
+  color: white;
+  font-family: 'Gilroy-SemiBold';
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   border-radius: 10px;
+   cursor: pointer;
+   margin-left: -41%;
+   border: none;
+   outline: none;
+}
 .sales-container {
 position: relative;
 /* min-width: 1600px !important; */

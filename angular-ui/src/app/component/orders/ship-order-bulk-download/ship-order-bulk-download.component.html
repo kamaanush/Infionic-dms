@@ -66,7 +66,28 @@
           <span *ngIf="geographyForm.get('geography').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geography').value.length}} Geography(s) selected </span>
 
         </div>
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--  New Dropdown -->
+
+      <div class="col-md-2 col-lg-2 col-sm-2 shipordersbulkbubbles">
+        <form [formGroup]="myForms">
+          <ng-multiselect-dropdown style="color: grey;" class="geography geograph" name="citys" [placeholder]="'Select Product '" formControlName="city2"
+            [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+            (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+            (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
+          </ng-multiselect-dropdown>
+        </form>
+          <div class="dropdown-placeholder geography-placeholder"id="DP">
+             <span *ngIf="myForms.get('city2').value.length == 0" id="GP">Select Product </span>
+            <span *ngIf="myForms.get('city2').value.length == 1" >
+              {{myForms.get('city2').value.length}} Products selected </span>
+            <span *ngIf="myForms.get('city2').value.length > 1" >
+              {{myForms.get('city2').value.length}} Products selected </span>
+          </div>
       </div>
+
+
+
       <!-- refresh -->
       <div class=" REfreshbtn" style=" cursor: pointer" (click)="refresh()">
         <img class="refresh_img" src="assets/img/Refreshbutton.svg" alt="refresh">
