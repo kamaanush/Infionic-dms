@@ -50,6 +50,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { AddUserPopupComponent } from '../component/users/userPopups/add-user-popup/add-user-popup.component';
+import { OrdersApisService } from '../services/orders-apis.service';
 
 @Component({
   selector: 'app-view-invoice-component',
@@ -100,67 +101,129 @@ export class ViewInvoiceComponentComponent implements OnInit {
   public rowData5 = [];
   public popupParent: HTMLElement = document.body;
 
+  // columnDefs: ColDef[] = [
+
+  //   {
+  //     headerName: "Batch ID",
+  //     field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc',
+  //     cellStyle: {
+  //       'color': '#686E74' 
+  //     },
+  //     tooltipField:"employeeCode",
+  //   },
+
+  //   { headerName: "Upload Date", field: 'userName', type: ['nonEditableColumn'],
+  //   cellStyle: {
+  //     'color': '#686E74' 
+  //   },
+  //   tooltipField:"userName", },
+
+  //   { headerName: "Product Name", field: 'roleName', type: ['nonEditableColumn'],
+  //   cellStyle: {
+  //     'color': '#686E74' 
+  //   },
+  //    tooltipField:"roleName", },
+
+  //   {
+  //     headerName: "Product Code",
+  //     field: 'email', type: ['nonEditableColumn'],
+  //     tooltipField:"email",  
+  //     cellStyle: {
+  //       'color': '#686E74' 
+  //     },    
+  //     minWidth:200,
+  //     // flex: 1,
+  //   },
+
+  //   {
+  //     headerName: "Total Items",
+  //     field: 'mobile', type: ['nonEditableColumn'],
+  //     cellStyle: {
+  //       'color': '#686E74' 
+  //     },
+  //     tooltipField:"mobile"
+  //   },
+
+  //   {
+  //     headerName: "Dealer",
+  //     field: 'lastLoginDate', type: ['nonEditableColumn'],
+  //     cellStyle: {
+  //       'color': '#686E74' 
+  //     },
+  //     cellRenderer: function dateFormtter(params) {
+  //       return moment(params.value).format('DD MMM YYYY, HH:mm A')
+  //     },
+  //     tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD MMM YYYY, HH:mm A'),
+  //   },
+
+  // ];
+
   columnDefs: ColDef[] = [
+    {
+      headerName: 'OrderNo',
+      field: 'orderNo',
+      type: ['nonEditableColumn'],
+      // sort: 'desc',
+      tooltipField: 'orderNo',
+    },
 
     {
-      headerName: "Batch ID",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc',
-      cellStyle: {
-        'color': '#686E74' 
-      },
-      tooltipField:"employeeCode",
+      headerName: 'Dealer Code',
+      field: 'dealerCode',
+      type: ['nonEditableColumn'],
+      tooltipField: 'userName',
     },
-
-    { headerName: "Upload Date", field: 'userName', type: ['nonEditableColumn'],
-    cellStyle: {
-      'color': '#686E74' 
-    },
-    tooltipField:"userName", },
-
-    { headerName: "Product Name", field: 'roleName', type: ['nonEditableColumn'],
-    cellStyle: {
-      'color': '#686E74' 
-    },
-     tooltipField:"roleName", },
-
     {
-      headerName: "Product Code",
-      field: 'email', type: ['nonEditableColumn'],
-      tooltipField:"email",  
-      cellStyle: {
-        'color': '#686E74' 
-      },    
-      minWidth:200,
+      headerName: 'Product Code',
+      field: 'productCode',
+      type: ['nonEditableColumn'],
+      tooltipField: 'productCode',
+    },
+    {
+      headerName: 'Dispatch Qty',
+      field: 'dispatchQty',
+      type: ['nonEditableColumn'],
+      tooltipField: 'dispatchQty',
+      minWidth: 200,
       // flex: 1,
     },
-
     {
-      headerName: "Total Items",
-      field: 'mobile', type: ['nonEditableColumn'],
-      cellStyle: {
-        'color': '#686E74' 
+      headerName: 'UnitPrice',
+      field: 'unitPrice',
+      type: ['nonEditableColumn'],
+      tooltipField: 'unitPrice',
+    },
+    {
+      headerName: 'UnitDiscount',
+      field: 'unitDiscount',
+      type: ['nonEditableColumn'],
+      tooltipField: 'unitDiscount',
+    },
+    {
+      headerName: 'InvoiceDate',
+      field: 'invoiceDate',
+      type: ['nonEditableColumn'],
+      tooltipField: 'invoiceDate',
+      cellRenderer: (data) => {
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
       },
-      tooltipField:"mobile"
+    },
+    {
+      headerName: 'InvoiceNo',
+      field: 'invoiceNo',
+      type: ['nonEditableColumn'],
+      tooltipField: 'invoiceNo',
     },
 
     {
-      headerName: "Dealer",
-      field: 'lastLoginDate', type: ['nonEditableColumn'],
-      cellStyle: {
-        'color': '#686E74' 
-      },
-      cellRenderer: function dateFormtter(params) {
-        return moment(params.value).format('DD MMM YYYY, HH:mm A')
-      },
-      tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD MMM YYYY, HH:mm A'),
-    },
-
-    // suppressMovable:true,
-   
-
-
+      headerName: 'Remarks',
+      field: 'remarks',
+      type: ['nonEditableColumn'],
+      tooltipField: 'remarks',
+    }
   ];
-
 
   rowData: any;
   rowData1 = [];
@@ -277,6 +340,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private sharedService: SharedService,
+    private orderservice:OrdersApisService
   ) {
 
     this.sharedService.listen().subscribe((m: any) => {
@@ -312,9 +376,11 @@ export class ViewInvoiceComponentComponent implements OnInit {
   }
 
 
-
+  currentuserid:any;
+  guid:any
   ngOnInit(): void {
-
+    this.currentuserid = JSON.parse(localStorage.getItem('logInId')||'null')
+    this.guid = JSON.parse(localStorage.getItem('guid')||'null')
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();
@@ -389,17 +455,17 @@ export class ViewInvoiceComponentComponent implements OnInit {
     this.getusertabeldata();
   }
 
+  tabledata:any
   getusertabeldata() {
-    const data = {
-      userTypes: [],
-      statuss: [],
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-
+    let data = {
+      CurrentUserId: this.currentuserid,
+      Guid: this.guid,
+    };
+    this.orderservice.GetShipmentsUploadViewData(data).subscribe((res:any) => {
       this.rowData5 = res.response;
-      console.log('tableDaaaata', this.rowData5)
+      console.log('this.rowData5',this.rowData5);
       if (this.rowData5.length >= 1) {
-        this.rowData.forEach((element: { [x: string]: any; }) => {
+        this.rowData?.forEach((element: { [x: string]: any; }) => {
           if (element['status'] == 'Confirmed') {
           }
           else {

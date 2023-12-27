@@ -65,12 +65,12 @@ export class InvoiceActionComponent implements OnInit,  AfterViewInit {
 
   editUser(){
    
-    this.dialog.open( ViewInvoiceComponentComponent,{width: '1000px',height:'560px'});
+    this.dialog.open( ViewInvoiceComponentComponent,{width: '1400px',height:'560px'});
     this.isOpen = false;
   }
  
   resetpws(){
-    this.dialog.open(DownloadInvoiceComponentComponent,{width: '1000px',height:'560px'});
+    this.dialog.open(DownloadInvoiceComponentComponent,{width: '1400px',height:'560px'});
     this.isOpen = false;
   }
   tickmark(){

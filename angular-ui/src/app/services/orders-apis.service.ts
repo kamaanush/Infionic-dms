@@ -192,4 +192,12 @@ export class OrdersApisService {
   GetSampleTemplates(data){
     return this.http.post(this.userurl+'CommonApi/GetSampleTemplates',data)
   }
+
+  // OrdersApi/GetShipmentsUploadList
+  GetShipmentsUploadList(data){
+    return this.http.post(this.userurl+'OrdersApi/GetShipmentsUploadList',data)
+  }
+  GetShipmentsUploadViewData(data){
+    return this.http.post(this.userurl+'OrdersApi/GetShipmentsUploadViewData',data)
+  }
 }
