@@ -122,8 +122,9 @@ export class UsersComponent implements OnInit {
 
     { headerName: "Username", field: 'userName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "userName", },
 
-    { headerName: "Role", field: 'roleName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "roleName", },
 
+    { headerName: "Role", field: 'roleName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "roleName", },
+    { headerName: "Dealer Name", field: 'customerName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "userName", },
     {
       headerName: "Email ",
       field: 'email', type: ['nonEditableColumn'],cellStyle: { color: '#686E74' },

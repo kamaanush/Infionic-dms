@@ -1,4 +1,3 @@
-
 ::ng-deep.selectstatusbubbles .dropdown-btn
 {
     display: flex !important;
@@ -165,7 +164,7 @@
 }
 
 ::ng-deep .stts_1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-  background: #018B75 !important;
+  background: #000000 !important;
 }
 
 .stts_1-placeholder.dropdown-placeholder .selected-placeholder {
@@ -199,7 +198,7 @@
 ::ng-deep .role1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
    
   
-  background-color:#018B75  !important;
+  background-color: #44026C !important;
 }
 
 
@@ -374,9 +373,10 @@ bottom: 0px;
   border: none;
   background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
-  position: relative;
+  // position: relative;
+  // position: absolute;
   width: 40px;
-  margin-left: 280px;
+  // margin-left: 280px;
   height: 40px;
 }
 
@@ -531,8 +531,8 @@ bottom: 0px;
   width: 40px;
   height: 40px;
   top: 87px;
-  margin-right: 10px;
-  margin-left: 636%;
+  // margin-right: 10px;
+  // margin-left: 636%;
   // position: absolute;
   // left: 169%;
 }
@@ -547,7 +547,7 @@ bottom: 0px;
   position: relative;
   width: 40px;
   height: 40px;
-  margin-left: 550%;
+  // margin-left: 550%;
   // top: 87px;
   // left: 192%;
 }
@@ -1217,14 +1217,15 @@ display: block;
 
 .searchBox {
 
-  float: right;
+  // float: right;
 
-  position: absolute;
+  // position: absolute;
 
-  right: 465px;
+  // right: 465px;
 
-  top: 20px;
-
+  // top: 20px;
+  top: 5px;
+  position:relative ;
 }
 
  
@@ -1250,7 +1251,8 @@ display: block;
 
   background: none;
 
-  position: relative;
+  // position: relative;
+  position: absolute;
 
   right: 182px;
 
@@ -1288,12 +1290,9 @@ display: block;
 
   right: 10px;
   top:7%;
-  border: 1px solid grey;
-    outline: none;
-}
 
-.search-bt_n:focus {
-  border: 1px solid grey;
+ 
+
 }
 
  
@@ -1330,7 +1329,7 @@ display: block;
 
   color: #263643;
 
-  // box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
 
   position: absolute;
 
@@ -1339,10 +1338,5 @@ display: block;
   bottom: -3px;
 
   top: -5px;
-  border: 1px solid grey !important;
-  outline: none;
-}
-
-.searchInput11:focus {
-  border: 1px solid gray;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
 }

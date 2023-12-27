@@ -11,10 +11,10 @@
 @import '../node_modules/@syncfusion/ej2-angular-popups/styles/material.css';
 
 
-.mat-elevation-z8
-{
+.mat-elevation-z8 {
   box-shadow: none !important;
 }
+
 html,
 body {
   height: 100%;
@@ -29,43 +29,17 @@ body {
   font-family: Montserrat, sans-serif;
 }
 
-/*  background color apply the in every module  */
- mat-sidenav-content
-{
-  
-}
-.mat-dialog-container
-{
-   
-  
-}
-.popup
-{
-  
-  
-}
-.main
-{
-  
-  
-   
-}
-.content
-{
-  
-}
-.sales-container
-{
-  
-}
+
 
 /* End */
 /* custom css mat tab */
 
-.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
+.mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
 
- background: rgba(1, 139, 117, 1);
+  background: rgba(1, 139, 117, 1);
 }
+
 .mat-drawer-container {
   background-color: white;
 }
@@ -75,12 +49,12 @@ body {
 /* Firefox */
 * {
   /* scrollbar-width: auto; */
-  scrollbar-color:rgba(1, 139, 117, 1);
+  scrollbar-color: rgba(1, 139, 117, 1);
 
 }
-html
-{
-  scrollbar-color:rgba(1, 139, 117, 1) white;
+
+html {
+  scrollbar-color: rgba(1, 139, 117, 1) white;
 }
 
 /* Chrome, Edge, and Safari */
@@ -103,6 +77,18 @@ html
 
   display: none;
 
+}
+
+/* .ag-theme-quartz,
+.ag-theme-quartz-dark {
+  --ag-grid-size: 5px;
+  --ag-list-item-height: 15px;
+} */
+.ag-header-cell{
+  padding: 0px 20px 0px 5px;
+}
+.ag-cell-value {
+  padding: 0px 20px 0px 5px;
 }
 
 @font-face {
@@ -160,23 +146,23 @@ html
   border-radius: 15px !important;
 }
 
- .activeSuccessPop .mat-dialog-container {
-  background: white!important;
+.activeSuccessPop .mat-dialog-container {
+  background: white !important;
   border: 0.5px solid gray;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .deactiveSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
-   border-left: 10px solid #FF0000 !important; 
-   
+  border-left: 10px solid #FF0000 !important;
+
   padding: 10px 20px;
-} 
+}
 
 
 .deactiveSuccessPop {
@@ -233,8 +219,8 @@ html
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
+  --webkit-font-feature-settings: 'liga';
+  --webkit-font-smoothing: antialiased;
 }
 
 @media only screen and (max-width: 600px) {
@@ -388,7 +374,7 @@ ngx-daterangepicker-material .md-drppicker {
 }
 
 .md-drppicker td.in-range {
-  background-color:white !important;
+  background-color: white !important;
   opacity: 1;
 }
 
@@ -397,12 +383,12 @@ ngx-daterangepicker-material .md-drppicker {
 .md-drppicker td.off.start-date,
 .md-drppicker td.off.end-date {
   background-color: transparent !important;
-  color:white !important;
+  color: white !important;
 }
 
 .md-drppicker td.active,
 .md-drppicker td.active:hover {
-  background-color: #0061FF !important;
+  background-color: #115dd7 !important;
   border-color: transparent;
   color: #fff;
 }
@@ -430,51 +416,59 @@ ngx-daterangepicker-material .md-drppicker {
   top: 40%;
 }
 
-ngx-daterangepicker-material .md-drppicker .btn{
-  border: 1px solid rgba(1, 139, 117, 1);
-    margin-right: 5px;
-    border-radius: 10px;
-    font-size: 15px;
-    padding: 0px 25px;
-    text-transform: capitalize;
-    font-weight: 500;
-    background: rgba(1, 139, 117, 1);
-}
-ngx-daterangepicker-material  .md-drppicker .btn:hover,ngx-daterangepicker-material  .md-drppicker .btn:focus{
+ngx-daterangepicker-material .md-drppicker .btn {
+  border: 1px solid #000;
+  margin-right: 5px;
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 0px 25px;
+  text-transform: capitalize;
+  font-weight: 500;
   background: rgba(1, 139, 117, 1);
 }
-ngx-daterangepicker-material .md-drppicker .btn.btn-default{
-  border: 2px solid #000;
-   background:white;
+
+ngx-daterangepicker-material .md-drppicker .btn:hover,
+ngx-daterangepicker-material .md-drppicker .btn:focus {
+  background: rgba(1, 139, 117, 1);
 }
-ngx-daterangepicker-material .md-drppicker .clear svg{
+
+ngx-daterangepicker-material .md-drppicker .btn.btn-default {
+  border: 2px solid #000;
+  background: white;
+}
+
+ngx-daterangepicker-material .md-drppicker .clear svg {
   display: none;
 }
 
 
-.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn{
+.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn {
   position: relative;
   top: -30px;
 }
 
-.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn.btn-default{
+.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn.btn-default {
   display: block;
   top: 10px;
 }
-.material-add-edit .mat-horizontal-content-container{
+
+.material-add-edit .mat-horizontal-content-container {
   height: 60vh;
   overflow-y: auto;
 }
-.material-add-edit .mat-dialog-container{
+
+.material-add-edit .mat-dialog-container {
 
   overflow-y: hidden !important;
 }
 
 
-.promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,.promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
+.promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
   display: none;
 }
-.MLCSP{
+
+.MLCSP {
   position: absolute !important;
   pointer-events: auto;
   box-sizing: border-box;
@@ -486,13 +480,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   left: 71%;
   /* width: 377px; */
 }
+
 .MLCSP .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -500,11 +495,11 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
-   border-left: 10px solid #FF0000 !important; 
-   
+  border-left: 10px solid #FF0000 !important;
+
   padding: 10px 20px;
-  
-} 
+
+}
 
 
 .deaeSuPop {
@@ -517,14 +512,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-height: 100%;
   bottom: 2%;
   left: 79%;
-   /* width: 350px;  */
+  /* width: 350px;  */
 }
 
 
 
 
 
-.Addtypessupop{
+.Addtypessupop {
   position: absolute !important;
   pointer-events: auto;
   box-sizing: border-box;
@@ -535,13 +530,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 2%;
   left: 72%;
 }
+
 .Addtypessupop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -564,7 +560,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -588,7 +584,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -613,11 +609,10 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
-.addsalessussesspop
-{
+.addsalessussesspop {
   position: absolute !important;
   pointer-events: auto;
   box-sizing: border-box;
@@ -638,11 +633,10 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
-.addorderpromosuccess
-{
+.addorderpromosuccess {
   position: absolute !important;
   pointer-events: auto;
   box-sizing: border-box;
@@ -652,7 +646,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-height: 100%;
   bottom: 2%;
   left: 76%;
-  
+
 }
 
 
@@ -663,7 +657,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -687,7 +681,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -712,23 +706,22 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
-.ActiveSuccess_PopComponent
-{
-  
-    position: absolute !important;
-    pointer-events: auto;
-    box-sizing: border-box;
-    z-index: 1000;
-    display: flex;
-    max-width: 100%;
-    max-height: 100%;
-    bottom: 4%;
-    left: 77%;
-    
-  
+.ActiveSuccess_PopComponent {
+
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 4%;
+  left: 77%;
+
+
 }
 
 .ActiveSuccess_PopComponent .mat-dialog-container {
@@ -737,12 +730,11 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
-.ASPCMaterial
-{
-  
+.ASPCMaterial {
+
   position: absolute !important;
   pointer-events: auto;
   box-sizing: border-box;
@@ -763,7 +755,8 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
+
 
 
 .activeSuccessPopassocitions {
@@ -777,13 +770,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 2%;
   left: 73%;
 }
+
 .activeSuccessPopassocitions .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .promotionsSuccessPop {
@@ -797,13 +791,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 2%;
   left: 74%;
 }
+
 .promotionsSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .TargetSuccessPop {
@@ -817,13 +812,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 2%;
   left: 74%;
 }
+
 .TargetSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .UsersSuccessPop {
@@ -837,13 +833,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 6%;
   left: 77%;
 }
+
 .UsersSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .AddUsersSuccessPop {
@@ -857,23 +854,24 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 6%;
   left: 77%;
 }
+
 .AddUsersSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .deactive_SuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
-   border-left: 10px solid #FF0000 !important; 
-   
+  border-left: 10px solid #FF0000 !important;
+
   padding: 10px 20px;
-} 
+}
 
 
 .deactive_SuccessPop {
@@ -885,9 +883,9 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-width: 100%;
   max-height: 100%;
   bottom: 4%;
-   left: 76%;
-   width: 23%;
-  
+  left: 76%;
+  width: 23%;
+
 }
 
 .materialsSuccessPop {
@@ -908,7 +906,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -918,7 +916,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .UOMSuccessPop {
@@ -930,8 +928,8 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-width: 100%;
   max-height: 100%;
   bottom: 5%;
-   left: 73%; 
-  
+  left: 73%;
+
 }
 
 
@@ -953,7 +951,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -962,10 +960,10 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
-   border-left: 10px solid #FF0000 !important; 
-   
+  border-left: 10px solid #FF0000 !important;
+
   padding: 10px 20px;
-} 
+}
 
 
 .taxdeactivatesussess {
@@ -977,7 +975,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-width: 100%;
   max-height: 100%;
   bottom: 2%;
-   left: 75%;
+  left: 75%;
 }
 
 .editSuccessPop {
@@ -991,13 +989,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 2%;
   left: 75%;
 }
+
 .editSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -1012,23 +1011,24 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 5%;
   left: 74%;
 }
+
 .currencyactiveSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 .currencydeactiveSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
-   border-left: 10px solid #FF0000 !important; 
-   
+  border-left: 10px solid #FF0000 !important;
+
   padding: 10px 20px;
-} 
+}
 
 
 .currencydeactiveSuccessPop {
@@ -1040,8 +1040,8 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-width: 100%;
   max-height: 100%;
   bottom: 5%;
-   left: 75%;
-  
+  left: 75%;
+
 }
 
 
@@ -1056,13 +1056,14 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 5%;
   left: 75%;
 }
+
 .currencyReaactiveSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 
@@ -1077,112 +1078,114 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   bottom: 6%;
   left: 77%;
 }
+
 .AddgeoSuccessPopcompoment .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-} 
+}
 
 
 @font-face {
   font-family: 'Gilroy-Black';
-  src: url('../src/assets/fonts/gilroy/Gilroy-Black.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-Black.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-BlackItalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-BlackItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-BlackItalic.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'Gilroy-Bold';
-  src: url('../src/assets/fonts/gilroy/Gilroy-Bold.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Bolditalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-BoldItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-BoldItalic.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Gilroy-ExtraBold';
-  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBold.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-ExtraBolditalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBoldItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBoldItalic.ttf') format('truetype');
 }
 
 
 @font-face {
   font-family: 'Gilroy-Heavy';
-  src: url('../src/assets/fonts/gilroy/Gilroy-Heavy.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-Heavy.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Heavyitalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-HeavyItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-HeavyItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Light';
-  src: url('../src/assets/fonts/gilroy/Gilroy-Light.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-Light.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Lightitalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-LightItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-LightItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Medium';
-  src: url('../src/assets/fonts/gilroy/Gilroy-Medium.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-Medium.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Mediumitalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-MediumItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-MediumItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Regular';
-  src: url('../src/assets/fonts/gilroy/Gilroy-Regular.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Regularitalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-RegularItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-RegularItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-SemiBold';
-  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBold.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-SemiBolditalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBoldItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBoldItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Thin';
-  src: url('../src/assets/fonts/gilroy/Gilroy-Thin.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-Thin.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-Thinitalic';
-  src: url('../src/assets/fonts/gilroy/Gilroy-ThinItalic.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-ThinItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Gilroy-UltraLight';
-  src: url('../src/assets/fonts/gilroy/Gilroy-UltraLight.ttf')  format('truetype');
+  src: url('../src/assets/fonts/gilroy/Gilroy-UltraLight.ttf') format('truetype');
 }
 
- @font-face {
+@font-face {
   font-family: 'Gilroy-UltraLightitalic';
-  src:url('../src/assets/fonts/gilroy/Gilroy-UltraLightItalic.ttf')  format('truetype');
-} 
+  src: url('../src/assets/fonts/gilroy/Gilroy-UltraLightItalic.ttf') format('truetype');
+}

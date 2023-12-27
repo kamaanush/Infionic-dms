@@ -226,7 +226,7 @@ scrollbar-width: none;
   border-radius: 13%;
   position: relative;
   width: 39px;
-  margin-left: 250px;
+  margin-left: 226px;
   height: 39px;
 }
 
@@ -1037,12 +1037,10 @@ mat-sidenav {
 .searchBox {
 
   float: right;
-
-  position: absolute;
-
-  right: 715px;
-
-  top: 7px;
+  left: 204px;
+  // right: 21px;
+  top: 5px;
+  position: relative;
 
 }
 

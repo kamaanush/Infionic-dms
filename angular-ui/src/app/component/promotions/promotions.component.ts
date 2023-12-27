@@ -193,7 +193,7 @@ export class PromotionsComponent implements OnInit {
     {
       headerName: 'Status',
       field: 'statusName',
-      
+      // type: ['nonEditableColumn','rightAligned'],
   
       cellEditor: 'agSelectCellEditor',
       //  type: ['rightAligned'],
