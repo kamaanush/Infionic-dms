@@ -180,13 +180,11 @@
                       <mat-chip-list selectable multiple class="mchip">
                         <!-- [(ngModel)]="selctedIdentifier" -->
                         <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of selectId"
-                          [selected]="isSelectedMaterialIdentifier(data)" (click)="selectMaterialIdentifier(data)"
-                                    class="cold">
-                                    
-                                   
-                          <!-- <mat-icon *ngIf="identifierId.selected">check</mat-icon> -->
-                          {{data.materialCustomName}}
-                        </mat-chip>
+                        [selected]="isSelectedMaterialIdentifier(data)" 
+                        [disabled]="data.isDisabled"
+                        (click)="selectMaterialIdentifier(data)" class="cold">
+                        {{data.materialCustomName}}
+                    </mat-chip>
                       </mat-chip-list>
                     </div>
                   </div>

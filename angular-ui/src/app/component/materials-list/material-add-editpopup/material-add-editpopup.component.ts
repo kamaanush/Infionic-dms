@@ -1335,6 +1335,7 @@ export class MaterialAddEditpopupComponent {
      this.customIdentifier();
   }
   isSelectedMaterialIdentifier(materialIdentifier: any): boolean {
+   
     const index = this.selctedIdentifier.indexOf(materialIdentifier);
     return index >= 0;
   }
@@ -1342,22 +1343,28 @@ export class MaterialAddEditpopupComponent {
   selectMaterialIdentifier(materialIdentifier: any): void { 
     console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
     // let index = this.selctedIdentifier.indexOf(materialIdentifier);
-    let index = this.selctedIdentifier.findIndex(x => x.materilCustomIdentifierId == materialIdentifier.materilCustomIdentifierId)
-    if (index >= 0) {
-      this.selctedIdentifier.splice(index, 1);
-      this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
-      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
-      console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
-      console.log("MaterialCustomIdentifiersNames", this.MaterialCustomIdentifiersNames);
-    } else {
-      this.selctedIdentifier.push(materialIdentifier);
-      this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
-      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
-      console.log("MaterialCustomIdentifiersNames", this.MaterialCustomIdentifiersNames);
-      console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
-    }
+    this.selectId.forEach(item => {
+    
+    });
+  
+    // Enable the selected item
+ 
+  
+    // Clear the selected items array
+    this.selctedIdentifier = [];
+  
+    // Add the current selected item to the array
+    this.selctedIdentifier.push(materialIdentifier);
+  
+    // Update MaterialCustomIdentifiersNames with the name of the selected item
+    this.MaterialCustomIdentifiersNames = materialIdentifier.materialCustomName;
+  
+    this.MaterialCustomIdentifiers = this.selctedIdentifier.map((identifier) => identifier.materilCustomIdentifierId);
+  
+   
   }
 
+  
   isSelectedBusiness(businessIdentifier: any): boolean {
     console.log("SelectedIdentifier", businessIdentifier);
     const index = this.selectedProductId.indexOf(businessIdentifier.productCustomIdentifierId);
