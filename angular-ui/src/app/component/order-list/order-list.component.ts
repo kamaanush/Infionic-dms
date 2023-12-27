@@ -974,20 +974,33 @@ export class OrderListComponent implements OnInit {
     //   fileName: 'orderList_' + this.convertedDateFormat(),
     // });
       console.log('All  Table data list ', this.rowDatalist);
-    
-    const excludedProperties = ['id', 'isShowEdit', 'statusId'];
+      const headerMappings: { [key: string]: string } = {
+        'orderNUmber': 'Order #',
+        'companyReferenceNo':'ERP Ref #',
+        'dealername':'Dealer',
+        'geographyName':'Geography',
+        'totalValue':'ODV($)',
+        'orderedQty':'ODQ',
+        'receivedQty':'RDQ',
+        'outstandingQty':'ODQ',
+        'outstandingValue':'OSV($)',
+        'inTransitQty':'ITQ',
+        'statusName':'Status',
+      };
+    const excludedProperties = ['id','isShowEdit','compleatedValue','dealerReferenceNo','statusId'];
     // Capitalize headers
     const headers = Object.keys(this.rowDatalist[0])
     // Removing header which in not needed
       .filter((key) => !excludedProperties.includes(key))
       //.map(header => header);// to get all capital letters
-      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+      .map((header) => headerMappings[header]|| header.charAt(0).toUpperCase() + header.slice(1));
     const worksheetData = [headers];
     this.rowDatalist.forEach((item) => {
       const capitalizedItem = {};
       Object.keys(item).forEach((key) => {
         // const capitalizedKey = key   // to get all capital letters
-        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        const mappedKey = headerMappings[key] || key
+        const capitalizedKey = mappedKey.charAt(0).toUpperCase() + mappedKey.slice(1);
         capitalizedItem[capitalizedKey] = item[key];
       });
       const row = headers.map((key) => {

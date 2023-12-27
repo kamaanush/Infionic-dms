@@ -686,21 +686,26 @@ console.log("SalesList",this.salesListData)
     // this.gridApi.exportDataAsCsv();
     // this.gridApi.exportDataAsCsv({ fileName: 'salesInventory_' + this.convertedDateFormat() });
     console.log(this.salesListData, 'this.salesListData');
- 
-     const excludedProperties = ['customerId', 'geographyId','stockItemId'];
+    // to replace the headers
+    const headerMappings: { [key: string]: string } = {
+      // 'orderNUmber': 'Order #',
+      
+    };
+     const excludedProperties = ['stockItemId','uoM'];
    
     // Capitalize headers
     const headers = Object.keys(this.salesListData[0])
          .filter(key => !excludedProperties.includes(key))
         //.map(header => header);// to get all capital letters
-        .map(header => header.charAt(0).toUpperCase() + header.slice(1));
+        .map(header => headerMappings[header] ||header.charAt(0).toUpperCase() + header.slice(1));
    
     const worksheetData = [headers];
     this.salesListData.forEach((item) => {
         const capitalizedItem = {};
         Object.keys(item).forEach(key => {
             // const capitalizedKey = key   // to get all capital letters
-            const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+            const mappedKey = headerMappings[key] || key
+            const capitalizedKey = mappedKey.charAt(0).toUpperCase() + mappedKey.slice(1);
             capitalizedItem[capitalizedKey] = item[key];
         });
    

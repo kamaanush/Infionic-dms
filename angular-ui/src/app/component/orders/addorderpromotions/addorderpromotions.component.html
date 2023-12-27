@@ -318,6 +318,10 @@
                                         <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.shippingCharges| currency:'USD'}}</td>
                                     </tr>
                                     <tr>
+                                        <td class="text-left SUB_ITEMNAME"><p style="margin-left: 20%;" >Tax</p></td>
+                                        <td class="text-right numbers"style="padding-right: 47px;">{{ shippingPackingchargeDetails.taxElement| currency:'USD'}}</td>
+                                    </tr>
+                                    <tr>
                                         <td class="text-left SUB_ITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
                                         <td class="text-right numbers"style="padding-right: 47px;">{{shippingPackingchargeDetails.total| currency:'USD'}}</td>
                                     </tr>
@@ -711,6 +715,19 @@
                                     <td  *ngIf="actineLabel !=='Edit order'" class="text-right numbers"style="position: relative;right: 53px;">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}
                                     </td> 
                                     <!-- value="{{(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')| number: '1.2-2'}}" -->  
+                                </tr>
+                                 <tr>
+                                    <td class="text-left SUBITEMNAME" ><p style="margin-left: 20%;" > Tax</p> </td>
+                                    <td  *ngIf="actineLabel !=='Edit order'" class="text-right numberss"  style="position: relative;right: 53px;">
+                                        <span style="color: rgba(1, 139, 117, 1);">
+                                            {{  (shippingPackingchargeDetails.taxElement?shippingPackingchargeDetails.taxElement:'0')| currency:'USD':'symbol':'1.2-2'}}
+                                        </span>
+                                    </td>
+                                    <td  *ngIf="actineLabel ==='Edit order'" class="text-right numberss"  style="position: relative;right: 53px;">
+                                        <span style="color: rgba(1, 139, 117, 1);">
+                                            {{  (shippingPackingchargeDetails.taxElement?shippingPackingchargeDetails.taxElement:'0')| currency:'USD':'symbol':'1.2-2'}}
+                                        </span>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value </p>
