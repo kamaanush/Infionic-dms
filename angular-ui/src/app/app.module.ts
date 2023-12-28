@@ -214,6 +214,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { ChartscomponentComponent } from './chartscomponent/chartscomponent.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { AddGeolistSuccessPopupComponent } from './add-geolist-shipping-popup/add-geolist-success-popup/add-geolist-success-popup.component';
+import { ViewAssociationComponent } from './association/view-association/view-association.component';
 
 
 @NgModule({
@@ -518,7 +519,8 @@ import { AddGeolistSuccessPopupComponent } from './add-geolist-shipping-popup/ad
           AddSalesSuccessComponent,
           AssociationBulkUploadComponent,
           ChartscomponentComponent,
-          AddGeolistSuccessPopupComponent
+          AddGeolistSuccessPopupComponent,
+          ViewAssociationComponent
           
   ],
   imports: [

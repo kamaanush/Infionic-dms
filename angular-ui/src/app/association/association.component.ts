@@ -52,6 +52,8 @@ import { AssosiationServicesService } from '../services/assosiation-services.ser
 import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
 import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 import { AssociationBulkUploadComponent } from '../association-bulk-upload/association-bulk-upload.component';
+import { OrdersReceiveShipmentComponent } from '../component/orders-receive-shipment/orders-receive-shipment.component';
+import { ViewAssociationComponent } from './view-association/view-association.component';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -120,7 +122,10 @@ export class AssociationComponent implements OnInit {
       headerName: "ProductName",
       minWidth: 180,
       maxWidth: 180,
-       field: 'stockItemName',cellStyle: { color: '#686E74' },  type: ['nonEditableColumn'],
+       field: 'stockItemName',
+       cellStyle: { color: '#017EFA' },  
+       type: ['nonEditableColumn'],
+       onCellClicked: (event: CellClickedEvent) => this.openViewDialog(event),
     },
 
     {
@@ -201,6 +206,16 @@ export class AssociationComponent implements OnInit {
    
   ];
   
+  openViewDialog(event: CellClickedEvent): void {
+    const rowData = event.data;
+
+    this.dialog.open(ViewAssociationComponent, {
+      data: rowData, // Pass the data to the dialog
+      width:'75vw',
+      maxWidth: '95vw',
+      height: '75vh',
+    });
+  }
 
 
   rowData: any;

@@ -464,7 +464,7 @@
                   <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
                 </div>
 
-                <div class="horizontal-scroll">
+                <div class="horizontal-scroll" *ngIf="actineLabel !== 'Edit Material'">
                   <div class="horizontal-scroll__item" *ngFor="let item of geoGraphyFullData;let i =index; ">
                     <div class="geo-grid">
                       <div class="row grid-heading">
@@ -501,6 +501,16 @@
                     </div>
                   </div>
                 </div>
+                <div class="row"  *ngIf="actineLabel ==='Edit Material'" >
+                  <div class="col-md-2" *ngFor="let item of geoGraphyFullData">
+                      <div *ngIf="item.geographySelected?.length > 0">
+                          <strong>{{ item.geographyHierarchyName }}</strong>
+                      </div>
+                      <div *ngFor="let selectedGeo of item.geographySelected" class="card-body card">
+                         <button class="btn btn-sm" style="background: rgba(1, 139, 117, 1);color: white;">{{ selectedGeo.geographyName }}</button>
+                      </div>
+                  </div>
+              </div>
               </form>
 
               <!-- <div class="row"></div> -->

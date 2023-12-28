@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    <div class="container">
+        <h1 class="text-center header mt-2 mb-2">View Association</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Association Information</h2>
+        <p>Dealer Name: {{data.customerName| titlecase}}</p>
+        <p>Geography:  <button class="btn btn-sm btn-secondary">{{data.geographyName | titlecase}}  </button></p>
+      </div>
+    </div>
+
+    <h3 class="mt-4">Selected Products</h3>
+    <div class="card">
+        <div class=" ml-2 mt-2 mb-0">
+            <h4>{{data.productCode}}</h4>
+        </div>
+        <div class="card-header d-flex" style="background-color:#018B75; color: white;">
+          <div class="col-md-2">Geography</div>
+          <div class="col-md-2 text-right">Unit Price($)</div>
+          <div class="col-md-2 text-right">Min Order QTY</div>
+          <div class="col-md-2 text-right">Max Order QTY</div>
+          <div class="col-md-1 text-right">Margin</div>
+          <div class="col-md-1 text-right">Discount</div>  
+          <div class="col-md-2 text-right">Lead Time (Days)</div>  
+        </div>
+        <div class="card-body d-flex">
+            <div class="col-md-2">{{data.geographyName}}</div>
+            <div class="col-md-2 text-right">{{'$'+ data.mrp}}</div>
+            <div class="col-md-2 text-right">{{data.minOrder}}</div>
+            <div class="col-md-2 text-right">{{data.maxOrder}}</div>
+            <div class="col-md-1 text-right">{{data.margin}}</div>
+            <div class="col-md-1 text-right">{{data.discount}}</div>  
+            <div class="col-md-2 text-right">{{data.leadTimeIndays}}</div>  
+        </div>
+      </div>
+  </div>

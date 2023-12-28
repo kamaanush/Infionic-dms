@@ -1,0 +1,31 @@
+
+.header:before {
+    content: "";
+    display: block;
+    width: 28%;
+    height: 1px;
+    background: #686E74;
+    left: 15%;
+    /* top: 5%; */
+    margin-top: 15px;
+    position: absolute;
+  }
+  .header:after {
+    content: "";
+    display: block;
+    width: 28%;
+    height: 1px;
+    background: #686E74;
+    right: 15%;
+    margin-top: -18px;
+    /* top: 50%; */
+    position: absolute;
+  }
+  .close-icon {
+    left: 98%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    top:6px;
+  }
