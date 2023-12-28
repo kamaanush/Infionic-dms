@@ -490,7 +490,10 @@ label {
     right: 7px;
   }
 
-
+  ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
+    border: 2px solid rgba(1, 139, 117, 1) !important;
+  }
+  
   ::ng-deep.addtargetsbubbles .dropdown-btn
 {
     display: flex !important;

@@ -85,12 +85,13 @@
   }
   
   ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
-    background: #000000 !important;
+    background:  #018B75 !important;
+   
     font-size: 12px;
   }
-  
+
   ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-    background: #000000 !important;
+    background: #018B75 !important;
   }
   
   ::ng-deep.roles .multiselect-dropdown .dropdown-btn .selected-item {
@@ -103,7 +104,7 @@
   }
   
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-    border: 2px solid #000000 !important;
+    border: 2px solid rgba(1, 139, 117, 1) !important;
   }
   
   .add-user:hover {
@@ -160,7 +161,7 @@
   
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     animation: borderscale .2s ease-in;
-    background: #00187A !important;
+    background:  #018B75  !important;
   }
   
   /* .btnhover:hover {
@@ -452,7 +453,7 @@
   .ag-theme-alpine .ag-multi-filter-group-title-bar {
   
     --ag-background-color: rgba(219, 19, 19, 0.863);
-    --ag-border-radius: 25px;
+    --ag-border-radius: 50px;
   
   
   }
@@ -1191,7 +1192,7 @@ margin-left: 136px;
     background-color: white;
     padding: 10px;
     border: solid 1px #686E74;
-    border-radius: 2px;
+    border-radius: 10px;
      height: 385px;
     overflow-y: scroll;
     position: relative;

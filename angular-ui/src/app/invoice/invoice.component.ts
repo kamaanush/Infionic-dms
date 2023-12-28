@@ -201,9 +201,10 @@ export class InvoiceComponent implements OnInit {
     {
       headerName: 'Total items',
       field: 'totalItems',
-      type: ['nonEditableColumn'],
+      type: ['nonEditableColumn','rightAligned'],
       cellStyle: {
         color: '#686E74',
+        textAlign:'right'
       },
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
@@ -231,6 +232,7 @@ export class InvoiceComponent implements OnInit {
 
       headerName: '',
       colId: 'action',
+      type: ['rightAligned'],
       cellRenderer: InvoiceActionComponent,
       editable: false,
       maxWidth: 120,
