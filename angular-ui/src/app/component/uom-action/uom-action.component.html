@@ -2,8 +2,8 @@
 
 <div #content *ngIf="isOpen" class="menu-container">
  
-  <div (click)="editUser()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-  <div  *ngIf="usertype!=='Viewer'" (click)="deleteUom()" class="menu-item tick">Delete<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div (click)="editUser()" class="menu-item tick" userRoleDirective="EDIT_UOM"  pageName="settingothermasters"> Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div  userRoleDirective="UOM_Delete" pageName="settingothermasters" (click)="deleteUom()" class="menu-item tick">Delete<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
 
  
 </div>

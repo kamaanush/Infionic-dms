@@ -68,27 +68,27 @@
                 <div  *ngIf="!rowsTotal && TotalRows?.length>0" class="row ">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th >Product Code</th>
-                            <th>Product Name</th>
+                            <!-- <th style="padding-left:20px;">Row No</th>/ -->
+                            <th>Dealer Code</th>
                             <th>Geography</th>
+                            <th>Product Code</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Remarks</th>
-                            <th ></th>
+                            <th>FOCQTY</th>
+                            <th>Retail Price</th>
                         </tr>
                         <tr *ngFor="let dupicateData of TotalRows">
-            
-                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
+                            <td title="" style="padding-left: 21px;">{{dupicateData.dealerCode}}</td>
+                            <td title="">{{dupicateData.geography}}</td>
+                            <!-- <td style="width: 150px;" title="">{{dupicateData.productName}}</td> -->
                             <td style="width: 130px;" title="" class="elipsis-2line">
                                 {{dupicateData.productCode}}</td>
-                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.saleDate.substring(0,11)}}</td>
+                            <td>{{ sharedService.dateformat(dupicateData.saleDate)}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
                             <td style="width: 135px;">{{dupicateData.Remarks}}</td>
-                            <td></td>
-            
+                            <td>{{dupicateData.focQty}}</td>
+                            <td>{{dupicateData.retailPrice}}</td>
                         </tr>
                     </table>
                 </div>
@@ -103,26 +103,28 @@
                 <div  *ngIf = "ErrorFree && errorfreeRows.length>0" class="row">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th >Product Code</th>
-                            <th>Product Name</th>
+                            <!-- <th style="padding-left:20px;">Row No</th> -->
+                            <th>Dealer Code</th>
                             <th>Geography</th>
+                            <th>Product Code</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Remarks</th>
-                            <th ></th>
+                            <th>FOCQTY</th>
+                            <th>Retail Price</th>
                         </tr>
                         <tr *ngFor="let dupicateData of errorfreeRows">
             
-                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
+                            <td title="" style="padding-left: 21px;">{{dupicateData.dealerCode}}</td>
+                            <td title="">{{dupicateData.geography}}</td>
+                            <!-- <td style="width: 150px;" title="">{{dupicateData.productName}}</td> -->
                             <td style="width: 130px;" title="" class="elipsis-2line">
                                 {{dupicateData.productCode}}</td>
-                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.saleDate.substring(0,11)}}</td>
+                            <td>{{sharedService.dateformat(dupicateData.saleDate)}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
                             <td style="width: 135px;">{{dupicateData.Remarks}}</td>
-                            <td></td>
+                            <td>{{dupicateData.focQty}}</td>
+                            <td>{{dupicateData.retailPrice}}</td>
             
                         </tr>
                     </table>
@@ -138,26 +140,28 @@
                 <div  *ngIf = "!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th >Product Code</th>
-                            <th>Product Name</th>
+                            <!-- <th style="padding-left:20px;">Row No</th> -->
+                            <th>Dealer Code</th>
                             <th>Geography</th>
+                            <th>Product Code</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Remarks</th>
-                            <th ></th>
+                            <th>FOCQTY</th>
+                            <th>Retail Price</th>
                         </tr>
                         <tr *ngFor="let dupicateData of duplicateEntryy">
             
-                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
-                            <td  style="width: 130px;"title="" class="elipsis-2line">
+                            <td title="" style="padding-left: 21px;">{{dupicateData.dealerCode}}</td>
+                            <td title="">{{dupicateData.geography}}</td>
+                            <!-- <td style="width: 150px;" title="">{{dupicateData.productName}}</td> -->
+                            <td style="width: 130px;" title="" class="elipsis-2line">
                                 {{dupicateData.productCode}}</td>
-                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.saleDate.substring(0,11)}}</td>
+                            <td>{{sharedService.dateformat(dupicateData.saleDate)}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
                             <td style="width: 135px;">{{dupicateData.Remarks}}</td>
-                            <td></td>
+                            <td>{{dupicateData.focQty}}</td>
+                            <td>{{dupicateData.retailPrice}}</td>
             
                         </tr>
                     </table>
@@ -173,26 +177,26 @@
                 <div  *ngIf = "!incorrectData && incorrectRows.length>0" class="row">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th >Product Code</th>
-                            <th>Product Name</th>
+                            <!-- <th style="padding-left:20px;">Row No</th> -->
+                            <th>Dealer Code</th>
                             <th>Geography</th>
+                            <th>Product Code</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Remarks</th>
-                            <th ></th>
+                            <th>FOCQTY</th>
+                            <th>Retail Price</th>
                         </tr>
                         <tr *ngFor="let dupicateData of incorrectRows">
-            
-                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'batchid'}" title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'batchid'}" title="" style="padding-left: 21px;">{{dupicateData.dealerCode}}</td>
                             <td style="width: 130px;" title=""  [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'productcode'}">
-                                {{dupicateData.productCode}}</td>
-                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'productname'}" style="width: 150px;" title="">{{dupicateData.productName}}</td>
-                              <td title=""[ngClass] ="{'errorText': dupicateData.incorrectColumn == 'geography'}">{{dupicateData.geography}}</td>
-                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'saledate'}">{{dupicateData.saleDate.substring(0,11)}}</td>
+                                {{dupicateData.geography}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'productname'}" style="width: 150px;" title="">{{dupicateData.productCode}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'saledate'}">{{dupicateData.saleDate}}</td>
                             <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'salequantity'}">{{dupicateData.saleQuantity}}</td>
-                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'Remarks'}" style="width: 135px;">{{dupicateData.customerReference}}</td>
-                            <td></td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'Remarks'}" style="width: 135px;">{{sharedService.dateformat(dupicateData.Remarks)}}</td>
+                            <td>{{dupicateData.focQty}}</td>
+                            <td>{{dupicateData.retailPrice}}</td>
             
                         </tr>
                     </table>

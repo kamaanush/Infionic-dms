@@ -53,7 +53,7 @@
 
         </div>
       </div>
-      <div class=" col-md-2 col-lg-2 col-sm-2 searchBox d-flex">
+      <div class=" col-md-2 col-lg-2 col-sm-2 searchBox d-flex" >
         <input id="searchInput" class="searchInput font" type="text" name="" placeholder=" Search Here Anything"
           (keyup)="onSearchChange($event)">
         <mat-icon class="searchButton">search</mat-icon>
@@ -64,14 +64,14 @@
           alt="refresh">
       </div>
       <div class="col-md-3 d-flex justify-content-end " style="position: relative; margin-left: 53px;">
-        <div class="dwnload" userRoleDirective="DOWNLOAD_DEALER" [pageName]="currentPageName">
+        <div class="dwnload" userRoleDirective="DOWNLOAD_DEALER" pageName="dealerdashboard">
           <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
             <img src="assets//img/ll.svg" style="position: relative;top: 8px;left: 11px;width: 19px;"
               alt="add-user-btn">
           </div>
         </div>
         <div class=" add-user ml-3" (click)="addUser()" style=" cursor: pointer" userRoleDirective="ADD_DEALER"
-          [pageName]="currentPageName">
+          pageName="dealerdashboard">
           <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
         </div>
       </div>

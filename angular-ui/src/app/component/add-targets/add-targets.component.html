@@ -137,19 +137,14 @@
                             <div  *ngFor="let dealer of dealer.targets;let j=index">
                                 <div class="row finacial-target">
                                     <div class="promotiont2">
-                                        <label>Financial Year<span class="astr">*</span></label>
-                                        <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].year" placeholder="Select Year">
-                                            <option value=""   selected hidden>Select Year</option>
-                                            <!-- <option value="2019">2019</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023" selected>2023</option> -->
-
-                                                    <option *ngFor="let item of financialYears ;" [value]="item">
-                                                        {{item}}</option>
+                                    <label>Financial Year<span class="astr">*</span></label>
+                                        <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="selectedTargett" placeholder="Select Year">
+                                            <option  disabled selected value="undefined" hidden>Select Year</option>
+                                                        <option *ngFor="let item of financialYears" >
+                                                            {{item.financialYear}}
+                                                           </option>
                                                 </select>
-
+                                        
                                             </div>
 
                                             <div class="promotiont2">
@@ -160,7 +155,7 @@
                                                     aria-label=".form-select-lg example"
                                                     [(ngModel)]="selectedtarget||mainadd[0].dealers[i].targets[j].setTarget"
                                                     placeholder="Select Target">
-                                                    <option value="" hidden>Select Target</option>
+                                                    <option value="" selected hidden>Select Target</option>
                                                     <option [value]="'Monthly'">Monthly</option>
                                                     <option [value]="'Quaterly'">Quaterly</option>
                                                     <option [value]="'Annualy'">Yearly</option>
@@ -186,49 +181,6 @@
                                                 <th class="text-right">Jan</th>
                                                 <th class="text-right">Feb</th>
                                                 <th class="text-right">Mar</th>
-                                                <!-- <ng-container *ngIf="selectedtarget==='Monthly'">
-                                                    <th class="text-right">Apr</th>
-                                                    <th class="text-right">May</th>
-                                                    <th class="text-right">Jun</th>
-                                                    <th class="text-right">Jul</th>
-                                                    <th class="text-right">Aug</th>
-                                                    <th class="text-right">Sep</th>
-                                                    <th class="text-right">Oct</th>
-                                                    <th class="text-right">Nov</th>
-                                                    <th class="text-right">Dec</th>
-                                                    <th class="text-right">Jan</th>
-                                                    <th class="text-right">Feb</th>
-                                                    <th class="text-right">Mar</th>
-                                                </ng-container>
-                                                <ng-container *ngIf="selectedtarget==='Quaterly'">
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th class="text-right">Q1</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th class="text-right">Q2</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th class="text-right">Q3</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th class="text-right">Q4</th>
-                                                    
-                                                </ng-container>
-                                                <ng-container *ngIf="selectedtarget==='Annualy'">
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th>Annualy</th>
-                                                </ng-container> -->
                                                 <th class="text-right">Total</th>
                                             </tr>
                                             <tr>

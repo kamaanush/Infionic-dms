@@ -45,7 +45,7 @@
               </div>
             </form>
           </div>
-          <div class="searchBox d-flex" style=" cursor: pointer" userRoleDirective="SEARCH_USER" [pageName]="currentPageName">
+          <div class="searchBox d-flex" style=" cursor: pointer" userRoleDirective="SEARCH_USER" pageName="settingusers">
             <input id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
               placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
               <mat-icon  class="searchButton">search</mat-icon>
@@ -55,13 +55,13 @@
             <img class="refresh" src="assets/img/Refreshbutton.svg"style="position: relative;top: 8px;left: 8px;"
               alt="refresh">
           </div>
-          <div class="col-md-1" userRoleDirective="ADD" [pageName]="currentPageName">
+          <div class="col-md-1" userRoleDirective="ADD" pageName="settingusers">
             <div class="add-user"   (click)="addUser()" style=" cursor: pointer">
               <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
           </div>
           <div class="col-md-0">
-            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
+            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" userRoleDirective="Download_User_List" pageName="settingusers">
               <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
                 alt="add-user-btn">
             </div>

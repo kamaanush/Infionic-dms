@@ -63,58 +63,76 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
 })
 export class UnitMeasureComponent implements OnInit {
 status:any;
-
+columnDefs: ColDef[] = [];
 // Data that gets displayed in the grid
 
 
 // For accessing the Grid's API
 public popupParent: HTMLElement = document.body;
 
-columnDefs: ColDef[] = [ 
+UpdateColumns()
+{
+  if(this.userType !=='Admin' && this.userType !=='Business Manager')
+  {
+    this.columnDefs=
+    [
+      { headerName: "Name", 
 
-  { headerName: "Name", 
+      field: 'uoMName' ,cellStyle: { color: '#686E74' },type: ['nonEditableColumn'], maxWidth:600
+      },
+      
+      {   headerName: "Display Code",
+      field: 'uoMShortName',cellStyle: { color: '#686E74' },type: ['nonEditableColumn']},
 
-field: 'uoMName' ,cellStyle: { color: '#686E74' },type: ['nonEditableColumn'], maxWidth:600
-},
+      { headerName: "Status",
+       field: 'statusName', 
+       type: ['nonEditableColumn'],
+      cellEditor: 'agSelectCellEditor',
+      cellEditorParams: {
+      values: ['Active', 'Inactive', 'Invited', 'Locked',],
+      
+      },
+        maxWidth:108,
+      cellClass: params => {                      
+        return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+      }
+      }, 
+    ]
+  }
+  else
+  {
+    this.columnDefs=
+    [
+      { headerName: "Name", 
 
-{   headerName: "Display Code",
-field: 'uoMShortName',cellStyle: { color: '#686E74' },type: ['nonEditableColumn']},
+      field: 'uoMName' ,cellStyle: { color: '#686E74' },type: ['nonEditableColumn'], maxWidth:600
+      },
+      
+      {   headerName: "Display Code",
+      field: 'uoMShortName',cellStyle: { color: '#686E74' },type: ['nonEditableColumn']},
 
-// suppressMovable:true,
-{ headerName: "Status",
- field: 'statusName', 
- type: ['nonEditableColumn'],
-cellEditor: 'agSelectCellEditor',
-cellEditorParams: {
-values: ['Active', 'Inactive', 'Invited', 'Locked',],
-
-},
-  maxWidth:108,
-cellClass: params => {                      
-  return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
-}
-},
-{ 
-
-//    headerName: "",
-// field: '',  filter: false, sortable: false,
-// cellRenderer: function clickNextRendererFunc(){
-//   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-// }, 
-//  cellEditorPopup: true,
-//  onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
-
-
+      { headerName: "Status",
+       field: 'statusName', 
+       type: ['nonEditableColumn'],
+      cellEditor: 'agSelectCellEditor',
+      cellEditorParams: {
+      values: ['Active', 'Inactive', 'Invited', 'Locked',],
+      },
+        maxWidth:108,
+      cellClass: params => {                      
+        return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+      }
+      }, 
+     { 
 headerName: '',
 colId: 'action',
 cellRenderer: UomActionComponent,
 editable: false, 
 maxWidth: 60
-
-
 },
-
-];
+    ]
+  }
+}
 
 rowData5=[];
 
@@ -243,7 +261,7 @@ public pivotPanelShow = 'always';
     private observer: BreakpointObserver,
     private uomservise:UomServicesService,
     private otherMasterService:OtherMasterService,
-
+    
    ) { 
   //   this.otherMasterService.listen().subscribe((m:any)=>{
   //   console.log(m)
@@ -251,7 +269,7 @@ public pivotPanelShow = 'always';
 
   // })
       sort:[];
-     }
+           }
      onFirstDataRendered(params: FirstDataRenderedEvent) {
       params.api.sizeColumnsToFit();
       this.otherMasterService.listen().subscribe((m: any) => {
@@ -279,9 +297,11 @@ public pivotPanelShow = 'always';
   // }
 
 
-
+  userType:any;
   ngOnInit(): void {
   this.getusertabeldata();
+  this.userType = localStorage.getItem('userType');
+  this.UpdateColumns();
 
   }
   refresh(){

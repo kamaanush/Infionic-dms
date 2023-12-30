@@ -3,12 +3,12 @@
 
   <div #content *ngIf="isOpen" class="menu-container" >
  
-    <div (click)="editpop()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    <div (click)="editpop()" class="menu-item tick" userRoleDirective="EDIT_CURRENCY" pageName="settingothermasters" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
   
     <!-- <div  (click)="makedeflt()" class="menu-item tick">Make Default<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div> -->
     
-    <div  *ngIf="DeactiveDealer" (click)="Deactive()" class="menu-item tick" > Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-    <div  *ngIf="!DeactiveDealer" (click)="reactive()" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    <div  *ngIf="DeactiveDealer" (click)="Deactive()"   userRoleDirective="DEACT_CURRENCY" pageName="settingothermasters" class="menu-item tick" > Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    <div  *ngIf="!DeactiveDealer" (click)="reactive()" userRoleDirective="ACT_CURRENCY"  pageName="settingothermasters" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
   
    
   </div>

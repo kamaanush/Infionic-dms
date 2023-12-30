@@ -289,7 +289,7 @@
                                                 <input type="text" placeholder="Enter"  name="ConsigneeName" formControlName="ConsigneeName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ConsigneeName"
                                                     class="addDelercols addname">
                                             </div>
-
+                                            
                                             <!-- <div class="col-1" style="position: relative;right:88px;">
                                                 <label *ngIf="i == 0">Tax<span>*</span></label>
                                                 <br>
@@ -318,10 +318,13 @@
                                             <div class="col-1" style="margin-left: -66px;">
                                                 <label *ngIf="i == 0">Country<span>*</span></label>
                                                 <br>
-                                                <select formControlName="CountryName" class="addDelercols addcountry form-control" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName">
-                                                  <!-- <option [value]="null" disabled>Select</option> -->
+                                                <select placeholder="Select Country" formControlName="CountryName" class="addDelercols addcountry form-control" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName">
+                                                    <option   selected value="" hidden>Select Country</option>
                                                   <option *ngFor="let state of country" [value]="state.geographyName">{{ state.geographyName }}</option>
                                                 </select>
+                                                
+                                                
+                                                  
                                               </div>
                                             <div class="col-1">
                                                 <label *ngIf="i == 0">State<span>*</span></label>

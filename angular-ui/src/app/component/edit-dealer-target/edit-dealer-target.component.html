@@ -115,16 +115,15 @@
                                     <div class="promotiont2">
                                         <label>Financial<span>*</span></label>
                                         <select *ngIf="dealerTargetSetItem !== 'view'" (change)="onSelectFinancialYear($event)" [disabled]="dealerTargetSetItem =='view'"  [ngClass]="{'select-asso1':dealerTargetSetItem =='view','select-asso':dealerTargetSetItem !='view'}"  class="form-select" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].geography[0].year">
-                                            <option value="2019">2019</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022" >2022</option>
-                                            <option value="2023" >2023</option> 
-                                            <option value="2024">2024</option>
-
+                                        
+                                            <option  disabled selected value="undefined" hidden>Select Year</option>
+                                                        <option *ngFor="let item of financialYears" [value]="item.financialYearId">
+                                                            {{item.financialYear}}
+                                                           </option>
                                         </select>
                                         <div *ngIf="dealerTargetSetItem === 'view'" class="view-mode">
                                               {{mainadd[0].geography[0].year}}
+                                             
                                         </div>
                                     </div>
                                     <div class="promotiont2">

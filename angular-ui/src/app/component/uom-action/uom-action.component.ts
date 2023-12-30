@@ -14,6 +14,7 @@ import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-use
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
 import { EditUomPopupComponent } from '../users/userPopups/edit-uom-popup/edit-uom-popup.component';
 import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-uom-action',
@@ -33,8 +34,11 @@ export class UomActionComponent implements OnInit,  AfterViewInit {
   @ViewChild('content') container;
 
   @ViewChild('trigger') button;
-
-  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) {}
+  showCaseMenuList:string[] = [];
+  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog,
+    private route: ActivatedRoute) {
+  
+  }
 
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);

@@ -35,20 +35,20 @@ export class DealerTargetActionComponent implements OnInit {
       })
       switch (showCaseMenuList.length) {
         case 4:
-          this.offsetValue = [-100, 200];
+          this.offsetValue = [-100, 100];
           break;
         case 3:
-          this.offsetValue = [-72, 200];
+          this.offsetValue = [-72, 100];
           break;
         case 2:
-          this.offsetValue = [-42, 200];
+          this.offsetValue = [-42, 100];
           break;
         case 1:
-          this.offsetValue = [-15, 200];
+          this.offsetValue = [-15, 100];
           break;
 
         default:
-          this.offsetValue = [-100, 200];
+          this.offsetValue = [-100, 100];
           break;
       }
     });}

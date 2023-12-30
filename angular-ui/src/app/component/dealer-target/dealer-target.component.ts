@@ -204,7 +204,7 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
     minWidth: 100,
     resizable: true,
     sortable: true,
-    lockVisible : true
+     lockVisible : true
   };
 
 
@@ -475,8 +475,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      // year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
     }
@@ -493,8 +493,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      // year:this.yearSelected,
-      financialYearId:this.yearSelected,
+      year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -541,8 +541,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      // year:this.yearSelected,
-      financialYearId:this.yearSelected,
+      year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -559,8 +559,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      // year:this.yearSelected,
-      financialYearId:this.yearSelected,
+      year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -577,8 +577,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      // year:this.yearSelected,
-      financialYearId:this.yearSelected,
+      year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -598,8 +598,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      // year:this.yearSelected,
-      financialYearId:this.yearSelected,
+      year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -675,14 +675,14 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
   }
   onYearSelect(item: any) {
     // alert(item)
-    this.yearSelected.push(item);//yet to change
+    this.yearSelected.push(item.financialYearId);//yet to change
 
     const data = {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-       financialYearId:this.yearSelected,
+        year:this.yearSelected,
+      //  financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -699,8 +699,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-       financialYearId:this.yearSelected,
+        year:this.yearSelected,
+      //  financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -717,8 +717,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -738,8 +738,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -768,8 +768,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -786,8 +786,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -804,8 +804,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -825,8 +825,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -906,8 +906,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      //  year:this.yearSelected,
-      financialYearId:this.yearSelected,
+       year:this.yearSelected,
+      // financialYearId:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1021,7 +1021,7 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
 
   onCellClicked(e): void {
     console.log('cellClicked', e.data);
-    localStorage.setItem('financialyear',e.data.year)
+    localStorage.setItem('financialyear',JSON.stringify(e.data.year))
     this.userId = e.data.targetAssociationId;
     this.employeeName = e.data.userName;
     // console.log('userID', this.userId);
@@ -1082,8 +1082,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      financialYearId:this.yearSelected,
-      // year:this.yearSelected,
+      // financialYearId:this.yearSelected,
+      year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1100,8 +1100,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      financialYearId:this.yearSelected,
-      // year:this.yearSelected,
+      // financialYearId:this.yearSelected,
+      year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1118,8 +1118,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      financialYearId:this.yearSelected,
-      // year:this.yearSelected,
+      // financialYearId:this.yearSelected,
+      year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 
@@ -1139,8 +1139,8 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
-      financialYearId:this.yearSelected,
-      // year:this.yearSelected,
+      // financialYearId:this.yearSelected,
+      year:this.yearSelected,
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
 

@@ -22,13 +22,15 @@
                                     <app-promotions></app-promotions>
                                 </mat-tab>
 
-                                <mat-tab label="Dealers " *ngIf="tabList.indexOf('view_dealer') !== -1">
+                                <mat-tab label="Dealers " *ngIf="tabList.indexOf('view_dealer') !== -1" userRoleDirective="VIEW_DEALER" pageName="dealerdashboard">
                                     <app-dealers></app-dealers>
                                 </mat-tab>
-                                <mat-tab label="Targets" *ngIf="tabList.indexOf('view_targets') !== -1">
+                                <mat-tab label="Targets" *ngIf="tabList.indexOf('view_targets') !== -1" userRoleDirective="VIEW_TARGETS" pageName="dealerdashboard">
                                     <app-dealer-target></app-dealer-target>
                                 </mat-tab>
-                                <mat-tab label="Association" *ngIf="tabList.indexOf('view_association') !== -1 && userType !== 'Dealer Admin'">
+                               
+
+                                <mat-tab label="Association" *ngIf="tabList.indexOf('view_association') !== -1" userRoleDirective="VIEW_ASSOCIATION"  pageName="dealerdashboard">
                                     <app-association></app-association>
                                 </mat-tab>
                               
@@ -47,5 +49,4 @@
     </mat-sidenav-content>
     
 </mat-sidenav-container>
-
 

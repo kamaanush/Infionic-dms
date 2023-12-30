@@ -98,7 +98,7 @@ export class EditDealerTargetComponent implements OnInit {
   targetData:any;
   ngOnInit(): void {
 
-  
+    this.financialYearData();
     this.LoginId=localStorage.getItem("logInId");
 
     let id = localStorage.getItem('editOrAddTarget');
@@ -162,7 +162,7 @@ geographyobj.vtotal  =res.response.vtotal
             this.disableColumns = false;
             this.anuallySelected = false;
           }
-          if (res.response.settarget == "Annualy") {
+          if (res.response.settarget == "Annually") {
             this.disableColumns = false;
             this.anuallySelected = true;
           }
@@ -185,10 +185,20 @@ geographyobj.vtotal  =res.response.vtotal
     this.Geography();
     this.userId = localStorage.getItem("logInId");
   }
+  selectedTargett: string = '';
   onSelectFinancialYear(event: any) {
     // alert(event.target.value)
     this.mainadd[0].geography[0].year = event.target.value;
+    // this.selectedTargett = event.target.value;
+    // console.log(this.selectedTargett,"RK");
   }
+  financialYears: any=[];
+  financialYearData() {
+    this.targetList.financialYear().subscribe(response => {
+  this.financialYears = response.response;
+  console.log(response,"checking coming or not");
+});
+}
 
   productPopup() {
     this.dialog.open(DealerTargetPopupGridComponent,  { panelClass: 'psubgrid-popup' }) 

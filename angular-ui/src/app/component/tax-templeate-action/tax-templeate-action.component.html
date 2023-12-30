@@ -2,12 +2,12 @@
 
 <div #content *ngIf="isOpen" class="menu-container">
  
-  <div (click)="editUser()" class="menu-item tick" *ngIf=" userType !=='Order Manager'"> Edit  <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div (click)="editUser()" class="menu-item tick" userRoleDirective="EDIT_TAX" pageName="settingothermasters"> Edit  <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
 
 
-  <div  *ngIf="DeactiveDealer" (click)="deactive()" class="menu-item tick">Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div  *ngIf="DeactiveDealer" (click)="deactive()" userRoleDirective="DEACTIVATE_TAX"  pageName="settingothermasters" class="menu-item tick">Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
 
-  <div   *ngIf="!DeactiveDealer" (click)="activate()" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" > </div>
+  <div   *ngIf="!DeactiveDealer" (click)="activate()" userRoleDirective="ACTIVATE_TAX" pageName="settingothermasters" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" > </div>
 
 </div>
 <!-- <div (click)="editUser()" class="tick">Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>

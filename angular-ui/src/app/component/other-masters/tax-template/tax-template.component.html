@@ -37,7 +37,7 @@
     <img class="refresh" src="assets/img/Refreshbutton.svg"style="position: relative;top: 8px;left: 8px;" alt="refresh" >
   </div>
 
-  <div class="add-user" (click)="addtaxTempl()" *ngIf=" userType !=='Order Manager'">
+  <div class="add-user" (click)="addtaxTempl()" userRoleDirective="ADD_TAX" pageName="settingothermasters">
     <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
   </div>
 </div>

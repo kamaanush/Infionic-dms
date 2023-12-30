@@ -65,9 +65,11 @@ export class SalesBulkUploadComponent implements OnInit {
   image8 = 'assets/img/maximize-arrow.png';
   files: any = [];
   uploadedTextShow: boolean = false;
+  currentUserId:any
   ngOnInit(): void {
     this.uploadSaless();
     let Created = localStorage.getItem('logInId');
+    this.currentUserId = Created
     this.CreatedById = Number(Created);
   }
   uploadSaless() {
@@ -392,8 +394,9 @@ export class SalesBulkUploadComponent implements OnInit {
   }
   UploadSales() {
     const uploadedFile = {
+      currentUserId:this.currentUserId,
       BatchId: this.batchId[0],
-      action: '',
+      action: 'PROCESS',
     };
     console.log('Daaataaa', uploadedFile);
     this.salesService.SaveBulkSalesUpload(uploadedFile).subscribe((res) => {

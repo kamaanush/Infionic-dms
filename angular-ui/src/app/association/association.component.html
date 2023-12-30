@@ -59,91 +59,37 @@
         <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 9px;"
           alt="refresh">
       </div>
-   <!-- bulk uplod -->
-   <div class="col-md-0" class="bulkEditAss" *ngIf="userType !== 'Order Manager' && userType !== 'Viewer' && userType === 'Business Manager' && userType === 'Admin'">
+       &nbsp; &nbsp; &nbsp;
+
+  <!-- based on role -->
+  <div class="col-md-0" class="bulkEditAss" userRoleDirective="EDIT_ASSOCIATION" pageName="dealerdashboard" >
     <div class="add-user1" (click)="editBulk()" style="cursor: pointer">
       <img src="assets/img/editasso.svg" style="position: relative; top: 8px; left: 10px;" alt="add-user-btn">
     </div>
   </div>
 
-  <div class="col-md-0" class="bulkEditAss" *ngIf=" userType === 'Business Manager' || userType === 'Admin'">
-    <div class="add-user1" (click)="editBulk()" style="cursor: pointer">
-      <img src="assets/img/editasso.svg" style="position: relative; top: 8px; left: 10px;" alt="add-user-btn">
+  <div class="col-md-0">
+    <div class="asso-upload" (click)="orderTargetUpload()" userRoleDirective="Upload_Association" pageName="dealerdashboard">
+      <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
     </div>
   </div>
-  
 
-        <div class="col-md-0"  class="ORDERVIEWER" *ngIf="userType === 'Order Manager' || userType === 'Viewer'">
-          <div class="AllLOgin" >
-          </div>
-        </div>
-        
-        
-        <!-- upload -->
-        <div class="col-md-0">
-          <div class="asso-upload" (click)="orderTargetUpload()" *ngIf="userType !== ('Dealer Admin' && 'Viewer')">
-            <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
-          </div>
-        </div>
-
-        <!-- export -->
-        <div class="col-md-0">
-          <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer;" *ngIf="userType !== 'Dealer Admin'">
-            <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;" alt="add-user-btn">
-          </div>
-        </div>
-        <!-- Dealer Admin -->
-        <div class="col-md-0" *ngIf="userType == 'Dealer Admin'" style="display: flex; margin-left: 250px;" >
-          <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer; margin-left: 20px ;">
-            <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
-              alt="add-user-btn">
-          </div>
-          <div class="asso-uploaddealer" (click)="orderTargetUpload()" style=" cursor: pointer; margin-left: 20px ;" *ngIf="userType !== 'Viewer'">
-            <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
-          </div>
-        </div>
-               <!-- add user -->
-      <div class="col-md-0" userRoleDirective="ADD_ASSOCIATION" [pageName]="currentPageName">
-        <div class="add-user" (click)="addUser()" style=" cursor: pointer">
-          <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-        </div>
-      </div>
+  <div class="col-md-0">
+    <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer;" userRoleDirective="Download_Association" pageName="dealerdashboard" >
+      <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;" alt="add-user-btn">
     </div>
- 
-     <!-- <div class="row " style="margin-bottom:90px;" > -->
-     
-      <!-- <div class="col-md-4" style="margin-left: 68%;margin-bottom:-17px;top:-21px"> -->
+  </div>
+  <div class="col-md-0" userRoleDirective="ADD_ASSOCIATION"  pageName="dealerdashboard">
+    <div class="add-user" (click)="addUser()" style=" cursor: pointer">
+      <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+    </div>
+  </div>
+    </div>
         <div class="row">
           <div class="col-lg-12 listicon">
-           
- 
-            <!-- dealer admin -->
-            <!-- <div class="searchBox d-flex" style=" cursor: pointer" *ngIf="userType == 'Dealer Admin'">
-              <input class="searchInputDealerad" style="font-family: 'Gilroy'" type="text" name=""
-                placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-              <button class="searchButtondealerr" href="#">
-                <i class="material-icons">
-                  search
-                </i>
-              </button>
-              <button class="Seearrch-Dealerbtn searchAlign" style="font-family: 'Gilroy'">Search</button>
-            </div> -->
- 
- 
-          <!-- </div> -->
 
         </div>
       </div>
-      <!-- </div> -->
-    <!-- </div>   -->
- 
- 
- 
- 
- 
-   
- 
- 
     <div>
       <div class="ag-grid-dummy" id="ag-grid-dummy"></div>
       <ag-grid-angular id="gridContainer"

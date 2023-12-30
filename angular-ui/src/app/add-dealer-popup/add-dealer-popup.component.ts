@@ -219,7 +219,7 @@ export class AddDealerPopupComponent implements OnInit {
           // alert(detail.taxCodeName)
           let AddressTypeId: FormControl = new FormControl('');
           let ConsigneeName: FormControl = new FormControl('');
-          let Taxid: FormControl = new FormControl('');
+          // let Taxid: FormControl = new FormControl('');
           let AddressLine1: FormControl = new FormControl('');
           let AddressLine2: FormControl = new FormControl('');
           let CountryName: FormControl = new FormControl('');
@@ -231,7 +231,7 @@ export class AddDealerPopupComponent implements OnInit {
 
           AddressTypeId.setValue(detail?.addressTypeId);
           ConsigneeName.setValue(detail?.consigneeName);
-          Taxid.setValue(detail?.taxid);
+          // Taxid.setValue(detail?.taxid);
           AddressLine1.setValue(detail?.addressLine1);
           AddressLine2.setValue(detail?.addressLine2);
           CountryName.setValue(detail?.countryName);
@@ -245,7 +245,7 @@ export class AddDealerPopupComponent implements OnInit {
             new FormGroup({
               AddressTypeId: AddressTypeId,
               ConsigneeName: ConsigneeName,
-              Taxid: Taxid,
+              // Taxid: Taxid,
               AddressLine1: AddressLine1,
               AddressLine2: AddressLine2,
               CountryName: CountryName,
@@ -333,7 +333,7 @@ export class AddDealerPopupComponent implements OnInit {
     return this._formBuilder.group({
       AddressTypeId: [defaultType, [Validators.required]],
       ConsigneeName: ['', [Validators.required]],
-      Taxid: ['', [Validators.required]],
+      // Taxid: ['', [Validators.required]],
       AddressLine1: ['', [Validators.required]],
       AddressLine2: ['', [Validators.required]],
       CountryName: ['', [Validators.required]],
@@ -405,7 +405,7 @@ export class AddDealerPopupComponent implements OnInit {
       obj.geographyHierarchyName = currentObj.hirearchyName;
       if (currentObj.first) {
         let copyObject = JSON.parse(JSON.stringify(currentObj.first));
-        delete copyObject.next;
+        delete copyObject?.next;
         obj.geographySelected = [copyObject];
         obj.geographyNamesSelected = [copyObject.geographyName];
         obj.geoProperties = [
@@ -418,7 +418,7 @@ export class AddDealerPopupComponent implements OnInit {
       this.removeOtherGeographiesData(Number(currentObj['hirearchyLevel']));
       this.geoGraphyFullData[index] = obj;
       this.selectedHirerachyIndex = index;
-      if (currentObj.first.next) {
+      if (currentObj.first?.next) {
         this.geographyFormat(currentObj.first.next, stockItemId);
       }
     } else {
@@ -683,7 +683,7 @@ export class AddDealerPopupComponent implements OnInit {
         AddressTypeId: '6',
         ConsigneeName:
           this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName,
-        Taxid: this.addAddressDetailsForm.value.addresscount[0]?.Taxid,
+        // Taxid: this.addAddressDetailsForm.value.addresscount[0]?.Taxid,
         AddressLine1:
           this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1,
         AddressLine2:
@@ -726,7 +726,7 @@ export class AddDealerPopupComponent implements OnInit {
       let defaultType = {
         AddressTypeId: '',
         ConsigneeName: '',
-        Taxid: '',
+        // Taxid: '',
         AddressLine1: '',
         AddressLine2: '',
         CountryName: '',
@@ -744,7 +744,7 @@ export class AddDealerPopupComponent implements OnInit {
     return this._formBuilder.group({
       AddressTypeId: defaultType.AddressTypeId,
       ConsigneeName: defaultType.ConsigneeName,
-      Taxid: defaultType.Taxid,
+      // Taxid: defaultType.Taxid,
       AddressLine1: defaultType.AddressLine1,
       AddressLine2: defaultType.AddressLine2,
       CountryName: defaultType.CountryName,
@@ -802,7 +802,7 @@ export class AddDealerPopupComponent implements OnInit {
     return this._formBuilder.group({
       AddressTypeId: [defaultType, [Validators.required]],
       ConsigneeName: ['', [Validators.required]],
-      Taxid: ['', [Validators.required]],
+      // Taxid: ['', [Validators.required]],
       AddressLine1: ['', [Validators.required]],
       AddressLine2: ['', [Validators.required]],
       CountryName: ['', [Validators.required]],

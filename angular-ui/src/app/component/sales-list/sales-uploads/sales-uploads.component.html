@@ -20,12 +20,12 @@
                   </div>
 
                   
-                    <div class="sales-download" (click)="addSales()">
+                    <div style="position: relative;left: 4px;" class="sales-download" (click)="addSales()" userRoleDirective="Download_Sales_Upload" pageName="saleslistdashboard">
                         <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
                             alt="add-user-btn">
                     </div>
 
-                    <div class="sales-upload" (click)="salesUpload()" *ngIf="usertype !=='Viewer'">
+                    <div class="sales-upload" (click)="salesUpload()" userRoleDirective="UPLOAD_SALES" pageName="saleslistdashboard">
                       <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
                           alt="add-user-btn">    
                   </div>
