@@ -944,20 +944,36 @@ cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
     // this.gridApi.exportDataAsCsv( { fileName: 'dealerTarget_' + this.convertedDateFormat() });
 
     console.log('All Target Table data list checking ', this.rowData5);
+
+    const headerMappings: { [key: string]: string } = {
+      'customername': 'DealerName',
+      'geographyName':'Geography',
+      'year':'Financialyear',
+      'targetGroupName':'TargetGroup',
+      'ytdTarget':'% of YTD Target',
+      'productCount':'No of Products',
+      'actualLYTD':'Actual PY',
+      'volumeTotal':'Target Total',
+      'actualYTD':'Actual YTD'
+    };
+
+
     const excludedProperties = ['customerCode','targetAssociationId'];
     // Capitalize headers
     const headers = Object.keys(this.rowData5[0])
     // Removing header which in not needed
       .filter((key) => !excludedProperties.includes(key))
       //.map(header => header);// to get all capital letters
-      .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+      .map((header) => headerMappings[header]|| header.charAt(0).toUpperCase() + header.slice(1));
     const worksheetData = [headers];
     this.rowData5.forEach((item) => {
       const capitalizedItem = {};
       Object.keys(item).forEach((key) => {
         // const capitalizedKey = key   // to get all capital letters
-        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        const mappedKey = headerMappings[key] || key
+        const capitalizedKey = mappedKey.charAt(0).toUpperCase() + mappedKey.slice(1);
         capitalizedItem[capitalizedKey] = item[key];
+
       });
       const row = headers.map((key) => {
         const value = capitalizedItem[key];
