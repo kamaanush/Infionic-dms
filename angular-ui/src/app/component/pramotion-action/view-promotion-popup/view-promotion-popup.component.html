@@ -694,6 +694,10 @@
                 </div>
 
             </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-center" *ngIf="data ==='approve'">
+                <button class="btn approvebtns" type="button" (click)="status('Reject')" >Reject</button>
+                <button class="btn approvebtns" type="button" (click)="status('Approve')">Approve</button>
+              </div>
         </div>
     </div>
 </div>

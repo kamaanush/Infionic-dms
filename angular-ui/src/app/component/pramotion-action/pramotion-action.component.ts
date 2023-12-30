@@ -83,13 +83,16 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
     this.tippyInstance = tippy(this.button.nativeElement);
     this.tippyInstance.disable();
   }
-
+  status:any
   agInit(params) {
     this.params = params;
   }
 
 
   configureTippyInstance() {
+    this.status = JSON.parse(localStorage.getItem('promostatus')||'null')
+    // alert(this.status)
+    // console.log(this.status);
     // this.tippyInstance = tippy(this.button.nativeElement);
     if(this.tippyInstance.enable){
       this.tippyInstance.enable();
@@ -142,14 +145,27 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
   }
 
-  viewPromo(){
-    const config: MatDialogConfig = {
-      minWidth: '90vw',      
-      height: '610px',
-      autoFocus:false
-    };
-    this.isOpen = false;
-    this.dialog.open( ViewPromotionPopupComponent,config);
+  viewPromo(data:any){
+    // console.log(data);
+    if(data ==='approve'){
+      const config: MatDialogConfig = {
+        minWidth: '90vw',      
+        height: '610px',
+        autoFocus:false,
+        data:data
+      };
+      this.isOpen = false;
+      this.dialog.open( ViewPromotionPopupComponent,config);
+    }else{
+      const config: MatDialogConfig = {
+        minWidth: '90vw',      
+        height: '610px',
+        autoFocus:false,
+        data:data
+      };
+      this.isOpen = false;
+      this.dialog.open( ViewPromotionPopupComponent,config);
+    }
   }
 
   togglePopup() {

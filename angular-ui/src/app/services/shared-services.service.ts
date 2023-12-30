@@ -13,6 +13,11 @@ export class SharedService {
   deletepromo():void{
     this.ReloadaddOrg.emit()
   }
+
+  reloadgrid():void{
+    this.ReloadaddOrg.emit()
+  }
+
   sendClickEvent(){
     this.subject.next;
     this.getClickEvent()

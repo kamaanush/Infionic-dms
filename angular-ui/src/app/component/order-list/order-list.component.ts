@@ -254,6 +254,8 @@ export class OrderListComponent implements OnInit {
   endDate: any = '';
   currentPageName: string = '';
   loggedUserId: any;
+
+  selectedOption:any='Orders'
   constructor(
     public dialog: MatDialog,
     private sharedService: SharedService,
@@ -326,14 +328,16 @@ export class OrderListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectedOption='Orders'
     this.userType = localStorage.getItem('userType');
     this.loggedUserId = localStorage.getItem('logInId');
     this.uomId = localStorage.getItem('niId');
+    this.selectedOption
      this.updateColumnDefs();
     // this.roleItems();
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
-    this.orderlistGrid();
+    // this.orderlistGrid();
     // this.updateColumnDefs()
     this.dealerOrder();
     this.geogrphyOrder();
@@ -346,6 +350,62 @@ export class OrderListComponent implements OnInit {
     this.myForm2 = this.fb.group({
       status: [this.selectedItems],
     });
+    this.onOptionChange()
+  }
+  ordertype:any
+  onOptionChange(){
+     if(this.selectedOption ==='Orders'){
+      const data = {
+        ordertype:this.selectedOption,
+        StatusId: [],
+        GeographyId: [],
+        DealerId: [],
+        OrderDate: '',
+        Search: this.searchText,
+        CurrentUserId: this.loggedUserId,
+      };
+      this.orders.getorderDeatilslist(data).subscribe((res) => {
+        this.rowDatalist = res.response;
+        console.log('this.rowDatalist',this.rowDatalist);
+        let stat:any = [...new Set(res.response.filter((x:any)=> x.status =='Submitted').map((y:any)=> y.status))]
+        //  console.log([...new Set(stat)]);
+        //  console.log(stat,"RAKLPs");
+         sessionStorage.setItem('yourKey',stat);
+        //  alert(stat)
+         console.log(res.response.status, '........R A .. KKKs....');
+        this.SpinnerService.hide(); 
+        this.rowDatalist.forEach((element) => {
+          element.orderDate = this.sharedService.dateformat(element.orderDate);
+        });
+      });
+      console.log('Selected option changed:', this.selectedOption);
+     }else if (this.selectedOption === 'SplitOrders'){
+      const data = {
+        ordertype:this.selectedOption,
+        StatusId: [],
+        GeographyId: [],
+        DealerId: [],
+        OrderDate: '',
+        Search: this.searchText,
+        CurrentUserId: this.loggedUserId,
+      };
+      this.orders.getorderDeatilslist(data).subscribe((res) => {
+        this.rowDatalist = res.response;
+        console.log('this.rowDatalist',this.rowDatalist);
+        let stat:any = [...new Set(res.response.filter((x:any)=> x.status =='Submitted').map((y:any)=> y.status))]
+        //  console.log([...new Set(stat)]);
+        //  console.log(stat,"RAKLPs");
+         sessionStorage.setItem('yourKey',stat);
+        //  alert(stat)
+         console.log(res.response.status, '........R A .. KKKs....');
+        this.SpinnerService.hide(); 
+        this.rowDatalist.forEach((element) => {
+          element.orderDate = this.sharedService.dateformat(element.orderDate);
+        });
+      });
+      console.log('Selected option changed:', this.selectedOption);
+     }
+    
   }
   updateColumnDefs(){
     if(this.userType === 'Admin'){
@@ -1044,6 +1104,7 @@ export class OrderListComponent implements OnInit {
 
   onCellClicked(e): void {
     console.log('cellClicked', e.data.status);
+    console.log(e.data);
     // this.SS.isShowEdit()
     // console.log(e.data.isShowEdit);
     localStorage.setItem('isShowEdit',JSON.stringify(e.data.isShowEdit))
@@ -1333,16 +1394,17 @@ export class OrderListComponent implements OnInit {
       // userTypes: this.userTypes,
       // statuss: this.statusTypes,
       // search: this.searchText,
+      ordertype:this.ordertype,
       StatusId: [],
       GeographyId: [],
       DealerId: [],
       OrderDate: '',
-
       Search: this.searchText,
       CurrentUserId: this.loggedUserId,
     };
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
+      console.log('this.rowDatalist',this.rowDatalist);
       let stat:any = [...new Set(res.response.filter((x:any)=> x.status =='Submitted').map((y:any)=> y.status))]
       //  console.log([...new Set(stat)]);
       //  console.log(stat,"RAKLPs");

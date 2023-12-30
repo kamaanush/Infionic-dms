@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { CellValueChangedEvent, CheckboxSelectionCallbackParams, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent, } from 'ag-grid-community';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { elementAt, Subject } from 'rxjs';
@@ -344,14 +344,17 @@ export class ViewPromotionPopupComponent implements OnInit {
   hideDealerSection: boolean = false;
   constructor(public promotionTypes: PromotionService,
     private sharedServices: SharedService,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialog: MatDialog) { }
     
     statusName:any
     aditionalMoqDetails:any=[];
     AdditionalDetails:any=[];
     MiniumOrderQTY:any=[];
     FirstpromotionMiniumOrderQTY:any=[];
+    productId:any
   ngOnInit(): void {
+    // console.log(this.data);
     let data = localStorage.getItem('promoclickId');
     this.LoginId = localStorage.getItem("logInId");
 
@@ -370,6 +373,7 @@ export class ViewPromotionPopupComponent implements OnInit {
       let data = localStorage.getItem('promoclickId')
 
       console.log('response EditPromotion', res)
+      this.productId= res.response.productPromotionsId
       this.promoName = res.response.promotionName;
       this.selectedPromo = res.response.promotionTypesId;
       this.addImgpreview = true;
@@ -746,6 +750,37 @@ export class ViewPromotionPopupComponent implements OnInit {
       node.setSelected(!!node.data && node.data.isProductSelected)
     );
 
+  }
+  status(data:any){
+    if(data =='Reject'){
+      let payload={
+        PromotionId:this.productId,
+        CurrentUserId:this.LoginId,
+        StatusToBeUpdated:"Reject"
+      }
+      // console.log(payload);
+      this.promotionTypes.ChangePromotionStatus(payload).subscribe(({
+        next:(res:any)=>{
+          console.log(res);
+          this.dialog.closeAll();
+          this.sharedServices.reloadgrid()
+        }
+      }))
+    }else{
+      let payload={
+        PromotionId:this.productId,
+        CurrentUserId:this.LoginId,
+        StatusToBeUpdated:"Approve"
+      }
+      // console.log(payload);
+      this.promotionTypes.ChangePromotionStatus(payload).subscribe(({
+        next:(res:any)=>{
+          console.log(res);
+          this.dialog.closeAll();
+          this.sharedServices.reloadgrid()
+        }
+      }))
+    }
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

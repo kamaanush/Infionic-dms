@@ -13,7 +13,7 @@ import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.com
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserService } from 'src/app/services/user.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
@@ -729,7 +729,12 @@ export class PromotionsComponent implements OnInit {
     this.dealerItems();
     this.searchText = '';
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
+    this.sharedServices.ReloadaddOrg.pipe(take(1)).subscribe(()=>{
+      // alert('.......')
+      this.getusertabeldata()
+    })
   }
+  
   refresh() {
     this.myForm = this.fb.group({
       city1: [this.selectedItems],
@@ -1336,6 +1341,7 @@ export class PromotionsComponent implements OnInit {
     console.log(e);
     localStorage.setItem('promoclickId', e.data.productPromotionsId);
     localStorage.setItem('promoclickName', e.data.promotionName);
+    localStorage.setItem('promostatus', JSON.stringify(e.data.statusName));
 
     let cellCLickedpromotion = '1';
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion);

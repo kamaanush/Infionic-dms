@@ -23,15 +23,18 @@ export class OrdersComponent implements OnInit {
   userType:any;
 
   constructor(private observer: BreakpointObserver,
-    private route: ActivatedRoute,) { this.route.data.subscribe(v => {
+    private route: ActivatedRoute,) { 
+      this.route.data.subscribe(v => {
     this.currentPageName = v['key'];
     
     // let actionColumn = v['usersMenuList'];
     let showCaseTabList: string[] = [];
     let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
-
-    userRolesData.forEach(element => {
+      // console.log(userRolesData);
+      // console.log(this.currentPageName);
+      userRolesData.forEach(element => {
       if (element.title == this.currentPageName) {
+
         // this.columnDefs = this.columnDefs.filter(x => {
         //   if (x.colId != 'action' || element == undefined || element == null) return true;
 
