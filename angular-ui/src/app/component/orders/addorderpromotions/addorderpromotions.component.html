@@ -1337,7 +1337,6 @@
                         </mat-slide-toggle> -->
                     </div>
 
-
                     <div class="tabel-div">
                         <table class="tableclass">
                             <thead class="table-headercolor" style="height: 35px;">
@@ -1380,9 +1379,26 @@
                                         <input style="text-align: right;border: none; background: none;color: grey;" disabled type="" name="" [(ngModel)]="Item.registrationNumber"
                                             [value]="(Item.registrationNumber)">
                                     </td>
-                                    <td style="position: relative;left: 32px;color: grey;">{{Item.moq}}</td>
+                                    <td style="position: relative; right: 102px;">
+                                        <input style="text-align: right; border: none; background: none; color: grey;" 
+                                               disabled 
+                                               type="" 
+                                               name="" 
+                                               [(ngModel)]="Item.moq" 
+                                               [value]="Item.moq">
+                                    </td>
+                                    <!-- <td style="position: relative;left: 32px;color: grey;">{{Item.moq}}</td> -->
+                                    <td style="position: relative; left: -84px;">
+                                        <input style="text-align: right; border: none; background: none; color: grey;" 
+                                               disabled 
+                                               type="" 
+                                               name="" 
+                                               [(ngModel)]="Item.price" 
+                                               [value]="Item.price | number:'1.2-2'">
+                                    </td>
+                                    
 
-                                    <td style="display: flex;padding-left: 44px;color: grey;"> ${{Item.price | number:'1.2-2'}}</td>
+                                    <!-- <td style="display: flex;padding-left: 25px;color: grey;"> ${{Item.price | number:'1.2-2'}}</td> -->
                                     <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
                                                     [(ngModel)]="Item.stock"></td> -->
                                     <!-- <td>{{Item.stockqty}}</td> -->
@@ -1409,7 +1425,7 @@
                                             [(ngModel)]="Item.quantity"   (ngModelChange)="quantityChange(Item)"
                                             name="Item.quantity" oninput="validity.valid||(value='')">
                                     </td>
-                                    <td style="display: flex;color: grey; ">
+                                    <td style="display: flex;color: grey; right: 3px;position: relative;">
                                         <input disabled type="number" name="" [(ngModel)]="Item.quantity* Item.price"
                                             [value]="(Item.quantity || 0) * Item.price"
                                             [ngClass]="{'IteminputBoxesD': Item.discount == 100, 'IteminputBoxes': Item.discount != 100 } ||0"
@@ -1443,6 +1459,8 @@
                                 (click)="addnonPromoItems()">Confirm</button>
                         </div>
                     </div>
+                  
+                    
 
                 </div>
             </div>

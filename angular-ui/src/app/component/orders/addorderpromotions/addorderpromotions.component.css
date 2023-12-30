@@ -3403,6 +3403,7 @@ cursor: pointer;
    .align-center{
     /* text-align: center; */
     text-align: left;
+    position: relative;
    }
  
 
@@ -3442,4 +3443,17 @@ cursor: pointer;
   margin-left: 80%;
   margin-top: -5%;
 }
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,6 +23,9 @@
   
 }
 
+.addbtn{
+  color:rgba(1, 139, 117, 1) ;
+}
 
 .ORTEXTPROMO:after {
   content: "";
@@ -211,7 +214,7 @@ border-radius: 10px; */
   color: red;
   /* margin-top: 7px; */
   position: relative;
-    bottom: 26px;
+    bottom: 28px;
 }
 
 .listStyleOfItems {

@@ -215,7 +215,7 @@ export class OrdersShipmentComponent implements OnInit {
           },
         },
         {
-          headerName: 'ordered QTY',
+          headerName: 'Ordered QTY',
           field: 'orderedQty',
           tooltipField: 'orderedQty',
      
@@ -225,7 +225,7 @@ export class OrdersShipmentComponent implements OnInit {
           },
         },
         {
-          headerName:'ordered Value($)',
+          headerName:'Ordered Value($)',
           field: 'orderedvalue',
           tooltipField: 'orderedvalue',
       
@@ -237,6 +237,8 @@ export class OrdersShipmentComponent implements OnInit {
         {
           headerName: 'Probable Receive Date',
           field: 'systemReciptDate',
+          maxWidth:190,
+      minWidth:190,
           tooltipField: 'systemReciptDate',
         
           // cellRenderer: (data) => {

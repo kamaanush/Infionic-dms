@@ -52,49 +52,69 @@ export class SalesInventoryComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
   
-    {   headerName: "Dealer",field: 'dealerName' ,minWidth: 91,
-    maxWidth: 91,cellStyle: { color: '#686E74' },tooltipField:"dealerName",
+    {   headerName: "Dealer",field: 'dealerName' ,
+    maxWidth:180,
+    minWidth:180,
+   
+   
+    cellStyle: { color: '#686E74' },tooltipField:"dealerName",
   },
     
   {  headerName: "Geography",
-  field: 'geographyName',cellStyle: { color: '#686E74' },tooltipField:"geographyName",minWidth: 122,
-  maxWidth: 122,
+  field: 'geographyName',cellStyle: { color: '#686E74' },tooltipField:"geographyName",
+ 
  },
-    {  headerName: "Product Name",field: 'productName',cellStyle: { color: '#686E74' },tooltipField:"productName",minWidth: 141,
-    maxWidth: 141,
+    {  headerName: "Product Name",field: 'productName',cellStyle: { color: '#686E74' },tooltipField:"productName",
+   
   },
       {  headerName: "UoM",
-      field: 'uoM',cellStyle: { color: '#686E74' },tooltipField:"uoM",minWidth: 80,
-      maxWidth: 80,
+      maxWidth:100,
+      minWidth:100,
+      field: 'uoM',cellStyle: { color: '#686E74' },tooltipField:"uoM",
+    
     }, 
     {   headerName: "Current stock",
-      field: 'currentStock',cellStyle: { color: '#686E74' },tooltipField:"currentStock",minWidth: 135,
-      maxWidth: 135,
+      field: 'currentStock',cellStyle: { color: '#686E74' },tooltipField:"currentStock",
+     
       type: ['nonEditableColumn','rightAligned']},
   
       {   headerName: "In Transit Qty",
-      field: 'inTransit',cellStyle: { color: '#686E74' },type: ['nonEditableColumn','rightAligned'],minWidth: 133,
-      maxWidth: 133,tooltipField:"inTransit",
+      field: 'inTransit',cellStyle: { color: '#686E74' },type: ['nonEditableColumn','rightAligned'],
+   
+      tooltipField:"inTransit",
     },
       {  headerName: "Pending Qty",
-      field: 'pendingQty',minWidth: 128,
-      maxWidth: 128,cellStyle: { color: '#686E74' },tooltipField:"pendingQty",type: ['rightAligned'],
+      field: 'pendingQty',
+     
+      cellStyle: { color: '#686E74' },tooltipField:"pendingQty",type: ['rightAligned'],
     }, 
       {  headerName: "Purchase Qty(YTD)",
-      field: 'purchaseQtyYTD',minWidth: 159,
-      maxWidth: 159,cellStyle: { color: '#686E74' },tooltipField:"purchaseQtyYTD",type: ['rightAligned'],
+      maxWidth:150,
+      minWidth:150,
+      field: 'purchaseQtyYTD',
+     
+      cellStyle: { color: '#686E74' },tooltipField:"purchaseQtyYTD",type: ['rightAligned'],
     }, 
     { headerName: "Sales(YTD)",
-    field: 'salesQtyYTD',minWidth: 130,
-    maxWidth: 130,cellStyle: { color: '#686E74' },tooltipField:"salesQtyYTD",type: ['rightAligned'],
+    field: 'salesQtyYTD',
+    maxWidth:95,
+      minWidth:95,
+    
+    cellStyle: { color: '#686E74' },tooltipField:"salesQtyYTD",type: ['rightAligned'],
   },
   {  headerName: "Annual Target",
-      field: 'annualTarget',minWidth: 138,
-      maxWidth: 138,cellStyle: { color: '#686E74' },tooltipField:"annualTarget",type: ['rightAligned'],
+      field: 'annualTarget',
+    
+      cellStyle: { color: '#686E74' },tooltipField:"annualTarget",type: ['rightAligned'],
     },
     {  headerName: " Achieve Target",
-      field: 'targetAchieved',minWidth: 145,
-      maxWidth: 145,cellStyle: { color: '#686E74' },tooltipField:"targetAchieved", type: ['rightAligned'],
+      field: 'targetAchieved',
+  
+      cellStyle: { color: '#686E74' },tooltipField:"targetAchieved", type: ['rightAligned'],
+      valueFormatter: params => {
+        const value = typeof params.value === 'number' ? params.value.toFixed(2) : params.value;
+        return value;
+      }
     },
      
   // {    

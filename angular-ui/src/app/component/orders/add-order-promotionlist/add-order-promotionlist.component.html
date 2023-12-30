@@ -265,23 +265,23 @@
                                                                         <button class="search-bt_n">Search</button>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-1 col-lg-1 col-sm-1">
-                                                                    <span id="m_oq"> MOQ <br> &nbsp;{{promos.moq}}</span>
+                                                                <div class="col-md-1 col-lg-1 col-sm-1" style="text-align: right;">
+                                                                    <span id="m_oq"> MOQ <br><div style=" text-align: right;"> {{promos.moq}}</div></span>
                                                                 </div>
                                                                 <div class="col-md-1 col-lg-1 col-sm-1">
                                                                 </div>
-                                                                <div class="col-md-1 col-lg-1 col-sm-1">
-                                                                    <span class="FirstPrmo_Selected">Selected<br>&nbsp;&nbsp; {{
-                                                                        totalSelectedQuantity }}</span>
+                                                                <div class="col-md-1 col-lg-1 col-sm-1" style="text-align: right;">
+                                                                    <span class="FirstPrmo_Selected">Selected<br><div style=" text-align: right;">{{
+                                                                        totalSelectedQuantity }}</div></span>
                                                                 </div>
                                                                 <div class="col-md-0 col-lg-0 col-sm-0">
                                                                 </div>
-                                                                <div class="col-md-1 col-lg-1 col-sm-1">
-                                                                    <span class="First_Reaming">{{ promos.moq >=
+                                                                <div class="col-md-1 col-lg-1 col-sm-1"style="text-align: right;">
+                                                                    <span class="First_Reaming"><div style=" text-align: right;">{{ promos.moq >=
                                                                         totalSelectedQuantity ? "Remaining" : "Remaining"
-                                                                        }}<br>&nbsp; &nbsp;{{ promos.moq >
+                                                                        }}<br>{{ promos.moq >
                                                                         totalSelectedQuantity ? (promos.moq -
-                                                                        moqselectedreamining(promos)) : 0 }}</span>
+                                                                        moqselectedreamining(promos)) : 0 }}</div></span>
                                                                 </div>
                                                             </div>
                                                             <div class="tabel-div">
@@ -349,7 +349,7 @@
                                                                                    
                                                                                 <td  style="padding-left: 8px;">{{  Item.materialcustomidentifier }}</td>
                                                                                   
-                                                                                <td style="padding-left: 14px;">{{ Item.registrationNumber }}</td>   
+                                                                                <td style="padding-left: 19px;">{{ Item.registrationNumber }}</td>   
                                                                                 <td style="padding-left: 30px;">{{ promos.moq }}</td>
                                                                                 <td style="padding-left: 42px;">${{ Item.price }}</td>
                                                                                 <td style="padding-left: 61px;" class="QUantityFirst">
@@ -411,21 +411,21 @@
     
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-1 col-lg-1 col-sm-1">
+                                                        <div class="col-md-1 col-lg-1 col-sm-1"style="text-align: right;">
                                                             <span id="Entitled"> Entitled 
-                                                                <span class="En_titled"> <br> &nbsp; {{Foc_calculation || getTotalSelectedQuantity(promos)}}</span>
+                                                                <span class="En_titled"> <br><div style=" text-align: right;"> {{Foc_calculation || getTotalSelectedQuantity(promos)}}</div></span>
                                                             </span>
                                                         </div>
                                                         <div class="col-md-1 col-lg-1 col-sm-1">
                                                         </div>
-                                                        <div class="col-md-1 col-lg-1 col-sm-1">
-                                                            <span id="Freeitemselected">  Selected<br>&nbsp;&nbsp;
-                                                            {{ getTotalSelectedQuantity(promos) }}</span>
+                                                        <div class="col-md-1 col-lg-1 col-sm-1"style="text-align: right;">
+                                                            <span id="Freeitemselected">  Selected<br>&<div style=" text-align: right;">
+                                                            {{ getTotalSelectedQuantity(promos) }}</div></span>
                                                         </div>
-                                                        <div class="col-md-1 col-lg-1 col-sm-1">
-                                                            <span id="Remaining">Remaining <br>&nbsp; &nbsp;
+                                                        <div class="col-md-1 col-lg-1 col-sm-1"style="text-align: right;">
+                                                            <span id="Remaining">Remaining <br><div style=" text-align: right;">
                                                                 {{ (promos.foc>getTotalSelectedQuantity(promos))?promos.foc -
-                                                                    getTotalSelectedQuantity(promos):0 }}
+                                                                    getTotalSelectedQuantity(promos):0 }}</div>
                                                             </span>
                                                         </div>
     
@@ -470,7 +470,7 @@
                                                                     </td>
                                                                     <td style="padding-left: 18px;">
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="padding-left: 14px;">
+                                                                    <td style="padding-left: 41px;">
                                                                         {{Item.registrationNumber}}
                                                                     </td>
                                                                     <td style="padding-left: 25px;" >{{promos.moq}}</td>
@@ -556,21 +556,21 @@
                                                             </div>
                                                         </div>
     
-                                                        <div class="col col-lg-1">
-                                                            <span class="Second_PromoMOQ"> MOQ<br>{{promos.moq }}</span>
+                                                        <div class="col col-lg-1"style="text-align: right;">
+                                                            <span class="Second_PromoMOQ"> MOQ<br><div style=" text-align: right;">{{promos.moq }}</div></span>
                                                         </div>
     
-                                                        <div class="col col-lg-1">
-                                                            <span class="SECONDPROMOTIONSelected">Selected <br>{{promos.totalQuantity
-                                                                }}</span> 
+                                                        <div class="col col-lg-1"style="text-align: right;">
+                                                            <span class="SECONDPROMOTIONSelected">Selected <br><div style=" text-align: right;">{{promos.totalQuantity
+                                                                }}</div></span> 
                                                         </div>
                                                         <div class="col col-lg-0">
                                                             <span class="REAmingSecondPromo">
                                                                 {{promos.moq >=promos.totalQuantity?"Remaining" : "Remaining"}} 
-                                                                <br>&nbsp; &nbsp;{{ promos.moq >
+                                                                <br><div style=" text-align: right; width: 67px;">{{ promos.moq >
                                                                     promos.totalQuantity ? (promos.moq -
                                                                     moqselectedreaminingFORTHPromotion(promos)) : 0 }}
-                                                            </span>
+                                                            </div></span>
                                                         </div>
                                                     </div>
                                                     <!-- </div> -->
@@ -581,7 +581,7 @@
                                                             <thead class="table-headercolor4">
     
                                                                 <tr>
-                                                                    <th data-sortable="true" >Product
+                                                                    <th data-sortable="true" style="padding-left: 25px;">Product
                                                                         Code</th>
                                                                     <th data-sortable="true" class="secondpromoProductname">Product
                                                                         Name</th>
@@ -613,7 +613,7 @@
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative;">
+                                                                    <td style="position: relative;left: 27px;">
                                                                         {{Item.registrationNumber}}</td>
                                                                     <td style="position: relative;padding-left: 12px;">{{promos.moq}}</td>
                                                                     <td style="position: relative;padding-left: 28px;">${{Item.price}}</td>
@@ -717,7 +717,7 @@
                                                         </div> -->
     
                                                     <!-- </div> -->
-                                                    <div class="row" style="width: 92%;">
+                                                    <div class="row" style="width: 97%;">
                                                         <div class="col-4">
                                                             <span class="buy-grp" style="margin-left: 10%;"> Free Items
                                                             </span>
@@ -749,24 +749,24 @@
                                                             </div>
                                                         </div>
     
-                                                        <div class="col-md-1 col-lg-1 col-sm-1">
-                                                            <span class="EntitledSecondPromotions"> Entitled<br>
-                                                                {{promos.foc}}
+                                                        <div class="col-md-1 col-lg-1 col-sm-1" style="text-align: right;">
+                                                            <span class="EntitledSecondPromotions"> Entitled<br><div style=" text-align: right;">
+                                                                {{promos.foc}}</div>
                                                             </span>
                                                         </div>
     
-                                                        <div class="col-md-1 col-lg-1 col-sm-1">
-                                                            <span class="Freeitemselectedsecondpromotions">Selected<br>
-                                                                {{ getTotalEntitledSelectedRemaining(promos) }} </span>
+                                                        <div class="col-md-1 col-lg-1 col-sm-1"style="text-align: right;">
+                                                            <span class="Freeitemselectedsecondpromotions">Selected<br><div style=" text-align: right;">
+                                                                {{ getTotalEntitledSelectedRemaining(promos) }} </div></span>
                                                         </div>
-                                                        <div class="col-md-1 col-lg-1 col-sm-1">
+                                                        <div class="col-md-1 col-lg-1 col-sm-1"style="text-align: right;">
                                                             <!-- <span id="Remaining">Remaining<br>
                                                                 {{ promos.foc - getTotalEntitledSelectedRemaining(promos) }}
                                                             </span> -->
                                                             <span class="REAMINGFREEitemsSecond">
                                                                 {{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? "Remaining" : "Remaining" }}<br>
-                                                                &nbsp; &nbsp;{{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? 
-                                                                    (promos.foc - getTotalEntitledSelectedRemaining(promos)) : 0 }}
+                                                                <div style=" text-align: right;">{{ promos.foc > getTotalEntitledSelectedRemaining(promos) ? 
+                                                                    (promos.foc - getTotalEntitledSelectedRemaining(promos)) : 0 }}</div>
                                                             </span>
                                                             
                                                         </div>
@@ -778,7 +778,7 @@
                                                             <thead class="table-headercolorGetset">
                                                                 <tr>
                                                                     <!-- <th width="30"></th> -->
-                                                                    <th data-sortable="true" >Product
+                                                                    <th data-sortable="true" style="padding-left: 25px;" >Product
                                                                         Code</th>
                                                                     <th data-sortable="true" class="SecondPromoFreeitemsProduct">Product
                                                                         Name</th>
@@ -800,7 +800,7 @@
                                                             <tbody class="tbodayheightGetset">
                                                                 <tr class="table-row"
                                                                     *ngFor="let Item of promos.stockitemid |filter:searchTextSecondPromotionfree">
-                                                                    <td style="width: 30px;padding-left: 6px;padding-top: 5px;"><input type="checkbox"
+                                                                    <td style="width: 24px;padding-left: 6px;padding-top: 5px;"><input type="checkbox"
                                                                             [disabled]="!promos.isEnable"
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
@@ -811,7 +811,7 @@
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative;">
+                                                                    <td style="position: relative;left: 22px;">
                                                                         {{Item.registrationNumber}}</td>
                                                                     <td style="position: relative;padding-left: 21px;">{{promos.moq}}</td>
                                                                     <td style="position: relative;padding-left: 28px;" >${{Item.price}}</td>
@@ -910,21 +910,21 @@
     
                                                             </div>
                                                         </div>
-                                                        <div class="col-1">
-                                                            <span class="Paidpromotionsthreemoq"> MOQ<br>
-                                                                {{data.promoDetails.moq}}</span>
+                                                        <div class="col-1"style="text-align: right;">
+                                                            <span class="Paidpromotionsthreemoq"> MOQ<br><div style=" text-align: right;">
+                                                                {{data.promoDetails.moq}}</div></span>
                                                         </div>
     
-                                                        <div class="col-1">
-                                                            <span class="PaidPromotionsThreeSelected">Selected <br>
-                                                                {{data.promoDetails.totalQuantity}}</span>
+                                                        <div class="col-1"style="text-align: right;">
+                                                            <span class="PaidPromotionsThreeSelected">Selected <br><div style=" text-align: right;">
+                                                                {{data.promoDetails.totalQuantity}}</div></span>
                                                         </div>
     
-                                                        <div class="col-1">
-                                                            <span class="PaidPromotionsthreeReaming">Remaining <br>
+                                                        <div class="col-1"style="text-align: right;">
+                                                            <span class="PaidPromotionsthreeReaming">Remaining <br><div style=" text-align: right;">
                                                                {{data.promoDetails.moq >= data.promoDetails.totalQuantity ?
                                                                 (data.promoDetails.moq - data.promoDetails.totalQuantity) :0
-                                                                }}
+                                                                }}</div>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -966,7 +966,7 @@
                                                     <table class="tableclass">
                                                         <thead class="table-headercolor">
                                                             <tr>
-                                                                <th data-sortable="true" class="align-center">Product Code
+                                                                <th data-sortable="true" class="align-center" style="padding-left: 25px;">Product Code
                                                                 </th>
     
                                                                 <th data-sortable="true" class="ThirPrmoProductname">Product Name
@@ -1030,7 +1030,7 @@
                                                                     <td style="text-align: left;">
                                                                         {{Item.materialcustomidentifier}}</td>
     
-                                                                    <td style="position: relative;">
+                                                                    <td style="position: relative;left: 21px;">
                                                                         {{Item.registrationNumber}}
                                                                     </td>
                                                                     <td class="txt-right" style="padding-left: 8px;">{{data.promoDetails.moq}}</td>
@@ -1144,21 +1144,21 @@
                                                         </div>
     
                                                     </div>
-                                                    <div class="col-1">
-                                                        <span class="ForthPromotionsMOQPaid"> MOQ<br>
-                                                            {{data.promoDetails.moq}}</span>
+                                                    <div class="col-1"style="text-align: right;">
+                                                        <span class="ForthPromotionsMOQPaid"> MOQ<br><div style=" text-align: right;">
+                                                            {{data.promoDetails.moq}}</div></span>
                                                     </div>
     
-                                                    <div class="col-1">
-                                                        <span class="ForthPromotionse_lected">Selected <br>
-                                                            {{data.promoDetails.totalQuantity}}
+                                                    <div class="col-1"style="text-align: right;">
+                                                        <span class="ForthPromotionse_lected">Selected <br><div style=" text-align: right;">
+                                                            {{data.promoDetails.totalQuantity}}</div>
                                                         </span>
                                                     </div>
-                                                    <div class="col-1">
-                                                        <span class="ForthPromotionsREamingPaid">Remaining <br>
+                                                    <div class="col-1"style="text-align: right;">
+                                                        <span class="ForthPromotionsREamingPaid">Remaining <br><div style=" text-align: right;">
                                                             {{data.promoDetails.moq >= data.promoDetails.totalQuantity ?
                                                                 (data.promoDetails.moq - data.promoDetails.totalQuantity) :0
-                                                                }}
+                                                                }}</div>
                                                         </span>
                                                     </div>
                                                     <!-- <div class="col-md-6">
@@ -1184,7 +1184,7 @@
                                                             <thead class="TableheaderbgColor">
                                                                 <tr>
     
-                                                                    <th data-sortable="true" class="align-center">Product
+                                                                    <th data-sortable="true" class="align-center" style="padding-left: 25px;">Product
                                                                         Code
                                                                     </th>
                                                                     <th data-sortable="true" class="ForthPromotionProductname">Product
@@ -1229,7 +1229,7 @@
                                                                         <td style="position: relative;">
                                                                             {{Item.materialcustomidentifier}}
                                                                         </td>
-                                                                        <td style="position: relative;">
+                                                                        <td style="position: relative;left: 27px;">
                                                                             {{Item.registrationNumber}}
                                                                         </td>
                                                                         <td class="txt-right" style="padding-left: 8px;" >{{data.promoDetails.moq}}</td>
