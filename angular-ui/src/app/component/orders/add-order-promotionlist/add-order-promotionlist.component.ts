@@ -20,8 +20,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
 
   PromotionID: any;
-
-
+  calculatedDiscountAmount:number=0;
+  calculatedFinalPrice:number=0;
+  calculatedTotal: number = 0;
   otherInputValue: any;
   MOQ: any;
   Remarks: any;
