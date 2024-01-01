@@ -341,7 +341,6 @@ export class MaterialAddEditpopupComponent {
       this.spinner.show();
       this.addMaterials.onEditList(this.getEditId).subscribe((res) => {
         this.dataGetById = res.response;
-        // let isProduct = this.dataGetById.isProduct
         console.log("EditData", this.dataGetById);
         if(res.response.isProduct==false)
         {
@@ -464,16 +463,21 @@ export class MaterialAddEditpopupComponent {
     })
   }
 
-  geoPropertyChange(geoObj, type, index){
-    if(this.selectedHirerachyIndex != index){
-      for(var i=index; i<this.geoGraphyFullData.length;i++){
-        let geoPropertyItemList = this.geoGraphyFullData[i];
-        geoPropertyItemList.geoProperties.forEach(x=>{
-          x[type]= geoObj[type];
-        })
-      }
+  changedvalue:any
+  geoPropertyChange(item, type, index) {
+    if (this.selectedHirerachyIndex != index) {
+        for (let i = index; i < this.geoGraphyFullData.length; i++) {
+            let geoPropertyItemList = this.geoGraphyFullData[i];
+            geoPropertyItemList.geoProperties.forEach(x => {
+                x[type] = item[type];
+            });
+        }
+        this.geoProperties = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties;
+        // const { geographyIdentifierIds, productSKUGeographyId, geographyName, ...rest } = 
+        this.changedvalue =item.defaultGeographies
+        // console.log(item,type,index);
     }
-  }
+}
   getProductList() {
     this.addMaterials.getProductGroup().subscribe((res) => {
       let data = res.response;
@@ -546,17 +550,21 @@ export class MaterialAddEditpopupComponent {
 
   }
   addMaterialProductAfterEdit() {
+    // alert('alert')
     localStorage.setItem("updateAddEdit", 'edit');
-    if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
-      // alert("Plz select atleast one city");
-      return;
-    }
-    this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties));
-    this.geoProperties = this.geoProperties.map(item => {
-      console.log("Geoproperties", this.geoProperties)
-      delete item.geographyName;
-      return item;
-    })
+    const { geographyIdentifierIds, productSKUGeographyId, geographyName, ...rest } =this.dataGetById.productGeographys[0]
+    const modifiedObject = rest;
+    console.log(modifiedObject);
+    // if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
+    //   // alert("Plz select atleast one city");
+    //   return;
+    // }
+    // this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties));
+    // this.geoProperties = this.geoProperties.map(item => {
+    //   console.log("Geoproperties", this.geoProperties)
+    //   delete item.geographyName;
+    //   return item;
+    // })
 
     let data = {
       stockItemId: this.stockItemId,
@@ -581,23 +589,20 @@ export class MaterialAddEditpopupComponent {
       ManualShortOrder: this.Sort ?? '0',
       ProductLink: this.AddSP ?? '',
       ProductSubGroupId: this.subproductGroupData,
-      ProductGeographys: this.geoProperties
+      ProductGeographys: this.changedvalue||this.dataGetById.productGeographys
     }
 
-    // console.log(data)
+    console.log(data)
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-        //  alert(res.response.result)
       } else {
-
         this.dialog.closeAll()
-
         this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'materialsSuccessPop' })
       }
     })
-    // this.dialog.closeAll()
-    // this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+    this.dialog.closeAll()
+    this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
 
 
   }
@@ -997,7 +1002,6 @@ export class MaterialAddEditpopupComponent {
       });
     });
     currentItem.imageExtensionType = currentItem.imageExtensionType == 'minImage' ? 'maxImage' : 'minImage';
-
   }
 
   // geograhies related apis
@@ -1315,16 +1319,16 @@ export class MaterialAddEditpopupComponent {
   }
 
   isSelectedGeographyIdentifer(itemId) {
-    const index = this.selctedGeographyIdentifier.indexOf(itemId);
+    const index = this.selctedGeographyIdentifier?.indexOf(itemId);
     return index >= 0;
   }
 
   selectGeographyIdentifier(itemId: any): void {
-    let index = this.selctedGeographyIdentifier.indexOf(itemId);
+    let index = this.selctedGeographyIdentifier?.indexOf(itemId);
     if (index >= 0) {
-      this.selctedGeographyIdentifier.splice(index, 1);
+      this.selctedGeographyIdentifier?.splice(index, 1);
     } else {
-      this.selctedGeographyIdentifier.push(itemId);
+      this.selctedGeographyIdentifier?.push(itemId);
     }
 
     this.clickedGeography.geographyIdentifiers = this.selctedGeographyIdentifier;

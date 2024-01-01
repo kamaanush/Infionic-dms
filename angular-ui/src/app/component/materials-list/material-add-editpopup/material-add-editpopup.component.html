@@ -502,15 +502,19 @@
                   </div>
                 </div>
                 <div class="row"  *ngIf="actineLabel ==='Edit Material'" >
-                  <div class="col-md-2" *ngFor="let item of geoGraphyFullData">
-                      <div *ngIf="item.geographySelected?.length > 0">
+                  <div class="col-md-2" *ngFor="let item of dataGetById.productGeographysNew">
+                      <div>
                           <strong>{{ item.geographyHierarchyName }}</strong>
                       </div>
-                      <div *ngFor="let selectedGeo of item.geographySelected" class="card-body card">
-                         <button class="btn btn-sm" style="background: rgba(1, 139, 117, 1);color: white;">{{ selectedGeo.geographyName }}</button>
+                      <div class="card-body d-flex card" >
+                        <button class="btn btn-sm" *ngIf="!item.defaultGeographies" style="background: rgba(1, 139, 117, 1);color: white;">{{ item.geoGraphyName }}</button>
+                        <span class="defaultvalue align-center" *ngFor="let geo of item?.defaultGeographies">
+                          <button class="btn btn-sm" style="background: rgba(1, 139, 117, 1);color: white;">{{ geo?.geographyName }}</button>
+                        </span>
                       </div>
                   </div>
-              </div>
+                </div>
+
               </form>
 
               <!-- <div class="row"></div> -->
@@ -518,7 +522,7 @@
 
 
               <section class="row propertiesSection" *ngIf="!checked">
-                <div class="selection-feild">
+                <div class="selection-feild" *ngIf="actineLabel !=='Edit Material'">
                   <div class="dropdown-file">
                     <div style="margin:8px">
                       <select class="drpOptions" [(ngModel)]="selectedGeoField">
@@ -531,7 +535,6 @@
                         <option value="leadTime"> Lead Time</option>
                         <option value="registrationNumber"> Registration Number</option>
                       </select>
-
                       <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
                       <button class="Apply_button" (click)="applySelectedValue()">
                         <p style="color:white;margin: auto;">Apply</p>
@@ -545,7 +548,7 @@
                     </div>
                   </div>
                 </div>
-                <table>
+                <table *ngIf="actineLabel !=='Edit Material'">
                   <div class="row m-0 mb-2  fontfamily">
                     <div class="col-sm-3">
                       <label ><b class="fontfamily">Geography</b></label>
@@ -639,7 +642,123 @@
 
 
                 </table>
-
+                <table *ngIf="actineLabel ==='Edit Material'">
+                  <div class="row m-0 mb-2  fontfamily">
+                    <div class="col-sm-3">
+                      <label><b class="fontfamily">Geography</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b class="fontfamily">Wholesale Price</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b class="fontfamily">Min Order Qty</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b class="fontfamily">Max Order Qty</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b class="fontfamily">Margin %</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>Discount %</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b class="fontfamily">Lead time (Days)</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b class="fontfamily">Registration Number</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b style="margin-left: 84px;">Tags</b></label>
+                    </div>
+                  </div>
+                  <div *ngFor="let item of dataGetById.productGeographysNew; let i=index;">
+                    <div class="row m-0 mb-2">
+                      <div class="col-sm-3" [ngStyle]="{'padding-left': (i * 10 + 10) + 'px'}">
+                        <img [src]="item.imageExtensionType == 'maxImage' ? maxImage : minImage" class="expand-arrow1"
+                            alt="add-user-btn" *ngIf="geoGraphyFullData.length !== (i + 1)"
+                            (click)="materialGeographyArrayClick(item, i)">
+                        {{ !item.defaultGeographies || item.defaultGeographies.length === 0 ? item.geoGraphyName : item.defaultGeographies[0].geographyName }}
+                      </div>
+                      <ng-container *ngIf="!item.defaultGeographies">
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" (change)="geoPropertyChange(item, 'mrp', i)"
+                                [(ngModel)]="!item.defaultGeographies?0:item.mrp" class="uom-cls" id="MRP" name="MRP" [disabled]="!item.defaultGeographies">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" (change)="geoPropertyChange(item, 'minOrderQty', i)"
+                                [(ngModel)]="!item.defaultGeographies?0:item.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty" [disabled]="!item.defaultGeographies">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" (change)="geoPropertyChange(item, 'maxOrderQty', i)"
+                                [(ngModel)]="!item.defaultGeographies?0:item.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty" [disabled]="!item.defaultGeographies">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" (change)="geoPropertyChange(item, 'marginPercent', i)"
+                                [(ngModel)]="!item.defaultGeographies?0:item.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent" [disabled]="!item.defaultGeographies">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" (change)="geoPropertyChange(item, 'discountPercent', i)"
+                                [(ngModel)]="!item.defaultGeographies?0:item.discountPercent" class="uom-cls" id="DiscountPercent"
+                                name="DiscountPercent" [disabled]="!item.defaultGeographies">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" (change)="geoPropertyChange(item, 'leadTime', i)"
+                                [(ngModel)]="!item.defaultGeographies?0:item.leadTime" class="uom-cls" id="LeadTime" name="LeadTime" [disabled]="!item.defaultGeographies">
+                        </div>
+                        <div class="col-sm-2">
+                          <input placeholder="Enter" style="width: 130px;" type="text"
+                                (change)="geoPropertyChange(item, 'registrationNumber', i)"
+                                [(ngModel)]="!item.defaultGeographies?0:item.registrationNumber" class="uom-cls"
+                                id="RegistrationNumber" name="RegistrationNumber" [disabled]="!item.defaultGeographies">
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.defaultGeographies && item.defaultGeographies.length > 0">
+                        <ng-container *ngFor="let geo of item.defaultGeographies; let i = index">
+                            <div class="col-sm-1">
+                                <input placeholder="Enter" type="text" (input)="geoPropertyChange(item, 'mrp', i)" 
+                                       [(ngModel)]="geo.mrp" class="uom-cls" id="MRP" name="MRP">
+                            </div>
+                            <div class="col-sm-1">
+                                <input placeholder="Enter" type="text" (input)="geoPropertyChange(item, 'minOrderQty', i)" 
+                                       [(ngModel)]="geo.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
+                            </div>
+                            <div class="col-sm-1">
+                                <input placeholder="Enter" type="text" (input)="geoPropertyChange(item, 'maxOrderQty', i)" 
+                                       [(ngModel)]="geo.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty">
+                            </div>
+                            <div class="col-sm-1">
+                                <input placeholder="Enter" type="text" (input)="geoPropertyChange(item, 'marginPercent', i)" 
+                                       [(ngModel)]="geo.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent">
+                            </div>
+                            <div class="col-sm-1">
+                                <input placeholder="Enter" type="text" (input)="geoPropertyChange(item, 'discountPercent', i)" 
+                                       [(ngModel)]="geo.discountPercent" class="uom-cls" id="DiscountPercent" name="DiscountPercent">
+                            </div>
+                            <div class="col-sm-1">
+                                <input placeholder="Enter" type="text" (input)="geoPropertyChange(item, 'leadTime', i)" 
+                                       [(ngModel)]="geo.leadTime" class="uom-cls" id="LeadTime" name="LeadTime">
+                            </div>
+                            <div class="col-sm-2">
+                                <input placeholder="Enter" style="width: 130px;" type="text" 
+                                       (input)="geoPropertyChange(item, 'registrationNumber', i)" 
+                                       [(ngModel)]="geo.registrationNumber" class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                    
+                      <div class="col-sm-1">
+                        <a class="add-geo-identifier"
+                          *ngIf="item.defaultGeographies?.length > 0"
+                          (click)="AddGeographyIdentifier(item)">Add</a>
+                        <a class="count-geo-identifier "
+                          *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers?.length !== 0"
+                          (click)="AddGeographyIdentifier(item)">{{item.geographyIdentifiers?.length}}</a>
+                          <!-- *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers?.length == 0" -->
+                      </div>
+                    </div>
+                  </div>
+                </table>
               </section>
 
               <div class="col-6">

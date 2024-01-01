@@ -1507,7 +1507,7 @@ textarea {
 .popup .close {
   position: absolute;
   top: 20px;
-  right: 30px;
+  right: 20px;
   /* width: 12px;
   height: 12px; */
   transition: all 200ms;
