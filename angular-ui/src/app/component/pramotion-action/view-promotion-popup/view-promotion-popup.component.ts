@@ -254,7 +254,7 @@ export class ViewPromotionPopupComponent implements OnInit {
 
     {
       headerName: "Code",
-      field: 'code', type: ['nonEditableColumn'], sort: 'desc',
+      field: 'code', type: ['nonEditableColumn'],cellStyle: { color: '#686E74' }, sort: 'desc',
 
       // checkboxSelection: (params) => {
 
@@ -263,11 +263,11 @@ export class ViewPromotionPopupComponent implements OnInit {
       // showDisabledCheckboxes: true,
     },
 
-    { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
+    { headerName: "Dealer Name", field: 'dealerName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'] },
     // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
-      headerName: "Geography", field: 'geography', type: ['nonEditableColumn'],
+      headerName: "Geography", field: 'geography',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
       // cellStyle: { color: '#017EFA' },
     },
 

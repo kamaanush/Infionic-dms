@@ -501,6 +501,7 @@ border-radius: 10px; */
   border-radius: 10px;
   height: 43px;
   width: 381px;
+  outline: none;
 }
 
 .addtnlRemarks {
@@ -511,6 +512,7 @@ border-radius: 10px; */
   height: 43px;
   width: 364px;
   padding-right: 188px;
+  outline: none;
 }
 
 .addtnlRemarks::placeholder {
@@ -988,7 +990,7 @@ li {
 }
 
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-  border: 2px solid #000000 !important;
+  border: 2px solid rgba(1, 139, 117, 1) !important;
 }
 
 .ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
@@ -1007,6 +1009,10 @@ li {
 
 ::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
   color:  rgba(1, 139, 117, 1);
+}
+::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::before {
+  color:  rgba(1, 139, 117, 1);
+  border-color: #009B63;
 }
 
 .item-header {

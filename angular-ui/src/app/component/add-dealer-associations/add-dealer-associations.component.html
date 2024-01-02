@@ -88,7 +88,7 @@
                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
                   [virtualScroll]="true" bindLabel="customerName" bindValue="customerId" [searchable]="true"
-                  [clearable]="false" placeholder=" Select Dealer " (change)="selectedDealer($event)">
+                  [clearable]="false" placeholder=" Select Dealer " style="color: grey;" (change)="selectedDealer($event)">
                 </ng-select>
               </div>
               <div class="hover-text">
@@ -286,7 +286,7 @@
 
 
                 <div class="dropdown-placeholder categoryy-placeholder">
-                  <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select category </span>
+                  <span *ngIf="myForm.get('city1').value.length == 0" style="color: grey;">Select category </span>
                   <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder">
                     {{myForm.get('city1').value.length}} category </span>
                   <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder">
@@ -306,7 +306,7 @@
 
 
                 <div class="dropdown-placeholder subCategoryy-placeholder">
-                  <span *ngIf="myForm1.get('city2').value.length == 0" style="color: black;"> Sub-category </span>
+                  <span *ngIf="myForm1.get('city2').value.length == 0" style="color: grey;"> Sub-category </span>
                   <span *ngIf="myForm1.get('city2').value.length == 1" class="selected-placeholder">
                     {{myForm1.get('city2').value.length}} Sub-category </span>
                   <span *ngIf="myForm1.get('city2').value.length > 1" class="selected-placeholder">
@@ -328,7 +328,7 @@
 
 
                 <div class="dropdown-placeholder typess-placeholder">
-                  <span *ngIf="myForm2.get('city3').value.length == 0" style="color: black;">Select Type </span>
+                  <span *ngIf="myForm2.get('city3').value.length == 0" style="color: grey;">Select Type </span>
                   <span *ngIf="myForm2.get('city3').value.length == 1" class="selected-placeholder">
                     {{myForm2.get('city3').value.length}} Type </span>
                   <span *ngIf="myForm2.get('city3').value.length > 1" class="selected-placeholder">
@@ -347,7 +347,7 @@
                 </ng-multiselect-dropdown>
 
                 <div class="dropdown-placeholder productt-placeholder">
-                  <span *ngIf="myForm3.get('city4').value.length == 0" style="color: black;">Select Product </span>
+                  <span *ngIf="myForm3.get('city4').value.length == 0" style="color: grey;">Select Product </span>
                   <span *ngIf="myForm3.get('city4').value.length == 1" class="selected-placeholder">
                     {{myForm3.get('city4').value.length}} Product </span>
                   <span *ngIf="myForm3.get('city4').value.length > 1" class="selected-placeholder">
@@ -471,7 +471,7 @@
             <div class="col-md-3">
               <div class="searchBox1 d-flex">
                 <div class="promotiont2">
-                  <select class="form-select select-asso" style="color: black;" aria-label=".form-select-lg example"
+                  <select class="form-select select-asso" style="color: grey;" aria-label=".form-select-lg example"
                     [(ngModel)]="selectedGeoField1">
                     <option selected hidden>Select</option>
                     <option value="" disabled selected hidden>Select Field</option>

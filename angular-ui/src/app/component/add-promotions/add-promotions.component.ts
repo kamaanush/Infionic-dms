@@ -261,6 +261,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     {
       headerName: 'Dealer Code',
       field: 'code',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
       sort: 'desc',
       checkboxSelection: true,
@@ -268,6 +269,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     {
       headerName: 'Dealer Name',
       field: 'dealerName',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
     },
     // { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -275,6 +277,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     {
       headerName: 'Geography',
       field: 'geography',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
       // cellStyle: { color: '#017EFA' },
     },

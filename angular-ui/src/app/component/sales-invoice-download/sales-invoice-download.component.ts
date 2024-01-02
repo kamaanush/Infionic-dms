@@ -34,7 +34,7 @@ export class SalesInvoiceDownloadComponent implements OnInit {
     
   }
   columnDefs: ColDef[] = [
-    {   headerName: "BatchId",field: 'batchId' ,      tooltipField:"batchId",type: ['nonEditableColumn']
+    {   headerName: "BatchId",field: 'batchId' ,tooltipField:"batchId",cellStyle: { color: '#686E74' },type: ['nonEditableColumn']
   },
   
     {  headerName: "Upload Date",field: 'uploadDate', 
@@ -43,21 +43,21 @@ export class SalesInvoiceDownloadComponent implements OnInit {
       const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
       return coloredDate;
     },
-         tooltipField:"uploadDate   ",type: ['nonEditableColumn']
+         tooltipField:"uploadDate",cellStyle: { color: '#686E74' },type: ['nonEditableColumn']
   },     
   
     {  headerName: "Product Name",
-       field: 'productName',      tooltipField:"productName",type: ['nonEditableColumn']
+       field: 'productName',tooltipField:"productName",cellStyle: { color: '#686E74' },type: ['nonEditableColumn']
       },
       {  headerName: "Product Code",
-      field: 'productCode',      tooltipField:"productCode",type: ['nonEditableColumn']
+      field: 'productCode',tooltipField:"productCode",cellStyle: { color: '#686E74' },type: ['nonEditableColumn']
      },
   
     {   headerName: "Total Items",
-      field: 'saleQty',      tooltipField:"saleQty",
+      field: 'saleQty',tooltipField:"saleQty",cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn']},
       {   headerName: "Dealer",
-      field: 'dealer',      tooltipField:"dealer",
+      field: 'dealer',tooltipField:"dealer",cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn']},
   ];
   public defaultColDef: ColDef = {

@@ -344,6 +344,10 @@ div.catg[data-selected] {
   border: 1px solid grey;
   font-family: 'Gilroy-Regular';
   text-indent: 10px;
+  color: grey;
+}
+.custmRef input:focus {
+  outline: none;
 }
 
 .rmvicon mat-icon {
@@ -558,4 +562,5 @@ div.catg[data-selected] {
 
 ::ng-deep.ng-select .ng-select-container .ng-value-container .ng-placeholder {
   font-family: 'Gilroy-Regular';
+  color: grey;
 }

@@ -1291,12 +1291,14 @@ display: block;
   right: 10px;
   top:7%;
 
- 
+  border: 1px solid grey !important;
+  outline: none;
 
 }
 
- 
-
+.search-bt_n:focus {
+  border: 1px solid grey;
+}
  
 
 .searchInput {
@@ -1338,5 +1340,10 @@ display: block;
   bottom: -3px;
 
   top: -5px;
-  border: 1px solid rgba(0, 0, 0, 0.3)!important;
+  border: 1px solid grey !important;
+   outline: none;
+}
+
+.searchInput11:focus {
+  border: 1px solid gray;
 }

@@ -21,7 +21,7 @@
                                         </div>
                                         <div class="coll-md-7 promoinfo">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value="{{promoName}}">
+                                                value="{{promoName}}" style="color: grey;">
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="coll-md-7 promoinfo">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value="{{promotionTypesName}}">
+                                                value="{{promotionTypesName}}"  style="color: grey;">
                                         </div>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="coll-md-7 promoinfo">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value="{{selectedStartDate}}">
+                                                value="{{selectedStartDate}}" style="color: grey;">
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="coll-md-7 promoinfo">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value="{{selectedEndDate}}">
+                                                value="{{selectedEndDate}}" style="color: grey;">
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="coll-md-7 promoinfo">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value="{{statusName}}">
+                                                value="{{statusName}}" style="color: grey;">
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +218,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-0">
+                        <div class="card-body p-0" style="color: grey;">
                             <div class="row mt-2" *ngFor="let Item of aditionalMoqDetails"
                                 style="border-bottom: 1px solid rgb(227, 225, 225);">
                                 <div class="col-md-3">
@@ -416,7 +416,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-0 border">
+                        <div class="card-body p-0 border" style="color: grey;">
                             <div class="row mt-2" *ngFor="let Item of AdditionalDetails"
                                 style="border-bottom: 1px solid rgb(227, 225, 225);">
                                 <div class="col-md-3">
@@ -493,7 +493,7 @@
                                 </div>
                             </div>
                             <div class="card-body" style="height: 115px; overflow-y: scroll;">
-                                <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
+                                <div class="row" style="color: grey;" *ngFor="let packingCharge of packingCharges; let i = index;">
                                     <div class="col-md-4">
                                         {{packingCharge.MinVolume}}
                                     </div>
@@ -589,7 +589,7 @@
                                 </div>
                             </div>
                             <div class="card-body" style="height: 115px; overflow-y: scroll;">
-                                <div class="row" *ngFor="let packingCharge of packingVolume; let i = index;">
+                                <div class="row" style="color: grey;" *ngFor="let packingCharge of packingVolume; let i = index;">
                                     <div class="col-md-4">
                                         {{packingCharge.MinVolume}}
                                     </div>

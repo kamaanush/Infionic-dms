@@ -163,6 +163,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
       headerName: 'OrderNo',
       field: 'orderNo',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       // sort: 'desc',
       tooltipField: 'orderNo',
     },
@@ -171,18 +172,21 @@ export class ViewInvoiceComponentComponent implements OnInit {
       headerName: 'Dealer Code',
       field: 'dealerCode',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       tooltipField: 'userName',
     },
     {
       headerName: 'Product Code',
       field: 'productCode',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       tooltipField: 'productCode',
     },
     {
       headerName: 'Dispatch Qty',
       field: 'dispatchQty',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       tooltipField: 'dispatchQty',
       minWidth: 200,
       // flex: 1,
@@ -203,6 +207,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
       headerName: 'InvoiceDate',
       field: 'invoiceDate',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       tooltipField: 'invoiceDate',
       cellRenderer: (data) => {
         const formattedDate = this.sharedService.dateformat(data.value);
@@ -214,6 +219,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
       headerName: 'InvoiceNo',
       field: 'invoiceNo',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       tooltipField: 'invoiceNo',
     },
 
@@ -221,6 +227,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
       headerName: 'Remarks',
       field: 'remarks',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' },
       tooltipField: 'remarks',
     }
   ];

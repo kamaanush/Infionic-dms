@@ -497,6 +497,7 @@ input.form-check-input1 {
     width: 100%;
      height: 38px; 
     border-radius: 12px;
+    outline: none;
 }
 .mat-form-field {
     width: 680px;
@@ -549,6 +550,7 @@ input.form-check-input1 {
     border: 1px solid #B3B3B3;
     border-radius: 10px;
     padding: 7px;
+    outline: none;
 }
   .promotiont1{
     margin-top: 3px;
@@ -648,7 +650,10 @@ input.form-check-input1 {
     width: 250px;
   
   }
-  
+  ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+ 
+    color: gray;
+    }
   .uom {
     margin-top: 16px;
     font-family: 'Gilroy';
@@ -1643,6 +1648,7 @@ input.form-check-input1 {
   float: right;
   margin-right: -26px;
   border: rgba(1, 139, 117, 1);
+  outline: none;
   }
   :disabled.slctd-geo-btn{
     /* background: grey; */
@@ -1778,6 +1784,12 @@ width: 100%;
 }
 .mainclass {
   margin-left: 5px;
+}
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: red;
 }
 
 ::ng-deep.dealerr .ng-select-container {
