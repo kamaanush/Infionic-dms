@@ -13,7 +13,7 @@
                         </p>
 
                     </div>
-                    <div class="col-sm-2" *ngIf="item.showAddIcon"  userRoleDirective="add_geography" [pageName]="currentPageName">
+                    <div class="col-sm-2" *ngIf="item.showAddIcon"  userRoleDirective="ADD_GEOGRAPHY" pageName="settinggeographies">
                         <mat-icon (click)="addGeographyForm(item, (i+1))" class="addC">add_circle</mat-icon>
                     </div>
                 </div>
@@ -33,23 +33,23 @@
                                     
                                     <div class="title"> {{geoItem?.geographyName}} ({{geoItem?.geographyCode ??''}})</div>
                                     <div class="action-items" *ngIf="item.geographySelected.indexOf(geoItem?.geographyId) == -1">
-                                        <div class="action-item edit-action" *ngIf="geoItem?.isActive"  userRoleDirective="edit_geography" [pageName]="currentPageName"
+                                        <div class="action-item edit-action" *ngIf="geoItem?.isActive"  userRoleDirective="EDIT_GEOGRAPHY" pageName="settinggeographies"
                                             (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
                                             <img src="assets/img/pencil.svg" alt="Edit">
                                         </div>
-                                        <div class="action-item activate-deactivate-action" *ngIf="(usertype !== 'Order Manager' && usertype !== 'Viewer')"
+                                        <div class="action-item activate-deactivate-action" userRoleDirective="DEACT_GEOGRAPHY" pageName="settinggeographies"
                                             (click)="activateDeactivateGeography($event, geoItem, (i+1) )">
                                             <img src="/assets/img/power.svg" alt="activate">
                                         </div>
                                     </div>
                                     <div class="action-items" *ngIf="item.geographySelected.indexOf(geoItem?.geographyId) !== -1">
-                                        <div class="action-item edit-action" *ngIf="geoItem.isActive"  userRoleDirective="edit_geography" [pageName]="currentPageName"
+                                        <div class="action-item edit-action" *ngIf="geoItem.isActive"  userRoleDirective="EDIT_GEOGRAPHY" pageName="settinggeographies"
                                             (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
                                             <img src="assets/img/editMeterial.svg" alt="Edit">
                                         </div>
                                         
                                         <div class="action-item activate-deactivate-action"
-                                            (click)="activateDeactivateGeography($event, geoItem, (i+1) )">
+                                            (click)="activateDeactivateGeography($event, geoItem, (i+1) )" userRoleDirective="DEACT_GEOGRAPHY" pageName="settinggeographies">
                                             <img src="/assets/img/Group.svg" alt="activate">
                                         </div>
                                     </div>

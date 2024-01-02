@@ -111,15 +111,9 @@
                 <mat-icon  class="searchButton">search</mat-icon>
               <button class="search-btn searchAlign">Search</button>
             </div>
-            <!-- <div class="add-user" (click)="addMaterials()"  userRoleDirective="MAT_ADD" pageName="settingmaterials">
-              <img src="assets/img/ADD.svg" class="addImage" alt="add-user-btn">
-            </div> -->
+            
 
-            <div class="add-user" (click)="addMaterials()" pageName="settingmaterials"  userRoleDirective="MAT_ADD" *ngIf="(userType !== 'Order Manager' && userType) && userType !== 'Viewer'">
-              <img src="assets/img/ADD.svg" class="addImage" alt="add-user-btn">
-            </div>
- 
-             <div class="Viewer"  *ngIf="(userType == 'Order Manager' && userType) || userType == 'Viewer'">
+            <div class="add-user" (click)="addMaterials()" pageName="settingmaterials"  userRoleDirective="MAT_ADD">
               <img src="assets/img/ADD.svg" class="addImage" alt="add-user-btn">
             </div>
             

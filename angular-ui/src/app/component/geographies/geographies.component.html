@@ -15,10 +15,10 @@
                     <div class="UNFAPP-asmnt-rgt-area main geo-classification-list">
                         <!-- <div class="col-lg-12"> -->
                             <mat-tab-group class="geo-label"  mat-stretch-tabs="false" [(selectedIndex)]="selectedTabIndex">
-                                <mat-tab label="Classification">
+                                <mat-tab label="Classification" userRoleDirective="VIEW" pageName="settinggeographies" >
                                     <app-geo-classification></app-geo-classification>
                                 </mat-tab>
-                                <mat-tab label="Settings">
+                                <mat-tab label="Settings" userRoleDirective="Settings_List" pageName="settinggeographies">
                                     <app-geographic-list></app-geographic-list>
                                 </mat-tab>
                             </mat-tab-group>

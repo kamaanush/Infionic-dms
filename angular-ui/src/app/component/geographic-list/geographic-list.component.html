@@ -34,10 +34,11 @@
               </div>
             </div>
             <div class="col-md-1">
-              <div *ngIf="(usertype !== 'Order Manager' && usertype !== 'Viewer')" class="add-user" (click)="addUser()">
+              <div userRoleDirective="Add_Shipping_Charges"   pageName="settinggeographies" class="add-user" (click)="addUser()">
                 <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
             </div>
+            
 
             
       

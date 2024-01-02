@@ -4,8 +4,8 @@
 
 <div #content *ngIf="isOpen" class="menu-container">
  
-  <div class="menu-item tick" (click)="ViewTarget()">View  <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-  <div *ngIf="(usertype !== 'Order Manager' && usertype !== 'Viewer')"  (click)="editUser()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div class="menu-item tick" userRoleDirective="VIEW_TARGET_GROUP" pageName="settingmaterials" (click)="ViewTarget()">View  <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div  userRoleDirective="EDIT_TARGET_GROUP" pageName="settingmaterials" (click)="editUser()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
 
   <!-- <div (click)="activate()" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" > </div> -->
 
