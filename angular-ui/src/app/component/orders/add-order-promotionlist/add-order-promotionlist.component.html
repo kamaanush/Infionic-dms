@@ -411,12 +411,21 @@
                                                                                     Item.materialcustomidentifier }}
                                                                                 </td>
 
-                                                                                <td style="padding-left: 75px;">{{
-                                                                                    Item.registrationNumber }}</td>
-                                                                                <td style="padding-left: 22px;">{{
-                                                                                    promos.moq }}</td>
-                                                                                <td style="padding-left: 42px;">${{
-                                                                                    Item.price }}</td>
+                                                                                <td>
+                                                                                    <input style="text-align: right; border: none; background: none; width: 100px;outline: none;" type="text" placeholder="Registration Number" class="registration-input"
+                                                                                           [(ngModel)]="Item.registrationNumber" readonly />
+                                                                                </td>
+                                                                            
+                                                                                <td >
+                                                                                    <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -55px;outline: none;" type="text" placeholder="MOQ" class="moq-input"
+                                                                                           [(ngModel)]="promos.moq" readonly />
+                                                                                </td>
+                                                                            
+                                                                                <td >
+                                                                                    <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -25px;outline: none;" type="text" placeholder="Unit Price" class="price-input"
+                                                                                           [(ngModel)]="Item.price" readonly />
+                                                                                </td>
+                                                                            
                                                                                 <td style="padding-left: 61px;"
                                                                                     class="QUantityFirst">
                                                                                     <input type="number" min="0"
@@ -568,11 +577,25 @@
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="padding-left: 65px;">
+                                                                        <td>
+                                                                            <input style="text-align: right; border: none; background: none; width: 100px;margin-left: -11px;outline: none;" type="text" placeholder="Registration Number" class="registration-input"
+                                                                                   [(ngModel)]="Item.registrationNumber" readonly />
+                                                                        </td>
+                                                                    
+                                                                        <td >
+                                                                            <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -68px;outline: none;" type="text" placeholder="MOQ" class="moq-input"
+                                                                                   [(ngModel)]="promos.moq" readonly />
+                                                                        </td>
+                                                                    
+                                                                        <td >
+                                                                            <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -39px;outline: none;" type="text" placeholder="Unit Price" class="price-input"
+                                                                                   [(ngModel)]="Item.price" readonly />
+                                                                        </td>
+                                                                    <!-- <td>
                                                                         {{Item.registrationNumber}}
                                                                     </td>
-                                                                    <td style="padding-left: 25px;">{{promos.moq}}</td>
-                                                                    <td style="padding-left: 33px;">${{Item.price}}</td>
+                                                                    <td>{{promos.moq}}</td>
+                                                                    <td >${{Item.price}}</td> -->
                                                                     <td style="margin-left: 65px" class="QUantityFirst">
                                                                         <input type="number" placeholder="Enter Qty"
                                                                             min="0" class="quatity-inp2"
@@ -739,12 +762,20 @@
                                                                     </td>
                                                                     <td>
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative;left: 63px;">
-                                                                        {{Item.registrationNumber}}</td>
-                                                                    <td style="position: relative;padding-left:12px;">
-                                                                        {{promos.moq}}</td>
-                                                                    <td style="position: relative;padding-left:33px;">
-                                                                        ${{Item.price}}</td>
+                                                                        <td>
+                                                                            <input style="text-align: right; border: none; background: none; width: 100px;margin-left: -11px;outline: none;" type="text" placeholder="Registration Number" class="registration-input"
+                                                                                   [(ngModel)]="Item.registrationNumber" readonly />
+                                                                        </td>
+                                                                    
+                                                                        <td >
+                                                                            <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -68px;outline: none;" type="text" placeholder="MOQ" class="moq-input"
+                                                                                   [(ngModel)]="promos.moq" readonly />
+                                                                        </td>
+                                                                    
+                                                                        <td >
+                                                                            <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -39px;outline: none;" type="text" placeholder="Unit Price" class="price-input"
+                                                                                   [(ngModel)]="Item.price" readonly />
+                                                                        </td>
                                                                     <!-- <td><input type="number" placeholder="Enter"
                                                                             [disabled]="!promos.isEnable" class="quatity-inp"
                                                                             [(ngModel)]="Item.stock"></td> -->
@@ -976,12 +1007,20 @@
                                                                     </td>
                                                                     <td>
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative;left: 57px;">
-                                                                        {{Item.registrationNumber}}</td>
-                                                                    <td style="position: relative;padding-left: 21px;">
-                                                                        {{promos.moq}}</td>
-                                                                    <td style="position: relative;padding-left: 28px;">
-                                                                        ${{Item.price}}</td>
+                                                                        <td>
+                                                                            <input style="text-align: right; border: none; background: none; width: 100px;margin-left: -16px;outline: none;" type="text" placeholder="Registration Number" class="registration-input"
+                                                                                   [(ngModel)]="Item.registrationNumber" readonly />
+                                                                        </td>
+                                                                    
+                                                                        <td >
+                                                                            <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -68px;outline: none;" type="text" placeholder="MOQ" class="moq-input"
+                                                                                   [(ngModel)]="promos.moq" readonly />
+                                                                        </td>
+                                                                    
+                                                                        <td >
+                                                                            <input style="text-align: right; border: none; background: none;width: 100px;margin-left: -39px;outline: none;" type="text" placeholder="Unit Price" class="price-input"
+                                                                                   [(ngModel)]="Item.price" readonly />
+                                                                        </td>
                                                                     <!-- <td><input type="number" placeholder="Enter"
                                                                             [disabled]="!promos.isEnable" class="quatity-inp"
                                                                             [(ngModel)]="Item.stock"></td> -->
@@ -1223,7 +1262,7 @@
 
                                                                     <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td>  -->
 
-                                                                    <td style="text-align: left;">
+                                                                    <!-- <td style="text-align: left;">
                                                                         {{Item.materialcustomidentifier}}</td>
 
                                                                     <td style="position: relative;left: 56px;">
@@ -1234,6 +1273,25 @@
 
                                                                     <td class="txt-right"
                                                                         style="    padding-left: 30px;">${{Item.price}}
+                                                                    </td> -->
+
+
+
+                                                                    <td style="text-align: left;">
+                                                                        {{Item.materialcustomidentifier}}</td>
+                                                                    <td>
+                                                                        <input style="text-align: right; border: none; background: none; width: 100px;    margin-left: -20px;outline: none;" type="text" placeholder="Registration Number" class="registration-input"
+                                                                               [(ngModel)]="Item.registrationNumber" readonly />
+                                                                    </td>
+                                                                
+                                                                    <td >
+                                                                        <input style="text-align: right; border: none; background: none;width: 100px;    margin-left: -70px;outline: none;" type="text" placeholder="MOQ" class="moq-input"
+                                                                               [(ngModel)]="data.promoDetails.moq" readonly />
+                                                                    </td>
+                                                                
+                                                                    <td >
+                                                                        <input style="text-align: right; border: none; background: none;width: 100px;     margin-left: -40px;outline: none;" type="text" placeholder="Unit Price" class="price-input"
+                                                                               [(ngModel)]="Item.price" readonly />
                                                                     </td>
 
                                                                     <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
@@ -1464,7 +1522,7 @@
                                                                         <td style="position: relative;">
                                                                             {{Item.materialcustomidentifier}}
                                                                         </td>
-                                                                        <td style="position: relative;left: 60px;">
+                                                                        <!-- <td style="position: relative;left: 60px;">
                                                                             {{Item.registrationNumber}}
                                                                         </td>
                                                                         <td class="txt-right"
@@ -1473,7 +1531,21 @@
 
                                                                         <td class="txt-right"
                                                                             style="    padding-left: 30px;">
-                                                                            ${{Item.price}}</td>
+                                                                            ${{Item.price}}</td> -->
+                                                                            <td>
+                                                                                <input style="text-align: right; border: none; background: none; width: 100px;    margin-left: -14px;outline: none;" type="text" placeholder="Registration Number" class="registration-input"
+                                                                                       [(ngModel)]="Item.registrationNumber" readonly />
+                                                                            </td>
+                                                                        
+                                                                            <td >
+                                                                                <input style="text-align: right; border: none; background: none;width: 100px;    margin-left: -70px;outline: none;" type="text" placeholder="MOQ" class="moq-input"
+                                                                                       [(ngModel)]="data.promoDetails.moq" readonly />
+                                                                            </td>
+                                                                        
+                                                                            <td >
+                                                                                <input style="text-align: right; border: none; background: none;width: 100px;     margin-left: -40px;outline: none;" type="text" placeholder="Unit Price" class="price-input"
+                                                                                       [(ngModel)]="Item.price" readonly />
+                                                                            </td>
                                                                         <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                     [(ngModel)]="Item.stock"></td> -->
                                                                         <!-- <td>

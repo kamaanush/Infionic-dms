@@ -2426,7 +2426,7 @@ li {
 }
 
 input[type="text"] {
-  padding-left: 40px;
+  /* padding-left: 40px; */
 }
 
 .search-btn {

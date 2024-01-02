@@ -112,7 +112,7 @@ export class DealerTargetComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "TargetGroup",
+      headerName: "Target Group",
        field: 'targetGroupName', 
 cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
     },
