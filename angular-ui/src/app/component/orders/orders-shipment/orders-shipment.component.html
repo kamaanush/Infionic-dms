@@ -55,7 +55,7 @@
 
       <!-- [pageName]="currentPageName" -->
 <div class="col-md-0 col-lg-0 col-sm-0">
-  <div class="sales-download" (click)="bulkDownload()" userRoleDirective="UPLOAD_SHIPMENT" >
+  <div class="sales-download" (click)="bulkDownload()" userRoleDirective="Bulk_Download" pageName="OrderDashboard" >
     <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
         alt="add-user-btn">
 </div>
@@ -63,7 +63,7 @@
 
 
 <div class="col-md-0 col-lg-0 col-sm-0">
-  <div class="sales-upload" (click)="orderShipmentUpload()" *ngIf="userType !== 'Dealer Admin'" >
+  <div class="sales-upload" (click)="orderShipmentUpload()" *ngIf="userType !== 'Dealer Admin'" userRoleDirective="Upload_Invoice" pageName="OrderDashboard">
     <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
         alt="add-user-btn">    
 </div>
@@ -72,14 +72,14 @@
 <!-- <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType == 'Dealer Admin'">
 </div> -->
 
-<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'" >
+<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'" userRoleDirective="Download_Invoice" pageName="OrderDashboard" >
   <div class="sales-dwnld" (click)="shipmentDownload()">
     <img   class="downloadedIcons" src="../../../assets/img/ll.svg"
         alt="add-user-btn">    
   </div>
 </div>
 
-<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'" >
+<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'" userRoleDirective="Download_Invoice" pageName="OrderDashboard" >
   <div class="sales-dwnld" (click)="shipmentDownload()">
     <img   class="downloadedIcons" src="../../../assets/img/ll.svg"
         alt="add-user-btn">    
