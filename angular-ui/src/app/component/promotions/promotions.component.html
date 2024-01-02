@@ -53,8 +53,7 @@
           </div>
         </form>
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2 dealerbubblespro"
-        style="font-family: 'Gilroy'; color: grey;margin-left: 9px;" *ngIf="userType === 'Admin'">
+      <div class="col-md-2 col-lg-2 col-sm-2 dealerbubblespro" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;" *ngIf="userType === 'Admin'">
         <form [formGroup]="myForms4" class="dropdown-formdealer">
           <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Select Dealer'" formControlName="city5"
             [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
@@ -105,8 +104,7 @@
           style="margin-left: 0px;">
       </div>
       <!-- downloAD -->
-      <div class="download-btn mr-2" style=" cursor: pointer;left:16%" *ngIf="userType !== 'Admin'"
-        (click)="onBtnExport()">
+      <div class="download-btn mr-2" style=" cursor: pointer;left:16%" *ngIf="userType !== 'Admin'" (click)="onBtnExport()" userRoleDirective="Download_Promotions" pageName="dealerdashboard">
         <img src="assets/img/ll.svg" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
       </div>
     </div>
@@ -123,12 +121,12 @@
         </div>
       </div>
 
-      <div class="col-md-4 d-flex" style="    position: relative;left: 10%;">
-        <div class="download-btn" style=" cursor: pointer" (click)="onBtnExport()">
+      <div class="col-md-4 d-flex" style="position: relative;left: 10%;">
+        <div class="download-btn" style=" cursor: pointer" (click)="onBtnExport()" userRoleDirective="Download_Promotions" pageName="dealerdashboard">
           <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
             alt="add-user-btn">
         </div>
-        <div class="add-user" (click)="addPromotions()" userRoleDirective="ADD_PROMOTION" [pageName]="currentPageName">
+        <div class="add-user" (click)="addPromotions()" userRoleDirective="ADD_PROMOTION" pageName="dealerdashboard" [pageName]="currentPageName">
           <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
         </div>
       </div>
@@ -144,7 +142,6 @@
     (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
     (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
-
 
   <div class="pagination">
     <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span class="pagination-cls">{{paginationScrollCount}}</span>

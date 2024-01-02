@@ -18,28 +18,22 @@
                         <!-- <div class="col-lg-12"> -->
                             <br>
                             <mat-tab-group class="order1-lab" mat-stretch-tabs="false" [(selectedIndex)]="selectedTabIndex">
-                                <mat-tab label="Promotions" *ngIf="tabList.indexOf('view_promotion') !== -1">
+                                <mat-tab label="Promotions" *ngIf="tabList.indexOf('view_promotion') !== -1" userRoleDirective="Promotions_List" pageName="dealerdashboard">
                                     <app-promotions></app-promotions>
                                 </mat-tab>
-
                                 <mat-tab label="Dealers " *ngIf="tabList.indexOf('view_dealer') !== -1" userRoleDirective="VIEW_DEALER" pageName="dealerdashboard">
                                     <app-dealers></app-dealers>
                                 </mat-tab>
                                 <mat-tab label="Targets" *ngIf="tabList.indexOf('view_targets') !== -1" userRoleDirective="VIEW_TARGETS" pageName="dealerdashboard">
                                     <app-dealer-target></app-dealer-target>
                                 </mat-tab>
-                               
-
                                 <mat-tab label="Association" *ngIf="tabList.indexOf('view_association') !== -1" userRoleDirective="VIEW_ASSOCIATION"  pageName="dealerdashboard">
                                     <app-association></app-association>
                                 </mat-tab>
-                              
-                             
-                                <mat-tab label="Reports" *ngIf="tabList.indexOf('view_reports') !== -1">
+                                <!-- userRoleDirective="Reports_Targets"  pageName="dealerdashboard" -->
+                                <mat-tab label="Reports" *ngIf="tabList.indexOf('view_reports') !== -1" >
                                     <app-reports></app-reports>
                                 </mat-tab>
-                            
-                            
                             </mat-tab-group>
                            
                         <!-- </div> -->

@@ -729,7 +729,7 @@ export class PromotionsComponent implements OnInit {
     this.dealerItems();
     this.searchText = '';
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
-    this.sharedServices.ReloadaddOrg.pipe(take(1)).subscribe(()=>{
+    this.sharedServices.ReloadaddOrg.pipe().subscribe(()=>{
       // alert('.......')
       this.getusertabeldata()
     })
