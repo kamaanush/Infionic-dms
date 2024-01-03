@@ -451,11 +451,11 @@ export class GeographicListComponent implements OnInit {
       if(this.usertype !=='Viewer' && this.usertype !=='Order Manager'){
         this.columnDefs1 = [
           {
-            headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
+            headerName: 'Destination', field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
             width: 200
           },
   
-          { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'], },
+          { headerName: 'Packing Charge', field: 'charges',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn','rightAligned'], },
           {
             headerName: '',
   
@@ -469,10 +469,10 @@ export class GeographicListComponent implements OnInit {
       }else{
         this.columnDefs1 = [
           {
-            headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
+            headerName: 'Destination', field: 'geographyName',cellStyle: { color: '#686E74' },type: ['nonEditableColumn'],
             width: 200
           },
-          { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'], },
+          { headerName: 'Packing Charge', field: 'charges',cellStyle: { color: '#686E74' },type: ['nonEditableColumn','rightAligned'], },
         ];
       }
 

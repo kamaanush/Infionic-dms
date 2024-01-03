@@ -288,19 +288,19 @@ export class CurrencyConversationComponent implements OnInit {
       this.columnDefs=[
         {
           headerName: "Name",
-          field: 'uoMName', type: ['nonEditableColumn'], minWidth: 250
+          field: 'uoMName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 250
         },
     
-        { headerName: "Display Unit", field: 'uoMShortName', type: ['nonEditableColumn'] },
+        { headerName: "Display Unit", field: 'uoMShortName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'] },
     
-        { headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn','rightAligned'] },
+        { headerName: "Rate", field: 'conversionRate',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn','rightAligned'] },
     
         // {  headerName: "Rate",
         //  field: 'uoMShortName',type: ['nonEditableColumn']},
     
         {
           headerName: " Effective Date",
-          field: 'effectiveFrom', type: ['nonEditableColumn'],
+          field: 'effectiveFrom',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
           cellRenderer: function dateFormtter(params)
     {
             
@@ -323,7 +323,7 @@ export class CurrencyConversationComponent implements OnInit {
         {
           headerName: "Standard Currency",
           // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-          field: 'uoMShortName', type: ['nonEditableColumn']
+          field: 'uoMShortName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
         },
     
         // suppressMovable:true,
@@ -331,6 +331,7 @@ export class CurrencyConversationComponent implements OnInit {
           headerName: "Status",
           field: 'statusName',
           maxWidth: 109,
+          cellStyle: { color: '#686E74' },
           type: ['nonEditableColumn'],
           cellEditor: 'agSelectCellEditor',
           cellEditorParams: {
@@ -371,19 +372,19 @@ export class CurrencyConversationComponent implements OnInit {
       this.columnDefs=[
         {
           headerName: "Name",
-          field: 'uoMName', type: ['nonEditableColumn'], minWidth: 250
+          field: 'uoMName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 250
         },
     
-        { headerName: "Display Unit", field: 'uoMShortName', type: ['nonEditableColumn'] },
+        { headerName: "Display Unit",cellStyle: { color: '#686E74' }, field: 'uoMShortName', type: ['nonEditableColumn'] },
     
-        { headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn','rightAligned'] },
+        { headerName: "Rate", field: 'conversionRate',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn','rightAligned'] },
     
         // {  headerName: "Rate",
         //  field: 'uoMShortName',type: ['nonEditableColumn']},
     
         {
           headerName: " Effective Date",
-          field: 'effectiveFrom', type: ['nonEditableColumn'],
+          field: 'effectiveFrom',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
           cellRenderer: function dateFormtter(params)
     {
             
@@ -406,7 +407,7 @@ export class CurrencyConversationComponent implements OnInit {
         {
           headerName: "Standard Currency",
           // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-          field: 'uoMShortName', type: ['nonEditableColumn']
+          field: 'uoMShortName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
         },
     
         // suppressMovable:true,
@@ -414,6 +415,7 @@ export class CurrencyConversationComponent implements OnInit {
           headerName: "Status",
           field: 'statusName',
           maxWidth: 109,
+          cellStyle: { color: '#686E74' },
           type: ['nonEditableColumn'],
           cellEditor: 'agSelectCellEditor',
           cellEditorParams: {

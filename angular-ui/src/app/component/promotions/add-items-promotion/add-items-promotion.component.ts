@@ -70,11 +70,13 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: 'Product Identifier',
       field: 'productIdentifier',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
     },
     {
       headerName: 'Product Code',
       field: 'productCode',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
       // checkboxSelection: true,
       // headerCheckboxSelectionFilteredOnly: true,
@@ -83,6 +85,7 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: 'Product Name',
       field: 'productName',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
       // pinned: 'left',
       // (
@@ -95,11 +98,13 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: 'Product Group',
       field: 'productGroup',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
     },
     {
       headerName: 'Product Category',
       field: 'classification',
+      cellStyle: { color: '#686E74' },
       minWidth: 200,
       maxWidth: 200,
       type: ['nonEditableColumn'],
@@ -166,6 +171,7 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: 'Product Shot Code',
       field: 'productShortCode',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
       sort: 'desc',
       // checkboxSelection: true,
@@ -221,6 +227,7 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: 'Product Group',
       field: 'productGroupName',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
       sort: 'desc',
       // checkboxSelection: true,
@@ -263,6 +270,7 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: 'Product Sub-Group',
       field: 'productSubGroupName',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
       sort: 'desc',
       // checkboxSelection: true,
@@ -273,6 +281,7 @@ export class AddItemsPromotionComponent implements OnInit {
     {
       headerName: 'Product Group',
       field: 'productGroupName',
+      cellStyle: { color: '#686E74' },
       type: ['nonEditableColumn'],
     },
 

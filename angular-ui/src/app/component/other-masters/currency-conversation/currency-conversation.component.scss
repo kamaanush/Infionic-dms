@@ -168,7 +168,7 @@ background: #D23F00 !important;
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
   box-sizing: content-box;
   content: "";
-  color: #000000;
+  // color: #000000;
   position: absolute;
   top: 50%;
   left: 0;

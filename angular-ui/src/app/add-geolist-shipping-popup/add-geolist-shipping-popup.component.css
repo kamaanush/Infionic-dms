@@ -28,7 +28,7 @@ label
     right: 10px;
 }
 ::ng-deep .product.multiselect-item-checkbox input[type=checkbox]+div:before {
-    border: 2px solid #000000 !important;
+    border: 2px solid #018B75 !important;
   }
 
 ::ng-deep.product .multiselect-dropdown {
@@ -368,4 +368,15 @@ mat-form-field {
     top: 38px !important;
     right: 0 !important;
     padding-left: 7px;
+}
+
+::ng-deep .multiselect-item-checkbox input[type=checkbox]+div {
+    position: relative;
+    padding-left: 2em;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    margin: 0;
+     color: gray !important; 
 }

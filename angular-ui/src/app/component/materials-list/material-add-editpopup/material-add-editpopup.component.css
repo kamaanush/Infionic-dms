@@ -1434,9 +1434,9 @@ textarea {
   height: 28.6px;
   left: 617.89px;
   top: 498.67px;
-
+  color: grey;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 0.5px solid grey;
   border-radius: 7px;
 }
 
@@ -1447,7 +1447,7 @@ textarea {
   top: 498.67px;
   margin-left: 10px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 0.5px solid grey;
   border-radius: 7px;
 }
 

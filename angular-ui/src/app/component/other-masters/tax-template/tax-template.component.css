@@ -344,11 +344,11 @@
 }
 
 ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-  background: #000000 !important;
+  background: #018B75CC !important;
 }
 
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-  border: 2px solid #000000 !important;
+  border: 2px solid #018B75CC !important;
 }
 
 ::ng-deep.dropdown-btn span .ng-star-inserted {
@@ -372,7 +372,7 @@
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
   box-sizing: content-box;
   content: "";
-  color: #000000;
+  /* color: #000000; */
   position: absolute;
   top: 50%;
   left: 0;
@@ -386,7 +386,7 @@
 
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]:checked+div:before {
   animation: borderscale .2s ease-in;
-  background: #00187A !important;
+  background: #018B75CC !important;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -648,4 +648,15 @@
 
 .search-bt_n:focus {
   border: 1px solid grey; 
+}
+
+::ng-deep .multiselect-item-checkbox input[type=checkbox]+div {
+  position: relative;
+  padding-left: 2em;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  margin: 0;
+   color: gray !important; 
 }

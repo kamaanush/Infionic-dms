@@ -219,15 +219,15 @@ instancePopup:any = null;
   {
     this.columnDefs=[
       { headerName: "Name",
-  field: 'taxTemplateName' ,type: ['nonEditableColumn'],minWidth:500
+  field: 'taxTemplateName' ,cellStyle: { color: '#686E74' },type: ['nonEditableColumn'],minWidth:500
   },
   
-  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] },
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',cellStyle: { color: '#686E74' },type: ['nonEditableColumn'] },
   
   // suppressMovable:true,
   { headerName: "Status",
    field: 'statusName',
-   
+   cellStyle: { color: '#686E74' },
    type: ['nonEditableColumn'],
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {
@@ -261,15 +261,15 @@ instancePopup:any = null;
     this.columnDefs=[
 
       { headerName: "Name",
-  field: 'taxTemplateName' ,type: ['nonEditableColumn'],minWidth:500
+  field: 'taxTemplateName' ,cellStyle: { color: '#686E74' },type: ['nonEditableColumn'],minWidth:500
   },
   
-  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] },
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',cellStyle: { color: '#686E74' },type: ['nonEditableColumn'] },
   
   // suppressMovable:true,
   { headerName: "Status",
    field: 'statusName',
-   
+   cellStyle: { color: '#686E74' },
    type: ['nonEditableColumn'],
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {

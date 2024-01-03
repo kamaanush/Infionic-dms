@@ -267,7 +267,7 @@ padding-left: 11px;
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
   box-sizing: content-box;
   content: "";
-  color: #000000;
+  color: gray;
   position: absolute;
   top: 50%;
   left: 0;

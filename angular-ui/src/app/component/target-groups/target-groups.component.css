@@ -1027,3 +1027,14 @@ mat-sidenav {
 .searchInput11:focus {
   border: 1px solid gray; 
 }
+
+::ng-deep .multiselect-item-checkbox input[type=checkbox]+div {
+  position: relative;
+  padding-left: 2em;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  margin: 0;
+   color: gray !important; 
+}

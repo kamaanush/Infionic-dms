@@ -384,6 +384,8 @@ label {
 .dlr-name {
     padding-left: 5px;
     font-family: 'Gilroy';
+    color: grey;
+
 }
 
 .dlr-info {

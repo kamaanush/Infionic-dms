@@ -232,20 +232,22 @@ border-radius: 10px; */
   width: 100px;
   height: 43px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  /* border: 0.5px solid #000000; */
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-bottom: 8px;
+  outline: none;
 }
 
 .qtyOfdiscount{
    width: 120px;
   height: 43px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  /* border: 0.5px solid #000000; */
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-bottom: 8px;
+  outline: none;
 }
 
 .addAlign {
@@ -1089,3 +1091,8 @@ li {
 :host ::ng-deep .ng-select .ng-arrow-wrapper .ng-arrow {
   border-top-color:#000000;
 }
+
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+ 
+  color: gray;
+  }
