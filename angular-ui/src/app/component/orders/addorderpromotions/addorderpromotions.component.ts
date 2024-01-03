@@ -651,9 +651,11 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   
   getPromotionsImages() {
+    this.CustomerPoId = localStorage.getItem('CustomerPoId');
     let data = {
       Dealerid: this.customerId,
       GeographyIdid: this.geographyId,
+      orderId: Number(this.CustomerPoId)
     };
     console.log(data, 'dealer and ge data');
     this.showSpinner();
@@ -1874,6 +1876,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   // non promotions list table data
   orderNonPromotionsList() {
+    this.CustomerPoId = localStorage.getItem('CustomerPoId');
     const data = {
       Cat: [],
       Sub_Cat: [],
@@ -1885,6 +1888,7 @@ export class AddorderpromotionsComponent implements OnInit {
       GeographyId: this.geographyId,
       Dealerid: this.customerId,
       ProductNameAndCode: [],
+      orderId:Number(this.CustomerPoId)
     };
     this.showSpinner();
 
@@ -2221,7 +2225,7 @@ export class AddorderpromotionsComponent implements OnInit {
       CreatedById: loggedUserId,
       itemcount: itemsCount,
       AddType: submitType,
-      CustomerPOId: this.CustomerPoId,
+      CustomerPOId: this.CustomerPoId||0,
       ShippingCharges:Number(this.shippingPackingchargeDetails.shippingCharges),
       PackingCharges:Number(this.shippingPackingchargeDetails.packingCharges)
     };

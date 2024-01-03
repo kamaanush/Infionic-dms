@@ -1,0 +1,2191 @@
+
+::ng-deep .orders-tab-group .mat-tab-label{
+    height: 35px !important;
+    /* min-width: 166px !important; */
+    font-family: 'Calibri';
+    color:rgba(1, 139, 117, 1);
+    font-size: 15px;
+  
+  }
+  
+  .datapromoname
+  {
+    position: relative;
+    left: 20px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+   letter-spacing: 0em;
+   color: black!important;
+   font-weight: 500;
+  }
+  .collapse-icon
+  {
+    position: relative;
+    left: 8px;
+  }
+  .text-secondary
+  {
+    font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  color: #686E74;
+  }
+  .TOtalorderQTY
+  {
+    font-family: 'Calibri';
+    font-size: 15px;
+   font-weight: 700;
+  color: #000000;
+  }
+  
+  .Order-SHIP  td {
+    padding: 2px !important;
+    
+  }
+  .Order-Information td
+  {
+    padding: 0px;
+  }
+  .FreePromoitems
+  {
+    color: #018B75 !important;
+  }
+  
+  .DEalername
+  {
+    font-family: 'Calibri';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #000000;
+  }
+  .tooltip-content
+  {
+    font-family: 'Calibri';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #000000;
+  }
+  .card_orderinfo
+  {
+  background-color: white !important;
+  border: 1px solid #989CA04D;
+  border-radius: 10px;
+  }
+  .OrderInformation
+  {
+    font-family: 'Calibri';
+    font-size: 17px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    color: #000000 !important;
+    font-weight: bold;
+    position: relative;
+    left: 1px;
+    top: -12px;
+  
+  }
+  .proheight
+  {
+    width: 90vw;
+  }
+  
+  ::ng-deep .mat-tab-header {
+    border: 1px solid grey;
+    border-radius: 35px;
+    flex-shrink: 0;
+    width: 322px !important;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled){
+    border-radius: 0px;
+     background: rgba(1, 139, 117, 1) !important; 
+  }
+  
+  ::ng-deep.mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted{
+    height: 35px !important;
+    /* background-color:  rgba(1, 139, 117, 1) !important; */
+  }
+  
+  ::ng-deep .mat-tab-body-wrapper{
+    margin-top: 20px;
+  }
+  
+  .mat-form-field::placeholder {
+      bottom: 2px;
+    }
+    
+    .category {
+      margin-top: 18px;
+      font-family: 'Gilroy';
+    }
+    
+    .delivery1 {
+      font-weight: bold;
+    }
+    
+    .boldR {
+      font-weight: bold;
+    }
+    
+    .form-control::placeholder {
+      font-family: 'Gilroy-Regular';
+      font-size: 14px;
+      line-height: 16px;
+      color: rgba(104, 110, 116, 0.75);
+    
+    }
+    
+    .rr::placeholder {
+      color: #C32F27;
+    }
+    
+    .materialname {
+      margin-top: 3px;
+      font-family: 'Gilroy';
+      margin-left: -4px;
+    }
+    
+    .additional {
+      margin-top: -10px;
+      font-family: 'Gilroy';
+      margin-left: -4px;
+    }
+    
+    .promotiont1 {
+      margin-top: 3px;
+      font-family: 'Gilroy';
+      margin-left: 2px;
+      font-weight: bold;
+      font-family: 'Gilroy-Medium';
+      font-size: 13px;
+      line-height: 15px;
+      letter-spacing: 0em;
+      color: #000000;
+    
+    
+    }
+    
+    .image {
+      font-family: 'Gilroy';
+      margin-left: 2px;
+      position: relative;
+      top: -260px;
+      left: 415px;
+    
+    }
+    
+    .geography {
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 450px;
+    
+    }
+    
+    /* ::ng-deep.steppers .prod.mat-horizontal-content-container {
+          width: 800px !important;
+        } */
+    .scroll {
+      overflow-y: auto;
+      overflow-x: auto;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      border-radius: 25px;
+      /* background: #b3b3bc; */
+    }
+    
+    ::-webkit-scrollbar-track {
+      border-radius: 20px;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      margin-left: 20px;
+    }
+    
+    .description {
+      font-family: 'Gilroy';
+      margin-top: 15px;
+    }
+    
+    .materialci {
+      font-family: 'Gilroy';
+      margin-top: -29px;
+      margin-left: 499px;
+    }
+    
+    .imageofm {
+      font-family: 'Gilroy';
+      margin-top: -31px;
+      margin-left: 314px;
+    }
+    
+    .expiryperiod {
+      font-family: 'Gilroy';
+      margin-top: 10px;
+      margin-left: 498px;
+    }
+    
+    .describem {
+      width: 250px;
+    
+    }
+    
+    .uom {
+      margin-top: 16px;
+      font-family: 'Gilroy';
+      margin-left: -5px;
+    }
+    
+    .sub-category {
+      margin-top: -28px;
+      margin-left: 255px;
+      font-family: 'Gilroy';
+    }
+    
+    .type {
+      margin-top: -30px;
+      margin-left: 496px;
+      font-family: 'Gilroy';
+    }
+    
+    .font {
+      font-family: 'Gilroy';
+    }
+    
+    .heading {
+      margin-top: 8px;
+      font-family: 'Gilroy';
+    }
+    
+    ::ng-deep.mat-stepper-vertical,
+    .mat-stepper-horizontal {
+      display: inline;
+      width: 500px;
+    }
+    
+    ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+      max-width: 100vw;
+      margin-top: -51px;
+    }
+    
+    .mat-horizontal-stepper-wrapper {
+      margin-top: -47px;
+    
+    }
+    
+    /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
+          margin: top -51px;
+        }; */
+    ::ng-deep.input.mat-input-text {
+      margin-top: -9px;
+      margin-left: -6px;
+    }
+    
+    /*old css*/
+    
+    .mat-form-field-flex {
+      padding-top: -10px;
+      display: inline-flex;
+      align-items: baseline;
+      box-sizing: border-box;
+      width: 100%;
+      height: 37px;
+    
+      /* background-color: #CED4DA; */
+    }
+    
+  
+    
+    .font {
+      font-family: 'Gilroy';
+    }
+    
+    .head-t h3 {
+      color: #000000;
+      text-align: center;
+      margin-top: -18px;
+      margin-bottom: 2px;
+      cursor: pointer;
+    }
+    .head-t1 h3 {
+      color: #000000;
+      margin-top: -18px;
+      margin-bottom: 2px;
+      cursor: pointer;
+    }
+    
+    .addU {
+      position: relative;
+      font-family: 'Gilroy-Bold'; 
+      /* font-weight: bold; */
+      font-size: 20px;
+    }
+    .addU12 {
+      position: relative;
+      font-family: 'Gilroy-Bold'; 
+      /* font-weight: bold; */
+      font-size: 20px;
+    }
+  
+    .addU12:after {
+      content: "";
+      display: block;
+      width: 800px;
+      height: 2px;
+      background: #686E74;
+       right: 12%;
+      top: 50%;
+      position: absolute;
+  }
+    .addView{
+      position: relative;
+      /* font-family: 'Gilroy-Bold';  */
+      font-weight: bold;
+      font-size: 20px;
+      right: 30%;
+    }
+    .addView:after {
+      content: "";
+      display: block;
+      width: 535px;
+      height: 2px;
+      background: #686E74;
+      left: 555px;
+      top: 50%;
+      position: absolute;
+    }
+    .addU:after {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 2px;
+      background: #686E74;
+      right: 1%;
+      top: 50%;
+      position: absolute;
+    }
+    
+    .addU:before {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 2px;
+      background: #686E74;
+      left: 0;
+      top: 50%;
+      position: absolute;
+    }
+    
+    .addUser1Form input {
+      border-radius: 5px;
+      border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+      padding: 5px 5px;
+      width: 250px;
+      font-size: 14px;
+      outline: none;
+    }
+    
+    .addUser1 {
+      margin-top: -12px;
+    }
+    
+    .astr {
+      color: red;
+    }
+    
+    .close_icon {
+      left: 98%;
+      position: relative;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: -1px;
+      font-weight: bold;
+    
+    }
+    
+    .DealerInfo-label {
+      margin: 3px;
+      font-size: 14px;
+      align-items: center;
+      /* font-weight: bold; */
+      font-family: 'Gilroy-SemiBold';
+    }
+    
+    .DescInfo-label {
+      margin: 5px;
+      font-size: 14px;
+      font-family: 'calibri';
+      font-weight: normal;
+    }
+    .DescInfo-labels {
+      margin: 5px;
+      font-size: 13px;
+      align-items: center;
+      font-weight: 500;
+      position: relative;
+      font-family: 'Gilroy-Medium';
+      /* top: 25px;
+      right: 17%; */
+    }
+    .DescInfo-labelss {
+      margin: 5px;
+      font-size: 13px;
+      align-items: center;
+      font-weight: 500;
+      position: relative;
+      font-family: 'Gilroy-Medium';
+      /* top: 25px;
+      right: 19%; */
+    }
+    
+    ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 0em 0 0.7em 0;
+      border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    }
+    
+    ::ng-deep.mat-dialog-container {
+      /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+      overflow-x: hidden;
+      overflow-y: hidden;
+    /* max-width: 95vw; */
+    height: 100%;
+    
+    }
+    
+    .shipmentOnes{
+      width: 100%;
+    }
+    .tabell
+    {
+      width: 100%;
+      
+    }
+    .shipmentTwo{
+      width: 98%;
+    }
+    
+    .categorydrp {
+      width: 205px;
+    }
+    
+    .subcategorydrp {
+      width: 205px;
+      margin-left: 250px;
+      margin-top: -40px;
+    }
+    
+    .typedrp {
+      width: 205px;
+      margin-left: 499px;
+      margin-top: -42px;
+    }
+    
+    .customidentifier {
+      width: 205px;
+      margin-left: 499px;
+      margin-top: -145px;
+    }
+    
+    .uomp {
+      margin-left: 499px;
+      margin-top: -29px;
+    }
+    
+    .promotiontypedrp {
+      width: 390px;
+      margin-top: 2px;
+      color: lightgrey;
+      font-family: 'Gilroy';
+    }
+    
+    .brandname {
+      margin-top: 1px;
+      margin-left: -5px;
+      font-family: 'Gilroy';
+    }
+    
+    .globalcode {
+      margin-top: -35px;
+      margin-left: 388px;
+      font-family: 'Gilroy';
+    }
+    
+    .brandpl {
+      margin-top: 10px;
+    }
+    
+    .sku {
+      margin-top: 10px;
+      margin-left: -5px;
+      font-family: 'Gilroy';
+    }
+    
+    .shortcode {
+      margin-top: -35px;
+      margin-left: 388px;
+      font-family: 'Gilroy';
+    }
+    
+    .productg {
+      margin-top: 10px;
+      margin-left: -5px;
+      font-family: 'Gilroy';
+    }
+    
+    .manualsort {
+      margin-top: -35px;
+      margin-left: 388px;
+      font-family: 'Gilroy';
+    }
+    
+    .productdrp {
+      width: 309px;
+      margin-top: 8px;
+      margin-left: -2px;
+    }
+    
+    .productsg {
+      margin-top: 10px;
+      margin-left: -5px;
+      font-family: 'Gilroy';
+    }
+    
+    .productlink {
+      margin-top: -35px;
+      margin-left: 388px;
+      font-family: 'Gilroy';
+    }
+    
+    .productsdrp {
+      width: 309px;
+      margin-top: 8px;
+      margin-left: -2px;
+    }
+    
+    .productci {
+      margin-top: 10px;
+      margin-left: -5px;
+      font-family: 'Gilroy';
+    }
+    
+    .identiersdrp {
+      width: 735px;
+      margin-top: 8px;
+      margin-left: -2px;
+    
+    }
+    
+    
+    .mat-slide {
+      margin-left: 620px;
+      color: black;
+      font-family: 'Gilroy';
+      margin-top: -1px;
+    }
+    
+    .city {
+      margin-left: 608px;
+      margin-top: -30px;
+    }
+    
+    .state {
+      margin-left: 228px;
+      margin-top: -29px;
+    }
+    
+    .region {
+      margin-left: 425px;
+      margin-top: -29px;
+    }
+    
+    .mat-card {
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      height: 190px;
+      width: 186px;
+    
+      /* font-size: 10px; */
+    }
+    
+    ::ng-deep.matcard-dealers .mat-card {
+      width: 373px;
+      height: 218px;
+    }
+    
+    .catg {
+      background: #EAEEFF;
+      border: 1px solid #00187A;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      color: #00187A;
+      padding: 5px;
+      text-align: center;
+    }
+    
+    div.catg[data-selected] {
+      border: 2px solid #333;
+    }
+    
+    .subc {
+      background: #E6FFF6;
+      border: 1px solid #0C5A3E;
+      border-radius: 10px;
+      color: #0C5A3E;
+      font-size: 14px;
+      margin-bottom: 10px;
+      padding: 5px;
+      text-align: center;
+    }
+    
+    .typeg {
+      background: #FFEDEC;
+      border: 1px solid #C32F27;
+      border-radius: 10px;
+      color: #C32F27;
+      font-size: 14px;
+      margin-bottom: 10px;
+      padding: 5px;
+      text-align: center;
+    }
+    
+    li {
+      list-style: none;
+    }
+    
+    .addcat {
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      margin-right: 10px;
+      font-size: 13px;
+      color: rgba(104, 110, 116, 0.75);
+      padding: 8px 16px;
+      /* width: 150px; */
+      margin-left: -12px;
+    }
+    
+    .addcode {
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      font-size: 13px;
+      color: rgba(104, 110, 116, 0.75);
+      padding: 8px 20px;
+    }
+    
+    .span-subhead {
+      margin-bottom: 10px;
+      display: flex;
+      color: rgba(104, 110, 116, 0.75);
+      font-size: 13px;
+    }
+    
+    .selected {
+      background-color: #00187A;
+      color: white;
+    }
+    
+    .subselected {
+      background: #0C5A3E;
+      color: white;
+    }
+    
+    .typeselected {
+      background: #C32F27;
+      color: white;
+    }
+    
+    /* .row {
+      width: 96%;
+    } */
+    
+    .bar {
+      height: 400px;
+      overflow-y: scroll;
+      overflow-x: scroll;
+      /* height: 500px; */
+    }
+    
+    .geo {
+      margin-top: 18px;
+      font-family: 'Gilroy';
+    }
+    
+    .minorder {
+      margin-top: -29px;
+      margin-left: 310px;
+      font-family: 'Gilroy';
+    }
+    
+    .mrp {
+      position: relative;
+      left: 27%;
+      font-family: 'Gilroy';
+    }
+    
+    .max {
+      margin-top: -29px;
+      margin-left: 409px;
+      font-family: 'Gilroy';
+    }
+    
+    .discount {
+      margin-top: -29px;
+      margin-left: 608px;
+      font-family: 'Gilroy';
+    }
+    
+    .margin {
+      margin-top: -29px;
+      margin-left: 512px;
+      font-family: 'Gilroy';
+    }
+    
+    .leadt {
+      position: relative;
+      left: 90%;
+      top: -32px;
+      font-family: 'Gilroy';
+    }
+    
+    .registration {
+      top: -64px;
+      left: 105%;
+      position: relative;
+      font-family: 'Gilroy';
+    }
+    
+    .tags {
+      position: relative;
+      left: 125%;
+      top: -93px;
+      font-family: 'Gilroy';
+    }
+    
+    .Kedah {
+      margin-top: 24px;
+      margin-left: 4px;
+    }
+    
+    .mala {
+      margin-top: -111px;
+      margin-left: 4px;
+    }
+    
+    .Perak {
+      margin-top: 18px;
+      margin-left: 4px;
+    }
+    
+    .Penang {
+      margin-top: 17px;
+      margin-left: 4px;
+    }
+    
+    .North {
+      margin-top: 17px;
+      margin-left: 4px;
+    }
+    
+    /* .geoo{
+          width: 900px;
+        } */
+    .addlink {
+      margin-top: -21px;
+      margin-left: 987px;
+    
+    }
+    
+    .numberl {
+      margin-top: -21px;
+      margin-left: 799px;
+    }
+    
+    .headergeo {
+      position: relative;
+      left: -7%;
+      top: -29px;
+    }
+    
+    .malainput {
+      position: relative;
+      left: -7%;
+    }
+    
+    .kedahinput {
+      position: relative;
+      left: -7%;
+    }
+    
+    .perakinput {
+      position: relative;
+      left: -7%;
+    }
+    
+    .penanginput {
+      position: relative;
+      left: -7%;
+    }
+    
+    .northinput {
+      position: relative;
+      left: -7%;
+    }
+    
+    .infosize {
+      width: 300px !important;
+    }
+    
+    ::ng-deep.mat-horizontal-content-container {
+      overflow: hidden;
+      padding: 0px 0px 0px 0px;
+    }
+    
+    .submitbtn {
+      margin-top: 12px;
+    }
+    
+    ::ng-deep.mat-step-text-label {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 12px;
+    }
+    
+    /* ::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
+        padding: .75em .75em 0 .75em;
+        border-radius: 14px;
+        width: 393px;
+        height: 42px;
+      
+      } */
+    
+    .datepicker.mat-form-field-infix {
+      display: block;
+      position: relative;
+      flex: auto;
+      min-width: 0;
+      width: 180px;
+      background-color: white;
+      font-family: "Gilroy";
+    }
+    
+    .mat-card-subtitle:before {
+      content: "";
+      display: block;
+      width: 372px;
+      height: 1px;
+      background: lightgrey;
+      right: 0;
+      top: 17%;
+      position: absolute;
+    }
+    
+    .mat-card-subtitle {
+      font-weight: bold;
+      font-family: 'Gilroy';
+    }
+    
+    .alignment {
+      position: relative;
+      left: 209px;
+    }
+    
+    .btn-row {
+      margin-top: -2px;
+    }
+    
+    .material-card {
+      margin-top: -5px;
+    }
+    
+    .getgrp {
+      position: relative;
+      left: 403px;
+      top: -74px;
+    }
+    
+    .productlevel {
+      position: relative;
+      font-family: 'Gilroy';
+      bottom: 95px;
+    }
+    
+    .items {
+      position: relative;
+      font-family: 'Gilroy';
+      bottom: 153px;
+    }
+    
+    .itemstwo {
+      position: relative;
+      font-family: 'Gilroy';
+      bottom: 500px;
+      left: 408px;
+    }
+    
+    .qty {
+      position: relative;
+      font-family: 'Gilroy';
+      bottom: 328px;
+      left: 293px;
+    }
+    
+    .qtytwo {
+      position: relative;
+      font-family: 'Gilroy';
+      bottom: 678px;
+      left: 708px;
+    }
+    
+    .moq {
+      position: relative;
+      font-family: 'Gilroy';
+      bottom: 321px;
+      left: 293px;
+    }
+    
+    .productleveltwo {
+      position: relative;
+      font-family: 'Gilroy';
+      bottom: 166px;
+      left: 406px;
+    }
+    
+    .hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+      overflow: hidden;
+      display: none;
+      /* background-image: url('../../../../assets/img/maximize.png');   */
+      background-size: 13px;
+      background-repeat: no-repeat;
+      height: 300px;
+      margin-top: 12px;
+      margin-right: -10px;
+    }
+    
+    .productdrpdown {
+      width: 365px;
+      position: relative;
+      bottom: 89px;
+    }
+    
+    .productdrpdowntwo {
+      width: 365px;
+      position: relative;
+      bottom: 160px;
+      left: 414px;
+    }
+    
+    .search-img {
+      width: 17px;
+      position: relative;
+      top: -25px;
+      left: 145px;
+    }
+    
+    .input-box {
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      /* width: 260px; */
+      height: 30px;
+      font-size: 13px;
+      padding: 0 7px;
+    }
+    
+    .collapsible {
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      border-radius: 10px 10px 0px 0px;
+      color: white;
+      border: 0.5px solid rgba(1, 139, 117, 1);
+      background: rgba(1, 139, 117, 1);
+      height: 52px;
+    }
+    
+    /* .active, .collapsible:hover {
+          background-color: #555;
+      } */
+    
+    .content {
+      /* padding: 0 18px 10px; */
+      overflow: hidden;
+      box-sizing: border-box;
+      border-width: 0px 1px 1px 1px;
+      /* border-style: solid;
+      border-color: #686E74; */
+      border-radius: 0px 0px 10px 10px;
+      border: 1px solid #989CA04D;
+    }
+    .content-order {
+      padding: 0 18px 10px;
+      overflow: hidden;
+      box-sizing: border-box;
+      border-width: 0px 1px 1px 1px;
+      border-style: solid;
+      border-color: #686E74;
+      border-radius: 0px 0px 10px 10px;
+      overflow: auto;
+      margin: -20px 10px;
+    }
+    .content::-webkit-scrollbar{
+    height: 5px;
+    }
+    .top-bottom {
+      margin-top: 14px;
+    }
+    
+    .label-cls {
+      position: relative;
+      top: 14px;
+      font-size: 17px;
+      margin-left: 1%;
+      font-family: 'Calibri';
+      left: 33px;
+      color: #FFFFFF !important;
+  
+  
+    }
+    .Total-Orderinfo
+    {
+      font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  /* color: #000000; */
+  ;
+   
+    }
+    
+    
+    .add-edit-promo {
+      color: #fff;
+      background: #000000;
+      box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      font-size: 10px;
+      text-align: center;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    
+    .add-edit-non-promo {
+      background: #FFFFFF;
+      border: 2px solid #000000;
+      box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      font-size: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .promotions-label {
+      /* margin-left: -12px; */
+      font-family: 'Gilroy-SemiBold';
+      font-size: 14px;
+      align-items: center;
+      color: #000000;
+    }
+    
+    .buy-text {
+      font-size: 13px;
+      align-items: center;
+      color: #C32F27;
+    }
+    
+    .main {
+      overflow-x: hidden !important;
+      height: 635px;
+    
+    }
+    /* .reciveShipscroll{
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+    } */
+    
+    .promotionpopup-scroll {
+      min-height: 601px !important;
+    }
+    .receivementscroball
+    {
+      height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
+    .total_total
+  {
+    
+    width: 129px;
+    height: 52px;
+    margin-right: -1px;
+    background: #018B75CC;
+    font-family: "Calibri";
+    border-radius: 0px 21.2px 21.2px 0px;
+    margin-top: -5px;
+    color: white;
+    text-align:left;
+  padding-left: 20px;
+  margin-top: 0px;
+  }
+  .SUBTotaldatacolor
+  {
+    position: relative;
+    right: 100px;
+    font-family: 'Calibri';
+    font-size: 15px;
+    font-weight: 700;
+    color: #000000;
+  
+  
+  }
+  .totaltotal
+  {
+    margin-top: 4px;
+    margin-left: 12px;
+    color: white;
+  
+  }
+  #totallssss
+  {
+    margin-left: 12px;
+   
+  }
+  #totallssss1
+  {
+    margin-left: 12px;
+    color: black;
+   
+  }
+  .dispatchC{
+    /* font-weight: bold; */
+    font-family: 'Gilroy-SemiBold';
+    font-size: 14px;
+  }
+    .footer {
+      /* position: fixed; */
+      border-radius: 0px 0px 25px 25px;
+      height: 50px;
+      width: 860px !important;
+    
+    }
+    
+    .save-submit {
+      background: #FFFFFF;
+      border: 2px solid #000000;
+      box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+    
+      margin-top: 15px;
+      cursor: pointer;
+      width: 168px;
+      height: 43px;
+    
+      line-height: 18px;
+      letter-spacing: 0em;
+      text-align: center;
+      font-weight: bold;
+      font-family: 'Gilroy-SemiBold';
+      font-size: 15px;
+      line-height: 18px;
+      align-items: center;
+      text-align: center;
+    
+      color: #000000;
+    
+    
+    }
+    
+    .saveas-draft {
+    
+      background: #000000;
+      box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      float: right;
+      margin-top: 4%;
+      cursor: pointer;
+      width: 168px;
+      height: 43px;
+      border-radius: 10px;
+    
+    
+      font-family: 'Gilroy-SemiBold';
+      font-size: 15px;
+      line-height: 18px;
+      align-items: center;
+      text-align: center;
+      background: rgba(1, 139, 117, 1);
+      border-color: rgba(1, 139, 117, 1) ;
+    
+      color: #FFFFFF;
+    }
+    
+    .cancel {
+      font-size: 15px;
+      width: 106px;
+      height: 39px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #000000;
+      border: none;
+      margin-top: 15px;
+      margin-left: 59px;
+      font-weight: bold;
+      text-decoration-line: underline;
+      cursor: pointer;
+      margin-top: 4%;
+      font-family: 'Gilroy-Bold';
+      margin-left: 1%;
+    
+    
+    
+    
+    }
+    
+    
+    .print-img {
+      float: right;
+      width: 8%;
+    }
+    
+    .uom-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 100px
+    }
+    
+    .qyt-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 100px
+    }
+    
+    .stack-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 100px
+    }
+    
+    .value-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 54px
+    }
+    
+    .dis-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 100px
+    }
+    
+    .final-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 100px
+    }
+    
+    .tax-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 100px
+    }
+    
+    .amt-cls {
+      border: 0.5px solid #000000;
+      border-radius: 10px;
+      width: 100px
+    }
+    
+    .company-cls {
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      width: 100%;
+      height: 35px;
+    }
+    
+    ::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
+      /* width: 262px; */
+      height: 30px;
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 0 5px;
+    
+    }
+    
+    .addbtns {
+      float: right;
+    }
+    
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-datepicker-toggle-default-icon,
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-datepicker-toggle-default-icon {
+      margin: auto;
+      margin-top: -27px;
+    }
+    
+    
+    
+    .expand-arrow {
+      width: 24%;
+      position: relative;
+      right: -80px;
+      top: 4px;
+    }
+    
+    ::ng-deep.selectgeo .multiselect-dropdown .dropdown-btn {
+      font-size: 13px;
+      padding: 5px 12px !important;
+      height: 30px;
+      color: rgba(104, 110, 116, 0.75);
+    }
+    
+    ::ng-deep.billAddress .multiselect-dropdown .dropdown-btn {
+      font-size: 13px;
+      padding: 5px 12px !important;
+      height: 30px;
+      color: rgba(104, 110, 116, 0.75);
+    }
+    
+    ::ng-deep.billAddress .multiselect-dropdown .dropdown-btn .selected-item {
+      border: 1px solid #337ab7;
+      margin-right: 4px;
+      background: #00187A !important;
+      padding: 0 5px;
+      color: #fff;
+      border-radius: 10px !important;
+      float: left;
+      display: flex;
+      max-width: 170px !important;
+      position: relative;
+      top: 0px !important;
+    }
+    
+    ::ng-deep.shipingAddress .multiselect-dropdown .dropdown-btn {
+      font-size: 13px;
+      padding: 5px 12px !important;
+      height: 30px;
+      color: rgba(104, 110, 116, 0.75);
+    }
+    
+    ::ng-deep.shipingAddress .multiselect-dropdown .dropdown-btn .selected-item {
+      border: 1px solid #337ab7;
+      margin-right: 4px;
+      background: #00187A !important;
+      padding: 0 5px;
+      color: #fff;
+      border-radius: 10px !important;
+      float: left;
+      display: flex;
+      max-width: 170px !important;
+      position: relative;
+      top: 0px !important;
+    }
+    
+    .IteminputBoxes1 {
+      left: 32px;
+      position: relative;
+      top: 2px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+  
+    }
+    .IteminputBoxes2 {
+      left: 165px;
+      position: relative;
+      top: 2px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+    .IteminputBoxes3
+    {
+      position: relative;
+      left: 63px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+    .IteminputBoxes4
+    {
+      position: relative;
+      left: 120px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+    .IteminputBoxes5
+    {
+      position: relative;
+      right: 3px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+    .IteminputBoxes6
+    {
+      position: relative;
+      left: 49px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+    .IteminputBoxes7
+    {
+      position: relative;
+      left: 121px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+   
+    .IteminputBoxes8
+    {
+      position: relative;
+      right: 4px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+    .IteminputBoxes9
+    {
+      position: relative;
+      left: 47px;
+      font-family: 'Calibri';
+      font-size: 15px;
+     line-height: 18px;
+    }
+  
+    .Shipmentorders
+    {
+      background: rgba(1, 139, 117, 1);
+      color: white;
+      height: 52px;
+      padding-top: 15px;
+      font-size: 17px;
+      font-family: 'Calibri';
+     font-weight: 700;
+     line-height: 22px;
+     border-top-left-radius: 3px;
+     border-top-right-radius: 3px;
+    }
+    .numeric {
+      text-align: right;
+    }
+    .Charactersleft
+    {
+      text-align: right;
+    }
+   .text-right{
+    width: 100px;
+   }
+   .text_right
+   {
+    text-align: right;
+   }
+   .OrdersItems
+   {
+    font-family: 'Calibri';
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  color: white;
+  background: rgba(1, 139, 117, 1);
+  height: 52px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  
+   }
+    
+    
+    
+    .itemLeft {
+      font-size: 12.5px;
+      text-align: left;
+      margin-right: -39px;
+      font-family: 'Gilroy-SemiBold';
+    }
+    
+    .itemLeft1 {
+      font-size: 12.5px;
+      margin-left: 22px;
+      text-align: left;
+      font-family: 'Gilroy-SemiBold';
+    }
+    
+    
+    .text-area-extrainfo {
+      height: 62px;
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+    }
+    
+    .promoItem {
+      width: 30px;
+      height: 30px;
+      background: #0091EA;
+      border-radius: 68%;
+      color: white;
+      padding: 3px 5px;
+      margin-left: -8px;
+    }
+    
+    .totall {
+      width: 50%;
+      height: 51%;
+      background: #FFFFFF;
+      border-top:1px  solid  #989CA04D;
+      border-bottom: 1px solid #989CA04D;
+      border-left: 1px solid #989CA04D;
+      border-right: 1px solid #989CA04D;
+      border-radius: 21px;
+      font-size: 13px;
+      position: relative;
+      /* left: 60.2%; */
+     
+    }
+    
+    .subitem {
+      font-size: 13px;
+      width: 179px;
+      text-align: right;
+      padding: 5px;
+    }
+    .tr .subitem
+    {
+      background-color: #0091EA !important;
+    }
+    .totall td {
+      padding: 6px;
+    }
+    .SUBTOTALORDERS
+    {
+      position: relative;
+      right: 57px;
+    }
+  
+  
+  
+    .SUBITEMNAME {
+      font-family: 'Calibri';
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0em;
+      position: absolute;
+      left: 53px;
+    }
+  
+    .numbers {
+     /* right: 70px; */
+     /* position: relative; */
+     font-family: 'Calibri';
+   font-size: 15px;
+   font-weight: 400;
+   line-height: 15px;
+   letter-spacing: 0em;
+   color:  #686E74;
+  
+    }
+    
+    .innerTotal {
+      margin-left: 15px;
+    }
+  
+    .subitem:nth-child(odd){
+      background: #DEE2E633;
+    }
+    .alltotals {
+      margin-bottom: 1px;
+      font-family: 'Gilroy-Medium';
+    }
+    
+    /*---*/
+    ::ng-deep.input-datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
+      border-radius: 10px;
+      /* padding: .75em .75em 0 .75em;  */
+      padding: 3px;
+      background: white !important;
+      border: 1px black solid;
+    }
+    
+    ::ng-deep.input-datepicker .mat-form-field-flex {
+      cursor: pointer;
+      height: 37px;
+    }
+    
+    .content-shp-3 {
+      padding: 0 18px 10px;
+      overflow: hidden;
+      box-sizing: border-box;
+      border-width: 0px 1px 1px 1px;
+      border-style: solid;
+      border-color: #686E74;
+      border-radius: 0px 0px 10px 10px;
+      overflow: auto;
+      margin: 0px 10px;
+    }
+    
+    .content-shp-3::-webkit-scrollbar{
+      height: 5px;
+    }
+    .ShipmentinputBoxes {
+      width: 70px;
+      height: 30px;
+      background: none;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 12.5px;
+       text-align: right;
+    }
+    
+    .ShipmentinputBoxes1 {
+      width: 70px;
+      height: 30px;
+      background: none;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 12.5px;
+      background-color: white;
+      color: black;
+      text-align: right;
+    }
+    .ShipmentinputBoxes4 {
+      width: 70px;
+      height: 30px;
+      background: none;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 12.5px;
+      background-color: transparent;
+      color: black;
+      /* text-align: center; */
+    }
+    .ShipmentinputBoxes3 {
+      width: 70px;
+      height: 30px;
+      background: none;
+      border-radius: 10px;
+      border: 1px solid red;
+      font-size: 12.5px;
+      background-color: white;
+      color: black;
+    }
+    
+    .ShipmentinputBoxes2 {
+      width: 70px;
+      height: 30px;
+      background: none;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 12.5px;
+      background-color: white;
+      color: black;
+    }
+    
+    .subtotalBox {
+      width: 100px;
+      height: 22px;
+      background: none;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 12.5px;
+      background-color: white;
+      color: black;
+    }
+    
+    .dispatchComments {
+      width: 1289px;
+      height: 73px;
+      padding-bottom: 45px;
+      padding-left: 7px;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 13px;
+      background-color: white;
+      color: black;
+      font-family: 'Gilroy-Regular';
+    }
+    
+    .label-div {
+      margin-top: 15px;
+    }
+    
+     .orderhistorytable {
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    width: 100%;
+      font-size: 13px;
+      
+    }
+    /* td, th {
+      border: 1px solid #dddddd;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    } */
+  
+    
+    .u {
+      content: "";
+      display: block;
+      width: 841px;
+      height: 2px;
+      background: #686E74;
+      top: 69%;
+      position: fixed;
+    }
+    
+    .headerTable {
+      color: grey;
+    }
+    
+    .cancelButton {
+      font-family: 'Gilroy-SemiBold';
+      font-size: 15px;
+      line-height: 18px;
+      background: white;
+      box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      width: 168px;
+      height: 43px;
+      color: black;
+      margin-top: 15px;
+    }
+    
+    .footer {
+      /* position: fixed; */
+      border-radius: 0px 0px 25px 25px;
+      height: 50px;
+      width: 860px !important;
+    
+    }
+    .ag-theme-material{
+      height: 170px;
+      border-radius: 20px;
+      background-color: white;
+      font-family: Gilroy;
+      width: 100%;
+    }
+    ::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
+      color: black!important;
+    }
+    .invoice{
+      border-radius: 10px;
+      padding: 10px;
+      background: none !important;
+      width: 223px;
+      border: 1px black solid;
+      height: 35px;
+      margin-left: 17%;
+  
+    }
+    ::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+      padding: 0.4375em 0;
+      margin-top: -4px !important;
+    }
+    .placeh-align {
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+      border-radius: 10px;
+      height: 41px;
+      background-color: white;
+      
+    }
+    .calendarToggle {
+      position: absolute;
+      bottom: 4px;
+      width: 20px;
+      right: 10px;
+    }
+    .calendarToggle1 {
+      position: absolute;
+      bottom: 4px;
+      width: 20px;
+      right: 10px;
+    }
+    .calendarToggle2 {
+      position: absolute;
+      bottom: 4px;
+      width: 20px;
+      right: 10px;
+    }
+    .paddinginth
+    {
+      padding: 2px 3px 5px 30px;
+      font-family: 'Gilroy-Bold';
+      font-size: 14px;
+      position: relative;
+      /* left: 3%; */
+    }
+    /* table */
+    .number{
+      text-align: right;
+    }
+    .IteminputBoxes{
+      text-align: right;
+    }
+    .fontweight
+    {
+      font-weight: 500;
+    }
+    .label1
+    {
+      margin-left: 15%;
+    }
+    .label2
+    {
+      margin-left: 17%;
+      font-family: 'Gilroy-SemiBold';
+    }
+    .receive_date
+    {
+      margin-left: 16%;
+    }
+  
+    ::ng-deep .mat-tooltip {
+      color: black !important;
+      /* font-size: 16px !important; */
+      background-color: white !important;
+      border: 1px solid grey !important;
+      zoom: 1.2;
+  }
+  
+  
+  .Receiveshipmentheader
+  {
+    font-family: 'Calibri';
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  .DealerInfo-label
+  {
+    margin: 5px;
+    font-size: 15px;
+    align-items: center;
+    /* color: #000000; */
+    font-family: 'Calibri';
+   font-weight: 600;
+  }
+  .Dealerdata
+  {
+    font-family: 'Calibri';
+      font-size: 14px;
+      font-weight: 400;
+      margin-left: 6px;
+  }
+  .Receiveshipmentheaderitems
+  {
+    font-family: 'Calibri';
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  .itemLeft {
+    font-size: 12.5px;
+    text-align: left;
+    margin-right: -39px;
+    font-family: 'Gilroy-SemiBold';
+  }
+  .Iteminput__Boxes {
+    width: 100px;
+    height: 30px;
+    background: none;
+    font-size: 13px;
+    position: relative;
+    top: 9px;
+    font-family: 'Calibri';
+  }
+  .promoItem {
+    width: 30px;
+    height: 30px;
+    background: #0091EA;
+    border-radius: 68%;
+    color: white;
+    padding: 3px 5px;
+    margin-left: -8px;
+  }
+  .totall_shipment{
+    width: 44%;
+    height: 51%;
+    background: #FFFFFF;
+    border-top:1px  solid  #018B75;
+    border-bottom: 1px solid #018B75;
+    border-left: 1px solid #018B75;
+    border-right: 1px solid #018B75;
+    border-radius: 21px;
+    font-size: 13px;
+    position: relative;
+    left: 60.2%;
+    /* background: #018B75; */
+   
+   
+  }
+  .innerTotalshipment{
+    margin-left: 15px;
+  }
+    .subitemshipments {
+    font-size: 13px;
+    width: 179px;
+  }
+  .alltotals__shipments
+  {
+     margin-bottom: 1px;
+  font-family: 'Calibri';
+  }
+  .TOTALDATAshipmenst
+  {
+    margin-top: 1px;
+      margin-left: 12px;
+      color: white;
+      font-size: 16px;
+  }
+  #Totaldatashihp
+  {
+    margin-left: 12px;
+   
+  }
+  #shipmentschargs
+  {
+    margin-left: 12px;
+    color: black;
+  }
+   
+  .InviceData {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    border-radius: 10px 10px 0px 0px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    border-radius: 10px;
+  }
+  .invicedatalabel {
+    position: relative;
+    top: 6px;
+    font-size: 18px;
+    margin-left: 1%;
+    font-family: 'Calibri'
+  }
+  .shipmentstwodata{
+    padding: 0 18px 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    /* border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px; */
+    overflow: auto;
+    margin: 0px 10px;
+  }
+   
+   
+  .shipmentstwodata::-webkit-scrollbar{
+    height: 5px;
+  }
+  .fontweightshipmenst
+    {
+      font-weight: 500;
+    }
+    .inviceno
+    {
+      margin-left: 17%;
+      font-family: 'Calibri';
+      font-weight: 800;
+      font-size: 15px;
+    }
+     
+    .STARTMESSAGE {
+      color: red;
+    }
+    ::ng-deep.inputDATEpicker .mat-form-field-appearance-fill .mat-form-field-flex {
+      border-radius: 10px;
+      padding: 3px;
+      background: white !important;
+      border: 1px black solid;
+    }
+   
+    ::ng-deep.inputDATEpicker .mat-form-field-flex {
+      cursor: pointer;
+      height: 37px;
+    }
+    .INVICE{
+      border-radius: 10px;
+      padding: 10px;
+      background: none !important;
+      width: 223px;
+      border: 1px black solid;
+      height: 35px;
+      margin-left: 17%;
+    }
+    .label111
+    {
+      margin-left: 15%;
+    }
+    ::ng-deep.Shipmentdatepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+      padding: 0.4375em 0;
+      margin-top: -4px !important;
+    }
+    .PLACEALIGN{
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+      border-radius: 10px;
+      height: 41px;
+      background-color: white;
+    }
+    .calendaToggleSHIPMENTS {
+      position: absolute;
+      bottom: 4px;
+      width: 20px;
+      right: 10px;
+    }
+    .receive_DATE
+    {
+      margin-left: 16%;
+    }
+    .Paddingshipments
+    {
+      padding: 2px 3px 5px 30px;
+      font-family: 'Gilroy-Bold';
+      font-size: 14px;
+      text-align: right;
+    }
+    .IteminputBoxesSecondShipments {
+      width: 100px;
+      height: 30px;
+      background: none;
+      font-size: 12.5px;
+        position: relative;
+      top: 9px;
+    }
+    .ShipinputBoxes {
+      width: 70px;
+      height: 30px;
+      background: none;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 12.5px;
+       text-align: right;
+    }
+    .DiscountC{
+      /* font-weight: bold; */
+      font-family: 'Gilroy-SemiBold';
+      font-size: 14px;
+    }
+    .DispatchComments {
+      width: 1289px;
+      height: 73px;
+      padding-bottom: 45px;
+      padding-left: 7px;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-size: 13px;
+      background-color: white;
+      color: black;
+      font-family: 'Gilroy-Regular';
+    }
+   
+    .SAVE-Draft{
+      background: #000000;
+      box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      float: right;
+      margin-top: 4%;
+      cursor: pointer;
+      width: 168px;
+      height: 43px;
+      border-radius: 10px;
+      font-family: 'Gilroy-SemiBold';
+      font-size: 15px;
+      line-height: 18px;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+    }
+    .Orders_Items
+    {
+      width: 102%;
+    }
+    .close-iconreceive {
+      left: 99%;
+      position: relative;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 14px;
+      font-weight: bolder;
+   
+    }
+    .addshipments {
+      position: relative;
+      font-family: 'Gilroy-Bold';
+      font-size: 20px;
+    }
+    .addshipments:after {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 2px;
+      background: #686E74;
+      right: 1%;
+      top: 50%;
+      position: absolute;
+    }
+   
+    .addshipments:before {
+      content: "";
+      display: block;
+      width: 40%;
+      height: 2px;
+      background: #686E74;
+      left: 0;
+      top: 50%;
+      position: absolute;
+    }
+    .SUBTotaldatacolor
+    {
+      position: relative;
+      right: 57px;
+      font-family: 'Calibri';
+      font-size: 15px;
+      font-weight: 700;
+      color: #000000;
+   
+   
+    }
+  
+    

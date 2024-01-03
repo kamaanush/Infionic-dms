@@ -332,8 +332,7 @@ export class OrderListComponent implements OnInit {
     this.userType = localStorage.getItem('userType');
     this.loggedUserId = localStorage.getItem('logInId');
     this.uomId = localStorage.getItem('niId');
-    this.selectedOption
-     this.updateColumnDefs();
+    this.updateColumnDefs();
     // this.roleItems();
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
@@ -353,10 +352,10 @@ export class OrderListComponent implements OnInit {
     this.onOptionChange()
   }
   ordertype:any
-  onOptionChange(){
-     if(this.selectedOption ==='Orders'){
+  onOptionChange() {
+    if (this.selectedOption === 'Orders' || this.selectedOption === 'SplitOrders') {
       const data = {
-        ordertype:this.selectedOption,
+        ordertype: this.selectedOption,
         StatusId: [],
         GeographyId: [],
         DealerId: [],
@@ -366,46 +365,17 @@ export class OrderListComponent implements OnInit {
       };
       this.orders.getorderDeatilslist(data).subscribe((res) => {
         this.rowDatalist = res.response;
-        console.log('this.rowDatalist',this.rowDatalist);
-        let stat:any = [...new Set(res.response.filter((x:any)=> x.status =='Submitted').map((y:any)=> y.status))]
-        //  console.log([...new Set(stat)]);
-        //  console.log(stat,"RAKLPs");
-         sessionStorage.setItem('yourKey',stat);
-        //  alert(stat)
-         console.log(res.response.status, '........R A .. KKKs....');
-        this.SpinnerService.hide(); 
+        console.log('this.rowDatalist', this.rowDatalist);
+        let stat: any = [...new Set(res.response.filter((x: any) => x.status === 'Submitted').map((y: any) => y.status))];
+        sessionStorage.setItem('yourKey', stat);
+        console.log(res.response.status, '........R A .. KKKs....');
+        this.SpinnerService.hide();
         this.rowDatalist.forEach((element) => {
           element.orderDate = this.sharedService.dateformat(element.orderDate);
         });
       });
       console.log('Selected option changed:', this.selectedOption);
-     }else if (this.selectedOption === 'SplitOrders'){
-      const data = {
-        ordertype:this.selectedOption,
-        StatusId: [],
-        GeographyId: [],
-        DealerId: [],
-        OrderDate: '',
-        Search: this.searchText,
-        CurrentUserId: this.loggedUserId,
-      };
-      this.orders.getorderDeatilslist(data).subscribe((res) => {
-        this.rowDatalist = res.response;
-        console.log('this.rowDatalist',this.rowDatalist);
-        let stat:any = [...new Set(res.response.filter((x:any)=> x.status =='Submitted').map((y:any)=> y.status))]
-        //  console.log([...new Set(stat)]);
-        //  console.log(stat,"RAKLPs");
-         sessionStorage.setItem('yourKey',stat);
-        //  alert(stat)
-         console.log(res.response.status, '........R A .. KKKs....');
-        this.SpinnerService.hide(); 
-        this.rowDatalist.forEach((element) => {
-          element.orderDate = this.sharedService.dateformat(element.orderDate);
-        });
-      });
-      console.log('Selected option changed:', this.selectedOption);
-     }
-    
+    }
   }
   updateColumnDefs(){
     if(this.userType === 'Admin'){
@@ -1394,7 +1364,8 @@ export class OrderListComponent implements OnInit {
       // userTypes: this.userTypes,
       // statuss: this.statusTypes,
       // search: this.searchText,
-      ordertype:this.ordertype,
+      ordertype: this.selectedOption,
+      // ordertype:this.ordertype,
       StatusId: [],
       GeographyId: [],
       DealerId: [],

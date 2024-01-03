@@ -931,8 +931,20 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   restrictToAlphabets(event: any): void {
     const input = event.target as HTMLInputElement;
     const value = input.value;
+    const numericValue = Number(value);
+  
+    // Check if the value is less than or equal to zero
+    if (numericValue <= 0 ||numericValue == null ) {
+      input.style.borderColor = 'red'; 
+      // this.promotionForm.get('addPromotions')?.get(controlName)?.setErrors({ invalidValue: true });
+    } else {
+      input.style.borderColor = '';
+      // this.promotionForm.get('addPromotions')?.get(controlName)?.setErrors(null);
+    }
+  
     input.value = value.replace(/[^0-9]/g, '');
-    this.updateValidation()
+    this.updateValidation();
+    this.promotionForm.updateValueAndValidity();
   }
   
   updateValidation() {

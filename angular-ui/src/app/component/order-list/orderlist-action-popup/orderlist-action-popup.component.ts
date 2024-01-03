@@ -46,8 +46,8 @@ export class OrderlistActionPopupComponent implements OnInit {
     'complete': [], // Spelling check
     'to-ship': ['ship_order', 'close'],
     'received': [], // done
+    'closed': []
   }
-  
 
   shipmentStatusAction = {
     'ordered': ['confirm_order', 'cancel_order'], // done
@@ -61,8 +61,8 @@ export class OrderlistActionPopupComponent implements OnInit {
     'fulfilled': [], // Spelling check
     'to-ship': ['ship_order', 'close'],
     'received': ['receive_shipment'], // done 'receive_shipment' to get delete option
-    
   }
+  
   isShowEdit:any
   showCaseMenuList:string[] = [];
   constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog,
@@ -161,12 +161,15 @@ export class OrderlistActionPopupComponent implements OnInit {
         break;
     }
   }
-
+  isCancel:any
+  isShowEditClose:any
   configureTippyInstance() {
     this.isShowEdit = JSON.parse(localStorage.getItem('isShowEdit')||'null')
     this.tippyInstance.enable();
     this.tippyInstance.show();
-
+    this.isCancel = this.params.data.isShowCancel
+    this.isShowEditClose = this.params.data.isShowEditClose
+    console.log(this.isCancel,this.isShowEditClose);
     this.tippyInstance.setProps({
       trigger: 'manual',
       placement: 'left',

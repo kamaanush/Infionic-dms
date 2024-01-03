@@ -215,6 +215,7 @@ import { ChartscomponentComponent } from './chartscomponent/chartscomponent.comp
 import { HighchartsChartModule } from 'highcharts-angular';
 import { AddGeolistSuccessPopupComponent } from './add-geolist-shipping-popup/add-geolist-success-popup/add-geolist-success-popup.component';
 import { ViewAssociationComponent } from './association/view-association/view-association.component';
+import { ViewmainorderComponent } from './component/orders-receive-shipment/viewmainorder/viewmainorder.component';
 
 
 @NgModule({
@@ -520,7 +521,8 @@ import { ViewAssociationComponent } from './association/view-association/view-as
           AssociationBulkUploadComponent,
           ChartscomponentComponent,
           AddGeolistSuccessPopupComponent,
-          ViewAssociationComponent
+          ViewAssociationComponent,
+          ViewmainorderComponent
           
   ],
   imports: [

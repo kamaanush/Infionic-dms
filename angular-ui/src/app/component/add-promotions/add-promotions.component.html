@@ -819,7 +819,7 @@
                     </form>
                 </mat-step>
 
-                <mat-step [stepControl]="secondFormGroup">
+                <mat-step [stepControl]="secondFormGroup" >
                     <form>
                         <ng-template matStepLabel> Geographies & Dealers</ng-template>
                         <!-- <div class="heading">
@@ -892,9 +892,9 @@
                         <!-- footer -->
                         <div class="row" *ngIf="SaveOrEdit">
                             <div class="footer-btns" *ngFor="let item of formArr.controls; let i = index">
-                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')" [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')|| processingSubmit">Save as
+                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')" [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')|| processingSubmit ">Save as
                                     draft </button>
-                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')"  [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')|| processingSubmit" >
+                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')"  [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')|| processingSubmit " >
                                     Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->
                             </div>

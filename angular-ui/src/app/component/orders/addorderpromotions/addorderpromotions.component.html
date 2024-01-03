@@ -611,7 +611,7 @@
 
                                 <!-- nonpromotions list view *ngIf="DisplayNonpromotion"-->
                                 
-                                <tr *ngIf="DisplayNonpromotion">
+                                <tr *ngIf="nonpromotionlist>0">
                                     <td>
                                         <mat-icon (click)="ExpandNonPromotion()"
                                         style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ NonPromotion ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }} </mat-icon>

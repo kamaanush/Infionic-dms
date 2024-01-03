@@ -1,36 +1,28 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
+  MAT_DIALOG_DATA,
   MatDialog,
-  MatDialogConfig,
   MatDialogRef,
 } from '@angular/material/dialog';
-import {
-  CellValueChangedEvent,
-  ColDef,
-  FirstDataRenderedEvent,
-  GridApi,
-  GridOptions,
-  GridReadyEvent,
-} from 'ag-grid-community';
-import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment.component';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
+import { Subject } from 'rxjs';
+import { FormControl } from '@angular/forms';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
-import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
-import { NgChanges } from '@generic-ui/ngx-grid/feature/common/src/cdk/component/lib';
-import { AddorderpromotionsComponent } from '../orders/addorderpromotions/addorderpromotions.component';
-import { ViewmainorderComponent } from './viewmainorder/viewmainorder.component';
+import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
+import { AddorderpromotionsComponent } from '../../orders/addorderpromotions/addorderpromotions.component';
 
 @Component({
-  selector: 'app-orders-receive-shipment',
-  templateUrl: './orders-receive-shipment.component.html',
-  styleUrls: ['./orders-receive-shipment.component.css'],
+  selector: 'app-viewmainorder',
+  templateUrl: './viewmainorder.component.html',
+  styleUrls: ['./viewmainorder.component.css'],
 })
-export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
- 
+export class ViewmainorderComponent implements OnInit {
+  invoice: any;
+  DispachComments: any = '';
+  userId: any;
   dealerInfo = false;
   orderitem = false;
   shipmentone = false;
@@ -71,126 +63,14 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   LostOrDamage: boolean = false;
   orderNUmber: any = '';
   headerName: any;
-  status:string | null | undefined;
+  status: string | null | undefined;
   checkstatus: boolean | undefined;
   public popupParent: HTMLElement = document.body;
-  
-  
-  public rowData5: any = [
-    {
-      date: '14-Oct-22',
-      createdBy: 'Bruce Wayne',
-      action: 'Creation',
-      subAction: 'Save Draft',
-      invoiceNo: '23AB67',
-      comments: 'Lorem ipsum dsjh sdhsujdi ',
-    },
-  ];
-  public itemremoved: any[] = [
-    {
-      sValue: '',
-      eValue: '',
-      pValue: '',
-    },
-  ];
-  private gridApi!: GridApi;
-  columnDefs: ColDef[] = [
-    {
-      headerName: 'Date',
-      field: 'date',
-      type: ['nonEditableColumn'],
-      // maxWidth: 120,
-    },
-
-    {
-      headerName: 'Created by',
-      field: 'createdBy',
-      type: ['nonEditableColumn'],
-      // maxWidth: 140,
-    },
-
-    {
-      headerName: 'Action',
-      field: 'action',
-      type: ['nonEditableColumn'],
-      // maxWidth: 120,
-    },
-
-    {
-      headerName: 'Sub Action',
-      field: 'subAction',
-      type: ['nonEditableColumn'],
-      // maxWidth: 140,
-    },
-
-    {
-      headerName: 'Invoice No.',
-      field: 'invoiceNo',
-      type: ['nonEditableColumn'],
-      // maxWidth: 140,
-    },
-    {
-      headerName: 'Comments',
-      field: 'comments',
-      type: ['nonEditableColumn'],
-      // maxWidth: 150,
-    },
-    // {
-    //   headerName:"",  cellRenderer: this.daysSunshineRenderer
-    // }
-
-    // {
-    //   headerName: '',
-    //   cellRenderer: this.daysSunshineRenderer,
-    // },
-  ];
   InvoiceId: any;
   currentshipmentname: any = '';
-  gridOptions: GridOptions = {
-    defaultColDef: {
-      resizable: true,
-    },
-  };
-  public defaultColDef: ColDef = {
-    suppressSizeToFit: true,
-    width: 170,
-    filter: 'agTextColumnFilter',
-    flex: 1,
-    minWidth: 100,
-    resizable: true,
-    sortable: true,
-  };
-  public columnTypes: {[key: string]: ColDef} = {
-    numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
-    medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
-    nonEditableColumn: { editable: false },
-    dateColumn: {
-      filter: 'agDateColumnFilter',
-      filterParams: {
-        comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
-          // In the example application, dates are stored as dd/mm/yyyy
-          // We create a Date object for comparison against the filter date
-          const dateParts = cellValue.split('/');
-          const day = Number(dateParts[0]);
-          const month = Number(dateParts[1]) - 1;
-          const year = Number(dateParts[2]);
-          const cellDate = new Date(year, month, day);
-          // Now that both parameters are Date objects, we can compare
-          if (cellDate < filterLocalDateAtMidnight) {
-            return -1;
-          } else if (cellDate > filterLocalDateAtMidnight) {
-            return 1;
-          } else {
-            return 0;
-          }
-        },
-      },
-    },
-  };
-  invoice: any;
-  DispachComments: any = '';
-  userId: any;
+
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
     public orders: OrdersApisService,
     private otherMasterService: OtherMasterService,
@@ -199,19 +79,20 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   ) {}
   userType: any;
   rowVisible: boolean[] = [];
-  allExpanded = true; 
-  actineLabel: any; 
-   updateOrSave: boolean = false
-   public promoVisibility: { [promo: string]: boolean } = {};
-   public shipmentVisibility: { [shipName: string]: boolean } = {};
-   isEnable:boolean = false
-   isParent:boolean = false
-   parentId :any
-   
-  ngOnInit(): void { 
+  allExpanded = true;
+  actineLabel: any;
+  updateOrSave: boolean = false;
+  public promoVisibility: { [promo: string]: boolean } = {};
+  public shipmentVisibility: { [shipName: string]: boolean } = {};
+  isEnable: boolean = false;
+  isParent: boolean = false;
+  parentId: any;
+
+  ngOnInit(): void {
+    console.log(this.data.customData.parentId);
     this.userId = localStorage.getItem('logInId');
     this.userType = localStorage.getItem('userType');
-    let item = localStorage.getItem("ViewOrReceive");
+    let item = localStorage.getItem('ViewOrReceive');
     if (item == 'Receive') {
       this.ViewOrReceive = true;
       this.headerName = 'Receive Shipment';
@@ -232,25 +113,26 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
 
       let data = localStorage.getItem('customerPOIdForShipment');
       this.InvoiceId = data;
-      
+
       let obj = {
-        orderId: Number(data),
+        orderId: Number(this.data.customData.parentId),
         CurrentUserId: this.userId,
       };
       this.orders.reciveshipmentfororder(obj).subscribe((res) => {
-        console.log(res);
+
         this.isEnable = res.response.isEnableEdit;
-        this.isParent = res.response.isParent
-        this.parentId = res.response.parentId
+        this.isParent = res.response.isParent;
+        this.parentId = res.response.parentId;
         // alert(this.isEnable);
         this.shipmentArray = res.response;
+        console.log(this.shipmentArray,'shipmentArray');
         this.shipmentArray.itemcount.forEach((element) => {
           element.itemDetails.forEach((element1) => {
             let arraybj: any = [];
             arraybj.push(element1);
             let obj: any = {
               promo: element.promocode,
-              promoName:element.promotionTypesNmae,
+              promoName: element.promotionTypesNmae,
               customerPOProductId: element1.customerPOProductId,
               stockitemid: element1.customerPOProductId,
               stockitemname: element1.stockitemname,
@@ -266,19 +148,13 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
               taxvalue: element1.taxvalue,
               amount: element1.amount,
               taxid: element1.taxid,
-              isFreeItem:element1.isFreeItem,
+              isFreeItem: element1.isFreeItem,
             };
             this.itemsArray.push(obj);
           });
-          console.log('element1', this.itemsArray);
+          // console.log('element1', this.itemsArray);
         });
-        console.log('shipmentArray', this.shipmentArray);
-
-        // this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
-        // this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
-        // this.PackingCharge=Number(this.shipmentArray.currentshipDetails.pakingCharge);
-        // this.ShippingCharge=Number(this.shipmentArray.currentshipDetails.shipingcharge);
-        // this.Total=Number(this.shipmentArray.currentshipDetails.total);
+        // console.log('shipmentArray', this.shipmentArray);
 
         this.shipmentArray.previousshipRecieveDetails.forEach((element) => {
           let internalArray: any = [];
@@ -287,258 +163,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
             element1.itemDetailsshipReceive.forEach((element2) => {
               let obj = {
                 promocode: element1.promocode,
-                promoName:element1.promotionTypesNmae,
-                InvoiceCPOProductId: element2.invoiceCPOProductId,
-                balanceQty:element2.balanceQty,
-                ReceivedQty: element2.receivedQty,
-                LostDamaged: element2.lostDamaged,
-                stockitemid: element2.stockitemid,
-                stockitemname: element2.stockitemname,
-                promotioncode: element2.promotioncode,
-                productSKUName: element2.productSKUName,
-                uomid: element2.uomid,
-                uomname: element2.uomname,
-                quantity: element2.quantity,
-                stock: element2.stock,
-                price: element2.price,
-                discount: element2.discount,
-                finalValue: element2.finalValue,
-                taxvalue: element2.taxvalue,
-                amount: element2.amount,
-                taxid: element2.taxid,
-                shipedTill: element2.shipedTill,
-                shipedQty: element2.shipedQty,
-                isFreeItem:element2.isFreeItem,
-              };
-              internalArray.push(obj);
-            });
-          });
-          let obj2: any = {
-            shipName: element.shipName,
-            id: element.id,
-            invoiceno: element.invoiceno,
-            invoiceDate:
-              new Date(element.invoiceDate).getFullYear() +
-              '/' +
-              (new Date(element.invoiceDate).getMonth() + 1) +
-              '/' +
-              new Date(element.invoiceDate).getDate(),
-            invoiceReceivedDate:
-              element.invoiceReceivedDate == null
-                ? ''
-                : new Date(element.invoiceReceivedDate).getFullYear() +
-                  '/' +
-                  (new Date(element.invoiceReceivedDate).getMonth() + 1) +
-                  '/' +
-                  new Date(element.invoiceReceivedDate).getDate(),
-            shipmentDate:
-              new Date(element.shipmentDate).getFullYear() +
-              '/' +
-              (new Date(element.shipmentDate).getMonth() + 1) +
-              '/' +
-              new Date(element.shipmentDate).getDate(),
-            shipmentNumber: element.shipmentNumber,
-            subTotal: element.subTotal,
-            taxElement: element.taxElement,
-            pakingCharge: element.pakingCharge,
-            shipingcharge: element.shipingcharge,
-            total: element.total,
-            invoiceComments: element.invoiceComments,
-            currentReceiveshipment: element.currentReceiveshipment,
-            arrayIside: internalArray,
-          };
-          // obj2.invoiceDate.setValue(obj2.invoiceDate);
-          // obj2.invoiceReceivedDate.setValue(obj2.invoiceReceivedDate);
-          // obj2.shipmentDate.setValue(obj2.shipmentDate);
-
-          this.currentShipArray.push(obj2);
-        });
-
-        console.log('currentShipArray', this.currentShipArray);
-      });
-    } else if (identifier == 'shipment') {
-      // alert('shipment');
-      let data = localStorage.getItem('customerPOIdForShipment');
-      this.InvoiceId = data;
-      let obj = {
-        InvoiceId: data,
-        CurrentUserId: this.userId,
-      };
-
-      this.orders.reciveshipment(obj).subscribe((res) => {
-        console.log(res);
-        this.shipmentArray = res.response;
-        this.isEnable = res.response.isEnableEdit;
-        this.shipmentArray.itemcount.forEach((element) => {
-          element.itemDetails.forEach((element1) => {
-            let arraybj: any = [];
-            arraybj.push(element1);
-            let obj: any = {
-              promo: element.promocode,
-              promoName:element.promotionTypesNmae,
-              customerPOProductId: element1.customerPOProductId,
-              stockitemid: element1.customerPOProductId,
-              stockitemname: element1.stockitemname,
-              productSKUName: element1.productSKUName,
-              uomid: element1.uomid,
-              uomname: element1.uomname,
-              quantity: element1.quantity,
-              stock: element1.stock,
-              price: element1.price,
-              discount: element1.discount,
-              finalPrice: element1.finalPrice,
-              finalValue: element1.finalValue,
-              taxvalue: element1.taxvalue,
-              amount: element1.amount,
-              taxid: element1.taxid,
-              isFreeItem:element1.isFreeItem,
-            };
-            this.itemsArray.push(obj);
-          });
-          console.log('element1', this.itemsArray);
-        });
-        console.log('shipmentArray', this.shipmentArray);
-
-        // this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
-        // this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
-        // this.PackingCharge=Number(this.shipmentArray.currentshipDetails.pakingCharge);
-        // this.ShippingCharge=Number(this.shipmentArray.currentshipDetails.shipingcharge);
-        // this.Total=Number(this.shipmentArray.currentshipDetails.total);
-
-        this.shipmentArray.previousshipRecieveDetails.forEach((element) => {
-          let internalArray: any = [];
-
-          element.promodetails.forEach((element1) => {
-            element1.itemDetailsshipReceive.forEach((element2) => {
-              let obj = {
-                promocode: element1.promocode,
-                promoName:element1.promotionTypesNmae,
-                InvoiceCPOProductId: element2.invoiceCPOProductId,
-                balanceQty:element2.balanceQty,
-                ReceivedQty: element2.receivedQty,
-                LostDamaged: element2.lostDamaged,
-                stockitemid: element2.stockitemid,
-                stockitemname: element2.stockitemname,
-                promotioncode: element2.promotioncode,
-                productSKUName: element2.productSKUName,
-                uomid: element2.uomid,
-                uomname: element2.uomname,
-                quantity: element2.quantity,
-                stock: element2.stock,
-                price: element2.price,
-                discount: element2.discount,
-                finalValue: element2.finalValue,
-                taxvalue: element2.taxvalue,
-                amount: element2.amount,
-                taxid: element2.taxid,
-                shipedTill: element2.shipedTill,
-                shipedQty: element2.shipedQty,
-                isFreeItem:element2.isFreeItem,
-              };
-              internalArray.push(obj);
-            });
-          });
-          let obj2: any = {
-            shipName: element.shipName,
-            id: element.id,
-            invoiceno: element.invoiceno,
-            invoiceDate:
-              new Date(element.invoiceDate).getFullYear() +
-              '/' +
-              (new Date(element.invoiceDate).getMonth() + 1) +
-              '/' +
-              new Date(element.invoiceDate).getDate(),
-            invoiceReceivedDate:
-              element.invoiceReceivedDate == null
-                ? ''
-                : new Date(element.invoiceReceivedDate).getFullYear() +
-                  '/' +
-                  (new Date(element.invoiceReceivedDate).getMonth() + 1) +
-                  '/' +
-                  new Date(element.invoiceReceivedDate).getDate(),
-            shipmentDate:
-              new Date(element.shipmentDate).getFullYear() +
-              '/' +
-              (new Date(element.shipmentDate).getMonth() + 1) +
-              '/' +
-              new Date(element.shipmentDate).getDate(),
-            shipmentNumber: element.shipmentNumber,
-            subTotal: element.subTotal,
-            taxElement: element.taxElement,
-            pakingCharge: element.pakingCharge,
-            shipingcharge: element.shipingcharge,
-            total: element.total,
-            invoiceComments: element.invoiceComments,
-            currentReceiveshipment: element.currentReceiveshipment,
-            arrayIside: internalArray,
-          };
-          // obj2.invoiceDate.setValue(obj2.invoiceDate);
-          // obj2.invoiceReceivedDate.setValue(obj2.invoiceReceivedDate);
-          // obj2.shipmentDate.setValue(obj2.shipmentDate);
-
-          this.currentShipArray.push(obj2);
-        });
-
-        console.log('currentShipArray', this.currentShipArray);
-      });
-    } else if (identifier == 'receipts') {
-      // alert('receipts');
-
-      let data = localStorage.getItem('customerPOIdForShipment');
-      this.InvoiceId = data;
-      let obj = {
-        orderId: Number(data),
-        CurrentUserId: this.userId,
-      };
-
-      this.orders.reciveshipmentfororder(obj).subscribe((res) => {
-        console.log(res);
-        this.shipmentArray = res.response;
-
-        this.shipmentArray.itemcount.forEach((element) => {
-          element.itemDetails.forEach((element1) => {
-            let arraybj: any = [];
-            arraybj.push(element1);
-            let obj: any = {
-              promo: element1.promocode,
-              promoName:element1.promotionTypesNmae,
-              customerPOProductId: element1.customerPOProductId,
-              stockitemid: element1.customerPOProductId,
-              stockitemname: element1.stockitemname,
-              productSKUName: element1.productSKUName,
-              uomid: element1.uomid,
-              uomname: element1.uomname,
-              quantity: element1.quantity,
-              stock: element1.stock,
-              price: element1.price,
-              discount: element1.discount,
-              finalPrice: element1.finalPrice,
-              finalValue: element1.finalValue,
-              taxvalue: element1.taxvalue,
-              amount: element1.amount,
-              taxid: element1.taxid,
-              isFreeItem:element1.isFreeItem,
-            };
-            this.itemsArray.push(obj);
-          });
-          console.log('element1', this.itemsArray);
-        });
-        console.log('shipmentArray', this.shipmentArray);
-
-        // this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
-        // this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
-        // this.PackingCharge=Number(this.shipmentArray.currentshipDetails.pakingCharge);
-        // this.ShippingCharge=Number(this.shipmentArray.currentshipDetails.shipingcharge);
-        // this.Total=Number(this.shipmentArray.currentshipDetails.total);
-
-        this.shipmentArray.previousshipRecieveDetails.forEach((element) => {
-          let internalArray: any = [];
-
-          element.promodetails.forEach((element1) => {
-            element1.itemDetailsshipReceive.forEach((element2) => {
-              let obj = {
-                promocode: element2.promocode,
-                promoName:element2.promotionTypesNmae,
+                promoName: element1.promotionTypesNmae,
                 InvoiceCPOProductId: element2.invoiceCPOProductId,
                 balanceQty: element2.balanceQty,
                 ReceivedQty: element2.receivedQty,
@@ -559,7 +184,128 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
                 taxid: element2.taxid,
                 shipedTill: element2.shipedTill,
                 shipedQty: element2.shipedQty,
-                isFreeItem:element2.isFreeItem,
+                isFreeItem: element2.isFreeItem,
+              };
+              internalArray.push(obj);
+            });
+          });
+          let obj2: any = {
+            shipName: element.shipName,
+            id: element.id,
+            invoiceno: element.invoiceno,
+            invoiceDate:
+              new Date(element.invoiceDate).getFullYear() +
+              '/' +
+              (new Date(element.invoiceDate).getMonth() + 1) +
+              '/' +
+              new Date(element.invoiceDate).getDate(),
+            invoiceReceivedDate:
+              element.invoiceReceivedDate == null
+                ? ''
+                : new Date(element.invoiceReceivedDate).getFullYear() +
+                  '/' +
+                  (new Date(element.invoiceReceivedDate).getMonth() + 1) +
+                  '/' +
+                  new Date(element.invoiceReceivedDate).getDate(),
+            shipmentDate:
+              new Date(element.shipmentDate).getFullYear() +
+              '/' +
+              (new Date(element.shipmentDate).getMonth() + 1) +
+              '/' +
+              new Date(element.shipmentDate).getDate(),
+            shipmentNumber: element.shipmentNumber,
+            subTotal: element.subTotal,
+            taxElement: element.taxElement,
+            pakingCharge: element.pakingCharge,
+            shipingcharge: element.shipingcharge,
+            total: element.total,
+            invoiceComments: element.invoiceComments,
+            currentReceiveshipment: element.currentReceiveshipment,
+            arrayIside: internalArray,
+          };
+          this.currentShipArray.push(obj2);
+        });
+
+        // console.log('currentShipArray', this.currentShipArray);
+      });
+    } else if (identifier == 'shipment') {
+      // alert('shipment');
+      let data = localStorage.getItem('customerPOIdForShipment');
+      this.InvoiceId = data;
+      let obj = {
+        InvoiceId: data,
+        CurrentUserId: this.userId,
+      };
+
+      this.orders.reciveshipment(obj).subscribe((res) => {
+        console.log(res);
+        this.shipmentArray = res.response;
+        this.isEnable = res.response.isEnableEdit;
+        this.shipmentArray.itemcount.forEach((element) => {
+          element.itemDetails.forEach((element1) => {
+            let arraybj: any = [];
+            arraybj.push(element1);
+            let obj: any = {
+              promo: element.promocode,
+              promoName: element.promotionTypesNmae,
+              customerPOProductId: element1.customerPOProductId,
+              stockitemid: element1.customerPOProductId,
+              stockitemname: element1.stockitemname,
+              productSKUName: element1.productSKUName,
+              uomid: element1.uomid,
+              uomname: element1.uomname,
+              quantity: element1.quantity,
+              stock: element1.stock,
+              price: element1.price,
+              discount: element1.discount,
+              finalPrice: element1.finalPrice,
+              finalValue: element1.finalValue,
+              taxvalue: element1.taxvalue,
+              amount: element1.amount,
+              taxid: element1.taxid,
+              isFreeItem: element1.isFreeItem,
+            };
+            this.itemsArray.push(obj);
+          });
+          console.log('element1', this.itemsArray);
+        });
+        console.log('shipmentArray', this.shipmentArray);
+
+        // this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
+        // this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
+        // this.PackingCharge=Number(this.shipmentArray.currentshipDetails.pakingCharge);
+        // this.ShippingCharge=Number(this.shipmentArray.currentshipDetails.shipingcharge);
+        // this.Total=Number(this.shipmentArray.currentshipDetails.total);
+
+        this.shipmentArray.previousshipRecieveDetails.forEach((element) => {
+          let internalArray: any = [];
+
+          element.promodetails.forEach((element1) => {
+            element1.itemDetailsshipReceive.forEach((element2) => {
+              let obj = {
+                promocode: element1.promocode,
+                promoName: element1.promotionTypesNmae,
+                InvoiceCPOProductId: element2.invoiceCPOProductId,
+                balanceQty: element2.balanceQty,
+                ReceivedQty: element2.receivedQty,
+                LostDamaged: element2.lostDamaged,
+                stockitemid: element2.stockitemid,
+                stockitemname: element2.stockitemname,
+                promotioncode: element2.promotioncode,
+                productSKUName: element2.productSKUName,
+                uomid: element2.uomid,
+                uomname: element2.uomname,
+                quantity: element2.quantity,
+                stock: element2.stock,
+                price: element2.price,
+                discount: element2.discount,
+                finalValue: element2.finalValue,
+                taxvalue: element2.taxvalue,
+                amount: element2.amount,
+                taxid: element2.taxid,
+                shipedTill: element2.shipedTill,
+                shipedQty: element2.shipedQty,
+                isFreeItem: element2.isFreeItem,
               };
               internalArray.push(obj);
             });
@@ -607,36 +353,11 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
 
         console.log('currentShipArray', this.currentShipArray);
       });
-  
     }
-  // Based on status
-    // this.status =  sessionStorage.getItem('OrderStatus');
-    // console.log("staus", this.status )
-    // if (this.status === 'Draft' || this.status === 'Processing' || this.status === 'Submitted' || this.status==='Confirmed') {
-    //   this.checkstatus = true;
-    // }
-    // else {
-    //  this.checkstatus = false;
-    // }
     this.viewOrderData();
   }
   
-  ViewOrder(data:any){
-    this.dialog.open(ViewmainorderComponent, {
-      maxWidth: '95vw',
-      height: '95vh',
-      data: { 
-        customData: this.shipmentArray,
-      } 
-    });
-  }
-//   expandedRows: { [key: number]: boolean } = {};
-//   toggleRow(index: number): void {
-//     this.expandedRows[index] = !this.expandedRows[index];
-// }
-
   expandedPromocodes: string[] = [];
-
   toggleRow(promocode: string): void {
     const index = this.expandedPromocodes.indexOf(promocode);
 
@@ -652,19 +373,22 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   }
   ngOnChanges(): void {
     this.status = this.shipmentArray.status;
-    console.log("staus", this.status )
-    if (this.status === 'Draft' || this.status === 'Processing' || this.status === 'Submitted') {
+    console.log('staus', this.status);
+    if (
+      this.status === 'Draft' ||
+      this.status === 'Processing' ||
+      this.status === 'Submitted'
+    ) {
       this.checkstatus = true;
-    }
-    else {
-     this.checkstatus = false;
+    } else {
+      this.checkstatus = false;
     }
   }
-  
+
   toggleRowVisibility(promo: number) {
     this.promoVisibility[promo] = !this.promoVisibility[promo];
   }
-  
+
   viewOrderData() {
     let viewData = sessionStorage.getItem('viewOrder');
 
@@ -690,62 +414,14 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   isShippedEntryQtyValid = true;
 
   shipingNow() {
-    // let objarray: any = []
     this.isShippedEntryQtyValid = true;
     this.currentShipArray.forEach((element) => {
-      //   {
-      //     "promocode": "P1",
-      //     "InvoiceCPOProductId": 180095,
-      //     "ReceivedQty": 3,
-      //     "LostDamaged": 0,
-      //     "stockitemid": 1683,
-      //     "stockitemname": "blue roses",
-      //     "promotioncode": null,
-      //     "uomid": 1566,
-      //     "uomname": "Box",
-      //     "quantity": 20,
-      //     "stock": 0,
-      //     "price": 100,
-      //     "discount": 0,
-      //     "finalValue": 2000,
-      //     "taxvalue": 80,
-      //     "amount": 2080,
-      //     "taxid": 8200,
-      //     "shipedTill": 0,
-      //     "shipedQty": 4
-      // }
-
       element.arrayIside.forEach((item) => {
         item.LostDamaged = item.shipedQty - item.ReceivedQty;
         if (item.shipedQty < item.ReceivedQty)
           this.isShippedEntryQtyValid = false;
       });
-
-      // let obj: any = {
-      //   "unitprice": element.price,
-      //   "TaxTemplateId": element.taxid,
-      //   "shipingNow": element.shipingNow != null ? element.shipingNow : 0
-      // }
-      // objarray.push(obj)
     });
-
-    // let data: any = {
-    //   OrderId: this.shipmentArray.customerPOId,
-    //   EachModel: objarray
-    // }
-    // this.orders.calculateTotal(data).subscribe((res) => {
-
-    //   this.subtotal = res.response.subTotal;
-    //   this.taxElement = res.response.taxElement;
-    //   this.PackingCharge = res.response.packingCharges;
-    //   this.ShippingCharge = res.response.shippingCharges;
-
-    //   this.addTotal();
-
-    // })
-    // console.log('obj', objarray)
-
-    // console.log('this.currentShipment', this.currentShipment)
   }
 
   invoicedateChange(e) {
@@ -795,19 +471,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       new Date(e.value).getDate();
     console.log(this.reciveDateChange);
   }
-  onGridReady(params: GridReadyEvent) {
-    this.gridApi = params.api;
-    params.api.sizeColumnsToFit();
-  }
-  onCellValueChanged(event: CellValueChangedEvent) {
-    // alert(event.value)
-    console.log(
-      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
-    );
-  }
-  onFirstDataRendered(params: FirstDataRenderedEvent) {
-    params.api.paginationGoToPage(4);
-  }
+
   openDialog() {
     // alert('mani')
   }
@@ -823,7 +487,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
 
     return true;
   }
-  
+
   saveShipment(item) {
     localStorage.setItem('AddShipment', 'edit');
     let Receiveship: any = [];
@@ -885,110 +549,10 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
           });
           this.dialogRef.close();
         } else {
-          // alert(res.response.result);
           this.boxalert = true;
         }
       });
     }
-
-    // let filterArray: any = []
-
-    // this.currentShipment.forEach(element => {
-    //   let filterobj: any = {
-    //     "CustomerPOProductId": element.customerPOProductId,
-
-    //     "qty": element.quantity,
-
-    //     "UnitPrice": element.price,
-
-    //     "TaxTemplatedId": element.taxid,
-
-    //     "total": element.amount,
-
-    //     "shipedTill": element.shipedTill,
-
-    //     "shipingNow": element.shipingNow,
-    //   }
-    //   filterArray.push(filterobj)
-
-    // })
-
-    // if (item == 'save') {
-
-    //   let obj: any = {
-    //     "CustomerPOId": this.shipmentArray.customerPOId,
-
-    //     "DispachComments": this.DispachComments,
-
-    //     "CreatedById": this.userId,
-
-    //     "InvoiceNo": this.invoice,
-
-    //     "InvoiceDate": this.invoicedateChange1,
-
-    //     "shipingDate": this.shippingDateChange,
-
-    //     "InvoiceReceivedDate": this.reciveDateChange,
-    //     "shipcount": filterArray,
-    //     "subtotal": this.subtotal,
-    //     "taxelement": this.taxElement,
-    //     "packingcharges": this.PackingCharge,
-    //     "shipingcharges": this.ShippingCharge,
-    //     "total": this.Total,
-    //     "AddType": "save",
-    //   }
-    //   this.orders.saveShipOrder(obj).subscribe((res) => {
-    //     console.log(res.response)
-    //     if (res.response.result == 'Succesfully added') {
-    //       alert('Succesfully added');
-    //       this.dialogRef.close();
-
-    //     }
-    //     else {
-
-    //     }
-    //   })
-
-    // }
-    // else {
-
-    //   let obj: any = {
-    //     "CustomerPOId": this.shipmentArray.customerPOId,
-
-    //     "DispachComments": this.DispachComments,
-
-    //     "CreatedById": this.userId,
-
-    //     "InvoiceNo": this.invoice,
-
-    //     "InvoiceDate": this.invoicedateChange1,
-
-    //     "shipingDate": this.shippingDateChange,
-
-    //     "InvoiceReceivedDate": this.reciveDateChange,
-    //     "shipcount": filterArray,
-    //     "subtotal": this.subtotal,
-    //     "taxelement": this.taxElement,
-    //     "packingcharges": this.PackingCharge,
-    //     "shipingcharges": this.ShippingCharge,
-    //     "total": this.Total,
-    //     "AddType": "draft",
-    //   }
-    //   this.orders.saveShipOrder(obj).subscribe((res) => {
-    //     console.log(res.response)
-    //     if (res.response.result == 'Succesfully added') {
-    //       alert('Succesfully added');
-    //       this.dialogRef.close();
-
-    //     }
-    //     else {
-
-    //     }
-    //   })
-
-    // }
-
-    // console.log('savedship', this.currentShipment)
   }
   onCellClicked(e): void {
     console.log('cellClicked', e);
@@ -1035,13 +599,9 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       const scrollDiff = gridBody.scrollHeight - scrollPos;
       //const api =  this.rowData5;
       this.stayScrolledToEnd = scrollDiff <= this.paginationPageSize;
-      this.paginationScrollCount = this.rowData5.length;
     }
   }
-  onRowSelect(event) {
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
-  }
+  
   expandDealerInfoDiv() {
     this.dealerInfo = !this.dealerInfo;
 
@@ -1069,15 +629,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       this.image3 = 'assets/img/expandarrows.svg';
     }
   }
-  // expandShipmentTwoDiv() {
-  //   this.shipmenttwo = !this.shipmenttwo;
-
-  //   if (this.shipmenttwo === false) {
-  //     this.image4 = 'assets/img/expandarrows.svg';
-  //   } else {
-  //     this.image4 = 'assets/img/expandarrows.svg';
-  //   }
-  // }
+  
   expandOrderHistoryDiv() {
     this.orderhistory = !this.orderhistory;
 
@@ -1099,23 +651,18 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   selectdays() {
     this.dialog.open(CustomDatePopupComponent, { panelClass: 'custmdays' });
   }
-  removeItem() {
-    this.itemremoved.splice(0);
-  }
-  
-
 
   public isOpen = false;
   editButton() {
-     localStorage.setItem("Edit", 'Edit')
+    localStorage.setItem('Edit', 'Edit');
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
-       minWidth: '100vw',
-       height: '730px',
-      panelClass: 'order-add-edit'
+      minWidth: '100vw',
+      height: '730px',
+      panelClass: 'order-add-edit',
     });
     this.isOpen = false;
     dialogRef.afterClosed().subscribe((res) => {
       localStorage.setItem('Edit', '');
-    })
+    });
   }
 }
