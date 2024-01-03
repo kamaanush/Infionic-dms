@@ -197,7 +197,7 @@ scrollbar-width: none;
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
   box-sizing: content-box;
   content: "";
-  color: #000000;
+  color: grey;
   position: absolute;
   top: 50%;
   left: 0;
@@ -207,6 +207,9 @@ scrollbar-width: none;
   border: 2px solid #000000;
   text-align: center;
   transition: all .4s ease;
+}
+::ng-deep .multiselect-item-checkbox input[type=checkbox]+div {
+  color: grey !important;
 }
 
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]:checked+div:before {

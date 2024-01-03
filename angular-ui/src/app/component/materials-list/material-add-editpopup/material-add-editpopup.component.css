@@ -160,7 +160,10 @@ form[name="myBasicInfo"] {
   margin-top: -47px;
 
 }
-
+input {
+ 
+  color: grey;
+}
 ::ng-deep.input.mat-input-text {
   margin-top: -9px;
   margin-left: -6px;
@@ -1344,9 +1347,15 @@ textarea {
 .uom-cls {
   border: 0.5px solid  #686E74;
   border-radius: 7px;
+  outline-color: #abd4ff;
   width: 60px;
   text-align: end;
+  
 }
+/* .uom-cls:focus
+{
+    border: none !important;
+ } */
 
 .table-data-row {
   margin-left: 30px;

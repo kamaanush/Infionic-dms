@@ -1,4 +1,6 @@
-
+:host ::ng-deep .mat-checkbox-frame {
+  border-color:#018B75
+}
 .close-icon {
     left: 100%;
     position: relative;
@@ -81,13 +83,10 @@ color: white;
 margin: auto;
   }
 ::ng-deep.add-geopgraphy .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
-  background-color: rgba(1, 139, 117, 1) !important;
-}
-.multiselect-item-checkbox input[type=checkbox]+div:before {
-  border: 2px solid rgba(1, 139, 117, 1) !important;
+  background-color: #018B75;
 }
 ::ng-deep.add-geopgraphy .mat-checkbox-checked.mat-accent .mat-checkbox-background{
-  background-color: rgba(1, 139, 117, 1) !important;
+  background-color: #018B75;
 }
 .cardList{
   height: 200px;

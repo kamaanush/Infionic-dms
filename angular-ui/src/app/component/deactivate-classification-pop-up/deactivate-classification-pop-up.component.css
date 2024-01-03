@@ -20,16 +20,33 @@
         width: 150px;
         height: 41px;
         cursor: pointer;
+        border: none;
+        cursor: pointer;
+        outline: none !important;
+        /* border:none !important; */
+        border: 2px solid rgba(1,137,117,1) ;
+        }
+        .undo:focus
+        {
+            border: none !important;
         }
     .exit{
     background: rgba(1,137,117,1);
     color: white;
     padding: 5px 52px;
-    border: 2px solid #000000;
+   border: none !important;
+    /* border: 2px solid grey; */
     border-radius: 10px;
     height: 41px;
     width: 150px;
     cursor: pointer;
+    outline: none !important;
+    /* border:none !important; */
+    border: 2px solid rgba(1,137,117,1) ;
+    }
+    .exit:focus
+    {
+        border: none !important;
     }
     .close-icon{
         left: 100%;

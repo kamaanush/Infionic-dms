@@ -339,24 +339,24 @@
                                                                     <thead class="table-headercolor">
                                                                         <tr>
                                                                             <th data-sortable="true"
-                                                                                style="padding-left: 25px;">
+                                                                                style="padding-left: 30px;">
                                                                                 Product Code</th>
                                                                             <th data-sortable="true"
                                                                                 class="Product_namefirstpromo"
-                                                                                style="padding-left: 25px;">
+                                                                                style="padding-left: 30px;">
                                                                                 Product Name</th>
                                                                             <th data-sortable="true"
                                                                                 class="identifiresfirst"
-                                                                                style="padding-left: 22px;">
+                                                                                style="padding-left: 27px;">
                                                                                 Identifiers</th>
                                                                             <th data-sortable="true" class="RegisNO"
-                                                                                style="padding-left: 22px;">
+                                                                                style="padding-left: 27px;">
                                                                                 Registration No</th>
                                                                             <th data-sortable="true" class="MOQFirst"
-                                                                                style="padding-left: 22px;">
+                                                                                style="padding-left: 27px;">
                                                                                 MOQ</th>
                                                                             <th data-sortable="true" class="UNITprice"
-                                                                                style="padding-left: 22px;">
+                                                                                style="padding-left: 27px;">
                                                                                 Unit Price</th>
                                                                             <th data-sortable="false" class="ordderQTY">
                                                                                 Order Quantity</th>
@@ -394,13 +394,14 @@
                                                                                 </td> -->
 
 
-                                                                                <td
-                                                                                    style="width:24px;padding-left: 6px;padding-top: 5px;">
-                                                                                    <input type="checkbox"
-                                                                                        [checked]="Item.isProductSelected"
-                                                                                        (change)="checkboxChange($event, Item,data)" />
-                                                                                </td>
+                                                                                <td width="30" >
 
+                                                                                    <mat-checkbox style="padding-left: 6px;padding-top: 5px;" [checked]="Item.isProductSelected"
+                                                                                    (change)="checkboxChange($event, Item,data)">
+                                        
+                                                                                    </mat-checkbox>
+                                                                                </td>
+                                                                                           
 
 
                                                                                 <td> {{ Item.productSKUName }}</td>
@@ -537,23 +538,23 @@
                                                             <tr>
 
                                                                 <th data-sortable="true"
-                                                                    style="text-align: left;padding-left: 22px;">Product
+                                                                    style="text-align: left;padding-left: 30px;">Product
                                                                     Code
                                                                 </th>
-                                                                <th data-sortable="true" class="GetgroupProductname">
+                                                                <th data-sortable="true" style="padding-left: 18px;" class="GetgroupProductname">
                                                                     Product Name
                                                                 </th>
-                                                                <th data-sortable="true" style="padding-left: 18px;" class="GetGroupIdentifiers">
+                                                                <th data-sortable="true" style="padding-left: 22px;" class="GetGroupIdentifiers">
                                                                     Identifiers
                                                                 </th>
-                                                                <th data-sortable="true" class="Getgroupregistion">
+                                                                <th data-sortable="true" style="padding-left: 13px;" class="Getgroupregistion">
                                                                     Registration
                                                                     No</th>
-                                                                <th data-sortable="true" class="moqGetGroup">MOQ</th>
-                                                                <th data-sortable="true" class="GetgriuoUNITprice">Unit
+                                                                <th data-sortable="true" style="padding-left: 13px;" class="moqGetGroup">MOQ</th>
+                                                                <th data-sortable="true" style="padding-left: 13px;" class="GetgriuoUNITprice">Unit
                                                                     Price
                                                                 </th>
-                                                                <th data-sortable="false" class="OrderQtyGetgroup">Order
+                                                                <th data-sortable="false" style="padding-left: 18px;" class="OrderQtyGetgroup">Order
                                                                     Quantity
                                                                 </th>
                                                                 <th data-sortable="false">Order Amount
@@ -565,11 +566,13 @@
                                                                 *ngFor="let Item of promos.stockitemid |filter:searchTextFreeItems">
                                                                 <ng-container
                                                                     *ngIf="toggleStatefreeitems ? Item.isProductSelected : true">
-                                                                    <td
-                                                                        style="width:24px;padding-left: 6px; padding-top: 5px;">
-                                                                        <input type="checkbox"
-                                                                            [checked]="Item.isProductSelected"
-                                                                            (change)="checkboxChange($event,Item, data)">
+                                                                   
+                                                                    <td width="30" >
+
+                                                                        <mat-checkbox style="padding-left: 6px;padding-top: 5px;" [checked]="Item.isProductSelected"
+                                                                        (change)="checkboxChange($event, Item,data)">
+                            
+                                                                        </mat-checkbox>
                                                                     </td>
                                                                     <td>{{Item.productSKUName}}
                                                                     </td>
@@ -723,12 +726,12 @@
 
                                                                 <tr>
                                                                     <th data-sortable="true"
-                                                                        style="padding-left: 25px;">Product
+                                                                        style="padding-left: 32px;">Product
                                                                         Code</th>
                                                                     <th data-sortable="true"
                                                                         class="secondpromoProductname">Product
                                                                         Name</th>
-                                                                    <th style="padding-left: 18px;" data-sortable="true"
+                                                                    <th style="padding-left: 22px;" data-sortable="true"
                                                                         class="secondPromoidentifiers">
                                                                         Identifiers</th>
                                                                     <th data-sortable="true"
@@ -749,12 +752,14 @@
                                                             <tbody class="tbodayheight4">
                                                                 <tr
                                                                     *ngFor="let Item of promos.stockitemid  |filter:searchTextSecondPromotion;">
-                                                                    <td
-                                                                        style="width:24px;padding-left: 6px;padding-top: 5px;">
-                                                                        <input type="checkbox"
-                                                                            [checked]="Item.isProductSelected"
-                                                                            [disabled]="!promos.isEnable"
-                                                                            (change)="checkboxChange($event,Item, data)" />
+                                                                   
+                                                                    <td width="30" >
+
+                                                                        <mat-checkbox style="padding-left: 6px;padding-top: 5px;" [checked]="Item.isProductSelected"
+                                                                        [disabled]="!promos.isEnable"
+                                                                        (change)="checkboxChange($event,Item, data)">
+                            
+                                                                        </mat-checkbox>
                                                                     </td>
                                                                     <td>{{Item.productSKUName}}
                                                                     </td>
@@ -966,12 +971,12 @@
                                                                 <tr>
                                                                     <!-- <th width="30"></th> -->
                                                                     <th data-sortable="true"
-                                                                        style="padding-left: 25px;">Product
+                                                                        style="padding-left: 32px;">Product
                                                                         Code</th>
                                                                     <th data-sortable="true"
                                                                         class="SecondPromoFreeitemsProduct">Product
                                                                         Name</th>
-                                                                    <th style="padding-left: 18px;" data-sortable="true"
+                                                                    <th style="padding-left: 22px;" data-sortable="true"
                                                                         class="SecondPromofreeIdettifiers">
                                                                         Identifiers</th>
                                                                     <th data-sortable="true"
@@ -994,12 +999,14 @@
                                                             <tbody class="tbodayheightGetset">
                                                                 <tr class="table-row"
                                                                     *ngFor="let Item of promos.stockitemid |filter:searchTextSecondPromotionfree">
-                                                                    <td
-                                                                        style="width: 24px;padding-left: 6px;padding-top: 5px;">
-                                                                        <input type="checkbox"
-                                                                            [disabled]="!promos.isEnable"
-                                                                            [checked]="Item.isProductSelected"
-                                                                            (change)="checkboxChange($event,Item, data)">
+                                                                    
+                                                                    <td width="30" >
+
+                                                                        <mat-checkbox style="padding-left: 6px;padding-top: 5px;" [disabled]="!promos.isEnable"
+                                                                        [checked]="Item.isProductSelected"
+                                                                        (change)="checkboxChange($event,Item, data)">
+                            
+                                                                        </mat-checkbox>
                                                                     </td>
                                                                     <td>{{Item.productSKUName}}
                                                                     </td>
@@ -1190,14 +1197,14 @@
                                                         <thead class="table-headercolor">
                                                             <tr>
                                                                 <th data-sortable="true" class="align-center"
-                                                                    style="padding-left: 25px;">Product Code
+                                                                    style="padding-left: 32px;">Product Code
                                                                 </th>
 
                                                                 <th data-sortable="true" class="ThirPrmoProductname">
                                                                     Product Name
                                                                 </th>
 
-                                                                <th style="padding-left: 18px;" data-sortable="true" class="ThirPromoIdentifiers">
+                                                                <th style="padding-left: 24px;" data-sortable="true" class="ThirPromoIdentifiers">
                                                                     Identifiers
                                                                 </th>
 
@@ -1245,11 +1252,12 @@
                                                                 *ngFor="let Item of data.promoDetails.stockitems |filter:ThirdPromotion">
                                                                 <ng-container
                                                                     *ngIf="togglethiredpromotion ? Item.isProductSelected : true">
-                                                                    <td
-                                                                        style="width: 24px;padding-left: 6px;padding-top: 5px;">
-                                                                        <input type="checkbox"
-                                                                            [checked]="Item.isProductSelected"
-                                                                            (change)="checkboxChange($event,Item, data)">
+                                                                    <td width="30" >
+
+                                                                        <mat-checkbox style="padding-left: 6px;padding-top: 5px; width: 24px;" [checked]="Item.isProductSelected"
+                                                                        (change)="checkboxChange($event,Item, data)">
+                            
+                                                                        </mat-checkbox>
                                                                     </td>
 
                                                                     <td style="text-align: left;">
@@ -1469,24 +1477,24 @@
                                                                 <tr>
 
                                                                     <th data-sortable="true" class="align-center"
-                                                                        style="padding-left: 25px;">Product
+                                                                        style="padding-left: 32px;">Product
                                                                         Code
                                                                     </th>
-                                                                    <th data-sortable="true"
+                                                                    <th data-sortable="true" style="padding-left: 30px;"
                                                                         class="ForthPromotionProductname">Product
                                                                         Name
                                                                     </th>
-                                                                    <th style="padding-left: 18px;" data-sortable="true"
+                                                                    <th style="padding-left: 24px;" data-sortable="true"
                                                                         class="forthPromotionIdentifiers">
                                                                         Identifiers
                                                                     </th>
-                                                                    <th data-sortable="true"
+                                                                    <th data-sortable="true" style="padding-left: 12px;"
                                                                         class="ForthPrommotionREgisno">
                                                                         Registration
                                                                         No</th>
-                                                                    <th data-sortable="true" class="ForthPromotionsMOQ">
+                                                                    <th data-sortable="true" style="padding-left: 12px;" class="ForthPromotionsMOQ">
                                                                         MOQ</th>
-                                                                    <th data-sortable="true"
+                                                                    <th data-sortable="true" style="padding-left: 12px;"
                                                                         class="ForthPromoUnitPrice">Unit Price
                                                                     </th>
                                                                     <!-- <th data-sortable="true">Qty. in Stock</th>
@@ -1508,11 +1516,12 @@
                                                                     *ngFor="let Item of data.promoDetails.stockitems | filter:ForthPromotionsearch">
                                                                     <ng-container
                                                                         *ngIf="togglefrthpromotion ? Item.isProductSelected : true">
-                                                                        <td
-                                                                            style="width:24px;padding-left: 6px;padding-top: 5px;">
-                                                                            <input type="checkbox"
-                                                                                [checked]="Item.isProductSelected"
-                                                                                (change)="checkboxChange($event,Item, data)">
+                                                                        <td width="30" >
+
+                                                                            <mat-checkbox style="padding-left: 6px;padding-top: 5px; width: 24px;" [checked]="Item.isProductSelected"
+                                                                            (change)="checkboxChange($event,Item, data)">
+                                
+                                                                            </mat-checkbox>
                                                                         </td>
                                                                         <td style="text-align: left;">
                                                                             {{Item.productSKUName}}</td>
@@ -1582,6 +1591,8 @@
                                                                                 [(ngModel)]="calculatedDiscountAmount"
                                                                                 [value]="(Item.DiscountAmount ?? 0) | number: '1.2-2'">
                                                                         </td>
+                                                                    
+
                                                                         <td class="txt-right"
                                                                             style="position: relative; right: 50px;">
                                                                             <input

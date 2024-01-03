@@ -2635,7 +2635,7 @@ letter-spacing: 0.04em;
 .secondpromoProductname
 {
   position: relative;
-  right: -13px;
+  right: -20px;
 }
 .secondPromoidentifiers
 {
@@ -2646,16 +2646,19 @@ letter-spacing: 0.04em;
 {
   position: relative;
   /* left: 11%; */
+  padding-left: 12px;
 }
 .secondpromoMOQ
 {
   position: relative;
   /* left: 10%; */
+  padding-left: 12px;
 }
 .secondPromoUnitPrice
 {
   position: relative;
   /* left: 6%; */
+  padding-left: 12px;
 }
 .quantitySecondPromo
 {
@@ -2666,7 +2669,7 @@ letter-spacing: 0.04em;
 {
   position: relative;
   /* right: 19px; */
-  padding-left: 22px;
+  padding-left: 27px;
 }
 .SecondPromofreeIdettifiers
 {
@@ -2677,15 +2680,18 @@ letter-spacing: 0.04em;
 {
   position: relative;
   /* left: 12%; */
+  padding-left: 12px;
 }
 .SecondPromotionsFreeMOQ
 {
   position: relative;
   /* left: 12%; */
+  padding-left: 12px;
 }
 .MOQSecondPromoUnitPrice
 {
   position: relative;
+  padding-left: 12px;
   /* left: 4%; */
 }
 .OrderQtySeconsPrmotions
@@ -2696,7 +2702,7 @@ letter-spacing: 0.04em;
 .ThirPrmoProductname
 {
   position: relative;
-  right: -12px
+  right: -20px
 }
 .ThirPromoIdentifiers
 {
@@ -3030,4 +3036,12 @@ tr:nth-child(even) {
 .red-row {
   background-color: rgb(249, 15, 147);
   color: white;
+}
+
+
+:host ::ng-deep .mat-checkbox-frame {
+  border-color:#018B75
+}
+::ng-deep .mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+  background-color:#018B75 !important ;
 }

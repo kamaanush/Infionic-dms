@@ -278,6 +278,9 @@ padding-left: 11px;
   text-align: center;
   transition: all .4s ease;
 }
+::ng-deep .multiselect-item-checkbox input[type=checkbox]+div {
+  color: grey !important;
+}
 
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]:checked+div:before {
   animation: borderscale .2s ease-in;
@@ -1082,4 +1085,6 @@ padding-left: 11px;
   border: 1px solid gray; 
 }
 
-
+::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before{
+  border: 2px solid  #018B75 !important;
+}

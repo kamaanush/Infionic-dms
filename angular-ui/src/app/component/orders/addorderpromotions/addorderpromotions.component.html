@@ -1366,9 +1366,14 @@
                                     [ngClass]="{'promotionItem': Item.isInPromotion===true}">
                                     <ng-container *ngIf="toggleStateNonPromodata ? Item.isPromotionSelected : true">
                                     
-                                    <td width="30"> <input type="checkbox" class="check custom-checkbox"
-                                            [checked]="Item.isPromotionSelected" (change)="checkboxChange($event,Item)"
-                                            onfocus="this.checked=''"></td>
+                                        <td width="30" >
+
+                                            <mat-checkbox style=" margin-left: 5px;
+                                            margin-top: 8px;" [checked]="Item.isPromotionSelected"
+                                                (change)="checkboxChange($event,Item)" onfocus="this.checked=''">
+
+                                            </mat-checkbox>
+                                        </td>
 
                                     <td style="text-align: left;color: grey;">{{Item.productSKUName}}</td>
                                     <td style="text-align: left;width: 298px;color: grey;">{{Item.stockitemname}}</td>

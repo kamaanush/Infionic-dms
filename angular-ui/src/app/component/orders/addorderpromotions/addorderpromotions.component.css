@@ -3379,9 +3379,10 @@ cursor: pointer;
    .cancel-icon .mat-icon{
     background: rgba(1, 139, 117, 1);
     color: #fff;
-    position: absolute;
-    top: -8px;
-    padding-top: 1px;
+    /* position: absolute; */
+    position: relative;
+    top: -16px;
+    padding-top: 0px;
     border-radius: 50%;
     padding-left: -5px;
     margin-left: 52px;
@@ -3446,7 +3447,13 @@ cursor: pointer;
   margin-left: 80%;
   margin-top: -5%;
 }
-
+ 
+:host ::ng-deep .mat-checkbox-frame {
+  border-color:#018B75
+}
+::ng-deep .mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+  background-color:#018B75 !important ;
+}
 
 
 

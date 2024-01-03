@@ -20,7 +20,14 @@
         width: 150px;
         height: 41px;
         cursor: pointer;
-        }
+        outline: none !important;
+    /* border:none !important; */
+    border: 2px solid rgba(1,137,117,1) ;
+    }
+    .undo:focus
+    {
+        border: none !important;
+    }
     .exit{
     background: rgba(1, 139, 117, 0.8);
     color: white;
@@ -30,6 +37,13 @@
     height: 41px;
     width: 150px;
     cursor: pointer;
+    outline: none !important;
+    /* border:none !important; */
+    border: 2px solid rgba(1,137,117,1) ;
+    }
+    .exit:focus
+    {
+        border: none !important;
     }
     .close-icon{
         left: 100%;

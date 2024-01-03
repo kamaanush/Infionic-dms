@@ -7,8 +7,8 @@
         <h1 class="head-text" >{{headername}}</h1>
         <p class="auswd">Are you sure you want to <b  [ngStyle]="activeTypeIsActive == 'false'? {'color': '#17B15C'}:{'color':'red'}">{{headername}}</b><br>
         <b> {{activeTypeName}}?</b></p>
-        <button class="undo" (click)="deactive()">Yes</button>
-        <button class="exit"(click)='close()'>Cancel</button>
+        <button class="undo" (click)="deactive()" style="border: none;">Yes</button>
+        <button class="exit"(click)='close()' style="border: none;">Cancel</button>
     </div>
 </div>
 </div>
