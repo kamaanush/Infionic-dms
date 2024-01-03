@@ -115,8 +115,9 @@ export class AddTargetsComponent implements OnInit {
      this.onSelectFinancialYear(event);
      this.financialYearData();
   }
-  selectedTargett: string = '';
-  financialYears: any=[];
+  // selectedTargett: string = '';
+  selectedTargett:any;
+  financialYears: any;
   financialYearData() {
         this.targetList.financialYear().subscribe(response => {
       this.financialYears = response.response;
@@ -126,6 +127,7 @@ export class AddTargetsComponent implements OnInit {
   onSelectFinancialYear(event:any) {
     this.selectedTargett = event.target.value;
     console.log(this.selectedTargett,"RK");
+    this.financialYear = event.target.value;
   }
   
   

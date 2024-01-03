@@ -144,7 +144,7 @@
                                                             {{item.financialYear}}
                                                            </option>
                                                 </select>
-                                        
+                                                
                                             </div>
 
                                             <div class="promotiont2">
@@ -255,12 +255,15 @@
                                                         [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected  && ! this.mainadd[0].dealers[i].targets[j].disableColumns"
                                                         placeholder="Enter">
                                                 </td>
+                                               
                                                 <td>
-                                                    <input [class.changed-border]="selectValueChanged" type="text"
-                                                        (keyup)="janUnit1($event,i,j)" placeholder="Enter"
-                                                        class="IteminputBoxes"
-                                                        [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.dec">
-                                                </td>
+                                                <input [class.changed-border]="selectValueChanged" type="text"
+                                                (keyup)="janUnit1($event,i,j)"
+                                                [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.dec"
+                                                [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                placeholder="Enter" class="IteminputBoxes"
+                                                [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
+                                               </td>
                                                 <td>
                                                     <input [class.changed-border]="selectValueChanged" type="text"
                                                         (keyup)="janUnit1($event,i,j)"
@@ -277,15 +280,13 @@
                                                         [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected"
                                                         placeholder="Enter">
                                                 </td>
-                                                <td>
-                                                    <input [class.changed-border]="selectValueChanged" type="text"
-                                                        (keyup)="janUnit1($event,i,j)"
-                                                        [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.mar"
-                                                        [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
-                                                        placeholder="Enter" class="IteminputBoxes"
-                                                        [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
-                                                </td>
-                                                <td>
+                                                        <td>
+                                                            <input [class.changed-border]="selectValueChanged" type="text"
+                                                                (keyup)="janUnit1($event,i,j)" placeholder="Enter"
+                                                                class="IteminputBoxes"
+                                                                [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.mar">
+                                                        </td>
+                                                                                              <td>
                                                     <input (keyup)="TotalValue($event)" type="text" placeholder="Enter"
                                                         class="IteminputBoxes"
                                                         [(ngModel)]="mainadd[0].dealers[i].targets[j].vtotal" disabled>

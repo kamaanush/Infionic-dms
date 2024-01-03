@@ -38,8 +38,9 @@ export class GeographiesComponent implements OnInit {
       }
     });
   }
-
+  userType:any;
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
   }
 
   
