@@ -27,6 +27,28 @@ font-style: normal;
   position: relative;
   left: 13%;
 }
+.quantity-inp {
+  width: 65%;
+  height: 25px;
+  background: #FFFFFF;
+  border: 1px solid #E1E2E3;
+  outline-color: #abd4ff;
+  border-radius: 5px;
+  text-align: right;
+  margin-left: -7px;
+  margin-top: 4px;
+}
+.zero-quantity {
+  width: 65%;
+  height: 25px;
+  background: #FFFFFF;
+  border: 2px solid red;
+  border-radius: 5px;
+  text-align: right;
+  margin-left: -7px;
+  margin-top: 4px;
+}
+
 .ProductGroup
 {
   font-family: 'Calibri';
@@ -3091,18 +3113,6 @@ table thead, table tbody tr {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   border-radius: 8px;
-}
-
-.quatity-inp {
-  width: 65%;
-  height: 25px;
-  background: #FFFFFF;
-  border: 1px solid #E1E2E3;
-  outline-color: #abd4ff;
-  border-radius: 5px;
-  text-align: right;
-  margin-left: -7px;
-  margin-top: 4px;
 }
 
 .saveas-draft1 {

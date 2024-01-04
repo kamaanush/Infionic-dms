@@ -909,10 +909,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     return this._formBuilder.group({
       qtyFrom: ['', [Validators.required, Validators.min(0)]],
       qtyTo: ['', [Validators.required, Validators.min(0)]],
-      buy: [
-        '',
-        [Validators.required, Validators.min(0)],
-      ],
+      buy: ['',[Validators.required, Validators.min(0)],],
       get: ['', [Validators.required, Validators.min(0)]],
       additional: ['', ],
       // [Validators.required, Validators.min(0)]
@@ -928,6 +925,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.formArr.push(this.promotionRows());
     this.updateValidation();
   }
+  isButtonDisable:boolean= false
   restrictToAlphabets(event: any): void {
     const input = event.target as HTMLInputElement;
     const value = input.value;
@@ -936,8 +934,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // Check if the value is less than or equal to zero
     if (numericValue <= 0 ||numericValue == null ) {
       input.style.borderColor = 'red'; 
+      this.isButtonDisable = true
       // this.promotionForm.get('addPromotions')?.get(controlName)?.setErrors({ invalidValue: true });
     } else {
+      this.isButtonDisable = false
       input.style.borderColor = '';
       // this.promotionForm.get('addPromotions')?.get(controlName)?.setErrors(null);
     }

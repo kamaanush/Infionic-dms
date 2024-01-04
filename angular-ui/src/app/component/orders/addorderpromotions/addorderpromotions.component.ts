@@ -19,7 +19,7 @@ import { PromotionService } from 'src/app/services/promotion.service';
 import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/item';
 import { SharedimageService } from 'src/app/sharedimage.service';
 import { OrderActionShipmentComponent } from '../order-action-shipment/order-action-shipment.component';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-addorderpromotions',
   templateUrl: './addorderpromotions.component.html',
@@ -890,7 +890,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.resetQuantity();
     let reduceqty = JSON.parse(localStorage.getItem('productdata') || '[]');
     console.log(reduceqty);
-    const QTYRemove = reduceqty.extractedData.findIndex((x) => x.promotionId === clickedItem);
+    const QTYRemove = reduceqty.extractedData?.findIndex((x) => x.promotionId === clickedItem);
     if (QTYRemove !== -1) {
       const removedItem = reduceqty.extractedData[QTYRemove];
       reduceqty.extractedData.splice(QTYRemove, 1);
@@ -1949,14 +1949,19 @@ export class AddorderpromotionsComponent implements OnInit {
     return formattedList;
   }
   UpdatedQty: any;
+  zeroQuantity: boolean = false;
+  isCheckboxManuallyChecked: boolean = false;
   quantityChange(updatedItem) {
+    this.zeroQuantity = updatedItem.quantity === 0;
     this.UpdatedQty = updatedItem.quantity;
     console.log(updatedItem);
 
     if (!updatedItem.isPromotionSelected) {
       updatedItem.isPromotionSelected = true;
+      this.isCheckboxManuallyChecked = true
     } else if (!updatedItem.quantity) {
       updatedItem.isPromotionSelected = false;
+      this.isCheckboxManuallyChecked = false
     }
     this.nonPromotionCalculation(updatedItem);
     // this.value = event.target.value;
@@ -2001,11 +2006,10 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   isNonPromoCheck:any
-  isCheckboxManuallyChecked: boolean = false;
   checkboxChange(event, changedPromotionObj) {
-    console.log(event, changedPromotionObj);
-    changedPromotionObj.isPromotionSelected = event.target.checked;
-    this.isNonPromoCheck=event.target.checked;
+    // console.log(event, changedPromotionObj);
+    changedPromotionObj.isPromotionSelected = event.target?.checked;
+    this.isNonPromoCheck=event.target?.checked;
     this.quantityChange(changedPromotionObj);
     this.nonPromotionCalculation(changedPromotionObj);
     this.isCheckboxManuallyChecked = true;
@@ -2029,8 +2033,10 @@ export class AddorderpromotionsComponent implements OnInit {
 
   DisplayNonpromotion: boolean = false;
   addnonPromoItems() {
+    // console.log(this.isNonPromoCheck,'this.isNonPromoCheck');
+    // console.log(this.isCheckboxManuallyChecked,'!this.isCheckboxManuallyChecked');
     // if (this.nonPromoQty == null|| this.UpdatedQty ===0 || (this.isNonPromoCheck && !this.isCheckboxManuallyChecked)) {
-      if ((this.UpdatedQty == 0|| this.UpdatedQty == null) && (this.isNonPromoCheck || !this.isCheckboxManuallyChecked)) {
+      if ((this.UpdatedQty == 0|| !this.UpdatedQty) && (this.isNonPromoCheck || this.isCheckboxManuallyChecked)) {
       const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
         data: {
           Alertpp: true,
@@ -2281,8 +2287,73 @@ export class AddorderpromotionsComponent implements OnInit {
     this.sharedService.filter('Register click');
     this.DisplayNonpromotion = true;
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    d.length == 1 && (d = '0' + d);
+    m.length == 1 && (m = '0' + m);
+    return d + m + y;
+  }
   GetConfirmOrders() {
     this.CustomerPoId = localStorage.getItem('CustomerPoId');
+    // let id = this.params.data.id
+    this.orders.GetProcessOrderDetails(this.CustomerPoId).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if (res.succeded && res.response >0) {
+          const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+          const headers = Object.keys(res.response[0])
+            .filter((key) => !excludedProperties.includes(key))
+            //.map(header => header);// to get all capital letters
+            .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+
+          const worksheetData = [headers];
+          res.response.forEach((item) => {
+            const capitalizedItem = {};
+            Object.keys(item).forEach((key) => {
+              // const capitalizedKey = key   // to get all capital letters
+              const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+              capitalizedItem[capitalizedKey] = item[key];
+            });
+
+            const row = headers.map((key) => {
+              const value = capitalizedItem[key];
+              if (
+                typeof value === 'string' &&
+                /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)
+              ) {
+                return `"${value}"`;
+              }
+              return value;
+            });
+            worksheetData.push(row);
+          });
+
+          const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+          const workbook = XLSX.utils.book_new();
+          XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+          const excelBuffer = XLSX.write(workbook, {
+            bookType: 'xlsx',
+            type: 'array',
+          });
+          const blob = new Blob([excelBuffer], {
+            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          });
+          const url = URL.createObjectURL(blob);
+
+          const link = document.createElement('a');
+          link.href = url;
+          link.download =  this.convertedDateFormat()+ this.CustomerPoId + 'PODetails(Fixed)';
+          link.click();
+          URL.revokeObjectURL(url);
+        }else{
+          alert('No row to download')
+        }
+      },
+    });
     console.log(this.CustomerPoId, 'this.CustomerPoId');
     let data = {
       OrderId: this.CustomerPoId,

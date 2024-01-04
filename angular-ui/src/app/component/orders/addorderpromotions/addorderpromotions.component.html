@@ -1368,9 +1368,8 @@
                                     
                                         <td width="30" >
 
-                                            <mat-checkbox style=" margin-left: 5px;
-                                            margin-top: 8px;" [checked]="Item.isPromotionSelected"
-                                                (change)="checkboxChange($event,Item)" onfocus="this.checked=''">
+                                            <mat-checkbox style=" margin-left: 5px;margin-top: 8px;" [checked]="Item.isPromotionSelected"
+                                                (change)="checkboxChange($event,Item)" >
 
                                             </mat-checkbox>
                                         </td>
@@ -1424,13 +1423,20 @@
                                                     [(ngModel)]="Item.quantity" 
                                                      (change)="quantityChange(Item)  "
                                                      ></td> -->
-                                    <td style="    position: relative;
-                                    left: 13px;">
-
-                                            <input type="number" placeholder="Enter " class="quatity-inp" min="0"
-                                            [(ngModel)]="Item.quantity"   (ngModelChange)="quantityChange(Item)"
-                                            name="Item.quantity" oninput="validity.valid||(value='')">
-                                    </td>
+                                        <td style="position: relative; left: 13px;">
+                                        <input type="number" placeholder="Enter" class="quantity-inp"
+                                                [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
+                                                name="Item.quantity" oninput="validity.valid||(value='')"
+                                                [ngClass]="{'zero-quantity': Item.quantity === 0, 'quatity-inp': Item.quantity !== 0}">
+                                        </td>
+                                                    
+                                    <!-- <td style="position: relative; left: 13px;">
+                                        <input type="number" placeholder="Enter" class="quantity-inp" min="0"
+                                               [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
+                                               name="Item.quantity" oninput="validity.valid||(value='')"
+                                               [ngClass]="{'zero-quantity': Item.quantity === 0}">
+                                    </td> -->
+                                    
                                     <td style="display: flex;color: grey; right: 3px;position: relative;">
                                         <input disabled type="number" name="" [(ngModel)]="Item.quantity* Item.price"
                                             [value]="(Item.quantity || 0) * Item.price"
@@ -1462,7 +1468,7 @@
                         </div>
                         <div class=" addbuttons mt-2">
                             <button type="button " class="btn btn-primary saveitems " style="width: 150px;"
-                                (click)="addnonPromoItems()">Confirm</button>
+                                (click)="addnonPromoItems()" [disabled]="zeroQuantity">Confirm</button>
                         </div>
                     </div>
                   
