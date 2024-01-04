@@ -54,7 +54,7 @@
         </form>
       </div>
       <!-- Search -->
-      <div class="col-md-2 col-lg-2 col-sm-2" >
+      <div class="col-md-2 col-lg-2 col-sm-2" style="margin-left: -2px;" >
         <div class="searchBox11 d-flex">
           <input id="searchInput" class="searchInput11" type="text" name="" placeholder="Search Here Anything"(keyup)="onSearchChange($event)">
            <mat-icon  class="searchicons">search</mat-icon> 
@@ -170,7 +170,7 @@
 
 
  <div class="row">
-  <div class="col-3">
+  <div style="margin-top: 18px;" class="col-3">
     <div class="d-flex">
       <label class="mr-5">
         <input type="radio" [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()" value="Orders"> Orders

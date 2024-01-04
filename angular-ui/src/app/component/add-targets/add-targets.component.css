@@ -575,3 +575,9 @@ label {
    ::ng-deep.ng-select.ng-select-single .ng-select-container .ng-value-container{
     color: grey;
    }
+   :host ::ng-deep .mat-checkbox-frame {
+    border-color:#018B75
+  }
+  ::ng-deep .mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+    background-color:#018B75 !important ;
+  }

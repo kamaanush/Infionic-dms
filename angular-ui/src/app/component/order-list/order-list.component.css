@@ -828,13 +828,18 @@ mat-sidenav-container {
     color: rgba(128, 128, 128, 0.534);
 }
 
-::ng-deep.mat-select-arrow-wrapper {
+/* ::ng-deep.mat-select-arrow-wrapper {
 
     margin-top: -8px;
 
+} */
+
+::ng-deep.invoice .mat-select-arrow-wrapper {
+    content: url('../../../assets/img/Calendar.svg');
+    height: 21px;
+    position: relative;
+    top: 2px;
 }
-
-
 ::ng-deep.mat-menu-item {
 
     line-height: 41px;
@@ -918,7 +923,21 @@ mat-sidenav-container {
     align-items: baseline;
     box-sizing: border-box;
     width: 100%;
-    height: 45px;
+    
+}
+::ng-deep.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex {
+    cursor: pointer;
+    height: 43px;
+    width: 202px;
+}
+::ng-deep .invoice .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px;
+    padding-left: 10px;
+    background: white !important;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
+    border-left: 1px solid rgba(104, 110, 116, 0.75);
+    border-right: 1px solid rgba(104, 110, 116, 0.75);
 }
 
 ::ng-deep.mat-paginator-container {
@@ -1052,9 +1071,9 @@ mat-sidenav-container {
     background: #0091EA !important;
 }
 
-::ng-deep.mat-select-arrow {
+/* ::ng-deep.mat-select-arrow {
     color: #263643 !important;
-}
+} */
 
 .mat-sort-header-container {
     align-items: center;
@@ -1086,9 +1105,9 @@ mat-sidenav-container {
     background: #FFFFFF;
 }
 
-::ng-deep.mat-select-arrow {
+/* ::ng-deep.mat-select-arrow {
     margin-top: 5px !important;
-}
+} */
 
 ::ng-deep.mat-select-panel {
     background: #FFFFFF !important;
@@ -1676,4 +1695,10 @@ justify-content: end;
     cursor: pointer;
     margin: 0;
      color: gray !important; 
+}
+::ng-deep .datepicker-menu-list {
+    padding: 0;
+    width: 130px;
+    margin-bottom: 0;
+    color: grey !important;
 }
