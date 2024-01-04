@@ -38,11 +38,12 @@
   }
   .search-geo{
     background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border: 0.5px solid grey;
+/* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
 border-radius: 10px;
 width: 391px;
 height: 43px;
+outline-color: #abd4ff;
   }
   .geo-label{
     margin-right: 20px;
@@ -82,4 +83,13 @@ margin: auto;
 }
 ::ng-deep.add-geopgraphy .mat-checkbox-checked.mat-accent .mat-checkbox-background{
   background-color: rgba(1, 139, 117, 1) !important;
+}
+::ng-deep.mat-checkbox-layout .mat-checkbox-label{
+  color: #686E74;
+}
+:host ::ng-deep .mat-checkbox-frame {
+  border-color:#018B75
+}
+::ng-deep .mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+  background-color:#018B75 !important ;
 }

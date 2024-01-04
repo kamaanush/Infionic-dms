@@ -1096,3 +1096,9 @@ li {
  
   color: gray;
   }
+
+  .ag-theme-material{
+    --ag-checkbox-background-color: white !important;
+    --ag-checkbox-checked-color: #018B75 !important;
+    --ag-checkbox-unchecked-color: #018B75 !important;
+  }

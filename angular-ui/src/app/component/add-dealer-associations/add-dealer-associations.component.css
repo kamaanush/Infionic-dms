@@ -1909,6 +1909,9 @@ width: 100%;
 
   background: #006466 !important;
 }
+::ng-deep.ng-select.ng-select-single .ng-select-container .ng-value-container{
+  color: grey;
+ }
 
 
 

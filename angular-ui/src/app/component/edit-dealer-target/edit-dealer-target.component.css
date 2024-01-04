@@ -204,6 +204,7 @@ label {
     margin: 3px;
     background: #FFFFFF;
     color: grey;
+    outline-color: #abd4ff;
 }
 .viewtargetData{
     width: 95%;
@@ -397,6 +398,7 @@ label {
 .dlr-name {
     padding-left: 5px;
     font-family: 'Gilroy';
+    color: grey;
 }
 
 .dlr-info {

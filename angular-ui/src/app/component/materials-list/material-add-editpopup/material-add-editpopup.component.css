@@ -1447,6 +1447,9 @@ textarea {
   background: #FFFFFF;
   border: 0.5px solid grey;
   border-radius: 7px;
+  /* outline-color: 0.5px solid grey !important; */
+  outline-color: #abd4ff;
+
 }
 
 .inp_field {
@@ -1458,7 +1461,12 @@ textarea {
   background: #FFFFFF;
   border: 0.5px solid grey;
   border-radius: 7px;
+  outline-color: #abd4ff;
+  /* outline-color: 0.5px solid gray !important; */
+ 
 }
+
+
 
 .Apply_button {
   width: 70.29px;
@@ -1471,7 +1479,9 @@ textarea {
   /* box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 7px;
   cursor: pointer;
+  outline: none !important;
 }
+
 
 .overlay {
   position: fixed;

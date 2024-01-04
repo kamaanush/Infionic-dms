@@ -40,21 +40,21 @@ export class DealerTargetPopupGridComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'stockItemName', type: ['nonEditableColumn'],minWidth:100,
+      field: 'stockItemName', cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],minWidth:100,
     },
 
-    { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
+    { headerName: "Classification",cellStyle: { color: '#686E74' }, field: 'classification', type: ['nonEditableColumn'] },
 
-    { headerName: "SKU", field: 'productSKUName', type: ['nonEditableColumn'] },
+    { headerName: "SKU",cellStyle: { color: '#686E74' }, field: 'productSKUName', type: ['nonEditableColumn'] },
 
     {
       headerName: "Product Identifier",
-      field: 'productCustomName', type: ['nonEditableColumn']
+      field: 'productCustomName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'],
+      field: 'productGroupName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
     },
    
 

@@ -9,3 +9,11 @@
 .close-icon:hover {
     cursor: pointer;
 }
+.ag-theme-material {
+    --ag-card-radius: 100px;
+    --ag-border-radius: 20px;
+    --ag-header-height: 30px;
+    --ag-header-foreground-color: white;
+    --ag-header-background-color:  #018B75CC  !important ;
+  }
+

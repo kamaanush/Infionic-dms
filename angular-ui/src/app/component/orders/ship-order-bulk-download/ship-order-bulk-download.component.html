@@ -49,10 +49,10 @@
            >
           </ng-multiselect-dropdown>
         </form> -->
-        <app-customdatepicker [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+        <app-customdatepicker style="position: relative;left: 16px;" [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
 
       </div>&nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="col-md-2 col-lg-2 col-sm-2 shipordersbulkbubbles">
+      <div class="col-md-2 ml-4 col-lg-2 col-sm-2 shipordersbulkbubbles">
         <form [formGroup]="geographyForm" >
           <ng-multiselect-dropdown class="geography geograph" name="city" [placeholder]="'Geography'" formControlName="geography"
             [disabled]="disabled" [settings]="geographySettings" [data]="geographyData" (onSelect)="geographyselect($event)"

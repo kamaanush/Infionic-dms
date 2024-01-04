@@ -175,6 +175,7 @@ svg {
     background-clip: padding-box;
     margin-top: -28px !important;
     width: 200px;
+    border: 1px solid grey;
 }
 
 

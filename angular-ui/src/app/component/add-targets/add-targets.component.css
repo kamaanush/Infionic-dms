@@ -209,6 +209,7 @@ label {
     border: 2px solid  rgba(1, 139, 117, 1);
     text-align: end; 
     color: grey;
+    outline-color: #abd4ff;
 
 }
 /* .changed-border {
@@ -569,4 +570,8 @@ label {
     margin-left: 10px;
     margin-right: -1px;
     padding-left: 5px;
+   }
+
+   ::ng-deep.ng-select.ng-select-single .ng-select-container .ng-value-container{
+    color: grey;
    }
