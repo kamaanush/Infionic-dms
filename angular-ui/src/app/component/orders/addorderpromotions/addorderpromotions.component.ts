@@ -2149,6 +2149,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   isButtonDisabled = false;
   ordersubmit(submitType) {
+    console.log(submitType,'submitType');
     if (this.isButtonDisabled) {       
       return;     
       }     
@@ -2218,7 +2219,8 @@ export class AddorderpromotionsComponent implements OnInit {
         'en-US'
       );
     }
-
+    let submitype = localStorage.getItem('Edit')
+    // alert(submitype)
     let data = {
       CustomerId: this.customerId,
       geoid: this.geographyId,
@@ -2231,7 +2233,7 @@ export class AddorderpromotionsComponent implements OnInit {
       CreatedById: loggedUserId,
       itemcount: itemsCount,
       AddType: submitType,
-      CustomerPOId: this.CustomerPoId||0,
+      CustomerPOId: submitype=='Add'? 0: this.CustomerPoId,
       ShippingCharges:Number(this.shippingPackingchargeDetails.shippingCharges),
       PackingCharges:Number(this.shippingPackingchargeDetails.packingCharges)
     };
@@ -2241,6 +2243,7 @@ export class AddorderpromotionsComponent implements OnInit {
       if (res.response.result.toLowerCase().indexOf('succesfully') == -1) {
         // if (res.response.status == false) {
         // alert(res.response.result);
+        this.dialogRef.close(true);
       } else {
         this.dialog.open(AddorderproSuccessPopupComponent, {
           panelClass: 'addorderpromosuccess',
@@ -2284,6 +2287,8 @@ export class AddorderpromotionsComponent implements OnInit {
       this.getShippingandPackingcharges();
     });
     localStorage.setItem('AddorEditpro', 'edit');
+    console.log('edit');
+    
     this.sharedService.filter('Register click');
     this.DisplayNonpromotion = true;
   }
