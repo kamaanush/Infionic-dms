@@ -191,7 +191,7 @@ html {
 }
 
 .geo-label .mat-tab-labels:nth-child(1) {
-  width: 50% !important;
+  /* width: 50% !important; */
 }
 
 @media(max-width:569px) {
