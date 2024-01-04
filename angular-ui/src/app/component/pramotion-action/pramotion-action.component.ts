@@ -91,7 +91,7 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
   configureTippyInstance() {
     this.status = JSON.parse(localStorage.getItem('promostatus')||'null')
-    alert(this.status)
+    // alert(this.status)
     // console.log(this.status);
     // this.tippyInstance = tippy(this.button.nativeElement);
     if(this.tippyInstance.enable){

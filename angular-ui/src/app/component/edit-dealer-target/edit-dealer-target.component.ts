@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DealerTargetPopupGridComponent } from 'src/app/dealer-target-popup-grid/dealer-target-popup-grid.component';
 import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success-popup/dealer-target-success-popup.component';
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-edit-dealer-target',
   templateUrl: './edit-dealer-target.component.html',
-  styleUrls: ['./edit-dealer-target.component.css']
+  styleUrls: ['./edit-dealer-target.component.css'],
 })
 export class EditDealerTargetComponent implements OnInit {
   image1 = 'assets/img/minimize-tag.png';
@@ -73,15 +73,12 @@ export class EditDealerTargetComponent implements OnInit {
   ProductCount: any;
   dealersArray: any = [];
   selectedDealer: any = [];
-  TargetAssociationId:any;
-  LoginId:any;
-  dealerTargetSetItem:any;
-  dealerTargetaddorderdit:any;
-  targetGroupId:any;
-  mainadd: any = [{
-  }]
-
-
+  TargetAssociationId: any;
+  LoginId: any;
+  dealerTargetSetItem: any;
+  dealerTargetaddorderdit: any;
+  targetGroupId: any;
+  mainadd: any = [{}];
 
   userId: any;
   constructor(
@@ -91,37 +88,37 @@ export class EditDealerTargetComponent implements OnInit {
     private dialogRef: MatDialogRef<EditDealerTargetComponent>,
     private sharedService: DealerTargetSharedServicesService,
     public dialog: MatDialog,
-
-  ) {
-
-  }
-  targetData:any;
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+  targetData: any;
+  isDisable:boolean=false
   ngOnInit(): void {
-
+    this.isDisable = this.data.isShowEdit
     this.financialYearData();
-    this.LoginId=localStorage.getItem("logInId");
+    this.LoginId = localStorage.getItem('logInId');
 
     let id = localStorage.getItem('editOrAddTarget');
-    this.TargetAssociationId=id;
-    this.dealerTargetSetItem=localStorage.getItem('dealerTargetSetItem')
-    this.dealerTargetaddorderdit=localStorage.getItem('dealerTargetaddorderdit');
+    this.TargetAssociationId = id;
+    this.dealerTargetSetItem = localStorage.getItem('dealerTargetSetItem');
+    this.dealerTargetaddorderdit = localStorage.getItem(
+      'dealerTargetaddorderdit'
+    );
 
     let data = {
-      "TargetAssociationId":Number(id),
-      "CurrentUserId":this.LoginId
-    }
-    
- 
+      TargetAssociationId: Number(id),
+      CurrentUserId: this.LoginId,
+    };
+
     this.targetList.getTargetById(data).subscribe((res) => {
-      console.log("Responseeee",res.response);
+      console.log('Responseeee', res.response);
       this.targetData = res.response.settarget;
       console.log(res.response);
-      
+
       this.targetId = res.response.targetGroupId;
-      localStorage.setItem("targetId", this.targetId)
+      localStorage.setItem('targetId', this.targetId);
       this.productCount = res.response.productCount;
       this.mainadd[0].geography = [];
-      this.targetGroupId=res.response.targetGroupId
+      this.targetGroupId = res.response.targetGroupId;
       this.mainadd[0].targetGroupId = res.response.targetGroupId;
       this.mainadd[0].targetGroupName = res.response.targetGroupName;
       this.mainadd[0].customerId = res.response.customerId;
@@ -129,61 +126,58 @@ export class EditDealerTargetComponent implements OnInit {
 
       this.mainadd[0].CreatedById = this.userId;
 
-      let geographyobj: any = {}
-      let geographyobj1: any = []
+      let geographyobj: any = {};
+      let geographyobj1: any = [];
 
-        geographyobj.geographyId = res.response.geographyid;
+      geographyobj.geographyId = res.response.geographyid;
 
-        geographyobj.geographyName = res.response.geographyName;
+      geographyobj.geographyName = res.response.geographyName;
 
-        geographyobj.productCount = res.response.productCount;
+      geographyobj.productCount = res.response.productCount;
 
-        geographyobj.year = res.response.year;
+      geographyobj.year = res.response.year;
 
-geographyobj.utotal=res.response.utotal
-geographyobj.vtotal  =res.response.vtotal
-        geographyobj.settarget = res.response.settarget;
+      geographyobj.utotal = res.response.utotal;
+      geographyobj.vtotal = res.response.vtotal;
+      geographyobj.settarget = res.response.settarget;
 
-        let mainobj: any = [];
+      let mainobj: any = [];
 
-        let mainobj1: any = {}
+      let mainobj1: any = {};
 
-          // mainobj1.targetMonthNo = element.settarget;
-            mainobj1.targetValue = res.response.volume;
-            mainobj1.targetUnit = res.response.units;
-            mainobj.push(mainobj1)
-            geographyobj.targets=mainobj;
-           this.mainadd[0].geography= [geographyobj];
-           if (res.response.settarget == "Quaterly") {
-            this.disableColumns = true;
-            this.anuallySelected = false;
-          }
-          if (res.response.settarget == "Monthly") {
-            this.disableColumns = false;
-            this.anuallySelected = false;
-          }
-          if (res.response.settarget == "Annually") {
-            this.disableColumns = false;
-            this.anuallySelected = true;
-          }
-      });
-      
+      // mainobj1.targetMonthNo = element.settarget;
+      mainobj1.targetValue = res.response.volume;
+      mainobj1.targetUnit = res.response.units;
+      mainobj.push(mainobj1);
+      geographyobj.targets = mainobj;
+      this.mainadd[0].geography = [geographyobj];
+      if (res.response.settarget == 'Quaterly') {
+        this.disableColumns = true;
+        this.anuallySelected = false;
+      }
+      if (res.response.settarget == 'Monthly') {
+        this.disableColumns = false;
+        this.anuallySelected = false;
+      }
+      if (res.response.settarget == 'Annually') {
+        this.disableColumns = false;
+        this.anuallySelected = true;
+      }
+    });
 
+    console.log('object for edit', this.mainadd[0]);
 
-      console.log('object for edit', this.mainadd[0])
-
-
-    console.log('mainadd', this.mainadd)
+    console.log('mainadd', this.mainadd);
     this.targetListGroup();
     this.dealer = this.fb.group({
-      dealer: [this.selectedItems]
+      dealer: [this.selectedItems],
     });
     this.geoForm = this.fb.group({
-      geoForm: [this.selectedItems]
+      geoForm: [this.selectedItems],
     });
     this.dealerOrder();
     this.Geography();
-    this.userId = localStorage.getItem("logInId");
+    this.userId = localStorage.getItem('logInId');
   }
   selectedTargett: string = '';
   onSelectFinancialYear(event: any) {
@@ -192,38 +186,65 @@ geographyobj.vtotal  =res.response.vtotal
     // this.selectedTargett = event.target.value;
     // console.log(this.selectedTargett,"RK");
   }
-  financialYears: any=[];
+  financialYears: any = [];
   financialYearData() {
-    this.targetList.financialYear().subscribe(response => {
-  this.financialYears = response.response;
-  console.log(response,"checking coming or not");
-});
-}
+    this.targetList.financialYear().subscribe((response) => {
+      this.financialYears = response.response;
+      console.log(response, 'checking coming or not');
+    });
+  }
 
   productPopup() {
-    this.dialog.open(DealerTargetPopupGridComponent,  { panelClass: 'psubgrid-popup' }) 
-   
+    this.dialog.open(DealerTargetPopupGridComponent, {
+      panelClass: 'psubgrid-popup',
+    });
   }
-  
+
   onSelectTarget(event: any) {
-    this.mainadd[0].geography[0].utotal = this.mainadd[0].geography[0].targets[0].targetUnit.jan = this.mainadd[0].geography[0].targets[0].targetUnit.feb =this.mainadd[0].geography[0].targets[0].targetUnit.mar=this.mainadd[0].geography[0].targets[0].targetUnit.apr = this.mainadd[0].geography[0].targets[0].targetUnit.may =this.mainadd[0].geography[0].targets[0].targetUnit.june =this.mainadd[0].geography[0].targets[0].targetUnit.july = this.mainadd[0].geography[0].targets[0].targetUnit.aug = this.mainadd[0].geography[0].targets[0].targetUnit.sep =this.mainadd[0].geography[0].targets[0].targetUnit.oct =this.mainadd[0].geography[0].targets[0].targetUnit.nov =this.mainadd[0].geography[0].targets[0].targetUnit.dec=0
-    this.mainadd[0].geography[0].vtotal = this.mainadd[0].geography[0].targets[0].targetValue.jan = this.mainadd[0].geography[0].targets[0].targetValue.feb =this.mainadd[0].geography[0].targets[0].targetValue.mar=this.mainadd[0].geography[0].targets[0].targetValue.apr = this.mainadd[0].geography[0].targets[0].targetValue.may =this.mainadd[0].geography[0].targets[0].targetValue.june =this.mainadd[0].geography[0].targets[0].targetValue.july = this.mainadd[0].geography[0].targets[0].targetValue.aug = this.mainadd[0].geography[0].targets[0].targetValue.sep =this.mainadd[0].geography[0].targets[0].targetValue.oct =this.mainadd[0].geography[0].targets[0].targetValue.nov =this.mainadd[0].geography[0].targets[0].targetValue.dec=0
+    this.mainadd[0].geography[0].utotal =
+      this.mainadd[0].geography[0].targets[0].targetUnit.jan =
+      this.mainadd[0].geography[0].targets[0].targetUnit.feb =
+      this.mainadd[0].geography[0].targets[0].targetUnit.mar =
+      this.mainadd[0].geography[0].targets[0].targetUnit.apr =
+      this.mainadd[0].geography[0].targets[0].targetUnit.may =
+      this.mainadd[0].geography[0].targets[0].targetUnit.june =
+      this.mainadd[0].geography[0].targets[0].targetUnit.july =
+      this.mainadd[0].geography[0].targets[0].targetUnit.aug =
+      this.mainadd[0].geography[0].targets[0].targetUnit.sep =
+      this.mainadd[0].geography[0].targets[0].targetUnit.oct =
+      this.mainadd[0].geography[0].targets[0].targetUnit.nov =
+      this.mainadd[0].geography[0].targets[0].targetUnit.dec =
+        0;
+    this.mainadd[0].geography[0].vtotal =
+      this.mainadd[0].geography[0].targets[0].targetValue.jan =
+      this.mainadd[0].geography[0].targets[0].targetValue.feb =
+      this.mainadd[0].geography[0].targets[0].targetValue.mar =
+      this.mainadd[0].geography[0].targets[0].targetValue.apr =
+      this.mainadd[0].geography[0].targets[0].targetValue.may =
+      this.mainadd[0].geography[0].targets[0].targetValue.june =
+      this.mainadd[0].geography[0].targets[0].targetValue.july =
+      this.mainadd[0].geography[0].targets[0].targetValue.aug =
+      this.mainadd[0].geography[0].targets[0].targetValue.sep =
+      this.mainadd[0].geography[0].targets[0].targetValue.oct =
+      this.mainadd[0].geography[0].targets[0].targetValue.nov =
+      this.mainadd[0].geography[0].targets[0].targetValue.dec =
+        0;
 
     this.targetSelected = event.target.value;
     let data = event.target.value;
-    if (data == "Quaterly") {
+    if (data == 'Quaterly') {
       this.disableColumns = true;
       this.anuallySelected = false;
     }
-    if (data == "Monthly") {
+    if (data == 'Monthly') {
       this.disableColumns = false;
       this.anuallySelected = false;
     }
-    if (data == "Annualy") {
+    if (data == 'Annualy') {
       this.disableColumns = false;
       this.anuallySelected = true;
     }
-    console.log("TargetSelected", this.targetSelected)
+    console.log('TargetSelected', this.targetSelected);
   }
   expandTotalRows() {
     this.rowsTotal = !this.rowsTotal;
@@ -232,92 +253,79 @@ geographyobj.vtotal  =res.response.vtotal
       this.image1 = 'assets/img/minimize-tag.png';
     } else {
       this.image1 = 'assets/img/maximize-arrow.png';
-
     }
   }
   allDealerSelected() {
     this.allDlrSelected = !this.allDlrSelected;
     if (this.allDlrSelected == true) {
-      this.selectedDealer = this.dealersArray
+      this.selectedDealer = this.dealersArray;
       this.allDlrSelected1 = true;
       this.allDlrSelected1 = !this.allDlrSelected1;
-
-    }
-    else {
+    } else {
       this.selectedDealer = [];
     }
   }
 
-
   custmer1(id) {
-    this.allDlrSelected1 = !this.allDlrSelected1
+    this.allDlrSelected1 = !this.allDlrSelected1;
     if (this.allDlrSelected1 == true) {
-
-
       const index = this.selectedDealer.indexOf(id);
 
       if (index !== -1) {
         this.selectedDealer.splice(index, 1);
-      }
-      else {
+      } else {
         this.selectedDealer.push(id);
-
       }
-
-
-
-    }
-    else {
-
-
-
+    } else {
       const index = this.selectedDealer.indexOf(id);
 
       if (index !== -1) {
         this.selectedDealer.splice(index, 1);
-      }
-      else {
+      } else {
         this.selectedDealer.push(id);
-
       }
-
     }
 
-
-    console.log('selectedDealer', this.selectedDealer)
+    console.log('selectedDealer', this.selectedDealer);
   }
 
   targetListGroup() {
     this.targetList.getTargetList().subscribe((res) => {
       this.targetListData = res.response;
-      console.log("check target", this.targetListData);
-    })
+      console.log('check target', this.targetListData);
+    });
   }
   onTargetGrpSelect(item: any) {
     this.targetId = item.targetGroupId;
-    localStorage.setItem("targetId", this.targetId)
-    this.targetList.productCountAccordingToDealer(this.targetId).subscribe((res) => {
-      this.productCount = res.response.totalProductSelectedGroup;
-      console.log("check Product Count ", this.productCount);
-     
-    })
+    localStorage.setItem('targetId', this.targetId);
+    this.targetList
+      .productCountAccordingToDealer(this.targetId)
+      .subscribe((res) => {
+        this.productCount = res.response.totalProductSelectedGroup;
+        console.log('check Product Count ', this.productCount);
+      });
   }
   // geographyDropdown
   dealerOrder() {
     this.user.dealerDropdownOrderlist1().subscribe((res: any) => {
       this.dealerListData = res.response;
       let localdata = this.dealerListData;
-      this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
-        return { customerId: data.customerId, customerName: data.customerName };
-      });
-      this.dealerlist.push()
-      this.dealerlist.forEach(element => {
+      this.dealerlist = localdata.map(
+        (data: { customerId: any; customerName: any }) => {
+          return {
+            customerId: data.customerId,
+            customerName: data.customerName,
+          };
+        }
+      );
+      this.dealerlist.push();
+      this.dealerlist.forEach((element) => {
         return this.dealerAllarray.push(element.customerId);
-      })
-      this.dealerlist.forEach(element => {
+      });
+      this.dealerlist.forEach((element) => {
         return this.dealerAllName.push(element.customerName);
-      })
-      console.log('dealerAllarray', this.dealerAllarray)
+      });
+      console.log('dealerAllarray', this.dealerAllarray);
     });
     this.dropdownSettings = {
       singleSelection: false,
@@ -326,7 +334,7 @@ geographyobj.vtotal  =res.response.vtotal
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 2,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
   }
   Geography() {
@@ -344,7 +352,7 @@ geographyobj.vtotal  =res.response.vtotal
     //   this.geographyListData.forEach(element => {
     //     return this.geographyArray.push(element.geographyId);
     //   })
-    //   console.log('rolearray', this.geographyArray)              
+    //   console.log('rolearray', this.geographyArray)
     // });
     this.dropdownSettings1 = {
       singleSelection: false,
@@ -353,31 +361,36 @@ geographyobj.vtotal  =res.response.vtotal
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 2,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
   }
   onDealerItemSelect(item: any) {
     this.dealerSelect.push(item.customerId);
     this.dealerSelectedName.push(item.customerName);
     let datas = {
-      customerId: this.dealerSelect
-    }
-    console.log("Datas", datas)
+      customerId: this.dealerSelect,
+    };
+    console.log('Datas', datas);
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
-      console.log("check Geography ", this.geographyList);
-    })
-    let localdata = this.geographyList;
-    this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
-      return { geographyId: data.geographyId, geographyName: data.geographyName };
+      console.log('check Geography ', this.geographyList);
     });
-    this.geographyListData.push()
-    this.geographyListData.forEach(element => {
+    let localdata = this.geographyList;
+    this.geographyListData = localdata.map(
+      (data: { geographyId: any; geographyName: any }) => {
+        return {
+          geographyId: data.geographyId,
+          geographyName: data.geographyName,
+        };
+      }
+    );
+    this.geographyListData.push();
+    this.geographyListData.forEach((element) => {
       return this.geographyArray.push(element.geographyId);
-    })
-    this.geographyListData.forEach(element => {
+    });
+    this.geographyListData.forEach((element) => {
       return this.geographyNameArray.push(element.geographyName);
-    })
+    });
     // this.geoForm = this.fb.group({
     //   geoForm: [this.selectedItems]
     // });
@@ -386,60 +399,65 @@ geographyobj.vtotal  =res.response.vtotal
     this.dealerSelect = this.dealerAllarray;
     this.dealerSelectedName = this.dealerAllName;
     let datas = {
-      customerId: this.dealerSelect
-    }
-    console.log("Datas", datas)
+      customerId: this.dealerSelect,
+    };
+    console.log('Datas', datas);
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
-      console.log("check Geography ", this.geographyList);
-    })
+      console.log('check Geography ', this.geographyList);
+    });
     let localdata = this.geographyList;
-    this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
-      return { geographyId: data.geographyId, geographyName: data.geographyName };
-    });
-    this.geographyListData.push()
-    this.geographyListData.forEach(element => {
+    this.geographyListData = localdata.map(
+      (data: { geographyId: any; geographyName: any }) => {
+        return {
+          geographyId: data.geographyId,
+          geographyName: data.geographyName,
+        };
+      }
+    );
+    this.geographyListData.push();
+    this.geographyListData.forEach((element) => {
       return this.geographyArray.push(element.geographyId);
-    })
-    this.geographyListData.forEach(element => {
-      return this.geographyNameArray.push(element.geographyName);
-    })
-    this.geoForm = this.fb.group({
-      geoForm: [this.selectedItems]
     });
-
-
-
-
+    this.geographyListData.forEach((element) => {
+      return this.geographyNameArray.push(element.geographyName);
+    });
+    this.geoForm = this.fb.group({
+      geoForm: [this.selectedItems],
+    });
   }
   onDealerItemDeSelectOrAll(item: any) {
     this.dealerSelect = [];
     this.dealerSelectedName = [];
     let datas = {
-      customerId: this.dealerSelect
-    }
-    console.log("Datas", datas)
+      customerId: this.dealerSelect,
+    };
+    console.log('Datas', datas);
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
-      console.log("check Geography ", this.geographyList);
-    })
-    let localdata = this.geographyList;
-    this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
-      return { geographyId: data.geographyId, geographyName: data.geographyName };
+      console.log('check Geography ', this.geographyList);
     });
-    this.geographyListData.push()
-    this.geographyListData.forEach(element => {
+    let localdata = this.geographyList;
+    this.geographyListData = localdata.map(
+      (data: { geographyId: any; geographyName: any }) => {
+        return {
+          geographyId: data.geographyId,
+          geographyName: data.geographyName,
+        };
+      }
+    );
+    this.geographyListData.push();
+    this.geographyListData.forEach((element) => {
       return this.geographyArray.push(element.geographyId);
-    })
-    this.geographyListData.forEach(element => {
+    });
+    this.geographyListData.forEach((element) => {
       return this.geographyNameArray.push(element.geographyName);
-    })
+    });
     this.geoForm = this.fb.group({
-      geoForm: [this.selectedItems]
+      geoForm: [this.selectedItems],
     });
   }
   onDealerItemDeSelect(item: any) {
-
     this.dealerSelect.forEach((element, index) => {
       if (element == item.customerId) this.dealerSelect.splice(index, 1);
     });
@@ -447,64 +465,69 @@ geographyobj.vtotal  =res.response.vtotal
       if (element == item.customerName) this.dealerSelect.splice(index, 1);
     });
     let datas = {
-      customerId: this.dealerSelect
-    }
-    console.log("Datas", datas)
+      customerId: this.dealerSelect,
+    };
+    console.log('Datas', datas);
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
-      console.log("check Geography ", this.geographyList);
-    })
-    let localdata = this.geographyList;
-    this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
-      return { geographyId: data.geographyId, geographyName: data.geographyName };
+      console.log('check Geography ', this.geographyList);
     });
-    this.geographyListData.push()
-    this.geographyListData.forEach(element => {
+    let localdata = this.geographyList;
+    this.geographyListData = localdata.map(
+      (data: { geographyId: any; geographyName: any }) => {
+        return {
+          geographyId: data.geographyId,
+          geographyName: data.geographyName,
+        };
+      }
+    );
+    this.geographyListData.push();
+    this.geographyListData.forEach((element) => {
       return this.geographyArray.push(element.geographyId);
-    })
-    this.geographyListData.forEach(element => {
+    });
+    this.geographyListData.forEach((element) => {
       return this.geographyNameArray.push(element.geographyName);
-    })
+    });
     this.geoForm = this.fb.group({
-      geoForm: [this.selectedItems]
+      geoForm: [this.selectedItems],
     });
   }
   onGeographyItemSelect(item: any) {
     this.geographySelected.push(item.geographyId);
     this.geographySelectedName.push(item.geographyName);
-    console.log("GeographyId", this.geographySelected);
-    console.log("GeographyName", this.geographySelectedName);
-    if (this.targetId != '' && this.dealerSelect != '' && this.geographySelected != '') {
+    console.log('GeographyId', this.geographySelected);
+    console.log('GeographyName', this.geographySelectedName);
+    if (
+      this.targetId != '' &&
+      this.dealerSelect != '' &&
+      this.geographySelected != ''
+    ) {
       this.getproductCount();
     }
-
-
 
     let data = {
       TargetGroupId: this.targetId,
       GeographyId: this.geographySelected,
       Customerid: this.dealerSelect,
-    }
+    };
 
     this.targetList.getDealerDetails(data).subscribe((res) => {
-      this.objectDesign(res.response)
-    })
-
+      this.objectDesign(res.response);
+    });
   }
 
   objectDesign(data) {
-    this.mainadd[0].dealers = []
+    this.mainadd[0].dealers = [];
     this.mainadd[0].TargetGroupId = this.targetId;
     this.mainadd[0].CreatedById = this.userId;
 
-    this.mainadd[0].dealers.forEach(element => {
-      this.dealersArray.push(element.CustomerId)
-    })
+    this.mainadd[0].dealers.forEach((element) => {
+      this.dealersArray.push(element.CustomerId);
+    });
 
-
-    data.forEach(element => {
-      let arrayOfGeo: any = []
-      element.geos.forEach(element1 => {
+    data.forEach((element) => {
+      let arrayOfGeo: any = [];
+      element.geos.forEach((element1) => {
         let objgeo: any = {
           GeographyId: element1.geographyId,
           GeographyName: element1.geographyName,
@@ -512,7 +535,6 @@ geographyobj.vtotal  =res.response.vtotal
           year: '',
           setTarget: '',
           volume: {
-
             jan: '',
             feb: '',
             mar: '',
@@ -529,7 +551,6 @@ geographyobj.vtotal  =res.response.vtotal
             dec: '',
           },
           units: {
-
             jan: '',
             feb: '',
             mar: '',
@@ -547,392 +568,404 @@ geographyobj.vtotal  =res.response.vtotal
           },
           vtotal: '',
           utotal: '',
-        }
-        arrayOfGeo.push(objgeo)
-
-      })
-
+        };
+        arrayOfGeo.push(objgeo);
+      });
 
       let obj: any = {
         CustomerId: element.customerid,
         CustomerName: element.customername,
         targets: arrayOfGeo,
-      }
-      this.mainadd[0].dealers.push(obj)
+      };
+      this.mainadd[0].dealers.push(obj);
 
-      console.log('msinobjworkingOrNot', this.mainadd)
+      console.log('msinobjworkingOrNot', this.mainadd);
     });
-
-
   }
 
   onGeographyItemSelectOrAll(item: any) {
     this.geographySelected = this.geographyArray;
     this.geographySelectedName = this.geographyNameArray;
-    console.log("GeographyId", this.geographySelected);
-    console.log("GeographyName", this.geographySelectedName);
-    if (this.targetId != '' && this.dealerSelect != '' && this.geographySelected != '') {
+    console.log('GeographyId', this.geographySelected);
+    console.log('GeographyName', this.geographySelectedName);
+    if (
+      this.targetId != '' &&
+      this.dealerSelect != '' &&
+      this.geographySelected != ''
+    ) {
       this.getproductCount();
     }
-
-
 
     let data = {
       TargetGroupId: this.targetId,
       GeographyId: this.geographySelected,
       Customerid: this.dealerSelect,
-    }
+    };
 
     this.targetList.getDealerDetails(data).subscribe((res) => {
-      this.objectDesign(res.response)
-    })
+      this.objectDesign(res.response);
+    });
   }
   onGeographyItemDeSelectOrAll(item: any) {
     this.geographySelected = [];
     this.geographySelectedName = [];
-    console.log("GeographyId", this.geographySelected);
-    console.log("GeographyName", this.geographySelectedName);
-    if (this.targetId != '' && this.dealerSelect != '' && this.geographySelected != '') {
+    console.log('GeographyId', this.geographySelected);
+    console.log('GeographyName', this.geographySelectedName);
+    if (
+      this.targetId != '' &&
+      this.dealerSelect != '' &&
+      this.geographySelected != ''
+    ) {
       this.getproductCount();
     }
-
-
 
     let data = {
       TargetGroupId: this.targetId,
       GeographyId: this.geographySelected,
       Customerid: this.dealerSelect,
-    }
+    };
 
     this.targetList.getDealerDetails(data).subscribe((res) => {
-      this.objectDesign(res.response)
-    })
+      this.objectDesign(res.response);
+    });
   }
   onGeographyItemDeSelect(item: any) {
-
     this.geographySelected.forEach((element, index) => {
       if (element == item.geographyId) this.geographySelected.splice(index, 1);
     });
     this.geographySelectedName.forEach((element, index) => {
-      if (element == item.geographyName) this.geographySelectedName.splice(index, 1);
+      if (element == item.geographyName)
+        this.geographySelectedName.splice(index, 1);
     });
-    console.log("GeographyId", this.geographySelected);
-    console.log("GeographyName", this.geographySelectedName);
-    if (this.targetId != '' && this.dealerSelect != '' && this.geographySelected != '') {
+    console.log('GeographyId', this.geographySelected);
+    console.log('GeographyName', this.geographySelectedName);
+    if (
+      this.targetId != '' &&
+      this.dealerSelect != '' &&
+      this.geographySelected != ''
+    ) {
       this.getproductCount();
     }
-
-
 
     let data = {
       TargetGroupId: this.targetId,
       GeographyId: this.geographySelected,
       Customerid: this.dealerSelect,
-    }
+    };
 
     this.targetList.getDealerDetails(data).subscribe((res) => {
-      this.objectDesign(res.response)
-    })
+      this.objectDesign(res.response);
+    });
   }
   janUnit(event: any, i, j) {
     //  this.mainadd[0].dealers[i].targets[j].units.jan + this.mainadd[0].dealers[i].targets[j].units.feb
-    this.mainadd[0].geography[0].utotal = Number(this.mainadd[0].geography[0].targets[0].targetUnit.jan) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.feb) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.mar) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.apr) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.may) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.june) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.july) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.aug) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.sep) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.oct) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.nov) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.dec)
+    this.mainadd[0].geography[0].utotal =
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.jan) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.feb) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.mar) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.apr) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.may) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.june) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.july) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.aug) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.sep) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.oct) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.nov) +
+      Number(this.mainadd[0].geography[0].targets[0].targetUnit.dec);
     // alert(this.mainadd[0].dealers[i].targets[j].units)
 
     // this.janUnitValue =event.target.value;
-    console.log("janUnit", this.janUnitValue);
+    console.log('janUnit', this.janUnitValue);
   }
-
 
   janUnit1(event: any, i, j) {
-    this.mainadd[0].geography[0].vtotal = Number(this.mainadd[0].geography[0].targets[0].targetValue.jan) + Number(this.mainadd[0].geography[0].targets[0].targetValue.feb) + Number(this.mainadd[0].geography[0].targets[0].targetValue.mar) + Number(this.mainadd[0].geography[0].targets[0].targetValue.apr) + Number(this.mainadd[0].geography[0].targets[0].targetValue.may) + Number(this.mainadd[0].geography[0].targets[0].targetValue.june) + Number(this.mainadd[0].geography[0].targets[0].targetValue.july) + Number(this.mainadd[0].geography[0].targets[0].targetValue.aug) + Number(this.mainadd[0].geography[0].targets[0].targetValue.sep) + Number(this.mainadd[0].geography[0].targets[0].targetValue.oct) + Number(this.mainadd[0].geography[0].targets[0].targetValue.nov) + Number(this.mainadd[0].geography[0].targets[0].targetValue.dec)
+    this.mainadd[0].geography[0].vtotal =
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.jan) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.feb) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.mar) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.apr) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.may) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.june) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.july) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.aug) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.sep) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.oct) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.nov) +
+      Number(this.mainadd[0].geography[0].targets[0].targetValue.dec);
     // alert(this.mainadd[0].dealers[i].targets[j].units)
-    
-    // this.janUnitValue =event.target.value;
-    console.log("janUnit", this.janUnitValue);
-  }
-  custmer() {
 
+    // this.janUnitValue =event.target.value;
+    console.log('janUnit', this.janUnitValue);
   }
+  custmer() {}
   febUnit(event: any) {
     this.febUnitValue = event.target.value;
-    console.log("febUnit", this.febUnitValue);
+    console.log('febUnit', this.febUnitValue);
   }
   marUnit(event: any) {
     this.marUnitValue = event.target.value;
-    console.log("marUnit", this.marUnitValue);
+    console.log('marUnit', this.marUnitValue);
   }
   aprlUnit(event: any) {
     this.aprlUnitValue = event.target.value;
-    console.log("aprlUnit", this.aprlUnitValue);
+    console.log('aprlUnit', this.aprlUnitValue);
   }
   mayUnit(event: any) {
     this.mayUnitValue = event.target.value;
-    console.log("mayUnit", this.mayUnitValue);
+    console.log('mayUnit', this.mayUnitValue);
   }
   juneUnit(event: any) {
     this.juneUnitValue = event.target.value;
-    console.log("juneUnit", this.juneUnitValue);
+    console.log('juneUnit', this.juneUnitValue);
   }
   julyUnit(event: any) {
     this.julyUnitValue = event.target.value;
-    console.log("julyUnit", this.julyUnitValue);
+    console.log('julyUnit', this.julyUnitValue);
   }
   augUnit(event: any) {
     this.augUnitValue = event.target.value;
-    console.log("augUnit", this.augUnitValue);
+    console.log('augUnit', this.augUnitValue);
   }
   septUnit(event: any) {
     this.septUnitValue = event.target.value;
-    console.log("septUnit", this.septUnitValue);
+    console.log('septUnit', this.septUnitValue);
   }
   octUnit(event: any) {
     this.octUnitValue = event.target.value;
-    console.log("octUnit", this.octUnitValue);
+    console.log('octUnit', this.octUnitValue);
   }
   novUnit(event: any) {
     this.novUnitValue = event.target.value;
-    console.log("novUnit", this.novUnitValue);
+    console.log('novUnit', this.novUnitValue);
   }
   decUnit(event: any) {
     this.decUnitValue = event.target.value;
-    console.log("decUnit", this.decUnitValue);
+    console.log('decUnit', this.decUnitValue);
   }
   totalUnit(event: any) {
     this.totalUnitValue = event.target.value;
-    console.log("totalUnit", this.totalUnitValue);
+    console.log('totalUnit', this.totalUnitValue);
   }
   jan(event: any) {
     this.janValue = event.target.value;
-    console.log("JAnVAlue", this.janValue);
+    console.log('JAnVAlue', this.janValue);
   }
   feb(event: any) {
     this.febValue = event.target.value;
-    console.log("febVAlue", this.febValue);
+    console.log('febVAlue', this.febValue);
   }
   mar(event: any) {
     this.marValue = event.target.value;
-    console.log("marVAlue", this.marValue);
+    console.log('marVAlue', this.marValue);
   }
   aprl(event: any) {
     this.aprlValue = event.target.value;
-    console.log("aprlVAlue", this.aprlValue);
+    console.log('aprlVAlue', this.aprlValue);
   }
   may(event: any) {
     this.mayValue = event.target.value;
-    console.log("mayVAlue", this.mayValue);
+    console.log('mayVAlue', this.mayValue);
   }
   june(event: any) {
     this.juneValue = event.target.value;
-    console.log("juneVAlue", this.juneValue);
+    console.log('juneVAlue', this.juneValue);
   }
   july(event: any) {
     this.julyValue = event.target.value;
-    console.log("julyVAlue", this.julyValue);
+    console.log('julyVAlue', this.julyValue);
   }
   aug(event: any) {
     this.augValue = event.target.value;
-    console.log("augVAlue", this.augValue);
+    console.log('augVAlue', this.augValue);
   }
   sept(event: any) {
     this.septValue = event.target.value;
-    console.log("septVAlue", this.septValue);
+    console.log('septVAlue', this.septValue);
   }
   oct(event: any) {
     this.octValue = event.target.value;
-    console.log("octVAlue", this.octValue);
+    console.log('octVAlue', this.octValue);
   }
   nov(event: any) {
     this.novValue = event.target.value;
-    console.log("novVAlue", this.novValue);
+    console.log('novVAlue', this.novValue);
   }
   dec(event: any) {
     this.decValue = event.target.value;
-    console.log("decVAlue", this.decValue);
+    console.log('decVAlue', this.decValue);
   }
   TotalValue(event: any) {
     this.totalValue = event.target.value;
-    console.log("totalVAlue", this.totalValue);
+    console.log('totalVAlue', this.totalValue);
   }
 
-
-
   saveTargetData() {
-    localStorage.setItem("updateAddEditTarget",'edit');
+    localStorage.setItem('updateAddEditTarget', 'edit');
     console.log('mm saveTargetData', this.mainadd);
     let obj: any;
     if (this.selectedDealer.length >= 1) {
-      this.mainadd[0].geography.forEach(element => {
+      this.mainadd[0].geography.forEach((element) => {
         let dealers: any = [];
         for (let i = 0; i < this.selectedDealer.length; i++) {
           if (this.selectedDealer[i] === element.CustomerId) {
-            
-            element.targets.forEach(element1 => {
-              
-              if (element1.targetUnit.jan == "") {
+            element.targets.forEach((element1) => {
+              if (element1.targetUnit.jan == '') {
                 element1.targetUnit.jan = 0;
               }
-              if (element1.targetUnit.feb == "") {
+              if (element1.targetUnit.feb == '') {
                 element1.targetUnit.feb = 0;
               }
-              if (element1.targetUnit.mar == "") {
+              if (element1.targetUnit.mar == '') {
                 element1.targetUnit.mar = 0;
               }
-              if (element1.targetUnit.apr == "") {
+              if (element1.targetUnit.apr == '') {
                 element1.targetUnit.apr = 0;
               }
-              if (element1.targetUnit.may == "") {
+              if (element1.targetUnit.may == '') {
                 element1.targetUnit.may = 0;
               }
-              if (element1.targetUnit.june == "") {
+              if (element1.targetUnit.june == '') {
                 element1.targetUnit.june = 0;
               }
-              if (element1.targetUnit.july == "") {
+              if (element1.targetUnit.july == '') {
                 element1.targetUnit.july = 0;
               }
-              if (element1.targetUnit.aug == "") {
+              if (element1.targetUnit.aug == '') {
                 element1.targetUnit.aug = 0;
               }
-              if (element1.targetUnit.sep == "") {
+              if (element1.targetUnit.sep == '') {
                 element1.targetUnit.sep = 0;
               }
-              if (element1.targetUnit.oct == "") {
+              if (element1.targetUnit.oct == '') {
                 element1.targetUnit.oct = 0;
               }
-              if (element1.targetUnit.nov == "") {
+              if (element1.targetUnit.nov == '') {
                 element1.targetUnit.nov = 0;
               }
-              if (element1.targetUnit.dec == "") {
+              if (element1.targetUnit.dec == '') {
                 element1.targetUnit.dec = 0;
               }
 
-
-              if (element1.targetValue.jan == "") {
+              if (element1.targetValue.jan == '') {
                 element1.targetValue.jan = 0;
               }
-              if (element1.targetValue.feb == "") {
+              if (element1.targetValue.feb == '') {
                 element1.targetValue.feb = 0;
               }
-              if (element1.targetValue.mar == "") {
+              if (element1.targetValue.mar == '') {
                 element1.targetValue.mar = 0;
               }
-              if (element1.targetValue.apr == "") {
+              if (element1.targetValue.apr == '') {
                 element1.targetValue.apr = 0;
               }
-              if (element1.targetValue.may == "") {
+              if (element1.targetValue.may == '') {
                 element1.targetValue.may = 0;
               }
-              if (element1.targetValue.june == "") {
+              if (element1.targetValue.june == '') {
                 element1.targetValue.june = 0;
               }
-              if (element1.targetValue.july == "") {
+              if (element1.targetValue.july == '') {
                 element1.targetValue.july = 0;
               }
-              if (element1.targetValue.aug == "") {
+              if (element1.targetValue.aug == '') {
                 element1.targetValue.aug = 0;
               }
-              if (element1.targetValue.sep == "") {
+              if (element1.targetValue.sep == '') {
                 element1.targetValue.sep = 0;
               }
-              if (element1.targetValue.oct == "") {
+              if (element1.targetValue.oct == '') {
                 element1.targetValue.oct = 0;
               }
-              if (element1.targetValue.nov == "") {
+              if (element1.targetValue.nov == '') {
                 element1.targetValue.nov = 0;
               }
-              if (element1.targetValue.dec == "") {
+              if (element1.targetValue.dec == '') {
                 element1.targetValue.dec = 0;
               }
-
-            })
+            });
             dealers.push(element);
           }
 
-
-
-          
           obj = {
             TargetGroupId: this.targetId,
             CreatedById: this.userId,
-            dealers: dealers
-          }
+            dealers: dealers,
+          };
 
-
-          console.log('objectisnotworking', obj)
+          console.log('objectisnotworking', obj);
         }
 
-        let obj1:any={
-"TargetAssociationId":this.TargetAssociationId,
-"TargetGroupId":this.targetGroupId,
-"year":Number(this.mainadd[0].geography[0].year),
-"setTarget":this.mainadd[0].geography[0].settarget,
-"volume":this.mainadd[0].geography[0].targets[0].targetValue,
-"units":this.mainadd[0].geography[0].targets[0].targetUnit,
-"vtotal":this.mainadd[0].geography[0].vtotal,
-"utotal":this.mainadd[0].geography[0].utotal,
-"CreatedById":this.userId
-        }
-console.log('obj1obj1obj1',obj1)
+        let obj1: any = {
+          TargetAssociationId: this.TargetAssociationId,
+          TargetGroupId: this.targetGroupId,
+          year: Number(this.mainadd[0].geography[0].year),
+          setTarget: this.mainadd[0].geography[0].settarget,
+          volume: this.mainadd[0].geography[0].targets[0].targetValue,
+          units: this.mainadd[0].geography[0].targets[0].targetUnit,
+          vtotal: this.mainadd[0].geography[0].vtotal,
+          utotal: this.mainadd[0].geography[0].utotal,
+          CreatedById: this.userId,
+        };
+        console.log('obj1obj1obj1', obj1);
         this.targetList.updateTargetData(obj1).subscribe((res) => {
-          console.log("Added TargetData ", this.addedTargetData);
+          console.log('Added TargetData ', this.addedTargetData);
           if (res.response.result == 'DealerTargets Update Successfully') {
             this.dialogRef.close();
-            this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'TargetSuccessPop'})
+            this.dialog.open(DealerTargetSuccessPopupComponent, {
+              panelClass: 'TargetSuccessPop',
+            });
             // alert('Dealer Targets Update Successfully')
-            this.sharedService.filter('Register click')
-
+            this.sharedService.filter('Register click');
           }
-        })
-
+        });
       });
-    }
-    else {
-      let obj1:any={
-        "TargetAssociationId":this.TargetAssociationId,
-        "TargetGroupId":this.targetGroupId,
-        "year":Number(this.mainadd[0].geography[0].year),
-        "setTarget":this.mainadd[0].geography[0].settarget,
-        "volume":this.mainadd[0].geography[0].targets[0].targetValue,
-        "units":this.mainadd[0].geography[0].targets[0].targetUnit,
-        "vtotal":this.mainadd[0].geography[0].vtotal,
-        "utotal":this.mainadd[0].geography[0].utotal,
-        "CreatedById":this.userId
-                }
-        console.log('obj1obj1obj1',obj1)
-                this.targetList.updateTargetData(obj1).subscribe((res) => {
-                  console.log("Added TargetData ", this.addedTargetData);
-                  if (res.response.result == 'DealerTargets Update Successfully') {
-                    this.dialogRef.close();
-                    this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'TargetSuccessPop'})
-                    // alert('Dealer Targets Update Successfully')
-                    this.sharedService.filter('Register click')
-        
-                  }
-                })      
+    } else {
+      let obj1: any = {
+        TargetAssociationId: this.TargetAssociationId,
+        TargetGroupId: this.targetGroupId,
+        year: Number(this.mainadd[0].geography[0].year),
+        setTarget: this.mainadd[0].geography[0].settarget,
+        volume: this.mainadd[0].geography[0].targets[0].targetValue,
+        units: this.mainadd[0].geography[0].targets[0].targetUnit,
+        vtotal: this.mainadd[0].geography[0].vtotal,
+        utotal: this.mainadd[0].geography[0].utotal,
+        CreatedById: this.userId,
+      };
+      console.log('obj1obj1obj1', obj1);
+      this.targetList.updateTargetData(obj1).subscribe((res) => {
+        console.log('Added TargetData ', this.addedTargetData);
+        if (res.response.result == 'DealerTargets Update Successfully') {
+          this.dialogRef.close();
+          this.dialog.open(DealerTargetSuccessPopupComponent, {
+            panelClass: 'TargetSuccessPop',
+          });
+          // alert('Dealer Targets Update Successfully')
+          this.sharedService.filter('Register click');
+        }
+      });
     }
   }
 
-
-  cancel(){
+  cancel() {
     this.dialogRef.close();
-
   }
   getproductCount() {
     let data = {
       TargetGroupId: this.targetId,
       GeographyId: this.geographySelected,
-      Customerid: this.dealerSelect
-    }
-    console.log("DAta", data)
+      Customerid: this.dealerSelect,
+    };
+    console.log('DAta', data);
     this.targetList.getProductCount(data).subscribe((res) => {
       this.ProductCount = res.response;
-      console.log("this.ProductCount ", this.ProductCount);
-    })
+      console.log('this.ProductCount ', this.ProductCount);
+    });
   }
 
   getSelectedTargetGroupName(): string {
-    const selectedTarget = this.targetListData.find(item => item.targetGroupId === this.targetId);
+    const selectedTarget = this.targetListData.find(
+      (item) => item.targetGroupId === this.targetId
+    );
     return selectedTarget ? selectedTarget.targetGroupName : '';
   }
-  
 }

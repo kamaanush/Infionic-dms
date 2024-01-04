@@ -200,4 +200,7 @@ export class OrdersApisService {
   GetShipmentsUploadViewData(data){
     return this.http.post(this.userurl+'OrdersApi/GetShipmentsUploadViewData',data)
   }
+  GetProcessOrderDetails(data: any) {
+    return this.http.get(this.userurl + `OrdersApi/GetProcessOrderDetails?orderId=${data}`);
+  }
 }

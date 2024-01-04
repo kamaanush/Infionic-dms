@@ -11,6 +11,7 @@ import { OrderCancelPopupComponent } from '../order-cancel-popup/order-cancel-po
 import { OrderlistShipPopupComponent } from '../orderlist-ship-popup/orderlist-ship-popup.component';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedService } from 'src/app/services/shared-services.service';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-orderlist-action-popup',
   templateUrl: './orderlist-action-popup.component.html',
@@ -281,9 +282,72 @@ export class OrderlistActionPopupComponent implements OnInit {
       });
     this.isOpen = false;
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    d.length == 1 && (d = '0' + d);
+    m.length == 1 && (m = '0' + m);
+    return d + m + y;
+  }
   confirmOrder() {
     localStorage.setItem("Edit", '')
     sessionStorage.setItem("Confirm", "Confirm");
+    let id = this.params.data.id
+    this.service.GetProcessOrderDetails(id).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if (res.succeded) {
+          const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+          const headers = Object.keys(res.response[0])
+            .filter((key) => !excludedProperties.includes(key))
+            //.map(header => header);// to get all capital letters
+            .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+
+          const worksheetData = [headers];
+          res.response.forEach((item) => {
+            const capitalizedItem = {};
+            Object.keys(item).forEach((key) => {
+              // const capitalizedKey = key   // to get all capital letters
+              const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+              capitalizedItem[capitalizedKey] = item[key];
+            });
+
+            const row = headers.map((key) => {
+              const value = capitalizedItem[key];
+              if (
+                typeof value === 'string' &&
+                /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)
+              ) {
+                return `"${value}"`;
+              }
+              return value;
+            });
+            worksheetData.push(row);
+          });
+
+          const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+          const workbook = XLSX.utils.book_new();
+          XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+
+          const excelBuffer = XLSX.write(workbook, {
+            bookType: 'xlsx',
+            type: 'array',
+          });
+          const blob = new Blob([excelBuffer], {
+            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          });
+          const url = URL.createObjectURL(blob);
+
+          const link = document.createElement('a');
+          link.href = url;
+          link.download =  this.convertedDateFormat()+ id + 'PODetails(Fixed)';
+          link.click();
+          URL.revokeObjectURL(url);
+        }
+      },
+    });
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
       minWidth: '100vw',
       height: '731px',

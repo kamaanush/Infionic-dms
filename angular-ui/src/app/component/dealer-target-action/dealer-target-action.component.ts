@@ -1,13 +1,23 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import tippy, { hideAll } from 'tippy.js'; 
+import tippy, { hideAll } from 'tippy.js';
 import { EditDealerTargetComponent } from '../edit-dealer-target/edit-dealer-target.component';
 
 @Component({
   selector: 'app-dealer-target-action',
   templateUrl: './dealer-target-action.component.html',
-  styleUrls: ['./dealer-target-action.component.css']
+  styleUrls: ['./dealer-target-action.component.css'],
 })
 export class DealerTargetActionComponent implements OnInit {
   private params;
@@ -15,24 +25,28 @@ export class DealerTargetActionComponent implements OnInit {
   private tippyInstance;
   offsetValue: number[] = [];
 
-  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog,
-       private route: ActivatedRoute,  ) {
-    this.route
-    .data
-    .subscribe(v => {
-      console.log('v',v)
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private dialog: MatDialog,
+    private route: ActivatedRoute
+  ) {
+    this.route.data.subscribe((v) => {
+      console.log('v', v);
       let menuList = v['promotionList'];
       let showCaseMenuList: string[] = [];
       let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
-      userRolesData.forEach(element => {
+      userRolesData.forEach((element) => {
         if (element.title == v['key']) {
-          element.permission.forEach(item => {
-            if (menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+          element.permission.forEach((item) => {
+            if (
+              menuList.indexOf(item.action.toLowerCase()) !== -1 &&
+              item.status
+            ) {
               showCaseMenuList.push(item.action);
             }
-          })
+          });
         }
-      })
+      });
       switch (showCaseMenuList.length) {
         case 4:
           this.offsetValue = [-100, 100];
@@ -51,7 +65,8 @@ export class DealerTargetActionComponent implements OnInit {
           this.offsetValue = [-100, 100];
           break;
       }
-    });}
+    });
+  }
 
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -62,38 +77,18 @@ export class DealerTargetActionComponent implements OnInit {
     this.params = params;
   }
 
-  year:any
-  ngOnInit(): void {
-  }
+  year: any;
+  ngOnInit(): void {}
   @ViewChild('content') container;
 
   @ViewChild('trigger') button;
-  getCurrentFinancialYear() {
-    const today = new Date();
-    const currentMonth = today.getMonth(); 
-  
-    let startYear, endYear;
-  
-    if (currentMonth >= 3) {
-      startYear = today.getFullYear();
-      endYear = startYear + 1;
-    } else {
-      endYear = today.getFullYear();
-      startYear = endYear - 1;
-    }
-    return `${startYear}-${endYear}`;
-  }
-  showedit:boolean=true
+  showedit: boolean = true;
   configureTippyInstance() {
-    const currentFinancialYear = this.getCurrentFinancialYear();
     // alert(currentFinancialYear)
     this.tippyInstance.enable();
     this.tippyInstance.show();
-    this.year = JSON.parse(localStorage.getItem('financialyear')||'null')
-    // alert(this.year)
-    if (this.year < parseInt(currentFinancialYear.split('-')[0], 10)) {
-      this.showedit = false
-    }
+    this.year = JSON.parse(localStorage.getItem('financialyear') || 'null');
+    this.showedit = this.params.data.isShowEdit;
     this.tippyInstance.setProps({
       trigger: 'manual',
       placement: 'left',
@@ -102,7 +97,7 @@ export class DealerTargetActionComponent implements OnInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset:this.offsetValue,
+      offset: this.offsetValue,
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },
@@ -112,29 +107,25 @@ export class DealerTargetActionComponent implements OnInit {
       },
     });
   }
-edit(){
-  this.dialog.open(EditDealerTargetComponent,
-    {
-      
+  edit() {
+    this.dialog.open(EditDealerTargetComponent, {
       minWidth: '95vw',
       height: '95vh',
-      });
-  this.isOpen = false;
-localStorage.setItem('dealerTargetSetItem','edit')
-localStorage.setItem('dealerTargetaddorderdit','Edit')
-
-}
-view(){
-  this.dialog.open(EditDealerTargetComponent,
-    { 
-     
+      data:this.params.data
+    });
+    this.isOpen = false;
+    localStorage.setItem('dealerTargetSetItem', 'edit');
+    localStorage.setItem('dealerTargetaddorderdit', 'Edit');
+  }
+  view() {
+    this.dialog.open(EditDealerTargetComponent, {
       minWidth: '95vw',
       height: '95vh',
-      });
-  this.isOpen = false;
-localStorage.setItem('dealerTargetSetItem','view')
-localStorage.setItem('dealerTargetaddorderdit','View')
-}
+    });
+    this.isOpen = false;
+    localStorage.setItem('dealerTargetSetItem', 'view');
+    localStorage.setItem('dealerTargetaddorderdit', 'View');
+  }
 
   togglePopup() {
     this.isOpen = !this.isOpen;
