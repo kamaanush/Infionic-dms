@@ -1,3 +1,16 @@
+.sub-total-with-items {
+  padding: 10px;
+  margin: 5px;
+  background-color: #018B75;
+}
+
+.sub-total-without-items {
+  padding: 5px;
+  margin: 0;
+  background-color: #337ab7;
+}
+
+
 .productcodename
 {
   font-family: 'Calibri';

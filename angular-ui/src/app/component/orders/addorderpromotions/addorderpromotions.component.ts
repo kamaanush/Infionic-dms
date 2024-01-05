@@ -901,7 +901,7 @@ export class AddorderpromotionsComponent implements OnInit {
     }
     console.log(reduceqty, 'afterremove data');
     // this.productqty = reduceqty;
-    // this.DisplayNonpromotion = false;
+    //  this.DisplayNonpromotion = false;
   }
 
   // non-prmotions

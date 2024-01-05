@@ -52,7 +52,7 @@ export class InvoiceActionComponent implements OnInit,  AfterViewInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [-50, 200],
+      offset: [-50, 110],
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },

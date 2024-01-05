@@ -547,8 +547,9 @@
                                     <th scope="col"  class="PRICE">Price</th>
                                     <th scope="col"  class="DISCOUNTPRICE">Discounted Price </th>
                                     <th scope="col"   class="QTY">QTY</th>
-                                    <th scope="col" class="SUBTOTAL" style="position: relative;right: 5px;">Sub-Total</th>
-                                    <th  scope="col"></th>
+                                     <th scope="col" style="position: relative;text-align: end; right: 50px;">Sub-Total</th>
+                                    <!-- <th  scope="col" style="width: 10px;"></th> -->
+                                    
                                 </tr>
                                 
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
@@ -596,7 +597,7 @@
                                                     [(ngModel)]="Item.quantity" style="text-align: right;border: none;background: none;">
                                             </td>
                                            
-                                            <td >
+                                            <td style="text-align: right;"class="pr-5">
                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')" type="text" disabled [(ngModel)]="'$'+Item.finalValue"
                                                 style="text-align: right;border: none;position: relative;background: none;">
                                             </td>
@@ -611,7 +612,8 @@
 
                                 <!-- nonpromotions list view *ngIf="DisplayNonpromotion"-->
                                 
-                                <tr *ngIf="nonpromotionlist>0">
+                                <!-- <tr *ngIf="nonpromotionlist>0"> -->
+                                <tr *ngIf="DisplayNonpromotion">
                                     <td>
                                         <mat-icon (click)="ExpandNonPromotion()"
                                         style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ NonPromotion ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }} </mat-icon>
@@ -643,10 +645,15 @@
                                         </td>
                                         <td style="text-align: right;"> <input  type="text" disabled
                                                 [(ngModel)]="Item.quantity" class="NonPromodataquantity"> </td>
-                                        <td> 
+                                                
+                                        <td *ngIf="actineLabel !=='Edit order'" > 
                                             <input type="text" disabled [(ngModel)]="'$'+Item.finalValue"
-                                                class="FInalvaluenonpromo">
-                                            </td>
+                                                class="FInalvaluenonpromo" style="position: relative;left: 56px;">
+                                            </td>  
+                                            <td *ngIf="actineLabel ==='Edit order'" style="text-align: right;">
+                                                <input type="text" disabled [(ngModel)]="'$'+Item.finalValue"
+                                                class="FInalvaluenonpromo" style="position: relative;right: 48px;text-align: right;">
+                                            </td>       
                                               
                                         <td>
                                             <div class="removeCircleNONPromodata" (click)="removeNonPromotionItem(Item)">
@@ -662,9 +669,10 @@
                                         <td style="text-align: end;background-color: white;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                         <td style="text-align: end; background-color: white;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                         <td *ngIf="actineLabel !=='Edit order'" style="background-color: white;text-align: end;position: relative;right: 91px;"><b>{{ (shippingPackingchargeDetails.subTotal) ||( nonPromotionAmount)| currency:'USD'}}</b></td>
+                                         <!-- <td *ngIf="actineLabel !=='Edit order'" style="text-align: end;position: relative;right: 91px;"><b>{{ (shippingPackingchargeDetails.subTotal) ||( nonPromotionAmount)| currency:'USD'}}</b></td> -->
+                                         <td  class=""  *ngIf="actineLabel !=='Edit order'" style="position: relative;text-align: right;" class="pr-5"><b>{{ (shippingPackingchargeDetails.subTotal) ||( nonPromotionAmount)| currency:'USD'}}</b></td>
 
-                                        <td *ngIf="actineLabel ==='Edit order'"  style="text-align: center; background-color: white" [style.padding-left]="value?.length>0?'0px':''"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD'}}</b></td>
+                                        <td *ngIf="actineLabel ==='Edit order'"  style="text-align: right; background-color:none;position: relative;right: 48px;" [style.padding-left]="value?.length>0?'0px':''"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD'}}</b></td>
                                         <td style="background-color: white"></td>
                                         <td style="background-color: white"></td>
                                         <td style="background-color: white"></td>
@@ -677,13 +685,20 @@
                             <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                 <tr>
                                     <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;height: 10px;">Sub-Total </p></td>
-                                    <td *ngIf="actineLabel !=='Edit order'"  class="text-right numbers" style="position: relative;right: 61px;">
+                                    <!-- <td *ngIf="actineLabel !=='Edit order'"  class="text-right numbers" style="position: relative;right: 61px;">
+                                        {{(shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD'}}
+                                     </td>  -->
+                                     <td *ngIf="actineLabel !=='Edit order'"  class="text-right numbers" style="position: relative;right: 11px;">
                                         {{(shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD'}}
                                      </td> 
+
                                      <!-- Edit Order -->
-                                     <td  *ngIf="actineLabel ==='Edit order'"  class="text-right numbers" style="position: relative;right: 57px;">
+                                     <!-- <td  *ngIf="actineLabel ==='Edit order'"  class="text-right numbers" style="position: relative;right: 57px;">
                                         {{(shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD'}}
-                                     </td>     
+                                     </td>      -->
+                                     <td  *ngIf="actineLabel ==='Edit order'"  class="text-right numbers" style="position: relative;right: 11px;">
+                                        {{(shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD'}}
+                                     </td>
                                     <td></td>
                                     <td></td>
 
@@ -698,34 +713,63 @@
                                 <tr>
                                     <td class="text-left SUBITEMNAME"  style="background-color: white;"><p style="margin-left: 20%;margin-top: 7px;">Packing Charge</p></td>
 
-                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers"style="position: relative;right: 57px;background-color: white;">
+                                    <!-- <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers"style="position: relative;right: 57px;background-color: white;">
                                         <span style="color: rgba(1, 139, 117, 1);">
                                             $<input type="text"
                                          (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.packingCharges"
                                             style="width:65px;outline-color:#abd4ff;text-align: right;"></span>
-                                        </td>
+                                        </td> -->
+                                        <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers"style="position: relative;right: 13px;background-color: white;">
+                                            <span style="color: rgba(1, 139, 117, 1);">
+                                                $<input type="text"
+                                             (input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.packingCharges"
+                                                style="width:65px;outline-color:#abd4ff;text-align: right;"></span>
+                                            </td>
 
-                                    <td *ngIf="actineLabel !=='Edit order'" class="text-right numbers" style="position: relative;right: 61px;background-color: white" >{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
+                                    <!-- <td *ngIf="actineLabel !=='Edit order'" class="text-right numbers" style="position: relative;right: 61px;background-color: white" >{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td> -->
+                                    <td *ngIf="actineLabel !=='Edit order'" class="text-right numbers" style="position: relative;right: 11px;background-color: white" >{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="background-color: white;"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="position: relative;right: 57px;">
+                                    <!-- <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="position: relative;right: 57px;">
                                        <span style="color: rgba(1, 139, 117, 1);">
                                         $ <input type="text"(input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.shippingCharges"  style="width:65px;outline-color:#abd4ff;text-align: right;"></span>
+                                    </td> -->
+                                    <td *ngIf="actineLabel ==='Edit order'" class="text-right numbers" style="position: relative;right: 13px;">
+                                        <span style="color: rgba(1, 139, 117, 1);">
+                                         $ <input type="text"(input)="restrictToNumbers($event)" [(ngModel)]="shippingPackingchargeDetails.shippingCharges"  style="width:65px;outline-color:#abd4ff;text-align: right;"></span>
+                                     </td>
+
+
+                                    <!-- <td  *ngIf="actineLabel !=='Edit order'" class="text-right numbers"style="position: relative;right: 61px;">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}
+                                    </td>  -->
+
+                                    <td  *ngIf="actineLabel !=='Edit order'" class="text-right numbers"style="position: relative;right: 11px;">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}
                                     </td>
 
-                                    <td  *ngIf="actineLabel !=='Edit order'" class="text-right numbers"style="position: relative;right: 61px;">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}
-                                    </td> 
+
+
                                     <!-- value="{{(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')| number: '1.2-2'}}" -->  
                                 </tr>
                                  <tr>
                                     <td class="text-left SUBITEMNAME" style="background-color: white;" ><p style="margin-left: 20%;" > Tax</p> </td>
-                                    <td  *ngIf="actineLabel !=='Edit order'" class="text-right numberss"  style="position: relative;right: 61px; background-color: white">
+                                    <!-- <td  *ngIf="actineLabel !=='Edit order'" class="text-right numberss"  style="position: relative;right: 61px; background-color: white">
+                                        <span style="color: rgba(1, 139, 117, 1);">
+                                            {{  (shippingPackingchargeDetails.taxElement?shippingPackingchargeDetails.taxElement:'0')| currency:'USD':'symbol':'1.2-2'}}
+                                        </span>
+                                    </td> -->
+                                    <td  *ngIf="actineLabel !=='Edit order'" class="text-right numberss"  style="position: relative;right: 11px; background-color: white">
                                         <span style="color: rgba(1, 139, 117, 1);">
                                             {{  (shippingPackingchargeDetails.taxElement?shippingPackingchargeDetails.taxElement:'0')| currency:'USD':'symbol':'1.2-2'}}
                                         </span>
                                     </td>
-                                    <td  *ngIf="actineLabel ==='Edit order'" class="text-right numberss"  style="position: relative;right: 53px;background-color: white">
+
+                                    <!-- <td  *ngIf="actineLabel ==='Edit order'" class="text-right numberss"  style="position: relative;right: 53px;background-color: white">
+                                        <span style="color: rgba(1, 139, 117, 1);">
+                                            {{  (shippingPackingchargeDetails.taxElement?shippingPackingchargeDetails.taxElement:'0')| currency:'USD':'symbol':'1.2-2'}}
+                                        </span>
+                                    </td> -->
+                                    <td  *ngIf="actineLabel ==='Edit order'" class="text-right numberss"  style="position: relative;right: 12px;background-color: white;text-align: right;">
                                         <span style="color: rgba(1, 139, 117, 1);">
                                             {{  (shippingPackingchargeDetails.taxElement?shippingPackingchargeDetails.taxElement:'0')| currency:'USD':'symbol':'1.2-2'}}
                                         </span>
@@ -734,11 +778,17 @@
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value </p>
                                     </td>
-                                    <td   *ngIf="actineLabel !=='Edit order'" class="text-right numberss"  style="position: relative;right: 61px;">
+                                    <!-- <td   *ngIf="actineLabel !=='Edit order'" class="text-right numberss"  style="position: relative;right: 61px;">
                                     {{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
-                                    </td>
+                                    </td> -->
+                                    <td   *ngIf="actineLabel !=='Edit order'" class="text-right numberss"  style="position: relative;right: 11px;">
+                                        {{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
+                                        </td>
 
-                                    <td  *ngIf="actineLabel ==='Edit order'" class="text-right numberss"  style="position: relative;right: 57px;">
+                                    <!-- <td  *ngIf="actineLabel ==='Edit order'" class="text-right numberss"  style="position: relative;right: 57px;">
+                                        {{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
+                                    </td> -->
+                                    <td  *ngIf="actineLabel ==='Edit order'" class="text-right numberss"  style="position: relative;right: 12px;text-align: right;">
                                         {{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
                                     </td>
 
