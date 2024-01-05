@@ -2307,7 +2307,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orders.GetProcessOrderDetails(this.CustomerPoId).subscribe({
       next: (res: any) => {
         console.log(res);
-        if (res.succeded && res.response >0) {
+        if (res.succeded) {
           const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
           const headers = Object.keys(res.response[0])
             .filter((key) => !excludedProperties.includes(key))
@@ -2354,8 +2354,6 @@ export class AddorderpromotionsComponent implements OnInit {
           link.download =  this.convertedDateFormat()+ this.CustomerPoId + 'PODetails(Fixed)';
           link.click();
           URL.revokeObjectURL(url);
-        }else{
-          alert('No row to download')
         }
       },
     });

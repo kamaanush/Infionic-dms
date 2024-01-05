@@ -1017,7 +1017,7 @@ export class OrderListComponent implements OnInit {
         'inTransitQty':'ITQ',
         'statusName':'Status',
       };
-    const excludedProperties = ['id','isShowEdit','compleatedValue','dealerReferenceNo','statusId'];
+    const excludedProperties = ['id','isShowEdit','compleatedValue','dealerReferenceNo','statusId','isShowEditClose','isShowCancel'];
     // Capitalize headers
     const headers = Object.keys(this.rowDatalist[0])
     // Removing header which in not needed

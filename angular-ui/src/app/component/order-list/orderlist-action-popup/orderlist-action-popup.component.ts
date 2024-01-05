@@ -18,7 +18,7 @@ import { SharedService } from 'src/app/services/shared-services.service';
   styleUrls: ['./orderlist-action-popup.component.css']
 })
 export class OrderlistActionPopupComponent implements OnInit {
-  userType: any
+ 
   private params;
   public isOpen = false;
   private tippyInstance;
@@ -30,9 +30,9 @@ export class OrderlistActionPopupComponent implements OnInit {
   @ViewChild('content') container;
 
   @ViewChild('trigger') button;
-
-  orderStatusAction = {
-    'submitted': ['confirm_order', 'cancel_order','edit_order'], // done
+ userType: any
+ orderStatusAction = {
+   'submitted':['confirm_order', 'cancel_order', 'edit_order'], // done
     'returned': ['edit_order', 'cancel_order'], // NA
     'rejected': [], // done
     'confirmed': ['ship_order', 'close','edit_order'], // done Confirmed
@@ -121,20 +121,34 @@ export class OrderlistActionPopupComponent implements OnInit {
 
   agInit(params) {
     this.params = params;
-    let menu = [];
+    // let menu = [];
     let ignoreMenus = ['close', 'cancel_order'];
-    if(this.params?.data?.status){
-      menu = this.orderStatusAction[this.params?.data?.status?.toLowerCase()] ?? [];
+    this.userType = localStorage.getItem('userType');
+    if (this.params?.data?.status && this.params?.data?.status.toLowerCase() === 'submitted' && this.userType === 'Dealer Admin'){
+      this.currentActionMenu = [];
+    } else {
+      let menu = [];
+    
+      if (this.params?.data?.status) {
+        menu = this.orderStatusAction[this.params?.data?.status?.toLowerCase()] ?? [];
+      } else if (this.params?.data?.statusName) {
+        menu = this.shipmentStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
+      }
+    
+      this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
+    }
+    // if(this.params?.data?.status){
+    //   menu = this.orderStatusAction[this.params?.data?.status?.toLowerCase()] ?? [];
       
     // this.currentActionMenu.push('view');
-    }else if(this.params?.data?.statusName){
-      menu = this.shipmentStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
+    // }else if(this.params?.data?.statusName){
+    //   menu = this.shipmentStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
 
-    // this.currentActionMenu.push('view');
-    }
+    // // this.currentActionMenu.push('view');
+    // }
 
     // console.log("menu", menu);
-    this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
+    // this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
 
     // this.currentActionMenu.push('view');
     // console.log(this.currentActionMenu.length);
