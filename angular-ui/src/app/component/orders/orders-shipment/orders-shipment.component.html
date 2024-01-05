@@ -23,13 +23,13 @@
       </div> -->
       <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment" style="padding-left: 0px !important; margin-left: 2px;">
         <form [formGroup]="statusForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="Status stts" name="city" [placeholder]="'Status'" formControlName="status"
+          <ng-multiselect-dropdown class="Status stts" style="color: grey;" name="city" [placeholder]="'Select Status'" formControlName="status"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropDown" (onSelect)="statusdropdownselect($event)"
             (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder Status-placeholder">
-          <span *ngIf="statusForm.get('status').value.length == 0"> Select Status </span>
+        <div style="left: 5px;bottom: 30px;position: relative; color: 1px solid rgba(0, 0, 0, 0.3);">
+          <!-- <span *ngIf="statusForm.get('status').value.length == 0"> Select Status </span> -->
           <span *ngIf="statusForm.get('status').value.length == 1" class="selected-placeholder"> {{statusForm.get('status').value.length}} status selected </span>
           <span *ngIf="statusForm.get('status').value.length > 1" class="selected-placeholder"> {{statusForm.get('status').value.length}} status(s) selected </span>
 

@@ -45,7 +45,7 @@
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropList" (onSelect)="statusdropdownselect($event)"
             (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
-          <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+          <div style="left: 5px;bottom: 30px;position: relative; color:1px solid rgba(0, 0, 0, 0.3);">
             <!-- <span *ngIf="myForm2.get('status').value.length == 0"> Select Status </span> -->
             <span *ngIf="myForm2.get('status').value.length == 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status selected </span>
             <span *ngIf="myForm2.get('status').value.length > 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status(s) selected </span>

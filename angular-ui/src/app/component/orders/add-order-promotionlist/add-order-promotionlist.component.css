@@ -21,7 +21,7 @@
   right: 3px;
   /* border:1px solid black; */
   top: 6px;
-  border: 1px solid #B3B3B3;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   
 }
 .searchInput12 {
@@ -43,7 +43,7 @@
   position: absolute;
   right: 13%;
   /* border:1px solid black; */
-  border: 1px solid #B3B3B3;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   top: 0px;
   
 }
@@ -65,7 +65,7 @@
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   position: absolute;
   right: 28px;
-  border: 1px solid #B3B3B3;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   top: 7px;
   
 }
@@ -88,7 +88,7 @@
   position: relative;
   right: 32px;
   /* border:1px solid black; */
-  border: 1px solid #B3B3B3;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .searchInput16 {
   display: block;
@@ -109,7 +109,7 @@
   position: relative;
   right: 46px;
   /* border:1px solid black; */
-  border: 1px solid #B3B3B3;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   top:7px;
 }
 .searchInput15{
@@ -131,7 +131,7 @@
   position: relative;
   right: -2px;
   /* border:1px solid black; */
-  border: 1px solid #B3B3B3;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   top: 7px;
 }
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar
@@ -2413,8 +2413,8 @@ li {
   left: 541px;
   top: 355px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   padding: 8px 60px 10px 27px
 }
@@ -2494,19 +2494,19 @@ letter-spacing: 0.04em;
 }
 
 .quatity-inp1 {
-  width: 84%;
+  width: 82%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
   outline-color:#abd4ff;
   border-radius: 5px;
   text-align: right;
-  margin-left: -48px;
+  margin-left: -52px;
   margin-top: 4px;
 }
 
 .quatity-inp2{
-  width: 57%;
+  width: 56%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
@@ -2517,7 +2517,7 @@ letter-spacing: 0.04em;
   margin-left: 15px;
 }
 .quatity-inp3 {
-  width: 57%;
+  width: 56%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
@@ -2528,8 +2528,8 @@ letter-spacing: 0.04em;
   margin-left: 8px;
 }
 .quatity-inp4 {
-  width: 57%;
-  margin-left: 4px;
+  width: 56%;
+  margin-left: 7px;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
@@ -2539,7 +2539,7 @@ letter-spacing: 0.04em;
   margin-top: 8px;
 }
 .quatity-inp5 {
-  width: 63%;
+  width: 61%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
@@ -2550,7 +2550,7 @@ letter-spacing: 0.04em;
   margin-left: 4px;
 }
 .quatity-inp6 {
-  width: 63%;
+  width: 61%;
   height: 25px;
   background: #FFFFFF;
   border: 1px solid #E1E2E3;
