@@ -1,11 +1,11 @@
 <div class="font dealerPopup">
     <div class=" main" width="900%">
         <div class="container add-dealer-scroll">
-            
+
             <div class=" d-flex addUser">
                 <div class="d-flex">
-                    <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()"
-                    class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
+                    <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()" class="addMore-icon"
+                        style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
                     <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
                         style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)="goBack(stepper)"> -->
                     <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
@@ -49,17 +49,18 @@
                                         <div class="col-3 ">
                                             <label>Email-ID<span>*</span></label>
                                             <br>
-                                            <input type="email" formControlName="Email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$"
+                                            <input type="email" formControlName="Email"
+                                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$"
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter dealer email id">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['Email'].touched  && addAddressDetailsFormControl['Email'].errors && addAddressDetailsFormControl['Email'].errors['required']">
                                                 Email is required
                                             </span>
-                                             <span class="text-danger"
-                                            *ngIf="addAddressDetailsFormControl['Email'].touched  && addAddressDetailsFormControl['Email'].errors && addAddressDetailsFormControl['Email'].errors['pattern']">
-                                            Please enter valid email address
-                                        </span>
+                                            <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['Email'].touched  && addAddressDetailsFormControl['Email'].errors && addAddressDetailsFormControl['Email'].errors['pattern']">
+                                                Please enter valid email address
+                                            </span>
                                         </div>
                                         <!-- code -->
                                         <div class="col-3 ">
@@ -77,7 +78,7 @@
                                             <label>Website</label>
                                             <br>
                                             <input type="text" formControlName="website"
-                                                class="addDelercols form-control"  style="width:95%"
+                                                class="addDelercols form-control" style="width:95%"
                                                 placeholder="Enter dealer company website">
                                             <!-- <input type="text" formControlName="website"
                                                 class="addDelercols form-control" required style="width:95%"
@@ -94,19 +95,20 @@
                                         <div class="col-3">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text"  formControlName="Phoneno"  pattern="^((\\+91-?)|0)?[0-9]{10}$" 
-                                                class="addDelercols form-control" required
-                                                placeholder="Enter dealer phone no" (input)="restrictToNumbers($event)">
+                                            <input type="text" formControlName="Phoneno"
+                                                pattern="^((\\+91-?)|0)?[0-9]{10}$" class="addDelercols form-control"
+                                                required placeholder="Enter dealer phone no"
+                                                (input)="restrictToNumbers($event)">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['Phoneno'].touched  && addAddressDetailsFormControl['Phoneno'].errors && addAddressDetailsFormControl['Phoneno'].errors['required']">
                                                 Phone No is required
                                             </span>
 
-                                             <span class="text-danger"
+                                            <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['Phoneno'].touched  && addAddressDetailsFormControl['Phoneno'].errors && addAddressDetailsFormControl['Phoneno'].errors['pattern']">
-                                                *Phone Number is Invalid 
-                                            </span> 
-                                            
+                                                *Phone Number is Invalid
+                                            </span>
+
                                         </div>
                                         <!-- company Id -->
                                         <!-- <div class="col-3">
@@ -121,8 +123,8 @@
                                             <label class="otherId">Leadtime in days<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="LeadTimeInDays"
-                                                class="addDelercols form-control" 
-                                                placeholder="Enter and select" (input)="restrictToNumbers($event)">
+                                                class="addDelercols form-control" placeholder="Enter and select"
+                                                (input)="restrictToNumbers($event)">
                                         </div>
                                         <!-- Other Identifer -->
                                         <div class="col-3 " style="bottom:13px">
@@ -153,103 +155,124 @@
                                 <ng-template matStepLabel>AdminUser</ng-template>
                                 <div class="headefont row" style="margin-top:25px;">
                                     <div class="col-11">
-                                      <h6 style="color: #000000; font-size: 20px; font-weight: lighter; font-family: 'Gilroy;'">
-                                        <b>Admin user</b>
-                                      </h6>
+                                        <h6
+                                            style="color: #000000; font-size: 20px; font-weight: lighter; font-family: 'Gilroy;'">
+                                            <b>Admin user</b>
+                                        </h6>
                                     </div>
                                     <div class="col-1">
-                                      <mat-icon class="adminicon" (click)="addAdmin()">add_circle</mat-icon>
+                                        <mat-icon class="adminicon" (click)="addAdmin()">add_circle</mat-icon>
                                     </div>
-                                  </div>
+                                </div>
                                 <div class="col-12" style="margin-left: -13px;">
-                                        <div formArrayName="DealerAdmins">
-                                          <div *ngFor="let admin of adminarray.controls; let i = index" [formGroupName]="i">
+                                    <div formArrayName="DealerAdmins">
+                                        <div *ngFor="let admin of adminarray.controls; let i = index"
+                                            [formGroupName]="i">
                                             <div class="row">
-                                              <div class="col-2">
-                                                <label>First Name<span>*</span></label>
-                                                <br>
-                                                <input type="text" formControlName="FirstName" class="addDelercols form-control" required
-                                                  placeholder="Enter admin First Name" (input)="restrictToAlphabets($event)">
-                                                <span class="text-danger" *ngIf="admin.get('FirstName')?.touched && admin.get('FirstName')?.hasError('required')">
-                                                  First Name is required
-                                                </span>
-                                              </div>
-                                      
-                                              <div class="col-2">
-                                                <label>Last Name<span>*</span></label>
-                                                <br>
-                                                <input type="text" formControlName="lastName" class="addDelercols form-control" required
-                                                  placeholder="Enter admin last name" (input)="restrictToAlphabets($event)">
-                                                <span class="text-danger" *ngIf="admin.get('lastName')?.touched && admin.get('lastName')?.hasError('required')">
-                                                  Last Name is required
-                                                </span>
-                                              </div>
-                                      
-                                              <div class="col-2 fontcolor">
-                                                <label>User Name<span>*</span></label>
-                                                <br>
-                                                <input type="text" formControlName="UserName" class="addDelercols form-control" required
-                                                  placeholder="Enter admin name">
-                                                <span class="text-danger" *ngIf="admin.get('UserName')?.touched && admin.get('UserName')?.hasError('required')">
-                                                  UserName is required
-                                                </span>
-                                              </div>
-                                      
-                                              <div class="col-2 fontcolor">
-                                                <label>Email ID<span>*</span></label>
-                                                <br>
-                                                <input type="text" formControlName="EmailId" class="addDelercols form-control" required
-                                                  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$" placeholder="Enter admin email id">
-                                                <span class="text-danger" *ngIf="admin.get('EmailId')?.touched && admin.get('EmailId')?.hasError('required')">
-                                                  Email ID is required
-                                                </span>
-                                      
-                                                <span class="text-danger" *ngIf="admin.get('EmailId')?.touched && admin.get('EmailId')?.hasError('pattern')">
-                                                  Please enter a valid email address
-                                                </span>
-                                              </div>
-                                      
-                                              <div class="col-2 fontcolor">
-                                                <label>Phone No<span>*</span></label>
-                                                <br>
-                                                <input type="text"  formControlName="Mobile" pattern="^((\+91-?)|0)?[0-9]{10}$"
-                                                  class="addDelercols form-control" required placeholder="Enter admin phone no"
-                                                  (input)="restrictToNumbers($event)">
-                                                <span class="text-danger" *ngIf="admin.get('Mobile')?.touched && admin.get('Mobile')?.hasError('required')">
-                                                  Phone No is required
-                                                </span>
-                                                <span class="text-danger" *ngIf="admin.get('Mobile')?.touched && admin.get('Mobile')?.hasError('pattern')">
-                                                  Phone Number is invalid
-                                                </span>
-                                              </div>
-                                      
-                                              <div class="col-1" >
-                                                <label>Status<span>*</span></label>
-                                                <br>
-                                                <select class="addDelercols form-control" style="width: 175px;" formControlName="StatusId" name="status" placeholder="Select Status">
-                                                  <option value="" selected hidden>Select status</option>
-                                                  <option *ngFor="let option of statusList" [value]="option.statusId">{{ option.statusName }}</option>
-                                                </select>
-                                                <span class="text-dangers" *ngIf="admin.get('StatusId')?.touched && admin.get('StatusId')?.hasError('required')">
-                                                  Status is required
-                                                </span>
-                                              </div>
-                                              <div class="col-1" >
-                                                <mat-icon (click)="removeAdmin(i)" 
-                                                class="col-1 remove-mat-icon delete-icon remove-admin"
-                                                [ngClass]="{'removeCircle': i > 0, 'removeCircle1': i === 1 }"
-                                                *ngIf="i >= 0">remove_circle
-                                            </mat-icon>
+                                                <div class="col-2">
+                                                    <label>First Name<span>*</span></label>
+                                                    <br>
+                                                    <input type="text" formControlName="FirstName"
+                                                        class="addDelercols form-control" required
+                                                        placeholder="Enter admin First Name"
+                                                        (input)="restrictToAlphabets($event)">
+                                                    <span class="text-danger"
+                                                        *ngIf="admin.get('FirstName')?.touched && admin.get('FirstName')?.hasError('required')">
+                                                        First Name is required
+                                                    </span>
+                                                </div>
+
+                                                <div class="col-2">
+                                                    <label>Last Name<span>*</span></label>
+                                                    <br>
+                                                    <input type="text" formControlName="lastName"
+                                                        class="addDelercols form-control" required
+                                                        placeholder="Enter admin last name"
+                                                        (input)="restrictToAlphabets($event)">
+                                                    <span class="text-danger"
+                                                        *ngIf="admin.get('lastName')?.touched && admin.get('lastName')?.hasError('required')">
+                                                        Last Name is required
+                                                    </span>
+                                                </div>
+
+                                                <div class="col-2 fontcolor">
+                                                    <label>User Name<span>*</span></label>
+                                                    <br>
+                                                    <input type="text" formControlName="UserName"
+                                                        class="addDelercols form-control" required
+                                                        placeholder="Enter admin name">
+                                                    <span class="text-danger"
+                                                        *ngIf="admin.get('UserName')?.touched && admin.get('UserName')?.hasError('required')">
+                                                        UserName is required
+                                                    </span>
+                                                </div>
+
+                                                <div class="col-2 fontcolor">
+                                                    <label>Email ID<span>*</span></label>
+                                                    <br>
+                                                    <input type="text" formControlName="EmailId"
+                                                        class="addDelercols form-control" required
+                                                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$"
+                                                        placeholder="Enter admin email id">
+                                                    <span class="text-danger"
+                                                        *ngIf="admin.get('EmailId')?.touched && admin.get('EmailId')?.hasError('required')">
+                                                        Email ID is required
+                                                    </span>
+
+                                                    <span class="text-danger"
+                                                        *ngIf="admin.get('EmailId')?.touched && admin.get('EmailId')?.hasError('pattern')">
+                                                        Please enter a valid email address
+                                                    </span>
+                                                </div>
+
+                                                <div class="col-2 fontcolor">
+                                                    <label>Phone No<span>*</span></label>
+                                                    <br>
+                                                    <input type="text" formControlName="Mobile"
+                                                        pattern="^((\+91-?)|0)?[0-9]{10}$"
+                                                        class="addDelercols form-control" required
+                                                        placeholder="Enter admin phone no"
+                                                        (input)="restrictToNumbers($event)">
+                                                    <span class="text-danger"
+                                                        *ngIf="admin.get('Mobile')?.touched && admin.get('Mobile')?.hasError('required')">
+                                                        Phone No is required
+                                                    </span>
+                                                    <span class="text-danger"
+                                                        *ngIf="admin.get('Mobile')?.touched && admin.get('Mobile')?.hasError('pattern')">
+                                                        Phone Number is invalid
+                                                    </span>
+                                                </div>
+
+                                                <div class="col-1">
+                                                    <label>Status<span>*</span></label>
+                                                    <br>
+                                                    <select class="addDelercols form-control" style="width: 175px;"
+                                                        formControlName="StatusId" name="status"
+                                                        placeholder="Select Status">
+                                                        <option value="" selected hidden>Select status</option>
+                                                        <option *ngFor="let option of statusList"
+                                                            [value]="option.statusId">{{ option.statusName }}</option>
+                                                    </select>
+                                                    <span class="text-dangers"
+                                                        *ngIf="admin.get('StatusId')?.touched && admin.get('StatusId')?.hasError('required')">
+                                                        Status is required
+                                                    </span>
+                                                </div>
+                                                <div class="col-1">
+                                                    <mat-icon (click)="removeAdmin(i)"
+                                                        class="col-1 remove-mat-icon delete-icon remove-admin"
+                                                        [ngClass]="{'removeCircle': i > 0, 'removeCircle1': i === 1 }"
+                                                        *ngIf="i >= 0">remove_circle
+                                                    </mat-icon>
+                                                </div>
                                             </div>
-                                            </div>
-                                          </div>
                                         </div>
+                                    </div>
                                 </div>
                                 <!-- Address -->
 
                                 <div class="col-12" style="margin-top:25px;">
-                                    <div class="row" style="position: relative;
-                                    right: 1px;">
+                                    <div class="row" style="position: relative;right: 1px;">
                                         <div class="col-11">
                                             <div class="headefont">
                                                 <h6
@@ -265,9 +288,7 @@
                                     </div>
 
 
-                                    <div formArrayName="addresscount" style="position: relative;
-                                    right: 11px; width:104%">
-
+                                    <div formArrayName="addresscount" style="position: relative;right: 11px; width:104%">
                                         <div class="row" *ngFor="let quantity of addresscount().controls; let i=index"
                                             [formGroupName]="i">
                                             <div class="col-1">
@@ -279,17 +300,16 @@
                                                     <option value="7">Billing</option>
                                                     <option value="6">Shipping</option>
                                                 </select>
-
                                             </div>
-
                                             <div class="col-2" style="position: relative;
                                             right: 14px;">
                                                 <label *ngIf="i == 0">Consignee Name<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter"  name="ConsigneeName" formControlName="ConsigneeName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ConsigneeName"
+                                                <input type="text" placeholder="Enter" name="ConsigneeName"
+                                                    formControlName="ConsigneeName"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ConsigneeName"
                                                     class="addDelercols addname">
                                             </div>
-                                            
                                             <!-- <div class="col-1" style="position: relative;right:88px;">
                                                 <label *ngIf="i == 0">Tax<span>*</span></label>
                                                 <br>
@@ -306,73 +326,68 @@
                                             </div> -->
 
                                             <div class="col-2" style="position: relative;right:99px;">
-                                                <label *ngIf="i == 0">Address Line 1 <span>*</span></label>  <span *ngIf="i == 0" class="addressline2">Address Line2 <span>*</span></span><br>
+                                                <label *ngIf="i == 0">Address Line 1 <span>*</span></label> <span
+                                                    *ngIf="i == 0" class="addressline2">Address Line2
+                                                    <span>*</span></span><br>
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine1"
-                                                    class="addDelercols addadress" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine1">
-                                                    
+                                                    class="addDelercols addadress"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine1">
                                                 <br>
-                                                 <input type="text" placeholder="Enter" formControlName="AddressLine2"
-                                                    class="addDelercols addadressLine1" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
+                                                <input type="text" placeholder="Enter" formControlName="AddressLine2"
+                                                    class="addDelercols addadressLine1"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
                                             </div>
-
                                             <div class="col-1" style="margin-left: -66px;">
                                                 <label *ngIf="i == 0">Country<span>*</span></label>
                                                 <br>
-                                                <select placeholder="Select Country" formControlName="CountryName" class="addDelercols addcountry form-control" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName">
-                                                    <option   selected value="" hidden>Select Country</option>
-                                                  <option *ngFor="let state of country" [value]="state.geographyName">{{ state.geographyName }}</option>
+                                                <select placeholder="Select Country" formControlName="CountryName"
+                                                    class="addDelercols addcountry form-control"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName">
+                                                    <option selected value="" hidden>Select Country</option>
+                                                    <option *ngFor="let state of country" [value]="state.geographyName">
+                                                        {{ state.geographyName }}</option>
                                                 </select>
-                                                
-                                                
-                                                  
-                                              </div>
+                                            </div>
                                             <div class="col-1">
                                                 <label *ngIf="i == 0">State<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter" formControlName="StateName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].StateName"
-                                                    class="addDelercols aastate"(input)="restrictToAlphabets($event)">  
+                                                <input type="text" placeholder="Enter" formControlName="StateName"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].StateName"
+                                                    class="addDelercols aastate" (input)="restrictToAlphabets($event)">
                                             </div>
-
                                             <div class="col-2">
                                                 <label *ngIf="i == 0">City<span>*</span></label>
-                                                <label *ngIf="i == 0" style="position: relative;left: 104px;">Zip<span>*</span></label>
+                                                <label *ngIf="i == 0"
+                                                    style="position: relative;left: 104px;">Zip<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter City" formControlName="CityName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CityName"
-                                                    class="addDelercols addcity" (input)="restrictToAlphabets($event)" >
-                                                <input type="text" placeholder="Enter Zip" formControlName="ZipCode" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
+                                                <input type="text" placeholder="Enter City" formControlName="CityName"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CityName"
+                                                    class="addDelercols addcity" (input)="restrictToAlphabets($event)">
+                                                <input type="text" placeholder="Enter Zip" formControlName="ZipCode"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
                                                     class="addDelercols addzip" (input)="restrictToNumbers($event)">
                                             </div>
-
                                             <div class="col-1" style="margin-left: 53px;">
                                                 <label *ngIf="i == 0">Phone<span>*</span></label>
                                                 <br>
-                                                <input type="text"  placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
+                                                <input type="text" placeholder="Enter" formControlName="Telephone"
+                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
                                                     class="addDelercols addphone" (input)="restrictToNumbers($event)">
                                             </div>
-                                           
-
                                             <div class="col-1" style="position: relative;top: 8px;">
                                                 <label><span></span></label>
-                                                <mat-icon (click)="removeQuantity(i)" style="position: relative;top: 9px;"
+                                                <mat-icon (click)="removeQuantity(i)"
+                                                    style="position: relative;top: 9px;"
                                                     class="col-2 remove-mat-icon delete-icon remove-address"
                                                     [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==1 }"
                                                     *ngIf="i >= 0 ">remove_circle
                                                 </mat-icon>
                                             </div>
-
                                             <p class="form-row" *ngIf="i==1">
-                                                <mat-checkbox  [checked]="completed" (click)=Checked()>
-                                                    Shipping information is same as
-                                                    billing
-                                                    information </mat-checkbox>
+                                                <mat-checkbox [(ngModel)]="completed" (change)="Checked()">Shipping information is same as billing information</mat-checkbox>
                                             </p>
-
                                         </div>
-
                                     </div>
-
-
-
                                 </div>
 
 
@@ -402,7 +417,8 @@
                             <!-- <div class="horizontal-scroll" style="height: 300px;"  *ngIf="dealerAction!=='Edit'"> -->
 
                             <div class="horizontal-scroll" style="height: 300px;">
-                                <div class="horizontal-scroll__item" *ngFor="let item of geoGraphyFullData;let i =index; ">
+                                <div class="horizontal-scroll__item"
+                                    *ngFor="let item of geoGraphyFullData;let i =index; ">
                                     <div class="geo-grid">
                                         <div class="row grid-heading">
                                             <div class="col-sm-10">
@@ -427,7 +443,9 @@
                                                                     geoItem.selectedCount}} / {{
                                                                     geoItem.countOfDefault}})</strong>
                                                             </div>
-                                                            <img src="assets/img/geography-all.svg" *ngIf="geoGraphyFullData.length === (i+2) && !isItemSelected(item,geoItem)" (click)="geographySelectAll($event,geoItem, i)" />
+                                                            <img src="assets/img/geography-all.svg"
+                                                                *ngIf="geoGraphyFullData.length === (i+2) && !isItemSelected(item,geoItem)"
+                                                                (click)="geographySelectAll($event,geoItem, i)" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -449,9 +467,9 @@
                                     </div>
                                 </div>
                             </div> -->
-                            
-                            
-                            <div class="row" >
+
+
+                            <div class="row">
                                 <div class="col-3">
 
                                 </div>
@@ -459,11 +477,9 @@
                                     <div class="row">
                                         <div class="col-1"></div>
                                         <div class="col-5">
-                                            
-                                            <button 
-                                                class="btn btn-primary btn-block submitbtn save-btn"
-                                                *ngIf="dealerAction!=='Edit'"
-                                                [disabled]="!addAddressDetailsForm.valid"
+
+                                            <button class="btn btn-primary btn-block submitbtn save-btn"
+                                                *ngIf="dealerAction!=='Edit'" [disabled]="!addAddressDetailsForm.valid"
                                                 (click)="saveGeographiesList()">Save</button>
                                             <button *ngIf="dealerAction == 'Edit'"
                                                 class="btn  btn-block submitbtn save-btn"

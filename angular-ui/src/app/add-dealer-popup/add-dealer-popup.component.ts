@@ -324,14 +324,14 @@ export class AddDealerPopupComponent implements OnInit {
   addAddressForm2(defaultType) {
     // this.addType = 1;
     this.addAddress = true;
-    this.addresscount().push(this.initAddress1(defaultType));
+    this.addresscount()?.push(this.initAddress1(defaultType));
   }
 
   initAddress1(defaultType): FormGroup {
     defaultType = defaultType ?? '';
     console.log(defaultType);
     return this._formBuilder.group({
-      AddressTypeId: [defaultType, [Validators.required]],
+      AddressTypeId: [defaultType || '',[Validators.required]],
       ConsigneeName: ['', [Validators.required]],
       // Taxid: ['', [Validators.required]],
       AddressLine1: ['', [Validators.required]],
@@ -345,7 +345,7 @@ export class AddDealerPopupComponent implements OnInit {
   }
 
   getFormArray(): FormArray {
-    return this.addAddressDetailsForm.get('addresscount') as FormArray;
+    return this.addAddressDetailsForm?.get('addresscount') as FormArray;
   }
 
   getGeographyHierarchy() {
@@ -666,67 +666,27 @@ export class AddDealerPopupComponent implements OnInit {
     this.ConsigneeName1 = event.target.value;
   }
   Checked() {
-    if (this.completed == false) {
+    if (!this.completed) {
       this.completed = true;
-      // this.addAddressDetailsForm.value.addresscount[1]=this.addAddressDetailsForm.value.addresscount[0];
-      // this.addAddressDetailsForm.value.addresscount[1].AddressTypeId.setValue('7');
-      let i: number = 0;
-      this.addAddressDetailsForm.value.addresscount[1] = [];
-
-      // for(let i=0;i<10;i++){
-      //   this.addAddressDetailsForm.value.addresscount[1]=this.addAddressDetailsForm.value.addresscount[0]
-
-      // }
-      this.addresscount().removeAt(1);
-
       let defaultType = {
         AddressTypeId: '6',
-        ConsigneeName:
-          this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName,
-        // Taxid: this.addAddressDetailsForm.value.addresscount[0]?.Taxid,
-        AddressLine1:
-          this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1,
-        AddressLine2:
-          this.addAddressDetailsForm.value.addresscount[0]?.AddressLine2,
-        CountryName:
-          this.addAddressDetailsForm.value.addresscount[0]?.CountryName,
+        ConsigneeName: this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName,
+        AddressLine1: this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1,
+        AddressLine2: this.addAddressDetailsForm.value.addresscount[0]?.AddressLine2,
+        CountryName: this.addAddressDetailsForm.value.addresscount[0]?.CountryName,
         StateName: this.addAddressDetailsForm.value.addresscount[0]?.StateName,
         CityName: this.addAddressDetailsForm.value.addresscount[0]?.CityName,
         ZipCode: this.addAddressDetailsForm.value.addresscount[0]?.ZipCode,
         Telephone: this.addAddressDetailsForm.value.addresscount[0]?.Telephone,
       };
-      console.log('defaultType', defaultType);
-      this.addresscount().push(this.initAddress2(defaultType));
-
-      // this.addAddressDetailsForm.value.addresscount[1].ConsigneeName=this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName
-      // this.addAddressDetailsForm.value.addresscount[1].Taxid=this.addAddressDetailsForm.value.addresscount[0]?.Taxid
-      // this.addAddressDetailsForm.value.addresscount[1].AddressLine1=this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1
-      // this.addAddressDetailsForm.value.addresscount[1].AddressLine2=this.addAddressDetailsForm.value.addresscount[0]?.AddressLine2
-      // this.addAddressDetailsForm.value.addresscount[1].CountryName=this.addAddressDetailsForm.value.addresscount[0]?.CountryName
-      // this.addAddressDetailsForm.value.addresscount[1].StateName=this.addAddressDetailsForm.value.addresscount[0]?.StateName
-      // this.addAddressDetailsForm.value.addresscount[1].CityName=this.addAddressDetailsForm.value.addresscount[0]?.CityName
-      // this.addAddressDetailsForm.value.addresscount[1].ZipCode=this.addAddressDetailsForm.value.addresscount[0]?.ZipCode
-      // this.addAddressDetailsForm.value.addresscount[1].Telephone=this.addAddressDetailsForm.value.addresscount[0]?.Telephone
-
-      // this.addAddressDetailsForm.value.addresscount[1].push({
-      //   ConsigneeName:this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName,
-      //   Taxid:this.addAddressDetailsForm.value.addresscount[0]?.Taxid,
-      //   AddressLine1:this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1,
-      //  })
-
-      console.log(
-        'this.addAddressDetailsForm.value.addresscount[1]',
-        this.addAddressDetailsForm.value.addresscount[1]
-      );
-    } else if (this.completed) {
+  
+      this.addresscount().at(1).patchValue(defaultType);
+    } else {
       this.completed = false;
-      let i: number = 0;
-      this.addAddressDetailsForm.value.addresscount[1] = [];
       this.addresscount().removeAt(1);
       let defaultType = {
-        AddressTypeId: '',
+        AddressTypeId: '7',
         ConsigneeName: '',
-        // Taxid: '',
         AddressLine1: '',
         AddressLine2: '',
         CountryName: '',
@@ -735,9 +695,11 @@ export class AddDealerPopupComponent implements OnInit {
         ZipCode: '',
         Telephone: '',
       };
+  
       this.addresscount().push(this.initAddress2(defaultType));
     }
   }
+  
   initAddress2(defaultType): FormGroup {
     defaultType = defaultType ?? '';
     console.log(defaultType);

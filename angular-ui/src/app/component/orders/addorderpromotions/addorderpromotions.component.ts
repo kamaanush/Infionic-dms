@@ -2351,7 +2351,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
           const link = document.createElement('a');
           link.href = url;
-          link.download =  this.convertedDateFormat()+ this.CustomerPoId + 'PODetails(Fixed)';
+          link.download =  this.convertedDateFormat()+ this.CustomerPoId + 'PODetails';
           link.click();
           URL.revokeObjectURL(url);
         }
@@ -2488,10 +2488,12 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   getShippingandPackingcharges() {
+    let submitype = localStorage.getItem('Edit')
     let payload: any = {};
 
     payload.GeographyId = this.geographyId;
     payload.EachModel = [];
+    payload.OrderId = submitype=='Add'? 0: this.CustomerPoId
 
     console.log(this.AddOrderPromotionData,'this.AddOrderPromotionData');
     console.log(this.AddorderNonpromotiondata,'this.AddorderNonpromotiondata');
