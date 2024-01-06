@@ -13,6 +13,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import tippy, { hideAll } from 'tippy.js';
 import { EditDealerTargetComponent } from '../edit-dealer-target/edit-dealer-target.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-dealer-target-action',
@@ -28,6 +29,7 @@ export class DealerTargetActionComponent implements OnInit {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private dialog: MatDialog,
+    private spinner: NgxSpinnerService,
     private route: ActivatedRoute
   ) {
     this.route.data.subscribe((v) => {
@@ -118,13 +120,18 @@ export class DealerTargetActionComponent implements OnInit {
     localStorage.setItem('dealerTargetaddorderdit', 'Edit');
   }
   view() {
+    this.spinner.show();
+    setTimeout(()=>{
+   
     this.dialog.open(EditDealerTargetComponent, {
       minWidth: '95vw',
       height: '95vh',
     });
     this.isOpen = false;
     localStorage.setItem('dealerTargetSetItem', 'view');
-    localStorage.setItem('dealerTargetaddorderdit', 'View');
+    localStorage.setItem('dealerTargetaddorderdit', 'View'); 
+    this.spinner.hide();
+  },2000)
   }
 
   togglePopup() {

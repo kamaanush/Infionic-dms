@@ -183,7 +183,7 @@ label {
 }
 .tabledatatarget
 {
-    margin-left: 25px;
+    /* margin-left: 25px; */
 }
 .tableheading
 {
@@ -205,6 +205,7 @@ label {
     background: #FFFFFF;
     color: grey;
     outline-color: #abd4ff;
+    text-align: right;
 }
 .viewtargetData{
     width: 95%;
@@ -215,6 +216,7 @@ label {
     font-size: 12.5px;
     margin: 3px;
     background: none;
+    text-align: right;
 }
 
 
@@ -234,6 +236,7 @@ input[type=checkbox] {
     margin: 3px;
     background: none;
     color: grey;
+    text-align: right;
 }
 
 .IteminputBoxesfrstData {
@@ -248,6 +251,7 @@ input[type=checkbox] {
     align-items: center;
     color: #006466;
     margin: 3px;
+    text-align: right;
 }
 
 .IteminputBoxesscndData {
@@ -262,6 +266,7 @@ input[type=checkbox] {
     align-items: center;
     color: #44026C;
     margin: 3px;
+    text-align: right;
 }
 
 .IteminputBoxesthrdData {
@@ -277,6 +282,7 @@ input[type=checkbox] {
     color: #000000;
     font-weight: bold;
     margin: 3px;
+    text-align: right;
 }
 
 .promotiont2 {

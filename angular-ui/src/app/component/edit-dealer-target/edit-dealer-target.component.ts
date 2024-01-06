@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { DealerTargetPopupGridComponent } from 'src/app/dealer-target-popup-grid/dealer-target-popup-grid.component';
 import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success-popup/dealer-target-success-popup.component';
 import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
@@ -87,13 +88,14 @@ export class EditDealerTargetComponent implements OnInit {
     private user: UserService,
     private dialogRef: MatDialogRef<EditDealerTargetComponent>,
     private sharedService: DealerTargetSharedServicesService,
+   
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   targetData: any;
   isDisable:boolean=false
   ngOnInit(): void {
-    this.isDisable = this.data.isShowEdit
+    this.isDisable = this.data?.isShowEdit
     this.financialYearData();
     this.LoginId = localStorage.getItem('logInId');
 
