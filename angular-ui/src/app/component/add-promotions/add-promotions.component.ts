@@ -1,5 +1,18 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -7,7 +20,23 @@ import { PromotionService } from 'src/app/services/promotion.service';
 import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
 import { RemovePromotionItemComponent } from './remove-promotion-item/remove-promotion-item.component';
 import { elementAt, Subject } from 'rxjs';
-import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid} from 'ag-grid-community';
+import {
+  CellClassParams,
+  CellClassRules,
+  CellClickedEvent,
+  CellValueChangedEvent,
+  ColDef,
+  Color,
+  FirstDataRenderedEvent,
+  GridReadyEvent,
+  RowValueChangedEvent,
+  SideBarDef,
+  GridApi,
+  GridOptions,
+  ModuleRegistry,
+  ColumnResizedEvent,
+  Grid,
+} from 'ag-grid-community';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddPromotionGeographiesComponent } from './add-promotion-geographies/add-promotion-geographies.component';
 import { DateAdapter } from '@angular/material/core';
@@ -441,11 +470,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
   editedDetails: any = [];
   istoggleOn: any;
-  specalmoq:any;
-  Moqstatus:boolean=false
-  headername:any
+  specalmoq: any;
+  Moqstatus: boolean = false;
+  headername: any;
   ngOnInit() {
-     this.headername = localStorage.getItem('addOrEdit');
+    this.headername = localStorage.getItem('addOrEdit');
     if (this.headername == 'editpromo') {
       this.SaveOrEdit = false;
       this.header = 'Edit';
@@ -459,7 +488,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         // alert(res.response.isIndividual)
         this.cdr.detectChanges();
         this.addImgpreview = true;
-        this.specalmoq = res.response.promoDetails.moq
+        this.specalmoq = res.response.promoDetails.moq;
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);
         this.selectedStartDate =
@@ -893,9 +922,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   onToggleChange(event: any) {
     this.showConsolidatedMOQ = event.checked;
     if (this.showConsolidatedMOQ) {
-    this.Moqstatus = true; 
+      this.Moqstatus = true;
     } else {
-    this.Moqstatus = false; 
+      this.Moqstatus = false;
     }
     this.cdr.detectChanges();
     //   if (this.addbuyset && this.addbuyset.BuyGroups) {
@@ -911,13 +940,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     return this._formBuilder.group({
       qtyFrom: ['', [Validators.required, Validators.min(0)]],
       qtyTo: ['', [Validators.required, Validators.min(0)]],
-      buy: ['',[Validators.required, Validators.min(0)],],
+      buy: ['', [Validators.required, Validators.min(0)]],
       get: ['', [Validators.required, Validators.min(0)]],
-      additional: ['', ],
+      additional: [''],
       // [Validators.required, Validators.min(0)]
     });
   }
-  
+
   markControlAsTouched(control: AbstractControl | null): void {
     if (control) {
       control.markAsTouched();
@@ -927,30 +956,32 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.formArr.push(this.promotionRows());
     this.updateValidation();
   }
-  isButtonDisable:boolean= false
+  isButtonDisable: boolean = false;
   restrictToAlphabets(event: any): void {
     const input = event.target as HTMLInputElement;
     const value = input.value;
     const numericValue = Number(value);
-  
+
     // Check if the value is less than or equal to zero
-    if (numericValue <= 0 ||numericValue == null ) {
-      input.style.borderColor = 'red'; 
-      this.isButtonDisable = true
+    if (numericValue <= 0 || numericValue == null) {
+      input.style.borderColor = 'red';
+      this.isButtonDisable = true;
       // this.promotionForm.get('addPromotions')?.get(controlName)?.setErrors({ invalidValue: true });
     } else {
-      this.isButtonDisable = false
+      this.isButtonDisable = false;
       input.style.borderColor = '';
       // this.promotionForm.get('addPromotions')?.get(controlName)?.setErrors(null);
     }
-  
+
     input.value = value.replace(/[^0-9]/g, '');
     this.updateValidation();
     this.promotionForm.updateValueAndValidity();
   }
-  
+
   updateValidation() {
-    const promotionsArray = this.promotionForm.get('addPromotions') as FormArray;
+    const promotionsArray = this.promotionForm.get(
+      'addPromotions'
+    ) as FormArray;
     for (let i = 0; i < promotionsArray.length - 1; i++) {
       const currentPromotion = promotionsArray.at(i);
       const nextPromotion = promotionsArray.at(i + 1);
@@ -1004,12 +1035,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           nextQtyToControl.setErrors(null);
         }
       });
-      
     }
   }
 
   deletePromotion(index: number) {
-    if (index>=1) {
+    if (index >= 1) {
       this.formArr.removeAt(index);
     }
   }
@@ -1024,16 +1054,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   validateMOQ(i: number, j: number) {
     const moq = this.addbuyset[i].BuyGroups[j].MOQ;
     const minQtyFrom = this.getMinimumQtyFromValue();
-  
+
     if (moq < minQtyFrom) {
       this.addbuyset[i].BuyGroups[j].moqError = true;
     } else {
       this.addbuyset[i].BuyGroups[j].moqError = false;
     }
   }
-  
-  
-  
+
   isMOQValid = true;
   isPromotionTypeDataValid = true;
   isPromotionTypeDataValid2 = true;
@@ -1906,7 +1934,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        this.productselectedRows = JSON.parse(localStorage.getItem('productselectedRows') ?? '[]');
+        this.productselectedRows = JSON.parse(
+          localStorage.getItem('productselectedRows') ?? '[]'
+        );
         // this.productScselectedRows = JSON.parse(localStorage.getItem("productScselectedRows") ?? '[]');
         // this.pGselectedRows = JSON.parse(localStorage.getItem("pGselectedRows") ?? '[]');
         // this.productSubGselectedRows = JSON.parse(localStorage.getItem("productSubGselectedRows") ?? '[]');
@@ -1921,7 +1951,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.priceStockItemId = jointarray;
         this.productIdtoFilters = this.priceStockItemId;
         this.addpromotionGeoTable();
-        console.log('productselectedRows', this.productselectedRows)
+        console.log('productselectedRows', this.productselectedRows);
         this.moqChange4();
       }
     });
@@ -2278,34 +2308,26 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   processingSubmit = false;
   AddPromosaveAndSubmit(type) {
-    if (this.processingSubmit) {
-      return; 
-    }
-    this.processingSubmit = true;
+    // if (this.processingSubmit) {
+    //   return;
+    // }
+    // this.processingSubmit = true;
     localStorage.setItem('updatePromotionPopup', 'add');
     this.loggedUserId = localStorage.getItem('logInId');
+
     if (!this.checkValidation(this.selectedPromo)) return;
-    if(type =='Submit'||type =='Draft'){
+
+    if (type == 'Submit' || type == 'Draft') {
+      const timeoutId = setTimeout(() => {
+        this.spinner.hide();
+        // console.log('Spinner hidden after 15 seconds');
+        alert('response failed')
+      }, 15000);
+      
       if (this.selectedPromo == 1) {
         console.log('added items', this.buyGroupPlus);
         console.log('addgetgroup', this.addgetgroup);
-  
-        this.buyGroupPlus.forEach((element, index) => {
-          element.GroupId = index + 1;
-          delete element.productselectedRows;
-          delete element.productScselectedRows;
-          delete element.pGselectedRows;
-          delete element.productSubGselectedRows;
-        });
-  
-        this.addgetgroup.forEach((element, index) => {
-          element.GroupId = index + 1;
-          delete element.productselectedRows;
-          delete element.productScselectedRows;
-          delete element.pGselectedRows;
-          delete element.productSubGselectedRows;
-        });
-  
+
         let obj: any = {
           PromotionName: this.promoName,
           PromotionTypesId: this.selectedPromo,
@@ -2328,45 +2350,59 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               Aditional: control.get('additional')?.value,
             };
           }),
-       
         };
         this.spinner.show();
         this.promotionTypes.firstPromotion(obj).subscribe((res) => {
           console.log(res.response);
-
+          clearTimeout(timeoutId);
           setTimeout(() => {
             this.spinner.hide();
-          if (res.response.result == 'Added Succesfully') {
-            // this.spinner.hide();
-            //  alert('Added Succesfully')
-            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-              panelClass: 'promotionsSuccessPop',
-            });
-           
-            this.sharedService.filter('Register click');
-  
-            this.dialogRef.close();
-          } else {
-            // alert(res.response.result);
-  
-            this.sharedService.filter('Register click');
-            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-              panelClass: 'promotionsSuccessPop',
-            });
-            this.dialogRef.close();
-            // this.spinner.hide();
-          }
-          this.processingSubmit = false;
-      }, 2000);
-    })
+            if (res.response.result == 'Added Succesfully') {
+              // this.spinner.hide();
+              //  alert('Added Succesfully')
+              this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+                panelClass: 'promotionsSuccessPop',
+              });
+              this.buyGroupPlus.forEach((element, index) => {
+                element.GroupId = index + 1;
+                delete element.productselectedRows;
+                delete element.productScselectedRows;
+                delete element.pGselectedRows;
+                delete element.productSubGselectedRows;
+              });
+
+              this.addgetgroup.forEach((element, index) => {
+                element.GroupId = index + 1;
+                delete element.productselectedRows;
+                delete element.productScselectedRows;
+                delete element.pGselectedRows;
+                delete element.productSubGselectedRows;
+              });
+
+              this.sharedService.filter('Register click');
+
+              this.dialogRef.close();
+            } else {
+              // alert(res.response.result);
+
+              this.sharedService.filter('Register click');
+              this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+                panelClass: 'promotionsSuccessPop',
+              });
+              this.dialogRef.close();
+              // this.spinner.hide();
+            }
+            // this.processingSubmit = false;
+          }, 2000);
+        });
       }
-  
+
       if (this.selectedPromo == 2) {
         console.log('addbuyset', this.addbuyset);
         console.log('addGetset', this.addgetset);
         let obj: any = [];
         let obj1: any = [];
-  
+
         for (let i = 0; i < this.addbuyset.length; i++) {
           this.addbuyset[i].BuyGroups.forEach((element) => {
             delete element.productselectedRows;
@@ -2385,7 +2421,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         let GetGroups: any = [];
         BuyGroups.push(obj);
         GetGroups.push(obj1);
-  
+
         let mainobj: any = {
           BuyGroups: obj,
         };
@@ -2393,7 +2429,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           GetGroups: obj1,
         };
         console.log('mainobj', mainobj);
-  
+
         let obj3: any = {
           PromotionName: this.promoName,
           PromotionTypesId: this.selectedPromo,
@@ -2427,25 +2463,24 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           console.log(res.response);
           setTimeout(() => {
             this.spinner.hide();
-          // alert('Added Succesfully');
-          if (res.response.result == 'Added Succesfully') {
-            alert('Added Succesfully');
-            this.sharedService.filter('Register click');
-            this.dialogRef.close();
-          } else {
-            // alert(res.response.result);
-            this.sharedService.filter('Register click');
-            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-              panelClass: 'promotionsSuccessPop',
-            });
-            this.dialogRef.close();
-          }
-          this.processingSubmit = false;
-        }, 2000);
-      })
-        
+            // alert('Added Succesfully');
+            if (res.response.result == 'Added Succesfully') {
+              alert('Added Succesfully');
+              this.sharedService.filter('Register click');
+              this.dialogRef.close();
+            } else {
+              // alert(res.response.result);
+              this.sharedService.filter('Register click');
+              this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+                panelClass: 'promotionsSuccessPop',
+              });
+              this.dialogRef.close();
+            }
+            // this.processingSubmit = false;
+          }, 2000);
+        });
       }
-  
+
       if (this.selectedPromo == 3) {
         console.log('VolumeSttockItemId', this.VolumeSttockItemId);
         let obj3: any = {
@@ -2469,25 +2504,24 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           console.log(res.response);
           setTimeout(() => {
             this.spinner.hide();
-          if (res.response.result == 'Added Succesfully') {
-            // alert('Added Succesfully');
-            this.sharedService.filter('Register click');
-  
-            this.dialogRef.close();
-          } else {
-            // alert(res.response.result);
-            this.sharedService.filter('Register click');
-            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-              panelClass: 'promotionsSuccessPop',
-            });
-            this.dialogRef.close();
-          }
-          this.processingSubmit = false;
-        },2000)
+            if (res.response.result == 'Added Succesfully') {
+              // alert('Added Succesfully');
+              this.sharedService.filter('Register click');
+
+              this.dialogRef.close();
+            } else {
+              // alert(res.response.result);
+              this.sharedService.filter('Register click');
+              this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+                panelClass: 'promotionsSuccessPop',
+              });
+              this.dialogRef.close();
+            }
+            // this.processingSubmit = false;
+          }, 2000);
         });
-     
       }
-  
+
       if (this.selectedPromo == 4) {
         let obj3: any = {
           PromotionName: this.promoName,
@@ -2510,23 +2544,22 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           console.log(res.response);
           setTimeout(() => {
             this.spinner.hide();
-          if (res.response.result == 'Added Succesfully') {
-            // alert('Added Succesfully');
-            this.sharedService.filter('Register click');
-  
-            this.dialogRef.close();
-          } else {
-            // alert(res.response.result);
-            this.sharedService.filter('Register click');
-            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-              panelClass: 'promotionsSuccessPop',
-            });
-            this.dialogRef.close();
-          }
-          this.processingSubmit = false;
-        },2000)
+            if (res.response.result == 'Added Succesfully') {
+              // alert('Added Succesfully');
+              this.sharedService.filter('Register click');
+
+              this.dialogRef.close();
+            } else {
+              // alert(res.response.result);
+              this.sharedService.filter('Register click');
+              this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+                panelClass: 'promotionsSuccessPop',
+              });
+              this.dialogRef.close();
+            }
+            // this.processingSubmit = false;
+          }, 2000);
         });
-     
       }
     }
   }
@@ -2578,16 +2611,16 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
 
   AddPromosaveAndSubmitEdit(type) {
-    if (this.processingSubmit) {
-      return; 
-    }
-    this.processingSubmit = true;
+    // if (this.processingSubmit) {
+    //   return;
+    // }
+    // this.processingSubmit = true;
     localStorage.setItem('updatePromotionPopup', 'edit');
     this.loggedUserId = localStorage.getItem('logInId');
 
     if (!this.checkValidation(this.selectedPromo)) return;
 
-    if(type='edit'){
+    if ((type = 'edit')) {
       if (this.selectedPromo == 1) {
         console.log('added items', this.buyGroupPlus);
         console.log('addgetgroup', this.addgetgroup);
@@ -2624,7 +2657,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           AditionalMoqDetails: this.formArr.controls.map((control, index) => {
             return {
               AdditionalDetailsId:
-                this.editedDetails.map((x) => x.additionalDetailsId)[index] || 0,
+                this.editedDetails.map((x) => x.additionalDetailsId)[index] ||
+                0,
               QtyFrom: control.get('qtyFrom')?.value,
               QtyTo: control.get('qtyTo')?.value,
               BuyValue: control.get('buy')?.value,
@@ -2650,7 +2684,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
-          this.processingSubmit = false;
+          // this.processingSubmit = false;
         });
       }
 
@@ -2706,7 +2740,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           AditionalMoqDetails: this.formArr.controls.map((control, index) => {
             return {
               AdditionalDetailsId:
-                this.editedDetails.map((x) => x.additionalDetailsId)[index] || 0,
+                this.editedDetails.map((x) => x.additionalDetailsId)[index] ||
+                0,
               QtyFrom: control.get('qtyFrom')?.value,
               QtyTo: control.get('qtyTo')?.value,
               BuyValue: control.get('buy')?.value,
@@ -2735,7 +2770,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
             this.dialogRef.close();
           }
-          this.processingSubmit = false;
+          // this.processingSubmit = false;
         });
       }
 
@@ -2772,7 +2807,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
-          this.processingSubmit = false;
+          // this.processingSubmit = false;
         });
       }
 
@@ -2810,7 +2845,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
-          this.processingSubmit = false;
+          // this.processingSubmit = false;
         });
       }
     }
@@ -3183,7 +3218,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       // this.goForward(this.myStepper);
     }
     if (event.promotionTypesId == 3) {
-      localStorage.removeItem('productselectedRows')
+      localStorage.removeItem('productselectedRows');
       this.noPromotionSelected = false;
       this.buyab = false;
       this.volumedc = true;
@@ -3192,7 +3227,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       // this.goForward(this.myStepper);
     }
     if (event.promotionTypesId == 4) {
-      localStorage.removeItem('productselectedRows')
+      localStorage.removeItem('productselectedRows');
       this.noPromotionSelected = false;
       // this.goForward(this.myStepper);
       this.buyab = false;
@@ -3231,30 +3266,29 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // });
   }
 
-  
   validateBuyInRange(index: any) {
     const buyControl = this.formArr.at(index);
     const qtyFromControl = buyControl.get('qtyFrom');
     const qtyToControl = buyControl.get('qtyTo');
-  
+
     if (buyControl && buyControl.get('buy') && qtyFromControl && qtyToControl) {
       const buyValue = +buyControl.get('buy')!.value; // Convert to a number
       const qtyFromValue =
         qtyFromControl.value !== null && qtyFromControl.value !== ''
           ? +qtyFromControl.value
           : -Infinity;
-          // console.log(qtyFromValue);
+      // console.log(qtyFromValue);
       const qtyToValue =
         qtyToControl.value !== null && qtyToControl.value !== ''
           ? +qtyToControl.value
           : Infinity;
       // console.log(qtyToValue) buyValue < qtyFromValue ||
-      if ( buyValue > qtyToValue) {
+      if (buyValue > qtyToValue) {
         buyControl.get('buy')!.setErrors({ buyNotInRange: true });
       } else {
         buyControl.get('buy')!.setErrors(null);
       }
-  
+
       // Check if index is 0 and qtyTo > qtyFrom
       if (index === 0 && qtyToValue > qtyFromValue) {
         qtyToControl.setErrors({ qtyToNotGreaterThanQtyFrom: true });
@@ -3263,6 +3297,4 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       }
     }
   }
-  
-}  
-
+}

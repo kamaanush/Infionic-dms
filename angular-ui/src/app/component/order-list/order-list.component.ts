@@ -254,6 +254,9 @@ export class OrderListComponent implements OnInit {
   endDate: any = '';
   currentPageName: string = '';
   loggedUserId: any;
+  OrderType: any;
+  selectedItem: any;
+  closeDropdownSelection=false;
 
   selectedOption:any='Orders'
   constructor(
@@ -349,34 +352,70 @@ export class OrderListComponent implements OnInit {
     this.myForm2 = this.fb.group({
       status: [this.selectedItems],
     });
-    this.onOptionChange()
+    // this.onOptionChange()
+    this.SelectOrder('Order')
+    this.cities = ['Orders','SplitOrders'];
+    this.selectedItem = ['Orders'];
+    this.dropdownSettings = {
+        singleSelection: true,
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        allowSearchFilter: true,
+        closeDropDownOnSelection: this.closeDropdownSelection
+    };
+  }
+  
+  SelectOrder(data:any){
+    this.SpinnerService.show();
+    this.selectedOption = data
+    const payload = {
+      ordertype: data,
+      StatusId: [],
+      GeographyId: [],
+      DealerId: [],
+      OrderDate: '',
+      Search: this.searchText,
+      CurrentUserId: this.loggedUserId,
+    };
+    this.orders.getorderDeatilslist(payload).subscribe((res) => {
+      this.rowDatalist = res.response;
+      this.SpinnerService.hide();
+      console.log('this.rowDatalist', this.rowDatalist);
+      let stat: any = [...new Set(res.response.filter((x: any) => x.status === 'Submitted').map((y: any) => y.status))];
+      sessionStorage.setItem('yourKey', stat);
+      this.SpinnerService.hide();
+      this.rowDatalist.forEach((element) => {
+        element.orderDate = this.sharedService.dateformat(element.orderDate);
+      });
+    });
+    console.log('Selected option changed:', data);
   }
   ordertype:any
-  onOptionChange() {
-    if (this.selectedOption === 'Orders' || this.selectedOption === 'SplitOrders') {
-      const data = {
-        ordertype: this.selectedOption,
-        StatusId: [],
-        GeographyId: [],
-        DealerId: [],
-        OrderDate: '',
-        Search: this.searchText,
-        CurrentUserId: this.loggedUserId,
-      };
-      this.orders.getorderDeatilslist(data).subscribe((res) => {
-        this.rowDatalist = res.response;
-        console.log('this.rowDatalist', this.rowDatalist);
-        let stat: any = [...new Set(res.response.filter((x: any) => x.status === 'Submitted').map((y: any) => y.status))];
-        sessionStorage.setItem('yourKey', stat);
-        console.log(res.response.status, '........R A .. KKKs....');
-        this.SpinnerService.hide();
-        this.rowDatalist.forEach((element) => {
-          element.orderDate = this.sharedService.dateformat(element.orderDate);
-        });
-      });
-      console.log('Selected option changed:', this.selectedOption);
-    }
-  }
+  // onOptionChange() {
+  //   if (this.selectedOption === 'Orders' || this.selectedOption === 'SplitOrders') {
+  //     const data = {
+  //       ordertype: this.selectedOption,
+  //       StatusId: [],
+  //       GeographyId: [],
+  //       DealerId: [],
+  //       OrderDate: '',
+  //       Search: this.searchText,
+  //       CurrentUserId: this.loggedUserId,
+  //     };
+  //     this.orders.getorderDeatilslist(data).subscribe((res) => {
+  //       this.rowDatalist = res.response;
+  //       console.log('this.rowDatalist', this.rowDatalist);
+  //       let stat: any = [...new Set(res.response.filter((x: any) => x.status === 'Submitted').map((y: any) => y.status))];
+  //       sessionStorage.setItem('yourKey', stat);
+  //       console.log(res.response.status, '........R A .. KKKs....');
+  //       this.SpinnerService.hide();
+  //       this.rowDatalist.forEach((element) => {
+  //         element.orderDate = this.sharedService.dateformat(element.orderDate);
+  //       });
+  //     });
+  //     console.log('Selected option changed:', this.selectedOption);
+  //   }
+  // }
   updateColumnDefs(){
     if(this.userType === 'Admin'){
       this.columnDefs=[
@@ -1118,7 +1157,7 @@ export class OrderListComponent implements OnInit {
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
   }
-
+ 
   onItemSelect(item: any) {
     // alert(item.roleName)
     this.userTypes.push(item.roleId);
@@ -1134,6 +1173,7 @@ export class OrderListComponent implements OnInit {
     console.log('rolefilter', this.userTypes);
     console.log('onItemSelect', item);
   }
+  
   onItemSelectOrAll(item: any) {
     this.userTypes = this.roleArray;
     const data = {
@@ -1643,6 +1683,7 @@ export class OrderListComponent implements OnInit {
   statusdropdownselect(item: any) {
     this.statusList.push(item.statusId);
     const data = {
+      ordertype: this.selectedOption,
       StatusId: this.statusList,
       GeographyId: this.geogragphies,
       DealerId: this.dealerss,

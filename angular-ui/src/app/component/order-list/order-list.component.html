@@ -39,7 +39,7 @@
           <mat-select [disabled]="disableSelect.value"> -->
         <app-customdatepicker class="dateplaceholder" [showInputField]="true" label="Order Date " [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
-    <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown  custom-bubbles" >
+      <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown  custom-bubbles" >
         <form [formGroup]="myForm2" class="dropdown-form">
           <ng-multiselect-dropdown style="color: grey;" class="Status STATUSS1" name="status" [placeholder]="'Select Status'" formControlName="status"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropList" (onSelect)="statusdropdownselect($event)"
@@ -49,10 +49,14 @@
             <!-- <span *ngIf="myForm2.get('status').value.length == 0"> Select Status </span> -->
             <span *ngIf="myForm2.get('status').value.length == 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status selected </span>
             <span *ngIf="myForm2.get('status').value.length > 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status(s) selected </span>
-
           </div>
         </form>
       </div>
+      <div class="col-md-2 com-lg-2 col-sm-2">
+        <ng-multiselect-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings"
+          (onSelect)="SelectOrder($event)" [disabled]="disabled"></ng-multiselect-dropdown>
+      </div>
+      
       <!-- Search -->
       <div class="col-md-2 col-lg-2 col-sm-2" style="margin-left: -2px;" >
         <div class="searchBox11 d-flex">
@@ -70,11 +74,11 @@
       </div>
       </div>
       
-      <div class="col-md-3 col-lg-3 col-sm-3" *ngIf="userType == 'Dealer Admin'" >
+      <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType == 'Dealer Admin'" >
       </div>
       <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType == 'Dealer Admin'" >
       </div>
-      <div class="col-md-3 col-lg-3 col-sm-3" *ngIf="userType !== 'Dealer Admin'" >
+      <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType !== 'Dealer Admin'" >
       </div>
       <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType !== 'Dealer Admin'" >
       </div>
@@ -87,9 +91,6 @@
         <div class="OrderDataDownloadeddiv" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
           <img class="OrderlistDownloaded" src="../../../assets/img/ll.svg">
         </div> 
-          
-        
-        &nbsp; &nbsp;&nbsp;
         <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName"  *ngIf="userType !== 'Order Manager' && (userType === 'Viewer' || userType !== 'Business Manager') ">
           <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
         </div>
@@ -171,14 +172,14 @@
 
  <div class="row">
   <div style="margin-top: 18px;" class="col-3">
-    <div class="d-flex" userRoleDirective="Split_Order_Filter" [pageName]="currentPageName">
+    <!-- <div class="d-flex" userRoleDirective="Split_Order_Filter" [pageName]="currentPageName">
       <label class="mr-5">
         <input type="radio" [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()" value="Orders"> Orders
       </label>
       <label>
         <input type="radio" [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()" value="SplitOrders"> SplitOrders
       </label>
-    </div>
+    </div> -->
   </div>
   <div class="col-9">
     <div  class="AllText" *ngIf="userType !== 'Dealer Admin'">
