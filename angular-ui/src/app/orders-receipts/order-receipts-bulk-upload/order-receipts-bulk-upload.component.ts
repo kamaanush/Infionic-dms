@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as XLSX from 'xlsx';
@@ -42,6 +43,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   uploadedTextShow:boolean=false;
   constructor(private salesService:SalesServicesService,
     private otherMasterService:OtherMasterService,
+    private spinner: NgxSpinnerService,
     private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
 
   ngOnInit(): void {
@@ -107,12 +109,13 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
       // console.log("check once Batch id coming or not" , this.BatchId);
     
       // console.log("Daaataaa",uploadedFile); 
-        
+         this.spinner.show();
        this.salesService.getReceiptBulkUploadTarget(uploadedFile).subscribe((res)=>{
            if(res.succeded = true) {
           this.showTable =true;
         }
-        
+            setTimeout(()=>{
+              this.spinner.hide();
         this.TargetUpload=res.response;
         // console.log("Batch data checkinn",this.BatchId);
         this.BatchId = this.TargetUpload.batchid;
@@ -148,8 +151,8 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
       const TargetUpload = res.response.allRows;
       // console.log("associationList   check",TargetUpload)
        this.batchId = TargetUpload.map(({ batchId }) => batchId);
+      },2000);
     })
-
     };
     
  }

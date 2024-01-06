@@ -6,7 +6,7 @@ import * as XLSX from 'xlsx';
 import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 import { AssosiationServicesService } from '../services/assosiation-services.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-association-bulk-upload',
   templateUrl: './association-bulk-upload.component.html',
@@ -53,6 +53,7 @@ export class AssociationBulkUploadComponent implements OnInit {
   constructor(private salesService:SalesServicesService,
     private associationService:AssosiationServicesService,
     private otherMasterService:OtherMasterService,
+    private spinner: NgxSpinnerService,
     private dialogRef: MatDialogRef<AssociationBulkUploadComponent>,private formbuilder:FormBuilder) { }
 
   ngOnInit(): void {
@@ -69,7 +70,6 @@ export class AssociationBulkUploadComponent implements OnInit {
 }
 
   onFileChange(event: any) {
-    
     // Iterate over selected files
     for (let file of event.target.files) {
       // Append to a list
@@ -113,15 +113,13 @@ export class AssociationBulkUploadComponent implements OnInit {
       console.log("check once Batch id" , this.BatchId);
     
       console.log("Daaataaa",uploadedFile); 
-        
-       
+      this.spinner.show();
           this.associationService.AssociationbulkeditList(uploadedFile).subscribe((res)=>{
-          
-
         if(res.succeded = true) {
           this.showTable =true;
         }
-        
+        setTimeout(() => {
+          this.spinner.hide();
         this.associationList=res.response;
         this.BatchId = this.associationList.batchid;
         console.log("Batch data checkinn",this.BatchId);
@@ -162,10 +160,7 @@ export class AssociationBulkUploadComponent implements OnInit {
         const associationList = res.response.allRows;
         console.log("associationList   check",associationList)
         this.batchId = associationList.map(({ batchId }) => batchId);
-      
-       
-
-       
+      }, 2000);
       })
     };
     

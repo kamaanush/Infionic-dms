@@ -4,6 +4,7 @@ import { OrderShipmentService } from 'src/app/services/order-shipment.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import * as XLSX from 'xlsx';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-sales-bulk-upload',
   templateUrl: './sales-bulk-upload.component.html',
@@ -16,6 +17,7 @@ export class SalesBulkUploadComponent implements OnInit {
     private dialogRef: MatDialogRef<SalesBulkUploadComponent>,
     private dialog: MatDialog,
     private orderShipment: OrderShipmentService,
+    private spinner: NgxSpinnerService,
     public sharedService: SharedService
   ) {}
   totalRows: any;
@@ -250,8 +252,6 @@ export class SalesBulkUploadComponent implements OnInit {
             /* save data */
             this.uploadedData = XLSX.utils.sheet_to_json(ws);
             console.log('New Data', this.uploadedData);
-  
-           
             const uploadedFile = {
               CreateById: this.CreatedById,
               BulkSales: this.uploadedData,
@@ -259,12 +259,14 @@ export class SalesBulkUploadComponent implements OnInit {
             };
   
             console.log('Daaataaa', uploadedFile);
+            this.spinner.show();
             this.salesService.getBulkSalesUpload(uploadedFile).subscribe((res) => {
               if (res.succeded === true) {
                 this.showTable = true;
                 this.isShowtext=false;
               }
-            
+               setTimeout(()=>{
+                   this.spinner.hide();
               this.isShowtext=false;
               this.isdocumen=false;
 
@@ -294,6 +296,7 @@ export class SalesBulkUploadComponent implements OnInit {
                           this.batchId = SalesUploadData.map(({ batchId }) => batchId);
                           this.isShowtext=false;
                           this.isdocumen=false;
+                        },2000)
             });
           };
         } else {
@@ -363,10 +366,13 @@ export class SalesBulkUploadComponent implements OnInit {
       };
       console.log('Daaataaa', uploadedFile);
       // getShipmentBulkUpload
+      this.spinner.show();
       this.salesService.getShipmentBulkUpload(uploadedFile).subscribe((res) => {
         if ((res.succeded = true)) {
           this.showTable = true;
         }
+        setTimeout(() => {
+          this.spinner.hide();
         const orderShipment = res.response;
         console.log('orderShipment', orderShipment);
         this.TotalRows = orderShipment.totalRows;
@@ -389,7 +395,9 @@ export class SalesBulkUploadComponent implements OnInit {
         console.log('SalesUploadData', UploadData);
         this.batchId = UploadData.map(({ guid }) => guid);
         console.log('GUId', this.batchId);
+      }, 2000);
       });
+  
     };
   }
   UploadSales() {

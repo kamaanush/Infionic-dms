@@ -17,6 +17,7 @@ import { SharedServicesDealerService } from 'src/app/services/shared-services-de
 import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
 import { MaterialaddedSuccessPopComponent } from '../materials-list/material-add-editpopup/materialadded-success-pop/materialadded-success-pop.component';
 import { AddPromotionSuccessfulPopupComponent } from './add-promotion-successful-popup/add-promotion-successful-popup.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-add-promotions',
   templateUrl: './add-promotions.component.html',
@@ -420,6 +421,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     private dialogRef: MatDialogRef<AddPromotionsComponent>,
     private dateAdapter: DateAdapter<Date>,
     public promotionTypes: PromotionService,
+    private spinner: NgxSpinnerService,
     private cdr: ChangeDetectorRef
   ) {
     this.sharedService.listen().subscribe((m: any) => {
@@ -2276,7 +2278,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   processingSubmit = false;
   AddPromosaveAndSubmit(type) {
-   
     if (this.processingSubmit) {
       return; 
     }
@@ -2327,16 +2328,21 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               Aditional: control.get('additional')?.value,
             };
           }),
+       
         };
-  
+        this.spinner.show();
         this.promotionTypes.firstPromotion(obj).subscribe((res) => {
           console.log(res.response);
-  
+
+          setTimeout(() => {
+            this.spinner.hide();
           if (res.response.result == 'Added Succesfully') {
-            // alert('Added Succesfully')
+            // this.spinner.hide();
+            //  alert('Added Succesfully')
             this.dialog.open(AddPromotionSuccessfulPopupComponent, {
               panelClass: 'promotionsSuccessPop',
             });
+           
             this.sharedService.filter('Register click');
   
             this.dialogRef.close();
@@ -2348,9 +2354,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               panelClass: 'promotionsSuccessPop',
             });
             this.dialogRef.close();
+            // this.spinner.hide();
           }
           this.processingSubmit = false;
-        });
+      }, 2000);
+    })
       }
   
       if (this.selectedPromo == 2) {
@@ -2414,10 +2422,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         // let BuySets=[{
         //   BuyGroups:obj
         // }]
+        this.spinner.show();
         this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
           console.log(res.response);
+          setTimeout(() => {
+            this.spinner.hide();
+          // alert('Added Succesfully');
           if (res.response.result == 'Added Succesfully') {
-            // alert('Added Succesfully');
+            alert('Added Succesfully');
             this.sharedService.filter('Register click');
             this.dialogRef.close();
           } else {
@@ -2429,7 +2441,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             this.dialogRef.close();
           }
           this.processingSubmit = false;
-        });
+        }, 2000);
+      })
         
       }
   
@@ -2451,8 +2464,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         };
         // alert(obj3.MOQ);
         localStorage.setItem('MOQ', obj3.MOQ);
+        this.spinner.show();
         this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
           console.log(res.response);
+          setTimeout(() => {
+            this.spinner.hide();
           if (res.response.result == 'Added Succesfully') {
             // alert('Added Succesfully');
             this.sharedService.filter('Register click');
@@ -2467,7 +2483,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             this.dialogRef.close();
           }
           this.processingSubmit = false;
+        },2000)
         });
+     
       }
   
       if (this.selectedPromo == 4) {
@@ -2486,9 +2504,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           Remarks: this.Remarks ?? '',
         };
         // alert(obj3.MOQ);
+        this.spinner.show();
         localStorage.setItem('MOQ', obj3.MOQ);
         this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
           console.log(res.response);
+          setTimeout(() => {
+            this.spinner.hide();
           if (res.response.result == 'Added Succesfully') {
             // alert('Added Succesfully');
             this.sharedService.filter('Register click');
@@ -2503,7 +2524,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             this.dialogRef.close();
           }
           this.processingSubmit = false;
+        },2000)
         });
+     
       }
     }
   }
