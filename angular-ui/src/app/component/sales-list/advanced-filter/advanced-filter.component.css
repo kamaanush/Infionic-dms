@@ -60,7 +60,7 @@ input[type=text] {
     padding: 10px 32px;
     margin: 8px 13px;
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 2px solid grey;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
@@ -215,7 +215,7 @@ input[type=text]:focus {
     font-size: 12px;
     outline: none;
     font-weight: lighter;
-    border: 1px solid black;
+    border: 1px solid grey;
 }
 
 /* span {
@@ -243,6 +243,9 @@ mat-form-field {
 
 ::ng-deep.productC .mat-checkbox-layout {
     margin-left: 12px;
+}
+:host ::ng-deep .mat-checkbox-frame { 
+    border-color: rgba(1, 139, 117, 1);
 }
 
 .edituser {
@@ -284,7 +287,7 @@ mat-form-field {
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    border: 0.5px solid #000000;
+    border: 0.5px solid grey;
 }
 
 .menu-container1 {
@@ -630,8 +633,8 @@ mat-form-field {
 
 .other {
     color: #e7e7e7;
-    background-color: black;
-    border: 1px solid black;
+    background-color: grey;
+    border: 1px solid grey;
     height: 35px;
     width: 355px;
     display: flex;
@@ -658,7 +661,7 @@ mat-form-field {
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    border: 0.5px solid #000000;
+    border: 0.5px solid grey;
     height: 188px;
     width: 100%;
     overflow: auto;

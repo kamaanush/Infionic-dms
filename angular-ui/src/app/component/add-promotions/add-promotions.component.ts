@@ -2461,6 +2461,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.spinner.show();
         this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
           console.log(res.response);
+          clearTimeout(timeoutId);
           setTimeout(() => {
             this.spinner.hide();
             // alert('Added Succesfully');
@@ -2502,6 +2503,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.spinner.show();
         this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
           console.log(res.response);
+          clearTimeout(timeoutId);
           setTimeout(() => {
             this.spinner.hide();
             if (res.response.result == 'Added Succesfully') {
@@ -2542,6 +2544,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         localStorage.setItem('MOQ', obj3.MOQ);
         this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
           console.log(res.response);
+          clearTimeout(timeoutId);
           setTimeout(() => {
             this.spinner.hide();
             if (res.response.result == 'Added Succesfully') {

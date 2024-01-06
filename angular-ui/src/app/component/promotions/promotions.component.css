@@ -398,7 +398,7 @@
  }
 
  ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
-   border: 2px solid #000000 !important;
+   border: 2px solid #018B75 !important;
  }
 
  ::ng-deep.promo .multiselect-dropdown .dropdown-btn .selected-item {
@@ -473,7 +473,7 @@
    width: 14px;
    height: 14px;
    margin-top: -9px;
-   border: 2px solid #000000;
+   border: 2px solid #018B75;
    text-align: center;
    transition: all .4s ease;
  }

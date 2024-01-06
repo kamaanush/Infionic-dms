@@ -360,7 +360,7 @@ export class OrderListComponent implements OnInit {
         singleSelection: true,
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        allowSearchFilter: true,
+        // allowSearchFilter: true,
         closeDropDownOnSelection: this.closeDropdownSelection
     };
   }
