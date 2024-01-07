@@ -1250,7 +1250,7 @@
 
     color: #000;
 
-    float: left;
+    // float: left;
 
     width: 42px;
 
@@ -1303,11 +1303,14 @@
 
     position: relative;
 
-    right: -160px;
-    bottom: 67px;
+    // right: -160px;
+    // bottom: 67px;
 
     border: 1px solid grey;
     outline: none;
+    transform: translateY(-50%);
+    margin-left: 156px;
+    top: -55px;
 
   }
 
@@ -1329,7 +1332,7 @@
 
     background: #FFFFFF;
 
-    float: left;
+    // float: left;
 
     padding: 5px 25px 6px;
 

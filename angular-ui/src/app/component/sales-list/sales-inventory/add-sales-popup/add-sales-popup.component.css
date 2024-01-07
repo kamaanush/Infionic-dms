@@ -529,10 +529,14 @@ div.catg[data-selected] {
   width: 315px;
   height: 44px;
   font-family: 'Gilroy-Regular';
+  outline: none !important;
 }
 
 .sales-popup-datepicker .mat-form-field-appearance-legacy ::ng-deep.mat-form-field-wrapper {
-  padding-bottom: 0;
+  color: grey;
+    padding-left: 15px;
+    /* font-weight: 500; */
+    top: -6px;
 }
 
 
@@ -551,6 +555,7 @@ div.catg[data-selected] {
 .sales-popup-datepicker ::ng-deep.mat-focus-indicator {
   font-size: 32px;
   top: -10px;
+  outline: none !important;
 }
 
 
@@ -575,4 +580,11 @@ div.catg[data-selected] {
   bottom: 4px;
   width: 20px;
   right: 10px;
+}
+::ng-deep.mat-calendar-body-cell{
+  outline: none !important;
+}
+
+::ng-deep.mat-calendar-body-cell .mat-calendar-body-active{
+  outline: none !important;
 }

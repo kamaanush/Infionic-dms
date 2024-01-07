@@ -238,8 +238,9 @@
     border-radius: 13%;
     position: relative;
     width: 40px;
-    margin-left: 19%;
+    // margin-left: 15%;
     height: 40px;
+    left: 214px;
   }
   
   // ::ng-deep.btnhover:hover,
@@ -1210,7 +1211,7 @@
 }
 .bulkEditAss{
   position: relative;
-  margin-left: 12%;
+  margin-left: 27%;
     // right: -47px;
 }
 .ORDERVIEWER
@@ -1279,15 +1280,17 @@
 
    .searchBox {
 
-    float: right;
+    // float: right;
 
-    position: absolute;
-
-    right: 468px;
-
-    top: 20px;
-    width: 220px;
+    // position: absolute;
+position: relative;
+    // right: 468px;
     height: 41px;
+    left: 194px;
+    top: 6px;
+    // top: 20px;
+    // width: 220px;
+    
 
   }
 
@@ -1296,7 +1299,7 @@
   .searchButton {
     display: block;
     color: #9B9FA3;
-    float: left;
+    // float: left;
     width: 42px;
     height: 42px;
     display: flex;
@@ -1310,6 +1313,7 @@
     border: none;
     border-radius: 13%;
     transition: 0.2s;
+    right: 182px;
   }
 
   .searchButtondealerr {
