@@ -302,7 +302,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2" style="position: relative;
-                                            right: 14px;">
+                                            left: 29px;">
                                                 <label *ngIf="i == 0">Consignee Name<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" name="ConsigneeName"
@@ -325,7 +325,7 @@
                                                 </select>
                                             </div> -->
 
-                                            <div class="col-2" style="position: relative;right:99px;">
+                                            <div class="col-2" style="position: relative;right:59px;">
                                                 <label *ngIf="i == 0">Address Line 1 <span>*</span></label> <span
                                                     *ngIf="i == 0" class="addressline2">Address Line2
                                                     <span>*</span></span><br>
@@ -337,10 +337,10 @@
                                                     class="addDelercols addadressLine1"
                                                     [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
                                             </div>
-                                            <div class="col-1" style="margin-left: -66px;">
+                                            <div class="col-1" >
                                                 <label *ngIf="i == 0">Country<span>*</span></label>
                                                 <br>
-                                                <select placeholder="Select Country" formControlName="CountryName"
+                                                <select style="height: 45px;" placeholder="Select Country" formControlName="CountryName"
                                                     class="addDelercols addcountry form-control"
                                                     [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName">
                                                     <option selected value="" hidden>Select Country</option>
@@ -348,14 +348,14 @@
                                                         {{ state.geographyName }}</option>
                                                 </select>
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-1 ml-5">
                                                 <label *ngIf="i == 0">State<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="StateName"
                                                     [(ngModel)]="addAddressDetailsForm.value.addresscount[i].StateName"
                                                     class="addDelercols aastate" (input)="restrictToAlphabets($event)">
                                             </div>
-                                            <div class="col-2">
+                                            <div class="col-2 ml-4">
                                                 <label *ngIf="i == 0">City<span>*</span></label>
                                                 <label *ngIf="i == 0"
                                                     style="position: relative;left: 104px;">Zip<span>*</span></label>
@@ -367,7 +367,7 @@
                                                     [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
                                                     class="addDelercols addzip" (input)="restrictToNumbers($event)">
                                             </div>
-                                            <div class="col-1" style="margin-left: 53px;">
+                                            <div class="col-1" style="margin-left: 36px;">
                                                 <label *ngIf="i == 0">Phone<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="Telephone"

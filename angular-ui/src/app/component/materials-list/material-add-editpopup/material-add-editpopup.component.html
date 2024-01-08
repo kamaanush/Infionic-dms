@@ -766,11 +766,11 @@
                   <div class="col-1"></div>
                   <div class="col-6" *ngIf="!updateOrSave">
                     <button class="btn  btn-block submitbtn save-btn" *ngIf="!checked"
-                      (click)="addMaterialProduct();">Save</button>
+                      (click)="addMaterialProduct()"  [disabled]="!materialName">Save</button>
                   </div>
                   <div class="col-6" *ngIf="updateOrSave">
                     <button class="btn  btn-block submitbtn save-btn" *ngIf="!checked"
-                      (click)="addMaterialProductAfterEdit();">update</button>
+                      (click)="addMaterialProductAfterEdit()" [disabled]="!materialName">update</button>
                   </div>
                   <div class="col-3">
                   </div>

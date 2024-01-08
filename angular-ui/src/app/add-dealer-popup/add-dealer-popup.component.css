@@ -1641,7 +1641,7 @@ li {
 }
 
 .addtype {
-  width: 82px !important;
+  width: 135px !important;
   color: #686E74;
 }
 
@@ -1656,16 +1656,17 @@ li {
 }
 
 .addadress {
-  width: 125px !important;
+  width: 135px !important;
   height: 45px;
 }
 
 .addcountry {
-  width: 100px !important;
+  width: 159px !important;
+  height: 45px;
 }
 
 .aastate {
-  width: 100px !important;
+  width: 135px !important;
 }
 
 .addcity {
@@ -1679,7 +1680,7 @@ li {
 }
 
 .addphone {
-  width: 123px !important;
+  width: 135px !important;
   height: 38px;
 }
 
@@ -1689,7 +1690,7 @@ li {
   /* color: red; */
   cursor: pointer;
   color: red;
-  left: 22px;
+  left: 13px;
 }
 
 .remove-admin{
@@ -1724,7 +1725,8 @@ li {
 .addMore-iconn {
   cursor: pointer;
   /* margin-left: 59px; */
-  right: 60px;
+  /* right: 60px; */
+  left: 51px;
   position: relative;
   top: 30px;
   color: rgba(1, 139, 117, 1);
@@ -1790,12 +1792,12 @@ li {
 
 .addzip,
 .addadressLine1 {
-  width: 125px !important;
+  width: 135px !important;
   /* margin-top: 4px; */
   height: 45px;
   position: relative;
   bottom: 46px;
-  left: 133px;
+  left: 150px;
 }
 
 .addzip,
@@ -1887,4 +1889,9 @@ li {
   opacity: 0.5;
   pointer-events: none; 
 
+}
+
+::ng-deep.select.form-control:not([size]):not([multiple]) {
+  /* height: calc(2.25rem + 2px); */
+  height: 43px;
 }
