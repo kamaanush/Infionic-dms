@@ -77,8 +77,6 @@ border-radius: 25px;
     position: relative;
     width: 1079px;
     height: 43px;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 20px;
@@ -125,16 +123,54 @@ border-radius: 0px 0px 10px 10px
       }
       .duplicate-tabel-shipments {
         position: relative;
-        width: 92%;
-        left: 12px;
-        /* height: 183px; */
-        margin-bottom: 30px;
-        top: 79px;
+        width: 91%;
+       left: 18px;
+       top: 45px;
         border-width: 0px 1px 1px 1px;
         border-style: solid;
-        border-color: #686E74;
-        border-radius: 0px 0px 10px 10px
+        border-radius: 0px 0px 10px 10px;
+        border-right: 2px solid #989CA04D;
+        border-bottom: 2px  solid #989CA04D;
+        border-left: 2px  solid #989CA04D;
           }
+          .duplicate-tabel-shipmentErroeFree{
+            position: relative;
+            width: 90%;
+            left: 27px;
+            top: 66px;
+            border-width: 0px 1px 1px 1px;
+            border-style: solid;
+            border-radius: 0px 0px 10px 10px;
+            border-right: 2px solid #989CA04D;
+            border-bottom: 2px  solid #989CA04D;
+            border-left: 2px  solid #989CA04D;
+              }
+              .duplicate-tabel-shipmentDuplicateEntry
+              {
+                position: relative;
+               width: 92%;
+                left: 10px;
+                top: 86px;
+                border-width: 0px 1px 1px 1px;
+                border-style: solid;
+                border-radius: 0px 0px 10px 10px;
+                border-right: 2px solid #989CA04D;
+                border-bottom: 2px  solid #989CA04D;
+                border-left: 2px  solid #989CA04D;
+              }
+              .duplicate-tabel-shipmentIncorrectvalue
+              {
+                position: relative;
+                width: 91%;
+                left: 18px;
+                top: 86px;
+                border-width: 0px 1px 1px 1px;
+                border-style: solid;
+                border-radius: 0px 0px 10px 10px;
+                border-right: 2px solid #989CA04D;
+                border-bottom: 2px  solid #989CA04D;
+                border-left: 2px  solid #989CA04D;
+              }
   .no-doc {
     background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
   }

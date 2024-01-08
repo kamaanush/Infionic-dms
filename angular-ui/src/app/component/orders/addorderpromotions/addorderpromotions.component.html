@@ -646,9 +646,9 @@
                                         <td style="text-align: right;"> <input  type="text" disabled
                                                 [(ngModel)]="Item.quantity" class="NonPromodataquantity"> </td>
                                                 
-                                        <td *ngIf="actineLabel !=='Edit order'" > 
+                                        <td *ngIf="actineLabel !=='Edit order'" style="text-align: right;position: relative;right: 47px;"> 
                                             <input type="text" disabled [(ngModel)]="'$'+Item.finalValue"
-                                                class="FInalvaluenonpromo" style="position: relative;left: 56px;">
+                                                class="FInalvaluenonpromo" style="position: relative;">
                                             </td>  
                                             <td *ngIf="actineLabel ==='Edit order'" style="text-align: right;">
                                                 <input type="text" disabled [(ngModel)]="'$'+Item.finalValue"

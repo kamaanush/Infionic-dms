@@ -254,10 +254,10 @@ export class SalesBulkUploadComponent implements OnInit {
             console.log('New Data', this.uploadedData);
             const uploadedFile = {
               CreateById: this.CreatedById,
-              BulkSales: this.uploadedData,
+               BulkSales: this.uploadedData,
+             
               
             };
-  
             console.log('Daaataaa', uploadedFile);
             this.spinner.show();
             this.salesService.getBulkSalesUpload(uploadedFile).subscribe((res) => {
@@ -266,11 +266,10 @@ export class SalesBulkUploadComponent implements OnInit {
                 this.isShowtext=false;
               }
                setTimeout(()=>{
-                   this.spinner.hide();
+                this.spinner.hide();
               this.isShowtext=false;
-              this.isdocumen=false;
-
-              this.salesUploadList = res.response;
+              this.isdocumen=false; 
+               this.salesUploadList = res.response;
                     this.TotalRows = this.salesUploadList.allRows;
                     this.totalRows = 'Total rows = ' + this.TotalRows.length;
                     this.duplicateEntryy = this.salesUploadList.duplicateEntries;
@@ -371,9 +370,11 @@ export class SalesBulkUploadComponent implements OnInit {
         if ((res.succeded = true)) {
           this.showTable = true;
         }
+        console.log(res.response,"RK");
         setTimeout(() => {
-          this.spinner.hide();
+         
         const orderShipment = res.response;
+        this.spinner.hide();
         console.log('orderShipment', orderShipment);
         this.TotalRows = orderShipment.totalRows;
         this.totalRows = 'Total rows = ' + this.TotalRows.length;
@@ -415,7 +416,8 @@ export class SalesBulkUploadComponent implements OnInit {
   }
   uploadFile() {
     const uploadedFile = {
-      guid: this.batchId[0],
+      // guid: this.batchId[0],
+      Guid: this.batchId[0],
     };
     console.log('Daaataaa', uploadedFile);
     this.salesService.SaveBulkShipmentUpload(uploadedFile).subscribe((res) => {
