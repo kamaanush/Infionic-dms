@@ -910,6 +910,7 @@ website: [''],
   }
 
   saveGeographiesList() {
+    this.spinner.show()
     localStorage.setItem('updateAddEdit', 'add');
     console.log('SaveDataa', this.addAddressDetailsForm);
     let selectedGeographies =
@@ -972,10 +973,12 @@ website: [''],
         this.sharedService.filter('Register click');
       }
       console.log(res);
+      this.spinner.hide()
     });
   }
 
   EditGeographiesList() {
+    this.spinner.show()
     localStorage.setItem('updateAddEdit', 'edit');
     sessionStorage.setItem('Response', '');
     let selectedGeographies =
@@ -1027,6 +1030,7 @@ website: [''],
         });
       }
       console.log(res);
+      this.spinner.hide()
     });
   }
   restrictToNumbers(event: any): void {

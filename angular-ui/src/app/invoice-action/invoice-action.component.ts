@@ -11,6 +11,9 @@ import { EditPopupComponent } from '../component/users/userPopups/edit-popup/edi
 import { PswResetPopupComponent } from '../component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
 import { DownloadInvoiceComponentComponent } from '../download-invoice-component/download-invoice-component.component';
 import { ViewInvoiceComponentComponent } from '../view-invoice-component/view-invoice-component.component';
+import { OrdersApisService } from '../services/orders-apis.service';
+import { SharedService } from '../services/shared-services.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-invoice-action',
@@ -28,7 +31,11 @@ export class InvoiceActionComponent implements OnInit,  AfterViewInit {
 
   @ViewChild('trigger') button;
 
-  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) {}
+  constructor(private changeDetector: ChangeDetectorRef,
+    private dialog: MatDialog, 
+    private http:OrdersApisService,
+    private SpinnerService: NgxSpinnerService,
+    private SS:SharedService) {}
 
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -72,6 +79,24 @@ export class InvoiceActionComponent implements OnInit,  AfterViewInit {
   resetpws(){
     this.dialog.open(DownloadInvoiceComponentComponent,{width: '1400px',height:'560px'});
     this.isOpen = false;
+  }
+
+  deleteupload(){
+    this.SpinnerService.show()
+    let userId = localStorage.getItem('logInId')
+    let guid = this.params.data.id
+    const payload ={
+      "currentUserId":Number(userId),
+      "GUID":guid
+    }
+   console.log(payload);
+   this.http.deleteshipment(payload).subscribe({
+    next:(res:any)=>{
+      console.log(res);
+      this.SS.reloadgrid()
+      this.SpinnerService.hide()
+    }
+   })
   }
   tickmark(){
     this.selected = true;

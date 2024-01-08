@@ -394,6 +394,9 @@ export class InvoiceComponent implements OnInit {
       console.log(m);
       this.getusertabeldata();
     });
+    this.sharedService.ReloadaddOrg.subscribe(()=>{
+      this.getusertabeldata();
+    })
     sort: [];
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {

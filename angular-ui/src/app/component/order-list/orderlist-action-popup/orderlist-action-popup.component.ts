@@ -122,7 +122,8 @@ export class OrderlistActionPopupComponent implements OnInit {
   agInit(params) {
     this.params = params;
     // let menu = [];
-    let ignoreMenus = ['close', 'cancel_order'];
+    // let ignoreMenus = ['close', 'cancel_order'];
+    let ignoreMenus = [ 'cancel_order'];
     this.userType = localStorage.getItem('userType');
     if (this.params?.data?.status && this.params?.data?.status.toLowerCase() === 'submitted' && this.userType === 'Dealer Admin'){
       this.currentActionMenu = [];
