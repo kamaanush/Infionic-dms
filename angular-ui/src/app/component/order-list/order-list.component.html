@@ -52,8 +52,8 @@
           </div>
         </form>
       </div>
-      <div class="col-md-2 com-lg-2 col-sm-2">
-        <ng-multiselect-dropdown name="city" style="color: grey;" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings"
+      <div class="col-md-2 com-lg-2 col-sm-2" userRoleDirective="Split_Order_Filter" [pageName]="currentPageName">
+        <ng-multiselect-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings"
           (onSelect)="SelectOrder($event)" [disabled]="disabled"></ng-multiselect-dropdown>
       </div>
       
