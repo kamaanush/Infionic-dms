@@ -46,9 +46,10 @@ this.dialog.open(GeoAddedPopupComponent, {panelClass: 'UOMSuccessPop'});
 
 }
 
+
 restrictToAlphabets(event: any): void {
   const input = event.target as HTMLInputElement;
   const value = input.value;
-  input.value = value.replace(/[^a-zA-Z]/g, '');
-}
+  input.value = value.replace(/[^a-zA-Z\s]/g, '');
+   }
 }

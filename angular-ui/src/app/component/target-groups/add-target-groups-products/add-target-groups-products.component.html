@@ -13,14 +13,14 @@
         <div class="row" style="color: grey;">
           <div class="search-d col-lg-3">
             <form [formGroup]="myForm">
-              <ng-multiselect-dropdown class="catty" name="city" [placeholder]="''" formControlName="city"
+              <ng-multiselect-dropdown class="catty" name="city" [placeholder]="'Category'" formControlName="city"
                 [disabled]="disabled" [settings]="category" [data]="catgname" (onSelect)="addItemSelect($event)"
                 (onDeSelect)="addItemDeSelect($event)" (onDeSelectAll)="addItemDeSelectOrAll($event)"
                 (onSelectAll)="addItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
-            <div class="dropdown-placeholder cats-placeholder">
-              <span *ngIf="myForm.get('city').value.length == 0"> Category </span>
+            <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+              <!-- <span *ngIf="myForm.get('city').value.length == 0"> Category </span> -->
               <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder">
                 {{myForm.get('city').value.length}} category  </span>
               <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder">
@@ -30,14 +30,14 @@
           </div>
           <div class="search-d  col-lg-3">
             <form [formGroup]="subCattyForm">
-              <ng-multiselect-dropdown class="addsubc addsubcProd" name="city" placeholder="" formControlName="subcatty"
+              <ng-multiselect-dropdown class="addsubc addsubcProd" name="city" placeholder="subCategory" formControlName="subcatty"
                 [disabled]="disabled" [settings]="subCategorys" [data]="sub_category"
                 (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
                 (onDeSelectAll)="addSubCategoryDSelectOrAll($event)" (onSelectAll)="addSubCategorySelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
-            <div class="dropdown-placeholder subcats-placeholder">
-              <span *ngIf="subCattyForm.get('subcatty').value.length == 0"> subCategory </span>
+            <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+              <!-- <span *ngIf="subCattyForm.get('subcatty').value.length == 0"> subCategory </span> -->
               <span *ngIf="subCattyForm.get('subcatty').value.length == 1" class="selected-placeholder">
                 {{subCattyForm.get('subcatty').value.length}} subCategory  </span>
               <span *ngIf="subCattyForm.get('subcatty').value.length > 1" class="selected-placeholder">
@@ -47,13 +47,13 @@
           </div>
           <div class="search-d  col-lg-3">
             <form [formGroup]="typess">
-              <ng-multiselect-dropdown class="typy typyy" name="type"  formControlName="typess"
+              <ng-multiselect-dropdown class="typy typyy" name="type"  formControlName="typess" [placeholder]="' Select Type'"
                 [disabled]="disabled" [settings]="productType" [data]="typeI" (onSelect)="addTypeSelect($event)"
                 (onDeSelect)="addTypeDeSelect($event)" (onDeSelectAll)="addTypeDeSelectOrAll($event)"
                 (onSelectAll)="addTypeSelectOrAll()">
               </ng-multiselect-dropdown>
-              <div class="dropdown-placeholder typy-placeholder">
-                <span *ngIf="typess.get('typess').value.length == 0">Select Type </span>
+              <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+                <!-- <span *ngIf="typess.get('typess').value.length == 0">Select Type </span> -->
                 <span *ngIf="typess.get('typess').value.length == 1" class="selected-placeholder">
                   {{typess.get('typess').value.length}} Type  </span>
                 <span *ngIf="typess.get('typess').value.length > 1" class="selected-placeholder">
@@ -64,14 +64,14 @@
           </div>
           <div class="search-d  col-lg-3">
             <form [formGroup]="product">
-              <ng-multiselect-dropdown class="producty" name="product" [placeholder]="''"
+              <ng-multiselect-dropdown class="producty" name="product" [placeholder]="' Product Group'"
                 formControlName="product" [disabled]="disabled" [settings]="productGroups" [data]="Product"
                 (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
                 (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
-            <div class="dropdown-placeholder producty-placeholder">
-              <span *ngIf="product.get('product').value.length == 0"> Product Group </span>
+            <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+              <!-- <span *ngIf="product.get('product').value.length == 0"> Product Group </span> -->
               <span *ngIf="product.get('product').value.length == 1" class="selected-placeholder">
                 {{product.get('product').value.length}} Product Group  </span>
               <span *ngIf="product.get('product').value.length > 1" class="selected-placeholder">
@@ -91,15 +91,15 @@
         <div class="row">
           <div class="col-lg-3 search-prodId">
             <form [formGroup]="identifier">
-              <ng-multiselect-dropdown class="identifiers prodId" name="city" [placeholder]="''"
+              <ng-multiselect-dropdown class="identifiers prodId" name="city" [placeholder]="'Identifier'"
                 formControlName="identifier" [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList"
                 (onSelect)="onproductIdentifierSelect($event)" (onDeSelect)="onproductIdentifierDeSelect($event)"
                 (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
                 (onSelectAll)="onproductIdentifierSelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
-            <div class="dropdown-placeholder identifiers-placeholder">
-              <span *ngIf="identifier.get('identifier').value.length == 0"> Identifier </span>
+            <div style="left: 5px;bottom: 30px;position: relative; color: #686E74;">
+              <!-- <span *ngIf="identifier.get('identifier').value.length == 0"> Identifier </span> -->
               <span *ngIf="identifier.get('identifier').value.length == 1" class="selected-placeholder">
                 {{identifier.get('identifier').value.length}} Identifier  </span>
               <span *ngIf="identifier.get('identifier').value.length > 1" class="selected-placeholder">
@@ -110,7 +110,7 @@
       </div>
       <div class="col-lg-1"></div>
     </div>
-    <div class="srch mt-3" style="margin-bottom:10px">
+    <div class="srch mt-3" style="margin-bottom:13px">
       <div class="row">
         <div class="col-md-12">
           <div class="searchBox d-flex">

@@ -938,6 +938,7 @@ mat-sidenav-container {
     border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     border-left: 1px solid rgba(104, 110, 116, 0.75);
     border-right: 1px solid rgba(104, 110, 116, 0.75);
+    padding-top: 7px;
 }
 
 ::ng-deep.mat-paginator-container {
@@ -1355,6 +1356,7 @@ mat-sidenav {
     padding-bottom: 12px;
     background: rgba(104, 110, 116, 0.66);
     cursor: pointer;
+    
 }
 .OrderDataDownloadeddiv:hover
 {
