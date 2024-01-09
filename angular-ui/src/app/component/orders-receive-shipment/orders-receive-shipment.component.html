@@ -57,8 +57,11 @@
         </div>
       </div>
     </div>
-    <div class="row pr-3 justify-content-end" style="position: absolute; right: 110px;" *ngIf="!isParent">
-      <button class="btn btn-sm" (click)="ViewOrder('view')">View Main Order</button>
+    <div class="row pr-3 justify-content-end" style="position: rela;
+    position: relative;
+    top: 34px;" *ngIf="!isParent">
+      <button class="btn btn-sm" style="background-color: rgba(1,139,117,1);
+      color: white;" (click)="ViewOrder('view')">View Main Order</button>
     </div>
     <mat-tab-group class="orders-tab-group">
       <!-- orders -->
