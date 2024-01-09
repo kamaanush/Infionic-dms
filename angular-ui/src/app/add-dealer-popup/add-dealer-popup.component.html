@@ -363,9 +363,12 @@
                                                 <input type="text" placeholder="Enter City" formControlName="CityName"
                                                     [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CityName"
                                                     class="addDelercols addcity" (input)="restrictToAlphabets($event)">
+                                               <div class="col-1 ml-5">
                                                 <input type="text" placeholder="Enter Zip" formControlName="ZipCode"
-                                                    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
-                                                    class="addDelercols addzip" (input)="restrictToNumbers($event)">
+                                                [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
+                                                class="addDelercols addzip" (input)="restrictToNumbers($event)">
+
+                                               </div>
                                             </div>
                                             <div class="col-1" style="margin-left: 36px;">
                                                 <label *ngIf="i == 0">Phone<span>*</span></label>

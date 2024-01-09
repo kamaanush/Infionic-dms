@@ -173,7 +173,8 @@ svg {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: padding-box;
-    margin-top: -28px !important;
+    /* margin-top: -28px !important; */
+    margin-top: -7px !important;
     width: 200px;
     border: 1px solid grey;
 }
