@@ -527,6 +527,7 @@ tr {
     position: relative;
     width: 14px;
     right: 45px;
+    cursor: pointer;
     /* top: 55px; */
   }
   .expand-style {

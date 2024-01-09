@@ -389,15 +389,18 @@
                             <th >UnitPrice</th>
                             <th>UnitDiscount</th>
                         <tr *ngFor="let shipData of incorrectRows">
+                            
+                            
+                            {{incorrectRows.remarks}}
                             <td  class="pl-4" [ngClass] ="{'errorText': shipData.remarks == 'orderno'}">{{shipData.orderNo}}</td>
                             <td  [ngClass] ="{'errorText': shipData.remarks == 'orderdate'}">{{shipData.productCode}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'productcode'}">{{shipData.dealerCode}}</td>
-                            <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchqty'}">{{shipData.dispatchQty}}</td>
+                            <td style="text-align: center;" [ngClass]="{'errorText': shipData.remarks == 'dispatchqty'}">{{shipData.dispatchQty}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'invoicedate'}">{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td   [ngClass]="{'errorText': shipData.remarks == 'invoiceno'}" >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedRemarks}}</td>
-                            <td style="text-align: center;">{{shipData.unitPrice}}</td>
-                            <td style="text-align: center;" >{{shipData.unitDiscount}}</td>
+                            <td [ngClass]="{'errorText': shipData.remarks == 'uploadedremarks'}">{{shipData.uploadedRemarks}}</td>
+                            <td style="text-align: center;" [ngClass]="{'errorText': shipData.remarks == 'unitprice'}">{{shipData.unitPrice}}</td>
+                            <td style="text-align: center;" [ngClass]="{'errorText': shipData.remarks == 'unitdiscount'}" >{{shipData.unitDiscount}}</td>
             
                         </tr>
                     </table>
