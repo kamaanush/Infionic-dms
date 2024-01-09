@@ -2304,68 +2304,81 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   GetConfirmOrders() {
     this.CustomerPoId = localStorage.getItem('CustomerPoId');
-    // let id = this.params.data.id
-    this.orders.GetProcessOrderDetails(this.CustomerPoId).subscribe({
+    const payload = {
+      orderId: this.CustomerPoId,
+      CurrentUserId: this.loginid
+    };
+  
+    this.orders.GetSplitOrderDetails(payload).subscribe({
       next: (res: any) => {
-        console.log(res);
-        if (res.succeded) {
-          const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
-          const headers = Object.keys(res.response[0])
-            .filter((key) => !excludedProperties.includes(key))
-            //.map(header => header);// to get all capital letters
-            .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
-
-          const worksheetData = [headers];
-          res.response.forEach((item) => {
-            const capitalizedItem = {};
-            Object.keys(item).forEach((key) => {
-              // const capitalizedKey = key   // to get all capital letters
-              const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
-              capitalizedItem[capitalizedKey] = item[key];
-            });
-
-            const row = headers.map((key) => {
-              const value = capitalizedItem[key];
-              if (
-                typeof value === 'string' &&
-                /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)
-              ) {
-                return `"${value}"`;
+        let poIds = res.response.map((x: any) => x.customerPoId);
+        console.log(poIds);
+  
+        // Iterate through poIds and download Excel for each customer PO ID
+        for (const poId of poIds) {
+          this.orders.GetProcessOrderDetails(poId).subscribe({
+            next: (resProcess: any) => {
+              console.log(resProcess);
+              if (resProcess.succeded) {
+                const excludedProperties = ['userId', 'imageUrl', 'lastLoginDate'];
+                const headers = Object.keys(resProcess.response[0])
+                  .filter((key) => !excludedProperties.includes(key))
+                  .map((header) => header.charAt(0).toUpperCase() + header.slice(1));
+  
+                const worksheetData = [headers];
+                resProcess.response.forEach((item) => {
+                  const capitalizedItem = {};
+                  Object.keys(item).forEach((key) => {
+                    const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+                    capitalizedItem[capitalizedKey] = item[key];
+                  });
+  
+                  const row = headers.map((key) => {
+                    const value = capitalizedItem[key];
+                    if (typeof value === 'string' && /^\d+(\.\d+)?[Ee]\+\d+$/.test(value)) {
+                      return `"${value}"`;
+                    }
+                    return value;
+                  });
+                  worksheetData.push(row);
+                });
+  
+                const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+  
+                const excelBuffer = XLSX.write(workbook, {
+                  bookType: 'xlsx',
+                  type: 'array',
+                });
+                const blob = new Blob([excelBuffer], {
+                  type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                });
+                const url = URL.createObjectURL(blob);
+  
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = this.convertedDateFormat() + poId + 'PODetails';
+                link.click();
+                URL.revokeObjectURL(url);
               }
-              return value;
-            });
-            worksheetData.push(row);
+            },
           });
-
-          const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
-          const workbook = XLSX.utils.book_new();
-          XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
-
-          const excelBuffer = XLSX.write(workbook, {
-            bookType: 'xlsx',
-            type: 'array',
-          });
-          const blob = new Blob([excelBuffer], {
-            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-          });
-          const url = URL.createObjectURL(blob);
-
-          const link = document.createElement('a');
-          link.href = url;
-          link.download =  this.convertedDateFormat()+ this.CustomerPoId + 'PODetails';
-          link.click();
-          URL.revokeObjectURL(url);
         }
       },
     });
+  
     console.log(this.CustomerPoId, 'this.CustomerPoId');
+    
     let data = {
       OrderId: this.CustomerPoId,
       flag: 'Confirmed',
     };
+  
     this.orders.GetConfirmOrder(data).subscribe((res) => {
       console.log(res.response, 'GetConfirmOrdersToEdit');
     });
+  
     this.dialogRef.close(true);
     this.sharedService.filter('Register click');
   }

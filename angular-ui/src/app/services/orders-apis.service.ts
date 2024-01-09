@@ -204,6 +204,10 @@ export class OrdersApisService {
     return this.http.get(this.userurl + `OrdersApi/GetProcessOrderDetails?orderId=${data}`);
   }
 
+  GetSplitOrderDetails(data:any){
+    return this.http.post(this.userurl+'OrdersApi/GetSplitOrderDetails',data)
+  }
+
   DeleteShipmentBatch(data:any){
     return this.http.post(this.userurl +'OrdersApi/DeleteShipmentBatch',data)
   }
