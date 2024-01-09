@@ -429,15 +429,16 @@ export class AddorderpromotionsComponent implements OnInit {
       this.actineLabel = 'Confirm order';
       this.updateOrSave = !this.updateOrSave;
       this.GetOrdersToEdit();
-    }
-    if (editV == 'Edit') {
+    }  else if (editV == 'Edit') {
       this.actineLabel = 'Edit order';
       this.updateOrSave = !this.updateOrSave;
       this.dealerDisabled = true;
+      this.confirmOrder = false
       this.GetOrdersToEdit();
     } else {
       this.actineLabel = 'Add Order';
       this.editData = false;
+      this.confirmOrder = false
       // this.updateOrSave= this.updateOrSave;
       this.editorderbyID = {};
     }
