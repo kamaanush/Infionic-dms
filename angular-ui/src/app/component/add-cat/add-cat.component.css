@@ -90,11 +90,12 @@ input {
 .update-btn {
      /* background: black;  */
     background-color:#018B75 ;
-    border: 2px solid #000000;
+    /* border: 2px solid #000000; */
     color: white;
     width: 183px;
     height: 43px;
-    border: #000000;
+    border:none;
+    outline: none;
     border-radius: 5px;
     margin-right: 35px;
     cursor: pointer;
@@ -104,9 +105,10 @@ input {
     background: grey;
     width: 183px;
     height: 43px;
-    border: #000000;
+    /* border: #000000; */
     border-radius: 5px;
     margin-right: 35px;
+    outline: none;
 }
 
 .cancel-btn {

@@ -31,7 +31,8 @@ color: white;
 padding: 5px 40px;
 border: 2px solid rgba(1, 139, 117, 1);
 border-radius: 10px;
-
+border: none;
+outline: none;
 height: 41px;
 width: 150px; 
 cursor: pointer;

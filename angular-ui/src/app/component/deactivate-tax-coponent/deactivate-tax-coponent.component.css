@@ -39,6 +39,8 @@
     width: 150px;
     cursor: pointer;
     margin-top: 15px;
+    border: none;
+    outline: none;
     }
     .close-icon{
         left: 100%;
