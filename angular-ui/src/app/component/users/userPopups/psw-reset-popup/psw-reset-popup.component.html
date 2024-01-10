@@ -11,7 +11,7 @@
             </div>
             <label>Latest password <span style="color: red;">*</span></label><br>
             <input type="password" id="latestpassword" placeholder="Enter your new password (at least 8 ch)" name="latestpassword"
-            [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required #latestpassword="ngModel" minlength="8">
+            [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required #latestpassword="ngModel" minlength="8" >
             
           <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
             {{showPassword?'visibility':'visibility_off'}}
@@ -75,7 +75,7 @@
             </div>
             <label>current password <span style="color: red;">*</span></label><br>
             <input type="password" id=" oldPasswords" placeholder="Enter your old  password (at least 8 ch)"
-            [type]="showoldPassword? 'text': 'password'"  name="oldPasswords" [(ngModel)]="oldPassword" required #oldPasswords="ngModel" minlength="8">
+            [type]="showoldPassword? 'text': 'password'"  name="oldPasswords" [(ngModel)]="oldPassword" required #oldPasswords="ngModel" minlength="8" >
             <mat-icon matSuffix (click)="PasswordVisibilityold()">
                 {{showoldPassword?'visibility':'visibility_off'}}
             </mat-icon>

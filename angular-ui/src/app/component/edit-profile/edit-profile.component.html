@@ -47,7 +47,7 @@
                                     <label class="f-label">First Name <span>*</span></label>
                                     <br>
                                     <input type="text" id="fname" name="fname" class="f-name" required
-                                        placeholder="Enter your full name" [(ngModel)]="FirstName" #fname="ngModel">
+                                        placeholder="Enter your full name" [(ngModel)]="FirstName" #fname="ngModel" style="outline-color: #abd4ff;">
                                     <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert">
 
@@ -63,7 +63,7 @@
                                     <label class="f-label">Last Name <span>*</span></label>
                                     <br>
                                     <input type="text" id="lname" name="lname" class="f-name" required
-                                        placeholder="Enter your full name" [(ngModel)]="LastName" #lname="ngModel">
+                                        placeholder="Enter your full name" [(ngModel)]="LastName" #lname="ngModel" style="outline-color: #abd4ff;">
                                     <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="alert">
 
@@ -84,7 +84,7 @@
                                     <label class="user-label">Username<span>*</span></label>
                                     <br>
                                     <input type="text" id="uname" name="uname" class="f-name input-2" required
-                                        placeholder="Enter your username" [(ngModel)]="userName" #uname="ngModel">
+                                        placeholder="Enter your username" [(ngModel)]="userName" #uname="ngModel" style="outline-color: #abd4ff;">
                                     <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert">
 
@@ -104,7 +104,7 @@
                                     <br>
                                     <input class="f-name" id="emails" name="emails" type="email" required
                                         pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$" #emails="ngModel"
-                                        placeholder="Enter your email Id" [(ngModel)]="Email">
+                                        placeholder="Enter your email Id" [(ngModel)]="Email" style="outline-color: #abd4ff;">
                                     <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="emails.invalid && (emails.dirty || emails.touched)" class="alert">
 
@@ -126,7 +126,7 @@
                                     <br>
                                     <input type="text" id="mobile" name="mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"
                                         class="f-name input-2" id="uname" name="uname" required
-                                        placeholder="Enter your phone no." [(ngModel)]="phone" #mobile="ngModel">
+                                        placeholder="Enter your phone no." [(ngModel)]="phone" #mobile="ngModel" style="outline-color: #abd4ff;">
                                     <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert">
 

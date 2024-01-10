@@ -59,7 +59,12 @@ input{
     border-radius: 10px;
     width: 404px;
     height: 43px;
+    outline-color: #abd4ff !important;
+
      /* margin-left: -21px; */
+}
+.input:focus{
+    outline-color: #abd4ff !important;
 }
 .update-btn{
 background-color:#018B75;

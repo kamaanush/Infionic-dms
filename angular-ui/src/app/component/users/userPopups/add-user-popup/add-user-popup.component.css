@@ -106,7 +106,8 @@ color: #000000;
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
-    outline: none !important;
+    outline-color: #abd4ff !important;
+    /* outline: none !important; */
     /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
 }
 ::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
@@ -126,6 +127,7 @@ span {
     font-weight:  #686E74;
     cursor: pointer;
     bottom: 17px;
+ 
 }
 
 label {
@@ -155,4 +157,6 @@ mat-form-field {
 }
 .sticky{
     color: #686E74;
+    outline-color: #abd4ff !important;
+    color: grey;
 }

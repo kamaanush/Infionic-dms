@@ -1,7 +1,9 @@
 .font {
     font-family: 'Gilroy';
 }
-
+.input{
+    outline-color: #abd4ff !important;
+}
 mat-sidenav {
     width: 5rem;
     border-right: none;

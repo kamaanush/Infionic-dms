@@ -49,7 +49,7 @@
                 <br>
                 <input type="text" id="fname" name="fname" required appForbiddenName="bob"
                   placeholder="Enter your first name" [(ngModel)]="fullname" #fname="ngModel"
-                  (input)="restrictToAlphabets($event)">
+                  (input)="restrictToAlphabets($event)"style="outline-color:#abd4ff;">
                 <p style="margin-bottom:-22px;padding: 0px;" *ngIf="fname.invalid && (fname.dirty || fname.touched)"
                   class="alert">
 
@@ -127,7 +127,7 @@
                 <select #teams class="form-select form-select-lg mb-8  sticky" (change)="selectedValue(teams.value);"
                   placeholder="Select your Role" aria-label=".form-select-lg example"
                   style="height: 35px;border-radius: 7px;width: 100%;height: 43px;">
-                  <option value="" selected hidden>Select your role</option>
+                  <option style="color: grey" value="" selected hidden>Select your role</option>
 
                   <option style="height: 900px;" *ngFor="let topping of toppingList" [value]="topping.roleId">
                     {{topping.roleName}}</option>

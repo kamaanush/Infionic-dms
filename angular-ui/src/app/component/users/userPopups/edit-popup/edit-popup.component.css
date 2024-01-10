@@ -82,9 +82,10 @@ border:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 padding: 5px 5px;
 width: 250px;
 font-size: 12px;
-outline: none;
+/* outline: none; */
 font-weight: lighter;
 border: 1px solid black;
+outline-color: #abd4ff !important;
 }
 span{
     color: red;
