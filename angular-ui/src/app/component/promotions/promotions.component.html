@@ -53,7 +53,7 @@
           </div>
         </form>
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2 dealerbubblespro" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;" *ngIf="userType === 'Admin'">
+      <div class="col-md-2 col-lg-2 col-sm-2 dealerbubblespro" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;" *ngIf="userType === 'Admin'" >
         <form [formGroup]="myForms4" class="dropdown-formdealer">
           <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Select Dealer'" formControlName="city5"
             [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
@@ -70,7 +70,7 @@
 
         </div>
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2 statusprobubbles"  >
+      <div class="col-md-2 col-lg-2 col-sm-2 statusprobubbles" style="position: relative;left: -10px;" >
         <form [formGroup]="myForms3" class="dropdown-form">
           <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Select Status '" formControlName="city4"
             [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1"

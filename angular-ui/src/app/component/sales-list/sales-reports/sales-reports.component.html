@@ -10,7 +10,7 @@
   <div class="row ">
     <div class="col-lg-2">
       <div class="dealerr">
-        <ng-select [items]="reportList" id="dealerAllArray" name="dealerAllArray" class="dropdown-form"
+        <ng-select [items]="reportList" id="dealerAllArray" name="dealerAllArray" class="DropDownFrom"
           required [virtualScroll]="true" bindLabel="reportName" bindValue="reportCode" [searchable]="true"
           [(ngModel)]="selectedReportType"  [clearable]="false" placeholder=" Select Type of Report" (change)="onItemSelectreports($event)">
         </ng-select>

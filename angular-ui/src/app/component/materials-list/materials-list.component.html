@@ -5,7 +5,7 @@
     <div class="col-xl-12 col-md-12 ACVTY-no-pad screen-width">
       <div class="UNFAPP-asmnt-rgt-area screen-h"><br>
         <div class="row" [ngStyle]="{'margin-left': userType !== 'Order Manager' ? '-13px' : '-14px'}">
-          <div class="col-md-2 col-lg-2 col-6 categorybubblesmaterials">
+          <div class="col-md-2 col-lg-2 col-6 categorybubblesmaterials pr-0">
             <form [formGroup]="myForm">
               <ng-multiselect-dropdown class="catty catty22" name="city" [placeholder]="'Category'"
                 formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname"
@@ -23,7 +23,7 @@
               </div>
             </form>
           </div>
-          <div class="col-md-2 col-lg-2 col-6 subcategorybubblesmaterials">
+          <div class="col-md-2 col-lg-2 col-6 subcategorybubblesmaterials pr-0">
             <form [formGroup]="subCategory">
               <ng-multiselect-dropdown class="subcatty sub2" name="subCategory" [placeholder]="'Sub-category'"
                 formControlName="subCategory" [disabled]="disabled" [settings]="dropdownSettings2" [data]="sub_category"
@@ -43,7 +43,7 @@
 
             </div>
           </div>
-          <div class="col-md-2 col-lg-2 col-6 typecategorybubblesmaterials">
+          <div class="col-md-2 col-lg-2 col-6 typecategorybubblesmaterials pr-0">
             <form [formGroup]="type">
               <ng-multiselect-dropdown class="typy typy22" name="type" [placeholder]="'Select Type'" formControlName="type"
                 [disabled]="disabled" [settings]="dropdownSettings3" [data]="typeI" (onSelect)="onTypeSelect($event)"
@@ -63,7 +63,7 @@
 
             </div>
           </div>
-          <div class="col-md-2 col-lg-2 col-6 productcategorybubblesmaterials">
+          <div class="col-md-2 col-lg-2 col-6 productcategorybubblesmaterials pr-0">
             <form [formGroup]="product">
               <ng-multiselect-dropdown class="producty producty22 " name="product" [placeholder]="'Product Group'"
                 formControlName="product" [disabled]="disabled" [settings]="dropdownSettings4" [data]="Product"
@@ -80,7 +80,7 @@
 
             </div>
           </div>
-          <div class="col-md-2 col-lg-2 col-6 categorybubblesmaterials">
+          <div class="col-md-2 col-lg-2 col-6 categorybubblesmaterials pr-0">
             <form [formGroup]="myForms">
               <ng-multiselect-dropdown class="sttss sttss22" name="citys" [placeholder]="'Select Status'"
                 formControlName="citys" [disabled]="disabled" [settings]="dropdownSettings1" [data]="statusList"

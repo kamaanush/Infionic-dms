@@ -296,7 +296,7 @@ padding-left: 11px;
   width: 39px;
   height: 39px;
   cursor: pointer;
-  margin-left: -22px;
+  /* margin-left: -22px; */
 }
 .btnhover:hover {
   background-color: grey !important;

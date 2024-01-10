@@ -52,7 +52,7 @@
           </div>
         </form>
       </div>
-      <div class="col-md-2 com-lg-2 col-sm-2" style="color: grey;" userRoleDirective="Split_Order_Filter" [pageName]="currentPageName">
+      <div class="col-md-2 com-lg-2 col-sm-2 pl-0" style="color: grey;" userRoleDirective="Split_Order_Filter" [pageName]="currentPageName">
         <ng-multiselect-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings"
           (onSelect)="SelectOrder($event)" [disabled]="disabled"></ng-multiselect-dropdown>
       </div>

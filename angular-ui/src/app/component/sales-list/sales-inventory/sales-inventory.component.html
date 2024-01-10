@@ -2,7 +2,7 @@
   <div class="section sales">
     <div class="sales-search-drop">
       <div class="row salesclass">
-        <div class="col-md-2 col-lg-2 col-sm-2  multi_select">
+        <div class="col-md-2 col-lg-2 col-sm-2  multi_select pl-0">
           <form [formGroup]="dealerForm" class="dropdown-form">
             <ng-multiselect-dropdown style="color: grey;" class="Dealerdrp" name="dealerForm" [placeholder]="'Dealer'"
               formControlName="dealerForm" [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerList"
@@ -19,7 +19,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2  multi_select">
+        <div class="col-md-2 col-lg-2 col-sm-2  multi_select pl-0">
           <form [formGroup]="productForm" class="dropdown-form">
             <ng-multiselect-dropdown style="color: grey;" class="product" name="city" [placeholder]="'Product'"
               formControlName="productForm" [disabled]="disabled" [settings]="dropdownSettings2" [data]="productList"
@@ -36,7 +36,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2  multi_select">
+        <div class="col-md-2 col-lg-2 col-sm-2  multi_select pl-0">
           <form [formGroup]="geographyForm" class="dropdown-form">
             <ng-multiselect-dropdown style="color: grey;" class="geography" name="city" [placeholder]="'Geography'"
               formControlName="geographyForm" [disabled]="disabled" [settings]="dropdownSettings3"
