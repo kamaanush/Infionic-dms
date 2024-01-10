@@ -42,14 +42,17 @@
   .menu-container:after {
     content: '';
     position: absolute;
-    /* background: red; */
-    bottom: 19px;
     width: 10px;
     height: 10px;
     right: -10px;
     border-top: 5px solid transparent;
     border-left: 10px solid #555;
     border-bottom: 5px solid transparent;
+    top: 48%; /* Adjust this value */
+    transform: translateY(-50%);
+}
+.single.menu-container:after {
+  top: calc(50% - 5px); /* Adjust this value */
 }
   img{
     float: right;
