@@ -93,7 +93,7 @@ getProductCustomIdentifier(){
 }
 
 getGeographyIdentifier(userId){
-  return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetGeographyIdentifiers?CurrentUserId=' + userId);
+  return this.http.post(this.addmaterialsurl + `MaterialApi/GetGeographyIdentifiers?CurrentUserId=${userId}` , userId);
 }
 public getuomDeatils(data) : Observable<any>{
   let options = {

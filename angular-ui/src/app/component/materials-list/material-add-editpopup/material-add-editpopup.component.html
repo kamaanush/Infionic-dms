@@ -577,10 +577,7 @@
                     <div class="col-sm-1">
                       <label><b style="margin-left: 84px;" >Tags</b></label>
                     </div>
-
                   </div>
-
-
                   <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
                     <div *ngFor="let item of geoPropertyItemList.geoProperties">
                       <!-- <div > -->
@@ -639,8 +636,6 @@
                       </div>
                     </div>
                   </div>
-
-
                 </table>
                 <table *ngIf="actineLabel ==='Edit Material'">
                   <div class="row m-0 mb-2  fontfamily">
@@ -744,18 +739,23 @@
                                        (input)="geoPropertyChange(item, 'registrationNumber', i)" 
                                        [(ngModel)]="geo.registrationNumber" class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
                             </div>
+                            <div class="col-sm-1">
+                              <a class="add-geo-identifier" *ngIf="item.defaultGeographies?.length > 0" (click)="AddGeographyIdentifier(item)">Add</a>
+                              <a class="count-geo-identifier " *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers?.length !== 0" (click)="AddGeographyIdentifier(item)">{{item.geographyIdentifiers?.length}}</a>
+                                <!-- *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers?.length == 0" -->
+                            </div>
                         </ng-container>
                     </ng-container>
                     
-                      <div class="col-sm-1">
+                      <!-- <div class="col-sm-1">
                         <a class="add-geo-identifier"
                           *ngIf="item.defaultGeographies?.length > 0"
                           (click)="AddGeographyIdentifier(item)">Add</a>
                         <a class="count-geo-identifier "
                           *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers?.length !== 0"
                           (click)="AddGeographyIdentifier(item)">{{item.geographyIdentifiers?.length}}</a>
-                          <!-- *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers?.length == 0" -->
-                      </div>
+                          *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers?.length == 0"
+                      </div> -->
                     </div>
                   </div>
                 </table>
@@ -781,17 +781,37 @@
 
               <div class="overlay" *ngIf="geographyIdentifierPopup">
                 <div class="popup">
-                  <h2 class="sidentifier">Select Identifier<span>*</span></h2>
-
                   <a class="close" (click)="closeGeographyIdentifierPopup()">&times;</a>
-                  <div class="content">
-                    <mat-chip-list selectable multiple class="mchip">
-                      <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of geoGraphyIdentifierList"
-                        [selected]="isSelectedGeographyIdentifer(data.geographyIdentiferid)"
-                        (click)="selectGeographyIdentifier(data.geographyIdentiferid)" class="cold">
-                        {{data.geographyIdentifierName}}
-                      </mat-chip>
-                    </mat-chip-list>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="content" *ngFor="let data of geoGraphyIdentifierList">
+                        <ng-container *ngIf="data.headingName === 'Geo'">
+                          <h2 class="sidentifier">Select {{data.headingName}}<span>*</span></h2>
+                          <mat-chip-list selectable multiple class="mchip">
+                            <mat-chip [value]="data" #identifierId="matChip" *ngFor="let item of data.productCustomeIdentifiers"
+                              [selected]="isSelectedGeographyIdentifer(item.geographyIdentiferid)"
+                              (click)="selectGeographyIdentifier(item.geographyIdentiferid,false)" class="cold">
+                              {{item.geographyIdentifierName}}
+                            </mat-chip>
+                          </mat-chip-list>
+                        </ng-container>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="content" *ngFor="let data of geoGraphyIdentifierList">
+                        <ng-container *ngIf="data.headingName === 'Material'">
+                          <h2 class="sidentifier">Select {{data.headingName}}<span>*</span></h2>
+                          <mat-chip-list selectable class="mchip">
+                            <mat-chip [value]="data" #identifierId="matChip" *ngFor="let item of data.productCustomeIdentifiers"
+                              [selected]="isSelectedGeographyIdentifer(item.geographyIdentiferid)"
+                              (click)="selectGeographyIdentifier(item.geographyIdentiferid,true)"
+                               class="cold">
+                              {{item.geographyIdentifierName}}
+                            </mat-chip>
+                          </mat-chip-list>
+                        </ng-container>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

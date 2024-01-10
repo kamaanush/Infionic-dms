@@ -515,10 +515,8 @@ export class MaterialAddEditpopupComponent {
       StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      
       // MaterialcustomidentifierAdd:this.MaterialCustomIdentifiers,
-        Materialcustomidentifier: this.MaterialCustomIdentifiers,
-       
+      Materialcustomidentifier: this.MaterialCustomIdentifiers,
       ExpiryPeriod: this.expiryDate ?? '0',
       ProductCustomIdentifierId: this.selectedProductId,
       IsProduct: +!this.checked,
@@ -529,8 +527,7 @@ export class MaterialAddEditpopupComponent {
       ManualShortOrder: this.Sort ?? '0',
       ProductLink: this.AddSP ?? '',
       ProductSubGroupId: this.subProductId,
-      ProductGeographys: this.geoProperties
-
+      ProductGeographys: this.geoProperties,
     }
 
     console.log(data)
@@ -1142,6 +1139,7 @@ export class MaterialAddEditpopupComponent {
     obj.geographyName = propertyObj.geographyName ?? "";
     obj.registrationNumber = propertyObj.registrationNumber ?? "0";
     obj.geographyIdentifiers = propertyObj.geographyIdentifiers ?? [];
+    obj.GeographyIdentifierId2 = propertyObj.GeographyIdentifierId2
     obj.showArrayExtension = true;
     obj.imageExtensionType = 'maxImage';
     return obj;
@@ -1296,12 +1294,13 @@ export class MaterialAddEditpopupComponent {
   }
 
   getGeoGraphyIdentifier() {
-    this.addMaterials.getGeographyIdentifier(this.UserId).subscribe(res => {
+    this.addMaterials.getGeographyIdentifier(this.UserId).subscribe((res:any) => {
       this.geoGraphyIdentifierList = res.response;
-
+      console.log(this.geoGraphyIdentifierList);
     });
   }
   selctedGeographyIdentifier: any = [];
+  selectedMaterialIdenterfier:any=[];
   geoGraphyIdentifierList: any = [];
   clickedGeography: any;
 
@@ -1313,9 +1312,10 @@ export class MaterialAddEditpopupComponent {
 
   AddGeographyIdentifier(item) {
     this.geographyIdentifierPopup = true;
-
     this.selctedGeographyIdentifier = item.geographyIdentifiers;
+    this.selectedMaterialIdenterfier = item.GeographyIdentifierId2
     this.clickedGeography = item;
+    console.log(item);
   }
 
   isSelectedGeographyIdentifer(itemId) {
@@ -1323,16 +1323,25 @@ export class MaterialAddEditpopupComponent {
     return index >= 0;
   }
 
-  selectGeographyIdentifier(itemId: any): void {
-    let index = this.selctedGeographyIdentifier?.indexOf(itemId);
-    if (index >= 0) {
-      this.selctedGeographyIdentifier?.splice(index, 1);
+  selectGeographyIdentifier(itemId: any, isMaterial: boolean): void {
+    if (isMaterial) {
+      // this.selctedGeographyIdentifier = [itemId];
+      // this.selectedMaterialIdenterfier.push(itemId);
+      this.clickedGeography.GeographyIdentifierId2 = itemId
+      console.log('material',itemId);
     } else {
-      this.selctedGeographyIdentifier?.push(itemId);
+      let index = this.selctedGeographyIdentifier?.indexOf(itemId);
+      if (index >= 0) {
+        this.selctedGeographyIdentifier?.splice(index, 1);
+      } else {
+        this.selctedGeographyIdentifier?.push(itemId);
+        console.log(itemId);
+      }
+      this.clickedGeography.geographyIdentifiers = this.selctedGeographyIdentifier;
     }
-
-    this.clickedGeography.geographyIdentifiers = this.selctedGeographyIdentifier;
+  
   }
+  
 
   productIdentifier() {
     this.productIdentifierPopup = true;
@@ -1350,17 +1359,9 @@ export class MaterialAddEditpopupComponent {
     this.selectId.forEach(item => {
     
     });
-  
-    // Enable the selected item
- 
-  
-    // Clear the selected items array
     this.selctedIdentifier = [];
-  
-    // Add the current selected item to the array
     this.selctedIdentifier.push(materialIdentifier);
   
-    // Update MaterialCustomIdentifiersNames with the name of the selected item
     this.MaterialCustomIdentifiersNames = materialIdentifier.materialCustomName;
   
     this.MaterialCustomIdentifiers = this.selctedIdentifier.map((identifier) => identifier.materilCustomIdentifierId);
@@ -1382,8 +1383,6 @@ export class MaterialAddEditpopupComponent {
     if (index >= 0) {
       this.selectedProductId.splice(index, 1);
       this.selectedProductFullData.splice(index, 1);
-      
-
       // this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
       // this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
       // console.log("bussinessIdentifiers", this.bussinessIdentifiers);

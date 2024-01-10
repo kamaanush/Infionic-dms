@@ -1500,7 +1500,7 @@ textarea {
   margin: 70px auto;
   padding: 20px;
   border-radius: 5px;
-  width: 369px;
+  width: 600px;
   /* height: 263px; */
   min-height: 263px;
   /* height: auto; */
@@ -1525,8 +1525,9 @@ textarea {
 
 .popup .close {
   position: absolute;
-  top: 20px;
+  top: 5px;
   right: 20px;
+  overflow-y: scroll;
   /* width: 12px;
   height: 12px; */
   transition: all 200ms;

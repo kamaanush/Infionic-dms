@@ -111,7 +111,7 @@ export class AdvancedFilterComponent implements OnInit {
     this.isShipmentDateSelected = false;
     this.isReceiptDateSelected = false;
     this.isgeoGraphyIdentifierSelected = true;
-    this.addMaterials.getGeographyIdentifier(this.UserId).subscribe(res => {
+    this.addMaterials.getGeographyIdentifier(this.UserId).subscribe((res:any) => {
       this.geoGraphyIdentifierList = res.response;
       console.log("this", this.geoGraphyIdentifierList);
 
