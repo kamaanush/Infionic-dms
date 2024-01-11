@@ -1096,8 +1096,8 @@
     <div>
         <div class="row footer">
             <div class="col-md-6">
-                <!-- <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !addressId ||isButtonDisabled" type="button"
-                    class="save-submit" (click)="ordersubmit('draft')"> Draft to Save </button> -->
+                <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !addressId ||isButtonDisabled" type="button"
+                    class="save-submit" (click)="ordersubmit('draft')"> Draft to Save </button>
             </div>
             <div class="col-md-6">
                 <!-- <button type="button" class="saveas-draft" (click)="ordersubmit('draft')">Save as Draft</button> -->
@@ -1480,16 +1480,11 @@
                                                 [ngClass]="{'zero-quantity': Item.quantity === 0, 'quatity-inp': Item.quantity !== 0}">
                                         </td>
                                                     
-                                    <!-- <td style="position: relative; left: 13px;">
-                                        <input type="number" placeholder="Enter" class="quantity-inp" min="0"
-                                               [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
-                                               name="Item.quantity" oninput="validity.valid||(value='')"
-                                               [ngClass]="{'zero-quantity': Item.quantity === 0}">
-                                    </td> -->
+                            
                                     
                                     <td style="display: flex;color: grey; right: 3px;position: relative;">
-                                        <input disabled type="number" name="" [(ngModel)]="Item.quantity* Item.price"
-                                            [value]="(Item.quantity || 0) * Item.price"
+                                        <input disabled type="number" name="" [(ngModel)]="Item.quantity* Item.price  "
+                                            [value]="(Item.quantity || 0) * Item.price | number:'1.2-2'"
                                             [ngClass]="{'IteminputBoxesD': Item.discount == 100, 'IteminputBoxes': Item.discount != 100 } ||0"
                                             style="text-align: right; border: none; background: none;">
                                     </td>
