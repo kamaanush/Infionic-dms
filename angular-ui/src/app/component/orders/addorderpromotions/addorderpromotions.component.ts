@@ -728,7 +728,7 @@ export class AddorderpromotionsComponent implements OnInit {
   //   alert("Helloo")
   // }
   totalQuantity: any;
-  totalAmount: any;
+  totalAmount: number =0;
   ForthPromotionsSelectedQuantity: number | any = 0;
   ForthPromotionTotalAmount: number | any = 0;
   ThreePromotionTotalselectedQTY: number | any = 0;
@@ -2826,4 +2826,9 @@ Freeitemsguygroup:any
     const value = input.value;
     input.value = value.replace(/[^0-9]/g, '');
   }
+
+  // onInputChange(value: number): void {
+  //   // Enforce exactly two decimal places
+  //   this.totalAmount = parseFloat(value.toFixed(2));
+  // }
 }

@@ -1480,14 +1480,19 @@
                                                 [ngClass]="{'zero-quantity': Item.quantity === 0, 'quatity-inp': Item.quantity !== 0}">
                                         </td>
                                                     
-                            
+                                        <td style="display: flex;color: grey; right: 3px;position: relative;">
+                                            <input disabled type="text" name="totalAmount" [(ngModel)]="totalAmount"
+                                                [value]="(Item.quantity || 0) * Item.price | number:'1.2-2'"
+                                                [ngClass]="{'IteminputBoxesD': Item.discount == 100, 'IteminputBoxes': Item.discount != 100 } ||0"
+                                                style="text-align: right; border: none; background: none;" >
+                                        </td>
                                     
-                                    <td style="display: flex;color: grey; right: 3px;position: relative;">
+                                    <!-- <td style="display: flex;color: grey; right: 3px;position: relative;">
                                         <input disabled type="number" name="" [(ngModel)]="Item.quantity* Item.price  "
                                             [value]="(Item.quantity || 0) * Item.price | number:'1.2-2'"
                                             [ngClass]="{'IteminputBoxesD': Item.discount == 100, 'IteminputBoxes': Item.discount != 100 } ||0"
                                             style="text-align: right; border: none; background: none;">
-                                    </td>
+                                    </td> -->
                                 </ng-container>
                                 </tr>
 
