@@ -99,10 +99,10 @@ color: #000000;
 
 .addUserForm input {
     height: 43px;
-
+    color: grey;
     border-radius: 7px;
     border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    border: 0.5px solid #000000;
+    border: 0.5px solid grey;
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;

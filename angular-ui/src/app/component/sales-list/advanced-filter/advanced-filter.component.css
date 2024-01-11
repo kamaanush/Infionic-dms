@@ -63,8 +63,9 @@ input[type=text] {
     border: 2px solid grey;
     -webkit-transition: 0.5s;
     transition: 0.5s;
-    outline: none;
+    outline-color: #abd4ff;
     border-radius: 10px;
+    color: grey;
 }
 
 .search {
@@ -214,7 +215,7 @@ input[type=text]:focus {
     padding: 5px 5px;
     width: 250px;
     font-size: 12px;
-    outline: none;
+    outline-color: #abd4ff;
     font-weight: lighter;
     border: 1px solid grey;
 }

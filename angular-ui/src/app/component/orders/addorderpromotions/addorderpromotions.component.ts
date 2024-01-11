@@ -1953,7 +1953,13 @@ export class AddorderpromotionsComponent implements OnInit {
   zeroQuantity: boolean = false;
   isCheckboxManuallyChecked: boolean = false;
   quantityChange(updatedItem) {
-    this.zeroQuantity = updatedItem.quantity === 0;
+    if(Number(updatedItem.quantity)<Number(updatedItem.moq)) {
+       this.zeroQuantity = true;
+    }
+    else {
+      this.zeroQuantity = false;
+    }
+    // this.zeroQuantity = updatedItem.quantity === 0;
     this.UpdatedQty = updatedItem.quantity;
     console.log(updatedItem);
 

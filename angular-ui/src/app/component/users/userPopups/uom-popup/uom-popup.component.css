@@ -72,7 +72,7 @@ color: #000000;
     margin-bottom: -15px;
 }
 .addUserForm input{
-
+    color: grey;
     padding: 5px 12px;
     margin-bottom: 10px;
     border: 0.5px solid rgba(0, 0, 0, 0.3);
@@ -80,7 +80,7 @@ color: #000000;
     border-radius: 10px;
     width: 500px;
     height: 43px;
-    outline: none;
+    outline-color: #abd4ff;
 }
 span{
     color: red;

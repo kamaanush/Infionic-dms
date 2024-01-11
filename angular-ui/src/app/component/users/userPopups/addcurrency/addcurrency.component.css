@@ -119,7 +119,7 @@ color: #000000;
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
-    outline: none !important;
+    outline-color: #abd4ff !important;
     /* font-weight: lighter; */
     /* color: #000000; */
     font-family: 'Gilroy-Bold';

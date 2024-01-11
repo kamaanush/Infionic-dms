@@ -284,7 +284,8 @@ text-align: center;
 /* background: #000; */
 background-color:#018B75 ;
 color: #FFFFFF;
-border: 1px solid rgba(179, 179, 179, 1)
+border: none;
+outline: none;
 }
 mat-radio-group{
   display: flex;

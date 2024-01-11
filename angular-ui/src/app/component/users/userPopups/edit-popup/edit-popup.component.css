@@ -84,8 +84,9 @@ width: 250px;
 font-size: 12px;
 /* outline: none; */
 font-weight: lighter;
-border: 1px solid black;
+border: 1px solid grey;
 outline-color: #abd4ff !important;
+color: grey;
 }
 span{
     color: red;

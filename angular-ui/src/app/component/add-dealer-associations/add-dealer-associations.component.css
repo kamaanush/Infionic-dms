@@ -497,7 +497,7 @@ input.form-check-input1 {
     width: 100%;
      height: 38px; 
     border-radius: 12px;
-    outline: none;
+    outline-color: #abd4ff;
 }
 .mat-form-field {
     width: 680px;
@@ -550,7 +550,8 @@ input.form-check-input1 {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     padding: 7px;
-    outline: none;
+    outline-color: #abd4ff;
+    color: grey;
 }
   .promotiont1{
     margin-top: 3px;
@@ -1478,7 +1479,8 @@ input.form-check-input1 {
     cursor: pointer;
     width: 168px;
     height: 44.56px;
-    border:1px rgba(1, 139, 117, 1);
+    border: none;
+    outline: none;
   }
   .saveas-draft2 {
     /* color: black; */
@@ -1491,7 +1493,8 @@ input.form-check-input1 {
     cursor: pointer;
     width: 168px;
     height: 44.56px;
-    border:1px rgba(1, 139, 117, 1);
+    border: none;
+    outline: none;
   }
   .saveas-draft1 {
     color: #fff;
@@ -1504,7 +1507,8 @@ input.form-check-input1 {
     width: 75px;
     height: 38px;
     margin-left: 8px;
-    border:1px rgba(1, 139, 117, 1);
+    border: none;
+    outline: none;
 
   }
   
@@ -1793,7 +1797,7 @@ width: 100%;
 }
 
 ::ng-deep.dealerr .ng-select-container {
-  border: 0.5px solid #000000;
+  border: 0.5px solid grey;
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 30px;

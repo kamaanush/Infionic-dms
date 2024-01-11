@@ -92,7 +92,8 @@ input {
     border-radius: 10px;
     width: 404px;
     height: 43px;
-    outline: none;
+    outline-color: #abd4ff;
+    color: grey;
 }
 
 .save-btn {

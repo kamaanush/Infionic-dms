@@ -60,6 +60,7 @@ input{
     width: 404px;
     height: 43px;
     outline-color: #abd4ff !important;
+    color: grey;
 
      /* margin-left: -21px; */
 }

@@ -236,7 +236,7 @@ border-radius: 10px; */
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-bottom: 8px;
-  outline: none;
+  outline-color: #abd4ff;
 }
 
 .qtyOfdiscount{
@@ -247,7 +247,7 @@ border-radius: 10px; */
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-bottom: 8px;
-  outline: none;
+  outline-color: #abd4ff;
 }
 
 .addAlign {
@@ -498,23 +498,25 @@ border-radius: 10px; */
 
 .searchGeo {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 0.5px solid grey;
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 43px;
   width: 381px;
-  outline: none;
+  outline-color: #abd4ff;
+  color: grey;
 }
 
 .addtnlRemarks {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 0.5px solid grey;
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 43px;
   width: 364px;
   padding-right: 188px;
-  outline: none;
+  outline-color: #abd4ff;
+  color: grey;
 }
 
 .addtnlRemarks::placeholder {
@@ -989,6 +991,7 @@ li {
   border: 0.5px solid #000000;
   /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
+  color: grey;
 }
 
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {

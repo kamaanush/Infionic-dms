@@ -356,7 +356,7 @@ label {
     /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     padding-left: 12px;
-    outline: none;
+    outline-color: #abd4ff;
 }
 
 .targetProduct {
@@ -456,12 +456,14 @@ label {
       background-color:#018B75 ;
       color: #FFFFFF;
       margin-left: 21px;
-      border: #686E74;
+      border:none;
+      outline: none;
       }
       .cancelItem-btn{
         width: 168px;
         height: 43px;
-        border: #686E74;
+        border: none;
+        outline: none;
         border-radius: 8px;
         align-items: center;
         text-align: center;

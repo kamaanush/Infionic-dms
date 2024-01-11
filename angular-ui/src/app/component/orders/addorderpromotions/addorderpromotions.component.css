@@ -1753,6 +1753,7 @@ li {
   height: 36px;
   font-size: 13px;
   padding: 0 7px;
+  color: grey;
 }
 
 .collapsible {
@@ -2006,6 +2007,7 @@ li {
     width: 210px;
     height: 28px;
   margin-right: -38px;
+  outline: none;
 }
 .promotions-label {
   /* margin-left: -12px; */
