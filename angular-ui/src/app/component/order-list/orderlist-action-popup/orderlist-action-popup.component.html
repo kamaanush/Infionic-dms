@@ -38,6 +38,6 @@
 <div (click)="orderCancel('Cancel')" class="menu-item tick" *ngIf=" isCancel||userType === 'Dealer Admin'?currentActionMenu.indexOf('') !== -1:currentActionMenu.indexOf('cancel_order') !== -1" >
   Cancel <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
   
-<div class="menu-item tick" *ngIf="isShowEditClose||currentActionMenu.indexOf('close') !== -1"  (click)="orderCancel('Close')">Close <img
+<div class="menu-item tick" *ngIf="isShowEditClose||currentActionMenu.indexOf('Cancel') !== -1"  (click)="orderCancel('Cancel')">Cancel <img
     src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
 </div>
