@@ -1,10 +1,19 @@
 version: 0.0
-os: windows
+os: linux
 files:
-  - source: \
-    destination:  D:\801_DMS\UI
-file_exists_behavior: OVERWRITE
+  - source: /
+    destination: /home/ubuntu/test/angular-ui
+permissions:
+   - object: /home/ubuntu/test/angular-ui
+     pattern: "**"
+    
 hooks:
- BeforeInstall:
- - location: \before-install.bat
-   timeout: 900
+  BeforeInstall:
+    - location: dependencies.sh
+      timeout: 180
+      runas: root
+   
+  AfterInstall:
+    - location: start.sh
+      timeout: 180
+      runas: root

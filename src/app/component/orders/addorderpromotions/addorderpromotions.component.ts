@@ -2831,4 +2831,11 @@ Freeitemsguygroup:any
   //   // Enforce exactly two decimal places
   //   this.totalAmount = parseFloat(value.toFixed(2));
   // }
+  formatCurrency(value: any) {
+    // Assuming Item.finalValue is a number
+    this.Item.finalValue = '$' + value.toFixed(2);
+}
+
+  
+
 }
